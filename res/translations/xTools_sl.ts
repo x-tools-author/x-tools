@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">Ohrani primer</translation>
+        <translation>Ohrani primer</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC pomočnik</translation>
+        <translation>CRC pomočnik</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Osveži</translation>
+        <translation>Osveži</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Vrsta</translation>
+        <translation>Vrsta</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Izvozi</translation>
+        <translation>Izvozi</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">podatki</translation>
+        <translation>podatki</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Format podatkov</translation>
+        <translation>Format podatkov</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Base64 Assistant</translation>
+        <translation>Base64 Assistant</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">Navadno besedilo</translation>
+        <translation>Navadno besedilo</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">Šifrirano besedilo</translation>
+        <translation>Šifrirano besedilo</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">Slika</translation>
+        <translation>Slika</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">Dešifriraj</translation>
+        <translation>Dešifriraj</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">Šifriraj</translation>
+        <translation>Šifriraj</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">Značilno</translation>
+        <translation>Značilno</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Nepodprta lastnost)</translation>
+        <translation>(Nepodprta lastnost)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">Naprave BLE</translation>
+        <translation>Naprave BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Preberi</translation>
+        <translation>Preberi</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">Storitveno skeniranje</translation>
+        <translation>Storitveno skeniranje</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">Način pisanja</translation>
+        <translation>Način pisanja</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">Storitev</translation>
+        <translation>Storitev</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">Skeniranje naprave</translation>
+        <translation>Skeniranje naprave</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Nadzor izhoda</translation>
+        <translation>Nadzor izhoda</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Izhodni format</translation>
+        <translation>Izhodni format</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">jasno</translation>
+        <translation>jasno</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Parametri oddajanja</translation>
+        <translation>Parametri oddajanja</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">Oddajni naslov</translation>
+        <translation>Oddajni naslov</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Format podatkov</translation>
+        <translation>Format podatkov</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Predpona oddajanja</translation>
+        <translation>Oddajna predpona</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">Interval oddajanja</translation>
+        <translation>Interval oddajanja</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Oddajna pripona</translation>
+        <translation>Oddajna pripona</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">Oddajna vrata</translation>
+        <translation>Oddajna vrata</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">Oddajni podatki</translation>
+        <translation>Oddajni podatki</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">Izhod informacij</translation>
+        <translation>Izhod informacij</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">CANBus Studio</translation>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">CAN okvir</translation>
+        <translation>CAN okvir</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">Razširjena oblika</translation>
+        <translation>Razširjena oblika</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">Prilagodljiva hitrost prenosa podatkov</translation>
+        <translation>Prilagodljiva hitrost prenosa podatkov</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">ID okvirja</translation>
+        <translation>ID okvirja</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">Vrsta okvirja</translation>
+        <translation>Vrsta okvirja</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">Možnosti okvirja</translation>
+        <translation>Možnosti okvirja</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Stikalo bitne hitrosti</translation>
+        <translation>Stikalo bitne hitrosti</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">Nadzor naprave</translation>
+        <translation>Nadzor naprave</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">Prekini povezavo</translation>
+        <translation>Prekini povezavo</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Povežite se</translation>
+        <translation>Povežite se</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Ime</translation>
+        <translation>Ime</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Pogled podatkov</translation>
+        <translation>Pogled podatkov</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">Določite konfiguracijo</translation>
+        <translation>Določite konfiguracijo</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">Filter napak</translation>
+        <translation>Filter napak</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">Konfiguracije po meri</translation>
+        <translation>Konfiguracije po meri</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">LAHKO FD</translation>
+        <translation>LAHKO FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">Povratna zanka</translation>
+        <translation>Povratna zanka</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">Bitna hitrost podatkov</translation>
+        <translation>Bitna hitrost podatkov</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bitna hitrost</translation>
+        <translation>Bitna hitrost</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">Prejmi lastno</translation>
+        <translation>Prejmi lastno</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">Koristna obremenitev okvirja CAN</translation>
+        <translation>Koristna obremenitev okvirja CAN</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Pošlji</translation>
+        <translation>Pošlji</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">Oblika</translation>
+        <translation>Oblika</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">Kanali</translation>
+        <translation>Kanali</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC pomočnik</translation>
+        <translation>CRC pomočnik</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">Paloy vrednost</translation>
+        <translation>Paloy vrednost</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">Začetna vrednost</translation>
+        <translation>Začetna vrednost</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">Kopiraj</translation>
+        <translation>Kopiraj</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Več informacij o izračunu crc obiščite http://www.ip33.com/crc.html (dvokliknite za obisk)</translation>
+        <translation>Več informacij o izračunu crc obiščite http://www.ip33.com/crc.html (dvokliknite za obisk)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">Obrat vnosa</translation>
+        <translation>Obrat vnosa</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">Preobrat izhoda</translation>
+        <translation>Preobrat izhoda</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">jasno</translation>
+        <translation>jasno</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">Izračunaj</translation>
+        <translation>Izračunaj</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">Parametri</translation>
+        <translation>Parametri</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">vrednost XOR</translation>
+        <translation>vrednost XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">Višina je na levi, nižji deli pa na desni</translation>
+        <translation>Višina je na levi, nižji deli pa na desni</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">Rezultat (HEX)</translation>
+        <translation>Rezultat (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">Model parametrov</translation>
+        <translation>Model parametrov</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">širina</translation>
+        <translation>širina</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">Počasi</translation>
+        <translation>Počasi</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">Vhodni podatki</translation>
+        <translation>Vhodni podatki</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">Rezultat (BIN)</translation>
+        <translation>Rezultat (BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">Vrste</translation>
+        <translation>Vrste</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">Zastave</translation>
+        <translation>Zastave</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Oblika</translation>
+        <translation>Oblika</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">Zapisi</translation>
+        <translation>Zapisi</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">podatki</translation>
+        <translation>podatki</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">Iskanje podatkov ...</translation>
+        <translation>Iskanje podatkov ...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Nova naprava Modbus</translation>
+        <translation>Nova naprava Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Parametri povezave</translation>
+        <translation>Parametri povezave</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteta</translation>
+        <translation>Pariteta</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Hitrost prenosa</translation>
+        <translation>Hitrost prenosa</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitovi</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Osveži</translation>
+        <translation>Osveži</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Podatkovni biti</translation>
+        <translation>Podatkovni biti</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Imena</translation>
+        <translation>Imena</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP naslov</translation>
+        <translation>IP naslov</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Pristanišče</translation>
+        <translation>Pristanišče</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Vrsta naprave</translation>
+        <translation>Vrsta naprave</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Časovna omejitev (ms)</translation>
+        <translation>Časovna omejitev (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Število ponovnih poskusov</translation>
+        <translation>Število ponovnih poskusov</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Naslov</translation>
+        <translation>Naslov</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Način samo poslušanje</translation>
+        <translation>Način samo poslušanje</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Parametri naprave</translation>
+        <translation>Parametri naprave</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Ime naprave</translation>
+        <translation>Ime naprave</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Kot na primer: Siemens S7-300</translation>
+        <translation>Kot na primer: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Iskanje</translation>
+        <translation>Iskanje</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">Shranite tx podatke</translation>
+        <translation>Shranite tx podatke</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">Brskalnik</translation>
+        <translation>Brskalnik</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">Prihranite milisekundo</translation>
+        <translation>Prihranite milisekundo</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">Shranite podatke rx</translation>
+        <translation>Shranite podatke rx</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">Shrani datum</translation>
+        <translation>Shrani datum</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">Prihranite čas</translation>
+        <translation>Prihranite čas</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">Shrani obliko</translation>
+        <translation>Shrani obliko</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">Največ bajtov</translation>
+        <translation>Največ bajtov</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">Zgornji rezultat</translation>
+        <translation>Zgornji rezultat</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">Preverjena datoteka</translation>
+        <translation>Preverjena datoteka</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">Preverjen napredek</translation>
+        <translation>Preverjen napredek</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">Preverjen algoritem</translation>
+        <translation>Preverjen algoritem</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">Preverjen rezultat</translation>
+        <translation>Preverjen rezultat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Odpri</translation>
+        <translation>Odpri</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">Seznam datotek</translation>
+        <translation>Seznam datotek</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Uvozi</translation>
+        <translation>Uvozi</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Gor</translation>
+        <translation>Gor</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dol</translation>
+        <translation>Dol</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">Odstrani</translation>
+        <translation>Odstrani</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">jasno</translation>
+        <translation>jasno</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">Spoji</translation>
+        <translation>Spoji</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">Naprava</translation>
+        <translation>Naprava</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">Pokaži predogled podatkov</translation>
+        <translation>Pokaži predogled podatkov</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">Pripni pripono</translation>
+        <translation>Pripni pripono</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">Dodaj predpono</translation>
+        <translation>Dodaj predpono</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Znak za pobeg</translation>
+        <translation>Znak za pobeg</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Predhodna obdelava podatkov</translation>
+        <translation>Predhodna obdelava podatkov</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">Pripni podatke za preverjanje</translation>
+        <translation>Pripni podatke za preverjanje</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Veliki endian</translation>
+        <translation>Veliki endian</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">Začni z leve</translation>
+        <translation>Začni z leve</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">Začni z desne</translation>
+        <translation>Začni z desne</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">Aritmetika</translation>
+        <translation>Aritmetika</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Začetni indeks</translation>
+        <translation>Začetni indeks</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Končni indeks</translation>
+        <translation>Končni indeks</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">Preverjanje podatkov</translation>
+        <translation>Preverjanje podatkov</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Urejevalnik vozlišč</translation>
+        <translation>Urejevalnik vozlišč</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">Vrsta podatkov</translation>
+        <translation>Vrsta podatkov</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">Predpomnilnik točk</translation>
+        <translation>Predpomnilnik točk</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">jasno</translation>
+        <translation>jasno</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Izvozi</translation>
+        <translation>Izvozi</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Uvozi</translation>
+        <translation>Uvozi</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Pišite</translation>
+        <translation>Pišite</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Ime strežnika</translation>
+        <translation>Ime strežnika</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Ime strežnika</translation>
+        <translation>Ime strežnika</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">Test</translation>
+        <translation>Test</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">Testni podatki</translation>
+        <translation>Testni podatki</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">Podatki o rezultatih</translation>
+        <translation>Podatki o rezultatih</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">Obvoznica</translation>
+        <translation>Obvoznica</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Parametri tabele</translation>
+        <translation>Parametri tabele</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Parametri niza</translation>
+        <translation>Parametri niza</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Splošno</translation>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">Vrsta storitve</translation>
+        <translation>Vrsta storitve</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">Konzola</translation>
+        <translation>Konzola</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">Register strežnika</translation>
+        <translation>Register strežnika</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Pošlji</translation>
+        <translation>Pošlji</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Podatkovna enota protokola po meri</translation>
+        <translation>Podatkovna enota protokola po meri</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">Registri strank</translation>
+        <translation>Registri strank</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">Seznam naprav</translation>
+        <translation>Seznam naprav</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">Zapri</translation>
+        <translation>Zapri</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Odpri</translation>
+        <translation>Odpri</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">Operacije naprave</translation>
+        <translation>Operacije naprave</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">Omrežne nastavitve</translation>
+        <translation>Omrežne nastavitve</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Pristanišče</translation>
+        <translation>Pristanišče</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Hitrost prenosa</translation>
+        <translation>Hitrost prenosa</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Podatkovni biti</translation>
+        <translation>Podatkovni biti</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Nastavitve serijskih vrat</translation>
+        <translation>Nastavitve serijskih vrat</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteta</translation>
+        <translation>Pariteta</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Ime vrat</translation>
+        <translation>Ime vrat</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitovi</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">Naprava je zasedena</translation>
+        <translation>Naprava je zasedena</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">Parametri strežnika</translation>
+        <translation>Parametri strežnika</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">Naslov strežnika</translation>
+        <translation>Naslov strežnika</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Način samo poslušanje</translation>
+        <translation>Način samo poslušanje</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">Ciljni naslov</translation>
+        <translation>Ciljni naslov</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Preberi</translation>
+        <translation>Preberi</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">Pišite</translation>
+        <translation>Pišite</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">Koda funkcije</translation>
+        <translation>Koda funkcije</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">Številka naslova</translation>
+        <translation>Številka naslova</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">Začetni naslov</translation>
+        <translation>Začetni naslov</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">Ponovi krat</translation>
+        <translation>Ponovi krat</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">Časovna omejitev</translation>
+        <translation>Časovna omejitev</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">Parametri odjemalca</translation>
+        <translation>Parametri odjemalca</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Nadzor vnosa (naslov in vrednost)</translation>
+        <translation>Nadzor vnosa (naslov in vrednost)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Vnosni format</translation>
+        <translation>Vnosni format</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Neobdelani podatki</translation>
+        <translation>Neobdelani podatki</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Kuhani podatki (Hex)</translation>
+        <translation>Kuhani podatki (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">Kuhani podatkovni tip</translation>
+        <translation>Kuhani podatkovni tip</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Kuhani podatki (dec.)</translation>
+        <translation>Kuhani podatki (dec.)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Kot na primer: 1, -1, 1.1, -1.1</translation>
+        <translation>Kot na primer: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Kuhani podatki (posoda)</translation>
+        <translation>Kuhani podatki (posoda)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Od leve proti desni je visoka proti nizki</translation>
+        <translation>Od leve proti desni je visoka proti nizki</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">Omogoči označevalnik</translation>
+        <translation>Omogoči označevalnik</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">Filtriraj besedilo</translation>
+        <translation>Filtriraj besedilo</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">Pozdravljen, Word</translation>
+        <translation>Pozdravljen, Word</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">Prikaži statistiko</translation>
+        <translation>Prikaži statistiko</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">Omogoči filter</translation>
+        <translation>Omogoči filter</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">Interval cikla</translation>
+        <translation>Interval cikla</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">nastavitve</translation>
+        <translation>nastavitve</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">jasno</translation>
+        <translation>jasno</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">Datum</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">Zastava</translation>
+        <translation>Zastava</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">Čas</translation>
+        <translation>Čas</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">ga</translation>
+        <translation>ga</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Nadzor izhoda</translation>
+        <translation>Nadzor izhoda</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">Nadzor vnosa</translation>
+        <translation>Nadzor vnosa</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">Ovitek</translation>
+        <translation>Ovitek</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">Terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">Nadzor komunikacije</translation>
+        <translation>Nadzor komunikacije</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Pošlji</translation>
+        <translation>Pošlji</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">Oblika besedila</translation>
+        <translation>Oblika besedila</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">Izhod</translation>
+        <translation>Izhod</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">Vnos</translation>
+        <translation>Vnos</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Prednastavljen seznam podatkov</translation>
+        <translation>Prednastavljen seznam podatkov</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">Prednastavitve</translation>
+        <translation>Prednastavitve</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">Oddajnik</translation>
+        <translation>Oddajnik</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">Odzivnik</translation>
+        <translation>Odzivnik</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">Prestopi</translation>
+        <translation>Prestopi</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Interval skupine (ms)</translation>
+        <translation>Interval skupine (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">Dodaj (posodobi) skupino</translation>
+        <translation>Dodaj (posodobi) skupino</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Stolpci (razdeljeni s presledkom)</translation>
+        <translation>Stolpci (razdeljeni s presledkom)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Gor</translation>
+        <translation>Gor</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dol</translation>
+        <translation>Dol</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">Izbriši izbrano</translation>
+        <translation>Izbriši izbrano</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">Brez naslova</translation>
+        <translation>Brez naslova</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Ime</translation>
+        <translation>Ime</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">Onemogoči skupino</translation>
+        <translation>Onemogoči skupino</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Interval elementa (ms)</translation>
+        <translation>Interval elementa (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">Izvozi</translation>
+        <translation>Izvozi</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">Ustvari</translation>
+        <translation>Ustvari</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">Počisti dnevnik</translation>
+        <translation>Počisti dnevnik</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">Dnevnik</translation>
+        <translation>Dnevnik</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">Odpri imenik skriptov</translation>
+        <translation>Odpri imenik skriptov</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">Nov scenarij</translation>
+        <translation>Nov scenarij</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">Osveži seznam datotek</translation>
+        <translation>Osveži seznam datotek</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">Spletni priročnik</translation>
+        <translation>Spletni priročnik</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">Skripta</translation>
+        <translation>Skripta</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">Iskanje besedila</translation>
+        <translation>Iskanje besedila</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Iskanje</translation>
+        <translation>Iskanje</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">Regularni izraz</translation>
+        <translation>Regularni izraz</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">Razlikuje med velikimi in malimi črkami</translation>
+        <translation>Razlikuje med velikimi in malimi črkami</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">Cela beseda</translation>
+        <translation>Cela beseda</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Hitrost prenosa</translation>
+        <translation>Hitrost prenosa</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteta</translation>
+        <translation>Pariteta</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">Prezrta zasedena naprava</translation>
+        <translation>Prezrta zasedena naprava</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Podatkovni biti</translation>
+        <translation>Podatkovni biti</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">Nadzor pretoka</translation>
+        <translation>Nadzor pretoka</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitovi</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Ime vrat</translation>
+        <translation>Ime vrat</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">Omogoči interval okvirja</translation>
+        <translation>Omogoči interval okvirja</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Pišite</translation>
+        <translation>Pišite</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">Pot</translation>
+        <translation>Pot</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Odklopite vse odjemalce</translation>
+        <translation>Odklopite vse odjemalce</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Preverjanje pristnosti</translation>
+        <translation>Preverjanje pristnosti</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">IP strežnika</translation>
+        <translation>IP strežnika</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">Kanal</translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">Omogoči multicast</translation>
+        <translation>Omogoči multicast</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">Samo multicast</translation>
+        <translation>Samo multicast</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">post/zdravo</translation>
+        <translation>post/zdravo</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">Varni način</translation>
+        <translation>Varni način</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">Vrata strežnika</translation>
+        <translation>Vrata strežnika</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">Uporabniško ime</translation>
+        <translation>uporabniško ime</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Geslo</translation>
+        <translation>Geslo</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Neobdelani podatki</translation>
+        <translation>Neobdelani podatki</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Vnosni format</translation>
+        <translation>Vnosni format</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">Kuhani podatki</translation>
+        <translation>Kuhani podatki</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Izhodni format</translation>
+        <translation>Izhodni format</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">Ustvari</translation>
+        <translation>Ustvari</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">obrazec</translation>
+        <translation>obrazec</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Izvozi</translation>
+        <translation>Izvozi</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">Onemogoči vse elemente</translation>
+        <translation>Onemogoči vse elemente</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Izbriši</translation>
+        <translation>Izbriši</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Gor</translation>
+        <translation>Gor</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Dodaj</translation>
+        <translation>Dodaj</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Uvozi</translation>
+        <translation>Uvozi</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dol</translation>
+        <translation>Dol</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">Urejevalnik podatkov</translation>
+        <translation>Urejevalnik podatkov</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Prekliči</translation>
+        <translation>Prekliči</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">Algoritem</translation>
+        <translation>Algoritem</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Začetni indeks</translation>
+        <translation>Začetni indeks</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Končni indeks</translation>
+        <translation>Končni indeks</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">Pripni</translation>
+        <translation>Pripni</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Veliki endian</translation>
+        <translation>Veliki endian</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">Predobdelava</translation>
+        <translation>Predobdelava</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">Predpona</translation>
+        <translation>Predpona</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Pripona</translation>
+        <translation>Pripona</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Znak za pobeg</translation>
+        <translation>Znak za pobeg</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">Tovor</translation>
+        <translation>Tovor</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Oblika</translation>
+        <translation>Oblika</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Izberite omrežni vmesnik:</translation>
+        <translation>Izberite omrežni vmesnik:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">Oddajna vrata</translation>
+        <translation>Oddajna vrata</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Izberite omrežni vmesnik:</translation>
+        <translation>Izberite omrežni vmesnik:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">Multicast povratna zanka</translation>
+        <translation>Multicast povratna zanka</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nova naprava RTU</translation>
+        <translation>Nova naprava RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Nova naprava TCP</translation>
+        <translation>Nova naprava TCP</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nove tuljave</translation>
+        <translation>Nove tuljave</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Novi diskretni vhodi</translation>
+        <translation>Novi diskretni vhodi</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Novi registri gospodarstev</translation>
+        <translation>Novi registri gospodarstev</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Novi vhodni registri</translation>
+        <translation>Novi vhodni registri</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Tuljave</translation>
+        <translation>Tuljave</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskretni vhodi</translation>
+        <translation>Diskretni vhodi</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Registri gospodarstev</translation>
+        <translation>Registri gospodarstev</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Vhodni registri</translation>
+        <translation>Vhodni registri</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3912,6 +3912,16 @@
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Naprava deluje. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>Odjemalska naprava TCP</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>Strežniška naprava TCP</translation>
     </message>
 </context>
 <context>

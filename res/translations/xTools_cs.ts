@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">Filtr</translation>
+        <translation>Filtr</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">Zachovat pouzdro</translation>
+        <translation>Zachovat pouzdro</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">Asistent CRC</translation>
+        <translation>Asistent CRC</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Obnovit</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Vývozní</translation>
+        <translation>Vývozní</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Formát dat</translation>
+        <translation>Formát dat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Asistent Base64</translation>
+        <translation>Asistent Base64</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">Prostý text</translation>
+        <translation>Prostý text</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">Šifrovaný text</translation>
+        <translation>Šifrovaný text</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">Obraz</translation>
+        <translation>Obraz</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">Dešifrovat</translation>
+        <translation>Dešifrovat</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">Šifrovat</translation>
+        <translation>Šifrovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">Charakteristický</translation>
+        <translation>Charakteristický</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Nepodporovaná charakteristika)</translation>
+        <translation>(Nepodporovaná charakteristika)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">Zařízení BLE</translation>
+        <translation>Zařízení BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Číst</translation>
+        <translation>Číst</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">Servisní skenování</translation>
+        <translation>Servisní skenování</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">Režim zápisu</translation>
+        <translation>Režim zápisu</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">Servis</translation>
+        <translation>Servis</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">Skenování zařízení</translation>
+        <translation>Skenování zařízení</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Ovládání výstupu</translation>
+        <translation>Ovládání výstupu</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Výstupní formát</translation>
+        <translation>Výstupní formát</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasný</translation>
+        <translation>Jasný</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Parametry vysílání</translation>
+        <translation>Parametry vysílání</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">Adresa vysílání</translation>
+        <translation>Adresa vysílání</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Formát dat</translation>
+        <translation>Formát dat</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Předpona vysílání</translation>
+        <translation>Předpona vysílání</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">Interval vysílání</translation>
+        <translation>Interval vysílání</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Přípona vysílání</translation>
+        <translation>Přípona vysílání</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">Vysílací port</translation>
+        <translation>Vysílací port</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">Vysílaná data</translation>
+        <translation>Vysílaná data</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">Informační výstup</translation>
+        <translation>Informační výstup</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">Studio CANBus</translation>
+        <translation>Studio CANBus</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">Rám CAN</translation>
+        <translation>Rám CAN</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">Rozšířený formát</translation>
+        <translation>Rozšířený formát</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">Flexibilní rychlost přenosu dat</translation>
+        <translation>Flexibilní rychlost přenosu dat</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">ID snímku</translation>
+        <translation>ID snímku</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">Typ rámu</translation>
+        <translation>Typ rámu</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">Možnosti rámu</translation>
+        <translation>Možnosti rámu</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Přepínač bitrate</translation>
+        <translation>Přepínač bitrate</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">Ovládání zařízení</translation>
+        <translation>Ovládání zařízení</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">Odpojit</translation>
+        <translation>Odpojit</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Připojit</translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Jméno</translation>
+        <translation>Jméno</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Zobrazení dat</translation>
+        <translation>Zobrazení dat</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">Zadejte konfiguraci</translation>
+        <translation>Zadejte konfiguraci</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">Chybový filtr</translation>
+        <translation>Chybový filtr</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">Vlastní konfigurace</translation>
+        <translation>Vlastní konfigurace</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">Loopback</translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">Datový tok</translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bitová rychlost</translation>
+        <translation>Bitová rychlost</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">Přijmout vlastní</translation>
+        <translation>Přijmout vlastní</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">Užitečné zatížení rámce CAN</translation>
+        <translation>Užitečné zatížení rámce CAN</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Poslat</translation>
+        <translation>Poslat</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formát</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">Kanály</translation>
+        <translation>Kanály</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">Asistent CRC</translation>
+        <translation>Asistent CRC</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">Paloy hodnota</translation>
+        <translation>Paloy hodnota</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">Počáteční hodnota</translation>
+        <translation>Počáteční hodnota</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">Kopie</translation>
+        <translation>Kopie</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Více informací o výpočtu crc naleznete na adrese http://www.ip33.com/crc.html (pro návštěvu dvakrát klikněte)</translation>
+        <translation>Více informací o výpočtu crc naleznete na adrese http://www.ip33.com/crc.html (pro návštěvu dvakrát klikněte)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">Reverze vstupu</translation>
+        <translation>Reverze vstupu</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">Reverzace výstupu</translation>
+        <translation>Reverzace výstupu</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasný</translation>
+        <translation>Jasný</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">Vypočítat</translation>
+        <translation>Vypočítat</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">Parametry</translation>
+        <translation>Parametry</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">Hodnota XOR</translation>
+        <translation>Hodnota XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">Výška je vlevo a spodní bity vpravo</translation>
+        <translation>Výška je vlevo a spodní bity vpravo</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">Výsledek (HEX)</translation>
+        <translation>Výsledek (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">Parametrový model</translation>
+        <translation>Parametrový model</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">Šířka</translation>
+        <translation>Šířka</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">Zpomalit</translation>
+        <translation>Zpomalit</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">Vstupní data</translation>
+        <translation>Vstupní data</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">Výsledek (BIN)</translation>
+        <translation>Výsledek (BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">Typy</translation>
+        <translation>Typy</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">Vlajky</translation>
+        <translation>Vlajky</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formát</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">Evidence</translation>
+        <translation>Evidence</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">Vyhledat data...</translation>
+        <translation>Vyhledat data...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Nové zařízení Modbus</translation>
+        <translation>Nové zařízení Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Parametry připojení</translation>
+        <translation>Parametry připojení</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Parita</translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Přenosová rychlost</translation>
+        <translation>Přenosová rychlost</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Obnovit</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Datové bity</translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Jména</translation>
+        <translation>Jména</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP adresa</translation>
+        <translation>IP adresa</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Přístav</translation>
+        <translation>Přístav</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Typ zařízení</translation>
+        <translation>Typ zařízení</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Časový limit (ms)</translation>
+        <translation>Časový limit (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Počet opakování</translation>
+        <translation>Počet opakování</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Adresa</translation>
+        <translation>Adresa</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Režim pouze pro poslech</translation>
+        <translation>Režim pouze pro poslech</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Parametry zařízení</translation>
+        <translation>Parametry zařízení</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Název zařízení</translation>
+        <translation>Název zařízení</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Jako například: Siemens S7-300</translation>
+        <translation>Jako například: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Vyhledávání</translation>
+        <translation>Vyhledávání</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">Uložte TX data</translation>
+        <translation>Uložte TX data</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">Prohlížeč</translation>
+        <translation>Prohlížeč</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">Ušetřete milisekundu</translation>
+        <translation>Ušetřete milisekundu</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">Uložte data rx</translation>
+        <translation>Uložte data rx</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">Uložit datum</translation>
+        <translation>Uložit datum</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">Ušetřete čas</translation>
+        <translation>Ušetřete čas</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">Uložit formát</translation>
+        <translation>Uložit formát</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">Max bajtů</translation>
+        <translation>Max bajtů</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">Horní výsledek</translation>
+        <translation>Horní výsledek</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">Zkontrolovaný soubor</translation>
+        <translation>Zkontrolovaný soubor</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">Zkontrolován průběh</translation>
+        <translation>Zkontrolován průběh</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">Zkontrolovaný algoritmus</translation>
+        <translation>Zkontrolovaný algoritmus</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">Zkontrolovaný výsledek</translation>
+        <translation>Zkontrolovaný výsledek</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">OTEVŘENO</translation>
+        <translation>OTEVŘENO</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">Seznam souborů</translation>
+        <translation>Seznam souborů</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importovat</translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Nahoru</translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dolů</translation>
+        <translation>Dolů</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">Odstranit</translation>
+        <translation>Odstranit</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasný</translation>
+        <translation>Jasný</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">Spojit</translation>
+        <translation>Spojit</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">Zařízení</translation>
+        <translation>Zařízení</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">Zobrazit náhled dat</translation>
+        <translation>Zobrazit náhled dat</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">Připojit příponu</translation>
+        <translation>Připojit příponu</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">Připojit předponu</translation>
+        <translation>Připojit předponu</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Útěk postava</translation>
+        <translation>Útěk postava</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Předzpracování dat</translation>
+        <translation>Předzpracování dat</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">Připojit kontrolní data</translation>
+        <translation>Připojit kontrolní data</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Velký endian</translation>
+        <translation>Velký endian</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">Začněte zleva</translation>
+        <translation>Začněte zleva</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">Začněte zprava</translation>
+        <translation>Začněte zprava</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">Aritmetický</translation>
+        <translation>Aritmetický</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Spustit index</translation>
+        <translation>Spustit index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Koncový index</translation>
+        <translation>Koncový index</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">Kontrola dat</translation>
+        <translation>Kontrola dat</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Editor uzlů</translation>
+        <translation>Editor uzlů</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">Typ dat</translation>
+        <translation>Typ dat</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">Body mezipaměti</translation>
+        <translation>Body mezipaměti</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasný</translation>
+        <translation>Jasný</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Vývozní</translation>
+        <translation>Vývozní</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importovat</translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Napište do</translation>
+        <translation>Napište do</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Název serveru</translation>
+        <translation>Název serveru</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Název serveru</translation>
+        <translation>Název serveru</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">Test</translation>
+        <translation>Test</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">Testovací data</translation>
+        <translation>Testovací data</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">Údaje o výsledku</translation>
+        <translation>Údaje o výsledku</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">Bypass</translation>
+        <translation>Bypass</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Parametry tabulky</translation>
+        <translation>Parametry tabulky</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Parametry řetězce</translation>
+        <translation>Parametry řetězce</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Generál</translation>
+        <translation>Generál</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">Typ služby</translation>
+        <translation>Typ služby</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">Utěšit</translation>
+        <translation>Utěšit</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">Registrace serveru</translation>
+        <translation>Registrace serveru</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Poslat</translation>
+        <translation>Poslat</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Datová jednotka vlastního protokolu</translation>
+        <translation>Datová jednotka vlastního protokolu</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">Registry klientů</translation>
+        <translation>Registry klientů</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">Seznam zařízení</translation>
+        <translation>Seznam zařízení</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">Blízko</translation>
+        <translation>Blízko</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">OTEVŘENO</translation>
+        <translation>OTEVŘENO</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">Operace zařízení</translation>
+        <translation>Operace zařízení</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">Nastavení sítě</translation>
+        <translation>Nastavení sítě</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Přístav</translation>
+        <translation>Přístav</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Přenosová rychlost</translation>
+        <translation>Přenosová rychlost</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Datové bity</translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Nastavení sériového portu</translation>
+        <translation>Nastavení sériového portu</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Parita</translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Název portu</translation>
+        <translation>Název portu</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">Zařízení je zaneprázdněno</translation>
+        <translation>Zařízení je zaneprázdněno</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">Parametry serveru</translation>
+        <translation>Parametry serveru</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">Adresa serveru</translation>
+        <translation>Adresa serveru</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Režim pouze pro poslech</translation>
+        <translation>Režim pouze pro poslech</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">Cílová adresa</translation>
+        <translation>Cílová adresa</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Číst</translation>
+        <translation>Číst</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">Napsat</translation>
+        <translation>Napsat</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">Kód funkce</translation>
+        <translation>Kód funkce</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">Číslo adresy</translation>
+        <translation>Číslo adresy</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">Počáteční adresa</translation>
+        <translation>Počáteční adresa</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">Opakujte časy</translation>
+        <translation>Opakujte časy</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">Časový limit</translation>
+        <translation>Časový limit</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">Parametry klienta</translation>
+        <translation>Parametry klienta</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Ovládání vstupu (adresa a hodnota)</translation>
+        <translation>Ovládání vstupu (adresa a hodnota)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Vstupní formát</translation>
+        <translation>Vstupní formát</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Nezpracovaná data</translation>
+        <translation>Nezpracovaná data</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Vařená data (hexadecimální)</translation>
+        <translation>Vařená data (hexadecimální)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">Vařený datový typ</translation>
+        <translation>Vařený datový typ</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Uvařená data (prosinec)</translation>
+        <translation>Uvařená data (prosinec)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Jako například: 1, -1, 1,1, -1,1</translation>
+        <translation>Jako například: 1, -1, 1,1, -1,1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Uvařená data (přihrádka)</translation>
+        <translation>Uvařená data (přihrádka)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Zleva doprava je vysoká a nízká</translation>
+        <translation>Zleva doprava je vysoká a nízká</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">Povolit zvýrazňovač</translation>
+        <translation>Povolit zvýrazňovač</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">Filtrovat text</translation>
+        <translation>Filtrovat text</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">Dobrý den, Word</translation>
+        <translation>Dobrý den, Word</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">Zobrazit statistika</translation>
+        <translation>Zobrazit statistika</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">Povolit filtr</translation>
+        <translation>Povolit filtr</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">Interval cyklu</translation>
+        <translation>Interval cyklu</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Jasný</translation>
+        <translation>Jasný</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">Datum</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">Vlajka</translation>
+        <translation>Vlajka</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">Čas</translation>
+        <translation>Čas</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">paní</translation>
+        <translation>paní</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Ovládání výstupu</translation>
+        <translation>Ovládání výstupu</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">Ovládání vstupu</translation>
+        <translation>Ovládání vstupu</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">Zabalit</translation>
+        <translation>Zabalit</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">Terminál</translation>
+        <translation>Terminál</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">Řízení komunikace</translation>
+        <translation>Řízení komunikace</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Poslat</translation>
+        <translation>Poslat</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">Textový formát</translation>
+        <translation>Textový formát</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">Výstup</translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">Vstup</translation>
+        <translation>Vstup</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Přednastavený seznam dat</translation>
+        <translation>Přednastavený seznam dat</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">Předvolby</translation>
+        <translation>Předvolby</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">Vysílač</translation>
+        <translation>Vysílač</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">Odpovídač</translation>
+        <translation>Odpovídač</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">Převody</translation>
+        <translation>Převody</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Interval skupiny (ms)</translation>
+        <translation>Interval skupiny (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">Přidat (aktualizovat) skupinu</translation>
+        <translation>Přidat (aktualizovat) skupinu</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Sloupce (rozdělené mezerou)</translation>
+        <translation>Sloupce (rozdělené mezerou)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Nahoru</translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dolů</translation>
+        <translation>Dolů</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">Smazat vybrané</translation>
+        <translation>Smazat vybrané</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Jméno</translation>
+        <translation>Jméno</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">Zakázat skupinu</translation>
+        <translation>Zakázat skupinu</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Interval položky (ms)</translation>
+        <translation>Interval položky (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">Vývozní</translation>
+        <translation>Vývozní</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">Generovat</translation>
+        <translation>Generovat</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">Vymazat protokol</translation>
+        <translation>Vymazat protokol</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">Log</translation>
+        <translation>Log</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">Otevřete adresář skriptu</translation>
+        <translation>Otevřete adresář skriptu</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">Nový skript</translation>
+        <translation>Nový skript</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">Obnovit seznam souborů</translation>
+        <translation>Obnovit seznam souborů</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">Online manuál</translation>
+        <translation>Online manuál</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">Skript</translation>
+        <translation>Skript</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">Hledat text</translation>
+        <translation>Hledat text</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Vyhledávání</translation>
+        <translation>Vyhledávání</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">Regulární výraz</translation>
+        <translation>Regulární výraz</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">Rozlišují se malá a velká písmena</translation>
+        <translation>Rozlišují se malá a velká písmena</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">Celé slovo</translation>
+        <translation>Celé slovo</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Přenosová rychlost</translation>
+        <translation>Přenosová rychlost</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Parita</translation>
+        <translation>Parita</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">Ignorované zaneprázdněné zařízení</translation>
+        <translation>Ignorované zaneprázdněné zařízení</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Datové bity</translation>
+        <translation>Datové bity</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">Řízení toku</translation>
+        <translation>Řízení toku</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Název portu</translation>
+        <translation>Název portu</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">Povolit interval snímků</translation>
+        <translation>Povolit interval snímků</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Napište do</translation>
+        <translation>Napište do</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">Cesta</translation>
+        <translation>Cesta</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Odpojte všechny klienty</translation>
+        <translation>Odpojte všechny klienty</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Autentizace</translation>
+        <translation>Autentizace</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">IP serveru</translation>
+        <translation>IP serveru</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">Kanál</translation>
+        <translation>Kanál</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">Povolit vícesměrové vysílání</translation>
+        <translation>Povolit vícesměrové vysílání</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">Prostě multicast</translation>
+        <translation>Prostě multicast</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">příspěvek/ahoj</translation>
+        <translation>příspěvek/ahoj</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">Zabezpečený režim</translation>
+        <translation>Zabezpečený režim</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">Port serveru</translation>
+        <translation>Port serveru</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">Uživatelské jméno</translation>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Heslo</translation>
+        <translation>Heslo</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Nezpracovaná data</translation>
+        <translation>Nezpracovaná data</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Vstupní formát</translation>
+        <translation>Vstupní formát</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">Vařená data</translation>
+        <translation>Vařená data</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Výstupní formát</translation>
+        <translation>Výstupní formát</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">Vytvořit</translation>
+        <translation>Vytvořit</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Vývozní</translation>
+        <translation>Vývozní</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">Zakázat všechny položky</translation>
+        <translation>Zakázat všechny položky</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Vymazat</translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Nahoru</translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Přidat</translation>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importovat</translation>
+        <translation>Importovat</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dolů</translation>
+        <translation>Dolů</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">Editor dat</translation>
+        <translation>Editor dat</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Zrušit</translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">Algoritmus</translation>
+        <translation>Algoritmus</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Spustit index</translation>
+        <translation>Spustit index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Koncový index</translation>
+        <translation>Koncový index</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">Připojit</translation>
+        <translation>Připojit</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Velký endian</translation>
+        <translation>Velký endian</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">Předzpracování</translation>
+        <translation>Předzpracování</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">Předpona</translation>
+        <translation>Předpona</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Přípona</translation>
+        <translation>Přípona</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Útěk postava</translation>
+        <translation>Útěk postava</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">Užitečné zatížení</translation>
+        <translation>Užitečné zatížení</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formát</translation>
+        <translation>Formát</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Vyberte síťové rozhraní:</translation>
+        <translation>Vyberte síťové rozhraní:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">Vysílací port</translation>
+        <translation>Vysílací port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Vyberte síťové rozhraní:</translation>
+        <translation>Vyberte síťové rozhraní:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">Multicastová smyčka</translation>
+        <translation>Multicastová smyčka</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nové zařízení RTU</translation>
+        <translation>Nové zařízení RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Nové TCP zařízení</translation>
+        <translation>Nové TCP zařízení</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nové cívky</translation>
+        <translation>Nové cívky</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nové diskrétní vstupy</translation>
+        <translation>Nové diskrétní vstupy</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Nové holdingové rejstříky</translation>
+        <translation>Nové holdingové rejstříky</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Nové vstupní registry</translation>
+        <translation>Nové vstupní registry</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Cívky</translation>
+        <translation>Cívky</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskrétní vstupy</translation>
+        <translation>Diskrétní vstupy</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Vedení rejstříků</translation>
+        <translation>Vedení rejstříků</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Vstupní registry</translation>
+        <translation>Vstupní registry</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3912,6 +3912,16 @@
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Zařízení běží. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>TCP klientské zařízení</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>TCP Serverové zařízení</translation>
     </message>
 </context>
 <context>

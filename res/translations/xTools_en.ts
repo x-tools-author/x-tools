@@ -2543,6 +2543,16 @@
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>TCP Client Device</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>TCP Server Device</translation>
+    </message>
 </context>
 <context>
     <name>xModbus::ModbusLogModel</name>

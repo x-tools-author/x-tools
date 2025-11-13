@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">فلتر</translation>
+        <translation>فلتر</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">الحفاظ على القضية</translation>
+        <translation>الحفاظ على القضية</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">مساعد اتفاقية حقوق الطفل</translation>
+        <translation>مساعد اتفاقية حقوق الطفل</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">ينعش</translation>
+        <translation>ينعش</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">يكتب</translation>
+        <translation>يكتب</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">يصدّر</translation>
+        <translation>يصدّر</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">بيانات</translation>
+        <translation>بيانات</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">تنسيق البيانات</translation>
+        <translation>تنسيق البيانات</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">مساعد Base64</translation>
+        <translation>مساعد Base64</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">نص عادي</translation>
+        <translation>نص عادي</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">النص المشفر</translation>
+        <translation>النص المشفر</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">صورة</translation>
+        <translation>صورة</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">فك التشفير</translation>
+        <translation>فك التشفير</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">تشفير</translation>
+        <translation>تشفير</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">مميزة</translation>
+        <translation>مميزة</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(خاصية غير مدعومة)</translation>
+        <translation>(خاصية غير مدعومة)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">أجهزة بليه</translation>
+        <translation>أجهزة بليه</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">يقرأ</translation>
+        <translation>يقرأ</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">مسح الخدمة</translation>
+        <translation>مسح الخدمة</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">وضع الكتابة</translation>
+        <translation>وضع الكتابة</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">خدمة</translation>
+        <translation>خدمة</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">مسح الجهاز</translation>
+        <translation>مسح الجهاز</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">التحكم في الإخراج</translation>
+        <translation>التحكم في الإخراج</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">تنسيق الإخراج</translation>
+        <translation>تنسيق الإخراج</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">واضح</translation>
+        <translation>واضح</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">معلمات البث</translation>
+        <translation>معلمات البث</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">عنوان البث</translation>
+        <translation>عنوان البث</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">تنسيق البيانات</translation>
+        <translation>تنسيق البيانات</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">بادئة البث</translation>
+        <translation>بادئة البث</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">الفاصل الزمني للبث</translation>
+        <translation>الفاصل الزمني للبث</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">لاحقة البث</translation>
+        <translation>لاحقة البث</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">منفذ البث</translation>
+        <translation>منفذ البث</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">بيانات البث</translation>
+        <translation>بيانات البث</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">إخراج المعلومات</translation>
+        <translation>إخراج المعلومات</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">استوديو كانبوس</translation>
+        <translation>استوديو كانبوس</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">يمكن الإطار</translation>
+        <translation>يمكن الإطار</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">تنسيق موسع</translation>
+        <translation>تنسيق موسع</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">معدل بيانات مرن</translation>
+        <translation>معدل بيانات مرن</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">معرف الإطار</translation>
+        <translation>معرف الإطار</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">نوع الإطار</translation>
+        <translation>نوع الإطار</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">خيارات الإطار</translation>
+        <translation>خيارات الإطار</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">تبديل معدل البت</translation>
+        <translation>تبديل معدل البت</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">التحكم بالجهاز</translation>
+        <translation>التحكم بالجهاز</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">قطع الاتصال</translation>
+        <translation>قطع الاتصال</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">يتصل</translation>
+        <translation>يتصل</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">البرنامج المساعد</translation>
+        <translation>البرنامج المساعد</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">عرض البيانات</translation>
+        <translation>عرض البيانات</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">تحديد التكوين</translation>
+        <translation>تحديد التكوين</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">مرشح الخطأ</translation>
+        <translation>مرشح الخطأ</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">تكوينات مخصصة</translation>
+        <translation>تكوينات مخصصة</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">يمكن فد</translation>
+        <translation>يمكن فد</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">الاسترجاع</translation>
+        <translation>الاسترجاع</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">معدل البت للبيانات</translation>
+        <translation>معدل البت للبيانات</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">معدل البت</translation>
+        <translation>معدل البت</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">تلقي الخاصة</translation>
+        <translation>تلقي الخاصة</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">يمكن أن إطار الحمولة</translation>
+        <translation>يمكن أن إطار الحمولة</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">يرسل</translation>
+        <translation>يرسل</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,82 +783,82 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">القنوات</translation>
+        <translation>القنوات</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">مساعد اتفاقية حقوق الطفل</translation>
+        <translation>مساعد اتفاقية حقوق الطفل</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">قيمة بالوي</translation>
+        <translation>قيمة بالوي</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">القيمة الأولية</translation>
+        <translation>القيمة الأولية</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">ينسخ</translation>
+        <translation>ينسخ</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">مزيد من المعلومات حول حساب crc، تفضل بزيارة http://www.ip33.com/crc.html(تم النقر نقرًا مزدوجًا للزيارة)</translation>
+        <translation>مزيد من المعلومات حول حساب crc، تفضل بزيارة http://www.ip33.com/crc.html(تم النقر نقرًا مزدوجًا للزيارة)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">عكس الإدخال</translation>
+        <translation>عكس الإدخال</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">عكس الإخراج</translation>
+        <translation>عكس الإخراج</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">واضح</translation>
+        <translation>واضح</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">احسب</translation>
+        <translation>احسب</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">حدود</translation>
+        <translation>حدود</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">قيمة XOR</translation>
+        <translation>قيمة XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">الارتفاع على اليسار والبتات المنخفضة على اليمين</translation>
+        <translation>الارتفاع على اليسار والبتات المنخفضة على اليمين</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">عرافة</translation>
+        <translation>عرافة</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">أسكي</translation>
+        <translation>أسكي</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">النتيجة (ست عشري)</translation>
+        <translation>النتيجة (ست عشري)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">نموذج المعلمة</translation>
+        <translation>نموذج المعلمة</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -873,15 +873,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">ابطئ</translation>
+        <translation>ابطئ</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">إدخال البيانات</translation>
+        <translation>إدخال البيانات</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">النتيجة (بن)</translation>
+        <translation>النتيجة (بن)</translation>
     </message>
 </context>
 <context>
@@ -911,31 +911,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">أنواع</translation>
+        <translation>أنواع</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">أعلام</translation>
+        <translation>أعلام</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">السجلات</translation>
+        <translation>السجلات</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">بيانات</translation>
+        <translation>بيانات</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">بيانات البحث...</translation>
+        <translation>بيانات البحث...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -963,82 +963,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">جهاز مودبوس الجديد</translation>
+        <translation>جهاز مودبوس الجديد</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">معلمات الاتصال</translation>
+        <translation>معلمات الاتصال</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">التكافؤ</translation>
+        <translation>التكافؤ</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">معدل الباود</translation>
+        <translation>معدل الباود</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">وقف بت</translation>
+        <translation>وقف بت</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">ينعش</translation>
+        <translation>ينعش</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بتات البيانات</translation>
+        <translation>بتات البيانات</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">الأسماء</translation>
+        <translation>الأسماء</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">عنوان IP</translation>
+        <translation>عنوان IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">ميناء</translation>
+        <translation>ميناء</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">نوع الجهاز</translation>
+        <translation>نوع الجهاز</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">المهلة (مللي ثانية)</translation>
+        <translation>المهلة (مللي ثانية)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">عدد مرات إعادة المحاولة</translation>
+        <translation>عدد مرات إعادة المحاولة</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">عنوان</translation>
+        <translation>عنوان</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">وضع الاستماع فقط</translation>
+        <translation>وضع الاستماع فقط</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">معلمات الجهاز</translation>
+        <translation>معلمات الجهاز</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">اسم الجهاز</translation>
+        <translation>اسم الجهاز</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">مثل: سيمنز S7-300</translation>
+        <translation>مثل: سيمنز S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">يبحث</translation>
+        <translation>يبحث</translation>
     </message>
 </context>
 <context>
@@ -1123,23 +1123,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">حفظ بيانات تكساس</translation>
+        <translation>حفظ بيانات تكساس</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">المتصفح</translation>
+        <translation>المتصفح</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">حفظ ميلي ثانية</translation>
+        <translation>حفظ ميلي ثانية</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">حفظ بيانات آر إكس</translation>
+        <translation>حفظ بيانات آر إكس</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">حفظ التاريخ</translation>
+        <translation>حفظ التاريخ</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1148,15 +1148,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">توفير الوقت</translation>
+        <translation>توفير الوقت</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">حفظ التنسيق</translation>
+        <translation>حفظ التنسيق</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">ماكس بايت</translation>
+        <translation>ماكس بايت</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1202,27 +1202,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">النتيجة العليا</translation>
+        <translation>النتيجة العليا</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">ملف تم فحصه</translation>
+        <translation>ملف تم فحصه</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">تم التحقق من التقدم</translation>
+        <translation>تم التحقق من التقدم</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">خوارزمية تم التحقق منها</translation>
+        <translation>خوارزمية تم التحقق منها</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">نتيجة تم التحقق منها</translation>
+        <translation>نتيجة تم التحقق منها</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1231,7 +1231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">يفتح</translation>
+        <translation>يفتح</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1253,35 +1253,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">قائمة الملفات</translation>
+        <translation>قائمة الملفات</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">يستورد</translation>
+        <translation>يستورد</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">أعلى</translation>
+        <translation>أعلى</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">تحت</translation>
+        <translation>تحت</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">يزيل</translation>
+        <translation>يزيل</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">واضح</translation>
+        <translation>واضح</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">دمج</translation>
+        <translation>دمج</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1356,7 +1356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">جهاز</translation>
+        <translation>جهاز</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1436,62 +1436,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">عرض معاينة البيانات</translation>
+        <translation>عرض معاينة البيانات</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">إلحاق لاحقة</translation>
+        <translation>إلحاق لاحقة</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">إلحاق البادئة</translation>
+        <translation>إلحاق البادئة</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">شخصية الهروب</translation>
+        <translation>شخصية الهروب</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">المعالجة المسبقة للبيانات</translation>
+        <translation>المعالجة المسبقة للبيانات</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">إلحاق بيانات التحقق</translation>
+        <translation>إلحاق بيانات التحقق</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">إنديان كبير</translation>
+        <translation>إنديان كبير</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">ابدأ من اليسار</translation>
+        <translation>ابدأ من اليسار</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">ابدأ من اليمين</translation>
+        <translation>ابدأ من اليمين</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">حسابي</translation>
+        <translation>حسابي</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">ابدأ الفهرس</translation>
+        <translation>ابدأ الفهرس</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">مؤشر النهاية</translation>
+        <translation>مؤشر النهاية</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">فحص البيانات</translation>
+        <translation>فحص البيانات</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">محرر العقدة</translation>
+        <translation>محرر العقدة</translation>
     </message>
 </context>
 <context>
@@ -1511,27 +1511,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">نوع البيانات</translation>
+        <translation>نوع البيانات</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">أسطورة</translation>
+        <translation>أسطورة</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">نقاط ذاكرة التخزين المؤقت</translation>
+        <translation>نقاط ذاكرة التخزين المؤقت</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">واضح</translation>
+        <translation>واضح</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">يصدّر</translation>
+        <translation>يصدّر</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">يستورد</translation>
+        <translation>يستورد</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1587,11 +1587,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">اكتب ل</translation>
+        <translation>اكتب ل</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">اسم الخادم</translation>
+        <translation>اسم الخادم</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1603,38 +1603,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">اسم الخادم</translation>
+        <translation>اسم الخادم</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">امتحان</translation>
+        <translation>امتحان</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">بيانات الاختبار</translation>
+        <translation>بيانات الاختبار</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">بيانات النتيجة</translation>
+        <translation>بيانات النتيجة</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">تجاوز</translation>
+        <translation>تجاوز</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">معلمات الجدول</translation>
+        <translation>معلمات الجدول</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">معلمات السلسلة</translation>
+        <translation>معلمات السلسلة</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1656,7 +1656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">عام</translation>
+        <translation>عام</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">نوع الخدمة</translation>
+        <translation>نوع الخدمة</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1950,39 +1950,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">وحدة التحكم</translation>
+        <translation>وحدة التحكم</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">تسجيل الخادم</translation>
+        <translation>تسجيل الخادم</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">يرسل</translation>
+        <translation>يرسل</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">وحدة بيانات البروتوكول المخصص</translation>
+        <translation>وحدة بيانات البروتوكول المخصص</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">سجلات العملاء</translation>
+        <translation>سجلات العملاء</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">قائمة الأجهزة</translation>
+        <translation>قائمة الأجهزة</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">يغلق</translation>
+        <translation>يغلق</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">يفتح</translation>
+        <translation>يفتح</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">عمليات الجهاز</translation>
+        <translation>عمليات الجهاز</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1991,95 +1991,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">إعدادات الشبكة</translation>
+        <translation>إعدادات الشبكة</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">ميناء</translation>
+        <translation>ميناء</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">معدل الباود</translation>
+        <translation>معدل الباود</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بتات البيانات</translation>
+        <translation>بتات البيانات</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">إعدادات المنفذ التسلسلي</translation>
+        <translation>إعدادات المنفذ التسلسلي</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">التكافؤ</translation>
+        <translation>التكافؤ</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">اسم المنفذ</translation>
+        <translation>اسم المنفذ</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">وقف بت</translation>
+        <translation>وقف بت</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">الجهاز مشغول</translation>
+        <translation>الجهاز مشغول</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">معلمات الخادم</translation>
+        <translation>معلمات الخادم</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">عنوان الخادم</translation>
+        <translation>عنوان الخادم</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">وضع الاستماع فقط</translation>
+        <translation>وضع الاستماع فقط</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">عنوان الهدف</translation>
+        <translation>عنوان الهدف</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">يقرأ</translation>
+        <translation>يقرأ</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">يكتب</translation>
+        <translation>يكتب</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">رمز الوظيفة</translation>
+        <translation>رمز الوظيفة</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">رقم العنوان</translation>
+        <translation>رقم العنوان</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">عنوان البداية</translation>
+        <translation>عنوان البداية</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">كرر مرات</translation>
+        <translation>كرر مرات</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">نفذ الوقت</translation>
+        <translation>نفذ الوقت</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">معلمات العميل</translation>
+        <translation>معلمات العميل</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">التحكم في الإدخال (العنوان والقيمة)</translation>
+        <translation>التحكم في الإدخال (العنوان والقيمة)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">تنسيق الإدخال</translation>
+        <translation>تنسيق الإدخال</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2250,31 +2250,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">البيانات الخام</translation>
+        <translation>البيانات الخام</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">البيانات المطبوخة (ست عشري)</translation>
+        <translation>البيانات المطبوخة (ست عشري)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">نوع البيانات المطبوخة</translation>
+        <translation>نوع البيانات المطبوخة</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">البيانات المطبوخة (ديسمبر)</translation>
+        <translation>البيانات المطبوخة (ديسمبر)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">مثل: 1، -1، 1.1، -1.1</translation>
+        <translation>مثل: 1، -1، 1.1، -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">البيانات المطبوخة (بن)</translation>
+        <translation>البيانات المطبوخة (بن)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">من اليسار إلى اليمين من الأعلى إلى الأسفل</translation>
+        <translation>من اليسار إلى اليمين من الأعلى إلى الأسفل</translation>
     </message>
 </context>
 <context>
@@ -2314,30 +2314,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">تفعيل أداة التمييز</translation>
+        <translation>تفعيل أداة التمييز</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">تصفية النص</translation>
+        <translation>تصفية النص</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">مرحبًا يا ورد</translation>
+        <translation>مرحبًا يا ورد</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">عرض الإحصائي</translation>
+        <translation>عرض الإحصائي</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">تمكين عامل التصفية</translation>
+        <translation>تمكين عامل التصفية</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">الفاصل الزمني للدورة</translation>
+        <translation>الفاصل الزمني للدورة</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2346,95 +2346,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">إعدادات</translation>
+        <translation>إعدادات</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">واضح</translation>
+        <translation>واضح</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">آر إكس</translation>
+        <translation>آر إكس</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">تكساس</translation>
+        <translation>تكساس</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">تاريخ</translation>
+        <translation>تاريخ</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">علَم</translation>
+        <translation>علَم</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">وقت</translation>
+        <translation>وقت</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">آنسة</translation>
+        <translation>آنسة</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">التحكم في الإخراج</translation>
+        <translation>التحكم في الإخراج</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">التحكم في الإدخال</translation>
+        <translation>التحكم في الإدخال</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">طَوّق</translation>
+        <translation>طَوّق</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">صالة</translation>
+        <translation>صالة</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">التحكم في الاتصالات</translation>
+        <translation>التحكم في الاتصالات</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">يرسل</translation>
+        <translation>يرسل</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">تنسيق النص</translation>
+        <translation>تنسيق النص</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">آيو</translation>
+        <translation>آيو</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">الإخراج</translation>
+        <translation>الإخراج</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">مدخل</translation>
+        <translation>مدخل</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">قائمة البيانات المعدة مسبقا</translation>
+        <translation>قائمة البيانات المعدة مسبقا</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">الإعدادات المسبقة</translation>
+        <translation>الإعدادات المسبقة</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">باعث</translation>
+        <translation>باعث</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">المستجيب</translation>
+        <translation>المستجيب</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">التحويلات</translation>
+        <translation>التحويلات</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2646,43 +2646,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">الفاصل الزمني للمجموعة (مللي ثانية)</translation>
+        <translation>الفاصل الزمني للمجموعة (مللي ثانية)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">إضافة (تحديث) المجموعة</translation>
+        <translation>إضافة (تحديث) المجموعة</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">أعمدة (مقسمة بمسافة)</translation>
+        <translation>أعمدة (مقسمة بمسافة)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">أعلى</translation>
+        <translation>أعلى</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">تحت</translation>
+        <translation>تحت</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">حذف المحدد</translation>
+        <translation>حذف المحدد</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">بدون عنوان</translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">تعطيل المجموعة</translation>
+        <translation>تعطيل المجموعة</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">الفاصل الزمني للعنصر (بالمللي ثانية)</translation>
+        <translation>الفاصل الزمني للعنصر (بالمللي ثانية)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2975,31 +2975,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3031,11 +3031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">يصدّر</translation>
+        <translation>يصدّر</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">يولد</translation>
+        <translation>يولد</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3106,35 +3106,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">مسح السجل</translation>
+        <translation>مسح السجل</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">سجل</translation>
+        <translation>سجل</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">فتح دليل البرنامج النصي</translation>
+        <translation>فتح دليل البرنامج النصي</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">نص جديد</translation>
+        <translation>نص جديد</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">تحديث قائمة الملفات</translation>
+        <translation>تحديث قائمة الملفات</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">دليل على الانترنت</translation>
+        <translation>دليل على الانترنت</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">البرنامج النصي</translation>
+        <translation>البرنامج النصي</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3200,23 +3200,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">بحث في النص</translation>
+        <translation>بحث في النص</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">يبحث</translation>
+        <translation>يبحث</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">التعبير العادي</translation>
+        <translation>التعبير العادي</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">حساسية الموضوع</translation>
+        <translation>حساسية الموضوع</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">كلمة كاملة</translation>
+        <translation>كلمة كاملة</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3330,35 +3330,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">معدل الباود</translation>
+        <translation>معدل الباود</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">التكافؤ</translation>
+        <translation>التكافؤ</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">تم تجاهل الجهاز المشغول</translation>
+        <translation>تم تجاهل الجهاز المشغول</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بتات البيانات</translation>
+        <translation>بتات البيانات</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">التحكم في التدفق</translation>
+        <translation>التحكم في التدفق</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">وقف بت</translation>
+        <translation>وقف بت</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">اسم المنفذ</translation>
+        <translation>اسم المنفذ</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">تمكين الفاصل الزمني للإطار</translation>
+        <translation>تمكين الفاصل الزمني للإطار</translation>
     </message>
 </context>
 <context>
@@ -3418,63 +3418,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">اكتب ل</translation>
+        <translation>اكتب ل</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">طريق</translation>
+        <translation>طريق</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">افصل جميع العملاء</translation>
+        <translation>افصل جميع العملاء</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">المصادقة</translation>
+        <translation>المصادقة</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">عنوان IP الخاص بالخادم</translation>
+        <translation>عنوان IP الخاص بالخادم</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">قناة</translation>
+        <translation>قناة</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">تمكين البث المتعدد</translation>
+        <translation>تمكين البث المتعدد</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">مجرد البث المتعدد</translation>
+        <translation>مجرد البث المتعدد</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">آخر / مرحبا</translation>
+        <translation>آخر / مرحبا</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">الوضع الآمن</translation>
+        <translation>الوضع الآمن</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">منفذ البث المتعدد</translation>
+        <translation>منفذ البث المتعدد</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">البث المتعدد IP</translation>
+        <translation>البث المتعدد IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">منفذ الخادم</translation>
+        <translation>منفذ الخادم</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">اسم المستخدم</translation>
+        <translation>اسم المستخدم</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">كلمة المرور</translation>
+        <translation>كلمة المرور</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3494,23 +3494,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">البيانات الخام</translation>
+        <translation>البيانات الخام</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">تنسيق الإدخال</translation>
+        <translation>تنسيق الإدخال</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">البيانات المطبوخة</translation>
+        <translation>البيانات المطبوخة</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">تنسيق الإخراج</translation>
+        <translation>تنسيق الإخراج</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">يخلق</translation>
+        <translation>يخلق</translation>
     </message>
 </context>
 <context>
@@ -3535,27 +3535,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">استمارة</translation>
+        <translation>استمارة</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">يصدّر</translation>
+        <translation>يصدّر</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">تعطيل كافة العناصر</translation>
+        <translation>تعطيل كافة العناصر</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">يمسح</translation>
+        <translation>يمسح</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">أعلى</translation>
+        <translation>أعلى</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">يضيف</translation>
+        <translation>يضيف</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3564,11 +3564,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">يستورد</translation>
+        <translation>يستورد</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">تحت</translation>
+        <translation>تحت</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3602,63 +3602,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">محرر البيانات</translation>
+        <translation>محرر البيانات</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">يلغي</translation>
+        <translation>يلغي</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">اتفاقية حقوق الطفل</translation>
+        <translation>اتفاقية حقوق الطفل</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">خوارزمية</translation>
+        <translation>خوارزمية</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">ابدأ الفهرس</translation>
+        <translation>ابدأ الفهرس</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">مؤشر النهاية</translation>
+        <translation>مؤشر النهاية</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">إلحاق</translation>
+        <translation>إلحاق</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">إنديان كبير</translation>
+        <translation>إنديان كبير</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">المعالجة المسبقة</translation>
+        <translation>المعالجة المسبقة</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">بادئة</translation>
+        <translation>بادئة</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">لاحقة</translation>
+        <translation>لاحقة</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">شخصية الهروب</translation>
+        <translation>شخصية الهروب</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">نعم</translation>
+        <translation>نعم</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">الحمولة</translation>
+        <translation>الحمولة</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">شكل</translation>
+        <translation>شكل</translation>
     </message>
 </context>
 <context>
@@ -3719,11 +3719,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">حدد واجهة الشبكة:</translation>
+        <translation>حدد واجهة الشبكة:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">منفذ البث</translation>
+        <translation>منفذ البث</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3758,19 +3758,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">حدد واجهة الشبكة:</translation>
+        <translation>حدد واجهة الشبكة:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">البث المتعدد IP</translation>
+        <translation>البث المتعدد IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">منفذ البث المتعدد</translation>
+        <translation>منفذ البث المتعدد</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">استرجاع البث المتعدد</translation>
+        <translation>استرجاع البث المتعدد</translation>
     </message>
 </context>
 <context>
@@ -3790,27 +3790,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">جهاز RTU جديد</translation>
+        <translation>جهاز RTU جديد</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">جهاز TCP جديد</translation>
+        <translation>جهاز TCP جديد</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">لفائف جديدة</translation>
+        <translation>لفائف جديدة</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">مدخلات منفصلة جديدة</translation>
+        <translation>مدخلات منفصلة جديدة</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">سجلات القابضة الجديدة</translation>
+        <translation>سجلات القابضة الجديدة</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">سجلات الإدخال الجديدة</translation>
+        <translation>سجلات الإدخال الجديدة</translation>
     </message>
 </context>
 <context>
@@ -3855,19 +3855,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">لفائف</translation>
+        <translation>لفائف</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">المدخلات المنفصلة</translation>
+        <translation>المدخلات المنفصلة</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">سجلات القابضة</translation>
+        <translation>سجلات القابضة</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">سجلات الإدخال</translation>
+        <translation>سجلات الإدخال</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3923,6 +3923,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>الجهاز قيد التشغيل. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>جهاز عميل TCP</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>جهاز خادم TCP</translation>
     </message>
 </context>
 <context>

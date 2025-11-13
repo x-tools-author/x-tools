@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">Filtrera</translation>
+        <translation>Filtrera</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">Bevara fall</translation>
+        <translation>Bevara fodral</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC assistent</translation>
+        <translation>CRC assistent</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Exportera</translation>
+        <translation>Exportera</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Dataformat</translation>
+        <translation>Dataformat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Base64 assistent</translation>
+        <translation>Base64 assistent</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">Klartext</translation>
+        <translation>Klartext</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">Chiffertext</translation>
+        <translation>Chiffertext</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">Bild</translation>
+        <translation>Bild</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">Dekryptera</translation>
+        <translation>Dekryptera</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">Kryptera</translation>
+        <translation>Kryptera</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">Karakteristisk</translation>
+        <translation>Karakteristisk</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Egenskap som inte stöds)</translation>
+        <translation>(Egenskap som inte stöds)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">BLE-enheter</translation>
+        <translation>BLE-enheter</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Läsa</translation>
+        <translation>Läsa</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">Serviceskanning</translation>
+        <translation>Serviceskanning</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">Skrivläge</translation>
+        <translation>Skrivläge</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">Service</translation>
+        <translation>Service</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">Enhetsskanning</translation>
+        <translation>Enhetsskanning</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Utgångskontroll</translation>
+        <translation>Utgångskontroll</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Utdataformat</translation>
+        <translation>Utdataformat</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Sändningsparametrar</translation>
+        <translation>Sändningsparametrar</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">Sändningsadress</translation>
+        <translation>Sändningsadress</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Dataformat</translation>
+        <translation>Dataformat</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Sändningsprefix</translation>
+        <translation>Sändningsprefix</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">Sändningsintervall</translation>
+        <translation>Sändningsintervall</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Sändningssuffix</translation>
+        <translation>Broadcast-suffix</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">Sändningsport</translation>
+        <translation>Sändningsport</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">Sändningsdata</translation>
+        <translation>Sändningsdata</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">Informationsutmatning</translation>
+        <translation>Informationsutmatning</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">CANBus Studio</translation>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">CAN-ram</translation>
+        <translation>CAN-ram</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">Utökat format</translation>
+        <translation>Utökat format</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">Flexibel datahastighet</translation>
+        <translation>Flexibel datahastighet</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">Ram-ID</translation>
+        <translation>Ram-ID</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">Ramtyp</translation>
+        <translation>Ramtyp</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">Ramalternativ</translation>
+        <translation>Ramalternativ</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Bitrate switch</translation>
+        <translation>Bitrate switch</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">Enhetskontroll</translation>
+        <translation>Enhetskontroll</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">Koppla från</translation>
+        <translation>Koppla från</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Ansluta</translation>
+        <translation>Ansluta</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Datavy</translation>
+        <translation>Datavy</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">Ange konfiguration</translation>
+        <translation>Ange konfiguration</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">Felfilter</translation>
+        <translation>Felfilter</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">Anpassade konfigurationer</translation>
+        <translation>Anpassade konfigurationer</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">KAN FD</translation>
+        <translation>KAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">Loopback</translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">Databithastighet</translation>
+        <translation>Databithastighet</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bithastighet</translation>
+        <translation>Bithastighet</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">Ta emot egna</translation>
+        <translation>Ta emot egna</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">CAN Frame nyttolast</translation>
+        <translation>CAN Frame nyttolast</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Skicka</translation>
+        <translation>Skicka</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formatera</translation>
+        <translation>Formatera</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">Kanaler</translation>
+        <translation>Kanaler</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC assistent</translation>
+        <translation>CRC assistent</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">Paloy värde</translation>
+        <translation>Paloy värde</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">Initialt värde</translation>
+        <translation>Initialt värde</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">Kopiera</translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Mer information om crc-beräkning, besök http://www.ip33.com/crc.html(dubbelklicka för att besöka)</translation>
+        <translation>Mer information om crc-beräkning, besök http://www.ip33.com/crc.html(dubbelklicka för att besöka)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">Ingångsreversering</translation>
+        <translation>Ingångsreversering</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">Utgångsreversering</translation>
+        <translation>Utgångsreversering</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">Kalkylera</translation>
+        <translation>Kalkylera</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">Parametrar</translation>
+        <translation>Parametrar</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">XOR-värde</translation>
+        <translation>XOR-värde</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">Höjd dess är till vänster och de låga bitarna är till höger</translation>
+        <translation>Höjd dess är till vänster och de låga bitarna är till höger</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">Resultat (HEX)</translation>
+        <translation>Resultat (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">Parametermodell</translation>
+        <translation>Parametermodell</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">Bredd</translation>
+        <translation>Bredd</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">Sakta ner</translation>
+        <translation>Sakta ner</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">Indata</translation>
+        <translation>Indata</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">Resultat (BIN)</translation>
+        <translation>Resultat (BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">Typer</translation>
+        <translation>Typer</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">Flaggor</translation>
+        <translation>Flaggor</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formatera</translation>
+        <translation>Formatera</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">Uppgifter</translation>
+        <translation>Uppgifter</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">Sök data...</translation>
+        <translation>Sök data...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Ny Modbus-enhet</translation>
+        <translation>Ny Modbus-enhet</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Anslutningsparametrar</translation>
+        <translation>Anslutningsparametrar</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Paritet</translation>
+        <translation>Paritet</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Baudhastighet</translation>
+        <translation>Baudhastighet</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stoppa bitar</translation>
+        <translation>Stoppa bitar</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitar</translation>
+        <translation>Databitar</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP-adress</translation>
+        <translation>IP-adress</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Hamn</translation>
+        <translation>Hamn</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Enhetstyp</translation>
+        <translation>Enhetstyp</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Timeout (ms)</translation>
+        <translation>Timeout (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Antal återförsök</translation>
+        <translation>Antal återförsök</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Adress</translation>
+        <translation>Adress</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Endast lyssningsläge</translation>
+        <translation>Endast lyssningsläge</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Enhetsparametrar</translation>
+        <translation>Enhetsparametrar</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Enhetens namn</translation>
+        <translation>Enhetens namn</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Såsom: Siemens S7-300</translation>
+        <translation>Såsom: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Söka</translation>
+        <translation>Söka</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">Spara TX-data</translation>
+        <translation>Spara TX-data</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">Webbläsare</translation>
+        <translation>Webbläsare</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">Spara millisekund</translation>
+        <translation>Spara millisekund</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">Spara rx-data</translation>
+        <translation>Spara rx-data</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">Spara datum</translation>
+        <translation>Spara datum</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">Spara tid</translation>
+        <translation>Spara tid</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">Spara format</translation>
+        <translation>Spara format</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">Max byte</translation>
+        <translation>Max byte</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,15 +1191,15 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">Övre resultat</translation>
+        <translation>Övre resultat</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">Kontrollerad fil</translation>
+        <translation>Kontrollerad fil</translation>
     </message>
     <message>
         <source>Checked progress</source>
@@ -1207,11 +1207,11 @@
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">Kontrollerad algoritm</translation>
+        <translation>Kontrollerad algoritm</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">Kontrollerat resultat</translation>
+        <translation>Kontrollerat resultat</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">Fil-lista</translation>
+        <translation>Fil-lista</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importera</translation>
+        <translation>Importera</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Upp</translation>
+        <translation>Upp</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Ner</translation>
+        <translation>Ner</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">Slå ihop</translation>
+        <translation>Slå ihop</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">Anordning</translation>
+        <translation>Anordning</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">Visa förhandsgranskning av data</translation>
+        <translation>Visa förhandsgranskning av data</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">Lägg till suffix</translation>
+        <translation>Lägg till suffix</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">Lägg till prefix</translation>
+        <translation>Lägg till prefix</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Escape karaktär</translation>
+        <translation>Escape karaktär</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Dataförbehandling</translation>
+        <translation>Dataförbehandling</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">Bifoga kontrolldata</translation>
+        <translation>Bifoga kontrolldata</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Stor endian</translation>
+        <translation>Stor endian</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">Börja från vänster</translation>
+        <translation>Börja från vänster</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">Börja från höger</translation>
+        <translation>Börja från höger</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">Aritmetisk</translation>
+        <translation>Aritmetisk</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Starta index</translation>
+        <translation>Starta index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Slutindex</translation>
+        <translation>Slutindex</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">Datakontroll</translation>
+        <translation>Datakontroll</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Nodredigerare</translation>
+        <translation>Nodredigerare</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">Datatyp</translation>
+        <translation>Datatyp</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">Legend</translation>
+        <translation>Legend</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">Cachepunkter</translation>
+        <translation>Cachepunkter</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Exportera</translation>
+        <translation>Exportera</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importera</translation>
+        <translation>Importera</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Skriv till</translation>
+        <translation>Skriv till</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Servernamn</translation>
+        <translation>Servernamn</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Servernamn</translation>
+        <translation>Servernamn</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">Testa</translation>
+        <translation>Testa</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">Testdata</translation>
+        <translation>Testdata</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">Resultatdata</translation>
+        <translation>Resultatdata</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">Gå förbi</translation>
+        <translation>Gå förbi</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Tabellparametrar</translation>
+        <translation>Tabellparametrar</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Strängparametrar</translation>
+        <translation>Strängparametrar</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Allmän</translation>
+        <translation>Allmän</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">Typ av tjänst</translation>
+        <translation>Typ av tjänst</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">Trösta</translation>
+        <translation>Trösta</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">Serverregister</translation>
+        <translation>Serverregister</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Skicka</translation>
+        <translation>Skicka</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Custom Protocol Data Unit</translation>
+        <translation>Custom Protocol Data Unit</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">Kundregister</translation>
+        <translation>Kundregister</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">Enhetslista</translation>
+        <translation>Enhetslista</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">Nära</translation>
+        <translation>Nära</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">Enhetsoperationer</translation>
+        <translation>Enhetsoperationer</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">Nätverksinställningar</translation>
+        <translation>Nätverksinställningar</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Hamn</translation>
+        <translation>Hamn</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Baudhastighet</translation>
+        <translation>Baudhastighet</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitar</translation>
+        <translation>Databitar</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Seriella portinställningar</translation>
+        <translation>Seriella portinställningar</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Paritet</translation>
+        <translation>Paritet</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Portnamn</translation>
+        <translation>Portnamn</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stoppa bitar</translation>
+        <translation>Stoppa bitar</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">Enheten upptagen</translation>
+        <translation>Enheten upptagen</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">Serverparametrar</translation>
+        <translation>Serverparametrar</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">Serveradress</translation>
+        <translation>Serveradress</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Endast lyssningsläge</translation>
+        <translation>Endast lyssningsläge</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">Måladress</translation>
+        <translation>Måladress</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Läsa</translation>
+        <translation>Läsa</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">Skriva</translation>
+        <translation>Skriva</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">Funktionskod</translation>
+        <translation>Funktionskod</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">Adressnummer</translation>
+        <translation>Adressnummer</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">Startadress</translation>
+        <translation>Startadress</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">Upprepa gånger</translation>
+        <translation>Upprepa gånger</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">Timeout</translation>
+        <translation>Timeout</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">Klientparametrar</translation>
+        <translation>Klientparametrar</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Ingångskontroll (adress och värde)</translation>
+        <translation>Ingångskontroll (adress och värde)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Inmatningsformat</translation>
+        <translation>Inmatningsformat</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Rådata</translation>
+        <translation>Rådata</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Kokt data (hexadecimalt)</translation>
+        <translation>Kokt data (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">Kokt datatyp</translation>
+        <translation>Kokt datatyp</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Kokt data (dec)</translation>
+        <translation>Kokt data (dec)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Såsom: 1, -1, 1,1, -1,1</translation>
+        <translation>Såsom: 1, -1, 1,1, -1,1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Kokt data (Bin)</translation>
+        <translation>Kokt data (Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Från vänster till höger är hög till låg</translation>
+        <translation>Från vänster till höger är hög till låg</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">Aktivera överstrykningspenna</translation>
+        <translation>Aktivera överstrykningspenna</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">Filtrera text</translation>
+        <translation>Filtrera text</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">Hej, Word</translation>
+        <translation>Hej, Word</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">Visa statistiker</translation>
+        <translation>Visa statistiker</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">Aktivera filter</translation>
+        <translation>Aktivera filter</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">Cykelintervall</translation>
+        <translation>Cykelintervall</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Rensa</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">Datum</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">Flagga</translation>
+        <translation>Flagga</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">Tid</translation>
+        <translation>Tid</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">Ms</translation>
+        <translation>Ms</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Utgångskontroll</translation>
+        <translation>Utgångskontroll</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">Ingångskontroll</translation>
+        <translation>Ingångskontroll</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">Sjal</translation>
+        <translation>Sjal</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">Terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">Kommunikationskontroll</translation>
+        <translation>Kommunikationskontroll</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Skicka</translation>
+        <translation>Skicka</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">Textformat</translation>
+        <translation>Textformat</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">Produktion</translation>
+        <translation>Produktion</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">Input</translation>
+        <translation>Input</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Förinställd datalista</translation>
+        <translation>Förinställd datalista</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">Förinställningar</translation>
+        <translation>Förinställningar</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">Sändare</translation>
+        <translation>Sändare</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">Svara</translation>
+        <translation>Svara</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">Överföringar</translation>
+        <translation>Överföringar</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Gruppintervall (ms)</translation>
+        <translation>Gruppintervall (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">Lägg till (uppdatera) grupp</translation>
+        <translation>Lägg till (uppdatera) grupp</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Kolumner (delad med mellanslag)</translation>
+        <translation>Kolumner (delad med mellanslag)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Upp</translation>
+        <translation>Upp</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Ner</translation>
+        <translation>Ner</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">Ta bort markerade</translation>
+        <translation>Ta bort markerade</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">Ofrälse</translation>
+        <translation>Ofrälse</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">Inaktivera gruppen</translation>
+        <translation>Inaktivera gruppen</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Objektintervall (ms)</translation>
+        <translation>Objektintervall (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">Exportera</translation>
+        <translation>Exportera</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">Generera</translation>
+        <translation>Generera</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">Rensa logg</translation>
+        <translation>Rensa logg</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">Logga</translation>
+        <translation>Logga</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">Öppna skriptkatalogen</translation>
+        <translation>Öppna skriptkatalogen</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">Nytt manus</translation>
+        <translation>Nytt manus</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">Uppdatera fillistan</translation>
+        <translation>Uppdatera fillistan</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">Online manual</translation>
+        <translation>Online manual</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">Manus</translation>
+        <translation>Manus</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">Sök text</translation>
+        <translation>Sök text</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Söka</translation>
+        <translation>Söka</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">Reguljärt uttryck</translation>
+        <translation>Reguljärt uttryck</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">Skiftlägeskänslig</translation>
+        <translation>Skiftlägeskänslig</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">Hela ordet</translation>
+        <translation>Hela ordet</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Baudhastighet</translation>
+        <translation>Baudhastighet</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Paritet</translation>
+        <translation>Paritet</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">Ignorerad upptagen enhet</translation>
+        <translation>Ignorerad upptagen enhet</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitar</translation>
+        <translation>Databitar</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">Flödeskontroll</translation>
+        <translation>Flödeskontroll</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stoppa bitar</translation>
+        <translation>Stoppa bitar</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Portnamn</translation>
+        <translation>Portnamn</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">Aktivera ramintervall</translation>
+        <translation>Aktivera ramintervall</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Skriv till</translation>
+        <translation>Skriv till</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">Väg</translation>
+        <translation>Väg</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Koppla bort alla klienter</translation>
+        <translation>Koppla bort alla klienter</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Autentisering</translation>
+        <translation>Autentisering</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">Server IP</translation>
+        <translation>Server IP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">Kanal</translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">Aktivera multicast</translation>
+        <translation>Aktivera multicast</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">Bara multicast</translation>
+        <translation>Bara multicast</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">inlägg/hej</translation>
+        <translation>inlägg/hej</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">Säkert läge</translation>
+        <translation>Säkert läge</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast-port</translation>
+        <translation>Multicast-port</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">Serverport</translation>
+        <translation>Serverport</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">Användarnamn</translation>
+        <translation>Användarnamn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Lösenord</translation>
+        <translation>Lösenord</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Rådata</translation>
+        <translation>Rådata</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Inmatningsformat</translation>
+        <translation>Inmatningsformat</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">Kokt data</translation>
+        <translation>Kokt data</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Utdataformat</translation>
+        <translation>Utdataformat</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">Skapa</translation>
+        <translation>Skapa</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Exportera</translation>
+        <translation>Exportera</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">Inaktivera alla objekt</translation>
+        <translation>Inaktivera alla objekt</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Radera</translation>
+        <translation>Radera</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Upp</translation>
+        <translation>Upp</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Tillägga</translation>
+        <translation>Tillägga</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importera</translation>
+        <translation>Importera</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Ner</translation>
+        <translation>Ner</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">Dataredigerare</translation>
+        <translation>Dataredigerare</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Avboka</translation>
+        <translation>Avboka</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">Algoritm</translation>
+        <translation>Algoritm</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Starta index</translation>
+        <translation>Starta index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Slutindex</translation>
+        <translation>Slutindex</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">Bifoga</translation>
+        <translation>Bifoga</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Stor endian</translation>
+        <translation>Stor endian</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">Förbearbetning</translation>
+        <translation>Förbearbetning</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">Prefix</translation>
+        <translation>Prefix</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Ändelse</translation>
+        <translation>Ändelse</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Escape karaktär</translation>
+        <translation>Escape karaktär</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">Nyttolast</translation>
+        <translation>Nyttolast</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Formatera</translation>
+        <translation>Formatera</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Välj ett nätverksgränssnitt:</translation>
+        <translation>Välj ett nätverksgränssnitt:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">Broadcast Port</translation>
+        <translation>Broadcast Port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Välj ett nätverksgränssnitt:</translation>
+        <translation>Välj ett nätverksgränssnitt:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast-port</translation>
+        <translation>Multicast-port</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">Multicast loopback</translation>
+        <translation>Multicast loopback</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Ny RTU-enhet</translation>
+        <translation>Ny RTU-enhet</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Ny TCP-enhet</translation>
+        <translation>Ny TCP-enhet</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nya spolar</translation>
+        <translation>Nya spolar</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nya diskreta ingångar</translation>
+        <translation>Nya diskreta ingångar</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Nya innehavsregister</translation>
+        <translation>Nya innehavsregister</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Nya inmatningsregister</translation>
+        <translation>Nya inmatningsregister</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Spolar</translation>
+        <translation>Spolar</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskreta ingångar</translation>
+        <translation>Diskreta ingångar</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Håller register</translation>
+        <translation>Håller register</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Inmatningsregister</translation>
+        <translation>Inmatningsregister</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3912,6 +3912,16 @@
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Enheten är igång. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>TCP-klientenhet</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>TCP-serverenhet</translation>
     </message>
 </context>
 <context>

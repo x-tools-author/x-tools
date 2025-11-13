@@ -552,13 +552,13 @@ void ModbusDeviceListView::createDefaultDevices()
 {
     ModbusDeviceEditor editor(xMainWindow);
 
-    editor.setDeviceName("TCP Client Device");
+    editor.setDeviceName(tr("TCP Client Device"));
     editor.setDeviceType(static_cast<int>(XModbusType::TcpClient));
     QJsonObject parameters = editor.save();
     QStandardItem *item = m_model->newDevice(parameters);
     m_model->newDefaultTables(item);
 
-    editor.setDeviceName("TCP Server Device");
+    editor.setDeviceName(tr("TCP Server Device"));
     editor.setDeviceType(static_cast<int>(XModbusType::TcpServer));
     parameters = editor.save();
     item = m_model->newDevice(parameters);

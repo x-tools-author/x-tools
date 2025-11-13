@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">Suodattaa</translation>
+        <translation>Suodattaa</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">Säilytä kotelo</translation>
+        <translation>Säilytä kotelo</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC Assistant</translation>
+        <translation>CRC Assistant</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Tyyppi</translation>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Viedä</translation>
+        <translation>Viedä</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Tietojen muoto</translation>
+        <translation>Tietojen muoto</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Base64 Assistant</translation>
+        <translation>Base64 Assistant</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">Selkeä teksti</translation>
+        <translation>Selkeä teksti</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">Salateksti</translation>
+        <translation>Salateksti</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">Kuva</translation>
+        <translation>Kuva</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">Pura salaus</translation>
+        <translation>Pura salaus</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">Salaa</translation>
+        <translation>Salaa</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">Ominaista</translation>
+        <translation>Ominaista</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Ominaisuutta ei tueta)</translation>
+        <translation>(Ominaisuutta ei tueta)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">BLE-laitteet</translation>
+        <translation>BLE-laitteet</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Lukea</translation>
+        <translation>Lukea</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">Palveluskannaus</translation>
+        <translation>Palveluskannaus</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">Kirjoitustila</translation>
+        <translation>Kirjoitustila</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">Palvelu</translation>
+        <translation>Palvelu</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">Laitteen skannaus</translation>
+        <translation>Laitteen skannaus</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Lähtöohjaus</translation>
+        <translation>Lähtöohjaus</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Tulostusmuoto</translation>
+        <translation>Tulostusmuoto</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Selkeä</translation>
+        <translation>Selkeä</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Lähetysparametrit</translation>
+        <translation>Lähetysparametrit</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">Lähetysosoite</translation>
+        <translation>Lähetysosoite</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">Tietojen muoto</translation>
+        <translation>Tietojen muoto</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Lähetyksen etuliite</translation>
+        <translation>Lähetyksen etuliite</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">Lähetysväli</translation>
+        <translation>Lähetysväli</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Lähetyksen pääte</translation>
+        <translation>Lähetyksen pääte</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">Lähetysportti</translation>
+        <translation>Lähetysportti</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">Lähetystiedot</translation>
+        <translation>Lähetystiedot</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">Tietojen ulostulo</translation>
+        <translation>Tietojen ulostulo</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">CANBus Studio</translation>
+        <translation>CANBus Studio</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">CAN-kehys</translation>
+        <translation>CAN-kehys</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">Laajennettu muoto</translation>
+        <translation>Laajennettu muoto</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">Joustava tiedonsiirtonopeus</translation>
+        <translation>Joustava tiedonsiirtonopeus</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">Kehyksen tunnus</translation>
+        <translation>Kehyksen tunnus</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">Kehyksen tyyppi</translation>
+        <translation>Kehyksen tyyppi</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">Kehysvaihtoehdot</translation>
+        <translation>Kehysvaihtoehdot</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Bittinopeuskytkin</translation>
+        <translation>Bittinopeuskytkin</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">Laitteen ohjaus</translation>
+        <translation>Laitteen ohjaus</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">Katkaise yhteys</translation>
+        <translation>Katkaise yhteys</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">Yhdistä</translation>
+        <translation>Yhdistä</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Nimi</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Datanäkymä</translation>
+        <translation>Datanäkymä</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">Määritä kokoonpano</translation>
+        <translation>Määritä kokoonpano</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">Virhesuodatin</translation>
+        <translation>Virhesuodatin</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">Mukautetut kokoonpanot</translation>
+        <translation>Mukautetut kokoonpanot</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">Loopback</translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">Datan bittinopeus</translation>
+        <translation>Datan bittinopeus</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bittinopeus</translation>
+        <translation>Bittinopeus</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">Vastaanota oma</translation>
+        <translation>Vastaanota oma</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">CAN-kehyksen hyötykuorma</translation>
+        <translation>CAN-kehyksen hyötykuorma</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Lähetä</translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">Muoto</translation>
+        <translation>Muoto</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">Kanavat</translation>
+        <translation>Kanavat</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">CRC Assistant</translation>
+        <translation>CRC Assistant</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">Paloyn arvo</translation>
+        <translation>Paloyn arvo</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">Alkuarvo</translation>
+        <translation>Alkuarvo</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">Kopioida</translation>
+        <translation>Kopioida</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Lisätietoja crc-laskennasta on osoitteessa http://www.ip33.com/crc.html (vieraile kaksoisnapsauttamalla)</translation>
+        <translation>Lisätietoja crc-laskennasta on osoitteessa http://www.ip33.com/crc.html (vieraile kaksoisnapsauttamalla)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">Syötön käännös</translation>
+        <translation>Syötön käännös</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">Lähdön kääntäminen</translation>
+        <translation>Lähdön kääntäminen</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Selkeä</translation>
+        <translation>Selkeä</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">Laskea</translation>
+        <translation>Laskea</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">Parametrit</translation>
+        <translation>Parametrit</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">XOR-arvo</translation>
+        <translation>XOR-arvo</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">Sen korkeus on vasemmalla ja matalat bitit oikealla</translation>
+        <translation>Sen korkeus on vasemmalla ja matalat bitit oikealla</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">Tulos (HEX)</translation>
+        <translation>Tulos (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">Parametrimalli</translation>
+        <translation>Parametrimalli</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">Leveys</translation>
+        <translation>Leveys</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">Hidastaa</translation>
+        <translation>Hidastaa</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">Syötä tiedot</translation>
+        <translation>Syötä tiedot</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">Tulos (BIN)</translation>
+        <translation>Tulos (BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">Tyypit</translation>
+        <translation>Tyypit</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">Liput</translation>
+        <translation>Liput</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Muoto</translation>
+        <translation>Muoto</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">Records</translation>
+        <translation>Records</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">Hae dataa...</translation>
+        <translation>Hae dataa...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Uusi Modbus-laite</translation>
+        <translation>Uusi Modbus-laite</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Yhteysparametrit</translation>
+        <translation>Yhteysparametrit</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteetti</translation>
+        <translation>Pariteetti</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Tiedonsiirtonopeus</translation>
+        <translation>Tiedonsiirtonopeus</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bits</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitit</translation>
+        <translation>Databitit</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Nimet</translation>
+        <translation>Nimet</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP-osoite</translation>
+        <translation>IP-osoite</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Portti</translation>
+        <translation>Portti</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Laitteen tyyppi</translation>
+        <translation>Laitteen tyyppi</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Aikakatkaisu (ms)</translation>
+        <translation>Aikakatkaisu (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Uudelleenyritysten määrä</translation>
+        <translation>Uudelleenyritysten määrä</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Osoite</translation>
+        <translation>Osoite</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Vain kuuntelu -tila</translation>
+        <translation>Vain kuuntelu -tila</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Laitteen parametrit</translation>
+        <translation>Laitteen parametrit</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Laitteen nimi</translation>
+        <translation>Laitteen nimi</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Esimerkiksi: Siemens S7-300</translation>
+        <translation>Esimerkiksi: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Haku</translation>
+        <translation>Haku</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">Tallenna tx-tiedot</translation>
+        <translation>Tallenna tx-tiedot</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">Selain</translation>
+        <translation>Selain</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">Säästä millisekunti</translation>
+        <translation>Säästä millisekunti</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">Tallenna rx-tiedot</translation>
+        <translation>Tallenna rx-tiedot</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">Tallenna päivämäärä</translation>
+        <translation>Tallenna päivämäärä</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">Säästä aikaa</translation>
+        <translation>Säästä aikaa</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">Tallenna muoto</translation>
+        <translation>Tallenna muoto</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">Max tavua</translation>
+        <translation>Max tavua</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">Ylin tulos</translation>
+        <translation>Ylin tulos</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">Tarkistettu tiedosto</translation>
+        <translation>Tarkistettu tiedosto</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">Tarkistettu edistyminen</translation>
+        <translation>Tarkistettu edistyminen</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">Tarkistettu algoritmi</translation>
+        <translation>Tarkistettu algoritmi</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">Tarkistettu tulos</translation>
+        <translation>Tarkistettu tulos</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Avata</translation>
+        <translation>Avata</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">Tiedostoluettelo</translation>
+        <translation>Tiedostoluettelo</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Tuoda</translation>
+        <translation>Tuoda</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Ylös</translation>
+        <translation>Ylös</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Alas</translation>
+        <translation>Alas</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">Poistaa</translation>
+        <translation>Poistaa</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Selkeä</translation>
+        <translation>Selkeä</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">Yhdistää</translation>
+        <translation>Yhdistää</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">Laite</translation>
+        <translation>Laite</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">Näytä tietojen esikatselu</translation>
+        <translation>Näytä tietojen esikatselu</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">Liitä pääte</translation>
+        <translation>Liitä pääte</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">Liitä etuliite</translation>
+        <translation>Liitä etuliite</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Pakohahmo</translation>
+        <translation>Pakohahmo</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Tietojen esikäsittely</translation>
+        <translation>Tietojen esikäsittely</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">Liitä tarkistustiedot</translation>
+        <translation>Liitä tarkistustiedot</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Suuri endian</translation>
+        <translation>Suuri endian</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">Aloita vasemmalta</translation>
+        <translation>Aloita vasemmalta</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">Aloita oikealta</translation>
+        <translation>Aloita oikealta</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">Aritmeettinen</translation>
+        <translation>Aritmeettinen</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Aloita hakemisto</translation>
+        <translation>Aloita hakemisto</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Loppuindeksi</translation>
+        <translation>Loppuindeksi</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">Tietojen tarkistus</translation>
+        <translation>Tietojen tarkistus</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Solmueditori</translation>
+        <translation>Solmueditori</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">Tietotyyppi</translation>
+        <translation>Tietotyyppi</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">Välimuistipisteet</translation>
+        <translation>Välimuistipisteet</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Selkeä</translation>
+        <translation>Selkeä</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Viedä</translation>
+        <translation>Viedä</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Tuoda</translation>
+        <translation>Tuoda</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Kirjoita osoitteeseen</translation>
+        <translation>Kirjoita osoitteeseen</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Palvelimen nimi</translation>
+        <translation>Palvelimen nimi</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">Palvelimen nimi</translation>
+        <translation>Palvelimen nimi</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">Testata</translation>
+        <translation>Testata</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">Testitiedot</translation>
+        <translation>Testitiedot</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">Tulostiedot</translation>
+        <translation>Tulostiedot</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">Ohittaa</translation>
+        <translation>Ohittaa</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Taulukon parametrit</translation>
+        <translation>Taulukon parametrit</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Merkkijonoparametrit</translation>
+        <translation>Merkkijonoparametrit</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Kenraali</translation>
+        <translation>Kenraali</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">Palvelun tyyppi</translation>
+        <translation>Palvelun tyyppi</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">Konsoli</translation>
+        <translation>Konsoli</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">Palvelinrekisteri</translation>
+        <translation>Palvelinrekisteri</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Lähetä</translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Mukautetun protokollan tietoyksikkö</translation>
+        <translation>Mukautetun protokollan tietoyksikkö</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">Asiakasrekisterit</translation>
+        <translation>Asiakasrekisterit</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">Laiteluettelo</translation>
+        <translation>Laiteluettelo</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">Lähellä</translation>
+        <translation>Lähellä</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">Avata</translation>
+        <translation>Avata</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">Laitteen toiminnot</translation>
+        <translation>Laitteen toiminnot</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">Verkkoasetukset</translation>
+        <translation>Verkkoasetukset</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Portti</translation>
+        <translation>Portti</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Tiedonsiirtonopeus</translation>
+        <translation>Tiedonsiirtonopeus</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitit</translation>
+        <translation>Databitit</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Sarjaportin asetukset</translation>
+        <translation>Sarjaportin asetukset</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteetti</translation>
+        <translation>Pariteetti</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Portin nimi</translation>
+        <translation>Portin nimi</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bits</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">Laite varattu</translation>
+        <translation>Laite varattu</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">Palvelimen parametrit</translation>
+        <translation>Palvelimen parametrit</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">Palvelimen osoite</translation>
+        <translation>Palvelimen osoite</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Vain kuuntelu -tila</translation>
+        <translation>Vain kuuntelu -tila</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">Kohdeosoite</translation>
+        <translation>Kohdeosoite</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">Lukea</translation>
+        <translation>Lukea</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">Kirjoittaa</translation>
+        <translation>Kirjoittaa</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">Toimintokoodi</translation>
+        <translation>Toimintokoodi</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">Osoitenumero</translation>
+        <translation>Osoitenumero</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">Aloitusosoite</translation>
+        <translation>Aloitusosoite</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">Toista kertaa</translation>
+        <translation>Toista kertaa</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">Aikakatkaisu</translation>
+        <translation>Aikakatkaisu</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">Asiakasparametrit</translation>
+        <translation>Asiakasparametrit</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Input Control (osoite ja arvo)</translation>
+        <translation>Input Control (osoite ja arvo)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Syöttömuoto</translation>
+        <translation>Syöttömuoto</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Raakadata</translation>
+        <translation>Raakadata</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Keitetyt tiedot (Hex)</translation>
+        <translation>Keitetyt tiedot (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">Keitetty tietotyyppi</translation>
+        <translation>Keitetty tietotyyppi</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Valmistetut tiedot (joulukuu)</translation>
+        <translation>Valmistetut tiedot (joulukuu)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Kuten: 1, -1, 1.1, -1.1</translation>
+        <translation>Kuten: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Keitetyt tiedot (Bin)</translation>
+        <translation>Keitetyt tiedot (Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Vasemmalta oikealle on korkeasta matalaan</translation>
+        <translation>Vasemmalta oikealle on korkeasta matalaan</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">Ota korostustoiminto käyttöön</translation>
+        <translation>Ota korostustoiminto käyttöön</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">Suodata tekstiä</translation>
+        <translation>Suodata tekstiä</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">Hei, Word</translation>
+        <translation>Hei, Word</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">Näytä tilastotieteilijä</translation>
+        <translation>Näytä tilastotieteilijä</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">Ota suodatin käyttöön</translation>
+        <translation>Ota suodatin käyttöön</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">Jakson intervalli</translation>
+        <translation>Jakson intervalli</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Asetukset</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">Selkeä</translation>
+        <translation>Selkeä</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">Päivämäärä</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">Lippu</translation>
+        <translation>Lippu</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">Aika</translation>
+        <translation>Aika</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">Ms</translation>
+        <translation>Ms</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">Lähtöohjaus</translation>
+        <translation>Lähtöohjaus</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">Tulon ohjaus</translation>
+        <translation>Tulon ohjaus</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">Kääri</translation>
+        <translation>Kääri</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">Terminaali</translation>
+        <translation>Terminaali</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">Viestinnän ohjaus</translation>
+        <translation>Viestinnän ohjaus</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">Lähetä</translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">Tekstin muoto</translation>
+        <translation>Tekstin muoto</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">Lähtö</translation>
+        <translation>Lähtö</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">Syöte</translation>
+        <translation>Syöte</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Esiasetettu tietoluettelo</translation>
+        <translation>Esiasetettu tietoluettelo</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">Esiasetukset</translation>
+        <translation>Esiasetukset</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">Lähettäjä</translation>
+        <translation>Lähettäjä</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">Vastaaja</translation>
+        <translation>Vastaaja</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">Siirrot</translation>
+        <translation>Siirrot</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Ryhmäväli (ms)</translation>
+        <translation>Ryhmäväli (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">Lisää (päivitä) ryhmä</translation>
+        <translation>Lisää (päivitä) ryhmä</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Sarakkeet (jaettu välilyönnillä)</translation>
+        <translation>Sarakkeet (jaettu välilyönnillä)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Ylös</translation>
+        <translation>Ylös</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Alas</translation>
+        <translation>Alas</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">Poista valitut</translation>
+        <translation>Poista valitut</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">Nimetön</translation>
+        <translation>Nimetön</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">Nimi</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">Poista ryhmä käytöstä</translation>
+        <translation>Poista ryhmä käytöstä</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Tuoteväli (ms)</translation>
+        <translation>Tuoteväli (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">Viedä</translation>
+        <translation>Viedä</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">Luo</translation>
+        <translation>Luo</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">Tyhjennä loki</translation>
+        <translation>Tyhjennä loki</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">Loki</translation>
+        <translation>Loki</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">Avaa komentosarjahakemisto</translation>
+        <translation>Avaa komentosarjahakemisto</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">Uusi käsikirjoitus</translation>
+        <translation>Uusi käsikirjoitus</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">Päivitä tiedostoluettelo</translation>
+        <translation>Päivitä tiedostoluettelo</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">Online manuaali</translation>
+        <translation>Online manuaali</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">Käsikirjoitus</translation>
+        <translation>Käsikirjoitus</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">Hae tekstiä</translation>
+        <translation>Hae tekstiä</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Haku</translation>
+        <translation>Haku</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">Säännöllinen lauseke</translation>
+        <translation>Säännöllinen lauseke</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">Kirjainkoolla on merkitystä</translation>
+        <translation>Kirjainkoolla on merkitystä</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">Koko sana</translation>
+        <translation>Koko sana</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Tiedonsiirtonopeus</translation>
+        <translation>Tiedonsiirtonopeus</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteetti</translation>
+        <translation>Pariteetti</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">Varattu laite ohitettu</translation>
+        <translation>Varattu laite ohitettu</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Databitit</translation>
+        <translation>Databitit</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">Virtauksen ohjaus</translation>
+        <translation>Virtauksen ohjaus</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bits</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">Portin nimi</translation>
+        <translation>Portin nimi</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">Ota kuvaväli käyttöön</translation>
+        <translation>Ota kuvaväli käyttöön</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">Kirjoita osoitteeseen</translation>
+        <translation>Kirjoita osoitteeseen</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">Polku</translation>
+        <translation>Polku</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Katkaise kaikkien asiakkaiden yhteys</translation>
+        <translation>Katkaise kaikkien asiakkaiden yhteys</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">Todennus</translation>
+        <translation>Todennus</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">Palvelimen IP</translation>
+        <translation>Palvelimen IP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">kanava</translation>
+        <translation>kanava</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">Ota monilähetys käyttöön</translation>
+        <translation>Ota monilähetys käyttöön</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">Vain monilähetys</translation>
+        <translation>Vain monilähetys</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">postaus/hei</translation>
+        <translation>postaus/hei</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">Suojattu tila</translation>
+        <translation>Suojattu tila</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast-portti</translation>
+        <translation>Multicast-portti</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">Palvelimen portti</translation>
+        <translation>Palvelimen portti</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">Käyttäjänimi</translation>
+        <translation>Käyttäjänimi</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">Salasana</translation>
+        <translation>Salasana</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">Raakadata</translation>
+        <translation>Raakadata</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">Syöttömuoto</translation>
+        <translation>Syöttömuoto</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">Keitetyt tiedot</translation>
+        <translation>Keitetyt tiedot</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">Tulostusmuoto</translation>
+        <translation>Tulostusmuoto</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">Luoda</translation>
+        <translation>Luoda</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Lomake</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Viedä</translation>
+        <translation>Viedä</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">Poista kaikki kohteet käytöstä</translation>
+        <translation>Poista kaikki kohteet käytöstä</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Poistaa</translation>
+        <translation>Poistaa</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Ylös</translation>
+        <translation>Ylös</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Lisätä</translation>
+        <translation>Lisätä</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Tuoda</translation>
+        <translation>Tuoda</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Alas</translation>
+        <translation>Alas</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">Dataeditori</translation>
+        <translation>Dataeditori</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Peruuttaa</translation>
+        <translation>Peruuttaa</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">Algoritmi</translation>
+        <translation>Algoritmi</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">Aloita hakemisto</translation>
+        <translation>Aloita hakemisto</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">Loppuindeksi</translation>
+        <translation>Loppuindeksi</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">Liitä</translation>
+        <translation>Liitä</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">Suuri endian</translation>
+        <translation>Suuri endian</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">Esikäsittely</translation>
+        <translation>Esikäsittely</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">Etuliite</translation>
+        <translation>Etuliite</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">Suffiksi</translation>
+        <translation>Suffiksi</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">Pakohahmo</translation>
+        <translation>Pakohahmo</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">Hyötykuorma</translation>
+        <translation>Hyötykuorma</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">Muoto</translation>
+        <translation>Muoto</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Valitse verkkoliitäntä:</translation>
+        <translation>Valitse verkkoliitäntä:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">Lähetysportti</translation>
+        <translation>Lähetysportti</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Valitse verkkoliitäntä:</translation>
+        <translation>Valitse verkkoliitäntä:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast-portti</translation>
+        <translation>Multicast-portti</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">Multicast loopback</translation>
+        <translation>Multicast loopback</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Uusi RTU-laite</translation>
+        <translation>Uusi RTU-laite</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Uusi TCP-laite</translation>
+        <translation>Uusi TCP-laite</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Uudet kelat</translation>
+        <translation>Uudet kelat</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Uudet erilliset tulot</translation>
+        <translation>Uudet erilliset tulot</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Uudet omistusrekisterit</translation>
+        <translation>Uudet omistusrekisterit</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Uudet syöttörekisterit</translation>
+        <translation>Uudet tulorekisterit</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Kelat</translation>
+        <translation>Kelat</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Erilliset tulot</translation>
+        <translation>Erilliset tulot</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Omistusrekisterit</translation>
+        <translation>Omistusrekisterit</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Tulorekisterit</translation>
+        <translation>Tulorekisterit</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3912,6 +3912,16 @@
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Laite on käynnissä. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>TCP-asiakaslaite</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>TCP-palvelinlaite</translation>
     </message>
 </context>
 <context>

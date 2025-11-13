@@ -1515,7 +1515,7 @@
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">显示图例</translation>
+        <translation>传奇</translation>
     </message>
     <message>
         <source>Cache points</source>
@@ -2545,7 +2545,7 @@
     </message>
     <message>
         <source>Time</source>
-        <translation>时间</translation>
+        <translation type="vanished">时间</translation>
     </message>
     <message>
         <source>Ms</source>
@@ -4234,6 +4234,16 @@
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>设备正在运行。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>TCP客户端设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>TCP 服务器设备</translation>
     </message>
 </context>
 <context>

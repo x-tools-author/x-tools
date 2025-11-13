@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation type="vanished">فیلتر کنید</translation>
+        <translation>فیلتر کنید</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation type="vanished">کیس حفظ شود</translation>
+        <translation>کیس حفظ شود</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">دستیار CRC</translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">تازه کردن</translation>
+        <translation>تازه کردن</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">تایپ کنید</translation>
+        <translation>تایپ کنید</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">صادرات</translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">داده ها</translation>
+        <translation>داده ها</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation type="vanished">01000000000</translation>
+        <translation>01000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation type="vanished">فرمت داده</translation>
+        <translation>فرمت داده</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation type="vanished">دستیار Base64</translation>
+        <translation>دستیار Base64</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation type="vanished">متن ساده</translation>
+        <translation>متن ساده</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation type="vanished">متن رمزی</translation>
+        <translation>متن رمزی</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="vanished">تصویر</translation>
+        <translation>تصویر</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation type="vanished">رمزگشایی</translation>
+        <translation>رمزگشایی</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation type="vanished">رمزگذاری کنید</translation>
+        <translation>رمزگذاری کنید</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation type="vanished">مشخصه</translation>
+        <translation>مشخصه</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(ویژگی پشتیبانی نشده)</translation>
+        <translation>(ویژگی پشتیبانی نشده)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation type="vanished">دستگاه های BLE</translation>
+        <translation>دستگاه های BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">بخوانید</translation>
+        <translation>بخوانید</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation type="vanished">اسکن خدمات</translation>
+        <translation>اسکن خدمات</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation type="vanished">حالت نوشتن</translation>
+        <translation>حالت نوشتن</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation type="vanished">خدمات</translation>
+        <translation>خدمات</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation type="vanished">اسکن دستگاه</translation>
+        <translation>اسکن دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation type="vanished">کنترل خروجی</translation>
+        <translation>کنترل خروجی</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">فرمت خروجی</translation>
+        <translation>فرمت خروجی</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">پاک کردن</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation type="vanished">پارامترهای پخش</translation>
+        <translation>پارامترهای پخش</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation type="vanished">آدرس پخش</translation>
+        <translation>آدرس پخش</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation type="vanished">فرمت داده</translation>
+        <translation>فرمت داده</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation type="vanished">پیشوند پخش</translation>
+        <translation>پیشوند پخش</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation type="vanished">فاصله پخش</translation>
+        <translation>فاصله پخش</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation type="vanished">پسوند پخش</translation>
+        <translation>پسوند پخش</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation type="vanished">پورت پخش</translation>
+        <translation>پورت پخش</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation type="vanished">داده های پخش</translation>
+        <translation>داده های پخش</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation type="vanished">خروجی اطلاعات</translation>
+        <translation>خروجی اطلاعات</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation type="vanished">استودیو CANBus</translation>
+        <translation>استودیو CANBus</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation type="vanished">قاب CAN</translation>
+        <translation>قاب CAN</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation type="vanished">فرمت توسعه یافته</translation>
+        <translation>فرمت توسعه یافته</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation type="vanished">نرخ داده انعطاف پذیر</translation>
+        <translation>نرخ داده انعطاف پذیر</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation type="vanished">شناسه قاب</translation>
+        <translation>شناسه قاب</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation type="vanished">نوع قاب</translation>
+        <translation>نوع قاب</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation type="vanished">گزینه های قاب</translation>
+        <translation>گزینه های قاب</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">سوئیچ میزان بیت</translation>
+        <translation>سوئیچ میزان بیت</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation type="vanished">کنترل دستگاه</translation>
+        <translation>کنترل دستگاه</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="vanished">قطع کن</translation>
+        <translation>قطع کن</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="vanished">اتصال</translation>
+        <translation>اتصال</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation type="vanished">پلاگین</translation>
+        <translation>پلاگین</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">نام</translation>
+        <translation>نام</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">مشاهده داده ها</translation>
+        <translation>مشاهده داده ها</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation type="vanished">Configuration را مشخص کنید</translation>
+        <translation>Configuration را مشخص کنید</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation type="vanished">فیلتر خطا</translation>
+        <translation>فیلتر خطا</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation type="vanished">تنظیمات سفارشی</translation>
+        <translation>تنظیمات سفارشی</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation type="vanished">Loopback</translation>
+        <translation>Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation type="vanished">نرخ بیت داده</translation>
+        <translation>نرخ بیت داده</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">میزان بیت</translation>
+        <translation>میزان بیت</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation type="vanished">خود را دریافت کنید</translation>
+        <translation>خود را دریافت کنید</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">CAN Frame Payload</translation>
+        <translation>CAN Frame Payload</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">ارسال کنید</translation>
+        <translation>ارسال کنید</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,82 +783,82 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation type="vanished">قالب</translation>
+        <translation>قالب</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation type="vanished">کانال ها</translation>
+        <translation>کانال ها</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation type="vanished">دستیار CRC</translation>
+        <translation>دستیار CRC</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation type="vanished">ارزش پالی</translation>
+        <translation>ارزش پالی</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation type="vanished">مقدار اولیه</translation>
+        <translation>مقدار اولیه</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="vanished">کپی کنید</translation>
+        <translation>کپی کنید</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">اطلاعات بیشتر در مورد محاسبه crc، به http://www.ip33.com/crc.html مراجعه کنید (برای بازدید دوبار کلیک کنید)</translation>
+        <translation>اطلاعات بیشتر در مورد محاسبه crc، به http://www.ip33.com/crc.html مراجعه کنید (برای بازدید دوبار کلیک کنید)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation type="vanished">معکوس ورودی</translation>
+        <translation>معکوس ورودی</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation type="vanished">معکوس کردن خروجی</translation>
+        <translation>معکوس کردن خروجی</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">پاک کردن</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation type="vanished">محاسبه کنید</translation>
+        <translation>محاسبه کنید</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="vanished">پارامترها</translation>
+        <translation>پارامترها</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation type="vanished">مقدار XOR</translation>
+        <translation>مقدار XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">ارتفاع آن در سمت چپ و بیت های پایین در سمت راست است</translation>
+        <translation>ارتفاع آن در سمت چپ و بیت های پایین در سمت راست است</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation type="vanished">نتیجه (HEX)</translation>
+        <translation>نتیجه (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation type="vanished">مدل پارامتر</translation>
+        <translation>مدل پارامتر</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="vanished">عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -873,15 +873,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Paloy</source>
-        <translation type="vanished">آهسته تر</translation>
+        <translation>آهسته تر</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation type="vanished">داده های ورودی</translation>
+        <translation>داده های ورودی</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation type="vanished">نتیجه (BIN)</translation>
+        <translation>نتیجه (BIN)</translation>
     </message>
 </context>
 <context>
@@ -911,31 +911,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation type="vanished">انواع</translation>
+        <translation>انواع</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="vanished">پرچم ها</translation>
+        <translation>پرچم ها</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">قالب</translation>
+        <translation>قالب</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation type="vanished">سوابق</translation>
+        <translation>سوابق</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation type="vanished">داده ها</translation>
+        <translation>داده ها</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation type="vanished">جستجوی داده ها...</translation>
+        <translation>جستجوی داده ها...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -963,82 +963,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">دستگاه جدید مدباس</translation>
+        <translation>دستگاه جدید مدباس</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">پارامترهای اتصال</translation>
+        <translation>پارامترهای اتصال</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">برابری</translation>
+        <translation>برابری</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">نرخ باود</translation>
+        <translation>نرخ باود</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">بیت ها را متوقف کنید</translation>
+        <translation>بیت ها را متوقف کنید</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">تازه کردن</translation>
+        <translation>تازه کردن</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بیت های داده</translation>
+        <translation>بیت های داده</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">نام ها</translation>
+        <translation>نام ها</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">آدرس IP</translation>
+        <translation>آدرس IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">بندر</translation>
+        <translation>بندر</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">نوع دستگاه</translation>
+        <translation>نوع دستگاه</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">مهلت زمانی (میلی‌ثانیه)</translation>
+        <translation>مهلت زمانی (میلی‌ثانیه)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">تعداد تلاش های مجدد</translation>
+        <translation>تعداد تلاش های مجدد</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">آدرس</translation>
+        <translation>آدرس</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">حالت فقط گوش دادن</translation>
+        <translation>حالت فقط گوش دادن</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">پارامترهای دستگاه</translation>
+        <translation>پارامترهای دستگاه</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">نام دستگاه</translation>
+        <translation>نام دستگاه</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">مانند: زیمنس S7-300</translation>
+        <translation>مانند: زیمنس S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">جستجو کنید</translation>
+        <translation>جستجو کنید</translation>
     </message>
 </context>
 <context>
@@ -1123,23 +1123,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation type="vanished">داده های tx را ذخیره کنید</translation>
+        <translation>داده های tx را ذخیره کنید</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation type="vanished">مرورگر</translation>
+        <translation>مرورگر</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation type="vanished">صرفه جویی در میلی ثانیه</translation>
+        <translation>صرفه جویی در میلی ثانیه</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation type="vanished">داده های rx را ذخیره کنید</translation>
+        <translation>داده های rx را ذخیره کنید</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation type="vanished">ذخیره تاریخ</translation>
+        <translation>ذخیره تاریخ</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1148,15 +1148,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Save Time</source>
-        <translation type="vanished">صرفه جویی در زمان</translation>
+        <translation>صرفه جویی در زمان</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation type="vanished">ذخیره فرمت</translation>
+        <translation>ذخیره فرمت</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation type="vanished">حداکثر بایت</translation>
+        <translation>حداکثر بایت</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1202,27 +1202,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation type="vanished">نتیجه بالایی</translation>
+        <translation>نتیجه بالایی</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation type="vanished">فایل بررسی شده</translation>
+        <translation>فایل بررسی شده</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation type="vanished">پیشرفت را بررسی کرد</translation>
+        <translation>پیشرفت را بررسی کرد</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation type="vanished">الگوریتم بررسی شده</translation>
+        <translation>الگوریتم بررسی شده</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation type="vanished">نتیجه بررسی شد</translation>
+        <translation>نتیجه بررسی شد</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1231,7 +1231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">باز کنید</translation>
+        <translation>باز کنید</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1253,35 +1253,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation type="vanished">لیست فایل</translation>
+        <translation>لیست فایل</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">واردات</translation>
+        <translation>واردات</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">بالا</translation>
+        <translation>بالا</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">پایین</translation>
+        <translation>پایین</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">حذف کنید</translation>
+        <translation>حذف کنید</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">پاک کردن</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation type="vanished">ادغام</translation>
+        <translation>ادغام</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1356,7 +1356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation type="vanished">دستگاه</translation>
+        <translation>دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1436,62 +1436,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation type="vanished">نمایش پیش نمایش داده ها</translation>
+        <translation>نمایش پیش نمایش داده ها</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation type="vanished">اضافه کردن پسوند</translation>
+        <translation>اضافه کردن پسوند</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation type="vanished">اضافه کردن پیشوند</translation>
+        <translation>اضافه کردن پیشوند</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">شخصیت فرار</translation>
+        <translation>شخصیت فرار</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation type="vanished">پیش پردازش داده ها</translation>
+        <translation>پیش پردازش داده ها</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation type="vanished">داده های بررسی را اضافه کنید</translation>
+        <translation>داده های بررسی را اضافه کنید</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">اندیان بزرگ</translation>
+        <translation>اندیان بزرگ</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation type="vanished">از چپ شروع کنید</translation>
+        <translation>از چپ شروع کنید</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation type="vanished">از راست شروع کن</translation>
+        <translation>از راست شروع کن</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="vanished">حسابی</translation>
+        <translation>حسابی</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">فهرست شروع</translation>
+        <translation>فهرست شروع</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">نمایه پایانی</translation>
+        <translation>نمایه پایانی</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation type="vanished">بررسی داده ها</translation>
+        <translation>بررسی داده ها</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">ویرایشگر گره</translation>
+        <translation>ویرایشگر گره</translation>
     </message>
 </context>
 <context>
@@ -1511,27 +1511,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation type="vanished">نوع داده</translation>
+        <translation>نوع داده</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation type="vanished">افسانه</translation>
+        <translation>افسانه</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation type="vanished">نقاط کش</translation>
+        <translation>نقاط کش</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">پاک کردن</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">صادرات</translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">واردات</translation>
+        <translation>واردات</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1587,11 +1587,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">بنویسید</translation>
+        <translation>بنویسید</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation type="vanished">نام سرور</translation>
+        <translation>نام سرور</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1603,38 +1603,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation type="vanished">نام سرور</translation>
+        <translation>نام سرور</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation type="vanished">تست کنید</translation>
+        <translation>تست کنید</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation type="vanished">داده های تست</translation>
+        <translation>داده های تست</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation type="vanished">داده های نتیجه</translation>
+        <translation>داده های نتیجه</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation type="vanished">دور زدن</translation>
+        <translation>دور زدن</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">پارامترهای جدول</translation>
+        <translation>پارامترهای جدول</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">پارامترهای رشته</translation>
+        <translation>پارامترهای رشته</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1656,7 +1656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">ژنرال</translation>
+        <translation>ژنرال</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation type="vanished">نوع خدمات</translation>
+        <translation>نوع خدمات</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1950,39 +1950,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation type="vanished">کنسول</translation>
+        <translation>کنسول</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation type="vanished">ثبت سرور</translation>
+        <translation>ثبت سرور</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">ارسال کنید</translation>
+        <translation>ارسال کنید</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">واحد داده پروتکل سفارشی</translation>
+        <translation>واحد داده پروتکل سفارشی</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation type="vanished">ثبت نام مشتری</translation>
+        <translation>ثبت نام مشتری</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation type="vanished">لیست دستگاه</translation>
+        <translation>لیست دستگاه</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">بستن</translation>
+        <translation>بستن</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">باز کنید</translation>
+        <translation>باز کنید</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation type="vanished">عملیات دستگاه</translation>
+        <translation>عملیات دستگاه</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1991,95 +1991,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Network Settings</source>
-        <translation type="vanished">تنظیمات شبکه</translation>
+        <translation>تنظیمات شبکه</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">بندر</translation>
+        <translation>بندر</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">نرخ باود</translation>
+        <translation>نرخ باود</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بیت های داده</translation>
+        <translation>بیت های داده</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation type="vanished">تنظیمات پورت سریال</translation>
+        <translation>تنظیمات پورت سریال</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">برابری</translation>
+        <translation>برابری</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">نام بندر</translation>
+        <translation>نام بندر</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">بیت ها را متوقف کنید</translation>
+        <translation>بیت ها را متوقف کنید</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation type="vanished">دستگاه مشغول است</translation>
+        <translation>دستگاه مشغول است</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation type="vanished">پارامترهای سرور</translation>
+        <translation>پارامترهای سرور</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation type="vanished">آدرس سرور</translation>
+        <translation>آدرس سرور</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">حالت فقط گوش دادن</translation>
+        <translation>حالت فقط گوش دادن</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation type="vanished">آدرس هدف</translation>
+        <translation>آدرس هدف</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="vanished">بخوانید</translation>
+        <translation>بخوانید</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation type="vanished">بنویسید</translation>
+        <translation>بنویسید</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation type="vanished">کد تابع</translation>
+        <translation>کد تابع</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation type="vanished">شماره آدرس</translation>
+        <translation>شماره آدرس</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation type="vanished">آدرس شروع</translation>
+        <translation>آدرس شروع</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation type="vanished">دفعات تکرار</translation>
+        <translation>دفعات تکرار</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation type="vanished">تایم اوت</translation>
+        <translation>تایم اوت</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation type="vanished">پارامترهای مشتری</translation>
+        <translation>پارامترهای مشتری</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">کنترل ورودی (آدرس و مقدار)</translation>
+        <translation>کنترل ورودی (آدرس و مقدار)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">فرمت ورودی</translation>
+        <translation>فرمت ورودی</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2250,31 +2250,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">داده های خام</translation>
+        <translation>داده های خام</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">داده های پخته شده (Hex)</translation>
+        <translation>داده های پخته شده (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation type="vanished">نوع داده پخته شده</translation>
+        <translation>نوع داده پخته شده</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">داده های پخته شده (دسامبر)</translation>
+        <translation>داده های پخته شده (دسامبر)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">مانند: 1، -1، 1.1، -1.1</translation>
+        <translation>مانند: 1، -1، 1.1، -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">داده های پخته شده (Bin)</translation>
+        <translation>داده های پخته شده (Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation type="vanished">از چپ به راست بالا به پایین است</translation>
+        <translation>از چپ به راست بالا به پایین است</translation>
     </message>
 </context>
 <context>
@@ -2314,30 +2314,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation type="vanished">برجسته کننده را فعال کنید</translation>
+        <translation>برجسته کننده را فعال کنید</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation type="vanished">متن را فیلتر کنید</translation>
+        <translation>متن را فیلتر کنید</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation type="vanished">سلام، کلمه</translation>
+        <translation>سلام، کلمه</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation type="vanished">نشان دادن آمارگیر</translation>
+        <translation>نشان دادن آمارگیر</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation type="vanished">فعال کردن فیلتر</translation>
+        <translation>فعال کردن فیلتر</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation type="vanished">فاصله چرخه</translation>
+        <translation>فاصله چرخه</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2346,95 +2346,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">تنظیمات</translation>
+        <translation>تنظیمات</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">پاک کردن</translation>
+        <translation>پاک کردن</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="vanished">تاریخ</translation>
+        <translation>تاریخ</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation type="vanished">پرچم</translation>
+        <translation>پرچم</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="vanished">زمان</translation>
+        <translation>زمان</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation type="vanished">ام‌اس</translation>
+        <translation>ام‌اس</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation type="vanished">کنترل خروجی</translation>
+        <translation>کنترل خروجی</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation type="vanished">کنترل ورودی</translation>
+        <translation>کنترل ورودی</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation type="vanished">بسته بندی کنید</translation>
+        <translation>بسته بندی کنید</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation type="vanished">ترمینال</translation>
+        <translation>ترمینال</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation type="vanished">کنترل ارتباطات</translation>
+        <translation>کنترل ارتباطات</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="vanished">ارسال کنید</translation>
+        <translation>ارسال کنید</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation type="vanished">قالب متن</translation>
+        <translation>قالب متن</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="vanished">خروجی</translation>
+        <translation>خروجی</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation type="vanished">ورودی</translation>
+        <translation>ورودی</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">لیست داده های از پیش تعیین شده</translation>
+        <translation>لیست داده های از پیش تعیین شده</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="vanished">تنظیمات از پیش تعیین شده</translation>
+        <translation>تنظیمات از پیش تعیین شده</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation type="vanished">امیتر</translation>
+        <translation>امیتر</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation type="vanished">پاسخگو</translation>
+        <translation>پاسخگو</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation type="vanished">نقل و انتقالات</translation>
+        <translation>نقل و انتقالات</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2646,43 +2646,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation type="vanished">فاصله گروهی (ms)</translation>
+        <translation>فاصله گروهی (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation type="vanished">افزودن (به روز رسانی) گروه</translation>
+        <translation>افزودن (به روز رسانی) گروه</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation type="vanished">ستون ها (شکاف با فاصله)</translation>
+        <translation>ستون ها (شکاف با فاصله)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">بالا</translation>
+        <translation>بالا</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">پایین</translation>
+        <translation>پایین</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation type="vanished">حذف انتخاب شده</translation>
+        <translation>حذف انتخاب شده</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation type="vanished">بدون عنوان</translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="vanished">نام</translation>
+        <translation>نام</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation type="vanished">گروه را غیر فعال کنید</translation>
+        <translation>گروه را غیر فعال کنید</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation type="vanished">فاصله مورد (میلی‌ثانیه)</translation>
+        <translation>فاصله مورد (میلی‌ثانیه)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2975,31 +2975,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3031,11 +3031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation type="vanished">صادرات</translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation type="vanished">ایجاد کنید</translation>
+        <translation>ایجاد کنید</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3106,35 +3106,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation type="vanished">پاک کردن گزارش</translation>
+        <translation>پاک کردن گزارش</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="vanished">ورود به سیستم</translation>
+        <translation>ورود به سیستم</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation type="vanished">دایرکتوری اسکریپت را باز کنید</translation>
+        <translation>دایرکتوری اسکریپت را باز کنید</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation type="vanished">فیلمنامه جدید</translation>
+        <translation>فیلمنامه جدید</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation type="vanished">لیست فایل ها را بازخوانی کنید</translation>
+        <translation>لیست فایل ها را بازخوانی کنید</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation type="vanished">کتابچه راهنمای آنلاین</translation>
+        <translation>کتابچه راهنمای آنلاین</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="vanished">اسکریپت</translation>
+        <translation>اسکریپت</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3200,23 +3200,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation type="vanished">جستجوی متن</translation>
+        <translation>جستجوی متن</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">جستجو کنید</translation>
+        <translation>جستجو کنید</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation type="vanished">بیان منظم</translation>
+        <translation>بیان منظم</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation type="vanished">حساس به حروف کوچک و بزرگ</translation>
+        <translation>حساس به حروف کوچک و بزرگ</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation type="vanished">کل کلمه</translation>
+        <translation>کل کلمه</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3330,35 +3330,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">نرخ باود</translation>
+        <translation>نرخ باود</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">برابری</translation>
+        <translation>برابری</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation type="vanished">دستگاه مشغول نادیده گرفته شد</translation>
+        <translation>دستگاه مشغول نادیده گرفته شد</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">بیت های داده</translation>
+        <translation>بیت های داده</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation type="vanished">کنترل جریان</translation>
+        <translation>کنترل جریان</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">بیت ها را متوقف کنید</translation>
+        <translation>بیت ها را متوقف کنید</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation type="vanished">نام بندر</translation>
+        <translation>نام بندر</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation type="vanished">بازه فریم را فعال کنید</translation>
+        <translation>بازه فریم را فعال کنید</translation>
     </message>
 </context>
 <context>
@@ -3418,63 +3418,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation type="vanished">بنویسید</translation>
+        <translation>بنویسید</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation type="vanished">مسیر</translation>
+        <translation>مسیر</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation type="vanished">همه کلاینت ها را قطع کنید</translation>
+        <translation>همه کلاینت ها را قطع کنید</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="vanished">احراز هویت</translation>
+        <translation>احراز هویت</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation type="vanished">IP سرور</translation>
+        <translation>IP سرور</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation type="vanished">کانال</translation>
+        <translation>کانال</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation type="vanished">چندپخشی را فعال کنید</translation>
+        <translation>چندپخشی را فعال کنید</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation type="vanished">فقط چندپخشی</translation>
+        <translation>فقط چندپخشی</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation type="vanished">پست/سلام</translation>
+        <translation>پست/سلام</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation type="vanished">حالت امن</translation>
+        <translation>حالت امن</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">پورت چندپخشی</translation>
+        <translation>پورت چندپخشی</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">IP چندپخشی</translation>
+        <translation>IP چندپخشی</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation type="vanished">پورت سرور</translation>
+        <translation>پورت سرور</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation type="vanished">نام کاربری</translation>
+        <translation>نام کاربری</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="vanished">رمز عبور</translation>
+        <translation>رمز عبور</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3494,23 +3494,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation type="vanished">داده های خام</translation>
+        <translation>داده های خام</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation type="vanished">فرمت ورودی</translation>
+        <translation>فرمت ورودی</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation type="vanished">داده های پخته شده</translation>
+        <translation>داده های پخته شده</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation type="vanished">فرمت خروجی</translation>
+        <translation>فرمت خروجی</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">ایجاد کنید</translation>
+        <translation>ایجاد کنید</translation>
     </message>
 </context>
 <context>
@@ -3535,27 +3535,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">فرم</translation>
+        <translation>فرم</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">صادرات</translation>
+        <translation>صادرات</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation type="vanished">همه موارد را غیرفعال کنید</translation>
+        <translation>همه موارد را غیرفعال کنید</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">حذف کنید</translation>
+        <translation>حذف کنید</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">بالا</translation>
+        <translation>بالا</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">اضافه کنید</translation>
+        <translation>اضافه کنید</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3564,11 +3564,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">واردات</translation>
+        <translation>واردات</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">پایین</translation>
+        <translation>پایین</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3602,63 +3602,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation type="vanished">ویرایشگر داده ها</translation>
+        <translation>ویرایشگر داده ها</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">لغو کنید</translation>
+        <translation>لغو کنید</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation type="vanished">الگوریتم</translation>
+        <translation>الگوریتم</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation type="vanished">فهرست شروع</translation>
+        <translation>فهرست شروع</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation type="vanished">نمایه پایانی</translation>
+        <translation>نمایه پایانی</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation type="vanished">ضمیمه</translation>
+        <translation>ضمیمه</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation type="vanished">اندیان بزرگ</translation>
+        <translation>اندیان بزرگ</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation type="vanished">پیش پردازش</translation>
+        <translation>پیش پردازش</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="vanished">پیشوند</translation>
+        <translation>پیشوند</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation type="vanished">پسوند</translation>
+        <translation>پسوند</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation type="vanished">شخصیت فرار</translation>
+        <translation>شخصیت فرار</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">باشه</translation>
+        <translation>باشه</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation type="vanished">بار</translation>
+        <translation>بار</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="vanished">قالب</translation>
+        <translation>قالب</translation>
     </message>
 </context>
 <context>
@@ -3719,11 +3719,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">یک رابط شبکه را انتخاب کنید:</translation>
+        <translation>یک رابط شبکه را انتخاب کنید:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation type="vanished">پورت پخش</translation>
+        <translation>پورت پخش</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3758,19 +3758,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">یک رابط شبکه را انتخاب کنید:</translation>
+        <translation>یک رابط شبکه را انتخاب کنید:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation type="vanished">IP چندپخشی</translation>
+        <translation>IP چندپخشی</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation type="vanished">پورت چندپخشی</translation>
+        <translation>پورت چندپخشی</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation type="vanished">حلقه بک چندپخشی</translation>
+        <translation>حلقه بک چندپخشی</translation>
     </message>
 </context>
 <context>
@@ -3790,27 +3790,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">دستگاه RTU جدید</translation>
+        <translation>دستگاه RTU جدید</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">دستگاه TCP جدید</translation>
+        <translation>دستگاه TCP جدید</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">کویل های جدید</translation>
+        <translation>کویل های جدید</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">ورودی های گسسته جدید</translation>
+        <translation>ورودی های گسسته جدید</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">ثبت های جدید هلدینگ</translation>
+        <translation>ثبت های جدید هلدینگ</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">ثبت های ورودی جدید</translation>
+        <translation>ثبت های ورودی جدید</translation>
     </message>
 </context>
 <context>
@@ -3855,19 +3855,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">کویل</translation>
+        <translation>کویل</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">ورودی های گسسته</translation>
+        <translation>ورودی های گسسته</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">برگزاری ثبت ها</translation>
+        <translation>برگزاری ثبت ها</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">ثبت های ورودی</translation>
+        <translation>ثبت های ورودی</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
@@ -3923,6 +3923,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>دستگاه در حال اجراست. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <source>TCP Client Device</source>
+        <translation>دستگاه TCP Client</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <source>TCP Server Device</source>
+        <translation>دستگاه سرور TCP</translation>
     </message>
 </context>
 <context>
