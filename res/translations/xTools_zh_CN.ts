@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN" sourcelanguage="en_US">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>Application</name>
     <message>
@@ -299,31 +299,31 @@
     <name>BarChartSettings</name>
     <message>
         <source>Data format</source>
-        <translation>Data format</translation>
+        <translation>数据格式</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Channel</translation>
+        <translation>渠道</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation>Color</translation>
+        <translation>颜色</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>姓名</translation>
     </message>
     <message>
         <source>Line</source>
-        <translation>Line</translation>
+        <translation>线</translation>
     </message>
     <message>
         <source>Spline</source>
-        <translation>Spline</translation>
+        <translation>样条线</translation>
     </message>
     <message>
         <source>Scatter</source>
-        <translation>Scatter</translation>
+        <translation>分散</translation>
     </message>
 </context>
 <context>
@@ -807,7 +807,7 @@
     </message>
     <message>
         <source>Create device failed!</source>
-        <translation>Create device failed!</translation>
+        <translation>创建设备失败！</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
@@ -1093,82 +1093,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>New Modbus Device</translation>
+        <translation>新的 Modbus 设备</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Connection parameters</translation>
+        <translation>连接参数</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Parity</translation>
+        <translation>平价</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Baud rate</translation>
+        <translation>波特率</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bits</translation>
+        <translation>停止位</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Refresh</translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Data bits</translation>
+        <translation>数据位</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Names</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP Address</translation>
+        <translation>IP地址</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>港口</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Device type</translation>
+        <translation>设备类型</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Timeout(ms)</translation>
+        <translation>超时（毫秒）</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Number of retries</translation>
+        <translation>重试次数</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Address</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Listen only mode</translation>
+        <translation>只听模式</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Device parameters</translation>
+        <translation>设备参数</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Device Name</translation>
+        <translation>设备名称</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Such as: Siemens S7-300</translation>
+        <translation>如：西门子S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Search</translation>
+        <translation>搜索</translation>
     </message>
 </context>
 <context>
@@ -1652,19 +1652,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>CRC end index</source>
-        <translation>CRC end index</translation>
+        <translation>CRC 结束索引</translation>
     </message>
     <message>
         <source>CRC start index</source>
-        <translation>CRC start index</translation>
+        <translation>CRC 起始索引</translation>
     </message>
     <message>
         <source>CRC arithmetic</source>
-        <translation>CRC arithmetic</translation>
+        <translation>CRC 运算</translation>
     </message>
     <message>
         <source>Append CRC</source>
-        <translation>Append CRC</translation>
+        <translation>附加CRC</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="109"/>
@@ -1676,70 +1676,70 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineChartSettings</name>
     <message>
         <source>Data type</source>
-        <translation>Data type</translation>
+        <translation>数据类型</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>Legend</translation>
+        <translation>传奇</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>Cache points</translation>
+        <translation>缓存点</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Clear</translation>
+        <translation>清除</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Export</translation>
+        <translation>出口</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Import</translation>
+        <translation>进口</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Channel</translation>
+        <translation>渠道</translation>
     </message>
     <message>
         <source>Visible</source>
-        <translation>Visible</translation>
+        <translation>可见的</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>类型</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation>Color</translation>
+        <translation>颜色</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>姓名</translation>
     </message>
     <message>
         <source>Line</source>
-        <translation>Line</translation>
+        <translation>线</translation>
     </message>
     <message>
         <source>Spline</source>
-        <translation>Spline</translation>
+        <translation>样条线</translation>
     </message>
     <message>
         <source>Scatter</source>
-        <translation>Scatter</translation>
+        <translation>分散</translation>
     </message>
 </context>
 <context>
     <name>LineChartView</name>
     <message>
         <source>Import Data from Excel</source>
-        <translation>Import Data from Excel</translation>
+        <translation>从 Excel 导入数据</translation>
     </message>
     <message>
         <source>Export Data to Excel</source>
-        <translation>Export Data to Excel</translation>
+        <translation>将数据导出到 Excel</translation>
     </message>
 </context>
 <context>
@@ -1977,7 +1977,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>General</source>
-        <translation>General</translation>
+        <translation>一般的</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="461"/>
@@ -2066,7 +2066,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Main Window</source>
-        <translation>Main Window</translation>
+        <translation>主窗口</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="420"/>
@@ -2106,7 +2106,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bug from Store</source>
-        <translation>Bug from Store</translation>
+        <translation>来自商店的错误</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="720"/>
@@ -2130,11 +2130,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>About xTools</source>
-        <translation>About xTools</translation>
+        <translation>关于 xTools</translation>
     </message>
     <message>
         <source>Buy Ultimate Edition</source>
-        <translation>Buy Ultimate Edition</translation>
+        <translation>购买终极版</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="692"/>
@@ -2149,31 +2149,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Links</source>
-        <translation>Links</translation>
+        <translation>链接</translation>
     </message>
     <message>
         <source>Qt Official Download</source>
-        <translation>Qt Official Download</translation>
+        <translation>Qt官方下载</translation>
     </message>
     <message>
         <source>Qt Official Blog</source>
-        <translation>Qt Official Blog</translation>
+        <translation>Qt 官方博客</translation>
     </message>
     <message>
         <source>Qt Official Release</source>
-        <translation>Qt Official Release</translation>
+        <translation>Qt 正式发布</translation>
     </message>
     <message>
         <source>Download xTools from Github</source>
-        <translation>Download xTools from Github</translation>
+        <translation>从 Github 下载 xTools</translation>
     </message>
     <message>
         <source>Download xTools from Gitee</source>
-        <translation>Download xTools from Gitee</translation>
+        <translation>从 Gitee 下载 xTools</translation>
     </message>
     <message>
         <source>Office Web Site</source>
-        <translation>Office Web Site</translation>
+        <translation>办公室网站</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="750"/>
@@ -2321,7 +2321,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Client parameters</source>
-        <translation>Client parameters</translation>
+        <translation>客户端参数</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
@@ -2475,35 +2475,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>0x01-ReadCoils</source>
-        <translation>0x01-ReadCoils</translation>
+        <translation>0x01-读取线圈</translation>
     </message>
     <message>
         <source>0x02-ReadDiscreteInputs</source>
-        <translation>0x02-ReadDiscreteInputs</translation>
+        <translation>0x02-读取离散输入</translation>
     </message>
     <message>
         <source>0x03-ReadHoldingRegisters</source>
-        <translation>0x03-ReadHoldingRegisters</translation>
+        <translation>0x03-读取保持寄存器</translation>
     </message>
     <message>
         <source>0x04-ReadInputRegisters</source>
-        <translation>0x04-ReadInputRegisters</translation>
+        <translation>0x04-读取输入寄存器</translation>
     </message>
     <message>
         <source>0x05-WriteSingleCoil</source>
-        <translation>0x05-WriteSingleCoil</translation>
+        <translation>0x05-写入单线圈</translation>
     </message>
     <message>
         <source>0x06-WriteSingleRegister</source>
-        <translation>0x06-WriteSingleRegister</translation>
+        <translation>0x06-写单寄存器</translation>
     </message>
     <message>
         <source>0x0f-WriteMultipleCoils</source>
-        <translation>0x0f-WriteMultipleCoils</translation>
+        <translation>0x0f-写入多个线圈</translation>
     </message>
     <message>
         <source>0x10-WriteMultipleRegisters</source>
-        <translation>0x10-WriteMultipleRegisters</translation>
+        <translation>0x10-写入多个寄存器</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
@@ -2607,87 +2607,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation>New Modbus Device</translation>
+        <translation>新的 Modbus 设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
         <source>Listen only mode</source>
-        <translation>Listen only mode</translation>
+        <translation>只听模式</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
         <source>IP Address</source>
-        <translation>IP Address</translation>
+        <translation>IP地址</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
         <source>Timeout(ms)</source>
-        <translation>Timeout(ms)</translation>
+        <translation>超时（毫秒）</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="81"/>
         <source>Baud rate</source>
-        <translation>Baud rate</translation>
+        <translation>波特率</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="94"/>
         <source>Stop bits</source>
-        <translation>Stop bits</translation>
+        <translation>停止位</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
         <source>Device type</source>
-        <translation>Device type</translation>
+        <translation>设备类型</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
         <source>Address</source>
-        <translation>Address</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="143"/>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation>港口</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="156"/>
         <source>Parity</source>
-        <translation>Parity</translation>
+        <translation>平价</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
         <source>Device Name</source>
-        <translation>Device Name</translation>
+        <translation>设备名称</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
         <source>Such as: Siemens S7-300</source>
-        <translation>Such as: Siemens S7-300</translation>
+        <translation>如：西门子S7-300</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
         <source>Data bits</source>
-        <translation>Data bits</translation>
+        <translation>数据位</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
         <source>Refresh</source>
-        <translation>Refresh</translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
         <source>Names</source>
-        <translation>Names</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
         <source>Retries</source>
-        <translation>Retries</translation>
+        <translation>重试</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="310"/>
         <source>Register tables</source>
-        <translation>Register tables</translation>
+        <translation>寄存器表</translation>
     </message>
 </context>
 <context>
@@ -2695,37 +2695,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="34"/>
         <source>New device/group/register</source>
-        <translation>New device/group/register</translation>
+        <translation>新设备/组/注册</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation>Delete device/group/register</translation>
+        <translation>删除设备/组/注册</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
         <source>Close all devices</source>
-        <translation>Close all devices</translation>
+        <translation>关闭所有设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
         <source>Open all devices</source>
-        <translation>Open all devices</translation>
+        <translation>打开所有设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
         <source>Expand all items</source>
-        <translation>Expand all items</translation>
+        <translation>展开所有项目</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
         <source>Collapse all items</source>
-        <translation>Collapse all items</translation>
+        <translation>折叠所有项目</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="116"/>
         <source>Search</source>
-        <translation>Search</translation>
+        <translation>搜索</translation>
     </message>
 </context>
 <context>
@@ -2756,17 +2756,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="34"/>
         <source>Log type</source>
-        <translation>Log type</translation>
+        <translation>日志类型</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="47"/>
         <source>Search...</source>
-        <translation>Search...</translation>
+        <translation>搜索...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="57"/>
         <source>Clear all log items</source>
-        <translation>Clear all log items</translation>
+        <translation>清除所有日志项</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="60"/>
@@ -2778,27 +2778,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
         <source>Open a log file</source>
-        <translation>Open a log file</translation>
+        <translation>打开日志文件</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
         <source>Save log as...</source>
-        <translation>Save log as...</translation>
+        <translation>将日志另存为...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
         <source>Ignore data log</source>
-        <translation>Ignore data log</translation>
+        <translation>忽略数据日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
         <source>Using color</source>
-        <translation>Using color</translation>
+        <translation>使用颜色</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="113"/>
         <source>Audo scrolling</source>
-        <translation>I dare you to scroll</translation>
+        <translation>我敢让你滚动</translation>
     </message>
 </context>
 <context>
@@ -2806,17 +2806,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
         <source>Columns visible</source>
-        <translation>Columns visible</translation>
+        <translation>列可见</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation>Search...</translation>
+        <translation>搜索...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation>Add register item</translation>
+        <translation>添加注册项</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
@@ -2829,22 +2829,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
         <source>Remove current register item</source>
-        <translation>Remove current register item</translation>
+        <translation>删除当前寄存器项</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
         <source>Clear register table</source>
-        <translation>Clear register table</translation>
+        <translation>清除寄存器表</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>Save register table</source>
-        <translation>Save register table</translation>
+        <translation>保存寄存器表</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation>Import register table</translation>
+        <translation>导入登记表</translation>
     </message>
 </context>
 <context>
@@ -3054,7 +3054,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Advanced search</source>
-        <translation>Advanced search</translation>
+        <translation>高级搜索</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="514"/>
@@ -3088,31 +3088,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Serial Port</source>
-        <translation>Serial Port</translation>
+        <translation>串口</translation>
     </message>
     <message>
         <source>UDP Client</source>
-        <translation>UDP Client</translation>
+        <translation>UDP客户端</translation>
     </message>
     <message>
         <source>UDP Server</source>
-        <translation>UDP Server</translation>
+        <translation>UDP服务器</translation>
     </message>
     <message>
         <source>TCP Client</source>
-        <translation>TCP Client</translation>
+        <translation>TCP客户端</translation>
     </message>
     <message>
         <source>TCP Server</source>
-        <translation>TCP Server</translation>
+        <translation>TCP服务器</translation>
     </message>
     <message>
         <source>WebSocket Client</source>
-        <translation>WebSocket Client</translation>
+        <translation>WebSocket客户端</translation>
     </message>
     <message>
         <source>WebSocket Server</source>
-        <translation>WebSocket Server</translation>
+        <translation>WebSocket服务器</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -3404,69 +3404,69 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QObject</name>
     <message>
         <source>Serial Port</source>
-        <translation>Serial Port</translation>
+        <translation>串口</translation>
     </message>
     <message>
         <source>BLE Central</source>
-        <translation>BLE Central</translation>
+        <translation>BLE 中心</translation>
     </message>
     <message>
         <source>BLE Peripheral</source>
-        <translation>BLE Peripheral</translation>
+        <translation>蓝牙外设</translation>
     </message>
     <message>
         <source>UDP Client</source>
-        <translation>UDP Client</translation>
+        <translation>UDP客户端</translation>
     </message>
     <message>
         <source>UDP Server</source>
-        <translation>UDP Server</translation>
+        <translation>UDP服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
         <source>Warning</source>
-        <translation>Warning</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
         <source>No item selected. Please select an item first.</source>
-        <translation>No item selected. Please select an item first.</translation>
+        <translation>未选择任何项目。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
         <source>Are you sure to clear all data in the view?</source>
-        <translation>Are you sure to clear all data in the view?</translation>
+        <translation>您确定清除视图中的所有数据吗？</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="52"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="144"/>
         <source>Discrete Inputs</source>
-        <translation>Discrete Inputs</translation>
+        <translation>离散输入</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="54"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="143"/>
         <source>Coils</source>
-        <translation>Coils</translation>
+        <translation>线圈</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="56"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="145"/>
         <source>Input Registers</source>
-        <translation>Input Registers</translation>
+        <translation>输入寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
         <source>Holding Registers</source>
-        <translation>Holding Registers</translation>
+        <translation>保持寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
         <source>Invalid</source>
-        <translation>Invalid</translation>
+        <translation>无效的</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
@@ -3491,7 +3491,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="189"/>
         <source>Untitled</source>
-        <translation>Untitled</translation>
+        <translation>无题</translation>
     </message>
     <message>
         <source>1</source>
@@ -3507,23 +3507,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>WebSocket Client</source>
-        <translation>WebSocket Client</translation>
+        <translation>WebSocket客户端</translation>
     </message>
     <message>
         <source>WebSocket Server</source>
-        <translation>WebSocket Server</translation>
+        <translation>WebSocket服务器</translation>
     </message>
     <message>
         <source>Local Socket</source>
-        <translation>Local Socket</translation>
+        <translation>本地套接字</translation>
     </message>
     <message>
         <source>Local Server</source>
-        <translation>Local Server</translation>
+        <translation>本地服务器</translation>
     </message>
     <message>
         <source>Charts Test</source>
-        <translation>Charts Test</translation>
+        <translation>图表测试</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="466"/>
@@ -3534,15 +3534,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Octal</source>
-        <translation>Octal</translation>
+        <translation>八进制</translation>
     </message>
     <message>
         <source>Decimal</source>
-        <translation>Decimal</translation>
+        <translation>十进制</translation>
     </message>
     <message>
         <source>Hexadecimal</source>
-        <translation>Hexadecimal</translation>
+        <translation>十六进制</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="86"/>
@@ -3711,11 +3711,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Need to Reboot</source>
-        <translation>Need to Reboot</translation>
+        <translation>需要重新启动</translation>
     </message>
     <message>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>The operation need to reboot to effected, reboot the application now?</translation>
+        <translation>该操作需要重新启动才能生效，现在重新启动应用程序吗？</translation>
     </message>
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
@@ -3731,27 +3731,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
         <source>Message</source>
-        <translation>Message</translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="30"/>
         <source>Request</source>
-        <translation>Request</translation>
+        <translation>要求</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="32"/>
         <source>Response</source>
-        <translation>Response</translation>
+        <translation>回复</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
-        <translation>All</translation>
+        <translation>全部</translation>
     </message>
 </context>
 <context>
@@ -3791,95 +3791,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QssMgr</name>
     <message>
         <source>Dark Amber</source>
-        <translation>Dark Amber</translation>
+        <translation>深琥珀色</translation>
     </message>
     <message>
         <source>Dark Blue</source>
-        <translation>Dark Blue</translation>
+        <translation>深蓝色</translation>
     </message>
     <message>
         <source>Dark Cyan</source>
-        <translation>Dark Cyan</translation>
+        <translation>深青色</translation>
     </message>
     <message>
         <source>Dark Light Green</source>
-        <translation>Dark Light Green</translation>
+        <translation>深浅绿色</translation>
     </message>
     <message>
         <source>Dark Pink</source>
-        <translation>Dark Pink</translation>
+        <translation>深粉色</translation>
     </message>
     <message>
         <source>Dark Purple</source>
-        <translation>Dark Purple</translation>
+        <translation>深紫色</translation>
     </message>
     <message>
         <source>Dark Red</source>
-        <translation>Dark Red</translation>
+        <translation>深红色</translation>
     </message>
     <message>
         <source>Dark Teal</source>
-        <translation>Dark Teal</translation>
+        <translation>深青色</translation>
     </message>
     <message>
         <source>Dark Yellow</source>
-        <translation>Dark Yellow</translation>
+        <translation>深黄色</translation>
     </message>
     <message>
         <source>Light Amber</source>
-        <translation>Light Amber</translation>
+        <translation>浅琥珀色</translation>
     </message>
     <message>
         <source>Light Blue</source>
-        <translation>Light Blue</translation>
+        <translation>浅蓝色</translation>
     </message>
     <message>
         <source>Light Cyan</source>
-        <translation>Light Cyan</translation>
+        <translation>浅青色</translation>
     </message>
     <message>
         <source>Light Cyan(500)</source>
-        <translation>Light Cyan(500)</translation>
+        <translation>浅青色(500)</translation>
     </message>
     <message>
         <source>Light Light Green</source>
-        <translation>Light Light Green</translation>
+        <translation>浅浅绿色</translation>
     </message>
     <message>
         <source>Light Pink</source>
-        <translation>Light Pink</translation>
+        <translation>浅粉色</translation>
     </message>
     <message>
         <source>Light Purple</source>
-        <translation>Light Purple</translation>
+        <translation>浅紫色</translation>
     </message>
     <message>
         <source>Light Red</source>
-        <translation>Light Red</translation>
+        <translation>浅红色</translation>
     </message>
     <message>
         <source>Light Teal</source>
-        <translation>Light Teal</translation>
+        <translation>浅青色</translation>
     </message>
     <message>
         <source>Light Yellow</source>
-        <translation>Light Yellow</translation>
+        <translation>浅黄色</translation>
     </message>
     <message>
         <source>Application Stylesheet</source>
-        <translation>Application Stylesheet</translation>
+        <translation>应用程序样式表</translation>
     </message>
     <message>
         <source>Enable Stylesheet</source>
-        <translation>Enable Stylesheet</translation>
+        <translation>启用样式表</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation>Warning</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>Please enable stylesheet first!</source>
-        <translation>Please enable stylesheet first!</translation>
+        <translation>请先启用样式表！</translation>
     </message>
 </context>
 <context>
@@ -4214,7 +4214,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Optimized frame</source>
-        <translation>Optimized frame</translation>
+        <translation>优化框架</translation>
     </message>
     <message>
         <location filename="../../src/device/serialportui.ui" line="107"/>
@@ -4241,11 +4241,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Client Address</source>
-        <translation>Client Address</translation>
+        <translation>客户地址</translation>
     </message>
     <message>
         <source>Client Port</source>
-        <translation>Client Port</translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
@@ -4287,11 +4287,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Client IP</source>
-        <translation>Client IP</translation>
+        <translation>客户端IP</translation>
     </message>
     <message>
         <source>Client port</source>
-        <translation>Client port</translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="86"/>
@@ -4705,24 +4705,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
-        <translation>Modbus Tool Bar</translation>
+        <translation>Modbus 工具栏</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
-        <translation>Example Action</translation>
+        <translation>示例操作</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListModel</name>
     <message>
         <source>Coils</source>
-        <translation>Coils</translation>
+        <translation>线圈</translation>
     </message>
 </context>
 <context>
@@ -4730,37 +4730,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="122"/>
         <source>Modbus device connected.</source>
-        <translation>Modbus device connected.</translation>
+        <translation>Modbus 设备已连接。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
         <source>Modbus device disconnected.</source>
-        <translation>Modbus device disconnected.</translation>
+        <translation>Modbus 设备已断开连接。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
         <source>Modbus device error: %1</source>
-        <translation>Modbus device error: %1</translation>
+        <translation>Modbus 设备错误：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="153"/>
         <source>Failed to connect Modbus device: %1</source>
-        <translation>Failed to connect Modbus device: %1</translation>
+        <translation>无法连接 Modbus 设备：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="400"/>
         <source>Failed to send read request: %1</source>
-        <translation>Failed to send read request: %1</translation>
+        <translation>无法发送读取请求：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="426"/>
         <source>Read error: %1</source>
-        <translation>Read error: %1</translation>
+        <translation>读取错误：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
-        <translation>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</translation>
+        <translation>读取 %1 响应：服务器地址=%2，起始地址=%3，值计数=%4</translation>
     </message>
 </context>
 <context>
@@ -4768,67 +4768,67 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
         <source>New Modbus Device</source>
-        <translation>New Modbus Device</translation>
+        <translation>新的 Modbus 设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>Remove the Selected Item</source>
-        <translation>Remove the Selected Item</translation>
+        <translation>删除所选项目</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
         <source>Remove Device</source>
-        <translation>Remove Device</translation>
+        <translation>删除设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="207"/>
         <source>The device is running. Do you want to stop and remove it?</source>
-        <translation>The device is running. Do you want to stop and remove it?</translation>
+        <translation>设备正在运行。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
         <source>Rename Register Table</source>
-        <translation>Rename Register Table</translation>
+        <translation>重命名寄存器表</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="254"/>
         <source>Please input the new name for the register table:</source>
-        <translation>Please input the new name for the register table:</translation>
+        <translation>请输入寄存器表的新名称：</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
         <source>Rename Register Item</source>
-        <translation>Rename Register Item</translation>
+        <translation>重命名注册项目</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Please input the new name for the register item:</source>
-        <translation>Please input the new name for the register item:</translation>
+        <translation>请输入注册项的新名称：</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="279"/>
         <source>Edit Modbus Device</source>
-        <translation>Edit Modbus Device</translation>
+        <translation>编辑 Modbus 设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>Change Device parameters</source>
-        <translation>Change Device parameters</translation>
+        <translation>更改设备参数</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
-        <translation>The device is running. Restarting it to apply new parameters now?</translation>
+        <translation>设备正在运行。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="556"/>
         <source>TCP Client Device</source>
-        <translation>TCP Client Device</translation>
+        <translation>TCP客户端设备</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="562"/>
         <source>TCP Server Device</source>
-        <translation>TCP Server Device</translation>
+        <translation>TCP 服务器设备</translation>
     </message>
 </context>
 <context>
@@ -4836,17 +4836,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="168"/>
         <source>Time</source>
-        <translation>Time</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="170"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>类型</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="172"/>
         <source>Message</source>
-        <translation>Message</translation>
+        <translation>信息</translation>
     </message>
 </context>
 <context>
@@ -4854,29 +4854,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="132"/>
         <source>Clear Log</source>
-        <translation>Clear Log</translation>
+        <translation>清除日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="133"/>
         <source>Are you sure you want to clear the log?</source>
-        <translation>Are you sure you want to clear the log?</translation>
+        <translation>您确定要清除日志吗？</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="145"/>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
         <source>Save Log</source>
-        <translation>Save Log</translation>
+        <translation>保存日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
         <source>Log Files (*.json)</source>
-        <translation>Log Files (*.json)</translation>
+        <translation>日志文件 (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="156"/>
         <source>Failed to open file for writing: %1</source>
-        <translation>Failed to open file for writing: %1</translation>
+        <translation>无法打开文件进行写入：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="179"/>
@@ -4884,22 +4884,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="201"/>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="210"/>
         <source>Open Log</source>
-        <translation>Open Log</translation>
+        <translation>打开日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="190"/>
         <source>Failed to open file for reading: %1</source>
-        <translation>Failed to open file for reading: %1</translation>
+        <translation>无法打开文件进行读取：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="202"/>
         <source>Failed to parse log file: %1 at offset %2</source>
-        <translation>Failed to parse log file: %1 at offset %2</translation>
+        <translation>无法解析日志文件：%1（偏移量 %2）</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
         <source>Invalid log file format: root element is not an array.</source>
-        <translation>Invalid log file format: root element is not an array.</translation>
+        <translation>日志文件格式无效：根元素不是数组。</translation>
     </message>
 </context>
 <context>
@@ -4907,52 +4907,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="200"/>
         <source>Register Address</source>
-        <translation>Register Address</translation>
+        <translation>寄存器地址</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>姓名</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
         <source>Server Address</source>
-        <translation>Server Address</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>类型</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
         <source>Unit</source>
-        <translation>Unit</translation>
+        <translation>单元</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
         <source>Description</source>
-        <translation>Description</translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
         <source>Min</source>
-        <translation>Min</translation>
+        <translation>最小</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
         <source>Max</source>
-        <translation>Max</translation>
+        <translation>最大限度</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
         <source>Decimals</source>
-        <translation>Decimals</translation>
+        <translation>小数</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
         <source>Value</source>
-        <translation>Value</translation>
+        <translation>价值</translation>
     </message>
 </context>
 <context>
@@ -4960,7 +4960,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
         <source>Save Registers</source>
-        <translation>Save Registers</translation>
+        <translation>保存寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
@@ -4973,37 +4973,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
         <source>Failed to open file for saving.</source>
-        <translation>Failed to open file for saving.</translation>
+        <translation>无法打开文件进行保存。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Load Registers</source>
-        <translation>Load Registers</translation>
+        <translation>加载寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <source>Failed to open file for loading.</source>
-        <translation>Failed to open file for loading.</translation>
+        <translation>无法打开文件进行加载。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Invalid JSON format in the file.</source>
-        <translation>Invalid JSON format in the file.</translation>
+        <translation>文件中的 JSON 格式无效。</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>Import Registers</source>
-        <translation>Import Registers</translation>
+        <translation>导入寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
-        <translation>The register table is not empty. Do you want to merge existing registers?</translation>
+        <translation>寄存器表不为空。</translation>
     </message>
 </context>
 </TS>
