@@ -78,7 +78,7 @@ void xModbus::load(const QJsonObject& obj)
     ui->tabLog->load(logTab);
     QJsonObject listView = obj.value(keys.listView).toObject();
     ui->widgetDeviceListView->load(listView);
-#if 0
+#if 1
     int tabIndex = obj.value(keys.tabIndex).toInt(0);
     if (tabIndex >= 0 && tabIndex < ui->tabWidget->count()) {
         ui->tabWidget->setCurrentIndex(tabIndex);
@@ -135,6 +135,11 @@ void xModbus::onTableViewsUpdated()
         }
 
         connect(action, &QAction::triggered, [this, i]() { ui->tabWidget->setCurrentIndex(i); });
+        disconnect(widget, &QWidget::windowTitleChanged, this, nullptr);
+        connect(widget, &QWidget::windowTitleChanged, this, [=](const QString& title) {
+            ui->tabWidget->setTabText(i, title);
+            action->setText(title);
+        });
     }
 }
 

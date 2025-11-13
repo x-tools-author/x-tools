@@ -128,8 +128,6 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
 
     ModbusRegister *item = m_registerItems.at(index.row());
     int column = index.column();
-    int oldRegisterValue = item->value;
-    QString oldName = item->name;
     switch (column) {
     case REGISTER_TABLE_ADDRESS:
         item->address = value.toUInt();
@@ -170,15 +168,6 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
         QModelIndex valueIndex = this->index(index.row(), REGISTER_TABLE_VALUE);
         emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
     }
-
-    if (oldRegisterValue != item->value) {
-        emit registerValueChanged(item->serverAddress, item->type, item->address, item->value);
-    }
-#if 0
-    if (oldName != item->name) {
-        emit registerNameChanged(item->serverAddress, item->type, item->address, item->name);
-    }
-#endif
 
     return true;
 }

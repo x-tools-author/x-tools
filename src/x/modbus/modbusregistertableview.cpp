@@ -92,11 +92,6 @@ void ModbusRegisterTableView::load(const QJsonObject &obj)
     setWindowTitle(obj[keys.registerTableName].toString());
 }
 
-ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
-{
-    return m_registerTable;
-}
-
 void ModbusRegisterTableView::selectRow(int row)
 {
     QModelIndex idx = m_registerTableFilter->index(row, 0);
@@ -114,6 +109,11 @@ void ModbusRegisterTableView::setServerAddressColumnVisible(bool visible)
 {
     ui->tableView->setColumnHidden(REGISTER_TABLE_SERVER_ADDRESS, !visible);
     resetColumnMenu();
+}
+
+ModbusRegisterTable *ModbusRegisterTableView::registerTable() const
+{
+    return m_registerTable;
 }
 
 void ModbusRegisterTableView::onFilterTextChanged(const QString &text)

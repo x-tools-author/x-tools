@@ -10,6 +10,7 @@
 
 #include <QJsonObject>
 #include <QMenu>
+#include <QStandardItem>
 #include <QWidget>
 
 namespace Ui {
@@ -19,8 +20,8 @@ class ModbusRegisterTableView;
 namespace xModbus {
 
 class ModbusRegisterTable;
-class ModbusRegisterTableFilter;
 class ModbusRegisterDelegate;
+class ModbusRegisterTableFilter;
 class ModbusRegisterTableView : public QWidget
 {
     Q_OBJECT
@@ -30,10 +31,9 @@ public:
 
     QJsonObject save() const;
     void load(const QJsonObject &obj);
-
-    ModbusRegisterTable *registerTable() const;
     void selectRow(int row);
     void setServerAddressColumnVisible(bool visible);
+    ModbusRegisterTable *registerTable() const;
 
 private:
     ModbusRegisterTable *m_registerTable{nullptr};
