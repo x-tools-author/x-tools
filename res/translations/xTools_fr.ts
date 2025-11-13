@@ -17,12 +17,14 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
+        <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="vanished">Filtre</translation>
+        <translation>Filtre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="vanished">Préserver le cas</translation>
+        <translation>Préserver le cas</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -296,28 +298,34 @@
 <context>
     <name>BarCodeAssistant</name>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="vanished">Assistante CRC</translation>
+        <translation>Assistante CRC</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="vanished">Rafraîchir</translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="vanished">Taper</translation>
+        <translation>Taper</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="vanished">Exporter</translation>
+        <translation>Exporter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="vanished">Données</translation>
+        <translation>Données</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -344,8 +352,9 @@
 <context>
     <name>BarSettings</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="vanished">Format des données</translation>
+        <translation>Format des données</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -381,28 +390,34 @@
 <context>
     <name>Base64Assistant</name>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Assistante Base64</translation>
+        <translation>Assistante Base64</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="vanished">Texte brut</translation>
+        <translation>Texte brut</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="vanished">Texte chiffré</translation>
+        <translation>Texte chiffré</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="vanished">Image</translation>
+        <translation>Image</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="vanished">Décrypter</translation>
+        <translation>Décrypter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="vanished">Chiffrer</translation>
+        <translation>Chiffrer</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -431,50 +446,61 @@
 <context>
     <name>BleCentralUi</name>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation type="vanished">Caractéristiques</translation>
+        <translation>Caractéristiques</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Caractéristique non prise en charge)</translation>
+        <translation>(Caractéristique non prise en charge)</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation type="vanished">Appareils BLE</translation>
+        <translation>Appareils BLE</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
         <translation>Scanner</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
         <translation>Notifier</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation type="vanished">Lire</translation>
+        <translation>Lire</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation type="vanished">Analyse des services</translation>
+        <translation>Analyse des services</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation type="vanished">Mode écriture</translation>
+        <translation>Mode écriture</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation type="vanished">Service</translation>
+        <translation>Service</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation type="vanished">Analyse des appareils</translation>
+        <translation>Analyse des appareils</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -510,61 +536,75 @@
 <context>
     <name>BroadcastAssistant</name>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="vanished">Contrôle de sortie</translation>
+        <translation>Contrôle de sortie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="vanished">Format de sortie</translation>
+        <translation>Format de sortie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="vanished">Clair</translation>
+        <translation>Clair</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Paramètres de diffusion</translation>
+        <translation>Paramètres de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="vanished">Adresse de diffusion</translation>
+        <translation>Adresse de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="vanished">Format des données</translation>
+        <translation>Format des données</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Préfixe de diffusion</translation>
+        <translation>Préfixe de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="vanished">Intervalle de diffusion</translation>
+        <translation>Intervalle de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Suffixe de diffusion</translation>
+        <translation>Suffixe de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="vanished">Port de diffusion</translation>
+        <translation>Port de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="vanished">Données de diffusion</translation>
+        <translation>Données de diffusion</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
         <translation>Diffuser</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="vanished">Sortie d&apos;informations</translation>
+        <translation>Sortie d&apos;informations</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -580,100 +620,124 @@
 <context>
     <name>CanBusAssistant</name>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="vanished">Studio CANBus</translation>
+        <translation>Studio CANBus</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="vanished">Cadre CAN</translation>
+        <translation>Cadre CAN</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="vanished">Format étendu</translation>
+        <translation>Format étendu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="vanished">Débit de données flexible</translation>
+        <translation>Débit de données flexible</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="vanished">Identifiant du cadre</translation>
+        <translation>Identifiant du cadre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="vanished">Type de cadre</translation>
+        <translation>Type de cadre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="vanished">Options de cadre</translation>
+        <translation>Options de cadre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="vanished">Commutateur de débit</translation>
+        <translation>Commutateur de débit</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="vanished">Contrôle des appareils</translation>
+        <translation>Contrôle des appareils</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="vanished">Déconnecter</translation>
+        <translation>Déconnecter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="vanished">Connecter</translation>
+        <translation>Connecter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="vanished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="vanished">Affichage des données</translation>
+        <translation>Affichage des données</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="vanished">Spécifier la configuration</translation>
+        <translation>Spécifier la configuration</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="vanished">Filtre d&apos;erreur</translation>
+        <translation>Filtre d&apos;erreur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="vanished">Configurations personnalisées</translation>
+        <translation>Configurations personnalisées</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="vanished">PEUT FD</translation>
+        <translation>PEUT FD</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="vanished">Bouclage</translation>
+        <translation>Bouclage</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="vanished">Débit de données</translation>
+        <translation>Débit de données</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="vanished">Débit</translation>
+        <translation>Débit</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="vanished">Recevez votre propre</translation>
+        <translation>Recevez votre propre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">Charge utile de la trame CAN</translation>
+        <translation>Charge utile de la trame CAN</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="vanished">Envoyer</translation>
+        <translation>Envoyer</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -782,95 +846,130 @@
 <context>
     <name>ChartsTestUi</name>
     <message>
+        <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation type="vanished">Format</translation>
+        <translation>Format</translation>
     </message>
     <message>
+        <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation type="vanished">Canaux</translation>
+        <translation>Canaux</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="vanished">Assistante CRC</translation>
+        <translation>Assistante CRC</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="vanished">Valeur Paloy</translation>
+        <translation>Valeur Paloy</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="vanished">Valeur initiale</translation>
+        <translation>Valeur initiale</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="vanished">Copie</translation>
+        <translation>Copie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Pour plus d&apos;informations sur le calcul du CRC, visitez http://www.ip33.com/crc.html (double-clic pour visiter)</translation>
+        <translation>Pour plus d&apos;informations sur le calcul du CRC, visitez http://www.ip33.com/crc.html (double-clic pour visiter)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="vanished">Inversion d&apos;entrée</translation>
+        <translation>Inversion d&apos;entrée</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="vanished">Inversion de sortie</translation>
+        <translation>Inversion de sortie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="vanished">Clair</translation>
+        <translation>Clair</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="vanished">Calculer</translation>
+        <translation>Calculer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="vanished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="vanished">Valeur XOR</translation>
+        <translation>Valeur XOR</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">La hauteur est à gauche et les bits bas sont à droite</translation>
+        <translation>La hauteur est à gauche et les bits bas sont à droite</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="vanished">HEXAMEN</translation>
+        <translation>HEXAMEN</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="vanished">Résultat(HEX)</translation>
+        <translation>Résultat(HEX)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="vanished">Modèle de paramètres</translation>
+        <translation>Modèle de paramètres</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="vanished">Largeur</translation>
+        <translation>Largeur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation type="vanished">Ralentir</translation>
+        <translation>Ralentir</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation type="vanished">Données d&apos;entrée</translation>
+        <translation>Données d&apos;entrée</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation type="vanished">Résultat(BIN)</translation>
+        <translation>Résultat(BIN)</translation>
     </message>
 </context>
 <context>
@@ -899,32 +998,39 @@
 <context>
     <name>DataRecordsView</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="20"/>
         <source>Types</source>
-        <translation type="vanished">Espèces</translation>
+        <translation>Espèces</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="34"/>
         <source>Flags</source>
-        <translation type="vanished">Drapeaux</translation>
+        <translation>Drapeaux</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="48"/>
         <source>Format</source>
-        <translation type="vanished">Format</translation>
+        <translation>Format</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="62"/>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="82"/>
         <source>Records</source>
-        <translation type="vanished">Enregistrements</translation>
+        <translation>Enregistrements</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="96"/>
         <source>Data</source>
-        <translation type="vanished">Données</translation>
+        <translation>Données</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="103"/>
         <source>Search data...</source>
-        <translation type="vanished">Rechercher des données...</translation>
+        <translation>Rechercher des données...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -1111,41 +1217,50 @@
 <context>
     <name>DeviceSettings</name>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="vanished">Enregistrer les données d&apos;émission</translation>
+        <translation>Enregistrer les données d&apos;émission</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="vanished">Navigateur</translation>
+        <translation>Navigateur</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="vanished">Économisez une milliseconde</translation>
+        <translation>Économisez une milliseconde</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="vanished">Enregistrer les données de réception</translation>
+        <translation>Enregistrer les données de réception</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="vanished">Enregistrer la date</translation>
+        <translation>Enregistrer la date</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
         <translation>Enregistrer dans un fichier</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="vanished">Gagnez du temps</translation>
+        <translation>Gagnez du temps</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="vanished">Enregistrer le format</translation>
+        <translation>Enregistrer le format</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="vanished">Nombre maximum d&apos;octets</translation>
+        <translation>Nombre maximum d&apos;octets</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1190,37 +1305,45 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="vanished">Résultat supérieur</translation>
+        <translation>Résultat supérieur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="vanished">Fichier vérifié</translation>
+        <translation>Fichier vérifié</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="vanished">Progression vérifiée</translation>
+        <translation>Progression vérifiée</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="vanished">Algorithme vérifié</translation>
+        <translation>Algorithme vérifié</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="vanished">Résultat vérifié</translation>
+        <translation>Résultat vérifié</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation>Calculer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="vanished">Ouvrir</translation>
+        <translation>Ouvrir</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1241,36 +1364,44 @@
 <context>
     <name>FileMergeAssistant</name>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation type="vanished">Liste de fichiers</translation>
+        <translation>Liste de fichiers</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation type="vanished">Importer</translation>
+        <translation>Importer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation type="vanished">En haut</translation>
+        <translation>En haut</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation type="vanished">Vers le bas</translation>
+        <translation>Vers le bas</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation type="vanished">Retirer</translation>
+        <translation>Retirer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation type="vanished">Clair</translation>
+        <translation>Clair</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation type="vanished">Fusionner</translation>
+        <translation>Fusionner</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1344,8 +1475,9 @@
 <context>
     <name>HidDeviceUi</name>
     <message>
+        <location filename="../../src/device/hiddeviceui.ui" line="45"/>
         <source>Device</source>
-        <translation type="vanished">Appareil</translation>
+        <translation>Appareil</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1424,56 +1556,69 @@
 <context>
     <name>InputSettings</name>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="vanished">Afficher l&apos;aperçu des données</translation>
+        <translation>Afficher l&apos;aperçu des données</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
-        <translation type="vanished">Ajouter un suffixe</translation>
+        <translation>Ajouter un suffixe</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
-        <translation type="vanished">Ajouter un préfixe</translation>
+        <translation>Ajouter un préfixe</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
-        <translation type="vanished">Caractère d&apos;évasion</translation>
+        <translation>Caractère d&apos;évasion</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="89"/>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Prétraitement des données</translation>
+        <translation>Prétraitement des données</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="102"/>
         <source>Append checking data</source>
-        <translation type="vanished">Ajouter les données de vérification</translation>
+        <translation>Ajouter les données de vérification</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
-        <translation type="vanished">Gros boutiste</translation>
+        <translation>Gros boutiste</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="121"/>
         <source>Start from Left</source>
-        <translation type="vanished">Commencer par la gauche</translation>
+        <translation>Commencer par la gauche</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="128"/>
         <source>Start from right</source>
-        <translation type="vanished">Commencer par la droite</translation>
+        <translation>Commencer par la droite</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="141"/>
         <source>Arithmetic</source>
-        <translation type="vanished">Arithmétique</translation>
+        <translation>Arithmétique</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start index</source>
-        <translation type="vanished">Indice de départ</translation>
+        <translation>Indice de départ</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="174"/>
         <source>End index</source>
-        <translation type="vanished">Indice de fin</translation>
+        <translation>Indice de fin</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
-        <translation type="vanished">Vérification des données</translation>
+        <translation>Vérification des données</translation>
     </message>
 </context>
 <context>
@@ -1499,28 +1644,34 @@
 <context>
     <name>LineSettings</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="vanished">Type de données</translation>
+        <translation>Type de données</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="vanished">Légende</translation>
+        <translation>Légende</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="vanished">Points de cache</translation>
+        <translation>Points de cache</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="vanished">Clair</translation>
+        <translation>Clair</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="vanished">Exporter</translation>
+        <translation>Exporter</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="vanished">Importer</translation>
+        <translation>Importer</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1575,12 +1726,14 @@
 <context>
     <name>LocalServerUi</name>
     <message>
+        <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="vanished">Écrivez à</translation>
+        <translation>Écrivez à</translation>
     </message>
     <message>
+        <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation type="vanished">Nom du serveur</translation>
+        <translation>Nom du serveur</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1591,39 +1744,47 @@
 <context>
     <name>LocalSocketUi</name>
     <message>
+        <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation type="vanished">Nom du serveur</translation>
+        <translation>Nom du serveur</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
-        <translation type="vanished">Test</translation>
+        <translation>Test</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="39"/>
         <source>Test data</source>
-        <translation type="vanished">Données de test</translation>
+        <translation>Données de test</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="63"/>
         <source>Result data</source>
-        <translation type="vanished">Données de résultat</translation>
+        <translation>Données de résultat</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation type="vanished">By-pass</translation>
+        <translation>By-pass</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation type="vanished">Paramètres du tableau</translation>
+        <translation>Paramètres du tableau</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation type="vanished">Paramètres de chaîne</translation>
+        <translation>Paramètres de chaîne</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1891,10 +2052,12 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
+        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation type="vanished">Type de service</translation>
+        <translation>Type de service</translation>
     </message>
     <message>
+        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
         <translation>Démarrer</translation>
@@ -1938,137 +2101,170 @@
 <context>
     <name>ModbusAssistant</name>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation type="vanished">Console</translation>
+        <translation>Console</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation type="vanished">Registre du serveur</translation>
+        <translation>Registre du serveur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation type="vanished">Envoyer</translation>
+        <translation>Envoyer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Unité de données de protocole personnalisé</translation>
+        <translation>Unité de données de protocole personnalisé</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation type="vanished">Registres des clients</translation>
+        <translation>Registres des clients</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation type="vanished">Liste des appareils</translation>
+        <translation>Liste des appareils</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation type="vanished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation type="vanished">Ouvrir</translation>
+        <translation>Ouvrir</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation type="vanished">Opérations sur l&apos;appareil</translation>
+        <translation>Opérations sur l&apos;appareil</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation type="vanished">Paramètres réseau</translation>
+        <translation>Paramètres réseau</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation type="vanished">Port</translation>
+        <translation>Port</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation type="vanished">Débit en bauds</translation>
+        <translation>Débit en bauds</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation type="vanished">Bits de données</translation>
+        <translation>Bits de données</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Paramètres du port série</translation>
+        <translation>Paramètres du port série</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation type="vanished">Parité</translation>
+        <translation>Parité</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation type="vanished">Nom du port</translation>
+        <translation>Nom du port</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation type="vanished">Bits d&apos;arrêt</translation>
+        <translation>Bits d&apos;arrêt</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation type="vanished">Appareil occupé</translation>
+        <translation>Appareil occupé</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation type="vanished">Paramètres du serveur</translation>
+        <translation>Paramètres du serveur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation type="vanished">Adresse du serveur</translation>
+        <translation>Adresse du serveur</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation type="vanished">Mode écoute seule</translation>
+        <translation>Mode écoute seule</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation type="vanished">Adresse cible</translation>
+        <translation>Adresse cible</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation type="vanished">Lire</translation>
+        <translation>Lire</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation type="vanished">Écrire</translation>
+        <translation>Écrire</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation type="vanished">Code de fonction</translation>
+        <translation>Code de fonction</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation type="vanished">Numéro d&apos;adresse</translation>
+        <translation>Numéro d&apos;adresse</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation type="vanished">Adresse de départ</translation>
+        <translation>Adresse de départ</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation type="vanished">Répéter les temps</translation>
+        <translation>Répéter les temps</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation type="vanished">Temps mort</translation>
+        <translation>Temps mort</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation type="vanished">Paramètres clients</translation>
+        <translation>Paramètres clients</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Contrôle d&apos;entrée (adresse et valeur)</translation>
+        <translation>Contrôle d&apos;entrée (adresse et valeur)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation type="vanished">Format d&apos;entrée</translation>
+        <translation>Format d&apos;entrée</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2213,6 +2409,132 @@
     </message>
 </context>
 <context>
+    <name>ModbusDeviceEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
+        <source>New Modbus Device</source>
+        <translation type="unfinished">Nouveau périphérique Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
+        <source>Listen only mode</source>
+        <translation type="unfinished">Mode écoute seule</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
+        <source>IP Address</source>
+        <translation type="unfinished">Adresse IP</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
+        <source>Timeout(ms)</source>
+        <translation type="unfinished">Délai d&apos;expiration (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="81"/>
+        <source>Baud rate</source>
+        <translation type="unfinished">Débit en bauds</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="94"/>
+        <source>Stop bits</source>
+        <translation type="unfinished">Bits d&apos;arrêt</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
+        <source>Device type</source>
+        <translation type="unfinished">Type d&apos;appareil</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
+        <source>Address</source>
+        <translation type="unfinished">Adresse</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="143"/>
+        <source>Port</source>
+        <translation type="unfinished">Port</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="156"/>
+        <source>Parity</source>
+        <translation type="unfinished">Parité</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
+        <source>Device Name</source>
+        <translation type="unfinished">Nom de l&apos;appareil</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
+        <source>Such as: Siemens S7-300</source>
+        <translation type="unfinished">Tels que&#xa0;:&#xa0;Siemens S7-300</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
+        <source>Data bits</source>
+        <translation type="unfinished">Bits de données</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Rafraîchir</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
+        <source>Names</source>
+        <translation type="unfinished">Noms</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
+        <source>Retries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="310"/>
+        <source>Register tables</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ModbusDeviceListView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="34"/>
+        <source>New device/group/register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
+        <source>Delete device/group/register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
+        <source>Close all devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
+        <source>Open all devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
+        <source>Expand all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
+        <source>Collapse all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="116"/>
+        <source>Search</source>
+        <translation type="unfinished">Recherche</translation>
+    </message>
+</context>
+<context>
     <name>ModbusFactory</name>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="46"/>
@@ -2236,34 +2558,137 @@
     </message>
 </context>
 <context>
+    <name>ModbusLogView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="34"/>
+        <source>Log type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="47"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="57"/>
+        <source>Clear all log items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="73"/>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="86"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
+        <source>Open a log file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
+        <source>Save log as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
+        <source>Ignore data log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
+        <source>Using color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="113"/>
+        <source>Audo scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ModbusRegisterTableView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
+        <source>Columns visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <source>Add register item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="76"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
+        <source>Remove current register item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <source>Clear register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
+        <source>Save register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
+        <source>Import register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NumberAssistant</name>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation type="vanished">Données brutes</translation>
+        <translation>Données brutes</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Données cuites (Hex)</translation>
+        <translation>Données cuites (Hex)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation type="vanished">Type de données cuit</translation>
+        <translation>Type de données cuit</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Données cuites (décembre)</translation>
+        <translation>Données cuites (décembre)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Tels que&#xa0;: 1, -1, 1.1, -1.1</translation>
+        <translation>Tels que&#xa0;: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Données cuites (Bin)</translation>
+        <translation>Données cuites (Bin)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation type="vanished">De gauche à droite, de haut en bas</translation>
+        <translation>De gauche à droite, de haut en bas</translation>
     </message>
 </context>
 <context>
@@ -2302,128 +2727,161 @@
 <context>
     <name>OutputSettings</name>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation type="vanished">Activer le surligneur</translation>
+        <translation>Activer le surligneur</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation type="vanished">Filtrer le texte</translation>
+        <translation>Filtrer le texte</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation type="vanished">Bonjour, Word</translation>
+        <translation>Bonjour, Word</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation type="vanished">Afficher le statisticien</translation>
+        <translation>Afficher le statisticien</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation type="vanished">Activer le filtre</translation>
+        <translation>Activer le filtre</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
+        <location filename="../../src/page/page.ui" line="47"/>
         <source>Cycle interval</source>
-        <translation type="vanished">Intervalle de cycle</translation>
+        <translation>Intervalle de cycle</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.cpp" line="587"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="63"/>
+        <location filename="../../src/page/page.ui" line="74"/>
+        <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation type="vanished">Paramètres</translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="vanished">Clair</translation>
+        <translation>Clair</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="122"/>
         <source>Rx</source>
-        <translation type="vanished">réception</translation>
+        <translation>réception</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Tx</source>
-        <translation type="vanished">Émission</translation>
+        <translation>Émission</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="136"/>
         <source>Date</source>
-        <translation type="vanished">Date</translation>
+        <translation>Date</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="143"/>
         <source>Flag</source>
-        <translation type="vanished">Drapeau</translation>
+        <translation>Drapeau</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="150"/>
         <source>Time</source>
-        <translation type="vanished">Temps</translation>
+        <translation>Temps</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="157"/>
         <source>Ms</source>
-        <translation type="vanished">MS</translation>
+        <translation>MS</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation type="vanished">Contrôle de sortie</translation>
+        <translation>Contrôle de sortie</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation type="vanished">Contrôle d&apos;entrée</translation>
+        <translation>Contrôle d&apos;entrée</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation type="vanished">Envelopper</translation>
+        <translation>Envelopper</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation type="vanished">Terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation type="vanished">Contrôle des communications</translation>
+        <translation>Contrôle des communications</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation type="vanished">Envoyer</translation>
+        <translation>Envoyer</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="260"/>
+        <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation type="vanished">Format du texte</translation>
+        <translation>Format du texte</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="341"/>
         <source>Output</source>
-        <translation type="vanished">Sortir</translation>
+        <translation>Sortir</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="514"/>
         <source>Input</source>
-        <translation type="vanished">Saisir</translation>
+        <translation>Saisir</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="521"/>
         <source>Preset data list</source>
-        <translation type="vanished">Liste de données prédéfinies</translation>
+        <translation>Liste de données prédéfinies</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="563"/>
         <source>Presets</source>
-        <translation type="vanished">Préréglages</translation>
+        <translation>Préréglages</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="568"/>
         <source>Emitter</source>
-        <translation type="vanished">Émetteur</translation>
+        <translation>Émetteur</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="573"/>
         <source>Responder</source>
-        <translation type="vanished">Répondeur</translation>
+        <translation>Répondeur</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="578"/>
         <source>Transfers</source>
-        <translation type="vanished">Transferts</translation>
+        <translation>Transferts</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2634,44 +3092,54 @@
 <context>
     <name>PresetViewGroupEditor</name>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="45"/>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Intervalle de groupe (ms)</translation>
+        <translation>Intervalle de groupe (ms)</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="68"/>
         <source>Add(update) Group</source>
-        <translation type="vanished">Ajouter (mettre à jour) un groupe</translation>
+        <translation>Ajouter (mettre à jour) un groupe</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="75"/>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Colonnes (divisées avec un espace)</translation>
+        <translation>Colonnes (divisées avec un espace)</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="87"/>
         <source>Up</source>
-        <translation type="vanished">En haut</translation>
+        <translation>En haut</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="94"/>
         <source>Down</source>
-        <translation type="vanished">Vers le bas</translation>
+        <translation>Vers le bas</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="103"/>
         <source>Delete Selected</source>
-        <translation type="vanished">Supprimer la sélection</translation>
+        <translation>Supprimer la sélection</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="116"/>
         <source>Untitled</source>
-        <translation type="vanished">Sans titre</translation>
+        <translation>Sans titre</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="139"/>
         <source>Name</source>
-        <translation type="vanished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
         <source>Disable the group</source>
-        <translation type="vanished">Désactiver le groupe</translation>
+        <translation>Désactiver le groupe</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="169"/>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Intervalle d&apos;élément (ms)</translation>
+        <translation>Intervalle d&apos;élément (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -3019,12 +3487,14 @@
 <context>
     <name>QRCodeAssistant</name>
     <message>
+        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="vanished">Exporter</translation>
+        <translation>Exporter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation type="vanished">Générer</translation>
+        <translation>Générer</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3094,36 +3564,44 @@
 <context>
     <name>ScriptBase</name>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
         <source>Clear log</source>
-        <translation type="vanished">Effacer le journal</translation>
+        <translation>Effacer le journal</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
         <source>Log</source>
-        <translation type="vanished">Enregistrer</translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="72"/>
         <source>Open script directory</source>
-        <translation type="vanished">Ouvrir le répertoire des scripts</translation>
+        <translation>Ouvrir le répertoire des scripts</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="85"/>
         <source>New script</source>
-        <translation type="vanished">Nouveau scénario</translation>
+        <translation>Nouveau scénario</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="98"/>
         <source>Refresh file list</source>
-        <translation type="vanished">Actualiser la liste des fichiers</translation>
+        <translation>Actualiser la liste des fichiers</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="111"/>
         <source>Online manual</source>
-        <translation type="vanished">Manuel en ligne</translation>
+        <translation>Manuel en ligne</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="129"/>
         <source>Script</source>
-        <translation type="vanished">Scénario</translation>
+        <translation>Scénario</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3188,24 +3666,29 @@
 <context>
     <name>SearchPanel</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="vanished">Rechercher du texte</translation>
+        <translation>Rechercher du texte</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="vanished">Recherche</translation>
+        <translation>Recherche</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="vanished">Expression régulière</translation>
+        <translation>Expression régulière</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="vanished">Sensible aux majuscules et minuscules</translation>
+        <translation>Sensible aux majuscules et minuscules</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="vanished">Mot entier</translation>
+        <translation>Mot entier</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3318,36 +3801,44 @@
 <context>
     <name>SerialPortUi</name>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
-        <translation type="vanished">Débit en bauds</translation>
+        <translation>Débit en bauds</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
-        <translation type="vanished">Parité</translation>
+        <translation>Parité</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
-        <translation type="vanished">Appareil occupé ignoré</translation>
+        <translation>Appareil occupé ignoré</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
-        <translation type="vanished">Bits de données</translation>
+        <translation>Bits de données</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
-        <translation type="vanished">Contrôle de flux</translation>
+        <translation>Contrôle de flux</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
-        <translation type="vanished">Bits d&apos;arrêt</translation>
+        <translation>Bits d&apos;arrêt</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation type="vanished">Nom du port</translation>
+        <translation>Nom du port</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="193"/>
         <source>Enable frame interval</source>
-        <translation type="vanished">Activer l&apos;intervalle de trame</translation>
+        <translation>Activer l&apos;intervalle de trame</translation>
     </message>
 </context>
 <context>
@@ -3406,64 +3897,79 @@
 <context>
     <name>SocketUi</name>
     <message>
+        <location filename="../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="vanished">Écrivez à</translation>
+        <translation>Écrivez à</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
-        <translation type="vanished">Chemin</translation>
+        <translation>Chemin</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Déconnecter tous les clients</translation>
+        <translation>Déconnecter tous les clients</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
-        <translation type="vanished">Authentification</translation>
+        <translation>Authentification</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
-        <translation type="vanished">IP du serveur</translation>
+        <translation>IP du serveur</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation type="vanished">Canal</translation>
+        <translation>Canal</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
-        <translation type="vanished">Activer la multidiffusion</translation>
+        <translation>Activer la multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
-        <translation type="vanished">Juste multidiffusion</translation>
+        <translation>Juste multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation type="vanished">message/bonjour</translation>
+        <translation>message/bonjour</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
-        <translation type="vanished">Mode sécurisé</translation>
+        <translation>Mode sécurisé</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
-        <translation type="vanished">Port de multidiffusion</translation>
+        <translation>Port de multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
-        <translation type="vanished">IP de multidiffusion</translation>
+        <translation>IP de multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
-        <translation type="vanished">Port du serveur</translation>
+        <translation>Port du serveur</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation type="vanished">Nom d&apos;utilisateur</translation>
+        <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation type="vanished">Mot de passe</translation>
+        <translation>Mot de passe</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3482,24 +3988,29 @@
 <context>
     <name>StringAssistant</name>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="vanished">Données brutes</translation>
+        <translation>Données brutes</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="vanished">Format d&apos;entrée</translation>
+        <translation>Format d&apos;entrée</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="vanished">Données cuites</translation>
+        <translation>Données cuites</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="vanished">Format de sortie</translation>
+        <translation>Format de sortie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="vanished">Créer</translation>
+        <translation>Créer</translation>
     </message>
 </context>
 <context>
@@ -3523,41 +4034,50 @@
 <context>
     <name>TableView</name>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulaire</translation>
+        <translation>Formulaire</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="vanished">Exporter</translation>
+        <translation>Exporter</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="44"/>
         <source>Disable all items</source>
-        <translation type="vanished">Désactiver tous les éléments</translation>
+        <translation>Désactiver tous les éléments</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation type="vanished">Supprimer</translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation type="vanished">En haut</translation>
+        <translation>En haut</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation type="vanished">Ajouter</translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
         <translation>Effacer</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation type="vanished">Importer</translation>
+        <translation>Importer</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation type="vanished">Vers le bas</translation>
+        <translation>Vers le bas</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3590,64 +4110,79 @@
 <context>
     <name>TextItemEditor</name>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="vanished">Éditeur de données</translation>
+        <translation>Éditeur de données</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="vanished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="vanished">Algorithme</translation>
+        <translation>Algorithme</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="vanished">Indice de départ</translation>
+        <translation>Indice de départ</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="vanished">Indice de fin</translation>
+        <translation>Indice de fin</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="vanished">Ajouter</translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="vanished">Gros boutiste</translation>
+        <translation>Gros boutiste</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation type="vanished">Prétraitement</translation>
+        <translation>Prétraitement</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation type="vanished">Préfixe</translation>
+        <translation>Préfixe</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation type="vanished">Suffixe</translation>
+        <translation>Suffixe</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="vanished">Caractère d&apos;évasion</translation>
+        <translation>Caractère d&apos;évasion</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation type="vanished">D&apos;ACCORD</translation>
+        <translation>D&apos;ACCORD</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="vanished">Charge utile</translation>
+        <translation>Charge utile</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="vanished">Format</translation>
+        <translation>Format</translation>
     </message>
 </context>
 <context>
@@ -3707,12 +4242,14 @@
 <context>
     <name>UdpBroadcastUi</name>
     <message>
+        <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Sélectionnez une interface réseau&#xa0;:</translation>
+        <translation>Sélectionnez une interface réseau&#xa0;:</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="vanished">Port de diffusion</translation>
+        <translation>Port de diffusion</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3746,20 +4283,24 @@
 <context>
     <name>UdpMulticastUi</name>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Sélectionnez une interface réseau&#xa0;:</translation>
+        <translation>Sélectionnez une interface réseau&#xa0;:</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="vanished">IP de multidiffusion</translation>
+        <translation>IP de multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="vanished">Port de multidiffusion</translation>
+        <translation>Port de multidiffusion</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="vanished">Bouclage multidiffusion</translation>
+        <translation>Bouclage multidiffusion</translation>
     </message>
 </context>
 <context>
@@ -3773,6 +4314,11 @@
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Exemple d&apos;action</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
+        <source>Log</source>
+        <translation type="unfinished">Enregistrer</translation>
     </message>
 </context>
 <context>
@@ -3869,57 +4415,57 @@
         <translation>Supprimer l&apos;élément sélectionné</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
         <source>Remove Device</source>
         <translation>Supprimer l&apos;appareil</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="207"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>L&apos;appareil est en marche. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="252"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
         <source>Rename Register Table</source>
         <translation>Renommer la table de registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="254"/>
         <source>Please input the new name for the register table:</source>
         <translation>Veuillez saisir le nouveau nom de la table de registre&#xa0;:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
         <source>Rename Register Item</source>
         <translation>Renommer l&apos;élément de registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Please input the new name for the register item:</source>
         <translation>Veuillez saisir le nouveau nom de l&apos;élément de registre&#xa0;:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="278"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="279"/>
         <source>Edit Modbus Device</source>
         <translation>Modifier un appareil Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>Change Device parameters</source>
         <translation>Modifier les paramètres de l&apos;appareil</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>L&apos;appareil est en marche. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="556"/>
         <source>TCP Client Device</source>
         <translation>Périphérique client TCP</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="562"/>
         <source>TCP Server Device</source>
         <translation>Périphérique serveur TCP</translation>
     </message>
@@ -4051,50 +4597,50 @@
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="162"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
         <source>Save Registers</source>
         <translation>Enregistrer les registres</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="164"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="188"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
         <source>Failed to open file for saving.</source>
         <translation>Échec de l&apos;ouverture du fichier pour l&apos;enregistrement.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Load Registers</source>
         <translation>Charger les registres</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <source>Failed to open file for loading.</source>
         <translation>Échec de l&apos;ouverture du fichier pour le chargement.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Format JSON invalide dans le fichier.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>Import Registers</source>
         <translation>Registres d&apos;importation</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="214"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>La table de registre n&apos;est pas vide. </translation>
     </message>

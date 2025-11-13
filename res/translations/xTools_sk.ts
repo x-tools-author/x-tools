@@ -17,12 +17,14 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
+        <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation type="vanished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation type="vanished">Zachovať puzdro</translation>
+        <translation>Zachovať puzdro</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -296,28 +298,34 @@
 <context>
     <name>BarCodeAssistant</name>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="vanished">Asistent CRC</translation>
+        <translation>Asistent CRC</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation type="vanished">Obnoviť</translation>
+        <translation>Obnoviť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation type="vanished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation type="vanished">Exportovať</translation>
+        <translation>Exportovať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation type="vanished">Údaje</translation>
+        <translation>Údaje</translation>
     </message>
     <message>
+        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation type="vanished">010000000000</translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -344,8 +352,9 @@
 <context>
     <name>BarSettings</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation type="vanished">Formát údajov</translation>
+        <translation>Formát údajov</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -381,28 +390,34 @@
 <context>
     <name>Base64Assistant</name>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation type="vanished">Asistent Base64</translation>
+        <translation>Asistent Base64</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation type="vanished">Čistý text</translation>
+        <translation>Čistý text</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation type="vanished">Šifrovaný text</translation>
+        <translation>Šifrovaný text</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation type="vanished">Obrázok</translation>
+        <translation>Obrázok</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation type="vanished">Dešifrovať</translation>
+        <translation>Dešifrovať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation type="vanished">Šifrovať</translation>
+        <translation>Šifrovať</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -431,50 +446,61 @@
 <context>
     <name>BleCentralUi</name>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation type="vanished">Charakteristický</translation>
+        <translation>Charakteristický</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation type="vanished">(Nepodporovaná charakteristika)</translation>
+        <translation>(Nepodporovaná charakteristika)</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation type="vanished">Zariadenia BLE</translation>
+        <translation>Zariadenia BLE</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
         <translation>Skener</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
         <translation>Oznámiť</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation type="vanished">Prečítajte si</translation>
+        <translation>Prečítajte si</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation type="vanished">Servisné skenovanie</translation>
+        <translation>Servisné skenovanie</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation type="vanished">Režim zápisu</translation>
+        <translation>Režim zápisu</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation type="vanished">servis</translation>
+        <translation>servis</translation>
     </message>
     <message>
+        <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation type="vanished">Skenovanie zariadenia</translation>
+        <translation>Skenovanie zariadenia</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -510,61 +536,75 @@
 <context>
     <name>BroadcastAssistant</name>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation type="vanished">Výstupná kontrola</translation>
+        <translation>Výstupná kontrola</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation type="vanished">Výstupný formát</translation>
+        <translation>Výstupný formát</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation type="vanished">Jasné</translation>
+        <translation>Jasné</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation type="vanished">Parametre vysielania</translation>
+        <translation>Parametre vysielania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation type="vanished">Adresa vysielania</translation>
+        <translation>Adresa vysielania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation type="vanished">55443</translation>
+        <translation>55443</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation type="vanished">Formát údajov</translation>
+        <translation>Formát údajov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation type="vanished">Predpona vysielania</translation>
+        <translation>Predpona vysielania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation type="vanished">Interval vysielania</translation>
+        <translation>Interval vysielania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation type="vanished">Prípona vysielania</translation>
+        <translation>Prípona vysielania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation type="vanished">Vysielací port</translation>
+        <translation>Vysielací port</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation type="vanished">Vysielané dáta</translation>
+        <translation>Vysielané dáta</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
         <translation>Vysielať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation type="vanished">Informačný výstup</translation>
+        <translation>Informačný výstup</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -580,100 +620,124 @@
 <context>
     <name>CanBusAssistant</name>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation type="vanished">Štúdio CANBus</translation>
+        <translation>Štúdio CANBus</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation type="vanished">Rám CAN</translation>
+        <translation>Rám CAN</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation type="vanished">Rozšírený formát</translation>
+        <translation>Rozšírený formát</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation type="vanished">Flexibilná rýchlosť prenosu dát</translation>
+        <translation>Flexibilná rýchlosť prenosu dát</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation type="vanished">ID rámu</translation>
+        <translation>ID rámu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation type="vanished">Typ rámu</translation>
+        <translation>Typ rámu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation type="vanished">Možnosti rámu</translation>
+        <translation>Možnosti rámu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation type="vanished">Prepínač bitovej rýchlosti</translation>
+        <translation>Prepínač bitovej rýchlosti</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation type="vanished">Ovládanie zariadenia</translation>
+        <translation>Ovládanie zariadenia</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation type="vanished">Odpojiť</translation>
+        <translation>Odpojiť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation type="vanished">Pripojte sa</translation>
+        <translation>Pripojte sa</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation type="vanished">Plugin</translation>
+        <translation>Plugin</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation type="vanished">Meno</translation>
+        <translation>Meno</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation type="vanished">Zobrazenie údajov</translation>
+        <translation>Zobrazenie údajov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation type="vanished">Zadajte konfiguráciu</translation>
+        <translation>Zadajte konfiguráciu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation type="vanished">Chybový filter</translation>
+        <translation>Chybový filter</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation type="vanished">Vlastné konfigurácie</translation>
+        <translation>Vlastné konfigurácie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation type="vanished">Loopback</translation>
+        <translation>Loopback</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation type="vanished">Dátová rýchlosť</translation>
+        <translation>Dátová rýchlosť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation type="vanished">Bitová rýchlosť</translation>
+        <translation>Bitová rýchlosť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation type="vanished">Prijať vlastné</translation>
+        <translation>Prijať vlastné</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation type="vanished">Užitočné zaťaženie rámca CAN</translation>
+        <translation>Užitočné zaťaženie rámca CAN</translation>
     </message>
     <message>
+        <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation type="vanished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -782,83 +846,130 @@
 <context>
     <name>ChartsTestUi</name>
     <message>
+        <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation type="vanished">Formátovať</translation>
+        <translation>Formátovať</translation>
     </message>
     <message>
+        <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation type="vanished">Kanály</translation>
+        <translation>Kanály</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="vanished">Asistent CRC</translation>
+        <translation>Asistent CRC</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="vanished">Paloy hodnota</translation>
+        <translation>Paloy hodnota</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="vanished">Počiatočná hodnota</translation>
+        <translation>Počiatočná hodnota</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation type="vanished">Kopírovať</translation>
+        <translation>Kopírovať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="vanished">Viac informácií o výpočte crc nájdete na stránke http://www.ip33.com/crc.html (pre návštevu dvakrát kliknite)</translation>
+        <translation>Viac informácií o výpočte crc nájdete na stránke http://www.ip33.com/crc.html (pre návštevu dvakrát kliknite)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="vanished">Obrátenie vstupu</translation>
+        <translation>Obrátenie vstupu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="vanished">Reverzácia výstupu</translation>
+        <translation>Reverzácia výstupu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="vanished">Jasné</translation>
+        <translation>Jasné</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="vanished">Vypočítajte</translation>
+        <translation>Vypočítajte</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="vanished">Parametre</translation>
+        <translation>Parametre</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="vanished">Hodnota XOR</translation>
+        <translation>Hodnota XOR</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="vanished">Výška je vľavo a nízke bity vpravo</translation>
+        <translation>Výška je vľavo a nízke bity vpravo</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="vanished">HEX</translation>
+        <translation>HEX</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="vanished">ASCII</translation>
+        <translation>ASCII</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="vanished">Výsledok (HEX)</translation>
+        <translation>Výsledok (HEX)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="vanished">Model parametrov</translation>
+        <translation>Model parametrov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="vanished">šírka</translation>
+        <translation>šírka</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
+        <source>Paloy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
+        <source>Input data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
+        <source>Result(BIN)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -887,32 +998,39 @@
 <context>
     <name>DataRecordsView</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="20"/>
         <source>Types</source>
-        <translation type="vanished">Typy</translation>
+        <translation>Typy</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="34"/>
         <source>Flags</source>
-        <translation type="vanished">Vlajky</translation>
+        <translation>Vlajky</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="48"/>
         <source>Format</source>
-        <translation type="vanished">Formátovať</translation>
+        <translation>Formátovať</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="62"/>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="82"/>
         <source>Records</source>
-        <translation type="vanished">Záznamy</translation>
+        <translation>Záznamy</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="96"/>
         <source>Data</source>
-        <translation type="vanished">Údaje</translation>
+        <translation>Údaje</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="103"/>
         <source>Search data...</source>
-        <translation type="vanished">Vyhľadať údaje...</translation>
+        <translation>Vyhľadať údaje...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -1099,41 +1217,50 @@
 <context>
     <name>DeviceSettings</name>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation type="vanished">Uložte údaje TX</translation>
+        <translation>Uložte údaje TX</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation type="vanished">Prehliadač</translation>
+        <translation>Prehliadač</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation type="vanished">Ušetrite milisekúndu</translation>
+        <translation>Ušetrite milisekúndu</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation type="vanished">Uložte údaje rx</translation>
+        <translation>Uložte údaje rx</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation type="vanished">Dátum uloženia</translation>
+        <translation>Dátum uloženia</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
         <translation>Uložiť do súboru</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation type="vanished">Ušetrite čas</translation>
+        <translation>Ušetrite čas</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation type="vanished">Uložiť formát</translation>
+        <translation>Uložiť formát</translation>
     </message>
     <message>
+        <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation type="vanished">Maximálny počet bajtov</translation>
+        <translation>Maximálny počet bajtov</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1178,37 +1305,45 @@
 <context>
     <name>FileCheckAssistant</name>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="vanished">Horný výsledok</translation>
+        <translation>Horný výsledok</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="vanished">Skontrolovaný súbor</translation>
+        <translation>Skontrolovaný súbor</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="vanished">Skontrolovaný priebeh</translation>
+        <translation>Skontrolovaný priebeh</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="vanished">Skontrolovaný algoritmus</translation>
+        <translation>Skontrolovaný algoritmus</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="vanished">Skontrolovaný výsledok</translation>
+        <translation>Skontrolovaný výsledok</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation>Vypočítať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="vanished">OTVORENÉ</translation>
+        <translation>OTVORENÉ</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1229,36 +1364,44 @@
 <context>
     <name>FileMergeAssistant</name>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation type="vanished">Zoznam súborov</translation>
+        <translation>Zoznam súborov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation type="vanished">Importovať</translation>
+        <translation>Importovať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation type="vanished">Hore</translation>
+        <translation>Hore</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation type="vanished">Dole</translation>
+        <translation>Dole</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation type="vanished">Odstrániť</translation>
+        <translation>Odstrániť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation type="vanished">Jasné</translation>
+        <translation>Jasné</translation>
     </message>
     <message>
+        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation type="vanished">Zlúčiť</translation>
+        <translation>Zlúčiť</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1332,8 +1475,9 @@
 <context>
     <name>HidDeviceUi</name>
     <message>
+        <location filename="../../src/device/hiddeviceui.ui" line="45"/>
         <source>Device</source>
-        <translation type="vanished">Zariadenie</translation>
+        <translation>Zariadenie</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1412,56 +1556,69 @@
 <context>
     <name>InputSettings</name>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation type="vanished">Zobraziť ukážku údajov</translation>
+        <translation>Zobraziť ukážku údajov</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
-        <translation type="vanished">Pripojte príponu</translation>
+        <translation>Pripojte príponu</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
-        <translation type="vanished">Pripojiť predponu</translation>
+        <translation>Pripojiť predponu</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
-        <translation type="vanished">Úniková postava</translation>
+        <translation>Úniková postava</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="89"/>
         <source>Data Preprocessing</source>
-        <translation type="vanished">Predspracovanie údajov</translation>
+        <translation>Predspracovanie údajov</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="102"/>
         <source>Append checking data</source>
-        <translation type="vanished">Pripojte kontrolné údaje</translation>
+        <translation>Pripojte kontrolné údaje</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
-        <translation type="vanished">Veľký endian</translation>
+        <translation>Veľký endian</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="121"/>
         <source>Start from Left</source>
-        <translation type="vanished">Začnite zľava</translation>
+        <translation>Začnite zľava</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="128"/>
         <source>Start from right</source>
-        <translation type="vanished">Začnite sprava</translation>
+        <translation>Začnite sprava</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="141"/>
         <source>Arithmetic</source>
-        <translation type="vanished">Aritmetika</translation>
+        <translation>Aritmetika</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start index</source>
-        <translation type="vanished">Spustiť index</translation>
+        <translation>Spustiť index</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="174"/>
         <source>End index</source>
-        <translation type="vanished">Koniec indexu</translation>
+        <translation>Koniec indexu</translation>
     </message>
     <message>
+        <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
-        <translation type="vanished">Kontrola údajov</translation>
+        <translation>Kontrola údajov</translation>
     </message>
 </context>
 <context>
@@ -1487,28 +1644,34 @@
 <context>
     <name>LineSettings</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation type="vanished">Typ údajov</translation>
+        <translation>Typ údajov</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation type="vanished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation type="vanished">Body vyrovnávacej pamäte</translation>
+        <translation>Body vyrovnávacej pamäte</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation type="vanished">Jasné</translation>
+        <translation>Jasné</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation type="vanished">Exportovať</translation>
+        <translation>Exportovať</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation type="vanished">Importovať</translation>
+        <translation>Importovať</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1563,12 +1726,14 @@
 <context>
     <name>LocalServerUi</name>
     <message>
+        <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="vanished">Napíšte komu</translation>
+        <translation>Napíšte komu</translation>
     </message>
     <message>
+        <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation type="vanished">Názov servera</translation>
+        <translation>Názov servera</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1579,39 +1744,47 @@
 <context>
     <name>LocalSocketUi</name>
     <message>
+        <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation type="vanished">Názov servera</translation>
+        <translation>Názov servera</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
-        <translation type="vanished">Test</translation>
+        <translation>Test</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="39"/>
         <source>Test data</source>
-        <translation type="vanished">Testovacie údaje</translation>
+        <translation>Testovacie údaje</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="63"/>
         <source>Result data</source>
-        <translation type="vanished">Údaje o výsledku</translation>
+        <translation>Údaje o výsledku</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation type="vanished">Obchvat</translation>
+        <translation>Obchvat</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation type="vanished">Parametre tabuľky</translation>
+        <translation>Parametre tabuľky</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation type="vanished">Parametre reťazca</translation>
+        <translation>Parametre reťazca</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1879,10 +2052,12 @@
 <context>
     <name>MdnsAssistant</name>
     <message>
+        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation type="vanished">Typ služby</translation>
+        <translation>Typ služby</translation>
     </message>
     <message>
+        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
         <translation>Štart</translation>
@@ -1926,137 +2101,170 @@
 <context>
     <name>ModbusAssistant</name>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation type="vanished">Konzola</translation>
+        <translation>Konzola</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation type="vanished">Registrácia servera</translation>
+        <translation>Registrácia servera</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation type="vanished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation type="vanished">Dátová jednotka vlastného protokolu</translation>
+        <translation>Dátová jednotka vlastného protokolu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation type="vanished">Registre klientov</translation>
+        <translation>Registre klientov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation type="vanished">Zoznam zariadení</translation>
+        <translation>Zoznam zariadení</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation type="vanished">Zavrieť</translation>
+        <translation>Zavrieť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation type="vanished">OTVORENÉ</translation>
+        <translation>OTVORENÉ</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation type="vanished">Operácie zariadenia</translation>
+        <translation>Operácie zariadenia</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation>Adresa</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation type="vanished">Nastavenia siete</translation>
+        <translation>Nastavenia siete</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation type="vanished">Port</translation>
+        <translation>Port</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation type="vanished">Prenosová rýchlosť</translation>
+        <translation>Prenosová rýchlosť</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation type="vanished">Dátové bity</translation>
+        <translation>Dátové bity</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation type="vanished">Nastavenia sériového portu</translation>
+        <translation>Nastavenia sériového portu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation type="vanished">Parita</translation>
+        <translation>Parita</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation type="vanished">Názov portu</translation>
+        <translation>Názov portu</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation type="vanished">Zariadenie je zaneprázdnené</translation>
+        <translation>Zariadenie je zaneprázdnené</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation type="vanished">Parametre servera</translation>
+        <translation>Parametre servera</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation type="vanished">Adresa servera</translation>
+        <translation>Adresa servera</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation type="vanished">Režim iba počúvania</translation>
+        <translation>Režim iba počúvania</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation type="vanished">Cieľová adresa</translation>
+        <translation>Cieľová adresa</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation type="vanished">Prečítajte si</translation>
+        <translation>Prečítajte si</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation type="vanished">Napíšte</translation>
+        <translation>Napíšte</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation type="vanished">Kód funkcie</translation>
+        <translation>Kód funkcie</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation type="vanished">Číslo adresy</translation>
+        <translation>Číslo adresy</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation type="vanished">Počiatočná adresa</translation>
+        <translation>Počiatočná adresa</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation type="vanished">Opakujte časy</translation>
+        <translation>Opakujte časy</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation type="vanished">Časový limit</translation>
+        <translation>Časový limit</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation type="vanished">Parametre klienta</translation>
+        <translation>Parametre klienta</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation type="vanished">Vstupné ovládanie (adresa a hodnota)</translation>
+        <translation>Vstupné ovládanie (adresa a hodnota)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation type="vanished">Vstupný formát</translation>
+        <translation>Vstupný formát</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2201,6 +2409,132 @@
     </message>
 </context>
 <context>
+    <name>ModbusDeviceEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
+        <source>New Modbus Device</source>
+        <translation type="unfinished">Nové zariadenie Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
+        <source>Listen only mode</source>
+        <translation type="unfinished">Režim iba počúvania</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
+        <source>IP Address</source>
+        <translation type="unfinished">IP adresa</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
+        <source>Timeout(ms)</source>
+        <translation type="unfinished">Časový limit (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="81"/>
+        <source>Baud rate</source>
+        <translation type="unfinished">Prenosová rýchlosť</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="94"/>
+        <source>Stop bits</source>
+        <translation type="unfinished">Stop bity</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
+        <source>Device type</source>
+        <translation type="unfinished">Typ zariadenia</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
+        <source>Address</source>
+        <translation type="unfinished">Adresa</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="143"/>
+        <source>Port</source>
+        <translation type="unfinished">Port</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="156"/>
+        <source>Parity</source>
+        <translation type="unfinished">Parita</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
+        <source>Device Name</source>
+        <translation type="unfinished">Názov zariadenia</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
+        <source>Such as: Siemens S7-300</source>
+        <translation type="unfinished">Ako napríklad: Siemens S7-300</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
+        <source>Data bits</source>
+        <translation type="unfinished">Dátové bity</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Obnoviť</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
+        <source>Names</source>
+        <translation type="unfinished">Mená</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
+        <source>Retries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="310"/>
+        <source>Register tables</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ModbusDeviceListView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="34"/>
+        <source>New device/group/register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
+        <source>Delete device/group/register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
+        <source>Close all devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
+        <source>Open all devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
+        <source>Expand all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
+        <source>Collapse all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="116"/>
+        <source>Search</source>
+        <translation type="unfinished">Hľadať</translation>
+    </message>
+</context>
+<context>
     <name>ModbusFactory</name>
     <message>
         <location filename="../../src/tools/modbus/modbusfactory.cpp" line="46"/>
@@ -2224,34 +2558,137 @@
     </message>
 </context>
 <context>
+    <name>ModbusLogView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="34"/>
+        <source>Log type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="47"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="57"/>
+        <source>Clear all log items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="73"/>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="86"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
+        <source>Open a log file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
+        <source>Save log as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
+        <source>Ignore data log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
+        <source>Using color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.ui" line="113"/>
+        <source>Audo scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ModbusRegisterTableView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
+        <source>Columns visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <source>Add register item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="76"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
+        <source>Remove current register item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <source>Clear register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
+        <source>Save register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
+        <source>Import register table</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NumberAssistant</name>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation type="vanished">Nespracované údaje</translation>
+        <translation>Nespracované údaje</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation type="vanished">Varené údaje (hex.)</translation>
+        <translation>Varené údaje (hex.)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation type="vanished">Typ varených údajov</translation>
+        <translation>Typ varených údajov</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation type="vanished">Varené údaje (december)</translation>
+        <translation>Varené údaje (december)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation type="vanished">Ako napríklad: 1, -1, 1,1, -1,1</translation>
+        <translation>Ako napríklad: 1, -1, 1,1, -1,1</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation type="vanished">Varené údaje (zásobník)</translation>
+        <translation>Varené údaje (zásobník)</translation>
     </message>
     <message>
+        <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation type="vanished">Zľava doprava je vysoká až nízka</translation>
+        <translation>Zľava doprava je vysoká až nízka</translation>
     </message>
 </context>
 <context>
@@ -2290,128 +2727,161 @@
 <context>
     <name>OutputSettings</name>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation type="vanished">Povoliť zvýrazňovač</translation>
+        <translation>Povoliť zvýrazňovač</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation type="vanished">Filtrovať text</translation>
+        <translation>Filtrovať text</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation type="vanished">Dobrý deň, Word</translation>
+        <translation>Dobrý deň, Word</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation type="vanished">Ukážte štatistikovi</translation>
+        <translation>Ukážte štatistikovi</translation>
     </message>
     <message>
+        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation type="vanished">Povoliť filter</translation>
+        <translation>Povoliť filter</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
+        <location filename="../../src/page/page.ui" line="47"/>
         <source>Cycle interval</source>
-        <translation type="vanished">Interval cyklu</translation>
+        <translation>Interval cyklu</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.cpp" line="587"/>
         <source>Open</source>
         <translation>Otvoriť</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="63"/>
+        <location filename="../../src/page/page.ui" line="74"/>
+        <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation type="vanished">Nastavenia</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation type="vanished">Jasné</translation>
+        <translation>Jasné</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="122"/>
         <source>Rx</source>
-        <translation type="vanished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Tx</source>
-        <translation type="vanished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="136"/>
         <source>Date</source>
-        <translation type="vanished">Dátum</translation>
+        <translation>Dátum</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="143"/>
         <source>Flag</source>
-        <translation type="vanished">Vlajka</translation>
+        <translation>Vlajka</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="150"/>
         <source>Time</source>
-        <translation type="vanished">Čas</translation>
+        <translation>Čas</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="157"/>
         <source>Ms</source>
-        <translation type="vanished">pani</translation>
+        <translation>pani</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation type="vanished">Výstupná kontrola</translation>
+        <translation>Výstupná kontrola</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation type="vanished">Vstupné ovládanie</translation>
+        <translation>Vstupné ovládanie</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation type="vanished">Zabaliť</translation>
+        <translation>Zabaliť</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation type="vanished">Terminál</translation>
+        <translation>Terminál</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation type="vanished">Kontrola komunikácie</translation>
+        <translation>Kontrola komunikácie</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation type="vanished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="260"/>
+        <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation type="vanished">Textový formát</translation>
+        <translation>Textový formát</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="341"/>
         <source>Output</source>
-        <translation type="vanished">Výstup</translation>
+        <translation>Výstup</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="514"/>
         <source>Input</source>
-        <translation type="vanished">Vstup</translation>
+        <translation>Vstup</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="521"/>
         <source>Preset data list</source>
-        <translation type="vanished">Prednastavený zoznam údajov</translation>
+        <translation>Prednastavený zoznam údajov</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="563"/>
         <source>Presets</source>
-        <translation type="vanished">Predvoľby</translation>
+        <translation>Predvoľby</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="568"/>
         <source>Emitter</source>
-        <translation type="vanished">Emitor</translation>
+        <translation>Emitor</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="573"/>
         <source>Responder</source>
-        <translation type="vanished">Odpovedač</translation>
+        <translation>Odpovedač</translation>
     </message>
     <message>
+        <location filename="../../src/page/page.ui" line="578"/>
         <source>Transfers</source>
-        <translation type="vanished">Prestupy</translation>
+        <translation>Prestupy</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2622,44 +3092,54 @@
 <context>
     <name>PresetViewGroupEditor</name>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="45"/>
         <source>Group interval(ms)</source>
-        <translation type="vanished">Interval skupiny (ms)</translation>
+        <translation>Interval skupiny (ms)</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="68"/>
         <source>Add(update) Group</source>
-        <translation type="vanished">Pridať (aktualizovať) skupinu</translation>
+        <translation>Pridať (aktualizovať) skupinu</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="75"/>
         <source>Colums(split with space)</source>
-        <translation type="vanished">Stĺpce (rozdelené medzerou)</translation>
+        <translation>Stĺpce (rozdelené medzerou)</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="87"/>
         <source>Up</source>
-        <translation type="vanished">Hore</translation>
+        <translation>Hore</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="94"/>
         <source>Down</source>
-        <translation type="vanished">Dole</translation>
+        <translation>Dole</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="103"/>
         <source>Delete Selected</source>
-        <translation type="vanished">Odstrániť vybraté</translation>
+        <translation>Odstrániť vybraté</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="116"/>
         <source>Untitled</source>
-        <translation type="vanished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="139"/>
         <source>Name</source>
-        <translation type="vanished">Meno</translation>
+        <translation>Meno</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
         <source>Disable the group</source>
-        <translation type="vanished">Zakázať skupinu</translation>
+        <translation>Zakázať skupinu</translation>
     </message>
     <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="169"/>
         <source>Item interval(ms)</source>
-        <translation type="vanished">Interval položky (ms)</translation>
+        <translation>Interval položky (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -3007,12 +3487,14 @@
 <context>
     <name>QRCodeAssistant</name>
     <message>
+        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation type="vanished">Exportovať</translation>
+        <translation>Exportovať</translation>
     </message>
     <message>
+        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation type="vanished">Generovať</translation>
+        <translation>Generovať</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3082,36 +3564,44 @@
 <context>
     <name>ScriptBase</name>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
         <source>Clear log</source>
-        <translation type="vanished">Vymazať denník</translation>
+        <translation>Vymazať denník</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
         <source>Log</source>
-        <translation type="vanished">Log</translation>
+        <translation>Log</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="72"/>
         <source>Open script directory</source>
-        <translation type="vanished">Otvorte adresár skriptov</translation>
+        <translation>Otvorte adresár skriptov</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="85"/>
         <source>New script</source>
-        <translation type="vanished">Nový scenár</translation>
+        <translation>Nový scenár</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="98"/>
         <source>Refresh file list</source>
-        <translation type="vanished">Obnoviť zoznam súborov</translation>
+        <translation>Obnoviť zoznam súborov</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="111"/>
         <source>Online manual</source>
-        <translation type="vanished">Online manuál</translation>
+        <translation>Online manuál</translation>
     </message>
     <message>
+        <location filename="../../src/page/scripts/scriptbase.ui" line="129"/>
         <source>Script</source>
-        <translation type="vanished">Skript</translation>
+        <translation>Skript</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3176,24 +3666,29 @@
 <context>
     <name>SearchPanel</name>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation type="vanished">Vyhľadajte text</translation>
+        <translation>Vyhľadajte text</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation type="vanished">Hľadať</translation>
+        <translation>Hľadať</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation type="vanished">Regulárny výraz</translation>
+        <translation>Regulárny výraz</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation type="vanished">Rozlišovať malé a veľké písmená</translation>
+        <translation>Rozlišovať malé a veľké písmená</translation>
     </message>
     <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation type="vanished">Celé slovo</translation>
+        <translation>Celé slovo</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3306,36 +3801,44 @@
 <context>
     <name>SerialPortUi</name>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
-        <translation type="vanished">Prenosová rýchlosť</translation>
+        <translation>Prenosová rýchlosť</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
-        <translation type="vanished">Parita</translation>
+        <translation>Parita</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
-        <translation type="vanished">Ignorované zaneprázdnené zariadenie</translation>
+        <translation>Ignorované zaneprázdnené zariadenie</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
-        <translation type="vanished">Dátové bity</translation>
+        <translation>Dátové bity</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
-        <translation type="vanished">Kontrola prietoku</translation>
+        <translation>Kontrola prietoku</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
+        <translation>Stop bity</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation type="vanished">Názov portu</translation>
+        <translation>Názov portu</translation>
     </message>
     <message>
+        <location filename="../../src/device/serialportui.ui" line="193"/>
         <source>Enable frame interval</source>
-        <translation type="vanished">Povoliť interval snímok</translation>
+        <translation>Povoliť interval snímok</translation>
     </message>
 </context>
 <context>
@@ -3394,64 +3897,79 @@
 <context>
     <name>SocketUi</name>
     <message>
+        <location filename="../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
-        <translation type="vanished">Napíšte na</translation>
+        <translation>Napíšte na</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
-        <translation type="vanished">Cesta</translation>
+        <translation>Cesta</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
-        <translation type="vanished">Odpojte všetkých klientov</translation>
+        <translation>Odpojte všetkých klientov</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
-        <translation type="vanished">Autentifikácia</translation>
+        <translation>Autentifikácia</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
-        <translation type="vanished">IP servera</translation>
+        <translation>IP servera</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation type="vanished">kanál</translation>
+        <translation>kanál</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
-        <translation type="vanished">Povoliť multicast</translation>
+        <translation>Povoliť multicast</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
-        <translation type="vanished">Len multicast</translation>
+        <translation>Len multicast</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation type="vanished">príspevok/ahoj</translation>
+        <translation>príspevok/ahoj</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
-        <translation type="vanished">Zabezpečený režim</translation>
+        <translation>Zabezpečený režim</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
-        <translation type="vanished">Port servera</translation>
+        <translation>Port servera</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation type="vanished">Používateľské meno</translation>
+        <translation>Používateľské meno</translation>
     </message>
     <message>
+        <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation type="vanished">heslo</translation>
+        <translation>heslo</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3470,24 +3988,29 @@
 <context>
     <name>StringAssistant</name>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation type="vanished">Nespracované údaje</translation>
+        <translation>Nespracované údaje</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation type="vanished">Vstupný formát</translation>
+        <translation>Vstupný formát</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation type="vanished">Varené dáta</translation>
+        <translation>Varené dáta</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation type="vanished">Výstupný formát</translation>
+        <translation>Výstupný formát</translation>
     </message>
     <message>
+        <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation type="vanished">Vytvorte</translation>
+        <translation>Vytvorte</translation>
     </message>
 </context>
 <context>
@@ -3511,41 +4034,50 @@
 <context>
     <name>TableView</name>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulár</translation>
+        <translation>Formulár</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation type="vanished">Exportovať</translation>
+        <translation>Exportovať</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="44"/>
         <source>Disable all items</source>
-        <translation type="vanished">Zakázať všetky položky</translation>
+        <translation>Zakázať všetky položky</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation type="vanished">Odstrániť</translation>
+        <translation>Odstrániť</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation type="vanished">Hore</translation>
+        <translation>Hore</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation type="vanished">Pridať</translation>
+        <translation>Pridať</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
         <translation>Vymazať</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation type="vanished">Importovať</translation>
+        <translation>Importovať</translation>
     </message>
     <message>
+        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation type="vanished">Dole</translation>
+        <translation>Dole</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3578,64 +4110,79 @@
 <context>
     <name>TextItemEditor</name>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation type="vanished">Editor údajov</translation>
+        <translation>Editor údajov</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="vanished">Zrušiť</translation>
+        <translation>Zrušiť</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation type="vanished">CRC</translation>
+        <translation>CRC</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation type="vanished">Algoritmus</translation>
+        <translation>Algoritmus</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation type="vanished">Spustiť index</translation>
+        <translation>Spustiť index</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation type="vanished">Koniec indexu</translation>
+        <translation>Koniec indexu</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation type="vanished">Pripojiť</translation>
+        <translation>Pripojiť</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation type="vanished">Veľký endian</translation>
+        <translation>Veľký endian</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation type="vanished">Predspracovanie</translation>
+        <translation>Predspracovanie</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation type="vanished">Predpona</translation>
+        <translation>Predpona</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation type="vanished">Prípona</translation>
+        <translation>Prípona</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation type="vanished">Úniková postava</translation>
+        <translation>Úniková postava</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation type="vanished">Užitočné zaťaženie</translation>
+        <translation>Užitočné zaťaženie</translation>
     </message>
     <message>
+        <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation type="vanished">Formátovať</translation>
+        <translation>Formátovať</translation>
     </message>
 </context>
 <context>
@@ -3695,12 +4242,14 @@
 <context>
     <name>UdpBroadcastUi</name>
     <message>
+        <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Vyberte sieťové rozhranie:</translation>
+        <translation>Vyberte sieťové rozhranie:</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation type="vanished">Vysielací port</translation>
+        <translation>Vysielací port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3734,20 +4283,24 @@
 <context>
     <name>UdpMulticastUi</name>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation type="vanished">Vyberte sieťové rozhranie:</translation>
+        <translation>Vyberte sieťové rozhranie:</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation type="vanished">Multicast IP</translation>
+        <translation>Multicast IP</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation type="vanished">Multicast Port</translation>
+        <translation>Multicast Port</translation>
     </message>
     <message>
+        <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation type="vanished">Multicast loopback</translation>
+        <translation>Multicast loopback</translation>
     </message>
 </context>
 <context>
@@ -3761,6 +4314,11 @@
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Príklad akcie</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
+        <source>Log</source>
+        <translation type="unfinished">Log</translation>
     </message>
 </context>
 <context>
@@ -3857,57 +4415,57 @@
         <translation>Odstráňte vybranú položku</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
         <source>Remove Device</source>
         <translation>Odstrániť zariadenie</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="207"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>Zariadenie beží. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="252"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
         <source>Rename Register Table</source>
         <translation>Premenovať tabuľku registra</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="254"/>
         <source>Please input the new name for the register table:</source>
         <translation>Zadajte nový názov tabuľky registra:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
         <source>Rename Register Item</source>
         <translation>Premenovať položku registrácie</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Please input the new name for the register item:</source>
         <translation>Zadajte nový názov položky registrácie:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="278"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="279"/>
         <source>Edit Modbus Device</source>
         <translation>Upravte zariadenie Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>Change Device parameters</source>
         <translation>Zmeňte parametre zariadenia</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Zariadenie beží. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="555"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="556"/>
         <source>TCP Client Device</source>
         <translation>TCP klientske zariadenie</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="561"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="562"/>
         <source>TCP Server Device</source>
         <translation>Serverové zariadenie TCP</translation>
     </message>
@@ -4039,50 +4597,50 @@
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="162"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
         <source>Save Registers</source>
         <translation>Uložiť registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="164"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="188"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
         <source>Failed to open file for saving.</source>
         <translation>Nepodarilo sa otvoriť súbor na uloženie.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Load Registers</source>
         <translation>Načítať registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <source>Failed to open file for loading.</source>
         <translation>Nepodarilo sa otvoriť súbor na načítanie.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Neplatný formát JSON v súbore.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>Import Registers</source>
         <translation>Importovať registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="214"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>The register table is not empty. </translation>
     </message>
