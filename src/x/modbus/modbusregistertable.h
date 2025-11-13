@@ -34,6 +34,7 @@ public:
 
     void addRegisterItem(ModbusRegister *item);
     QList<ModbusRegister *> registerItems() const;
+    ModbusRegister *registerItemAt(int index) const;
 
 public:
     int rowCount(const QModelIndex &parent) const override;
@@ -45,6 +46,9 @@ public:
     bool insertRows(int row, int count, const QModelIndex &parent) override;
     bool removeRows(int row, int count, const QModelIndex &parent) override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
+
+signals:
+    void dataModified(const QModelIndex &index);
 
 private:
     QList<ModbusRegister *> m_registerItems;

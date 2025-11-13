@@ -66,6 +66,7 @@ private:
     void onStartButtonClicked();
     void onStopButtonClicked();
     void onFilterTextChanged(const QString &text);
+    void onTableDataModified(QStandardItem *tableViewItem, const QModelIndex &index);
 
     int treeItemDepth(const QModelIndex &index);
     QList<ModbusDevice *> devices();

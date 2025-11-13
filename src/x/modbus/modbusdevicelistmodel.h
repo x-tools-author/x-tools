@@ -47,6 +47,9 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     bool removeRows(int row, int count, const QModelIndex &parent) override;
 
+signals:
+    void dataModified(QStandardItem *tableViewItem, const QModelIndex &index);
+
 private:
     void removeDevices(int row, int count);
     void removeTables(int row, int count, QStandardItem *parentItem);

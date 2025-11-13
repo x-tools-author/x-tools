@@ -36,6 +36,15 @@ QList<ModbusRegister *> ModbusRegisterTable::registerItems() const
     return m_registerItems;
 }
 
+ModbusRegister *ModbusRegisterTable::registerItemAt(int index) const
+{
+    if (index < 0 || index >= m_registerItems.count()) {
+        return nullptr;
+    }
+
+    return m_registerItems.at(index);
+}
+
 int ModbusRegisterTable::rowCount(const QModelIndex &parent) const
 {
     return m_registerItems.count();

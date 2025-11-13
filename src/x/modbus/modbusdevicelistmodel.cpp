@@ -146,13 +146,18 @@ QStandardItem *ModbusDeviceListModel::newTableView(QStandardItem *deviceItem,
     tableView->load(parameters);
 
     ModbusDevice *device = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
-    QStandardItem *tableItem = new QStandardItem(tableView->windowTitle());
-    tableItem->setData(int(ItemTypeTableView), xItemTypeRole);
-    tableItem->setData(QVariant::fromValue(device), ItemTypeDevice);
-    tableItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
-    deviceItem->appendRow(tableItem);
+    QStandardItem *tableViewItem = new QStandardItem(tableView->windowTitle());
+    tableViewItem->setData(int(ItemTypeTableView), xItemTypeRole);
+    tableViewItem->setData(QVariant::fromValue(device), ItemTypeDevice);
+    tableViewItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
+    deviceItem->appendRow(tableViewItem);
 
-    return tableItem;
+    ModbusRegisterTable *table = tableView->registerTable();
+    connect(table, &ModbusRegisterTable::dataModified, this, [=](const QModelIndex &index) {
+        emit dataModified(tableViewItem, index);
+    });
+
+    return tableViewItem;
 }
 
 QStandardItem *ModbusDeviceListModel::newRegister(QStandardItem *tableItem,

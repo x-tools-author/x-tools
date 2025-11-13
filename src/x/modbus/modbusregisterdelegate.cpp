@@ -200,6 +200,8 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
             registerTable->setData(tableIndex, text, Qt::EditRole);
         }
     }
+
+    emit registerTable->dataModified(tableIndex);
 }
 
 } // namespace xModbus

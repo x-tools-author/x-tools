@@ -26,6 +26,7 @@
 #include "modbusdevicelistmodel.h"
 #include "modbusdevicelistmodelfilter.h"
 #include "modbusregister.h"
+#include "modbusregistertable.h"
 #include "modbusregistertableview.h"
 
 #define MODBUS_INVALID_DEPTH -1
@@ -87,6 +88,7 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     connect(ui->toolButtonExpandAll, &QToolButton::clicked, this, &ModbusDeviceListView::onOpenAllItems);
     connect(ui->toolButtonCollapseAll, &QToolButton::clicked, this, &ModbusDeviceListView::onCloseAllItems);
     connect(ui->lineEditSearch, &QLineEdit::textChanged, this, &ModbusDeviceListView::onFilterTextChanged);
+    connect(m_model, &ModbusDeviceListModel::dataModified, this, &ModbusDeviceListView::onTableDataModified);
     // clang-format on
 }
 
@@ -412,6 +414,60 @@ void ModbusDeviceListView::onFilterTextChanged(const QString &text)
 {
     m_filter->setFilterFixedString(text);
     ui->treeView->expandAll();
+}
+
+void ModbusDeviceListView::onTableDataModified(QStandardItem *tableViewItem,
+                                               const QModelIndex &index)
+{
+    if (index.isValid() == false) {
+        qWarning() << "Table data modified: index is invalid";
+        return;
+    }
+
+    auto tableView = tableViewItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+    if (!tableView) {
+        qWarning() << "Table data modified:: tableView is nullptr";
+        return;
+    }
+
+    int row = index.row();
+    ModbusRegisterTable *table = tableView->registerTable();
+    ModbusRegister *reg = table->registerItemAt(row);
+    if (!reg) {
+        qWarning() << "Table data modified:: reg is nullptr";
+        return;
+    }
+
+    int column = index.column();
+    QStandardItem *regItem = tableViewItem->child(row, 0);
+    if (!regItem) {
+        qWarning() << "Table data modified:: regItem is nullptr";
+        return;
+    }
+
+    if (column == REGISTER_TABLE_NAME) {
+        regItem->setText(reg->name());
+        return;
+    }
+
+    bool needToUpdateDeviceParameters = (column == REGISTER_TABLE_ADDRESS);
+    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_VALUE);
+    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_TYPE);
+    if (needToUpdateDeviceParameters) {
+        QStandardItem *deviceItem = tableViewItem->parent();
+        if (!deviceItem) {
+            qWarning() << "Table data modified:: deviceItem is nullptr";
+            return;
+        }
+
+        ModbusDevice *device = deviceItem->data(xItemTypeDevice).value<ModbusDevice *>();
+        if (!device) {
+            qWarning() << "Table data modified:: device is nullptr";
+            return;
+        }
+
+        device->setValue(reg->serverAddress(), int(reg->type()), reg->address(), reg->value());
+    }
 }
 
 int ModbusDeviceListView::treeItemDepth(const QModelIndex &index)
