@@ -300,8 +300,6 @@ void ModbusDeviceListModel::removeRegisters(int row, int count, QStandardItem *p
     tableModel->removeRows(row, count, QModelIndex());
 }
 
-void ModbusDeviceListModel::setupRegisterItem(QStandardItem *regItem) {}
-
 QJsonArray ModbusDeviceListModel::defaultTable(QModbusDataUnit::RegisterType type) const
 {
     QJsonObject registerObj;

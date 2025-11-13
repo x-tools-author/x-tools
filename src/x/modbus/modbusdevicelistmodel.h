@@ -51,7 +51,6 @@ private:
     void removeDevices(int row, int count);
     void removeTables(int row, int count, QStandardItem *parentItem);
     void removeRegisters(int row, int count, QStandardItem *parentItem);
-    void setupRegisterItem(QStandardItem *regItem);
 
     QJsonArray defaultTable(QModbusDataUnit::RegisterType type) const;
 };
