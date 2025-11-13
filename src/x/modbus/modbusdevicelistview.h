@@ -36,7 +36,6 @@ public:
     QList<ModbusRegisterTableView *> registerTableViews();
 
 signals:
-    void currentDeviceChanged(ModbusDevice *device);
     void tableViewsUpdated();
     void invokeShowRegisterView(ModbusRegisterTableView *view);
 
