@@ -64,52 +64,52 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole) {
         switch (index.column()) {
         case REGISTER_TABLE_ADDRESS:
-            return QString("0x%1").arg(item->address, 4, 16, QChar('0').toUpper());
+            return QString("0x%1").arg(item->address(), 4, 16, QChar('0').toUpper());
         case REGISTER_TABLE_SERVER_ADDRESS:
-            return item->serverAddress;
+            return item->serverAddress();
         case REGISTER_TABLE_NAME:
-            return item->name;
+            return item->name();
         case REGISTER_TABLE_TYPE:
-            return registerTypeToString(item->type);
+            return registerTypeToString(item->type());
         case REGISTER_TABLE_UNIT:
-            return item->unit;
+            return item->unit();
         case REGISTER_TABLE_DESCRIPTION:
-            return item->description;
+            return item->description();
         case REGISTER_TABLE_MIN:
-            return item->min;
+            return item->min();
         case REGISTER_TABLE_MAX:
-            return item->max;
+            return item->max();
         case REGISTER_TABLE_DECIMALS:
-            return item->decimals;
+            return item->decimals();
         case REGISTER_TABLE_VALUE:
-            return QString::number(double(item->value) / qPow(10, item->decimals),
+            return QString::number(double(item->value()) / qPow(10, item->decimals()),
                                    'f',
-                                   item->decimals);
+                                   item->decimals());
         default:
             return QVariant();
         }
     } else if (role == Qt::EditRole) {
         switch (index.column()) {
         case REGISTER_TABLE_ADDRESS:
-            return item->address;
+            return item->address();
         case REGISTER_TABLE_SERVER_ADDRESS:
-            return item->serverAddress;
+            return item->serverAddress();
         case REGISTER_TABLE_NAME:
-            return item->name;
+            return item->name();
         case REGISTER_TABLE_TYPE:
-            return item->type;
+            return item->type();
         case REGISTER_TABLE_UNIT:
-            return item->unit;
+            return item->unit();
         case REGISTER_TABLE_DESCRIPTION:
-            return item->description;
+            return item->description();
         case REGISTER_TABLE_MIN:
-            return item->min;
+            return item->min();
         case REGISTER_TABLE_MAX:
-            return item->max;
+            return item->max();
         case REGISTER_TABLE_DECIMALS:
-            return item->decimals;
+            return item->decimals();
         case REGISTER_TABLE_VALUE:
-            return item->value;
+            return item->value();
         default:
             return QVariant();
         }
@@ -130,34 +130,34 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     int column = index.column();
     switch (column) {
     case REGISTER_TABLE_ADDRESS:
-        item->address = value.toUInt();
+        item->setAddress(value.toUInt());
         break;
     case REGISTER_TABLE_SERVER_ADDRESS:
-        item->serverAddress = value.toInt();
+        item->setServerAddress(value.toInt());
         break;
     case REGISTER_TABLE_NAME:
         item->setName(value.toString());
         break;
     case REGISTER_TABLE_TYPE:
-        item->type = static_cast<QModbusDataUnit::RegisterType>(value.toInt());
+        item->setType(static_cast<QModbusDataUnit::RegisterType>(value.toInt()));
         break;
     case REGISTER_TABLE_UNIT:
-        item->unit = value.toString();
+        item->setUnit(value.toString());
         break;
     case REGISTER_TABLE_DESCRIPTION:
-        item->description = value.toString();
+        item->setDescription(value.toString());
         break;
     case REGISTER_TABLE_MIN:
-        item->min = value.toDouble();
+        item->setMin(value.toDouble());
         break;
     case REGISTER_TABLE_MAX:
-        item->max = value.toDouble();
+        item->setMax(value.toDouble());
         break;
     case REGISTER_TABLE_DECIMALS:
-        item->decimals = value.toInt();
+        item->setDecimals(value.toInt());
         break;
     case REGISTER_TABLE_VALUE:
-        item->value = value.toInt();
+        item->setValue(value.toInt());
         break;
     default:
         return false;

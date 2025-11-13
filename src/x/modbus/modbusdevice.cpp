@@ -235,7 +235,7 @@ QModbusDataUnitMap ModbusDevice::dataUnitMap() const
 
     m_contextMutex.lock();
     for (ModbusRegister *reg : m_registers) {
-        dataUnitMap[reg->type].setValue(reg->address, reg->value);
+        dataUnitMap[reg->type()].setValue(reg->address(), reg->value());
     }
     m_contextMutex.unlock();
 
@@ -246,14 +246,14 @@ void classifyRegisters(const QList<ModbusRegister *> &regs,
                        QMap<int, QMap<int, QList<ModbusRegister *>>> &cache)
 {
     for (ModbusRegister *reg : regs) {
-        if (reg->type == xCoils) {
-            cache[reg->serverAddress][xCoils].append(reg);
-        } else if (reg->type == xDiscreteInputs) {
-            cache[reg->serverAddress][xDiscreteInputs].append(reg);
-        } else if (reg->type == xInputRegisters) {
-            cache[reg->serverAddress][xInputRegisters].append(reg);
-        } else if (reg->type == xHoldingRegisters) {
-            cache[reg->serverAddress][xHoldingRegisters].append(reg);
+        if (reg->type() == xCoils) {
+            cache[reg->serverAddress()][xCoils].append(reg);
+        } else if (reg->type() == xDiscreteInputs) {
+            cache[reg->serverAddress()][xDiscreteInputs].append(reg);
+        } else if (reg->type() == xInputRegisters) {
+            cache[reg->serverAddress()][xInputRegisters].append(reg);
+        } else if (reg->type() == xHoldingRegisters) {
+            cache[reg->serverAddress()][xHoldingRegisters].append(reg);
         }
     }
 }
@@ -261,15 +261,15 @@ void classifyRegisters(const QList<ModbusRegister *> &regs,
 void processRegisters(QList<ModbusRegister *> &regs)
 {
     std::sort(regs.begin(), regs.end(), [](ModbusRegister *a, ModbusRegister *b) {
-        return a->address < b->address;
+        return a->address() < b->address();
     });
 
     QList<ModbusRegister *> uniqueRegs;
     quint16 lastAddress = static_cast<quint16>(-1);
     for (ModbusRegister *reg : regs) {
-        if (reg->address != lastAddress) {
+        if (reg->address() != lastAddress) {
             uniqueRegs.append(reg);
-            lastAddress = reg->address;
+            lastAddress = reg->address();
         }
     }
     regs = uniqueRegs;
@@ -283,24 +283,24 @@ void createDataUnits(const QList<ModbusRegister *> &regs,
         return;
     }
 
-    int serverAddress = regs.first()->serverAddress;
-    QModbusDataUnit::RegisterType registerType = regs.first()->type;
-    quint16 startAddress = regs.first()->address;
+    int serverAddress = regs.first()->serverAddress();
+    QModbusDataUnit::RegisterType registerType = regs.first()->type();
+    quint16 startAddress = regs.first()->address();
     quint16 lastAddress = startAddress;
     int count = 1;
 
     for (int i = 1; i < regs.size(); ++i) {
         ModbusRegister *reg = regs.at(i);
-        if (reg->address == lastAddress + 1 && count < X_MAX_READ_REGISTERS_PER_REQUEST) {
+        if (reg->address() == lastAddress + 1 && count < X_MAX_READ_REGISTERS_PER_REQUEST) {
             // 地址连续且未超过最大数量，继续合并
-            lastAddress = reg->address;
+            lastAddress = reg->address();
             count++;
         } else {
             // 地址不连续或达到最大数量，创建数据单元
             cache[serverAddress][registerType].append(
                 QModbusDataUnit(registerType, startAddress, count));
             // 重置起始地址和计数器
-            startAddress = reg->address;
+            startAddress = reg->address();
             lastAddress = startAddress;
             count = 1;
         }
@@ -415,8 +415,8 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
                 // 更新对应的ModbusRegister的值
                 m_contextMutex.lock();
                 for (ModbusRegister *reg : m_registers) {
-                    if (reg->serverAddress == serverAddress && reg->type == registerType
-                        && reg->address == address) {
+                    if (reg->serverAddress() == serverAddress && reg->type() == registerType
+                        && reg->address() == address) {
                         reg->setValue(value);
                     }
                 }
@@ -535,9 +535,9 @@ void ModbusDevice::onDataWritten(QModbusDataUnit::RegisterType table, int addres
 
         m_contextMutex.lock();
         for (ModbusRegister *reg : m_registers) {
-            bool matched = (reg->type == table);
-            matched &= (reg->address == startAddr);
-            matched &= (reg->serverAddress == serverAddress);
+            bool matched = (reg->type() == table);
+            matched &= (reg->address() == startAddr);
+            matched &= (reg->serverAddress() == serverAddress);
             if (matched) {
                 reg->setValue(value);
             }
