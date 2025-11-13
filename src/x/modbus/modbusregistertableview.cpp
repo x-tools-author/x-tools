@@ -30,6 +30,7 @@ struct ModbusRegisterTableViewKeys
 {
     const QString registers{"registers"};
     const QString registerTableName{"registerTableName"};
+    const QString columnVisibility{"columnVisibility"};
 };
 
 ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
@@ -82,6 +83,16 @@ QJsonObject ModbusRegisterTableView::save() const
     ModbusRegisterTableViewKeys keys;
     obj[keys.registers] = saveRegisters();
     obj[keys.registerTableName] = windowTitle();
+
+    QList<QAction *> actions = m_columnMenu->actions();
+    QJsonObject columnVisibilityObj;
+    for (QAction *action : actions) {
+        int col = action->data().toInt();
+        bool visible = action->isChecked();
+        columnVisibilityObj[QString::number(col)] = visible;
+    }
+    obj[keys.columnVisibility] = columnVisibilityObj;
+
     return obj;
 }
 
@@ -90,6 +101,17 @@ void ModbusRegisterTableView::load(const QJsonObject &obj)
     ModbusRegisterTableViewKeys keys;
     loadRegisters(obj[keys.registers].toArray());
     setWindowTitle(obj[keys.registerTableName].toString());
+
+    QJsonObject columnVisibilityObj = obj[keys.columnVisibility].toObject();
+    QList<QAction *> actions = m_columnMenu->actions();
+    for (QAction *action : actions) {
+        int col = action->data().toInt();
+        bool visible = columnVisibilityObj.value(QString::number(col)).toBool(true);
+        action->setChecked(visible);
+        ui->tableView->setColumnHidden(col, !visible);
+        m_columnVisibilityMap.insert(col, visible);
+        ui->tableView->setColumnHidden(col, !visible);
+    }
 }
 
 void ModbusRegisterTableView::selectRow(int row)
@@ -237,11 +259,16 @@ void ModbusRegisterTableView::resetColumnMenu()
     for (int col = 0; col < columns; ++col) {
         QString header = ui->tableView->model()->headerData(col, Qt::Horizontal).toString();
         QAction *action = m_columnMenu->addAction(header);
+        action->setData(col);
         action->setCheckable(true);
         action->setChecked(!ui->tableView->isColumnHidden(col));
         connect(action, &QAction::toggled, this, [this, col](bool checked) {
             ui->tableView->setColumnHidden(col, !checked);
         });
+
+        bool chekced = m_columnVisibilityMap.value(col, true);
+        action->setChecked(chekced);
+        ui->tableView->setColumnHidden(col, !chekced);
     }
 }
 

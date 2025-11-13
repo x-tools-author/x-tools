@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QMap>
 #include <QMenu>
 #include <QStandardItem>
 #include <QWidget>
@@ -42,6 +43,7 @@ private:
     ModbusRegisterDelegate *m_registerDelegate{nullptr};
 
     QMenu *m_columnMenu{nullptr};
+    QMap<int, bool> m_columnVisibilityMap;
 
 private:
     void onFilterTextChanged(const QString &text);
