@@ -281,7 +281,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -578,6 +578,11 @@
        <string>Transfers</string>
       </attribute>
      </widget>
+     <widget class="ProtocolFactory" name="tabProtocolFactory">
+      <attribute name="title">
+       <string>Protocol Factory</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
    <item>
@@ -633,6 +638,12 @@
    <class>ScriptsManager</class>
    <extends>QWidget</extends>
    <header location="global">page/scripts/scriptsmanager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ProtocolFactory</class>
+   <extends>QWidget</extends>
+   <header location="global">page/protocol/protocolfactory.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

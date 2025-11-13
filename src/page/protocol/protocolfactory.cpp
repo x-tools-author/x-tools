@@ -7,9 +7,19 @@
  * code directory.
  **************************************************************************************************/
 #include "protocolfactory.h"
+#include "ui_protocolfactory.h"
 
 ProtocolFactory::ProtocolFactory(QWidget *parent)
     : QWidget(parent)
-{}
+    , ui(new Ui::ProtocolFactory)
+{
+    ui->setupUi(this);
+    ui->splitter->setChildrenCollapsible(false);
+    ui->splitter->setStretchFactor(0, 3);
+    ui->splitter->setStretchFactor(1, 10);
+}
 
-ProtocolFactory::~ProtocolFactory() = default;
+ProtocolFactory::~ProtocolFactory()
+{
+    delete ui;
+}

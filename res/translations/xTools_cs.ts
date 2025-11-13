@@ -2694,32 +2694,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputPanelsManager</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="25"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Data Records</source>
         <translation>Datové záznamy</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="28"/>
         <source>Search</source>
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
         <source>Lua Script</source>
         <translation>Lua skript</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="31"/>
         <source>Line Chart</source>
         <translation>Čárový graf</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="32"/>
         <source>Bar Chart</source>
         <translation>Sloupcový graf</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="33"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="35"/>
         <source>XY-Modem Receiver</source>
         <translation>XY-Modem přijímač</translation>
     </message>
@@ -2761,7 +2761,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="587"/>
+        <location filename="../../src/page/page.cpp" line="588"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
@@ -2884,43 +2884,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Převody</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="319"/>
-        <location filename="../../src/page/page.cpp" line="763"/>
+        <location filename="../../src/page/page.ui" line="583"/>
+        <source>Protocol Factory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="320"/>
+        <location filename="../../src/page/page.cpp" line="764"/>
         <source>Error: No device is opened.</source>
         <translation>Chyba: Žádné zařízení není otevřeno.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="421"/>
+        <location filename="../../src/page/page.cpp" line="422"/>
         <source>Disable</source>
         <translation>Zakázat</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="578"/>
+        <location filename="../../src/page/page.cpp" line="579"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="594"/>
+        <location filename="../../src/page/page.cpp" line="595"/>
         <source>Error Occurred</source>
         <translation>Došlo k chybě</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="600"/>
+        <location filename="../../src/page/page.cpp" line="601"/>
         <source>Warning</source>
         <translation>Upozornění</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="687"/>
+        <location filename="../../src/page/page.cpp" line="688"/>
         <source>Hide Scripts Panels</source>
         <translation>Skrytí panelů skriptů</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="688"/>
+        <location filename="../../src/page/page.cpp" line="689"/>
         <source>Show Scripts Panels</source>
         <translation>Zobrazit panely skriptů</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="791"/>
+        <location filename="../../src/page/page.cpp" line="792"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>

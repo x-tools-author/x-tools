@@ -10,10 +10,17 @@
 
 #include <QWidget>
 
+namespace Ui {
+class ProtocolFactory;
+}
+
 class ProtocolFactory : public QWidget
 {
     Q_OBJECT
 public:
     explicit ProtocolFactory(QWidget *parent = nullptr);
     ~ProtocolFactory() override;
+
+private:
+    Ui::ProtocolFactory *ui;
 };

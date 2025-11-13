@@ -77,6 +77,7 @@ struct ParameterKeys
     const QString emitterItems{"emitterItems"};
     const QString responserItems{"responserItems"};
     const QString transfers{"transfers"};
+    const QString protocolFactory{"protocolFactory"};
 
     // Panels
     const QString inputPanels{"inputPanels"};
