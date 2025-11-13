@@ -445,14 +445,14 @@ void ModbusDeviceListView::onTableDataModified(QStandardItem *tableViewItem,
         return;
     }
 
-    if (column == REGISTER_TABLE_NAME) {
+    if (column == REGISTER_TABLE_COLUMN_NAME) {
         regItem->setText(reg->name());
         return;
     }
 
-    bool needToUpdateDeviceParameters = (column == REGISTER_TABLE_ADDRESS);
-    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_VALUE);
-    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_TYPE);
+    bool needToUpdateDeviceParameters = (column == REGISTER_TABLE_COLUMN_ADDRESS);
+    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_COLUMN_VALUE);
+    needToUpdateDeviceParameters |= (column == REGISTER_TABLE_COLUMN_REGISTER_TYPE);
     if (needToUpdateDeviceParameters) {
         QStandardItem *deviceItem = tableViewItem->parent();
         if (!deviceItem) {

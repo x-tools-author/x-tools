@@ -107,7 +107,7 @@ void ModbusRegisterTableView::selectRow(int row)
 
 void ModbusRegisterTableView::setServerAddressColumnVisible(bool visible)
 {
-    ui->tableView->setColumnHidden(REGISTER_TABLE_SERVER_ADDRESS, !visible);
+    ui->tableView->setColumnHidden(REGISTER_TABLE_COLUMN_SERVER_ADDRESS, !visible);
     resetColumnMenu();
 }
 

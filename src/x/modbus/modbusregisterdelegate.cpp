@@ -51,17 +51,17 @@ QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
 {
     int column = index.column();
     switch (column) {
-    case REGISTER_TABLE_TYPE:
+    case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
         return new QComboBox(parent);
-    case REGISTER_TABLE_SERVER_ADDRESS:
-    case REGISTER_TABLE_MIN:
-    case REGISTER_TABLE_MAX:
-    case REGISTER_TABLE_DECIMALS:
-    case REGISTER_TABLE_VALUE:
+    case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
+    case REGISTER_TABLE_COLUMN_MIN:
+    case REGISTER_TABLE_COLUMN_MAX:
+    case REGISTER_TABLE_COLUMN_DECIMALS:
+    case REGISTER_TABLE_COLUMN_VALUE:
         return new QSpinBox(parent);
-    case REGISTER_TABLE_NAME:
-    case REGISTER_TABLE_UNIT:
-    case REGISTER_TABLE_DESCRIPTION:
+    case REGISTER_TABLE_COLUMN_NAME:
+    case REGISTER_TABLE_COLUMN_UNIT:
+    case REGISTER_TABLE_COLUMN_DESCRIPTION:
         return new QLineEdit(parent);
     default:
         return nullptr;
@@ -80,43 +80,43 @@ void ModbusRegisterDelegate::setEditorData(QWidget *editor, const QModelIndex &i
 
     int column = index.column();
     QVariant value = index.model()->data(index, Qt::EditRole);
-    if (column == REGISTER_TABLE_TYPE) {
+    if (column == REGISTER_TABLE_COLUMN_REGISTER_TYPE) {
         QComboBox *comboBox = qobject_cast<QComboBox *>(editor);
         if (comboBox) {
             xModbus::setupRegisterType(comboBox);
             int index = comboBox->findData(value.toInt());
             comboBox->setCurrentIndex(index == -1 ? 0 : index);
         }
-    } else if (column == REGISTER_TABLE_SERVER_ADDRESS) {
+    } else if (column == REGISTER_TABLE_COLUMN_SERVER_ADDRESS) {
         QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
         if (spinBox) {
             spinBox->setMinimum(0);
             spinBox->setMaximum(255);
             spinBox->setValue(value.toInt());
         }
-    } else if (column == REGISTER_TABLE_MIN || column == REGISTER_TABLE_MAX) {
+    } else if (column == REGISTER_TABLE_COLUMN_MIN || column == REGISTER_TABLE_COLUMN_MAX) {
         QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
         if (spinBox) {
             spinBox->setMinimum(0);
             spinBox->setMaximum(65535);
             spinBox->setValue(value.toInt());
         }
-    } else if (column == REGISTER_TABLE_DECIMALS) {
+    } else if (column == REGISTER_TABLE_COLUMN_DECIMALS) {
         QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
         if (spinBox) {
             spinBox->setMinimum(0);
             spinBox->setMaximum(5);
             spinBox->setValue(value.toInt());
         }
-    } else if (column == REGISTER_TABLE_VALUE) {
+    } else if (column == REGISTER_TABLE_COLUMN_VALUE) {
         QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
         if (spinBox) {
             spinBox->setMinimum(0);
             spinBox->setMaximum(65535);
             spinBox->setValue(value.toInt());
         }
-    } else if (column == REGISTER_TABLE_NAME || column == REGISTER_TABLE_UNIT
-               || column == REGISTER_TABLE_DESCRIPTION) {
+    } else if (column == REGISTER_TABLE_COLUMN_NAME || column == REGISTER_TABLE_COLUMN_UNIT
+               || column == REGISTER_TABLE_COLUMN_DESCRIPTION) {
         QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
         if (lineEdit) {
             lineEdit->setText(value.toString());
@@ -145,15 +145,15 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
         return;
     }
 
-    bool isComboBox = column == REGISTER_TABLE_TYPE;
-    bool isSpinBox = column == REGISTER_TABLE_SERVER_ADDRESS;
-    isSpinBox |= column == REGISTER_TABLE_MIN;
-    isSpinBox |= column == REGISTER_TABLE_MAX;
-    isSpinBox |= column == REGISTER_TABLE_VALUE;
-    isSpinBox |= column == REGISTER_TABLE_DECIMALS;
-    bool isLineEdit = column == REGISTER_TABLE_NAME;
-    isLineEdit |= column == REGISTER_TABLE_UNIT;
-    isLineEdit |= column == REGISTER_TABLE_DESCRIPTION;
+    bool isComboBox = column == REGISTER_TABLE_COLUMN_REGISTER_TYPE;
+    bool isSpinBox = column == REGISTER_TABLE_COLUMN_SERVER_ADDRESS;
+    isSpinBox |= column == REGISTER_TABLE_COLUMN_MIN;
+    isSpinBox |= column == REGISTER_TABLE_COLUMN_MAX;
+    isSpinBox |= column == REGISTER_TABLE_COLUMN_VALUE;
+    isSpinBox |= column == REGISTER_TABLE_COLUMN_DECIMALS;
+    bool isLineEdit = column == REGISTER_TABLE_COLUMN_NAME;
+    isLineEdit |= column == REGISTER_TABLE_COLUMN_UNIT;
+    isLineEdit |= column == REGISTER_TABLE_COLUMN_DESCRIPTION;
 
     if (isComboBox) {
         QComboBox *comboBox = qobject_cast<QComboBox *>(editor);
@@ -168,10 +168,10 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
         }
 
         int intValue = spinBox->value();
-        if (column == REGISTER_TABLE_VALUE) {
+        if (column == REGISTER_TABLE_COLUMN_VALUE) {
             // Clamp the value between min and max
-            QModelIndex minIndex = registerTable->index(row, REGISTER_TABLE_MIN);
-            QModelIndex maxIndex = registerTable->index(row, REGISTER_TABLE_MAX);
+            QModelIndex minIndex = registerTable->index(row, REGISTER_TABLE_COLUMN_MIN);
+            QModelIndex maxIndex = registerTable->index(row, REGISTER_TABLE_COLUMN_MAX);
             QVariant minVar = registerTable->data(minIndex, Qt::EditRole);
             QVariant maxVar = registerTable->data(maxIndex, Qt::EditRole);
 
@@ -183,7 +183,8 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
                 intValue = maxValue;
             }
 
-            QModelIndex registerTypeIndex = registerTable->index(row, REGISTER_TABLE_TYPE);
+            QModelIndex registerTypeIndex = registerTable
+                                                ->index(row, REGISTER_TABLE_COLUMN_REGISTER_TYPE);
             int registerType = registerTable->data(registerTypeIndex, Qt::EditRole).toInt();
             bool isBit = registerType == QModbusDataUnit::Coils;
             isBit |= registerType == QModbusDataUnit::DiscreteInputs;

@@ -58,7 +58,7 @@ int ModbusRegisterTable::columnCount(const QModelIndex &parent) const
 QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::TextAlignmentRole) {
-        if (index.column() == REGISTER_TABLE_DESCRIPTION) {
+        if (index.column() == REGISTER_TABLE_COLUMN_DESCRIPTION) {
             return int(Qt::AlignLeft | Qt::AlignVCenter);
         } else {
             return Qt::AlignCenter;
@@ -72,25 +72,25 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
     const ModbusRegister *item = m_registerItems.at(index.row());
     if (role == Qt::DisplayRole) {
         switch (index.column()) {
-        case REGISTER_TABLE_ADDRESS:
+        case REGISTER_TABLE_COLUMN_ADDRESS:
             return QString("0x%1").arg(item->address(), 4, 16, QChar('0').toUpper());
-        case REGISTER_TABLE_SERVER_ADDRESS:
+        case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
             return item->serverAddress();
-        case REGISTER_TABLE_NAME:
+        case REGISTER_TABLE_COLUMN_NAME:
             return item->name();
-        case REGISTER_TABLE_TYPE:
+        case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
             return registerTypeToString(item->type());
-        case REGISTER_TABLE_UNIT:
+        case REGISTER_TABLE_COLUMN_UNIT:
             return item->unit();
-        case REGISTER_TABLE_DESCRIPTION:
+        case REGISTER_TABLE_COLUMN_DESCRIPTION:
             return item->description();
-        case REGISTER_TABLE_MIN:
+        case REGISTER_TABLE_COLUMN_MIN:
             return item->min();
-        case REGISTER_TABLE_MAX:
+        case REGISTER_TABLE_COLUMN_MAX:
             return item->max();
-        case REGISTER_TABLE_DECIMALS:
+        case REGISTER_TABLE_COLUMN_DECIMALS:
             return item->decimals();
-        case REGISTER_TABLE_VALUE:
+        case REGISTER_TABLE_COLUMN_VALUE:
             return QString::number(double(item->value()) / qPow(10, item->decimals()),
                                    'f',
                                    item->decimals());
@@ -99,25 +99,25 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
         }
     } else if (role == Qt::EditRole) {
         switch (index.column()) {
-        case REGISTER_TABLE_ADDRESS:
+        case REGISTER_TABLE_COLUMN_ADDRESS:
             return item->address();
-        case REGISTER_TABLE_SERVER_ADDRESS:
+        case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
             return item->serverAddress();
-        case REGISTER_TABLE_NAME:
+        case REGISTER_TABLE_COLUMN_NAME:
             return item->name();
-        case REGISTER_TABLE_TYPE:
+        case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
             return item->type();
-        case REGISTER_TABLE_UNIT:
+        case REGISTER_TABLE_COLUMN_UNIT:
             return item->unit();
-        case REGISTER_TABLE_DESCRIPTION:
+        case REGISTER_TABLE_COLUMN_DESCRIPTION:
             return item->description();
-        case REGISTER_TABLE_MIN:
+        case REGISTER_TABLE_COLUMN_MIN:
             return item->min();
-        case REGISTER_TABLE_MAX:
+        case REGISTER_TABLE_COLUMN_MAX:
             return item->max();
-        case REGISTER_TABLE_DECIMALS:
+        case REGISTER_TABLE_COLUMN_DECIMALS:
             return item->decimals();
-        case REGISTER_TABLE_VALUE:
+        case REGISTER_TABLE_COLUMN_VALUE:
             return item->value();
         default:
             return QVariant();
@@ -138,34 +138,34 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     ModbusRegister *item = m_registerItems.at(index.row());
     int column = index.column();
     switch (column) {
-    case REGISTER_TABLE_ADDRESS:
+    case REGISTER_TABLE_COLUMN_ADDRESS:
         item->setAddress(value.toUInt());
         break;
-    case REGISTER_TABLE_SERVER_ADDRESS:
+    case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
         item->setServerAddress(value.toInt());
         break;
-    case REGISTER_TABLE_NAME:
+    case REGISTER_TABLE_COLUMN_NAME:
         item->setName(value.toString());
         break;
-    case REGISTER_TABLE_TYPE:
+    case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
         item->setType(static_cast<QModbusDataUnit::RegisterType>(value.toInt()));
         break;
-    case REGISTER_TABLE_UNIT:
+    case REGISTER_TABLE_COLUMN_UNIT:
         item->setUnit(value.toString());
         break;
-    case REGISTER_TABLE_DESCRIPTION:
+    case REGISTER_TABLE_COLUMN_DESCRIPTION:
         item->setDescription(value.toString());
         break;
-    case REGISTER_TABLE_MIN:
+    case REGISTER_TABLE_COLUMN_MIN:
         item->setMin(value.toDouble());
         break;
-    case REGISTER_TABLE_MAX:
+    case REGISTER_TABLE_COLUMN_MAX:
         item->setMax(value.toDouble());
         break;
-    case REGISTER_TABLE_DECIMALS:
+    case REGISTER_TABLE_COLUMN_DECIMALS:
         item->setDecimals(value.toInt());
         break;
-    case REGISTER_TABLE_VALUE:
+    case REGISTER_TABLE_COLUMN_VALUE:
         item->setValue(value.toInt());
         break;
     default:
@@ -173,8 +173,8 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     }
 
     emit dataChanged(index, index);
-    if (column == REGISTER_TABLE_DECIMALS) {
-        QModelIndex valueIndex = this->index(index.row(), REGISTER_TABLE_VALUE);
+    if (column == REGISTER_TABLE_COLUMN_DECIMALS) {
+        QModelIndex valueIndex = this->index(index.row(), REGISTER_TABLE_COLUMN_VALUE);
         emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
     }
 
@@ -186,25 +186,25 @@ QVariant ModbusRegisterTable::headerData(int section, Qt::Orientation orientatio
     if (role == Qt::DisplayRole) {
         if (orientation == Qt::Horizontal) {
             switch (section) {
-            case REGISTER_TABLE_ADDRESS:
+            case REGISTER_TABLE_COLUMN_ADDRESS:
                 return tr("Register Address");
-            case REGISTER_TABLE_NAME:
+            case REGISTER_TABLE_COLUMN_NAME:
                 return tr("Name");
-            case REGISTER_TABLE_SERVER_ADDRESS:
+            case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
                 return tr("Server Address");
-            case REGISTER_TABLE_TYPE:
+            case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
                 return tr("Type");
-            case REGISTER_TABLE_UNIT:
+            case REGISTER_TABLE_COLUMN_UNIT:
                 return tr("Unit");
-            case REGISTER_TABLE_DESCRIPTION:
+            case REGISTER_TABLE_COLUMN_DESCRIPTION:
                 return tr("Description");
-            case REGISTER_TABLE_MIN:
+            case REGISTER_TABLE_COLUMN_MIN:
                 return tr("Min");
-            case REGISTER_TABLE_MAX:
+            case REGISTER_TABLE_COLUMN_MAX:
                 return tr("Max");
-            case REGISTER_TABLE_DECIMALS:
+            case REGISTER_TABLE_COLUMN_DECIMALS:
                 return tr("Decimals");
-            case REGISTER_TABLE_VALUE:
+            case REGISTER_TABLE_COLUMN_VALUE:
                 return tr("Value");
             default:
                 return QVariant();
@@ -214,7 +214,7 @@ QVariant ModbusRegisterTable::headerData(int section, Qt::Orientation orientatio
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (orientation == Qt::Horizontal) {
-            if (section == REGISTER_TABLE_DESCRIPTION) {
+            if (section == REGISTER_TABLE_COLUMN_DESCRIPTION) {
                 return int(Qt::AlignLeft | Qt::AlignVCenter);
             } else {
                 return Qt::AlignCenter;
@@ -260,7 +260,7 @@ Qt::ItemFlags ModbusRegisterTable::flags(const QModelIndex &index) const
     }
 
     auto defaultFlags = QAbstractTableModel::flags(index);
-    if (index.column() != REGISTER_TABLE_ADDRESS) {
+    if (index.column() != REGISTER_TABLE_COLUMN_ADDRESS) {
         return defaultFlags | Qt::ItemIsEditable;
     }
 
@@ -274,7 +274,7 @@ void ModbusRegisterTable::onRegisterItemValueChanged(ModbusRegister *item)
         return;
     }
 
-    QModelIndex valueIndex = this->index(row, REGISTER_TABLE_VALUE);
+    QModelIndex valueIndex = this->index(row, REGISTER_TABLE_COLUMN_VALUE);
     emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
 }
 
@@ -285,7 +285,7 @@ void ModbusRegisterTable::onRegisterItemNameChanged(ModbusRegister *item)
         return;
     }
 
-    QModelIndex nameIndex = this->index(row, REGISTER_TABLE_NAME);
+    QModelIndex nameIndex = this->index(row, REGISTER_TABLE_COLUMN_NAME);
     emit dataChanged(nameIndex, nameIndex, QList<int>() << Qt::DisplayRole);
 }
 
