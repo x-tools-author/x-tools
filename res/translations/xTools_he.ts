@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>לְסַנֵן</translation>
+        <translation type="vanished">לְסַנֵן</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>שימור תיק</translation>
+        <translation type="vanished">שימור תיק</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>עוזר CRC</translation>
+        <translation type="vanished">עוזר CRC</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>לְרַעֲנֵן</translation>
+        <translation type="vanished">לְרַעֲנֵן</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>סוּג</translation>
+        <translation type="vanished">סוּג</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>יְצוּא</translation>
+        <translation type="vanished">יְצוּא</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>נְתוּנִים</translation>
+        <translation type="vanished">נְתוּנִים</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>פורמט נתונים</translation>
+        <translation type="vanished">פורמט נתונים</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>עוזר Base64</translation>
+        <translation type="vanished">עוזר Base64</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>טקסט פשוט</translation>
+        <translation type="vanished">טקסט פשוט</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>טקסט צופן</translation>
+        <translation type="vanished">טקסט צופן</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>תְמוּנָה</translation>
+        <translation type="vanished">תְמוּנָה</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>פענוח</translation>
+        <translation type="vanished">פענוח</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>הצפין</translation>
+        <translation type="vanished">הצפין</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>מְאַפיֵן</translation>
+        <translation type="vanished">מְאַפיֵן</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(מאפיין לא נתמך)</translation>
+        <translation type="vanished">(מאפיין לא נתמך)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>מכשירי BLE</translation>
+        <translation type="vanished">מכשירי BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>לִקְרוֹא</translation>
+        <translation type="vanished">לִקְרוֹא</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>סריקת שירות</translation>
+        <translation type="vanished">סריקת שירות</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>מצב כתיבה</translation>
+        <translation type="vanished">מצב כתיבה</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>שֵׁרוּת</translation>
+        <translation type="vanished">שֵׁרוּת</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>סריקת מכשיר</translation>
+        <translation type="vanished">סריקת מכשיר</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>בקרת פלט</translation>
+        <translation type="vanished">בקרת פלט</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>פורמט פלט</translation>
+        <translation type="vanished">פורמט פלט</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>בָּרוּר</translation>
+        <translation type="vanished">בָּרוּר</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>פרמטרי שידור</translation>
+        <translation type="vanished">פרמטרי שידור</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>כתובת לשידור</translation>
+        <translation type="vanished">כתובת לשידור</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>פורמט נתונים</translation>
+        <translation type="vanished">פורמט נתונים</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>קידומת שידור</translation>
+        <translation type="vanished">קידומת שידור</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>מרווח שידור</translation>
+        <translation type="vanished">מרווח שידור</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>סיומת שידור</translation>
+        <translation type="vanished">סיומת שידור</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>יציאת שידור</translation>
+        <translation type="vanished">יציאת שידור</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>נתוני שידור</translation>
+        <translation type="vanished">נתוני שידור</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>פלט מידע</translation>
+        <translation type="vanished">פלט מידע</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>סטודיו CANBus</translation>
+        <translation type="vanished">סטודיו CANBus</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>מסגרת CAN</translation>
+        <translation type="vanished">מסגרת CAN</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>פורמט מורחב</translation>
+        <translation type="vanished">פורמט מורחב</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>קצב נתונים גמיש</translation>
+        <translation type="vanished">קצב נתונים גמיש</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>מזהה מסגרת</translation>
+        <translation type="vanished">מזהה מסגרת</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>סוג מסגרת</translation>
+        <translation type="vanished">סוג מסגרת</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>אפשרויות מסגרת</translation>
+        <translation type="vanished">אפשרויות מסגרת</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>מתג קצב סיביות</translation>
+        <translation type="vanished">מתג קצב סיביות</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>בקרת מכשיר</translation>
+        <translation type="vanished">בקרת מכשיר</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>לְנַתֵק</translation>
+        <translation type="vanished">לְנַתֵק</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>לְחַבֵּר</translation>
+        <translation type="vanished">לְחַבֵּר</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>תוסף</translation>
+        <translation type="vanished">תוסף</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>שֵׁם</translation>
+        <translation type="vanished">שֵׁם</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>תצוגת נתונים</translation>
+        <translation type="vanished">תצוגת נתונים</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>ציין תצורה</translation>
+        <translation type="vanished">ציין תצורה</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>מסנן שגיאות</translation>
+        <translation type="vanished">מסנן שגיאות</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>תצורות מותאמות אישית</translation>
+        <translation type="vanished">תצורות מותאמות אישית</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CAN FD</translation>
+        <translation type="vanished">CAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>Loopback</translation>
+        <translation type="vanished">Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>קצב סיביות נתונים</translation>
+        <translation type="vanished">קצב סיביות נתונים</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>קצב סיביות</translation>
+        <translation type="vanished">קצב סיביות</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>קבלו משלו</translation>
+        <translation type="vanished">קבלו משלו</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>מטען מסגרת CAN</translation>
+        <translation type="vanished">מטען מסגרת CAN</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>לִשְׁלוֹחַ</translation>
+        <translation type="vanished">לִשְׁלוֹחַ</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,82 +783,82 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>פוּרמָט</translation>
+        <translation type="vanished">פוּרמָט</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>ערוצים</translation>
+        <translation type="vanished">ערוצים</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>עוזר CRC</translation>
+        <translation type="vanished">עוזר CRC</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>ערך פאלוי</translation>
+        <translation type="vanished">ערך פאלוי</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>ערך התחלתי</translation>
+        <translation type="vanished">ערך התחלתי</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>לְהַעְתִיק</translation>
+        <translation type="vanished">לְהַעְתִיק</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>מידע נוסף על חישוב crc, בקר בכתובת http://www.ip33.com/crc.html (לחיצה כפולה כדי לבקר)</translation>
+        <translation type="vanished">מידע נוסף על חישוב crc, בקר בכתובת http://www.ip33.com/crc.html (לחיצה כפולה כדי לבקר)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>היפוך קלט</translation>
+        <translation type="vanished">היפוך קלט</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>היפוך פלט</translation>
+        <translation type="vanished">היפוך פלט</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>בָּרוּר</translation>
+        <translation type="vanished">בָּרוּר</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>לְחַשֵׁב</translation>
+        <translation type="vanished">לְחַשֵׁב</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>פרמטרים</translation>
+        <translation type="vanished">פרמטרים</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>ערך XOR</translation>
+        <translation type="vanished">ערך XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>הגובה שלו בצד שמאל והחלקים הנמוכים הם בצד ימין</translation>
+        <translation type="vanished">הגובה שלו בצד שמאל והחלקים הנמוכים הם בצד ימין</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>HEX</translation>
+        <translation type="vanished">HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>תוצאה (HEX)</translation>
+        <translation type="vanished">תוצאה (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>דגם פרמטר</translation>
+        <translation type="vanished">דגם פרמטר</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>רוֹחַב</translation>
+        <translation type="vanished">רוֹחַב</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -873,15 +873,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Paloy</source>
-        <translation>לְהַאֵט</translation>
+        <translation type="vanished">לְהַאֵט</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>קלט נתונים</translation>
+        <translation type="vanished">קלט נתונים</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>תוצאה (BIN)</translation>
+        <translation type="vanished">תוצאה (BIN)</translation>
     </message>
 </context>
 <context>
@@ -911,31 +911,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>סוגים</translation>
+        <translation type="vanished">סוגים</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>דגלים</translation>
+        <translation type="vanished">דגלים</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>פוּרמָט</translation>
+        <translation type="vanished">פוּרמָט</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>שיאים</translation>
+        <translation type="vanished">שיאים</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>נְתוּנִים</translation>
+        <translation type="vanished">נְתוּנִים</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>חפש נתונים...</translation>
+        <translation type="vanished">חפש נתונים...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -963,82 +963,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>מכשיר Modbus חדש</translation>
+        <translation type="vanished">מכשיר Modbus חדש</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>פרמטרים של חיבור</translation>
+        <translation type="vanished">פרמטרים של חיבור</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>שִׁוּוּי</translation>
+        <translation type="vanished">שִׁוּוּי</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>שיעור באוד</translation>
+        <translation type="vanished">שיעור באוד</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>עצור ביטים</translation>
+        <translation type="vanished">עצור ביטים</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>לְרַעֲנֵן</translation>
+        <translation type="vanished">לְרַעֲנֵן</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>סיביות נתונים</translation>
+        <translation type="vanished">סיביות נתונים</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>שמות</translation>
+        <translation type="vanished">שמות</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>כתובת IP</translation>
+        <translation type="vanished">כתובת IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>נָמָל</translation>
+        <translation type="vanished">נָמָל</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>סוג מכשיר</translation>
+        <translation type="vanished">סוג מכשיר</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>זמן קצוב (ms)</translation>
+        <translation type="vanished">זמן קצוב (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>מספר ניסיונות חוזרים</translation>
+        <translation type="vanished">מספר ניסיונות חוזרים</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>כְּתוֹבֶת</translation>
+        <translation type="vanished">כְּתוֹבֶת</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>מצב האזנה בלבד</translation>
+        <translation type="vanished">מצב האזנה בלבד</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>פרמטרים של מכשיר</translation>
+        <translation type="vanished">פרמטרים של מכשיר</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>שם המכשיר</translation>
+        <translation type="vanished">שם המכשיר</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>כגון: סימנס S7-300</translation>
+        <translation type="vanished">כגון: סימנס S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>לְחַפֵּשׂ</translation>
+        <translation type="vanished">לְחַפֵּשׂ</translation>
     </message>
 </context>
 <context>
@@ -1123,23 +1123,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>שמור נתוני TX</translation>
+        <translation type="vanished">שמור נתוני TX</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>דפדפן</translation>
+        <translation type="vanished">דפדפן</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>שמור אלפית שנייה</translation>
+        <translation type="vanished">שמור אלפית שנייה</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>שמור נתוני rx</translation>
+        <translation type="vanished">שמור נתוני rx</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>שמור תאריך</translation>
+        <translation type="vanished">שמור תאריך</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1148,15 +1148,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Save Time</source>
-        <translation>חסוך זמן</translation>
+        <translation type="vanished">חסוך זמן</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>שמור פורמט</translation>
+        <translation type="vanished">שמור פורמט</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>מקסימום בתים</translation>
+        <translation type="vanished">מקסימום בתים</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1202,27 +1202,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>תוצאה עליונה</translation>
+        <translation type="vanished">תוצאה עליונה</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>קובץ מסומן</translation>
+        <translation type="vanished">קובץ מסומן</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>בדק התקדמות</translation>
+        <translation type="vanished">בדק התקדמות</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>אלגוריתם בדק</translation>
+        <translation type="vanished">אלגוריתם בדק</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>תוצאה נבדקה</translation>
+        <translation type="vanished">תוצאה נבדקה</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1231,7 +1231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Open</source>
-        <translation>לִפְתוֹחַ</translation>
+        <translation type="vanished">לִפְתוֹחַ</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1253,35 +1253,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>רשימת קבצים</translation>
+        <translation type="vanished">רשימת קבצים</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>יְבוּא</translation>
+        <translation type="vanished">יְבוּא</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>לְמַעלָה</translation>
+        <translation type="vanished">לְמַעלָה</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>לְמַטָה</translation>
+        <translation type="vanished">לְמַטָה</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>לְהַסִיר</translation>
+        <translation type="vanished">לְהַסִיר</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>בָּרוּר</translation>
+        <translation type="vanished">בָּרוּר</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>לְמַזֵג</translation>
+        <translation type="vanished">לְמַזֵג</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1356,7 +1356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>הֶתקֵן</translation>
+        <translation type="vanished">הֶתקֵן</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1436,62 +1436,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>הצג תצוגה מקדימה של נתונים</translation>
+        <translation type="vanished">הצג תצוגה מקדימה של נתונים</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>הוסף סיומת</translation>
+        <translation type="vanished">הוסף סיומת</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>הוסף קידומת</translation>
+        <translation type="vanished">הוסף קידומת</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>דמות בריחה</translation>
+        <translation type="vanished">דמות בריחה</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>עיבוד מוקדם של נתונים</translation>
+        <translation type="vanished">עיבוד מוקדם של נתונים</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>צרף נתוני בדיקה</translation>
+        <translation type="vanished">צרף נתוני בדיקה</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>אנדיאן גדול</translation>
+        <translation type="vanished">אנדיאן גדול</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>התחל משמאל</translation>
+        <translation type="vanished">התחל משמאל</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>התחל מימין</translation>
+        <translation type="vanished">התחל מימין</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>חֶשְׁבּוֹן</translation>
+        <translation type="vanished">חֶשְׁבּוֹן</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>התחל אינדקס</translation>
+        <translation type="vanished">התחל אינדקס</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>מדד סוף</translation>
+        <translation type="vanished">מדד סוף</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>בדיקת נתונים</translation>
+        <translation type="vanished">בדיקת נתונים</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>עורך צומת</translation>
+        <translation type="vanished">עורך צומת</translation>
     </message>
 </context>
 <context>
@@ -1511,27 +1511,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>סוג נתונים</translation>
+        <translation type="vanished">סוג נתונים</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>אַגָדָה</translation>
+        <translation type="vanished">אַגָדָה</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>נקודות מטמון</translation>
+        <translation type="vanished">נקודות מטמון</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>בָּרוּר</translation>
+        <translation type="vanished">בָּרוּר</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>יְצוּא</translation>
+        <translation type="vanished">יְצוּא</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>יְבוּא</translation>
+        <translation type="vanished">יְבוּא</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1587,11 +1587,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>כתוב ל</translation>
+        <translation type="vanished">כתוב ל</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>שם השרת</translation>
+        <translation type="vanished">שם השרת</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1603,38 +1603,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>שם השרת</translation>
+        <translation type="vanished">שם השרת</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>מִבְחָן</translation>
+        <translation type="vanished">מִבְחָן</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>נתוני בדיקה</translation>
+        <translation type="vanished">נתוני בדיקה</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>נתוני תוצאות</translation>
+        <translation type="vanished">נתוני תוצאות</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>לַעֲקוֹף</translation>
+        <translation type="vanished">לַעֲקוֹף</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>פרמטרים של טבלה</translation>
+        <translation type="vanished">פרמטרים של טבלה</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>פרמטרים של מחרוזת</translation>
+        <translation type="vanished">פרמטרים של מחרוזת</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1656,7 +1656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>כְּלָלִי</translation>
+        <translation type="vanished">כְּלָלִי</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>סוג שירות</translation>
+        <translation type="vanished">סוג שירות</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1950,39 +1950,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>לְנַחֵם</translation>
+        <translation type="vanished">לְנַחֵם</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>רישום שרת</translation>
+        <translation type="vanished">רישום שרת</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>לִשְׁלוֹחַ</translation>
+        <translation type="vanished">לִשְׁלוֹחַ</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>יחידת נתוני פרוטוקול מותאם אישית</translation>
+        <translation type="vanished">יחידת נתוני פרוטוקול מותאם אישית</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>רישומי לקוחות</translation>
+        <translation type="vanished">רישומי לקוחות</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>רשימת מכשירים</translation>
+        <translation type="vanished">רשימת מכשירים</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>לִסְגוֹר</translation>
+        <translation type="vanished">לִסְגוֹר</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>לִפְתוֹחַ</translation>
+        <translation type="vanished">לִפְתוֹחַ</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>פעולות מכשיר</translation>
+        <translation type="vanished">פעולות מכשיר</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1991,95 +1991,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>הגדרות רשת</translation>
+        <translation type="vanished">הגדרות רשת</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>נָמָל</translation>
+        <translation type="vanished">נָמָל</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>שיעור באוד</translation>
+        <translation type="vanished">שיעור באוד</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>סיביות נתונים</translation>
+        <translation type="vanished">סיביות נתונים</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>הגדרות יציאה טורית</translation>
+        <translation type="vanished">הגדרות יציאה טורית</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>שִׁוּוּי</translation>
+        <translation type="vanished">שִׁוּוּי</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>שם הנמל</translation>
+        <translation type="vanished">שם הנמל</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>עצור ביטים</translation>
+        <translation type="vanished">עצור ביטים</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>מכשיר תפוס</translation>
+        <translation type="vanished">מכשיר תפוס</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>פרמטרים של שרת</translation>
+        <translation type="vanished">פרמטרים של שרת</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>כתובת שרת</translation>
+        <translation type="vanished">כתובת שרת</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>מצב האזנה בלבד</translation>
+        <translation type="vanished">מצב האזנה בלבד</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>כתובת היעד</translation>
+        <translation type="vanished">כתובת היעד</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>לִקְרוֹא</translation>
+        <translation type="vanished">לִקְרוֹא</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>לִכתוֹב</translation>
+        <translation type="vanished">לִכתוֹב</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>קוד פונקציה</translation>
+        <translation type="vanished">קוד פונקציה</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>מספר כתובת</translation>
+        <translation type="vanished">מספר כתובת</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>כתובת התחלה</translation>
+        <translation type="vanished">כתובת התחלה</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>חזור פעמים</translation>
+        <translation type="vanished">חזור פעמים</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>פסק זמן</translation>
+        <translation type="vanished">פסק זמן</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>פרמטרי לקוח</translation>
+        <translation type="vanished">פרמטרי לקוח</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>בקרת קלט (כתובת וערך)</translation>
+        <translation type="vanished">בקרת קלט (כתובת וערך)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>פורמט קלט</translation>
+        <translation type="vanished">פורמט קלט</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2250,31 +2250,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>נתונים גולמיים</translation>
+        <translation type="vanished">נתונים גולמיים</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>נתונים מבושלים (hex)</translation>
+        <translation type="vanished">נתונים מבושלים (hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>סוג נתונים מבושל</translation>
+        <translation type="vanished">סוג נתונים מבושל</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>נתונים מבושלים (דצמבר)</translation>
+        <translation type="vanished">נתונים מבושלים (דצמבר)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>כגון: 1, -1, 1.1, -1.1</translation>
+        <translation type="vanished">כגון: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>נתונים מבושלים (פח)</translation>
+        <translation type="vanished">נתונים מבושלים (פח)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>משמאל לימין הוא גבוה לנמוך</translation>
+        <translation type="vanished">משמאל לימין הוא גבוה לנמוך</translation>
     </message>
 </context>
 <context>
@@ -2314,30 +2314,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>הפעל מדגיש</translation>
+        <translation type="vanished">הפעל מדגיש</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>סינון טקסט</translation>
+        <translation type="vanished">סינון טקסט</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>שלום, וורד</translation>
+        <translation type="vanished">שלום, וורד</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>הצג סטטיסטיקאי</translation>
+        <translation type="vanished">הצג סטטיסטיקאי</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>אפשר מסנן</translation>
+        <translation type="vanished">אפשר מסנן</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>מרווח מחזור</translation>
+        <translation type="vanished">מרווח מחזור</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2346,95 +2346,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Settings</source>
-        <translation>הגדרות</translation>
+        <translation type="vanished">הגדרות</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>בָּרוּר</translation>
+        <translation type="vanished">בָּרוּר</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>Rx</translation>
+        <translation type="vanished">Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>Tx</translation>
+        <translation type="vanished">Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>תַאֲרִיך</translation>
+        <translation type="vanished">תַאֲרִיך</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>דֶגֶל</translation>
+        <translation type="vanished">דֶגֶל</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>זְמַן</translation>
+        <translation type="vanished">זְמַן</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>גְבֶרֶת</translation>
+        <translation type="vanished">גְבֶרֶת</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>בקרת פלט</translation>
+        <translation type="vanished">בקרת פלט</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>בקרת קלט</translation>
+        <translation type="vanished">בקרת קלט</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>לַעֲטוֹף</translation>
+        <translation type="vanished">לַעֲטוֹף</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>מָסוֹף</translation>
+        <translation type="vanished">מָסוֹף</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>בקרת תקשורת</translation>
+        <translation type="vanished">בקרת תקשורת</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>לִשְׁלוֹחַ</translation>
+        <translation type="vanished">לִשְׁלוֹחַ</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>פורמט טקסט</translation>
+        <translation type="vanished">פורמט טקסט</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>תְפוּקָה</translation>
+        <translation type="vanished">תְפוּקָה</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>קֶלֶט</translation>
+        <translation type="vanished">קֶלֶט</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>רשימת נתונים מוגדרת מראש</translation>
+        <translation type="vanished">רשימת נתונים מוגדרת מראש</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>הגדרות קבועות מראש</translation>
+        <translation type="vanished">הגדרות קבועות מראש</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>פולט</translation>
+        <translation type="vanished">פולט</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>מגיב</translation>
+        <translation type="vanished">מגיב</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>העברות</translation>
+        <translation type="vanished">העברות</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2646,43 +2646,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>מרווח קבוצה (ms)</translation>
+        <translation type="vanished">מרווח קבוצה (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>הוסף (עדכן) קבוצה</translation>
+        <translation type="vanished">הוסף (עדכן) קבוצה</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>עמודות (מפוצלות עם רווח)</translation>
+        <translation type="vanished">עמודות (מפוצלות עם רווח)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>לְמַעלָה</translation>
+        <translation type="vanished">לְמַעלָה</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>לְמַטָה</translation>
+        <translation type="vanished">לְמַטָה</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>מחק את נבחרות</translation>
+        <translation type="vanished">מחק את נבחרות</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>ללא כותרת</translation>
+        <translation type="vanished">ללא כותרת</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>שֵׁם</translation>
+        <translation type="vanished">שֵׁם</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>השבת את הקבוצה</translation>
+        <translation type="vanished">השבת את הקבוצה</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>מרווח פריט (ms)</translation>
+        <translation type="vanished">מרווח פריט (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2975,31 +2975,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3031,11 +3031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>יְצוּא</translation>
+        <translation type="vanished">יְצוּא</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>לִיצוֹר</translation>
+        <translation type="vanished">לִיצוֹר</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3106,35 +3106,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>נקה יומן</translation>
+        <translation type="vanished">נקה יומן</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>עֵץ</translation>
+        <translation type="vanished">עֵץ</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>פתח את ספריית הסקריפטים</translation>
+        <translation type="vanished">פתח את ספריית הסקריפטים</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>תסריט חדש</translation>
+        <translation type="vanished">תסריט חדש</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>רענן את רשימת הקבצים</translation>
+        <translation type="vanished">רענן את רשימת הקבצים</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>מדריך מקוון</translation>
+        <translation type="vanished">מדריך מקוון</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>תַסרִיט</translation>
+        <translation type="vanished">תַסרִיט</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3200,23 +3200,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>חיפוש טקסט</translation>
+        <translation type="vanished">חיפוש טקסט</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>לְחַפֵּשׂ</translation>
+        <translation type="vanished">לְחַפֵּשׂ</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>ביטוי רגיל</translation>
+        <translation type="vanished">ביטוי רגיל</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>רגיש לאותיות גדולות</translation>
+        <translation type="vanished">רגיש לאותיות גדולות</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>מילה שלמה</translation>
+        <translation type="vanished">מילה שלמה</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3330,35 +3330,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>שיעור באוד</translation>
+        <translation type="vanished">שיעור באוד</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>שִׁוּוּי</translation>
+        <translation type="vanished">שִׁוּוּי</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>התעלם ממכשיר תפוס</translation>
+        <translation type="vanished">התעלם ממכשיר תפוס</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>סיביות נתונים</translation>
+        <translation type="vanished">סיביות נתונים</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>בקרת זרימה</translation>
+        <translation type="vanished">בקרת זרימה</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>עצור ביטים</translation>
+        <translation type="vanished">עצור ביטים</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>שם הנמל</translation>
+        <translation type="vanished">שם הנמל</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>אפשר מרווח פריימים</translation>
+        <translation type="vanished">אפשר מרווח פריימים</translation>
     </message>
 </context>
 <context>
@@ -3418,63 +3418,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>כתוב ל</translation>
+        <translation type="vanished">כתוב ל</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>נָתִיב</translation>
+        <translation type="vanished">נָתִיב</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>נתק את כל הלקוחות</translation>
+        <translation type="vanished">נתק את כל הלקוחות</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>אימות</translation>
+        <translation type="vanished">אימות</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>IP של שרת</translation>
+        <translation type="vanished">IP של שרת</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>עָרוּץ</translation>
+        <translation type="vanished">עָרוּץ</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>אפשר שידור רב</translation>
+        <translation type="vanished">אפשר שידור רב</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>רק שידור רב</translation>
+        <translation type="vanished">רק שידור רב</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>פוסט/שלום</translation>
+        <translation type="vanished">פוסט/שלום</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>מצב מאובטח</translation>
+        <translation type="vanished">מצב מאובטח</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast Port</translation>
+        <translation type="vanished">Multicast Port</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>יציאת שרת</translation>
+        <translation type="vanished">יציאת שרת</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>שֵׁם מִשׁתַמֵשׁ</translation>
+        <translation type="vanished">שֵׁם מִשׁתַמֵשׁ</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>סִיסמָה</translation>
+        <translation type="vanished">סִיסמָה</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3494,23 +3494,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>נתונים גולמיים</translation>
+        <translation type="vanished">נתונים גולמיים</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>פורמט קלט</translation>
+        <translation type="vanished">פורמט קלט</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>נתונים מבושלים</translation>
+        <translation type="vanished">נתונים מבושלים</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>פורמט פלט</translation>
+        <translation type="vanished">פורמט פלט</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>לִיצוֹר</translation>
+        <translation type="vanished">לִיצוֹר</translation>
     </message>
 </context>
 <context>
@@ -3535,27 +3535,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>טוֹפֶס</translation>
+        <translation type="vanished">טוֹפֶס</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>יְצוּא</translation>
+        <translation type="vanished">יְצוּא</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>השבת את כל הפריטים</translation>
+        <translation type="vanished">השבת את כל הפריטים</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>לִמְחוֹק</translation>
+        <translation type="vanished">לִמְחוֹק</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>לְמַעלָה</translation>
+        <translation type="vanished">לְמַעלָה</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>לְהוֹסִיף</translation>
+        <translation type="vanished">לְהוֹסִיף</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3564,11 +3564,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>יְבוּא</translation>
+        <translation type="vanished">יְבוּא</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>לְמַטָה</translation>
+        <translation type="vanished">לְמַטָה</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3602,63 +3602,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>עורך נתונים</translation>
+        <translation type="vanished">עורך נתונים</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>לְבַטֵל</translation>
+        <translation type="vanished">לְבַטֵל</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>אַלגוֹרִיתְם</translation>
+        <translation type="vanished">אַלגוֹרִיתְם</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>התחל אינדקס</translation>
+        <translation type="vanished">התחל אינדקס</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>מדד סוף</translation>
+        <translation type="vanished">מדד סוף</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>לְצַרֵף</translation>
+        <translation type="vanished">לְצַרֵף</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>אנדיאן גדול</translation>
+        <translation type="vanished">אנדיאן גדול</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>עיבוד מקדים</translation>
+        <translation type="vanished">עיבוד מקדים</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>קידומת</translation>
+        <translation type="vanished">קידומת</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>סִיוֹמֶת</translation>
+        <translation type="vanished">סִיוֹמֶת</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>דמות בריחה</translation>
+        <translation type="vanished">דמות בריחה</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>בְּסֵדֶר</translation>
+        <translation type="vanished">בְּסֵדֶר</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>מטען</translation>
+        <translation type="vanished">מטען</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>פוּרמָט</translation>
+        <translation type="vanished">פוּרמָט</translation>
     </message>
 </context>
 <context>
@@ -3719,11 +3719,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>בחר ממשק רשת:</translation>
+        <translation type="vanished">בחר ממשק רשת:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>יציאת שידור</translation>
+        <translation type="vanished">יציאת שידור</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3758,19 +3758,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>בחר ממשק רשת:</translation>
+        <translation type="vanished">בחר ממשק רשת:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast Port</translation>
+        <translation type="vanished">Multicast Port</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>לולאה מרובת שידור</translation>
+        <translation type="vanished">לולאה מרובת שידור</translation>
     </message>
 </context>
 <context>
@@ -3790,27 +3790,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>מכשיר RTU חדש</translation>
+        <translation type="vanished">מכשיר RTU חדש</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>מכשיר TCP חדש</translation>
+        <translation type="vanished">מכשיר TCP חדש</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>סלילים חדשים</translation>
+        <translation type="vanished">סלילים חדשים</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>כניסות דיסקרטיות חדשות</translation>
+        <translation type="vanished">כניסות דיסקרטיות חדשות</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>רישומי אחזקות חדשים</translation>
+        <translation type="vanished">רישומי אחזקות חדשים</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>רישומי קלט חדשים</translation>
+        <translation type="vanished">רישומי קלט חדשים</translation>
     </message>
 </context>
 <context>
@@ -3855,19 +3855,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>סלילים</translation>
+        <translation type="vanished">סלילים</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>כניסות דיסקרטיות</translation>
+        <translation type="vanished">כניסות דיסקרטיות</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>החזקת רישומים</translation>
+        <translation type="vanished">החזקת רישומים</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>רישומי קלט</translation>
+        <translation type="vanished">רישומי קלט</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>

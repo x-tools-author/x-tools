@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>Filtruoti</translation>
+        <translation type="vanished">Filtruoti</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>Konservuoti dėklą</translation>
+        <translation type="vanished">Konservuoti dėklą</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC asistentas</translation>
+        <translation type="vanished">CRC asistentas</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Atnaujinti</translation>
+        <translation type="vanished">Atnaujinti</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Tipas</translation>
+        <translation type="vanished">Tipas</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Eksportuoti</translation>
+        <translation type="vanished">Eksportuoti</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Duomenys</translation>
+        <translation type="vanished">Duomenys</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>Duomenų formatas</translation>
+        <translation type="vanished">Duomenų formatas</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>Base64 asistentas</translation>
+        <translation type="vanished">Base64 asistentas</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>Paprastas tekstas</translation>
+        <translation type="vanished">Paprastas tekstas</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>Šifruotas tekstas</translation>
+        <translation type="vanished">Šifruotas tekstas</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>Vaizdas</translation>
+        <translation type="vanished">Vaizdas</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>Iššifruoti</translation>
+        <translation type="vanished">Iššifruoti</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>Šifruoti</translation>
+        <translation type="vanished">Šifruoti</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>Būdingas</translation>
+        <translation type="vanished">Būdingas</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(Nepalaikoma charakteristika)</translation>
+        <translation type="vanished">(Nepalaikoma charakteristika)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>BLE įrenginiai</translation>
+        <translation type="vanished">BLE įrenginiai</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>Skaityti</translation>
+        <translation type="vanished">Skaityti</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>Paslaugų nuskaitymas</translation>
+        <translation type="vanished">Paslaugų nuskaitymas</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>Rašymo režimas</translation>
+        <translation type="vanished">Rašymo režimas</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>Aptarnavimas</translation>
+        <translation type="vanished">Aptarnavimas</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>Įrenginio nuskaitymas</translation>
+        <translation type="vanished">Įrenginio nuskaitymas</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>Išėjimo valdymas</translation>
+        <translation type="vanished">Išėjimo valdymas</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Išvesties formatas</translation>
+        <translation type="vanished">Išvesties formatas</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Aišku</translation>
+        <translation type="vanished">Aišku</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>Transliacijos parametrai</translation>
+        <translation type="vanished">Transliacijos parametrai</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>Transliacijos adresas</translation>
+        <translation type="vanished">Transliacijos adresas</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>Duomenų formatas</translation>
+        <translation type="vanished">Duomenų formatas</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>Transliacijos priešdėlis</translation>
+        <translation type="vanished">Transliacijos priešdėlis</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>Transliacijos intervalas</translation>
+        <translation type="vanished">Transliacijos intervalas</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>Transliacijos priesaga</translation>
+        <translation type="vanished">Transliacijos priesaga</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>Transliacijos prievadas</translation>
+        <translation type="vanished">Transliacijos prievadas</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>Transliuoti duomenis</translation>
+        <translation type="vanished">Transliuoti duomenis</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>Informacijos išvestis</translation>
+        <translation type="vanished">Informacijos išvestis</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>CANBus studija</translation>
+        <translation type="vanished">CANBus studija</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>CAN rėmas</translation>
+        <translation type="vanished">CAN rėmas</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>Išplėstinis formatas</translation>
+        <translation type="vanished">Išplėstinis formatas</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>Lankstus duomenų perdavimo greitis</translation>
+        <translation type="vanished">Lankstus duomenų perdavimo greitis</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>Rėmo ID</translation>
+        <translation type="vanished">Rėmo ID</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>Rėmo tipas</translation>
+        <translation type="vanished">Rėmo tipas</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>Rėmo parinktys</translation>
+        <translation type="vanished">Rėmo parinktys</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>Bitų spartos jungiklis</translation>
+        <translation type="vanished">Bitų spartos jungiklis</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>Įrenginio valdymas</translation>
+        <translation type="vanished">Įrenginio valdymas</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>Atsijungti</translation>
+        <translation type="vanished">Atsijungti</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>Prisijunkite</translation>
+        <translation type="vanished">Prisijunkite</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>Papildinys</translation>
+        <translation type="vanished">Papildinys</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Vardas</translation>
+        <translation type="vanished">Vardas</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>Duomenų rodinys</translation>
+        <translation type="vanished">Duomenų rodinys</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>Nurodykite konfigūraciją</translation>
+        <translation type="vanished">Nurodykite konfigūraciją</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>Klaidų filtras</translation>
+        <translation type="vanished">Klaidų filtras</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>Individualios konfigūracijos</translation>
+        <translation type="vanished">Individualios konfigūracijos</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>GALI FD</translation>
+        <translation type="vanished">GALI FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>Loopback</translation>
+        <translation type="vanished">Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>Duomenų pralaidumas</translation>
+        <translation type="vanished">Duomenų pralaidumas</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Bitų sparta</translation>
+        <translation type="vanished">Bitų sparta</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>Gauti savo</translation>
+        <translation type="vanished">Gauti savo</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>CAN rėmo naudingoji apkrova</translation>
+        <translation type="vanished">CAN rėmo naudingoji apkrova</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Siųsti</translation>
+        <translation type="vanished">Siųsti</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>Formatas</translation>
+        <translation type="vanished">Formatas</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>Kanalai</translation>
+        <translation type="vanished">Kanalai</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC asistentas</translation>
+        <translation type="vanished">CRC asistentas</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>Paloy vertė</translation>
+        <translation type="vanished">Paloy vertė</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>Pradinė vertė</translation>
+        <translation type="vanished">Pradinė vertė</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Kopijuoti</translation>
+        <translation type="vanished">Kopijuoti</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>Daugiau informacijos apie crc skaičiavimą, apsilankykite http://www.ip33.com/crc.html (dukart spustelėkite, kad apsilankytumėte)</translation>
+        <translation type="vanished">Daugiau informacijos apie crc skaičiavimą, apsilankykite http://www.ip33.com/crc.html (dukart spustelėkite, kad apsilankytumėte)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>Įvesties apvertimas</translation>
+        <translation type="vanished">Įvesties apvertimas</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>Išvesties apvertimas</translation>
+        <translation type="vanished">Išvesties apvertimas</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Aišku</translation>
+        <translation type="vanished">Aišku</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>Apskaičiuokite</translation>
+        <translation type="vanished">Apskaičiuokite</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>Parametrai</translation>
+        <translation type="vanished">Parametrai</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>XOR reikšmė</translation>
+        <translation type="vanished">XOR reikšmė</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>Jo aukštis yra kairėje, o žemi bitai yra dešinėje</translation>
+        <translation type="vanished">Jo aukštis yra kairėje, o žemi bitai yra dešinėje</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>HEX</translation>
+        <translation type="vanished">HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>Rezultatas (HEX)</translation>
+        <translation type="vanished">Rezultatas (HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>Parametrų modelis</translation>
+        <translation type="vanished">Parametrų modelis</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>Plotis</translation>
+        <translation type="vanished">Plotis</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation>Sulėtinkite</translation>
+        <translation type="vanished">Sulėtinkite</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>Įvesti duomenis</translation>
+        <translation type="vanished">Įvesti duomenis</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>Rezultatas (BIN)</translation>
+        <translation type="vanished">Rezultatas (BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>Tipai</translation>
+        <translation type="vanished">Tipai</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>Vėliavos</translation>
+        <translation type="vanished">Vėliavos</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formatas</translation>
+        <translation type="vanished">Formatas</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>Įrašai</translation>
+        <translation type="vanished">Įrašai</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Duomenys</translation>
+        <translation type="vanished">Duomenys</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>Ieškoti duomenų...</translation>
+        <translation type="vanished">Ieškoti duomenų...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Naujas Modbus įrenginys</translation>
+        <translation type="vanished">Naujas Modbus įrenginys</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Ryšio parametrai</translation>
+        <translation type="vanished">Ryšio parametrai</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Paritetas</translation>
+        <translation type="vanished">Paritetas</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Perdavimo greitis</translation>
+        <translation type="vanished">Perdavimo greitis</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bitai</translation>
+        <translation type="vanished">Stop bitai</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Atnaujinti</translation>
+        <translation type="vanished">Atnaujinti</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Duomenų bitai</translation>
+        <translation type="vanished">Duomenų bitai</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Vardai</translation>
+        <translation type="vanished">Vardai</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP adresas</translation>
+        <translation type="vanished">IP adresas</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Uostas</translation>
+        <translation type="vanished">Uostas</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Įrenginio tipas</translation>
+        <translation type="vanished">Įrenginio tipas</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Skirtasis laikas (ms)</translation>
+        <translation type="vanished">Skirtasis laikas (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Pakartotinių bandymų skaičius</translation>
+        <translation type="vanished">Pakartotinių bandymų skaičius</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adresas</translation>
+        <translation type="vanished">Adresas</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Tik klausymo režimas</translation>
+        <translation type="vanished">Tik klausymo režimas</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Įrenginio parametrai</translation>
+        <translation type="vanished">Įrenginio parametrai</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Įrenginio pavadinimas</translation>
+        <translation type="vanished">Įrenginio pavadinimas</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Tokie kaip: Siemens S7-300</translation>
+        <translation type="vanished">Tokie kaip: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Ieškoti</translation>
+        <translation type="vanished">Ieškoti</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>Išsaugokite tx duomenis</translation>
+        <translation type="vanished">Išsaugokite tx duomenis</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>Naršyklė</translation>
+        <translation type="vanished">Naršyklė</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>Išsaugoti milisekundę</translation>
+        <translation type="vanished">Išsaugoti milisekundę</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>Išsaugokite rx duomenis</translation>
+        <translation type="vanished">Išsaugokite rx duomenis</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>Išsaugoti datą</translation>
+        <translation type="vanished">Išsaugoti datą</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation>Sutaupykite laiko</translation>
+        <translation type="vanished">Sutaupykite laiko</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>Išsaugoti formatą</translation>
+        <translation type="vanished">Išsaugoti formatą</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>Maks. baitai</translation>
+        <translation type="vanished">Maks. baitai</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>Viršutinis rezultatas</translation>
+        <translation type="vanished">Viršutinis rezultatas</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>Patikrintas failas</translation>
+        <translation type="vanished">Patikrintas failas</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>Patikrinta pažanga</translation>
+        <translation type="vanished">Patikrinta pažanga</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>Patikrintas algoritmas</translation>
+        <translation type="vanished">Patikrintas algoritmas</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>Patikrintas rezultatas</translation>
+        <translation type="vanished">Patikrintas rezultatas</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation>Atidaryti</translation>
+        <translation type="vanished">Atidaryti</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>Failų sąrašas</translation>
+        <translation type="vanished">Failų sąrašas</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Importuoti</translation>
+        <translation type="vanished">Importuoti</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Aukštyn</translation>
+        <translation type="vanished">Aukštyn</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Žemyn</translation>
+        <translation type="vanished">Žemyn</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>Pašalinti</translation>
+        <translation type="vanished">Pašalinti</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Aišku</translation>
+        <translation type="vanished">Aišku</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>Sujungti</translation>
+        <translation type="vanished">Sujungti</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>Įrenginys</translation>
+        <translation type="vanished">Įrenginys</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>Rodyti duomenų peržiūrą</translation>
+        <translation type="vanished">Rodyti duomenų peržiūrą</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>Pridėti priesagą</translation>
+        <translation type="vanished">Pridėti priesagą</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>Pridėti priešdėlį</translation>
+        <translation type="vanished">Pridėti priešdėlį</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Pabėgimo personažas</translation>
+        <translation type="vanished">Pabėgimo personažas</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>Išankstinis duomenų apdorojimas</translation>
+        <translation type="vanished">Išankstinis duomenų apdorojimas</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>Pridėti tikrinimo duomenis</translation>
+        <translation type="vanished">Pridėti tikrinimo duomenis</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Didysis endianas</translation>
+        <translation type="vanished">Didysis endianas</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>Pradėkite iš kairės</translation>
+        <translation type="vanished">Pradėkite iš kairės</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>Pradėkite iš dešinės</translation>
+        <translation type="vanished">Pradėkite iš dešinės</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Aritmetika</translation>
+        <translation type="vanished">Aritmetika</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Pradėti indeksą</translation>
+        <translation type="vanished">Pradėti indeksą</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Pabaigos indeksas</translation>
+        <translation type="vanished">Pabaigos indeksas</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>Duomenų tikrinimas</translation>
+        <translation type="vanished">Duomenų tikrinimas</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Mazgo redaktorius</translation>
+        <translation type="vanished">Mazgo redaktorius</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>Duomenų tipas</translation>
+        <translation type="vanished">Duomenų tipas</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>Legenda</translation>
+        <translation type="vanished">Legenda</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>Talpyklos taškai</translation>
+        <translation type="vanished">Talpyklos taškai</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Aišku</translation>
+        <translation type="vanished">Aišku</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Eksportuoti</translation>
+        <translation type="vanished">Eksportuoti</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Importuoti</translation>
+        <translation type="vanished">Importuoti</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>Rašykite į</translation>
+        <translation type="vanished">Rašykite į</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>Serverio pavadinimas</translation>
+        <translation type="vanished">Serverio pavadinimas</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>Serverio pavadinimas</translation>
+        <translation type="vanished">Serverio pavadinimas</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>Testas</translation>
+        <translation type="vanished">Testas</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>Bandymo duomenys</translation>
+        <translation type="vanished">Bandymo duomenys</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>Rezultatų duomenys</translation>
+        <translation type="vanished">Rezultatų duomenys</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>Apeiti</translation>
+        <translation type="vanished">Apeiti</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>Lentelės parametrai</translation>
+        <translation type="vanished">Lentelės parametrai</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>Styginių parametrai</translation>
+        <translation type="vanished">Styginių parametrai</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Generolas</translation>
+        <translation type="vanished">Generolas</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>Paslaugos tipas</translation>
+        <translation type="vanished">Paslaugos tipas</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>konsolė</translation>
+        <translation type="vanished">konsolė</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>Serverio registras</translation>
+        <translation type="vanished">Serverio registras</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Siųsti</translation>
+        <translation type="vanished">Siųsti</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>Pasirinktinio protokolo duomenų vienetas</translation>
+        <translation type="vanished">Pasirinktinio protokolo duomenų vienetas</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>Klientų registrai</translation>
+        <translation type="vanished">Klientų registrai</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>Įrenginių sąrašas</translation>
+        <translation type="vanished">Įrenginių sąrašas</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Uždaryti</translation>
+        <translation type="vanished">Uždaryti</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Atidaryti</translation>
+        <translation type="vanished">Atidaryti</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>Įrenginio operacijos</translation>
+        <translation type="vanished">Įrenginio operacijos</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>Tinklo nustatymai</translation>
+        <translation type="vanished">Tinklo nustatymai</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Uostas</translation>
+        <translation type="vanished">Uostas</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Perdavimo greitis</translation>
+        <translation type="vanished">Perdavimo greitis</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Duomenų bitai</translation>
+        <translation type="vanished">Duomenų bitai</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>Serijinio prievado nustatymai</translation>
+        <translation type="vanished">Serijinio prievado nustatymai</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Paritetas</translation>
+        <translation type="vanished">Paritetas</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Uosto pavadinimas</translation>
+        <translation type="vanished">Uosto pavadinimas</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bitai</translation>
+        <translation type="vanished">Stop bitai</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>Įrenginys užimtas</translation>
+        <translation type="vanished">Įrenginys užimtas</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>Serverio parametrai</translation>
+        <translation type="vanished">Serverio parametrai</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>Serverio adresas</translation>
+        <translation type="vanished">Serverio adresas</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Tik klausymo režimas</translation>
+        <translation type="vanished">Tik klausymo režimas</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>Tikslinis adresas</translation>
+        <translation type="vanished">Tikslinis adresas</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Skaityti</translation>
+        <translation type="vanished">Skaityti</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>Rašyti</translation>
+        <translation type="vanished">Rašyti</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>Funkcijos kodas</translation>
+        <translation type="vanished">Funkcijos kodas</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>Adreso numeris</translation>
+        <translation type="vanished">Adreso numeris</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>Pradžios adresas</translation>
+        <translation type="vanished">Pradžios adresas</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>Pakartokite kartus</translation>
+        <translation type="vanished">Pakartokite kartus</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>Laiko pabaiga</translation>
+        <translation type="vanished">Laiko pabaiga</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>Kliento parametrai</translation>
+        <translation type="vanished">Kliento parametrai</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>Įvesties valdymas (adresas ir vertė)</translation>
+        <translation type="vanished">Įvesties valdymas (adresas ir vertė)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Įvesties formatas</translation>
+        <translation type="vanished">Įvesties formatas</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Neapdoroti duomenys</translation>
+        <translation type="vanished">Neapdoroti duomenys</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>Apdoroti duomenys (šešioliktainis)</translation>
+        <translation type="vanished">Apdoroti duomenys (šešioliktainis)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>Iškeptų duomenų tipas</translation>
+        <translation type="vanished">Iškeptų duomenų tipas</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>Paruošti duomenys (gruodžio mėn.)</translation>
+        <translation type="vanished">Paruošti duomenys (gruodžio mėn.)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>Tokie kaip: 1, -1, 1,1, -1,1</translation>
+        <translation type="vanished">Tokie kaip: 1, -1, 1,1, -1,1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>Iškepti duomenys (dėžutė)</translation>
+        <translation type="vanished">Iškepti duomenys (dėžutė)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>Iš kairės į dešinę nuo aukšto iki žemo</translation>
+        <translation type="vanished">Iš kairės į dešinę nuo aukšto iki žemo</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>Įgalinti žymeklį</translation>
+        <translation type="vanished">Įgalinti žymeklį</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>Filtruoti tekstą</translation>
+        <translation type="vanished">Filtruoti tekstą</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>Sveiki, Word</translation>
+        <translation type="vanished">Sveiki, Word</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>Rodyti statistiką</translation>
+        <translation type="vanished">Rodyti statistiką</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>Įjungti filtrą</translation>
+        <translation type="vanished">Įjungti filtrą</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>Ciklo intervalas</translation>
+        <translation type="vanished">Ciklo intervalas</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>Nustatymai</translation>
+        <translation type="vanished">Nustatymai</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Aišku</translation>
+        <translation type="vanished">Aišku</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>Rx</translation>
+        <translation type="vanished">Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>Tx</translation>
+        <translation type="vanished">Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Data</translation>
+        <translation type="vanished">Data</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>Vėliava</translation>
+        <translation type="vanished">Vėliava</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Laikas</translation>
+        <translation type="vanished">Laikas</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>ponia</translation>
+        <translation type="vanished">ponia</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>Išėjimo valdymas</translation>
+        <translation type="vanished">Išėjimo valdymas</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>Įvesties valdymas</translation>
+        <translation type="vanished">Įvesties valdymas</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>Apvyniokite</translation>
+        <translation type="vanished">Apvyniokite</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>Terminalas</translation>
+        <translation type="vanished">Terminalas</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>Ryšio valdymas</translation>
+        <translation type="vanished">Ryšio valdymas</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Siųsti</translation>
+        <translation type="vanished">Siųsti</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>Teksto formatas</translation>
+        <translation type="vanished">Teksto formatas</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>Išvestis</translation>
+        <translation type="vanished">Išvestis</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>Įvestis</translation>
+        <translation type="vanished">Įvestis</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>Iš anksto nustatytas duomenų sąrašas</translation>
+        <translation type="vanished">Iš anksto nustatytas duomenų sąrašas</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>Išankstiniai nustatymai</translation>
+        <translation type="vanished">Išankstiniai nustatymai</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>Skleidėjas</translation>
+        <translation type="vanished">Skleidėjas</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>Atsakovas</translation>
+        <translation type="vanished">Atsakovas</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>Pervedimai</translation>
+        <translation type="vanished">Pervedimai</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>Grupės intervalas (ms)</translation>
+        <translation type="vanished">Grupės intervalas (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>Pridėti (atnaujinti) grupę</translation>
+        <translation type="vanished">Pridėti (atnaujinti) grupę</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>Kolonos (padalytos tarpu)</translation>
+        <translation type="vanished">Kolonos (padalytos tarpu)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Aukštyn</translation>
+        <translation type="vanished">Aukštyn</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Žemyn</translation>
+        <translation type="vanished">Žemyn</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>Ištrinti pasirinktus</translation>
+        <translation type="vanished">Ištrinti pasirinktus</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>Be pavadinimo</translation>
+        <translation type="vanished">Be pavadinimo</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Vardas</translation>
+        <translation type="vanished">Vardas</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>Išjungti grupę</translation>
+        <translation type="vanished">Išjungti grupę</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>Prekės intervalas (ms)</translation>
+        <translation type="vanished">Prekės intervalas (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>Eksportuoti</translation>
+        <translation type="vanished">Eksportuoti</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>Generuoti</translation>
+        <translation type="vanished">Generuoti</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>Išvalyti žurnalą</translation>
+        <translation type="vanished">Išvalyti žurnalą</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Žurnalas</translation>
+        <translation type="vanished">Žurnalas</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>Atidarykite scenarijų katalogą</translation>
+        <translation type="vanished">Atidarykite scenarijų katalogą</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>Naujas scenarijus</translation>
+        <translation type="vanished">Naujas scenarijus</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>Atnaujinti failų sąrašą</translation>
+        <translation type="vanished">Atnaujinti failų sąrašą</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>Internetinis vadovas</translation>
+        <translation type="vanished">Internetinis vadovas</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>Scenarijus</translation>
+        <translation type="vanished">Scenarijus</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>Paieškos tekstas</translation>
+        <translation type="vanished">Paieškos tekstas</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Ieškoti</translation>
+        <translation type="vanished">Ieškoti</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>Reguliari išraiška</translation>
+        <translation type="vanished">Reguliari išraiška</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>Skirta didžiosioms ir mažosioms raidėms</translation>
+        <translation type="vanished">Skirta didžiosioms ir mažosioms raidėms</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>Visas žodis</translation>
+        <translation type="vanished">Visas žodis</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>Perdavimo greitis</translation>
+        <translation type="vanished">Perdavimo greitis</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Paritetas</translation>
+        <translation type="vanished">Paritetas</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>Nepaisoma užimto ​​įrenginio</translation>
+        <translation type="vanished">Nepaisoma užimto ​​įrenginio</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Duomenų bitai</translation>
+        <translation type="vanished">Duomenų bitai</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>Srauto valdymas</translation>
+        <translation type="vanished">Srauto valdymas</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bitai</translation>
+        <translation type="vanished">Stop bitai</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Uosto pavadinimas</translation>
+        <translation type="vanished">Uosto pavadinimas</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>Įgalinti kadrų intervalą</translation>
+        <translation type="vanished">Įgalinti kadrų intervalą</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>Rašykite į</translation>
+        <translation type="vanished">Rašykite į</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>Kelias</translation>
+        <translation type="vanished">Kelias</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>Atjunkite visus klientus</translation>
+        <translation type="vanished">Atjunkite visus klientus</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Autentifikavimas</translation>
+        <translation type="vanished">Autentifikavimas</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>Serverio IP</translation>
+        <translation type="vanished">Serverio IP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Kanalas</translation>
+        <translation type="vanished">Kanalas</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>Įgalinti multicast</translation>
+        <translation type="vanished">Įgalinti multicast</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>Tiesiog multicast</translation>
+        <translation type="vanished">Tiesiog multicast</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>paštas/labas</translation>
+        <translation type="vanished">paštas/labas</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>Saugus režimas</translation>
+        <translation type="vanished">Saugus režimas</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast prievadas</translation>
+        <translation type="vanished">Multicast prievadas</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>Serverio prievadas</translation>
+        <translation type="vanished">Serverio prievadas</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>Vartotojo vardas</translation>
+        <translation type="vanished">Vartotojo vardas</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Slaptažodis</translation>
+        <translation type="vanished">Slaptažodis</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Neapdoroti duomenys</translation>
+        <translation type="vanished">Neapdoroti duomenys</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Įvesties formatas</translation>
+        <translation type="vanished">Įvesties formatas</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>Iškepti duomenys</translation>
+        <translation type="vanished">Iškepti duomenys</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Išvesties formatas</translation>
+        <translation type="vanished">Išvesties formatas</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>Sukurti</translation>
+        <translation type="vanished">Sukurti</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation type="vanished">Forma</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Eksportuoti</translation>
+        <translation type="vanished">Eksportuoti</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>Išjungti visus elementus</translation>
+        <translation type="vanished">Išjungti visus elementus</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Ištrinti</translation>
+        <translation type="vanished">Ištrinti</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Aukštyn</translation>
+        <translation type="vanished">Aukštyn</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Pridėti</translation>
+        <translation type="vanished">Pridėti</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation>Importuoti</translation>
+        <translation type="vanished">Importuoti</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Žemyn</translation>
+        <translation type="vanished">Žemyn</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>Duomenų redaktorius</translation>
+        <translation type="vanished">Duomenų redaktorius</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Atšaukti</translation>
+        <translation type="vanished">Atšaukti</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>Algoritmas</translation>
+        <translation type="vanished">Algoritmas</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Pradėti indeksą</translation>
+        <translation type="vanished">Pradėti indeksą</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Pabaigos indeksas</translation>
+        <translation type="vanished">Pabaigos indeksas</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>Pridėti</translation>
+        <translation type="vanished">Pridėti</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Didysis endianas</translation>
+        <translation type="vanished">Didysis endianas</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>Išankstinis apdorojimas</translation>
+        <translation type="vanished">Išankstinis apdorojimas</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>Priešdėlis</translation>
+        <translation type="vanished">Priešdėlis</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>Priesaga</translation>
+        <translation type="vanished">Priesaga</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Pabėgimo personažas</translation>
+        <translation type="vanished">Pabėgimo personažas</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>Gerai</translation>
+        <translation type="vanished">Gerai</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>Naudinga apkrova</translation>
+        <translation type="vanished">Naudinga apkrova</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formatas</translation>
+        <translation type="vanished">Formatas</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Pasirinkite tinklo sąsają:</translation>
+        <translation type="vanished">Pasirinkite tinklo sąsają:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>Transliacijos uostas</translation>
+        <translation type="vanished">Transliacijos uostas</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Pasirinkite tinklo sąsają:</translation>
+        <translation type="vanished">Pasirinkite tinklo sąsają:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast prievadas</translation>
+        <translation type="vanished">Multicast prievadas</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>Multicast loopback</translation>
+        <translation type="vanished">Multicast loopback</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Naujas RTU įrenginys</translation>
+        <translation type="vanished">Naujas RTU įrenginys</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Naujas TCP įrenginys</translation>
+        <translation type="vanished">Naujas TCP įrenginys</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Naujos ritės</translation>
+        <translation type="vanished">Naujos ritės</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Nauji diskretiniai įėjimai</translation>
+        <translation type="vanished">Nauji diskretiniai įėjimai</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Nauji valdų registrai</translation>
+        <translation type="vanished">Nauji valdų registrai</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Nauji įvesties registrai</translation>
+        <translation type="vanished">Nauji įvesties registrai</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Ritės</translation>
+        <translation type="vanished">Ritės</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Diskretūs įėjimai</translation>
+        <translation type="vanished">Diskretūs įėjimai</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Valdų registrai</translation>
+        <translation type="vanished">Valdų registrai</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Įvesties registrai</translation>
+        <translation type="vanished">Įvesties registrai</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>

@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>フィルター</translation>
+        <translation type="vanished">フィルター</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>保存ケース</translation>
+        <translation type="vanished">保存ケース</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRCアシスタント</translation>
+        <translation type="vanished">CRCアシスタント</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>リフレッシュ</translation>
+        <translation type="vanished">リフレッシュ</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>タイプ</translation>
+        <translation type="vanished">タイプ</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>輸出</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>データ</translation>
+        <translation type="vanished">データ</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>データ形式</translation>
+        <translation type="vanished">データ形式</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>Base64アシスタント</translation>
+        <translation type="vanished">Base64アシスタント</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>平文</translation>
+        <translation type="vanished">平文</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>暗号文</translation>
+        <translation type="vanished">暗号文</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>画像</translation>
+        <translation type="vanished">画像</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>復号化</translation>
+        <translation type="vanished">復号化</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>暗号化する</translation>
+        <translation type="vanished">暗号化する</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>特性</translation>
+        <translation type="vanished">特性</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(サポートされていない特性)</translation>
+        <translation type="vanished">(サポートされていない特性)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>BLEデバイス</translation>
+        <translation type="vanished">BLEデバイス</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>読む</translation>
+        <translation type="vanished">読む</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>サービススキャン</translation>
+        <translation type="vanished">サービススキャン</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>書き込みモード</translation>
+        <translation type="vanished">書き込みモード</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>サービス</translation>
+        <translation type="vanished">サービス</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>デバイスのスキャン</translation>
+        <translation type="vanished">デバイスのスキャン</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>出力制御</translation>
+        <translation type="vanished">出力制御</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>出力フォーマット</translation>
+        <translation type="vanished">出力フォーマット</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>ブロードキャストパラメータ</translation>
+        <translation type="vanished">ブロードキャストパラメータ</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>ブロードキャストアドレス</translation>
+        <translation type="vanished">ブロードキャストアドレス</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>データ形式</translation>
+        <translation type="vanished">データ形式</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>ブロードキャストプレフィックス</translation>
+        <translation type="vanished">ブロードキャストプレフィックス</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>放送間隔</translation>
+        <translation type="vanished">放送間隔</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>ブロードキャストサフィックス</translation>
+        <translation type="vanished">ブロードキャストサフィックス</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>ブロードキャストポート</translation>
+        <translation type="vanished">ブロードキャストポート</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>放送データ</translation>
+        <translation type="vanished">放送データ</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>情報出力</translation>
+        <translation type="vanished">情報出力</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>CANバススタジオ</translation>
+        <translation type="vanished">CANバススタジオ</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>CANフレーム</translation>
+        <translation type="vanished">CANフレーム</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>拡張フォーマット</translation>
+        <translation type="vanished">拡張フォーマット</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>柔軟なデータレート</translation>
+        <translation type="vanished">柔軟なデータレート</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>フレームID</translation>
+        <translation type="vanished">フレームID</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>フレームタイプ</translation>
+        <translation type="vanished">フレームタイプ</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>フレームオプション</translation>
+        <translation type="vanished">フレームオプション</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>ビットレートスイッチ</translation>
+        <translation type="vanished">ビットレートスイッチ</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>デバイス制御</translation>
+        <translation type="vanished">デバイス制御</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>切断する</translation>
+        <translation type="vanished">切断する</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>接続する</translation>
+        <translation type="vanished">接続する</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>プラグイン</translation>
+        <translation type="vanished">プラグイン</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>データビュー</translation>
+        <translation type="vanished">データビュー</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>構成の指定</translation>
+        <translation type="vanished">構成の指定</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>エラーフィルター</translation>
+        <translation type="vanished">エラーフィルター</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>カスタム構成</translation>
+        <translation type="vanished">カスタム構成</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CANFD</translation>
+        <translation type="vanished">CANFD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>ループバック</translation>
+        <translation type="vanished">ループバック</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>データビットレート</translation>
+        <translation type="vanished">データビットレート</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>ビットレート</translation>
+        <translation type="vanished">ビットレート</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>自分のものを受け取る</translation>
+        <translation type="vanished">自分のものを受け取る</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>CANフレームペイロード</translation>
+        <translation type="vanished">CANフレームペイロード</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,82 +783,82 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>チャンネル</translation>
+        <translation type="vanished">チャンネル</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRCアシスタント</translation>
+        <translation type="vanished">CRCアシスタント</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>パロイ値</translation>
+        <translation type="vanished">パロイ値</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>初期値</translation>
+        <translation type="vanished">初期値</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>コピー</translation>
+        <translation type="vanished">コピー</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>crc 計算の詳細については、http://www.ip33.com/crc.html を参照してください (ダブルクリックしてアクセスしてください)。</translation>
+        <translation type="vanished">crc 計算の詳細については、http://www.ip33.com/crc.html を参照してください (ダブルクリックしてアクセスしてください)。</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>入力反転</translation>
+        <translation type="vanished">入力反転</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>出力反転</translation>
+        <translation type="vanished">出力反転</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>計算する</translation>
+        <translation type="vanished">計算する</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>パラメータ</translation>
+        <translation type="vanished">パラメータ</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>XOR値</translation>
+        <translation type="vanished">XOR値</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>高さは左側、低ビットは右側です</translation>
+        <translation type="vanished">高さは左側、低ビットは右側です</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>16進数</translation>
+        <translation type="vanished">16進数</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>アスキー</translation>
+        <translation type="vanished">アスキー</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>結果(16進数)</translation>
+        <translation type="vanished">結果(16進数)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>パラメータモデル</translation>
+        <translation type="vanished">パラメータモデル</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>幅</translation>
+        <translation type="vanished">幅</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -873,15 +873,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Paloy</source>
-        <translation>減速する</translation>
+        <translation type="vanished">減速する</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>入力データ</translation>
+        <translation type="vanished">入力データ</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>結果(BIN)</translation>
+        <translation type="vanished">結果(BIN)</translation>
     </message>
 </context>
 <context>
@@ -911,31 +911,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>種類</translation>
+        <translation type="vanished">種類</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>フラグ</translation>
+        <translation type="vanished">フラグ</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>記録</translation>
+        <translation type="vanished">記録</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>データ</translation>
+        <translation type="vanished">データ</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>データを検索...</translation>
+        <translation type="vanished">データを検索...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -963,82 +963,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>新しい Modbus デバイス</translation>
+        <translation type="vanished">新しい Modbus デバイス</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>接続パラメータ</translation>
+        <translation type="vanished">接続パラメータ</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>リフレッシュ</translation>
+        <translation type="vanished">リフレッシュ</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IPアドレス</translation>
+        <translation type="vanished">IPアドレス</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>ポート</translation>
+        <translation type="vanished">ポート</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>デバイスの種類</translation>
+        <translation type="vanished">デバイスの種類</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>タイムアウト(ミリ秒)</translation>
+        <translation type="vanished">タイムアウト(ミリ秒)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>リトライ回数</translation>
+        <translation type="vanished">リトライ回数</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>住所</translation>
+        <translation type="vanished">住所</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>リスニング専用モード</translation>
+        <translation type="vanished">リスニング専用モード</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>デバイスパラメータ</translation>
+        <translation type="vanished">デバイスパラメータ</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>デバイス名</translation>
+        <translation type="vanished">デバイス名</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>例: シーメンス S7-300</translation>
+        <translation type="vanished">例: シーメンス S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>検索</translation>
+        <translation type="vanished">検索</translation>
     </message>
 </context>
 <context>
@@ -1123,23 +1123,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>送信データを保存する</translation>
+        <translation type="vanished">送信データを保存する</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>ブラウザ</translation>
+        <translation type="vanished">ブラウザ</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>ミリ秒を節約</translation>
+        <translation type="vanished">ミリ秒を節約</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>受信データを保存する</translation>
+        <translation type="vanished">受信データを保存する</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>保存日</translation>
+        <translation type="vanished">保存日</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1148,15 +1148,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Save Time</source>
-        <translation>時間を節約する</translation>
+        <translation type="vanished">時間を節約する</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>保存形式</translation>
+        <translation type="vanished">保存形式</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>最大バイト数</translation>
+        <translation type="vanished">最大バイト数</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1202,27 +1202,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>上位結果</translation>
+        <translation type="vanished">上位結果</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>チェックしたファイル</translation>
+        <translation type="vanished">チェックしたファイル</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>進捗状況を確認しました</translation>
+        <translation type="vanished">進捗状況を確認しました</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>チェックされたアルゴリズム</translation>
+        <translation type="vanished">チェックされたアルゴリズム</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>確認結果</translation>
+        <translation type="vanished">確認結果</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1231,7 +1231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Open</source>
-        <translation>開ける</translation>
+        <translation type="vanished">開ける</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1253,35 +1253,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>ファイルリスト</translation>
+        <translation type="vanished">ファイルリスト</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>輸入</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>上</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>下</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>取り除く</translation>
+        <translation type="vanished">取り除く</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>マージ</translation>
+        <translation type="vanished">マージ</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1356,7 +1356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>デバイス</translation>
+        <translation type="vanished">デバイス</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1436,62 +1436,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>データのプレビューを表示する</translation>
+        <translation type="vanished">データのプレビューを表示する</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>接尾辞を追加</translation>
+        <translation type="vanished">接尾辞を追加</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>プレフィックスを追加する</translation>
+        <translation type="vanished">プレフィックスを追加する</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>エスケープ文字</translation>
+        <translation type="vanished">エスケープ文字</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>データの前処理</translation>
+        <translation type="vanished">データの前処理</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>チェックデータを追加</translation>
+        <translation type="vanished">チェックデータを追加</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>ビッグエンディアン</translation>
+        <translation type="vanished">ビッグエンディアン</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>左から開始</translation>
+        <translation type="vanished">左から開始</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>右から開始</translation>
+        <translation type="vanished">右から開始</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>算術</translation>
+        <translation type="vanished">算術</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>開始インデックス</translation>
+        <translation type="vanished">開始インデックス</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>終了インデックス</translation>
+        <translation type="vanished">終了インデックス</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>データチェック</translation>
+        <translation type="vanished">データチェック</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>ノードエディタ</translation>
+        <translation type="vanished">ノードエディタ</translation>
     </message>
 </context>
 <context>
@@ -1511,27 +1511,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>データ型</translation>
+        <translation type="vanished">データ型</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>伝説</translation>
+        <translation type="vanished">伝説</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>キャッシュポイント</translation>
+        <translation type="vanished">キャッシュポイント</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>輸出</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>輸入</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1587,11 +1587,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>書き込み先</translation>
+        <translation type="vanished">書き込み先</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>サーバー名</translation>
+        <translation type="vanished">サーバー名</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1603,38 +1603,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>サーバー名</translation>
+        <translation type="vanished">サーバー名</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>テスト</translation>
+        <translation type="vanished">テスト</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>テストデータ</translation>
+        <translation type="vanished">テストデータ</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>結果データ</translation>
+        <translation type="vanished">結果データ</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>バイパス</translation>
+        <translation type="vanished">バイパス</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>テーブルパラメータ</translation>
+        <translation type="vanished">テーブルパラメータ</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>文字列パラメータ</translation>
+        <translation type="vanished">文字列パラメータ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1656,7 +1656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>一般的な</translation>
+        <translation type="vanished">一般的な</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>サービスの種類</translation>
+        <translation type="vanished">サービスの種類</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1950,39 +1950,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>コンソール</translation>
+        <translation type="vanished">コンソール</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>サーバー登録</translation>
+        <translation type="vanished">サーバー登録</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>カスタムプロトコルデータユニット</translation>
+        <translation type="vanished">カスタムプロトコルデータユニット</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>クライアント登録</translation>
+        <translation type="vanished">クライアント登録</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>デバイスリスト</translation>
+        <translation type="vanished">デバイスリスト</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>近い</translation>
+        <translation type="vanished">近い</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>開ける</translation>
+        <translation type="vanished">開ける</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>デバイスの操作</translation>
+        <translation type="vanished">デバイスの操作</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1991,95 +1991,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>ネットワーク設定</translation>
+        <translation type="vanished">ネットワーク設定</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>ポート</translation>
+        <translation type="vanished">ポート</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>シリアルポートの設定</translation>
+        <translation type="vanished">シリアルポートの設定</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>ポート名</translation>
+        <translation type="vanished">ポート名</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>デバイスがビジー状態</translation>
+        <translation type="vanished">デバイスがビジー状態</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>サーバーパラメータ</translation>
+        <translation type="vanished">サーバーパラメータ</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>サーバーアドレス</translation>
+        <translation type="vanished">サーバーアドレス</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>リスニング専用モード</translation>
+        <translation type="vanished">リスニング専用モード</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>ターゲットアドレス</translation>
+        <translation type="vanished">ターゲットアドレス</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>読む</translation>
+        <translation type="vanished">読む</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>書く</translation>
+        <translation type="vanished">書く</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>機能コード</translation>
+        <translation type="vanished">機能コード</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>住所番号</translation>
+        <translation type="vanished">住所番号</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>開始アドレス</translation>
+        <translation type="vanished">開始アドレス</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>繰り返し回数</translation>
+        <translation type="vanished">繰り返し回数</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>タイムアウト</translation>
+        <translation type="vanished">タイムアウト</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>クライアントパラメータ</translation>
+        <translation type="vanished">クライアントパラメータ</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>入力制御(アドレスと値)</translation>
+        <translation type="vanished">入力制御(アドレスと値)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>入力フォーマット</translation>
+        <translation type="vanished">入力フォーマット</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2250,31 +2250,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>生データ</translation>
+        <translation type="vanished">生データ</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>クックデータ(16進数)</translation>
+        <translation type="vanished">クックデータ(16進数)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>クックされたデータ型</translation>
+        <translation type="vanished">クックされたデータ型</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>クックデータ(12月)</translation>
+        <translation type="vanished">クックデータ(12月)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>例: 1、-1、1.1、-1.1</translation>
+        <translation type="vanished">例: 1、-1、1.1、-1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>クック済みデータ(Bin)</translation>
+        <translation type="vanished">クック済みデータ(Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>左から右に高いものから低いものへ</translation>
+        <translation type="vanished">左から右に高いものから低いものへ</translation>
     </message>
 </context>
 <context>
@@ -2314,30 +2314,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>ハイライターを有効にする</translation>
+        <translation type="vanished">ハイライターを有効にする</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>テキストをフィルタリングする</translation>
+        <translation type="vanished">テキストをフィルタリングする</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>こんにちは、ワード</translation>
+        <translation type="vanished">こんにちは、ワード</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>統計学者を表示</translation>
+        <translation type="vanished">統計学者を表示</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>フィルターを有効にする</translation>
+        <translation type="vanished">フィルターを有効にする</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>サイクル間隔</translation>
+        <translation type="vanished">サイクル間隔</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2346,95 +2346,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation type="vanished">設定</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>受信</translation>
+        <translation type="vanished">受信</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>日付</translation>
+        <translation type="vanished">日付</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>フラグ</translation>
+        <translation type="vanished">フラグ</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>時間</translation>
+        <translation type="vanished">時間</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>MS</translation>
+        <translation type="vanished">MS</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>出力制御</translation>
+        <translation type="vanished">出力制御</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>入力制御</translation>
+        <translation type="vanished">入力制御</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>包む</translation>
+        <translation type="vanished">包む</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>ターミナル</translation>
+        <translation type="vanished">ターミナル</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>通信制御</translation>
+        <translation type="vanished">通信制御</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>テキスト形式</translation>
+        <translation type="vanished">テキスト形式</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>出力</translation>
+        <translation type="vanished">出力</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>入力</translation>
+        <translation type="vanished">入力</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>プリセットデータ一覧</translation>
+        <translation type="vanished">プリセットデータ一覧</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>プリセット</translation>
+        <translation type="vanished">プリセット</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>エミッター</translation>
+        <translation type="vanished">エミッター</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>レスポンダー</translation>
+        <translation type="vanished">レスポンダー</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>転送</translation>
+        <translation type="vanished">転送</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2646,43 +2646,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>グループ間隔(ミリ秒)</translation>
+        <translation type="vanished">グループ間隔(ミリ秒)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>グループの追加(更新)</translation>
+        <translation type="vanished">グループの追加(更新)</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>列(スペースで区切る)</translation>
+        <translation type="vanished">列(スペースで区切る)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>上</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>下</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>選択したものを削除</translation>
+        <translation type="vanished">選択したものを削除</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>無題</translation>
+        <translation type="vanished">無題</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>グループを無効にする</translation>
+        <translation type="vanished">グループを無効にする</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>項目間隔(ms)</translation>
+        <translation type="vanished">項目間隔(ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2975,31 +2975,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3031,11 +3031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>輸出</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>生成する</translation>
+        <translation type="vanished">生成する</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3106,35 +3106,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>ログをクリアする</translation>
+        <translation type="vanished">ログをクリアする</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>ログ</translation>
+        <translation type="vanished">ログ</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>スクリプトディレクトリを開く</translation>
+        <translation type="vanished">スクリプトディレクトリを開く</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>新しいスクリプト</translation>
+        <translation type="vanished">新しいスクリプト</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>ファイルリストを更新する</translation>
+        <translation type="vanished">ファイルリストを更新する</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>オンラインマニュアル</translation>
+        <translation type="vanished">オンラインマニュアル</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>スクリプト</translation>
+        <translation type="vanished">スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3200,23 +3200,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>検索テキスト</translation>
+        <translation type="vanished">検索テキスト</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>検索</translation>
+        <translation type="vanished">検索</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>正規表現</translation>
+        <translation type="vanished">正規表現</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>大文字と小文字を区別</translation>
+        <translation type="vanished">大文字と小文字を区別</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>単語全体</translation>
+        <translation type="vanished">単語全体</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3330,35 +3330,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>無視されたビジーデバイス</translation>
+        <translation type="vanished">無視されたビジーデバイス</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>フロー制御</translation>
+        <translation type="vanished">フロー制御</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>ポート名</translation>
+        <translation type="vanished">ポート名</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>フレーム間隔を有効にする</translation>
+        <translation type="vanished">フレーム間隔を有効にする</translation>
     </message>
 </context>
 <context>
@@ -3418,63 +3418,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>書き込み先</translation>
+        <translation type="vanished">書き込み先</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>パス</translation>
+        <translation type="vanished">パス</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>すべてのクライアントを切断する</translation>
+        <translation type="vanished">すべてのクライアントを切断する</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>認証</translation>
+        <translation type="vanished">認証</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>サーバーIP</translation>
+        <translation type="vanished">サーバーIP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>チャネル</translation>
+        <translation type="vanished">チャネル</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>マルチキャストを有効にする</translation>
+        <translation type="vanished">マルチキャストを有効にする</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>マルチキャストのみ</translation>
+        <translation type="vanished">マルチキャストのみ</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>投稿/こんにちは</translation>
+        <translation type="vanished">投稿/こんにちは</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>セキュアモード</translation>
+        <translation type="vanished">セキュアモード</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>マルチキャストポート</translation>
+        <translation type="vanished">マルチキャストポート</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>マルチキャストIP</translation>
+        <translation type="vanished">マルチキャストIP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>サーバーポート</translation>
+        <translation type="vanished">サーバーポート</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>ユーザー名</translation>
+        <translation type="vanished">ユーザー名</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation type="vanished">パスワード</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3494,23 +3494,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>生データ</translation>
+        <translation type="vanished">生データ</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>入力フォーマット</translation>
+        <translation type="vanished">入力フォーマット</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>クックされたデータ</translation>
+        <translation type="vanished">クックされたデータ</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>出力フォーマット</translation>
+        <translation type="vanished">出力フォーマット</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>作成する</translation>
+        <translation type="vanished">作成する</translation>
     </message>
 </context>
 <context>
@@ -3535,27 +3535,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>形状</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>輸出</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>すべての項目を無効にする</translation>
+        <translation type="vanished">すべての項目を無効にする</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>消去</translation>
+        <translation type="vanished">消去</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>上</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>追加</translation>
+        <translation type="vanished">追加</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3564,11 +3564,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>輸入</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>下</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3602,63 +3602,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>データ編集者</translation>
+        <translation type="vanished">データ編集者</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation type="vanished">キャンセル</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>アルゴリズム</translation>
+        <translation type="vanished">アルゴリズム</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>開始インデックス</translation>
+        <translation type="vanished">開始インデックス</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>終了インデックス</translation>
+        <translation type="vanished">終了インデックス</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>追加</translation>
+        <translation type="vanished">追加</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>ビッグエンディアン</translation>
+        <translation type="vanished">ビッグエンディアン</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>前処理</translation>
+        <translation type="vanished">前処理</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>プレフィックス</translation>
+        <translation type="vanished">プレフィックス</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>サフィックス</translation>
+        <translation type="vanished">サフィックス</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>エスケープ文字</translation>
+        <translation type="vanished">エスケープ文字</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>わかりました</translation>
+        <translation type="vanished">わかりました</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>ペイロード</translation>
+        <translation type="vanished">ペイロード</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
 </context>
 <context>
@@ -3719,11 +3719,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>ネットワーク インターフェイスを選択します。</translation>
+        <translation type="vanished">ネットワーク インターフェイスを選択します。</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>ブロードキャストポート</translation>
+        <translation type="vanished">ブロードキャストポート</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3758,19 +3758,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>ネットワーク インターフェイスを選択します。</translation>
+        <translation type="vanished">ネットワーク インターフェイスを選択します。</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>マルチキャストIP</translation>
+        <translation type="vanished">マルチキャストIP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>マルチキャストポート</translation>
+        <translation type="vanished">マルチキャストポート</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>マルチキャストループバック</translation>
+        <translation type="vanished">マルチキャストループバック</translation>
     </message>
 </context>
 <context>
@@ -3790,27 +3790,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>新しい RTU デバイス</translation>
+        <translation type="vanished">新しい RTU デバイス</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>新しいTCPデバイス</translation>
+        <translation type="vanished">新しいTCPデバイス</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>新しいコイル</translation>
+        <translation type="vanished">新しいコイル</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>新しい離散入力</translation>
+        <translation type="vanished">新しい離散入力</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>新しい保有登録簿</translation>
+        <translation type="vanished">新しい保有登録簿</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>新しい入力レジスタ</translation>
+        <translation type="vanished">新しい入力レジスタ</translation>
     </message>
 </context>
 <context>
@@ -3855,19 +3855,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>コイル</translation>
+        <translation type="vanished">コイル</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>ディスクリート入力</translation>
+        <translation type="vanished">ディスクリート入力</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>所蔵レジスター</translation>
+        <translation type="vanished">所蔵レジスター</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>入力レジスタ</translation>
+        <translation type="vanished">入力レジスタ</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>

@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>Filter</translation>
+        <translation type="vanished">Filter</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>Bewaar zaak</translation>
+        <translation type="vanished">Bewaar zaak</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC-assistent</translation>
+        <translation type="vanished">CRC-assistent</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Vernieuwen</translation>
+        <translation type="vanished">Vernieuwen</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation type="vanished">Type</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Gegevens</translation>
+        <translation type="vanished">Gegevens</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>Gegevensformaat</translation>
+        <translation type="vanished">Gegevensformaat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>Base64-assistent</translation>
+        <translation type="vanished">Base64-assistent</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>Platte tekst</translation>
+        <translation type="vanished">Platte tekst</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>Cijfertekst</translation>
+        <translation type="vanished">Cijfertekst</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>Afbeelding</translation>
+        <translation type="vanished">Afbeelding</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>Ontsleutelen</translation>
+        <translation type="vanished">Ontsleutelen</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>Versleutelen</translation>
+        <translation type="vanished">Versleutelen</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>Kenmerkend</translation>
+        <translation type="vanished">Kenmerkend</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(Niet-ondersteunde karakteristiek)</translation>
+        <translation type="vanished">(Niet-ondersteunde karakteristiek)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>BLE-apparaten</translation>
+        <translation type="vanished">BLE-apparaten</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>Lezen</translation>
+        <translation type="vanished">Lezen</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>Service scannen</translation>
+        <translation type="vanished">Service scannen</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>Schrijfmodus</translation>
+        <translation type="vanished">Schrijfmodus</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>Dienst</translation>
+        <translation type="vanished">Dienst</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>Apparaat scannen</translation>
+        <translation type="vanished">Apparaat scannen</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>Uitgangscontrole</translation>
+        <translation type="vanished">Uitgangscontrole</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Uitvoerformaat</translation>
+        <translation type="vanished">Uitvoerformaat</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Duidelijk</translation>
+        <translation type="vanished">Duidelijk</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>Uitzendparameters</translation>
+        <translation type="vanished">Uitzendparameters</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>Broadcast-adres</translation>
+        <translation type="vanished">Broadcast-adres</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>Gegevensformaat</translation>
+        <translation type="vanished">Gegevensformaat</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>Uitzendingsvoorvoegsel</translation>
+        <translation type="vanished">Uitzendingsvoorvoegsel</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>Uitzendinterval</translation>
+        <translation type="vanished">Uitzendinterval</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>Uitzendingsachtervoegsel</translation>
+        <translation type="vanished">Uitzendingsachtervoegsel</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>Uitzendpoort</translation>
+        <translation type="vanished">Uitzendpoort</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>Gegevens uitzenden</translation>
+        <translation type="vanished">Gegevens uitzenden</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>Informatie-uitvoer</translation>
+        <translation type="vanished">Informatie-uitvoer</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>CANBus-studio</translation>
+        <translation type="vanished">CANBus-studio</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>CAN-frame</translation>
+        <translation type="vanished">CAN-frame</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>Uitgebreid formaat</translation>
+        <translation type="vanished">Uitgebreid formaat</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>Flexibele datasnelheid</translation>
+        <translation type="vanished">Flexibele datasnelheid</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>Frame-ID</translation>
+        <translation type="vanished">Frame-ID</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>Frametype</translation>
+        <translation type="vanished">Frametype</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>Frame-opties</translation>
+        <translation type="vanished">Frame-opties</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>Bitrate-schakelaar</translation>
+        <translation type="vanished">Bitrate-schakelaar</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>Apparaatcontrole</translation>
+        <translation type="vanished">Apparaatcontrole</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>Verbreek de verbinding</translation>
+        <translation type="vanished">Verbreek de verbinding</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>Verbinden</translation>
+        <translation type="vanished">Verbinden</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>Plug-in</translation>
+        <translation type="vanished">Plug-in</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Naam</translation>
+        <translation type="vanished">Naam</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>Gegevensweergave</translation>
+        <translation type="vanished">Gegevensweergave</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>Geef configuratie op</translation>
+        <translation type="vanished">Geef configuratie op</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>Foutfilter</translation>
+        <translation type="vanished">Foutfilter</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>Aangepaste configuraties</translation>
+        <translation type="vanished">Aangepaste configuraties</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>KAN FD</translation>
+        <translation type="vanished">KAN FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>Loopback</translation>
+        <translation type="vanished">Loopback</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>Gegevensbitsnelheid</translation>
+        <translation type="vanished">Gegevensbitsnelheid</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Bitsnelheid</translation>
+        <translation type="vanished">Bitsnelheid</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>Ontvang eigen</translation>
+        <translation type="vanished">Ontvang eigen</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>CAN-frame-lading</translation>
+        <translation type="vanished">CAN-frame-lading</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Versturen</translation>
+        <translation type="vanished">Versturen</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation type="vanished">Formaat</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>Kanalen</translation>
+        <translation type="vanished">Kanalen</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC-assistent</translation>
+        <translation type="vanished">CRC-assistent</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>Paloy-waarde</translation>
+        <translation type="vanished">Paloy-waarde</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>Initiële waarde</translation>
+        <translation type="vanished">Initiële waarde</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Kopiëren</translation>
+        <translation type="vanished">Kopiëren</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>Ga voor meer informatie over crc-berekening naar http://www.ip33.com/crc.html (dubbelklik om te bezoeken)</translation>
+        <translation type="vanished">Ga voor meer informatie over crc-berekening naar http://www.ip33.com/crc.html (dubbelklik om te bezoeken)</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>Omkering van de invoer</translation>
+        <translation type="vanished">Omkering van de invoer</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>Omkering van de output</translation>
+        <translation type="vanished">Omkering van de output</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Duidelijk</translation>
+        <translation type="vanished">Duidelijk</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>Berekenen</translation>
+        <translation type="vanished">Berekenen</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>Parameters</translation>
+        <translation type="vanished">Parameters</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>XOR-waarde</translation>
+        <translation type="vanished">XOR-waarde</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>De hoogte bevindt zich aan de linkerkant en de lage bits bevinden zich aan de rechterkant</translation>
+        <translation type="vanished">De hoogte bevindt zich aan de linkerkant en de lage bits bevinden zich aan de rechterkant</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>HEX</translation>
+        <translation type="vanished">HEX</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>Resultaat(HEX)</translation>
+        <translation type="vanished">Resultaat(HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>Parametermodel</translation>
+        <translation type="vanished">Parametermodel</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>Breedte</translation>
+        <translation type="vanished">Breedte</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation>Vertragen</translation>
+        <translation type="vanished">Vertragen</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>Gegevens invoeren</translation>
+        <translation type="vanished">Gegevens invoeren</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>Resultaat(BIN)</translation>
+        <translation type="vanished">Resultaat(BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>Soorten</translation>
+        <translation type="vanished">Soorten</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>Vlaggen</translation>
+        <translation type="vanished">Vlaggen</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation type="vanished">Formaat</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>Opnames</translation>
+        <translation type="vanished">Opnames</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Gegevens</translation>
+        <translation type="vanished">Gegevens</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>Gegevens zoeken...</translation>
+        <translation type="vanished">Gegevens zoeken...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Nieuw Modbus-apparaat</translation>
+        <translation type="vanished">Nieuw Modbus-apparaat</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Verbindingsparameters</translation>
+        <translation type="vanished">Verbindingsparameters</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Pariteit</translation>
+        <translation type="vanished">Pariteit</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Baudsnelheid</translation>
+        <translation type="vanished">Baudsnelheid</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop stukjes</translation>
+        <translation type="vanished">Stop stukjes</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Vernieuwen</translation>
+        <translation type="vanished">Vernieuwen</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Databits</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Namen</translation>
+        <translation type="vanished">Namen</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP-adres</translation>
+        <translation type="vanished">IP-adres</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Haven</translation>
+        <translation type="vanished">Haven</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Apparaattype</translation>
+        <translation type="vanished">Apparaattype</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Time-out (ms)</translation>
+        <translation type="vanished">Time-out (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Aantal nieuwe pogingen</translation>
+        <translation type="vanished">Aantal nieuwe pogingen</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adres</translation>
+        <translation type="vanished">Adres</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Alleen luisteren-modus</translation>
+        <translation type="vanished">Alleen luisteren-modus</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Apparaatparameters</translation>
+        <translation type="vanished">Apparaatparameters</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Apparaatnaam</translation>
+        <translation type="vanished">Apparaatnaam</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Zoals: Siemens S7-300</translation>
+        <translation type="vanished">Zoals: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Zoekopdracht</translation>
+        <translation type="vanished">Zoekopdracht</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>Bewaar TX-gegevens</translation>
+        <translation type="vanished">Bewaar TX-gegevens</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>Browser</translation>
+        <translation type="vanished">Browser</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>Bespaar milliseconde</translation>
+        <translation type="vanished">Bespaar milliseconde</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>RX-gegevens opslaan</translation>
+        <translation type="vanished">RX-gegevens opslaan</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>Bewaar datum</translation>
+        <translation type="vanished">Bewaar datum</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation>Bespaar tijd</translation>
+        <translation type="vanished">Bespaar tijd</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>Formaat opslaan</translation>
+        <translation type="vanished">Formaat opslaan</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>Maximaal aantal bytes</translation>
+        <translation type="vanished">Maximaal aantal bytes</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>Bovenste resultaat</translation>
+        <translation type="vanished">Bovenste resultaat</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>Gecontroleerd bestand</translation>
+        <translation type="vanished">Gecontroleerd bestand</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>Voortgang gecontroleerd</translation>
+        <translation type="vanished">Voortgang gecontroleerd</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>Gecontroleerd algoritme</translation>
+        <translation type="vanished">Gecontroleerd algoritme</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>Resultaat gecontroleerd</translation>
+        <translation type="vanished">Resultaat gecontroleerd</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation>Open</translation>
+        <translation type="vanished">Open</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>Bestandenlijst</translation>
+        <translation type="vanished">Bestandenlijst</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Importeren</translation>
+        <translation type="vanished">Importeren</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Omhoog</translation>
+        <translation type="vanished">Omhoog</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Omlaag</translation>
+        <translation type="vanished">Omlaag</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>Verwijderen</translation>
+        <translation type="vanished">Verwijderen</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Duidelijk</translation>
+        <translation type="vanished">Duidelijk</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>Samenvoegen</translation>
+        <translation type="vanished">Samenvoegen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>Apparaat</translation>
+        <translation type="vanished">Apparaat</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>Gegevensvoorbeeld weergeven</translation>
+        <translation type="vanished">Gegevensvoorbeeld weergeven</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>Achtervoegsel toevoegen</translation>
+        <translation type="vanished">Achtervoegsel toevoegen</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>Voorvoegsel toevoegen</translation>
+        <translation type="vanished">Voorvoegsel toevoegen</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Ontsnappingskarakter</translation>
+        <translation type="vanished">Ontsnappingskarakter</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>Voorverwerking van gegevens</translation>
+        <translation type="vanished">Voorverwerking van gegevens</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>Controlegegevens toevoegen</translation>
+        <translation type="vanished">Controlegegevens toevoegen</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Grote endiaan</translation>
+        <translation type="vanished">Grote endiaan</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>Begin vanaf links</translation>
+        <translation type="vanished">Begin vanaf links</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>Begin vanaf rechts</translation>
+        <translation type="vanished">Begin vanaf rechts</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Rekenkundig</translation>
+        <translation type="vanished">Rekenkundig</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Begin index</translation>
+        <translation type="vanished">Begin index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Eindindex</translation>
+        <translation type="vanished">Eindindex</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>Gegevenscontrole</translation>
+        <translation type="vanished">Gegevenscontrole</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Knooppunt-editor</translation>
+        <translation type="vanished">Knooppunt-editor</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>Gegevenstype</translation>
+        <translation type="vanished">Gegevenstype</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>Legende</translation>
+        <translation type="vanished">Legende</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>Cachepunten</translation>
+        <translation type="vanished">Cachepunten</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Duidelijk</translation>
+        <translation type="vanished">Duidelijk</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Importeren</translation>
+        <translation type="vanished">Importeren</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>Schrijf naar</translation>
+        <translation type="vanished">Schrijf naar</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>Servernaam</translation>
+        <translation type="vanished">Servernaam</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>Servernaam</translation>
+        <translation type="vanished">Servernaam</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>Test</translation>
+        <translation type="vanished">Test</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>Testgegevens</translation>
+        <translation type="vanished">Testgegevens</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>Resultaatgegevens</translation>
+        <translation type="vanished">Resultaatgegevens</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>Omzeilen</translation>
+        <translation type="vanished">Omzeilen</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>Tabelparameters</translation>
+        <translation type="vanished">Tabelparameters</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>Tekenreeksparameters</translation>
+        <translation type="vanished">Tekenreeksparameters</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Algemeen</translation>
+        <translation type="vanished">Algemeen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>Diensttype</translation>
+        <translation type="vanished">Diensttype</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>Troosten</translation>
+        <translation type="vanished">Troosten</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>Serverregistreren</translation>
+        <translation type="vanished">Serverregistreren</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Versturen</translation>
+        <translation type="vanished">Versturen</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>Aangepaste protocolgegevenseenheid</translation>
+        <translation type="vanished">Aangepaste protocolgegevenseenheid</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>Klantregistraties</translation>
+        <translation type="vanished">Klantregistraties</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>Apparaatlijst</translation>
+        <translation type="vanished">Apparaatlijst</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Dichtbij</translation>
+        <translation type="vanished">Dichtbij</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Open</translation>
+        <translation type="vanished">Open</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>Apparaatbewerkingen</translation>
+        <translation type="vanished">Apparaatbewerkingen</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>Netwerkinstellingen</translation>
+        <translation type="vanished">Netwerkinstellingen</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Haven</translation>
+        <translation type="vanished">Haven</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Baudsnelheid</translation>
+        <translation type="vanished">Baudsnelheid</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Databits</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>Seriële poortinstellingen</translation>
+        <translation type="vanished">Seriële poortinstellingen</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Pariteit</translation>
+        <translation type="vanished">Pariteit</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Naam van de poort</translation>
+        <translation type="vanished">Naam van de poort</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop stukjes</translation>
+        <translation type="vanished">Stop stukjes</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>Apparaat bezet</translation>
+        <translation type="vanished">Apparaat bezet</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>Serverparameters</translation>
+        <translation type="vanished">Serverparameters</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>Serveradres</translation>
+        <translation type="vanished">Serveradres</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Alleen luisteren-modus</translation>
+        <translation type="vanished">Alleen luisteren-modus</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>Doeladres</translation>
+        <translation type="vanished">Doeladres</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Lezen</translation>
+        <translation type="vanished">Lezen</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>Schrijven</translation>
+        <translation type="vanished">Schrijven</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>Functiecode</translation>
+        <translation type="vanished">Functiecode</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>Adresnummer</translation>
+        <translation type="vanished">Adresnummer</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>Start adres</translation>
+        <translation type="vanished">Start adres</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>Herhaal tijden</translation>
+        <translation type="vanished">Herhaal tijden</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>Time-out</translation>
+        <translation type="vanished">Time-out</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>Klantparameters</translation>
+        <translation type="vanished">Klantparameters</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>Invoercontrole (adres en waarde)</translation>
+        <translation type="vanished">Invoercontrole (adres en waarde)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Invoerformaat</translation>
+        <translation type="vanished">Invoerformaat</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Ruwe gegevens</translation>
+        <translation type="vanished">Ruwe gegevens</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>Gekookte gegevens (Hex)</translation>
+        <translation type="vanished">Gekookte gegevens (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>Gekookt gegevenstype</translation>
+        <translation type="vanished">Gekookt gegevenstype</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>Gekookte gegevens (dec)</translation>
+        <translation type="vanished">Gekookte gegevens (dec)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>Zoals: 1, -1, 1.1, -1.1</translation>
+        <translation type="vanished">Zoals: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>Gekookte gegevens(Bin)</translation>
+        <translation type="vanished">Gekookte gegevens(Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>Van links naar rechts is hoog naar laag</translation>
+        <translation type="vanished">Van links naar rechts is hoog naar laag</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>Markeerstift inschakelen</translation>
+        <translation type="vanished">Markeerstift inschakelen</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>Tekst filteren</translation>
+        <translation type="vanished">Tekst filteren</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>Hallo, Woord</translation>
+        <translation type="vanished">Hallo, Woord</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>Toon statisticus</translation>
+        <translation type="vanished">Toon statisticus</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>Filter inschakelen</translation>
+        <translation type="vanished">Filter inschakelen</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>Cyclusinterval</translation>
+        <translation type="vanished">Cyclusinterval</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>Instellingen</translation>
+        <translation type="vanished">Instellingen</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Duidelijk</translation>
+        <translation type="vanished">Duidelijk</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>Rx</translation>
+        <translation type="vanished">Rx</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>Tx</translation>
+        <translation type="vanished">Tx</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Datum</translation>
+        <translation type="vanished">Datum</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>Vlag</translation>
+        <translation type="vanished">Vlag</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Tijd</translation>
+        <translation type="vanished">Tijd</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>Mevrouw</translation>
+        <translation type="vanished">Mevrouw</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>Uitgangscontrole</translation>
+        <translation type="vanished">Uitgangscontrole</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>Invoercontrole</translation>
+        <translation type="vanished">Invoercontrole</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>Wrap</translation>
+        <translation type="vanished">Wrap</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>Terminal</translation>
+        <translation type="vanished">Terminal</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>Communicatie controle</translation>
+        <translation type="vanished">Communicatie controle</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Versturen</translation>
+        <translation type="vanished">Versturen</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>Tekstformaat</translation>
+        <translation type="vanished">Tekstformaat</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>Uitvoer</translation>
+        <translation type="vanished">Uitvoer</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>Invoer</translation>
+        <translation type="vanished">Invoer</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>Lijst met vooraf ingestelde gegevens</translation>
+        <translation type="vanished">Lijst met vooraf ingestelde gegevens</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>Voorinstellingen</translation>
+        <translation type="vanished">Voorinstellingen</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>Emitter</translation>
+        <translation type="vanished">Emitter</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>Antwoorder</translation>
+        <translation type="vanished">Antwoorder</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>Overdrachten</translation>
+        <translation type="vanished">Overdrachten</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>Groepsinterval (ms)</translation>
+        <translation type="vanished">Groepsinterval (ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>Groep toevoegen (bijwerken).</translation>
+        <translation type="vanished">Groep toevoegen (bijwerken).</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>Kolommen (gesplitst met spatie)</translation>
+        <translation type="vanished">Kolommen (gesplitst met spatie)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Omhoog</translation>
+        <translation type="vanished">Omhoog</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Omlaag</translation>
+        <translation type="vanished">Omlaag</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>Geselecteerde verwijderen</translation>
+        <translation type="vanished">Geselecteerde verwijderen</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>Zonder titel</translation>
+        <translation type="vanished">Zonder titel</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Naam</translation>
+        <translation type="vanished">Naam</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>Schakel de groep uit</translation>
+        <translation type="vanished">Schakel de groep uit</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>Artikelinterval (ms)</translation>
+        <translation type="vanished">Artikelinterval (ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>Genereer</translation>
+        <translation type="vanished">Genereer</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>Logboek wissen</translation>
+        <translation type="vanished">Logboek wissen</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation type="vanished">Logboek</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>Open de scriptdirectory</translation>
+        <translation type="vanished">Open de scriptdirectory</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>Nieuw script</translation>
+        <translation type="vanished">Nieuw script</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>Bestandenlijst vernieuwen</translation>
+        <translation type="vanished">Bestandenlijst vernieuwen</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>Online handleiding</translation>
+        <translation type="vanished">Online handleiding</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>Script</translation>
+        <translation type="vanished">Script</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>Zoek tekst</translation>
+        <translation type="vanished">Zoek tekst</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Zoekopdracht</translation>
+        <translation type="vanished">Zoekopdracht</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>Reguliere expressie</translation>
+        <translation type="vanished">Reguliere expressie</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>Hoofdlettergevoelig</translation>
+        <translation type="vanished">Hoofdlettergevoelig</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>Hele woord</translation>
+        <translation type="vanished">Hele woord</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>Baudsnelheid</translation>
+        <translation type="vanished">Baudsnelheid</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Pariteit</translation>
+        <translation type="vanished">Pariteit</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>Genegeerd bezet apparaat</translation>
+        <translation type="vanished">Genegeerd bezet apparaat</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Databits</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>Stroomcontrole</translation>
+        <translation type="vanished">Stroomcontrole</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop stukjes</translation>
+        <translation type="vanished">Stop stukjes</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Naam van de poort</translation>
+        <translation type="vanished">Naam van de poort</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>Frame-interval inschakelen</translation>
+        <translation type="vanished">Frame-interval inschakelen</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>Schrijf naar</translation>
+        <translation type="vanished">Schrijf naar</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>Pad</translation>
+        <translation type="vanished">Pad</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>Ontkoppel alle clients</translation>
+        <translation type="vanished">Ontkoppel alle clients</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Authenticatie</translation>
+        <translation type="vanished">Authenticatie</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>Server-IP</translation>
+        <translation type="vanished">Server-IP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Kanaal</translation>
+        <translation type="vanished">Kanaal</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>Schakel multicast in</translation>
+        <translation type="vanished">Schakel multicast in</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>Gewoon multicasten</translation>
+        <translation type="vanished">Gewoon multicasten</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>bericht/hallo</translation>
+        <translation type="vanished">bericht/hallo</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>Veilige modus</translation>
+        <translation type="vanished">Veilige modus</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast-poort</translation>
+        <translation type="vanished">Multicast-poort</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast-IP</translation>
+        <translation type="vanished">Multicast-IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>Serverpoort</translation>
+        <translation type="vanished">Serverpoort</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>Gebruikersnaam</translation>
+        <translation type="vanished">Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation type="vanished">Wachtwoord</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Ruwe gegevens</translation>
+        <translation type="vanished">Ruwe gegevens</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Invoerformaat</translation>
+        <translation type="vanished">Invoerformaat</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>Gekookte gegevens</translation>
+        <translation type="vanished">Gekookte gegevens</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Uitvoerformaat</translation>
+        <translation type="vanished">Uitvoerformaat</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>Creëren</translation>
+        <translation type="vanished">Creëren</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>Formulier</translation>
+        <translation type="vanished">Formulier</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>Schakel alle artikelen uit</translation>
+        <translation type="vanished">Schakel alle artikelen uit</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Verwijderen</translation>
+        <translation type="vanished">Verwijderen</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Omhoog</translation>
+        <translation type="vanished">Omhoog</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Toevoegen</translation>
+        <translation type="vanished">Toevoegen</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation>Importeren</translation>
+        <translation type="vanished">Importeren</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Omlaag</translation>
+        <translation type="vanished">Omlaag</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>Gegevenseditor</translation>
+        <translation type="vanished">Gegevenseditor</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annuleren</translation>
+        <translation type="vanished">Annuleren</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>Algoritme</translation>
+        <translation type="vanished">Algoritme</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Begin index</translation>
+        <translation type="vanished">Begin index</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Eindindex</translation>
+        <translation type="vanished">Eindindex</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>Toevoegen</translation>
+        <translation type="vanished">Toevoegen</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Grote endiaan</translation>
+        <translation type="vanished">Grote endiaan</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>Voorverwerking</translation>
+        <translation type="vanished">Voorverwerking</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>Voorvoegsel</translation>
+        <translation type="vanished">Voorvoegsel</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>Achtervoegsel</translation>
+        <translation type="vanished">Achtervoegsel</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Ontsnappingskarakter</translation>
+        <translation type="vanished">Ontsnappingskarakter</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>Laadvermogen</translation>
+        <translation type="vanished">Laadvermogen</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation type="vanished">Formaat</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Selecteer een netwerkinterface:</translation>
+        <translation type="vanished">Selecteer een netwerkinterface:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>Uitzendpoort</translation>
+        <translation type="vanished">Uitzendpoort</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Selecteer een netwerkinterface:</translation>
+        <translation type="vanished">Selecteer een netwerkinterface:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Multicast-IP</translation>
+        <translation type="vanished">Multicast-IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Multicast-poort</translation>
+        <translation type="vanished">Multicast-poort</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>Multicast-loopback</translation>
+        <translation type="vanished">Multicast-loopback</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Nieuw RTU-apparaat</translation>
+        <translation type="vanished">Nieuw RTU-apparaat</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Nieuw TCP-apparaat</translation>
+        <translation type="vanished">Nieuw TCP-apparaat</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Nieuwe spoelen</translation>
+        <translation type="vanished">Nieuwe spoelen</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Nieuwe discrete ingangen</translation>
+        <translation type="vanished">Nieuwe discrete ingangen</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Nieuwe holdingregisters</translation>
+        <translation type="vanished">Nieuwe holdingregisters</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Nieuwe invoerregisters</translation>
+        <translation type="vanished">Nieuwe invoerregisters</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Spoelen</translation>
+        <translation type="vanished">Spoelen</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Discrete ingangen</translation>
+        <translation type="vanished">Discrete ingangen</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Registers bijhouden</translation>
+        <translation type="vanished">Registers bijhouden</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Invoerregisters</translation>
+        <translation type="vanished">Invoerregisters</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>

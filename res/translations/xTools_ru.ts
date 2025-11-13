@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>Фильтр</translation>
+        <translation type="vanished">Фильтр</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>Сохранить дело</translation>
+        <translation type="vanished">Сохранить дело</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC Ассистент</translation>
+        <translation type="vanished">CRC Ассистент</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation type="vanished">Обновить</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Тип</translation>
+        <translation type="vanished">Тип</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Экспорт</translation>
+        <translation type="vanished">Экспорт</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Данные</translation>
+        <translation type="vanished">Данные</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>Формат данных</translation>
+        <translation type="vanished">Формат данных</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>Помощник Base64</translation>
+        <translation type="vanished">Помощник Base64</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>Открытый текст</translation>
+        <translation type="vanished">Открытый текст</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>Зашифрованный текст</translation>
+        <translation type="vanished">Зашифрованный текст</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>Изображение</translation>
+        <translation type="vanished">Изображение</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>Расшифровать</translation>
+        <translation type="vanished">Расшифровать</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>Шифровать</translation>
+        <translation type="vanished">Шифровать</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>Характеристика</translation>
+        <translation type="vanished">Характеристика</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(Неподдерживаемая характеристика)</translation>
+        <translation type="vanished">(Неподдерживаемая характеристика)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>BLE-устройства</translation>
+        <translation type="vanished">BLE-устройства</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>Читать</translation>
+        <translation type="vanished">Читать</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>Сервисное сканирование</translation>
+        <translation type="vanished">Сервисное сканирование</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>Режим записи</translation>
+        <translation type="vanished">Режим записи</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>Услуга</translation>
+        <translation type="vanished">Услуга</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>Сканирование устройства</translation>
+        <translation type="vanished">Сканирование устройства</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>Выходной контроль</translation>
+        <translation type="vanished">Выходной контроль</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Выходной формат</translation>
+        <translation type="vanished">Выходной формат</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Прозрачный</translation>
+        <translation type="vanished">Прозрачный</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>Параметры трансляции</translation>
+        <translation type="vanished">Параметры трансляции</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>Широковещательный адрес</translation>
+        <translation type="vanished">Широковещательный адрес</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>Формат данных</translation>
+        <translation type="vanished">Формат данных</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>Префикс трансляции</translation>
+        <translation type="vanished">Префикс трансляции</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>Интервал трансляции</translation>
+        <translation type="vanished">Интервал трансляции</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>Суффикс трансляции</translation>
+        <translation type="vanished">Суффикс трансляции</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>Широковещательный порт</translation>
+        <translation type="vanished">Широковещательный порт</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>Данные трансляции</translation>
+        <translation type="vanished">Данные трансляции</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>Вывод информации</translation>
+        <translation type="vanished">Вывод информации</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>CANBus Студия</translation>
+        <translation type="vanished">CANBus Студия</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>CAN-кадр</translation>
+        <translation type="vanished">CAN-кадр</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>Расширенный формат</translation>
+        <translation type="vanished">Расширенный формат</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>Гибкая скорость передачи данных</translation>
+        <translation type="vanished">Гибкая скорость передачи данных</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>Идентификатор кадра</translation>
+        <translation type="vanished">Идентификатор кадра</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>Тип рамы</translation>
+        <translation type="vanished">Тип рамы</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>Варианты рамок</translation>
+        <translation type="vanished">Варианты рамок</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>Переключатель битрейта</translation>
+        <translation type="vanished">Переключатель битрейта</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>Управление устройствами</translation>
+        <translation type="vanished">Управление устройствами</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>Отключить</translation>
+        <translation type="vanished">Отключить</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>Соединять</translation>
+        <translation type="vanished">Соединять</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>Плагин</translation>
+        <translation type="vanished">Плагин</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Имя</translation>
+        <translation type="vanished">Имя</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>Просмотр данных</translation>
+        <translation type="vanished">Просмотр данных</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>Укажите конфигурацию</translation>
+        <translation type="vanished">Укажите конфигурацию</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>Фильтр ошибок</translation>
+        <translation type="vanished">Фильтр ошибок</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>Пользовательские конфигурации</translation>
+        <translation type="vanished">Пользовательские конфигурации</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CAN ФД</translation>
+        <translation type="vanished">CAN ФД</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>петлевая проверка</translation>
+        <translation type="vanished">петлевая проверка</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>Битрейт данных</translation>
+        <translation type="vanished">Битрейт данных</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Битрейт</translation>
+        <translation type="vanished">Битрейт</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>Получить собственный</translation>
+        <translation type="vanished">Получить собственный</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>Полезная нагрузка CAN-кадра</translation>
+        <translation type="vanished">Полезная нагрузка CAN-кадра</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Отправлять</translation>
+        <translation type="vanished">Отправлять</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,82 +783,82 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>Формат</translation>
+        <translation type="vanished">Формат</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>Каналы</translation>
+        <translation type="vanished">Каналы</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC Ассистент</translation>
+        <translation type="vanished">CRC Ассистент</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>Значение Палой</translation>
+        <translation type="vanished">Значение Палой</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>Начальное значение</translation>
+        <translation type="vanished">Начальное значение</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Копировать</translation>
+        <translation type="vanished">Копировать</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>Дополнительную информацию о расчете crc можно найти на http://www.ip33.com/crc.html (щелкните дважды, чтобы посетить).</translation>
+        <translation type="vanished">Дополнительную информацию о расчете crc можно найти на http://www.ip33.com/crc.html (щелкните дважды, чтобы посетить).</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>Реверс ввода</translation>
+        <translation type="vanished">Реверс ввода</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>Реверс выхода</translation>
+        <translation type="vanished">Реверс выхода</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Прозрачный</translation>
+        <translation type="vanished">Прозрачный</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>Рассчитать</translation>
+        <translation type="vanished">Рассчитать</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>Параметры</translation>
+        <translation type="vanished">Параметры</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>значение XOR</translation>
+        <translation type="vanished">значение XOR</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>Высота находится слева, а младшие биты справа.</translation>
+        <translation type="vanished">Высота находится слева, а младшие биты справа.</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>шестигранник</translation>
+        <translation type="vanished">шестигранник</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>Результат(HEX)</translation>
+        <translation type="vanished">Результат(HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>Параметр модели</translation>
+        <translation type="vanished">Параметр модели</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>Ширина</translation>
+        <translation type="vanished">Ширина</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -873,15 +873,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Paloy</source>
-        <translation>Замедлять</translation>
+        <translation type="vanished">Замедлять</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>Входные данные</translation>
+        <translation type="vanished">Входные данные</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>Результат(БИН)</translation>
+        <translation type="vanished">Результат(БИН)</translation>
     </message>
 </context>
 <context>
@@ -911,31 +911,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>Типы</translation>
+        <translation type="vanished">Типы</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>Флаги</translation>
+        <translation type="vanished">Флаги</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Формат</translation>
+        <translation type="vanished">Формат</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>Рекорды</translation>
+        <translation type="vanished">Рекорды</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>Данные</translation>
+        <translation type="vanished">Данные</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>Поиск данных...</translation>
+        <translation type="vanished">Поиск данных...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -963,82 +963,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Новое устройство Modbus</translation>
+        <translation type="vanished">Новое устройство Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Параметры подключения</translation>
+        <translation type="vanished">Параметры подключения</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Паритет</translation>
+        <translation type="vanished">Паритет</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Скорость передачи данных</translation>
+        <translation type="vanished">Скорость передачи данных</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Стоп-биты</translation>
+        <translation type="vanished">Стоп-биты</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation type="vanished">Обновить</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Биты данных</translation>
+        <translation type="vanished">Биты данных</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Имена</translation>
+        <translation type="vanished">Имена</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP-адрес</translation>
+        <translation type="vanished">IP-адрес</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Порт</translation>
+        <translation type="vanished">Порт</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Тип устройства</translation>
+        <translation type="vanished">Тип устройства</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Тайм-аут (мс)</translation>
+        <translation type="vanished">Тайм-аут (мс)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Количество повторов</translation>
+        <translation type="vanished">Количество повторов</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Адрес</translation>
+        <translation type="vanished">Адрес</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Режим только прослушивания</translation>
+        <translation type="vanished">Режим только прослушивания</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Параметры устройства</translation>
+        <translation type="vanished">Параметры устройства</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Имя устройства</translation>
+        <translation type="vanished">Имя устройства</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Такие как: Сименс S7-300</translation>
+        <translation type="vanished">Такие как: Сименс S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Поиск</translation>
+        <translation type="vanished">Поиск</translation>
     </message>
 </context>
 <context>
@@ -1123,23 +1123,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>Сохранить данные передачи</translation>
+        <translation type="vanished">Сохранить данные передачи</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>Браузер</translation>
+        <translation type="vanished">Браузер</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>Экономьте миллисекунды</translation>
+        <translation type="vanished">Экономьте миллисекунды</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>Сохранить данные приема</translation>
+        <translation type="vanished">Сохранить данные приема</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>Сохранить дату</translation>
+        <translation type="vanished">Сохранить дату</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1148,15 +1148,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Save Time</source>
-        <translation>Экономьте время</translation>
+        <translation type="vanished">Экономьте время</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>Сохранить формат</translation>
+        <translation type="vanished">Сохранить формат</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>Макс. байт</translation>
+        <translation type="vanished">Макс. байт</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1202,27 +1202,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>Верхний результат</translation>
+        <translation type="vanished">Верхний результат</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>Проверенный файл</translation>
+        <translation type="vanished">Проверенный файл</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>Проверен прогресс</translation>
+        <translation type="vanished">Проверен прогресс</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>Проверенный алгоритм</translation>
+        <translation type="vanished">Проверенный алгоритм</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>Проверенный результат</translation>
+        <translation type="vanished">Проверенный результат</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1231,7 +1231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Open</source>
-        <translation>Открыть</translation>
+        <translation type="vanished">Открыть</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1253,35 +1253,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>Список файлов</translation>
+        <translation type="vanished">Список файлов</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Импорт</translation>
+        <translation type="vanished">Импорт</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Вверх</translation>
+        <translation type="vanished">Вверх</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Вниз</translation>
+        <translation type="vanished">Вниз</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>Удалять</translation>
+        <translation type="vanished">Удалять</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Прозрачный</translation>
+        <translation type="vanished">Прозрачный</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>Объединить</translation>
+        <translation type="vanished">Объединить</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1356,7 +1356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>Устройство</translation>
+        <translation type="vanished">Устройство</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1436,62 +1436,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>Показать предварительный просмотр данных</translation>
+        <translation type="vanished">Показать предварительный просмотр данных</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>Добавить суффикс</translation>
+        <translation type="vanished">Добавить суффикс</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>Добавить префикс</translation>
+        <translation type="vanished">Добавить префикс</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Побег персонаж</translation>
+        <translation type="vanished">Побег персонаж</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>Предварительная обработка данных</translation>
+        <translation type="vanished">Предварительная обработка данных</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>Добавить данные проверки</translation>
+        <translation type="vanished">Добавить данные проверки</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Большой порядок байтов</translation>
+        <translation type="vanished">Большой порядок байтов</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>Начать слева</translation>
+        <translation type="vanished">Начать слева</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>Начать справа</translation>
+        <translation type="vanished">Начать справа</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Арифметика</translation>
+        <translation type="vanished">Арифметика</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Начальный индекс</translation>
+        <translation type="vanished">Начальный индекс</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Конечный индекс</translation>
+        <translation type="vanished">Конечный индекс</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>Проверка данных</translation>
+        <translation type="vanished">Проверка данных</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Редактор узлов</translation>
+        <translation type="vanished">Редактор узлов</translation>
     </message>
 </context>
 <context>
@@ -1511,27 +1511,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>Тип данных</translation>
+        <translation type="vanished">Тип данных</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>Легенда</translation>
+        <translation type="vanished">Легенда</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>Точки кэша</translation>
+        <translation type="vanished">Точки кэша</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Прозрачный</translation>
+        <translation type="vanished">Прозрачный</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Экспорт</translation>
+        <translation type="vanished">Экспорт</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>Импорт</translation>
+        <translation type="vanished">Импорт</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1587,11 +1587,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>Напишите в</translation>
+        <translation type="vanished">Напишите в</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>Имя сервера</translation>
+        <translation type="vanished">Имя сервера</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1603,38 +1603,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>Имя сервера</translation>
+        <translation type="vanished">Имя сервера</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>Тест</translation>
+        <translation type="vanished">Тест</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>Данные испытаний</translation>
+        <translation type="vanished">Данные испытаний</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>Данные результата</translation>
+        <translation type="vanished">Данные результата</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>Обход</translation>
+        <translation type="vanished">Обход</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>Параметры таблицы</translation>
+        <translation type="vanished">Параметры таблицы</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>Строковые параметры</translation>
+        <translation type="vanished">Строковые параметры</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1656,7 +1656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Общий</translation>
+        <translation type="vanished">Общий</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>Тип услуги</translation>
+        <translation type="vanished">Тип услуги</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1950,39 +1950,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>Консоль</translation>
+        <translation type="vanished">Консоль</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>Регистрация сервера</translation>
+        <translation type="vanished">Регистрация сервера</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Отправлять</translation>
+        <translation type="vanished">Отправлять</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>Пользовательский блок данных протокола</translation>
+        <translation type="vanished">Пользовательский блок данных протокола</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>Регистры клиентов</translation>
+        <translation type="vanished">Регистры клиентов</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>Список устройств</translation>
+        <translation type="vanished">Список устройств</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>Закрывать</translation>
+        <translation type="vanished">Закрывать</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>Открыть</translation>
+        <translation type="vanished">Открыть</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>Операции с устройством</translation>
+        <translation type="vanished">Операции с устройством</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1991,95 +1991,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>Настройки сети</translation>
+        <translation type="vanished">Настройки сети</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Порт</translation>
+        <translation type="vanished">Порт</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Скорость передачи данных</translation>
+        <translation type="vanished">Скорость передачи данных</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Биты данных</translation>
+        <translation type="vanished">Биты данных</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>Настройки последовательного порта</translation>
+        <translation type="vanished">Настройки последовательного порта</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Паритет</translation>
+        <translation type="vanished">Паритет</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Имя порта</translation>
+        <translation type="vanished">Имя порта</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Стоп-биты</translation>
+        <translation type="vanished">Стоп-биты</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>Устройство занято</translation>
+        <translation type="vanished">Устройство занято</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>Параметры сервера</translation>
+        <translation type="vanished">Параметры сервера</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>Адрес сервера</translation>
+        <translation type="vanished">Адрес сервера</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Режим только прослушивания</translation>
+        <translation type="vanished">Режим только прослушивания</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>Целевой адрес</translation>
+        <translation type="vanished">Целевой адрес</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>Читать</translation>
+        <translation type="vanished">Читать</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>Писать</translation>
+        <translation type="vanished">Писать</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>Код функции</translation>
+        <translation type="vanished">Код функции</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>Номер адреса</translation>
+        <translation type="vanished">Номер адреса</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>Начальный адрес</translation>
+        <translation type="vanished">Начальный адрес</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>Повторить раз</translation>
+        <translation type="vanished">Повторить раз</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>Тайм-аут</translation>
+        <translation type="vanished">Тайм-аут</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>Параметры клиента</translation>
+        <translation type="vanished">Параметры клиента</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>Входной контроль (адрес и значение)</translation>
+        <translation type="vanished">Входной контроль (адрес и значение)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Формат ввода</translation>
+        <translation type="vanished">Формат ввода</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2250,31 +2250,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Необработанные данные</translation>
+        <translation type="vanished">Необработанные данные</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>Приготовленные данные (Hex)</translation>
+        <translation type="vanished">Приготовленные данные (Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>Готовый тип данных</translation>
+        <translation type="vanished">Готовый тип данных</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>Приготовленные данные (декабрь)</translation>
+        <translation type="vanished">Приготовленные данные (декабрь)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>Например: 1, -1, 1,1, -1,1.</translation>
+        <translation type="vanished">Например: 1, -1, 1,1, -1,1.</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>Приготовленные данные (Бин)</translation>
+        <translation type="vanished">Приготовленные данные (Бин)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>Слева направо от высокого к низкому</translation>
+        <translation type="vanished">Слева направо от высокого к низкому</translation>
     </message>
 </context>
 <context>
@@ -2314,30 +2314,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>Включить выделение</translation>
+        <translation type="vanished">Включить выделение</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>Фильтровать текст</translation>
+        <translation type="vanished">Фильтровать текст</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>Привет, Слово</translation>
+        <translation type="vanished">Привет, Слово</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>Показать статистику</translation>
+        <translation type="vanished">Показать статистику</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>Включить фильтр</translation>
+        <translation type="vanished">Включить фильтр</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>Интервал цикла</translation>
+        <translation type="vanished">Интервал цикла</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2346,95 +2346,95 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="vanished">Настройки</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Прозрачный</translation>
+        <translation type="vanished">Прозрачный</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>прием</translation>
+        <translation type="vanished">прием</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>Техас</translation>
+        <translation type="vanished">Техас</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Дата</translation>
+        <translation type="vanished">Дата</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>Флаг</translation>
+        <translation type="vanished">Флаг</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Время</translation>
+        <translation type="vanished">Время</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>РС</translation>
+        <translation type="vanished">РС</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>Выходной контроль</translation>
+        <translation type="vanished">Выходной контроль</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>Входной контроль</translation>
+        <translation type="vanished">Входной контроль</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>Сворачивать</translation>
+        <translation type="vanished">Сворачивать</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>Терминал</translation>
+        <translation type="vanished">Терминал</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>Управление связью</translation>
+        <translation type="vanished">Управление связью</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>Отправлять</translation>
+        <translation type="vanished">Отправлять</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>Текстовый формат</translation>
+        <translation type="vanished">Текстовый формат</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>ИО</translation>
+        <translation type="vanished">ИО</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>Выход</translation>
+        <translation type="vanished">Выход</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>Вход</translation>
+        <translation type="vanished">Вход</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>Список предустановленных данных</translation>
+        <translation type="vanished">Список предустановленных данных</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>Пресеты</translation>
+        <translation type="vanished">Пресеты</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>Эмиттер</translation>
+        <translation type="vanished">Эмиттер</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>Ответчик</translation>
+        <translation type="vanished">Ответчик</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>Трансферы</translation>
+        <translation type="vanished">Трансферы</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2646,43 +2646,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>Групповой интервал (мс)</translation>
+        <translation type="vanished">Групповой интервал (мс)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>Добавить(обновить) группу</translation>
+        <translation type="vanished">Добавить(обновить) группу</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>Столбцы (разделенные пробелом)</translation>
+        <translation type="vanished">Столбцы (разделенные пробелом)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Вверх</translation>
+        <translation type="vanished">Вверх</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Вниз</translation>
+        <translation type="vanished">Вниз</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>Удалить выбранное</translation>
+        <translation type="vanished">Удалить выбранное</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>Без названия</translation>
+        <translation type="vanished">Без названия</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Имя</translation>
+        <translation type="vanished">Имя</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>Отключить группу</translation>
+        <translation type="vanished">Отключить группу</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>Интервал элемента (мс)</translation>
+        <translation type="vanished">Интервал элемента (мс)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2975,31 +2975,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1,5</translation>
+        <translation type="vanished">1,5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3031,11 +3031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>Экспорт</translation>
+        <translation type="vanished">Экспорт</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>Генерировать</translation>
+        <translation type="vanished">Генерировать</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3106,35 +3106,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>Очистить журнал</translation>
+        <translation type="vanished">Очистить журнал</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Бревно</translation>
+        <translation type="vanished">Бревно</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>Открыть каталог скриптов</translation>
+        <translation type="vanished">Открыть каталог скриптов</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>Новый сценарий</translation>
+        <translation type="vanished">Новый сценарий</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>Обновить список файлов</translation>
+        <translation type="vanished">Обновить список файлов</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>Онлайн-руководство</translation>
+        <translation type="vanished">Онлайн-руководство</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>Скрипт</translation>
+        <translation type="vanished">Скрипт</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3200,23 +3200,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>Поиск текста</translation>
+        <translation type="vanished">Поиск текста</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Поиск</translation>
+        <translation type="vanished">Поиск</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>Регулярное выражение</translation>
+        <translation type="vanished">Регулярное выражение</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>С учетом регистра</translation>
+        <translation type="vanished">С учетом регистра</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>Целое слово</translation>
+        <translation type="vanished">Целое слово</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3330,35 +3330,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>Скорость передачи данных</translation>
+        <translation type="vanished">Скорость передачи данных</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Паритет</translation>
+        <translation type="vanished">Паритет</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>Игнорируется занятое устройство</translation>
+        <translation type="vanished">Игнорируется занятое устройство</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Биты данных</translation>
+        <translation type="vanished">Биты данных</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>Управление потоком</translation>
+        <translation type="vanished">Управление потоком</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Стоп-биты</translation>
+        <translation type="vanished">Стоп-биты</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>Имя порта</translation>
+        <translation type="vanished">Имя порта</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>Включить интервал кадров</translation>
+        <translation type="vanished">Включить интервал кадров</translation>
     </message>
 </context>
 <context>
@@ -3418,63 +3418,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>Напишите в</translation>
+        <translation type="vanished">Напишите в</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>Путь</translation>
+        <translation type="vanished">Путь</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>Отключить всех клиентов</translation>
+        <translation type="vanished">Отключить всех клиентов</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>Аутентификация</translation>
+        <translation type="vanished">Аутентификация</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>IP-адрес сервера</translation>
+        <translation type="vanished">IP-адрес сервера</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>Канал</translation>
+        <translation type="vanished">Канал</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>Включить многоадресную рассылку</translation>
+        <translation type="vanished">Включить многоадресную рассылку</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>Просто многоадресная рассылка</translation>
+        <translation type="vanished">Просто многоадресная рассылка</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>сообщение/привет</translation>
+        <translation type="vanished">сообщение/привет</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>Безопасный режим</translation>
+        <translation type="vanished">Безопасный режим</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Многоадресный порт</translation>
+        <translation type="vanished">Многоадресный порт</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Многоадресный IP</translation>
+        <translation type="vanished">Многоадресный IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>Порт сервера</translation>
+        <translation type="vanished">Порт сервера</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>Имя пользователя</translation>
+        <translation type="vanished">Имя пользователя</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Пароль</translation>
+        <translation type="vanished">Пароль</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3494,23 +3494,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>Необработанные данные</translation>
+        <translation type="vanished">Необработанные данные</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>Формат ввода</translation>
+        <translation type="vanished">Формат ввода</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>Приготовленные данные</translation>
+        <translation type="vanished">Приготовленные данные</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>Выходной формат</translation>
+        <translation type="vanished">Выходной формат</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>Создавать</translation>
+        <translation type="vanished">Создавать</translation>
     </message>
 </context>
 <context>
@@ -3535,27 +3535,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>Форма</translation>
+        <translation type="vanished">Форма</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>Экспорт</translation>
+        <translation type="vanished">Экспорт</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>Отключить все элементы</translation>
+        <translation type="vanished">Отключить все элементы</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation type="vanished">Удалить</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Вверх</translation>
+        <translation type="vanished">Вверх</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Добавлять</translation>
+        <translation type="vanished">Добавлять</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3564,11 +3564,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>Импорт</translation>
+        <translation type="vanished">Импорт</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Вниз</translation>
+        <translation type="vanished">Вниз</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3602,63 +3602,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>Редактор данных</translation>
+        <translation type="vanished">Редактор данных</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation type="vanished">Отмена</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>КПР</translation>
+        <translation type="vanished">КПР</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>Алгоритм</translation>
+        <translation type="vanished">Алгоритм</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>Начальный индекс</translation>
+        <translation type="vanished">Начальный индекс</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>Конечный индекс</translation>
+        <translation type="vanished">Конечный индекс</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>Добавить</translation>
+        <translation type="vanished">Добавить</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>Большой порядок байтов</translation>
+        <translation type="vanished">Большой порядок байтов</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>Предварительная обработка</translation>
+        <translation type="vanished">Предварительная обработка</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>Префикс</translation>
+        <translation type="vanished">Префикс</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>Суффикс</translation>
+        <translation type="vanished">Суффикс</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>Побег персонаж</translation>
+        <translation type="vanished">Побег персонаж</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>ХОРОШО</translation>
+        <translation type="vanished">ХОРОШО</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>Полезная нагрузка</translation>
+        <translation type="vanished">Полезная нагрузка</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Формат</translation>
+        <translation type="vanished">Формат</translation>
     </message>
 </context>
 <context>
@@ -3719,11 +3719,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Выберите сетевой интерфейс:</translation>
+        <translation type="vanished">Выберите сетевой интерфейс:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>Широковещательный порт</translation>
+        <translation type="vanished">Широковещательный порт</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3758,19 +3758,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>Выберите сетевой интерфейс:</translation>
+        <translation type="vanished">Выберите сетевой интерфейс:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>Многоадресный IP-адрес</translation>
+        <translation type="vanished">Многоадресный IP-адрес</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>Многоадресный порт</translation>
+        <translation type="vanished">Многоадресный порт</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>Многоадресная петля</translation>
+        <translation type="vanished">Многоадресная петля</translation>
     </message>
 </context>
 <context>
@@ -3790,27 +3790,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Новое устройство RTU</translation>
+        <translation type="vanished">Новое устройство RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Новое TCP-устройство</translation>
+        <translation type="vanished">Новое TCP-устройство</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Новые катушки</translation>
+        <translation type="vanished">Новые катушки</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Новые дискретные входы</translation>
+        <translation type="vanished">Новые дискретные входы</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Новые регистры холдинга</translation>
+        <translation type="vanished">Новые регистры холдинга</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Новые входные регистры</translation>
+        <translation type="vanished">Новые входные регистры</translation>
     </message>
 </context>
 <context>
@@ -3855,19 +3855,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Катушки</translation>
+        <translation type="vanished">Катушки</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Дискретные входы</translation>
+        <translation type="vanished">Дискретные входы</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Регистры хранения</translation>
+        <translation type="vanished">Регистры хранения</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Входные регистры</translation>
+        <translation type="vanished">Входные регистры</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>

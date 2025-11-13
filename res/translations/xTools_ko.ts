@@ -18,11 +18,11 @@
     <name>AsciiAssistant</name>
     <message>
         <source>Filter</source>
-        <translation>필터</translation>
+        <translation type="vanished">필터</translation>
     </message>
     <message>
         <source>Preserve case</source>
-        <translation>대소변을 보존하다</translation>
+        <translation type="vanished">대소변을 보존하다</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -297,27 +297,27 @@
     <name>BarCodeAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC 어시스턴트</translation>
+        <translation type="vanished">CRC 어시스턴트</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>새로 고치다</translation>
+        <translation type="vanished">새로 고치다</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>유형</translation>
+        <translation type="vanished">유형</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>내보내다</translation>
+        <translation type="vanished">내보내다</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>데이터</translation>
+        <translation type="vanished">데이터</translation>
     </message>
     <message>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -345,7 +345,7 @@
     <name>BarSettings</name>
     <message>
         <source>Data format</source>
-        <translation>데이터 형식</translation>
+        <translation type="vanished">데이터 형식</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -382,27 +382,27 @@
     <name>Base64Assistant</name>
     <message>
         <source>Base64 Assistant</source>
-        <translation>Base64 도우미</translation>
+        <translation type="vanished">Base64 도우미</translation>
     </message>
     <message>
         <source>Plaintext</source>
-        <translation>일반 텍스트</translation>
+        <translation type="vanished">일반 텍스트</translation>
     </message>
     <message>
         <source>Ciphertext</source>
-        <translation>암호문</translation>
+        <translation type="vanished">암호문</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation>영상</translation>
+        <translation type="vanished">영상</translation>
     </message>
     <message>
         <source>Decrypt</source>
-        <translation>암호 해독</translation>
+        <translation type="vanished">암호 해독</translation>
     </message>
     <message>
         <source>Encrypt</source>
-        <translation>암호화</translation>
+        <translation type="vanished">암호화</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -432,19 +432,19 @@
     <name>BleCentralUi</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>Characteristic</source>
-        <translation>특성</translation>
+        <translation type="vanished">특성</translation>
     </message>
     <message>
         <source>(Unsupported characteristic)</source>
-        <translation>(지원되지 않는 특성)</translation>
+        <translation type="vanished">(지원되지 않는 특성)</translation>
     </message>
     <message>
         <source>BLE Devices</source>
-        <translation>BLE 장치</translation>
+        <translation type="vanished">BLE 장치</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
@@ -458,23 +458,23 @@
     </message>
     <message>
         <source>Read</source>
-        <translation>읽다</translation>
+        <translation type="vanished">읽다</translation>
     </message>
     <message>
         <source>Service scanning</source>
-        <translation>서비스 스캐닝</translation>
+        <translation type="vanished">서비스 스캐닝</translation>
     </message>
     <message>
         <source>Write mode</source>
-        <translation>쓰기 모드</translation>
+        <translation type="vanished">쓰기 모드</translation>
     </message>
     <message>
         <source>Service</source>
-        <translation>서비스</translation>
+        <translation type="vanished">서비스</translation>
     </message>
     <message>
         <source>Device scanning</source>
-        <translation>장치 스캐닝</translation>
+        <translation type="vanished">장치 스캐닝</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -511,51 +511,51 @@
     <name>BroadcastAssistant</name>
     <message>
         <source>Output control</source>
-        <translation>출력 제어</translation>
+        <translation type="vanished">출력 제어</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>출력 형식</translation>
+        <translation type="vanished">출력 형식</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>분명한</translation>
+        <translation type="vanished">분명한</translation>
     </message>
     <message>
         <source>Broadcast parameters</source>
-        <translation>방송 매개변수</translation>
+        <translation type="vanished">방송 매개변수</translation>
     </message>
     <message>
         <source>Broadcast address</source>
-        <translation>방송 주소</translation>
+        <translation type="vanished">방송 주소</translation>
     </message>
     <message>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
         <source>Data format</source>
-        <translation>데이터 형식</translation>
+        <translation type="vanished">데이터 형식</translation>
     </message>
     <message>
         <source>Broadcast prefix</source>
-        <translation>방송 접두사</translation>
+        <translation type="vanished">방송 접두사</translation>
     </message>
     <message>
         <source>Broadcast interval</source>
-        <translation>방송 간격</translation>
+        <translation type="vanished">방송 간격</translation>
     </message>
     <message>
         <source>Broadcast suffix</source>
-        <translation>방송 접미사</translation>
+        <translation type="vanished">방송 접미사</translation>
     </message>
     <message>
         <source>Broadcast port</source>
-        <translation>브로드캐스트 포트</translation>
+        <translation type="vanished">브로드캐스트 포트</translation>
     </message>
     <message>
         <source>Broadcast data</source>
-        <translation>방송 데이터</translation>
+        <translation type="vanished">방송 데이터</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>Information output</source>
-        <translation>정보 출력</translation>
+        <translation type="vanished">정보 출력</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -581,99 +581,99 @@
     <name>CanBusAssistant</name>
     <message>
         <source>CANBus Studio</source>
-        <translation>CANBus 스튜디오</translation>
+        <translation type="vanished">CANBus 스튜디오</translation>
     </message>
     <message>
         <source>CAN Frame</source>
-        <translation>CAN 프레임</translation>
+        <translation type="vanished">CAN 프레임</translation>
     </message>
     <message>
         <source>Extended format</source>
-        <translation>확장 형식</translation>
+        <translation type="vanished">확장 형식</translation>
     </message>
     <message>
         <source>Flexible data rate</source>
-        <translation>유연한 데이터 속도</translation>
+        <translation type="vanished">유연한 데이터 속도</translation>
     </message>
     <message>
         <source>Frame ID</source>
-        <translation>프레임 ID</translation>
+        <translation type="vanished">프레임 ID</translation>
     </message>
     <message>
         <source>Frame type</source>
-        <translation>프레임 유형</translation>
+        <translation type="vanished">프레임 유형</translation>
     </message>
     <message>
         <source>Frame options</source>
-        <translation>프레임 옵션</translation>
+        <translation type="vanished">프레임 옵션</translation>
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation>비트레이트 스위치</translation>
+        <translation type="vanished">비트레이트 스위치</translation>
     </message>
     <message>
         <source>Device Control</source>
-        <translation>장치 제어</translation>
+        <translation type="vanished">장치 제어</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation>연결 끊기</translation>
+        <translation type="vanished">연결 끊기</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation>연결하다</translation>
+        <translation type="vanished">연결하다</translation>
     </message>
     <message>
         <source>Plugin</source>
-        <translation>플러그인</translation>
+        <translation type="vanished">플러그인</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>이름</translation>
+        <translation type="vanished">이름</translation>
     </message>
     <message>
         <source>Data View</source>
-        <translation>데이터 보기</translation>
+        <translation type="vanished">데이터 보기</translation>
     </message>
     <message>
         <source>Specify Configuration</source>
-        <translation>구성 지정</translation>
+        <translation type="vanished">구성 지정</translation>
     </message>
     <message>
         <source>Error filter</source>
-        <translation>오류 필터</translation>
+        <translation type="vanished">오류 필터</translation>
     </message>
     <message>
         <source>Custom configurations</source>
-        <translation>맞춤형 구성</translation>
+        <translation type="vanished">맞춤형 구성</translation>
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>캔 FD</translation>
+        <translation type="vanished">캔 FD</translation>
     </message>
     <message>
         <source>Loopback</source>
-        <translation>루프백</translation>
+        <translation type="vanished">루프백</translation>
     </message>
     <message>
         <source>Data bitrate</source>
-        <translation>데이터 비트레이트</translation>
+        <translation type="vanished">데이터 비트레이트</translation>
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>비트레이트</translation>
+        <translation type="vanished">비트레이트</translation>
     </message>
     <message>
         <source>Receive own</source>
-        <translation>자신의 것을 받다</translation>
+        <translation type="vanished">자신의 것을 받다</translation>
     </message>
     <message>
         <source>CAN Frame Payload</source>
-        <translation>CAN 프레임 페이로드</translation>
+        <translation type="vanished">CAN 프레임 페이로드</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>보내다</translation>
+        <translation type="vanished">보내다</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -783,94 +783,94 @@
     <name>ChartsTestUi</name>
     <message>
         <source>Format</source>
-        <translation>체재</translation>
+        <translation type="vanished">체재</translation>
     </message>
     <message>
         <source>Channels</source>
-        <translation>채널</translation>
+        <translation type="vanished">채널</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
         <source>CRC Assistant</source>
-        <translation>CRC 어시스턴트</translation>
+        <translation type="vanished">CRC 어시스턴트</translation>
     </message>
     <message>
         <source>Paloy value</source>
-        <translation>팔로이 가치</translation>
+        <translation type="vanished">팔로이 가치</translation>
     </message>
     <message>
         <source>Initial value</source>
-        <translation>초기값</translation>
+        <translation type="vanished">초기값</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>복사</translation>
+        <translation type="vanished">복사</translation>
     </message>
     <message>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>crc 계산에 대한 자세한 내용은 http://www.ip33.com/crc.html을 방문하세요(방문하려면 두 번 클릭하세요).</translation>
+        <translation type="vanished">crc 계산에 대한 자세한 내용은 http://www.ip33.com/crc.html을 방문하세요(방문하려면 두 번 클릭하세요).</translation>
     </message>
     <message>
         <source>Input reversal</source>
-        <translation>입력 반전</translation>
+        <translation type="vanished">입력 반전</translation>
     </message>
     <message>
         <source>Output reversal</source>
-        <translation>출력 반전</translation>
+        <translation type="vanished">출력 반전</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>분명한</translation>
+        <translation type="vanished">분명한</translation>
     </message>
     <message>
         <source>Calculate</source>
-        <translation>믿다</translation>
+        <translation type="vanished">믿다</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation>매개변수</translation>
+        <translation type="vanished">매개변수</translation>
     </message>
     <message>
         <source>XOR value</source>
-        <translation>XOR 값</translation>
+        <translation type="vanished">XOR 값</translation>
     </message>
     <message>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>높이는 왼쪽에 있고 낮은 비트는 오른쪽에 있습니다.</translation>
+        <translation type="vanished">높이는 왼쪽에 있고 낮은 비트는 오른쪽에 있습니다.</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation>마녀</translation>
+        <translation type="vanished">마녀</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation>아스키</translation>
+        <translation type="vanished">아스키</translation>
     </message>
     <message>
         <source>Result(HEX)</source>
-        <translation>결과(HEX)</translation>
+        <translation type="vanished">결과(HEX)</translation>
     </message>
     <message>
         <source>Parameter model</source>
-        <translation>매개변수 모델</translation>
+        <translation type="vanished">매개변수 모델</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation>너비</translation>
+        <translation type="vanished">너비</translation>
     </message>
     <message>
         <source>Paloy</source>
-        <translation>천천히</translation>
+        <translation type="vanished">천천히</translation>
     </message>
     <message>
         <source>Input data</source>
-        <translation>입력 데이터</translation>
+        <translation type="vanished">입력 데이터</translation>
     </message>
     <message>
         <source>Result(BIN)</source>
-        <translation>결과(BIN)</translation>
+        <translation type="vanished">결과(BIN)</translation>
     </message>
 </context>
 <context>
@@ -900,31 +900,31 @@
     <name>DataRecordsView</name>
     <message>
         <source>Types</source>
-        <translation>유형</translation>
+        <translation type="vanished">유형</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation>플래그</translation>
+        <translation type="vanished">플래그</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>체재</translation>
+        <translation type="vanished">체재</translation>
     </message>
     <message>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>기록</translation>
+        <translation type="vanished">기록</translation>
     </message>
     <message>
         <source>Data</source>
-        <translation>데이터</translation>
+        <translation type="vanished">데이터</translation>
     </message>
     <message>
         <source>Search data...</source>
-        <translation>데이터 검색...</translation>
+        <translation type="vanished">데이터 검색...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -952,82 +952,82 @@
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>새로운 Modbus 장치</translation>
+        <translation type="vanished">새로운 Modbus 장치</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>연결 매개변수</translation>
+        <translation type="vanished">연결 매개변수</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>둥가</translation>
+        <translation type="vanished">둥가</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>전송 속도</translation>
+        <translation type="vanished">전송 속도</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>정지 비트</translation>
+        <translation type="vanished">정지 비트</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>새로 고치다</translation>
+        <translation type="vanished">새로 고치다</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>데이터 비트</translation>
+        <translation type="vanished">데이터 비트</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>이름</translation>
+        <translation type="vanished">이름</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP 주소</translation>
+        <translation type="vanished">IP 주소</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>포트</translation>
+        <translation type="vanished">포트</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>장치 유형</translation>
+        <translation type="vanished">장치 유형</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>시간 초과(ms)</translation>
+        <translation type="vanished">시간 초과(ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>재시도 횟수</translation>
+        <translation type="vanished">재시도 횟수</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>주소</translation>
+        <translation type="vanished">주소</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>듣기 전용 모드</translation>
+        <translation type="vanished">듣기 전용 모드</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>장치 매개변수</translation>
+        <translation type="vanished">장치 매개변수</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>장치 이름</translation>
+        <translation type="vanished">장치 이름</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>같은: 지멘스 S7-300</translation>
+        <translation type="vanished">같은: 지멘스 S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>찾다</translation>
+        <translation type="vanished">찾다</translation>
     </message>
 </context>
 <context>
@@ -1112,23 +1112,23 @@
     <name>DeviceSettings</name>
     <message>
         <source>Save tx data</source>
-        <translation>전송 데이터 저장</translation>
+        <translation type="vanished">전송 데이터 저장</translation>
     </message>
     <message>
         <source>Browser</source>
-        <translation>브라우저</translation>
+        <translation type="vanished">브라우저</translation>
     </message>
     <message>
         <source>Save millisecond</source>
-        <translation>밀리초 절약</translation>
+        <translation type="vanished">밀리초 절약</translation>
     </message>
     <message>
         <source>Save rx data</source>
-        <translation>RX 데이터 저장</translation>
+        <translation type="vanished">RX 데이터 저장</translation>
     </message>
     <message>
         <source>Save Date</source>
-        <translation>저장 날짜</translation>
+        <translation type="vanished">저장 날짜</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
@@ -1137,15 +1137,15 @@
     </message>
     <message>
         <source>Save Time</source>
-        <translation>시간 절약</translation>
+        <translation type="vanished">시간 절약</translation>
     </message>
     <message>
         <source>Save format</source>
-        <translation>저장 형식</translation>
+        <translation type="vanished">저장 형식</translation>
     </message>
     <message>
         <source>Max bytes</source>
-        <translation>최대 바이트</translation>
+        <translation type="vanished">최대 바이트</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1191,27 +1191,27 @@
     <name>FileCheckAssistant</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>Upper result</source>
-        <translation>상위 결과</translation>
+        <translation type="vanished">상위 결과</translation>
     </message>
     <message>
         <source>Checked file</source>
-        <translation>확인된 파일</translation>
+        <translation type="vanished">확인된 파일</translation>
     </message>
     <message>
         <source>Checked progress</source>
-        <translation>진행상황 확인</translation>
+        <translation type="vanished">진행상황 확인</translation>
     </message>
     <message>
         <source>Checked algorithm</source>
-        <translation>확인된 알고리즘</translation>
+        <translation type="vanished">확인된 알고리즘</translation>
     </message>
     <message>
         <source>Checked result</source>
-        <translation>확인결과</translation>
+        <translation type="vanished">확인결과</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
@@ -1220,7 +1220,7 @@
     </message>
     <message>
         <source>Open</source>
-        <translation>열려 있는</translation>
+        <translation type="vanished">열려 있는</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1242,35 +1242,35 @@
     <name>FileMergeAssistant</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>File list</source>
-        <translation>파일 목록</translation>
+        <translation type="vanished">파일 목록</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>수입</translation>
+        <translation type="vanished">수입</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>위로</translation>
+        <translation type="vanished">위로</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>아래에</translation>
+        <translation type="vanished">아래에</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>제거하다</translation>
+        <translation type="vanished">제거하다</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>분명한</translation>
+        <translation type="vanished">분명한</translation>
     </message>
     <message>
         <source>Merge</source>
-        <translation>병합</translation>
+        <translation type="vanished">병합</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1345,7 +1345,7 @@
     <name>HidDeviceUi</name>
     <message>
         <source>Device</source>
-        <translation>장치</translation>
+        <translation type="vanished">장치</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1425,62 +1425,62 @@
     <name>InputSettings</name>
     <message>
         <source>Show data preview</source>
-        <translation>데이터 미리보기 표시</translation>
+        <translation type="vanished">데이터 미리보기 표시</translation>
     </message>
     <message>
         <source>Append suffix</source>
-        <translation>접미사 추가</translation>
+        <translation type="vanished">접미사 추가</translation>
     </message>
     <message>
         <source>Append prefix</source>
-        <translation>접두사 추가</translation>
+        <translation type="vanished">접두사 추가</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>이스케이프 문자</translation>
+        <translation type="vanished">이스케이프 문자</translation>
     </message>
     <message>
         <source>Data Preprocessing</source>
-        <translation>데이터 전처리</translation>
+        <translation type="vanished">데이터 전처리</translation>
     </message>
     <message>
         <source>Append checking data</source>
-        <translation>확인 데이터 추가</translation>
+        <translation type="vanished">확인 데이터 추가</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>빅엔디안</translation>
+        <translation type="vanished">빅엔디안</translation>
     </message>
     <message>
         <source>Start from Left</source>
-        <translation>왼쪽부터 시작</translation>
+        <translation type="vanished">왼쪽부터 시작</translation>
     </message>
     <message>
         <source>Start from right</source>
-        <translation>오른쪽부터 시작</translation>
+        <translation type="vanished">오른쪽부터 시작</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>산수</translation>
+        <translation type="vanished">산수</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>인덱스 시작</translation>
+        <translation type="vanished">인덱스 시작</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>종료 인덱스</translation>
+        <translation type="vanished">종료 인덱스</translation>
     </message>
     <message>
         <source>Data Checking</source>
-        <translation>데이터 확인</translation>
+        <translation type="vanished">데이터 확인</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>노드 편집기</translation>
+        <translation type="vanished">노드 편집기</translation>
     </message>
 </context>
 <context>
@@ -1500,27 +1500,27 @@
     <name>LineSettings</name>
     <message>
         <source>Data type</source>
-        <translation>데이터 유형</translation>
+        <translation type="vanished">데이터 유형</translation>
     </message>
     <message>
         <source>Legend</source>
-        <translation>전설</translation>
+        <translation type="vanished">전설</translation>
     </message>
     <message>
         <source>Cache points</source>
-        <translation>캐시 포인트</translation>
+        <translation type="vanished">캐시 포인트</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>분명한</translation>
+        <translation type="vanished">분명한</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>내보내다</translation>
+        <translation type="vanished">내보내다</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation>수입</translation>
+        <translation type="vanished">수입</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1576,11 +1576,11 @@
     <name>LocalServerUi</name>
     <message>
         <source>Write to</source>
-        <translation>에 쓰기</translation>
+        <translation type="vanished">에 쓰기</translation>
     </message>
     <message>
         <source>Server name</source>
-        <translation>서버 이름</translation>
+        <translation type="vanished">서버 이름</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1592,38 +1592,38 @@
     <name>LocalSocketUi</name>
     <message>
         <source>Server name</source>
-        <translation>서버 이름</translation>
+        <translation type="vanished">서버 이름</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>Test</source>
-        <translation>시험</translation>
+        <translation type="vanished">시험</translation>
     </message>
     <message>
         <source>Test data</source>
-        <translation>테스트 데이터</translation>
+        <translation type="vanished">테스트 데이터</translation>
     </message>
     <message>
         <source>Result data</source>
-        <translation>결과 데이터</translation>
+        <translation type="vanished">결과 데이터</translation>
     </message>
     <message>
         <source>Bypass</source>
-        <translation>우회로</translation>
+        <translation type="vanished">우회로</translation>
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation>테이블 매개변수</translation>
+        <translation type="vanished">테이블 매개변수</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation>문자열 매개변수</translation>
+        <translation type="vanished">문자열 매개변수</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1645,7 +1645,7 @@
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>일반적인</translation>
+        <translation type="vanished">일반적인</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="332"/>
@@ -1892,7 +1892,7 @@
     <name>MdnsAssistant</name>
     <message>
         <source>Service type</source>
-        <translation>서비스 유형</translation>
+        <translation type="vanished">서비스 유형</translation>
     </message>
     <message>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
@@ -1939,39 +1939,39 @@
     <name>ModbusAssistant</name>
     <message>
         <source>Console</source>
-        <translation>콘솔</translation>
+        <translation type="vanished">콘솔</translation>
     </message>
     <message>
         <source>Server Register</source>
-        <translation>서버 등록</translation>
+        <translation type="vanished">서버 등록</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>보내다</translation>
+        <translation type="vanished">보내다</translation>
     </message>
     <message>
         <source>Custom Protocol Data Unit</source>
-        <translation>맞춤형 프로토콜 데이터 유닛</translation>
+        <translation type="vanished">맞춤형 프로토콜 데이터 유닛</translation>
     </message>
     <message>
         <source>Client Registers</source>
-        <translation>클라이언트 레지스터</translation>
+        <translation type="vanished">클라이언트 레지스터</translation>
     </message>
     <message>
         <source>Device list</source>
-        <translation>장치 목록</translation>
+        <translation type="vanished">장치 목록</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation>닫다</translation>
+        <translation type="vanished">닫다</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation>열려 있는</translation>
+        <translation type="vanished">열려 있는</translation>
     </message>
     <message>
         <source>Device Operations</source>
-        <translation>장치 작동</translation>
+        <translation type="vanished">장치 작동</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
@@ -1980,95 +1980,95 @@
     </message>
     <message>
         <source>Network Settings</source>
-        <translation>네트워크 설정</translation>
+        <translation type="vanished">네트워크 설정</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>포트</translation>
+        <translation type="vanished">포트</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>전송 속도</translation>
+        <translation type="vanished">전송 속도</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>데이터 비트</translation>
+        <translation type="vanished">데이터 비트</translation>
     </message>
     <message>
         <source>Serial Port Settings</source>
-        <translation>직렬 포트 설정</translation>
+        <translation type="vanished">직렬 포트 설정</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>둥가</translation>
+        <translation type="vanished">둥가</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>포트 이름</translation>
+        <translation type="vanished">포트 이름</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>정지 비트</translation>
+        <translation type="vanished">정지 비트</translation>
     </message>
     <message>
         <source>Device busy</source>
-        <translation>기기 사용 중</translation>
+        <translation type="vanished">기기 사용 중</translation>
     </message>
     <message>
         <source>Server Parameters</source>
-        <translation>서버 매개변수</translation>
+        <translation type="vanished">서버 매개변수</translation>
     </message>
     <message>
         <source>Server address</source>
-        <translation>서버 주소</translation>
+        <translation type="vanished">서버 주소</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>듣기 전용 모드</translation>
+        <translation type="vanished">듣기 전용 모드</translation>
     </message>
     <message>
         <source>Target address</source>
-        <translation>대상 주소</translation>
+        <translation type="vanished">대상 주소</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation>읽다</translation>
+        <translation type="vanished">읽다</translation>
     </message>
     <message>
         <source>Write</source>
-        <translation>쓰다</translation>
+        <translation type="vanished">쓰다</translation>
     </message>
     <message>
         <source>Function code</source>
-        <translation>기능코드</translation>
+        <translation type="vanished">기능코드</translation>
     </message>
     <message>
         <source>Address number</source>
-        <translation>주소번호</translation>
+        <translation type="vanished">주소번호</translation>
     </message>
     <message>
         <source>Start address</source>
-        <translation>시작 주소</translation>
+        <translation type="vanished">시작 주소</translation>
     </message>
     <message>
         <source>Repeat times</source>
-        <translation>반복 횟수</translation>
+        <translation type="vanished">반복 횟수</translation>
     </message>
     <message>
         <source>Timeout</source>
-        <translation>시간 초과</translation>
+        <translation type="vanished">시간 초과</translation>
     </message>
     <message>
         <source>Client Parameters</source>
-        <translation>클라이언트 매개변수</translation>
+        <translation type="vanished">클라이언트 매개변수</translation>
     </message>
     <message>
         <source>Input Control(address and value)</source>
-        <translation>입력 제어(주소 및 값)</translation>
+        <translation type="vanished">입력 제어(주소 및 값)</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>입력 형식</translation>
+        <translation type="vanished">입력 형식</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2239,31 +2239,31 @@
     <name>NumberAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>원시 데이터</translation>
+        <translation type="vanished">원시 데이터</translation>
     </message>
     <message>
         <source>Cooked data(Hex)</source>
-        <translation>요리된 데이터(Hex)</translation>
+        <translation type="vanished">요리된 데이터(Hex)</translation>
     </message>
     <message>
         <source>Cooked data type</source>
-        <translation>쿠킹된 데이터 유형</translation>
+        <translation type="vanished">쿠킹된 데이터 유형</translation>
     </message>
     <message>
         <source>Cooked data(Dec)</source>
-        <translation>조리데이터(12월)</translation>
+        <translation type="vanished">조리데이터(12월)</translation>
     </message>
     <message>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>예: 1, -1, 1.1, -1.1</translation>
+        <translation type="vanished">예: 1, -1, 1.1, -1.1</translation>
     </message>
     <message>
         <source>Cooked data(Bin)</source>
-        <translation>요리된 데이터(Bin)</translation>
+        <translation type="vanished">요리된 데이터(Bin)</translation>
     </message>
     <message>
         <source>From left to right is high to low</source>
-        <translation>왼쪽에서 오른쪽으로 높은 순, 낮은 순입니다.</translation>
+        <translation type="vanished">왼쪽에서 오른쪽으로 높은 순, 낮은 순입니다.</translation>
     </message>
 </context>
 <context>
@@ -2303,30 +2303,30 @@
     <name>OutputSettings</name>
     <message>
         <source>Enable highlighter</source>
-        <translation>형광펜 활성화</translation>
+        <translation type="vanished">형광펜 활성화</translation>
     </message>
     <message>
         <source>Filter text</source>
-        <translation>텍스트 필터링</translation>
+        <translation type="vanished">텍스트 필터링</translation>
     </message>
     <message>
         <source>Hello,Word</source>
-        <translation>안녕하세요, 워드</translation>
+        <translation type="vanished">안녕하세요, 워드</translation>
     </message>
     <message>
         <source>Show statistician</source>
-        <translation>통계학자 표시</translation>
+        <translation type="vanished">통계학자 표시</translation>
     </message>
     <message>
         <source>Enable filter</source>
-        <translation>필터 활성화</translation>
+        <translation type="vanished">필터 활성화</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
         <source>Cycle interval</source>
-        <translation>사이클 간격</translation>
+        <translation type="vanished">사이클 간격</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="587"/>
@@ -2335,95 +2335,95 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>설정</translation>
+        <translation type="vanished">설정</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>분명한</translation>
+        <translation type="vanished">분명한</translation>
     </message>
     <message>
         <source>Rx</source>
-        <translation>수신</translation>
+        <translation type="vanished">수신</translation>
     </message>
     <message>
         <source>Tx</source>
-        <translation>송신</translation>
+        <translation type="vanished">송신</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>날짜</translation>
+        <translation type="vanished">날짜</translation>
     </message>
     <message>
         <source>Flag</source>
-        <translation>깃발</translation>
+        <translation type="vanished">깃발</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>시간</translation>
+        <translation type="vanished">시간</translation>
     </message>
     <message>
         <source>Ms</source>
-        <translation>양</translation>
+        <translation type="vanished">양</translation>
     </message>
     <message>
         <source>Output control</source>
-        <translation>출력 제어</translation>
+        <translation type="vanished">출력 제어</translation>
     </message>
     <message>
         <source>Input control</source>
-        <translation>입력 제어</translation>
+        <translation type="vanished">입력 제어</translation>
     </message>
     <message>
         <source>Wrap</source>
-        <translation>포장하다</translation>
+        <translation type="vanished">포장하다</translation>
     </message>
     <message>
         <source>Terminal</source>
-        <translation>단말기</translation>
+        <translation type="vanished">단말기</translation>
     </message>
     <message>
         <source>Communication control</source>
-        <translation>통신제어</translation>
+        <translation type="vanished">통신제어</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation>보내다</translation>
+        <translation type="vanished">보내다</translation>
     </message>
     <message>
         <source>Text format</source>
-        <translation>텍스트 형식</translation>
+        <translation type="vanished">텍스트 형식</translation>
     </message>
     <message>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation>산출</translation>
+        <translation type="vanished">산출</translation>
     </message>
     <message>
         <source>Input</source>
-        <translation>입력</translation>
+        <translation type="vanished">입력</translation>
     </message>
     <message>
         <source>Preset data list</source>
-        <translation>프리셋 데이터 목록</translation>
+        <translation type="vanished">프리셋 데이터 목록</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation>사전 설정</translation>
+        <translation type="vanished">사전 설정</translation>
     </message>
     <message>
         <source>Emitter</source>
-        <translation>이미터</translation>
+        <translation type="vanished">이미터</translation>
     </message>
     <message>
         <source>Responder</source>
-        <translation>응답자</translation>
+        <translation type="vanished">응답자</translation>
     </message>
     <message>
         <source>Transfers</source>
-        <translation>환승</translation>
+        <translation type="vanished">환승</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2635,43 +2635,43 @@
     <name>PresetViewGroupEditor</name>
     <message>
         <source>Group interval(ms)</source>
-        <translation>그룹 간격(ms)</translation>
+        <translation type="vanished">그룹 간격(ms)</translation>
     </message>
     <message>
         <source>Add(update) Group</source>
-        <translation>그룹 추가(업데이트)</translation>
+        <translation type="vanished">그룹 추가(업데이트)</translation>
     </message>
     <message>
         <source>Colums(split with space)</source>
-        <translation>열(공백으로 분할)</translation>
+        <translation type="vanished">열(공백으로 분할)</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>위로</translation>
+        <translation type="vanished">위로</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>아래에</translation>
+        <translation type="vanished">아래에</translation>
     </message>
     <message>
         <source>Delete Selected</source>
-        <translation>선택 항목 삭제</translation>
+        <translation type="vanished">선택 항목 삭제</translation>
     </message>
     <message>
         <source>Untitled</source>
-        <translation>제목 없음</translation>
+        <translation type="vanished">제목 없음</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>이름</translation>
+        <translation type="vanished">이름</translation>
     </message>
     <message>
         <source>Disable the group</source>
-        <translation>그룹 비활성화</translation>
+        <translation type="vanished">그룹 비활성화</translation>
     </message>
     <message>
         <source>Item interval(ms)</source>
-        <translation>항목 간격(ms)</translation>
+        <translation type="vanished">항목 간격(ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2964,31 +2964,31 @@
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
@@ -3020,11 +3020,11 @@
     <name>QRCodeAssistant</name>
     <message>
         <source>Export</source>
-        <translation>내보내다</translation>
+        <translation type="vanished">내보내다</translation>
     </message>
     <message>
         <source>Generate</source>
-        <translation>생성하다</translation>
+        <translation type="vanished">생성하다</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3095,35 +3095,35 @@
     <name>ScriptBase</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>Clear log</source>
-        <translation>로그 지우기</translation>
+        <translation type="vanished">로그 지우기</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>통나무</translation>
+        <translation type="vanished">통나무</translation>
     </message>
     <message>
         <source>Open script directory</source>
-        <translation>스크립트 디렉토리 열기</translation>
+        <translation type="vanished">스크립트 디렉토리 열기</translation>
     </message>
     <message>
         <source>New script</source>
-        <translation>새 스크립트</translation>
+        <translation type="vanished">새 스크립트</translation>
     </message>
     <message>
         <source>Refresh file list</source>
-        <translation>파일 목록 새로 고침</translation>
+        <translation type="vanished">파일 목록 새로 고침</translation>
     </message>
     <message>
         <source>Online manual</source>
-        <translation>온라인 매뉴얼</translation>
+        <translation type="vanished">온라인 매뉴얼</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation>스크립트</translation>
+        <translation type="vanished">스크립트</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3189,23 +3189,23 @@
     <name>SearchPanel</name>
     <message>
         <source>Search text</source>
-        <translation>텍스트 검색</translation>
+        <translation type="vanished">텍스트 검색</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>찾다</translation>
+        <translation type="vanished">찾다</translation>
     </message>
     <message>
         <source>Regular expression</source>
-        <translation>정규식</translation>
+        <translation type="vanished">정규식</translation>
     </message>
     <message>
         <source>Case sensitive</source>
-        <translation>대소문자 구분</translation>
+        <translation type="vanished">대소문자 구분</translation>
     </message>
     <message>
         <source>Whole word</source>
-        <translation>전체 단어</translation>
+        <translation type="vanished">전체 단어</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3319,35 +3319,35 @@
     <name>SerialPortUi</name>
     <message>
         <source>Baud rate</source>
-        <translation>전송 속도</translation>
+        <translation type="vanished">전송 속도</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>둥가</translation>
+        <translation type="vanished">둥가</translation>
     </message>
     <message>
         <source>Ignored busy device</source>
-        <translation>무시된 사용 중인 장치</translation>
+        <translation type="vanished">무시된 사용 중인 장치</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>데이터 비트</translation>
+        <translation type="vanished">데이터 비트</translation>
     </message>
     <message>
         <source>Flow control</source>
-        <translation>흐름 제어</translation>
+        <translation type="vanished">흐름 제어</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>정지 비트</translation>
+        <translation type="vanished">정지 비트</translation>
     </message>
     <message>
         <source>Port name</source>
-        <translation>포트 이름</translation>
+        <translation type="vanished">포트 이름</translation>
     </message>
     <message>
         <source>Enable frame interval</source>
-        <translation>프레임 간격 활성화</translation>
+        <translation type="vanished">프레임 간격 활성화</translation>
     </message>
 </context>
 <context>
@@ -3407,63 +3407,63 @@
     <name>SocketUi</name>
     <message>
         <source>Write to</source>
-        <translation>에 쓰기</translation>
+        <translation type="vanished">에 쓰기</translation>
     </message>
     <message>
         <source>Path</source>
-        <translation>길</translation>
+        <translation type="vanished">길</translation>
     </message>
     <message>
         <source>Disconnect all clients</source>
-        <translation>모든 클라이언트 연결 끊기</translation>
+        <translation type="vanished">모든 클라이언트 연결 끊기</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation>입증</translation>
+        <translation type="vanished">입증</translation>
     </message>
     <message>
         <source>Server IP</source>
-        <translation>서버 IP</translation>
+        <translation type="vanished">서버 IP</translation>
     </message>
     <message>
         <source>Channel</source>
-        <translation>채널</translation>
+        <translation type="vanished">채널</translation>
     </message>
     <message>
         <source>Enable multicast</source>
-        <translation>멀티캐스트 활성화</translation>
+        <translation type="vanished">멀티캐스트 활성화</translation>
     </message>
     <message>
         <source>Just multicast</source>
-        <translation>그냥 멀티캐스트</translation>
+        <translation type="vanished">그냥 멀티캐스트</translation>
     </message>
     <message>
         <source>post/hello</source>
-        <translation>포스트/안녕하세요</translation>
+        <translation type="vanished">포스트/안녕하세요</translation>
     </message>
     <message>
         <source>Secure Mode</source>
-        <translation>보안 모드</translation>
+        <translation type="vanished">보안 모드</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>멀티캐스트 포트</translation>
+        <translation type="vanished">멀티캐스트 포트</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>멀티캐스트 IP</translation>
+        <translation type="vanished">멀티캐스트 IP</translation>
     </message>
     <message>
         <source>Server port</source>
-        <translation>서버 포트</translation>
+        <translation type="vanished">서버 포트</translation>
     </message>
     <message>
         <source>User name</source>
-        <translation>사용자 이름</translation>
+        <translation type="vanished">사용자 이름</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>비밀번호</translation>
+        <translation type="vanished">비밀번호</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3483,23 +3483,23 @@
     <name>StringAssistant</name>
     <message>
         <source>Raw data</source>
-        <translation>원시 데이터</translation>
+        <translation type="vanished">원시 데이터</translation>
     </message>
     <message>
         <source>Input format</source>
-        <translation>입력 형식</translation>
+        <translation type="vanished">입력 형식</translation>
     </message>
     <message>
         <source>Cooked data</source>
-        <translation>요리된 데이터</translation>
+        <translation type="vanished">요리된 데이터</translation>
     </message>
     <message>
         <source>Output format</source>
-        <translation>출력 형식</translation>
+        <translation type="vanished">출력 형식</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation>만들다</translation>
+        <translation type="vanished">만들다</translation>
     </message>
 </context>
 <context>
@@ -3524,27 +3524,27 @@
     <name>TableView</name>
     <message>
         <source>Form</source>
-        <translation>형태</translation>
+        <translation type="vanished">형태</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation>내보내다</translation>
+        <translation type="vanished">내보내다</translation>
     </message>
     <message>
         <source>Disable all items</source>
-        <translation>모든 항목 비활성화</translation>
+        <translation type="vanished">모든 항목 비활성화</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>삭제</translation>
+        <translation type="vanished">삭제</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>위로</translation>
+        <translation type="vanished">위로</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>추가하다</translation>
+        <translation type="vanished">추가하다</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
@@ -3553,11 +3553,11 @@
     </message>
     <message>
         <source>Import</source>
-        <translation>수입</translation>
+        <translation type="vanished">수입</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>아래에</translation>
+        <translation type="vanished">아래에</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3591,63 +3591,63 @@
     <name>TextItemEditor</name>
     <message>
         <source>Data Editor</source>
-        <translation>데이터 편집기</translation>
+        <translation type="vanished">데이터 편집기</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>취소</translation>
+        <translation type="vanished">취소</translation>
     </message>
     <message>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
         <source>Algorithm</source>
-        <translation>연산</translation>
+        <translation type="vanished">연산</translation>
     </message>
     <message>
         <source>Start index</source>
-        <translation>인덱스 시작</translation>
+        <translation type="vanished">인덱스 시작</translation>
     </message>
     <message>
         <source>End index</source>
-        <translation>종료 인덱스</translation>
+        <translation type="vanished">종료 인덱스</translation>
     </message>
     <message>
         <source>Append</source>
-        <translation>추가</translation>
+        <translation type="vanished">추가</translation>
     </message>
     <message>
         <source>Big endian</source>
-        <translation>빅엔디안</translation>
+        <translation type="vanished">빅엔디안</translation>
     </message>
     <message>
         <source>Preprocessing</source>
-        <translation>전처리</translation>
+        <translation type="vanished">전처리</translation>
     </message>
     <message>
         <source>Prefix</source>
-        <translation>접두사</translation>
+        <translation type="vanished">접두사</translation>
     </message>
     <message>
         <source>Suffix</source>
-        <translation>접미사</translation>
+        <translation type="vanished">접미사</translation>
     </message>
     <message>
         <source>Escape character</source>
-        <translation>이스케이프 문자</translation>
+        <translation type="vanished">이스케이프 문자</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>좋아요</translation>
+        <translation type="vanished">좋아요</translation>
     </message>
     <message>
         <source>Payload</source>
-        <translation>유효 탑재량</translation>
+        <translation type="vanished">유효 탑재량</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>체재</translation>
+        <translation type="vanished">체재</translation>
     </message>
 </context>
 <context>
@@ -3708,11 +3708,11 @@
     <name>UdpBroadcastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>네트워크 인터페이스를 선택합니다:</translation>
+        <translation type="vanished">네트워크 인터페이스를 선택합니다:</translation>
     </message>
     <message>
         <source>Broadcast Port</source>
-        <translation>브로드캐스트 포트</translation>
+        <translation type="vanished">브로드캐스트 포트</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -3747,19 +3747,19 @@
     <name>UdpMulticastUi</name>
     <message>
         <source>Selecte a network interface:</source>
-        <translation>네트워크 인터페이스를 선택합니다:</translation>
+        <translation type="vanished">네트워크 인터페이스를 선택합니다:</translation>
     </message>
     <message>
         <source>Multicast IP</source>
-        <translation>멀티캐스트 IP</translation>
+        <translation type="vanished">멀티캐스트 IP</translation>
     </message>
     <message>
         <source>Multicast Port</source>
-        <translation>멀티캐스트 포트</translation>
+        <translation type="vanished">멀티캐스트 포트</translation>
     </message>
     <message>
         <source>Multicast loopback</source>
-        <translation>멀티캐스트 루프백</translation>
+        <translation type="vanished">멀티캐스트 루프백</translation>
     </message>
 </context>
 <context>
@@ -3779,27 +3779,27 @@
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>새로운 RTU 장치</translation>
+        <translation type="vanished">새로운 RTU 장치</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>새 TCP 장치</translation>
+        <translation type="vanished">새 TCP 장치</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>새로운 코일</translation>
+        <translation type="vanished">새로운 코일</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>새로운 개별 입력</translation>
+        <translation type="vanished">새로운 개별 입력</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>새로운 보유 등록부</translation>
+        <translation type="vanished">새로운 보유 등록부</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>새로운 입력 레지스터</translation>
+        <translation type="vanished">새로운 입력 레지스터</translation>
     </message>
 </context>
 <context>
@@ -3844,19 +3844,19 @@
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>코일</translation>
+        <translation type="vanished">코일</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>개별 입력</translation>
+        <translation type="vanished">개별 입력</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>보유 레지스터</translation>
+        <translation type="vanished">보유 레지스터</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>입력 레지스터</translation>
+        <translation type="vanished">입력 레지스터</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
