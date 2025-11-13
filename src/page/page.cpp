@@ -162,6 +162,11 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
             &TransfersView::bytesWritten,
             ui->widgetOutputPanels,
             &OutputPanelsManager::onBytesWritten);
+
+#if 1
+    int index = ui->tabWidget->indexOf(ui->tabProtocolFactory);
+    ui->tabWidget->removeTab(index);
+#endif
 }
 
 Page::~Page()

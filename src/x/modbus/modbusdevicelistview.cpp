@@ -153,9 +153,8 @@ void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
         int depth = this->treeItemDepth(index);
         if (depth == MODBUS_INVALID_DEPTH) {
             contextMenu.addAction(m_addActions.device);
-        } else if (depth == MODBUS_DEVICE_DEPTH) {
-        } else if (depth == MODBUS_TABLE_DEPTH) {
-            qInfo() << "Context menu event on table view item.";
+        } else {
+            contextMenu.addAction(m_addActions.remove);
         }
     }
 
