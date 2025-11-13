@@ -17,14 +17,12 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation>フィルター</translation>
+        <translation type="vanished">フィルター</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation>大文字小文字を保持</translation>
+        <translation type="vanished">ケースを保存する</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -298,34 +296,28 @@
 <context>
     <name>BarCodeAssistant</name>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation>CRCアシスタント</translation>
+        <translation type="vanished">CRCアシスタント</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation>更新</translation>
+        <translation type="vanished">リフレッシュ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation>タイプ</translation>
+        <translation type="vanished">タイプ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation>データ</translation>
+        <translation type="vanished">データ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -352,9 +344,8 @@
 <context>
     <name>BarSettings</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation>データ形式</translation>
+        <translation type="vanished">データ形式</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -390,34 +381,28 @@
 <context>
     <name>Base64Assistant</name>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation>Base64アシスタント</translation>
+        <translation type="vanished">Base64アシスタント</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation>プレーンテキスト</translation>
+        <translation type="vanished">平文</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation>暗号文</translation>
+        <translation type="vanished">暗号文</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation>画像</translation>
+        <translation type="vanished">画像</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation>復号</translation>
+        <translation type="vanished">復号化</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation>暗号化</translation>
+        <translation type="vanished">暗号化する</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -446,61 +431,50 @@
 <context>
     <name>BleCentralUi</name>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation>特性</translation>
+        <translation type="vanished">特性</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation>(サポートされていない特性)</translation>
+        <translation type="vanished">(サポートされていない特性)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation>BLEデバイス</translation>
+        <translation type="vanished">BLEデバイス</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
         <translation>スキャン</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation>読み取り</translation>
+        <translation type="vanished">読む</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation>サービススキャン中</translation>
+        <translation type="vanished">サービススキャン</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation>書き込みモード</translation>
+        <translation type="vanished">書き込みモード</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation>サービス</translation>
+        <translation type="vanished">サービス</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation>デバイススキャン中</translation>
+        <translation type="vanished">デバイスのスキャン</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -536,75 +510,61 @@
 <context>
     <name>BroadcastAssistant</name>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation>出力制御</translation>
+        <translation type="vanished">出力制御</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation>出力形式</translation>
+        <translation type="vanished">出力フォーマット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation>ブロードキャストパラメータ</translation>
+        <translation type="vanished">ブロードキャストパラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation>ブロードキャストアドレス</translation>
+        <translation type="vanished">ブロードキャストアドレス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation>データ形式</translation>
+        <translation type="vanished">データ形式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation>ブロードキャストプレフィックス</translation>
+        <translation type="vanished">ブロードキャストプレフィックス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation>ブロードキャスト間隔</translation>
+        <translation type="vanished">放送間隔</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation>ブロードキャストサフィックス</translation>
+        <translation type="vanished">ブロードキャストサフィックス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation>ブロードキャストポート</translation>
+        <translation type="vanished">ブロードキャストポート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation>ブロードキャストデータ</translation>
+        <translation type="vanished">放送データ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
         <translation>ブロードキャスト</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation>情報出力</translation>
+        <translation type="vanished">情報出力</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -620,124 +580,100 @@
 <context>
     <name>CanBusAssistant</name>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation>CANBusスタジオ</translation>
+        <translation type="vanished">CANバススタジオ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation>CANフレーム</translation>
+        <translation type="vanished">CANフレーム</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation>拡張フォーマット</translation>
+        <translation type="vanished">拡張フォーマット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation>フレキシブルデータレート</translation>
+        <translation type="vanished">柔軟なデータレート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation>フレームID</translation>
+        <translation type="vanished">フレームID</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation>フレームタイプ</translation>
+        <translation type="vanished">フレームタイプ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation>フレームオプション</translation>
+        <translation type="vanished">フレームオプション</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation>ビットレートスイッチ</translation>
+        <translation type="vanished">ビットレートスイッチ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation>デバイス制御</translation>
+        <translation type="vanished">デバイス制御</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation>切断</translation>
+        <translation type="vanished">切断する</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation>接続</translation>
+        <translation type="vanished">接続する</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation>プラグイン</translation>
+        <translation type="vanished">プラグイン</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation>データビュー</translation>
+        <translation type="vanished">データビュー</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation>設定を指定</translation>
+        <translation type="vanished">構成の指定</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation>エラーフィルター</translation>
+        <translation type="vanished">エラーフィルター</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation>カスタム設定</translation>
+        <translation type="vanished">カスタム構成</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation>CAN FD</translation>
+        <translation type="vanished">CANFD</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation>ループバック</translation>
+        <translation type="vanished">ループバック</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation>データビットレート</translation>
+        <translation type="vanished">データビットレート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation>ビットレート</translation>
+        <translation type="vanished">ビットレート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation>自己受信</translation>
+        <translation type="vanished">自分のものを受け取る</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation>CANフレームペイロード</translation>
+        <translation type="vanished">CANフレームペイロード</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -846,106 +782,85 @@
 <context>
     <name>ChartsTestUi</name>
     <message>
-        <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation>フォーマット</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation>チャネル</translation>
+        <translation type="vanished">チャンネル</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation>CRCアシスタント</translation>
+        <translation type="vanished">CRCアシスタント</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation>パロイ値</translation>
+        <translation type="vanished">パロイ値</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation>初期値</translation>
+        <translation type="vanished">初期値</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation>コピー</translation>
+        <translation type="vanished">コピー</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>CRC計算の詳細については、http://www.ip33.com/crc.html を訪問してください（ダブルクリックで訪問）</translation>
+        <translation type="vanished">crc 計算の詳細については、http://www.ip33.com/crc.html を参照してください (ダブルクリックしてアクセスしてください)。</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation>入力反転</translation>
+        <translation type="vanished">入力反転</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation>出力反転</translation>
+        <translation type="vanished">出力反転</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation>計算</translation>
+        <translation type="vanished">計算する</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation>パラメータ</translation>
+        <translation type="vanished">パラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation>XOR値</translation>
+        <translation type="vanished">XOR値</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>高さは左側にあり、低ビットは右側にあります</translation>
+        <translation type="vanished">高さは左側、低ビットは右側です</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation>16進数</translation>
+        <translation type="vanished">16進数</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">アスキー</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation>結果（16進数）</translation>
+        <translation type="vanished">結果(16進数)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation>パラメータモデル</translation>
+        <translation type="vanished">パラメータモデル</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation>幅</translation>
+        <translation type="vanished">幅</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -954,22 +869,19 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>パラメータモデル</translation>
+        <translation type="vanished">パラメータモデル</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation>パロイ</translation>
+        <translation type="vanished">減速する</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation>入力データ</translation>
+        <translation type="vanished">入力データ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation>結果（BIN）</translation>
+        <translation type="vanished">結果(BIN)</translation>
     </message>
 </context>
 <context>
@@ -998,39 +910,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DataRecordsView</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="20"/>
         <source>Types</source>
-        <translation>タイプ</translation>
+        <translation type="vanished">種類</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="34"/>
         <source>Flags</source>
-        <translation>フラグ</translation>
+        <translation type="vanished">フラグ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="48"/>
         <source>Format</source>
-        <translation>フォーマット</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="62"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="82"/>
         <source>Records</source>
-        <translation>レコード</translation>
+        <translation type="vanished">記録</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="96"/>
         <source>Data</source>
-        <translation>データ</translation>
+        <translation type="vanished">データ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="103"/>
         <source>Search data...</source>
-        <translation>データを検索...</translation>
+        <translation type="vanished">データを検索...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -1057,102 +962,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceConnectionParameterEditor</name>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation>新しいModbusデバイス</translation>
+        <translation type="vanished">新しい Modbus デバイス</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="33"/>
         <source>Connection parameters</source>
-        <translation>接続パラメータ</translation>
+        <translation type="vanished">接続パラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="56"/>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="63"/>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="76"/>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="95"/>
         <source>Refresh</source>
-        <translation>更新</translation>
+        <translation type="vanished">リフレッシュ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="113"/>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="132"/>
         <source>Names</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="149"/>
         <source>IP Address</source>
-        <translation>IPアドレス</translation>
+        <translation type="vanished">IPアドレス</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="165"/>
         <source>Port</source>
-        <translation>ポート</translation>
+        <translation type="vanished">ポート</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="185"/>
         <source>Device type</source>
-        <translation>デバイスタイプ</translation>
+        <translation type="vanished">デバイスの種類</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="208"/>
         <source>Timeout(ms)</source>
-        <translation>タイムアウト（ミリ秒）</translation>
+        <translation type="vanished">タイムアウト(ミリ秒)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="221"/>
         <source>Number of retries</source>
-        <translation>再試行回数</translation>
+        <translation type="vanished">リトライ回数</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="241"/>
         <source>Address</source>
-        <translation>アドレス</translation>
+        <translation type="vanished">住所</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="251"/>
         <source>Listen only mode</source>
-        <translation>リスンオンリーモード</translation>
+        <translation type="vanished">リスニング専用モード</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="262"/>
         <source>Device parameters</source>
-        <translation>デバイスパラメータ</translation>
+        <translation type="vanished">デバイスパラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="286"/>
         <source>Device Name</source>
-        <translation>デバイス名</translation>
+        <translation type="vanished">デバイス名</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="296"/>
         <source>Such as: Siemens S7-300</source>
-        <translation>例：Siemens S7-300</translation>
+        <translation type="vanished">例: シーメンス S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.ui" line="98"/>
         <source>Search</source>
-        <translation>検索</translation>
+        <translation type="vanished">検索</translation>
     </message>
 </context>
 <context>
@@ -1236,50 +1122,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceSettings</name>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation>送信データを保存</translation>
+        <translation type="vanished">送信データを保存する</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation>ブラウザ</translation>
+        <translation type="vanished">ブラウザ</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation>ミリ秒単位で保存</translation>
+        <translation type="vanished">ミリ秒を節約</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation>受信データを保存</translation>
+        <translation type="vanished">受信データを保存する</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation>日付を保存</translation>
+        <translation type="vanished">保存日</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
         <translation>ファイルに保存</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation>時刻を保存</translation>
+        <translation type="vanished">時間を節約する</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation>保存形式</translation>
+        <translation type="vanished">保存形式</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation>最大バイト数</translation>
+        <translation type="vanished">最大バイト数</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1324,45 +1201,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation>上部結果</translation>
+        <translation type="vanished">上位結果</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation>チェックされたファイル</translation>
+        <translation type="vanished">チェックしたファイル</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation>チェック進行状況</translation>
+        <translation type="vanished">進捗状況を確認しました</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation>チェックアルゴリズム</translation>
+        <translation type="vanished">チェックされたアルゴリズム</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation>チェック結果</translation>
+        <translation type="vanished">確認結果</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation>計算</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation>開く</translation>
+        <translation type="vanished">開ける</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1383,44 +1252,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>FileMergeAssistant</name>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation>ファイルリスト</translation>
+        <translation type="vanished">ファイルリスト</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation>インポート</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation>上へ</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation>下へ</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation>削除</translation>
+        <translation type="vanished">取り除く</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation>マージ</translation>
+        <translation type="vanished">マージ</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1494,9 +1355,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>HidDeviceUi</name>
     <message>
-        <location filename="../../src/device/hiddeviceui.ui" line="45"/>
         <source>Device</source>
-        <translation>デバイス</translation>
+        <translation type="vanished">デバイス</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1575,77 +1435,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>InputSettings</name>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation>データプレビューを表示</translation>
+        <translation type="vanished">データのプレビューを表示する</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
-        <translation>サフィックスを追加</translation>
+        <translation type="vanished">接尾辞を追加</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
-        <translation>プレフィックスを追加</translation>
+        <translation type="vanished">プレフィックスを追加する</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
-        <translation>エスケープ文字</translation>
+        <translation type="vanished">エスケープ文字</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="89"/>
         <source>Data Preprocessing</source>
-        <translation>データ前処理</translation>
+        <translation type="vanished">データの前処理</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="102"/>
         <source>Append checking data</source>
-        <translation>チェックデータを追加</translation>
+        <translation type="vanished">チェックデータを追加</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
-        <translation>ビッグエンディアン</translation>
+        <translation type="vanished">ビッグエンディアン</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="121"/>
         <source>Start from Left</source>
-        <translation>左から開始</translation>
+        <translation type="vanished">左から開始</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="128"/>
         <source>Start from right</source>
-        <translation>右から開始</translation>
+        <translation type="vanished">右から開始</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="141"/>
         <source>Arithmetic</source>
-        <translation>算術</translation>
+        <translation type="vanished">算術</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start index</source>
-        <translation>開始インデックス</translation>
+        <translation type="vanished">開始インデックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="174"/>
         <source>End index</source>
-        <translation>終了インデックス</translation>
+        <translation type="vanished">終了インデックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
-        <translation>データチェック</translation>
+        <translation type="vanished">データチェック</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
-        <location filename="../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-        <translation>ノードエディタ</translation>
+        <translation type="vanished">ノードエディタ</translation>
     </message>
 </context>
 <context>
@@ -1664,34 +1510,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LineSettings</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation>データタイプ</translation>
+        <translation type="vanished">データ型</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation>凡例</translation>
+        <translation type="vanished">伝説</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation>キャッシュポイント</translation>
+        <translation type="vanished">キャッシュポイント</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation>インポート</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1746,14 +1586,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LocalServerUi</name>
     <message>
-        <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation>書き込み先</translation>
+        <translation type="vanished">書き込み先</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation>サーバー名</translation>
+        <translation type="vanished">サーバー名</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1764,47 +1602,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LocalSocketUi</name>
     <message>
-        <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation>サーバー名</translation>
+        <translation type="vanished">サーバー名</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
-        <translation>テスト</translation>
+        <translation type="vanished">テスト</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="39"/>
         <source>Test data</source>
-        <translation>テストデータ</translation>
+        <translation type="vanished">テストデータ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="63"/>
         <source>Result data</source>
-        <translation>結果データ</translation>
+        <translation type="vanished">結果データ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation>バイパス</translation>
+        <translation type="vanished">バイパス</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation>テーブルパラメータ</translation>
+        <translation type="vanished">テーブルパラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation>文字列パラメータ</translation>
+        <translation type="vanished">文字列パラメータ</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1825,247 +1655,246 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation type="vanished">一般的な</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="332"/>
         <source>&amp;File</source>
         <translation>&amp;ファイル</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="334"/>
         <source>New Window</source>
         <translation>新しいウィンドウ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="327"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Save Parameters</source>
         <translation>パラメータを保存</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="810"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Import Parameters</source>
         <translation>パラメータをインポート</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="838"/>
         <source>Export Parameters</source>
         <translation>パラメータをエクスポート</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="353"/>
         <source>Exit Application</source>
         <translation>アプリケーションを終了</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>&amp;Tools</source>
         <translation>&amp;ツール</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>New</source>
         <translation>新規</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="401"/>
         <source>&amp;Options</source>
         <translation>&amp;オプション</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="410"/>
         <source>Use System Proxy</source>
         <translation>システムプロキシを使用</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="405"/>
+        <location filename="../../src/mainwindow.cpp" line="420"/>
         <source>Exit to System Tray</source>
         <translation>システムトレイに終了</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="423"/>
+        <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Application Style</source>
         <translation>アプリケーションスタイル</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
         <translation>設定をクリア</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="455"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
         <translation>設定ディレクトリを開く</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="479"/>
         <source>HDPI Policy</source>
         <translation>HDPIポリシー</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="508"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
         <translation>カラースキーム</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="510"/>
+        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
         <translation>ダーク</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
+        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
         <translation>ライト</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
         <translation>システム</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="553"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>&amp;Languages</source>
         <translation>&amp;言語</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="584"/>
+        <location filename="../../src/mainwindow.cpp" line="599"/>
         <source>&amp;View</source>
         <translation>&amp;表示</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Stays on Top</source>
         <translation>最前面に表示</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="656"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>&amp;Help</source>
         <translation>&amp;ヘルプ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="657"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>About Qt</source>
         <translation>Qtについて</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="658"/>
-        <location filename="../../src/mainwindow.cpp" line="866"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="881"/>
         <source>About</source>
         <translation>アプリについて</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Screenshot</source>
         <translation>スクリーンショット</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="686"/>
         <source>Buy from Store</source>
         <translation>ストアで購入</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
-        <location filename="../../src/mainwindow.cpp" line="715"/>
+        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="730"/>
         <source>Release History</source>
         <translation>リリース履歴</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Join in QQ Group</source>
         <translation>QQグループに参加</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>Online Manual</source>
         <translation>オンラインマニュアル</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="699"/>
         <source>Get Sources from Github</source>
         <translation>Githubからソースを取得</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>Get Sources from Gitee</source>
         <translation>Giteeからソースを取得</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="705"/>
+        <location filename="../../src/mainwindow.cpp" line="720"/>
         <source>Third Party Open Source</source>
         <translation>サードパーティオープンソース</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="735"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>QR Code</source>
         <translation>QRコード</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="759"/>
         <source>User QQ Group</source>
         <translation>ユーザーQQグループ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="745"/>
+        <location filename="../../src/mainwindow.cpp" line="760"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQグループ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="766"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Need to Reboot</source>
         <translation>再起動が必要</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="767"/>
+        <location filename="../../src/mainwindow.cpp" line="782"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>この操作は再起動が必要です。今すぐアプリケーションを再起動しますか？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="769"/>
+        <location filename="../../src/mainwindow.cpp" line="784"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(アプリケーションを手動で再起動してください。)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="827"/>
+        <location filename="../../src/mainwindow.cpp" line="840"/>
         <source>Json Files (*.json)</source>
         <translation>JSONファイル（*.json）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="854"/>
+        <location filename="../../src/mainwindow.cpp" line="869"/>
         <source>Unknown</source>
         <translation>不明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../src/mainwindow.cpp" line="875"/>
         <source>Commit hash</source>
         <translation>コミットハッシュ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="862"/>
+        <location filename="../../src/mainwindow.cpp" line="877"/>
         <source>Commit time</source>
         <translation>コミット時間</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="878"/>
         <source>Build Date</source>
         <translation>ビルド日</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="864"/>
+        <location filename="../../src/mainwindow.cpp" line="879"/>
         <source>Copyright</source>
         <translation>著作権</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="865"/>
+        <location filename="../../src/mainwindow.cpp" line="880"/>
         <source>All rights reserved.</source>
         <translation>全著作権所有。</translation>
     </message>
@@ -2073,12 +1902,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation>サービスタイプ</translation>
+        <translation type="vanished">サービスの種類</translation>
     </message>
     <message>
-        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
         <translation>開始</translation>
@@ -2122,170 +1949,137 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation>コンソール</translation>
+        <translation type="vanished">コンソール</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation>サーバーレジスタ</translation>
+        <translation type="vanished">サーバー登録</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation>カスタムプロトコルデータユニット</translation>
+        <translation type="vanished">カスタムプロトコルデータユニット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation>クライアントレジスタ</translation>
+        <translation type="vanished">クライアント登録</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation>デバイスリスト</translation>
+        <translation type="vanished">デバイスリスト</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation>閉じる</translation>
+        <translation type="vanished">近い</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation>開く</translation>
+        <translation type="vanished">開ける</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation>デバイス操作</translation>
+        <translation type="vanished">デバイスの操作</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation>アドレス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation>ネットワーク設定</translation>
+        <translation type="vanished">ネットワーク設定</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation>ポート</translation>
+        <translation type="vanished">ポート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation>シリアルポート設定</translation>
+        <translation type="vanished">シリアルポートの設定</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation>ポート名</translation>
+        <translation type="vanished">ポート名</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation>デバイスビジー</translation>
+        <translation type="vanished">デバイスがビジー状態</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation>サーバーパラメータ</translation>
+        <translation type="vanished">サーバーパラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation>サーバーアドレス</translation>
+        <translation type="vanished">サーバーアドレス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation>リスンオンリーモード</translation>
+        <translation type="vanished">リスニング専用モード</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation>ターゲットアドレス</translation>
+        <translation type="vanished">ターゲットアドレス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation>読み取り</translation>
+        <translation type="vanished">読む</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation>書き込み</translation>
+        <translation type="vanished">書く</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation>ファンクションコード</translation>
+        <translation type="vanished">機能コード</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation>アドレス番号</translation>
+        <translation type="vanished">住所番号</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation>開始アドレス</translation>
+        <translation type="vanished">開始アドレス</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation>繰り返し回数</translation>
+        <translation type="vanished">繰り返し回数</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation>タイムアウト</translation>
+        <translation type="vanished">タイムアウト</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation>クライアントパラメータ</translation>
+        <translation type="vanished">クライアントパラメータ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation>入力制御（アドレスと値）</translation>
+        <translation type="vanished">入力制御(アドレスと値)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation>入力フォーマット</translation>
+        <translation type="vanished">入力フォーマット</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2455,39 +2249,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>NumberAssistant</name>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation>生データ</translation>
+        <translation type="vanished">生データ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation>調理済みデータ（16進数）</translation>
+        <translation type="vanished">クックデータ(16進数)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation>調理済みデータタイプ</translation>
+        <translation type="vanished">クックされたデータ型</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation>調理済みデータ（10進数）</translation>
+        <translation type="vanished">クックデータ(12月)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>例：1、-1、1.1、-1.1</translation>
+        <translation type="vanished">例: 1、-1、1.1、-1.1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation>調理済みデータ（バイナリ）</translation>
+        <translation type="vanished">クック済みデータ(Bin)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation>左から右へは高から低へ</translation>
+        <translation type="vanished">左から右に高いものから低いものへ</translation>
     </message>
 </context>
 <context>
@@ -2526,161 +2313,128 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation>ハイライターを有効にする</translation>
+        <translation type="vanished">ハイライターを有効にする</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation>テキストをフィルタ</translation>
+        <translation type="vanished">テキストをフィルタリングする</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation>こんにちは、ワード</translation>
+        <translation type="vanished">こんにちは、ワード</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation>統計情報を表示</translation>
+        <translation type="vanished">統計学者を表示</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation>フィルタを有効にする</translation>
+        <translation type="vanished">フィルターを有効にする</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="47"/>
         <source>Cycle interval</source>
-        <translation>サイクル間隔</translation>
+        <translation type="vanished">サイクル間隔</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.cpp" line="587"/>
         <source>Open</source>
         <translation>開く</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.ui" line="74"/>
-        <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation>設定</translation>
+        <translation type="vanished">設定</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation>クリア</translation>
+        <translation type="vanished">クリア</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="122"/>
         <source>Rx</source>
-        <translation>受信</translation>
+        <translation type="vanished">受信</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="129"/>
         <source>Tx</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="136"/>
         <source>Date</source>
-        <translation>日付</translation>
+        <translation type="vanished">日付</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="143"/>
         <source>Flag</source>
-        <translation>フラグ</translation>
+        <translation type="vanished">フラグ</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="150"/>
         <source>Time</source>
-        <translation>時刻</translation>
+        <translation type="vanished">時間</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="157"/>
         <source>Ms</source>
-        <translation>ミリ秒</translation>
+        <translation type="vanished">MS</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation>出力制御</translation>
+        <translation type="vanished">出力制御</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation>入力制御</translation>
+        <translation type="vanished">入力制御</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation>折り返し</translation>
+        <translation type="vanished">包む</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation>ターミナル</translation>
+        <translation type="vanished">ターミナル</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation>通信制御</translation>
+        <translation type="vanished">通信制御</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation>送信</translation>
+        <translation type="vanished">送信</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="260"/>
-        <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation>テキストフォーマット</translation>
+        <translation type="vanished">テキスト形式</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation>入出力</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="341"/>
         <source>Output</source>
-        <translation>出力</translation>
+        <translation type="vanished">出力</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="514"/>
         <source>Input</source>
-        <translation>入力</translation>
+        <translation type="vanished">入力</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="521"/>
         <source>Preset data list</source>
-        <translation>プリセットデータリスト</translation>
+        <translation type="vanished">プリセットデータ一覧</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="563"/>
         <source>Presets</source>
-        <translation>プリセット</translation>
+        <translation type="vanished">プリセット</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="568"/>
         <source>Emitter</source>
-        <translation>エミッタ</translation>
+        <translation type="vanished">エミッタ</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="573"/>
         <source>Responder</source>
-        <translation>レスポンダー</translation>
+        <translation type="vanished">レスポンダー</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="578"/>
         <source>Transfers</source>
-        <translation>転送</translation>
+        <translation type="vanished">転送</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2891,54 +2645,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetViewGroupEditor</name>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="45"/>
         <source>Group interval(ms)</source>
-        <translation>グループ間隔（ミリ秒）</translation>
+        <translation type="vanished">グループ間隔(ミリ秒)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="68"/>
         <source>Add(update) Group</source>
-        <translation>グループを追加（更新）</translation>
+        <translation type="vanished">グループの追加(更新)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="75"/>
         <source>Colums(split with space)</source>
-        <translation>列（スペースで区切る）</translation>
+        <translation type="vanished">列(スペースで区切る)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="87"/>
         <source>Up</source>
-        <translation>上へ</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="94"/>
         <source>Down</source>
-        <translation>下へ</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="103"/>
         <source>Delete Selected</source>
-        <translation>選択した項目を削除</translation>
+        <translation type="vanished">選択したものを削除</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="116"/>
         <source>Untitled</source>
-        <translation>無題</translation>
+        <translation type="vanished">無題</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="139"/>
         <source>Name</source>
-        <translation>名前</translation>
+        <translation type="vanished">名前</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
         <source>Disable the group</source>
-        <translation>グループを無効にする</translation>
+        <translation type="vanished">グループを無効にする</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="169"/>
         <source>Item interval(ms)</source>
-        <translation>アイテム間隔（ミリ秒）</translation>
+        <translation type="vanished">項目間隔(ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2977,6 +2721,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QObject</name>
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>Unknown</source>
         <translation>不明</translation>
     </message>
@@ -3020,7 +2765,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="423"/>
         <location filename="../../src/common/xtools.cpp" line="736"/>
         <location filename="../../src/common/xtools.cpp" line="754"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="48"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="112"/>
         <source>None</source>
         <translation>なし</translation>
     </message>
@@ -3065,25 +2810,25 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="49"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="113"/>
         <source>Even</source>
         <translation>偶数</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="738"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="50"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="114"/>
         <source>Odd</source>
         <translation>奇数</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="739"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="51"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="115"/>
         <source>Space</source>
         <translation>スペース</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="740"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="52"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="116"/>
         <source>Mark</source>
         <translation>マーク</translation>
     </message>
@@ -3128,102 +2873,169 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>アプリケーションを起動中...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="469"/>
+        <location filename="../../src/mainwindow.cpp" line="484"/>
         <source>System</source>
         <translation>システム</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="485"/>
         <source>Round up for .5 and above</source>
         <translation>.5以上で切り上げ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="471"/>
+        <location filename="../../src/mainwindow.cpp" line="486"/>
         <source>Always round up</source>
         <translation>常に切り上げ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="472"/>
+        <location filename="../../src/mainwindow.cpp" line="487"/>
         <source>Always round down</source>
         <translation>常に切り捨て</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="473"/>
+        <location filename="../../src/mainwindow.cpp" line="488"/>
         <source>Round up for .75 and above</source>
         <translation>.75以上で切り上げ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="474"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Don&apos;t round</source>
         <translation>四捨五入しない</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="19"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
+        <source>No item selected. Please select an item first.</source>
+        <translation>項目が選択されていません。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
+        <source>Are you sure to clear all data in the view?</source>
+        <translation>ビュー内のすべてのデータを消去してもよろしいですか?</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="52"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="144"/>
+        <source>Discrete Inputs</source>
+        <translation>ディスクリート入力</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="54"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="143"/>
+        <source>Coils</source>
+        <translation>コイル</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="56"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="145"/>
+        <source>Input Registers</source>
+        <translation>入力レジスタ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
+        <source>Holding Registers</source>
+        <translation>所蔵レジスター</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <source>Invalid</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
         <source>RTU Master</source>
         <translation>RTUマスター</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="20"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="70"/>
         <source>RTU Slave</source>
         <translation>RTUスレーブ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="21"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="72"/>
         <source>TCP Client</source>
         <translation>TCPクライアント</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="22"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="74"/>
         <source>TCP Server</source>
         <translation>TCPサーバー</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="37"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="189"/>
+        <source>Untitled</source>
+        <translation>無題</translation>
+    </message>
+    <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="38"/>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="39"/>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="40"/>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="58"/>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="60"/>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="62"/>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
+        <source>Message</source>
+        <translation>メッセージ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
+        <source>Error</source>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="30"/>
+        <source>Request</source>
+        <translation>リクエスト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="32"/>
+        <source>Response</source>
+        <translation>応答</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
+        <source>All</source>
+        <translation>全て</translation>
     </message>
 </context>
 <context>
     <name>QRCodeAssistant</name>
     <message>
-        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation>生成</translation>
+        <translation type="vanished">生成する</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3293,44 +3105,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ScriptBase</name>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
         <source>Clear log</source>
-        <translation>ログをクリア</translation>
+        <translation type="vanished">ログをクリアする</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
         <source>Log</source>
-        <translation>ログ</translation>
+        <translation type="vanished">ログ</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="72"/>
         <source>Open script directory</source>
-        <translation>スクリプトディレクトリを開く</translation>
+        <translation type="vanished">スクリプトディレクトリを開く</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="85"/>
         <source>New script</source>
-        <translation>新しいスクリプト</translation>
+        <translation type="vanished">新しいスクリプト</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="98"/>
         <source>Refresh file list</source>
-        <translation>ファイルリストを更新</translation>
+        <translation type="vanished">ファイルリストを更新する</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="111"/>
         <source>Online manual</source>
-        <translation>オンラインマニュアル</translation>
+        <translation type="vanished">オンラインマニュアル</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="129"/>
         <source>Script</source>
-        <translation>スクリプト</translation>
+        <translation type="vanished">スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3395,29 +3199,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SearchPanel</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation>テキストを検索</translation>
+        <translation type="vanished">検索テキスト</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation>検索</translation>
+        <translation type="vanished">検索</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation>正規表現</translation>
+        <translation type="vanished">正規表現</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation>大文字と小文字を区別</translation>
+        <translation type="vanished">大文字と小文字を区別</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation>完全な単語</translation>
+        <translation type="vanished">単語全体</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3530,44 +3329,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
-        <translation>ボーレート</translation>
+        <translation type="vanished">ボーレート</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
-        <translation>パリティ</translation>
+        <translation type="vanished">パリティ</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
-        <translation>ビジーデバイスを無視</translation>
+        <translation type="vanished">無視されたビジーデバイス</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
-        <translation>データビット</translation>
+        <translation type="vanished">データビット</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
-        <translation>フロー制御</translation>
+        <translation type="vanished">フロー制御</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
-        <translation>ストップビット</translation>
+        <translation type="vanished">ストップビット</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation>ポート名</translation>
+        <translation type="vanished">ポート名</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="193"/>
         <source>Enable frame interval</source>
-        <translation>フレーム間隔を有効にする</translation>
+        <translation type="vanished">フレーム間隔を有効にする</translation>
     </message>
 </context>
 <context>
@@ -3626,79 +3417,64 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
-        <translation>書き込み先</translation>
+        <translation type="vanished">書き込み先</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
-        <translation>パス</translation>
+        <translation type="vanished">パス</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
-        <translation>すべてのクライアントの接続を切断</translation>
+        <translation type="vanished">すべてのクライアントを切断する</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
-        <translation>認証</translation>
+        <translation type="vanished">認証</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
-        <translation>サーバーIP</translation>
+        <translation type="vanished">サーバーIP</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation>チャネル</translation>
+        <translation type="vanished">チャネル</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
-        <translation>マルチキャストを有効にする</translation>
+        <translation type="vanished">マルチキャストを有効にする</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
-        <translation>マルチキャストのみ</translation>
+        <translation type="vanished">マルチキャストのみ</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation>ポスト/こんにちは</translation>
+        <translation type="vanished">投稿/こんにちは</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
-        <translation>セキュアモード</translation>
+        <translation type="vanished">セキュアモード</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
-        <translation>マルチキャストポート</translation>
+        <translation type="vanished">マルチキャストポート</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
-        <translation>マルチキャストIP</translation>
+        <translation type="vanished">マルチキャストIP</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
-        <translation>サーバーポート</translation>
+        <translation type="vanished">サーバーポート</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation>ユーザー名</translation>
+        <translation type="vanished">ユーザー名</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation>パスワード</translation>
+        <translation type="vanished">パスワード</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3717,29 +3493,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>StringAssistant</name>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation>生データ</translation>
+        <translation type="vanished">生データ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation>入力フォーマット</translation>
+        <translation type="vanished">入力フォーマット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation>調理済みデータ</translation>
+        <translation type="vanished">クックされたデータ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation>出力フォーマット</translation>
+        <translation type="vanished">出力フォーマット</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation>作成</translation>
+        <translation type="vanished">作成する</translation>
     </message>
 </context>
 <context>
@@ -3763,50 +3534,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TableView</name>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation>フォーム</translation>
+        <translation type="vanished">形状</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation>エクスポート</translation>
+        <translation type="vanished">輸出</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="44"/>
         <source>Disable all items</source>
-        <translation>すべてのアイテムを無効にする</translation>
+        <translation type="vanished">すべての項目を無効にする</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation>削除</translation>
+        <translation type="vanished">消去</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation>上へ</translation>
+        <translation type="vanished">上</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation>追加</translation>
+        <translation type="vanished">追加</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
         <translation>クリア</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation>インポート</translation>
+        <translation type="vanished">輸入</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation>下へ</translation>
+        <translation type="vanished">下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3839,79 +3601,64 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TextItemEditor</name>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation>データエディタ</translation>
+        <translation type="vanished">データ編集者</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation type="vanished">キャンセル</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation>アルゴリズム</translation>
+        <translation type="vanished">アルゴリズム</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation>開始インデックス</translation>
+        <translation type="vanished">開始インデックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation>終了インデックス</translation>
+        <translation type="vanished">終了インデックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation>追加</translation>
+        <translation type="vanished">追加</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation>ビッグエンディアン</translation>
+        <translation type="vanished">ビッグエンディアン</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation>前処理</translation>
+        <translation type="vanished">前処理</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation>プレフィックス</translation>
+        <translation type="vanished">プレフィックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation>サフィックス</translation>
+        <translation type="vanished">サフィックス</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation>エスケープ文字</translation>
+        <translation type="vanished">エスケープ文字</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">わかりました</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation>ペイロード</translation>
+        <translation type="vanished">ペイロード</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation>フォーマット</translation>
+        <translation type="vanished">形式</translation>
     </message>
 </context>
 <context>
@@ -3971,14 +3718,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcastUi</name>
     <message>
-        <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>ネットワークインターフェースを選択:</translation>
+        <translation type="vanished">ネットワーク インターフェイスを選択します。</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation>ブロードキャストポート</translation>
+        <translation type="vanished">ブロードキャストポート</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -4012,80 +3757,347 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticastUi</name>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>ネットワークインターフェースを選択:</translation>
+        <translation type="vanished">ネットワーク インターフェイスを選択します。</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation>マルチキャストIP</translation>
+        <translation type="vanished">マルチキャストIP</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation>マルチキャストポート</translation>
+        <translation type="vanished">マルチキャストポート</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation>マルチキャストループバック</translation>
+        <translation type="vanished">マルチキャストループバック</translation>
     </message>
 </context>
 <context>
-    <name>xModbus::ModbusDeviceListView</name>
+    <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="37"/>
-        <source>Coils</source>
-        <translation>コイル</translation>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
+        <source>Modbus Tool Bar</source>
+        <translation>Modbusツールバー</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="41"/>
-        <source>Discrete Inputs</source>
-        <translation>離散入力</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="45"/>
-        <source>Holding Registers</source>
-        <translation>ホールディングレジスタ</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="49"/>
-        <source>Input Registers</source>
-        <translation>入力レジスタ</translation>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
+        <source>Example Action</source>
+        <translation>アクション例</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="43"/>
         <source>New RTU Device</source>
-        <translation>新しいRTUデバイス</translation>
+        <translation type="vanished">新しい RTU デバイス</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="44"/>
         <source>New TCP Device</source>
-        <translation>新しいTCPデバイス</translation>
+        <translation type="vanished">新しいTCPデバイス</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="46"/>
         <source>New Coils</source>
-        <translation>新しいコイル</translation>
+        <translation type="vanished">新しいコイル</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="47"/>
         <source>New Discrete Inputs</source>
-        <translation>新しい離散入力</translation>
+        <translation type="vanished">新しい離散入力</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="48"/>
         <source>New Holding Registers</source>
-        <translation>新しいホールディングレジスタ</translation>
+        <translation type="vanished">新しい保有登録簿</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="49"/>
         <source>New Input Registers</source>
-        <translation>新しい入力レジスタ</translation>
+        <translation type="vanished">新しい入力レジスタ</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusDevice</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="122"/>
+        <source>Modbus device connected.</source>
+        <translation>Modbusデバイスが接続されました。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
+        <source>Modbus device disconnected.</source>
+        <translation>Modbus デバイスが切断されました。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
+        <source>Modbus device error: %1</source>
+        <translation>Modbus デバイス エラー: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="153"/>
+        <source>Failed to connect Modbus device: %1</source>
+        <translation>Modbus デバイスの接続に失敗しました: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="400"/>
+        <source>Failed to send read request: %1</source>
+        <translation>読み取りリクエストの送信に失敗しました: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="426"/>
+        <source>Read error: %1</source>
+        <translation>読み取りエラー: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
+        <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
+        <translation>%1 応答の読み取り: サーバー アドレス = %2、開始アドレス = %3、値カウント = %4</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusDeviceListView</name>
+    <message>
+        <source>Coils</source>
+        <translation type="vanished">コイル</translation>
+    </message>
+    <message>
+        <source>Discrete Inputs</source>
+        <translation type="vanished">ディスクリート入力</translation>
+    </message>
+    <message>
+        <source>Holding Registers</source>
+        <translation type="vanished">所蔵レジスター</translation>
+    </message>
+    <message>
+        <source>Input Registers</source>
+        <translation type="vanished">入力レジスタ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <source>New Modbus Device</source>
+        <translation>新しい Modbus デバイス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
+        <source>Remove the Selected Item</source>
+        <translation>選択した項目を削除します</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="205"/>
+        <source>Remove Device</source>
+        <translation>デバイスの削除</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <source>The device is running. Do you want to stop and remove it?</source>
+        <translation>デバイスは実行中です。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="252"/>
+        <source>Rename Register Table</source>
+        <translation>レジスタテーブルの名前を変更</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <source>Please input the new name for the register table:</source>
+        <translation>レジスタ テーブルの新しい名前を入力してください:</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <source>Rename Register Item</source>
+        <translation>登録項目の名前を変更</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <source>Please input the new name for the register item:</source>
+        <translation>登録項目の新しい名前を入力してください:</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="278"/>
+        <source>Edit Modbus Device</source>
+        <translation>Modbusデバイスの編集</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <source>Change Device parameters</source>
+        <translation>デバイスパラメータの変更</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <source>The device is running. Restarting it to apply new parameters now?</source>
+        <translation>デバイスは実行中です。</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusLogModel</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="168"/>
+        <source>Time</source>
+        <translation>時間</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="170"/>
+        <source>Type</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="172"/>
+        <source>Message</source>
+        <translation>メッセージ</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusLogView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="132"/>
+        <source>Clear Log</source>
+        <translation>ログをクリアする</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="133"/>
+        <source>Are you sure you want to clear the log?</source>
+        <translation>ログをクリアしてもよろしいですか?</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="145"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
+        <source>Save Log</source>
+        <translation>ログの保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
+        <source>Log Files (*.json)</source>
+        <translation>ログ ファイル (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="156"/>
+        <source>Failed to open file for writing: %1</source>
+        <translation>書き込み用にファイルを開けませんでした: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="179"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="201"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="210"/>
+        <source>Open Log</source>
+        <translation>ログを開く</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="190"/>
+        <source>Failed to open file for reading: %1</source>
+        <translation>読み取り用にファイルを開けませんでした: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="202"/>
+        <source>Failed to parse log file: %1 at offset %2</source>
+        <translation>ログ ファイルの解析に失敗しました: %1、オフセット %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
+        <source>Invalid log file format: root element is not an array.</source>
+        <translation>無効なログ ファイル形式: ルート要素は配列ではありません。</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusRegisterTable</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="200"/>
+        <source>Register Address</source>
+        <translation>レジスタアドレス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
+        <source>Name</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
+        <source>Server Address</source>
+        <translation>サーバーアドレス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
+        <source>Type</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
+        <source>Unit</source>
+        <translation>ユニット</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
+        <source>Description</source>
+        <translation>説明</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
+        <source>Min</source>
+        <translation>分</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
+        <source>Max</source>
+        <translation>マックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
+        <source>Decimals</source>
+        <translation>小数</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
+        <source>Value</source>
+        <translation>価値</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusRegisterTableView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="162"/>
+        <source>Save Registers</source>
+        <translation>レジスタの保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="164"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="188"/>
+        <source>json (*.json)</source>
+        <translation>json (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <source>Error</source>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <source>Failed to open file for saving.</source>
+        <translation>保存するファイルを開けませんでした。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <source>Load Registers</source>
+        <translation>ロードレジスタ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <source>Failed to open file for loading.</source>
+        <translation>ロードするファイルを開けませんでした。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <source>Invalid JSON format in the file.</source>
+        <translation>ファイル内の JSON 形式が無効です。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <source>Import Registers</source>
+        <translation>レジスタのインポート</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="214"/>
+        <source>The register table is not empty. Do you want to merge existing registers?</source>
+        <translation>レジスタテーブルは空ではありません。</translation>
     </message>
 </context>
 </TS>

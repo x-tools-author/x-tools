@@ -17,14 +17,12 @@
 <context>
     <name>AsciiAssistant</name>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.ui" line="26"/>
         <source>Filter</source>
-        <translation>Filter</translation>
+        <translation type="vanished">Filter</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation>Bevar store/små bogstaver</translation>
+        <translation type="vanished">Bevar sag</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -298,34 +296,28 @@
 <context>
     <name>BarCodeAssistant</name>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation>Stregkode-assistent</translation>
+        <translation type="vanished">CRC assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="32"/>
         <source>Refresh</source>
-        <translation>Opdater</translation>
+        <translation type="vanished">Opfriske</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="52"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation type="vanished">Type</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="59"/>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="vanished">Eksportere</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="66"/>
         <source>Data</source>
-        <translation>Data</translation>
+        <translation type="vanished">Data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation>010000000000</translation>
+        <translation type="vanished">010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
@@ -352,9 +344,8 @@
 <context>
     <name>BarSettings</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
         <source>Data format</source>
-        <translation>Dataformat</translation>
+        <translation type="vanished">Dataformat</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
@@ -390,34 +381,28 @@
 <context>
     <name>Base64Assistant</name>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="14"/>
         <source>Base64 Assistant</source>
-        <translation>Base64-assistent</translation>
+        <translation type="vanished">Base64 assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="26"/>
         <source>Plaintext</source>
-        <translation>Ren tekst</translation>
+        <translation type="vanished">Klartekst</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="44"/>
         <source>Ciphertext</source>
-        <translation>Chifferet tekst</translation>
+        <translation type="vanished">Chiffertekst</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="71"/>
         <source>Image</source>
-        <translation>Billede</translation>
+        <translation type="vanished">Billede</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="78"/>
         <source>Decrypt</source>
-        <translation>Decrypt</translation>
+        <translation type="vanished">Dekrypter</translation>
     </message>
     <message>
-        <location filename="../../src/tools/base64/base64assistant.ui" line="85"/>
         <source>Encrypt</source>
-        <translation>Encrypt</translation>
+        <translation type="vanished">Krypter</translation>
     </message>
     <message>
         <location filename="../../src/tools/base64/base64assistant.cpp" line="40"/>
@@ -446,61 +431,50 @@
 <context>
     <name>BleCentralUi</name>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="41"/>
         <source>Characteristic</source>
-        <translation>Karakteristik</translation>
+        <translation type="vanished">Karakteristisk</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="61"/>
         <source>(Unsupported characteristic)</source>
-        <translation>(Ikke-understøttet karakteristik)</translation>
+        <translation type="vanished">(Ikke-understøttet egenskab)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation>BLE-enheder</translation>
+        <translation type="vanished">BLE enheder</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="87"/>
         <location filename="../../src/device/blecentralui.cpp" line="324"/>
         <source>Scan</source>
         <translation>Scan</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="96"/>
         <location filename="../../src/device/blecentralui.cpp" line="125"/>
         <source>Notify</source>
         <translation>Underret</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="103"/>
         <source>Read</source>
-        <translation>Læs</translation>
+        <translation type="vanished">Læse</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="115"/>
         <source>Service scanning</source>
-        <translation>Scanningsservice</translation>
+        <translation type="vanished">Service scanning</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="150"/>
         <source>Write mode</source>
-        <translation>Skriv tilstand</translation>
+        <translation type="vanished">Skrivetilstand</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="163"/>
         <source>Service</source>
-        <translation>Service</translation>
+        <translation type="vanished">Service</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.ui" line="170"/>
         <source>Device scanning</source>
-        <translation>Enhedsscanning</translation>
+        <translation type="vanished">Enhedsscanning</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.cpp" line="123"/>
@@ -536,75 +510,61 @@
 <context>
     <name>BroadcastAssistant</name>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="20"/>
         <source>Output control</source>
-        <translation>Udgivelseskontrol</translation>
+        <translation type="vanished">Output kontrol</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="32"/>
         <source>Output format</source>
-        <translation>Udgivelsesformat</translation>
+        <translation type="vanished">Outputformat</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation>Ryd</translation>
+        <translation type="vanished">Klar</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
         <source>Broadcast parameters</source>
-        <translation>Broadcast-parametre</translation>
+        <translation type="vanished">Udsendelsesparametre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="67"/>
         <source>Broadcast address</source>
-        <translation>Broadcast-adresse</translation>
+        <translation type="vanished">Udsendelsesadresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="80"/>
         <source>55443</source>
-        <translation>55443</translation>
+        <translation type="vanished">55443</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="100"/>
         <source>Data format</source>
-        <translation>Dataformat</translation>
+        <translation type="vanished">Dataformat</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="119"/>
         <source>Broadcast prefix</source>
-        <translation>Broadcast-præfiks</translation>
+        <translation type="vanished">Udsendelsespræfiks</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="132"/>
         <source>Broadcast interval</source>
-        <translation>Broadcast-interval</translation>
+        <translation type="vanished">Udsendelsesinterval</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="151"/>
         <source>Broadcast suffix</source>
-        <translation>Broadcast-suffiks</translation>
+        <translation type="vanished">Udsendelsessuffiks</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="164"/>
         <source>Broadcast port</source>
-        <translation>Broadcast-port</translation>
+        <translation type="vanished">Broadcast port</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="187"/>
         <source>Broadcast data</source>
-        <translation>Broadcast-data</translation>
+        <translation type="vanished">Broadcast data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="194"/>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="63"/>
         <source>Broadcast</source>
         <translation>Broadcast</translation>
     </message>
     <message>
-        <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="223"/>
         <source>Information output</source>
-        <translation>Informationsudgang</translation>
+        <translation type="vanished">Informationsoutput</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.cpp" line="47"/>
@@ -620,124 +580,100 @@
 <context>
     <name>CanBusAssistant</name>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation>CANBus Studio</translation>
+        <translation type="vanished">CANBus Studio</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation>CAN-ramme</translation>
+        <translation type="vanished">CAN-ramme</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
         <source>Extended format</source>
-        <translation>Udvidet format</translation>
+        <translation type="vanished">Udvidet format</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="64"/>
         <source>Flexible data rate</source>
-        <translation>Fleksibel datarate</translation>
+        <translation type="vanished">Fleksibel datahastighed</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation>Ramme-ID</translation>
+        <translation type="vanished">Ramme-id</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
         <source>Frame type</source>
-        <translation>Rammetype</translation>
+        <translation type="vanished">Ramme type</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="101"/>
         <source>Frame options</source>
-        <translation>Rammeindstillinger</translation>
+        <translation type="vanished">Ramme muligheder</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="114"/>
         <source>Bitrate switch</source>
-        <translation>Bitrate-skift</translation>
+        <translation type="vanished">Bitrate switch</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="150"/>
         <source>Device Control</source>
-        <translation>Enhedskontrol</translation>
+        <translation type="vanished">Enhedskontrol</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="171"/>
         <source>Disconnect</source>
-        <translation>Frakobl</translation>
+        <translation type="vanished">Afbryde</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation>Tilslut</translation>
+        <translation type="vanished">Forbinde</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
         <source>Plugin</source>
-        <translation>Plugin</translation>
+        <translation type="vanished">Plugin</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="221"/>
         <source>Name</source>
-        <translation>Navn</translation>
+        <translation type="vanished">Navn</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="251"/>
         <source>Data View</source>
-        <translation>Datavisning</translation>
+        <translation type="vanished">Datavisning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="295"/>
         <source>Specify Configuration</source>
-        <translation>Angiv konfiguration</translation>
+        <translation type="vanished">Angiv konfiguration</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="323"/>
         <source>Error filter</source>
-        <translation>Fejlfilter</translation>
+        <translation type="vanished">Fejlfilter</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="333"/>
         <source>Custom configurations</source>
-        <translation>Brugerdefinerede konfigurationer</translation>
+        <translation type="vanished">Brugerdefinerede konfigurationer</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation>CAN FD</translation>
+        <translation type="vanished">KAN FD</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation>Loopback</translation>
+        <translation type="vanished">Loopback</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
         <source>Data bitrate</source>
-        <translation>Databithastighed</translation>
+        <translation type="vanished">Data bitrate</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="409"/>
         <source>Bitrate</source>
-        <translation>Bitrate</translation>
+        <translation type="vanished">Bitrate</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation>Modtag egen</translation>
+        <translation type="vanished">Modtag egen</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation>CAN-rammepayload</translation>
+        <translation type="vanished">CAN-ramme nyttelast</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
         <source>Send</source>
-        <translation>Send</translation>
+        <translation type="vanished">Sende</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
@@ -846,130 +782,95 @@
 <context>
     <name>ChartsTestUi</name>
     <message>
-        <location filename="../../src/device/chartstestui.ui" line="38"/>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation type="vanished">Format</translation>
     </message>
     <message>
-        <location filename="../../src/device/chartstestui.ui" line="48"/>
         <source>Channels</source>
-        <translation>Kanaler</translation>
+        <translation type="vanished">Kanaler</translation>
     </message>
 </context>
 <context>
     <name>CrcAssistant</name>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation>CRC-assistent</translation>
+        <translation type="vanished">CRC assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation>Paloy-værdi</translation>
+        <translation type="vanished">Paloy værdi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation>Startværdi</translation>
+        <translation type="vanished">Startværdi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="34"/>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="235"/>
         <source>Copy</source>
-        <translation>Kopier</translation>
+        <translation type="vanished">Kopi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>Flere oplysninger om crc-beregning, besøg http://www.ip33.com/crc.html(dobbeltklik for at besøge)</translation>
+        <translation type="vanished">Flere oplysninger om crc-beregning, besøg http://www.ip33.com/crc.html(dobbeltklik for at besøge)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation>Inddataomvending</translation>
+        <translation type="vanished">Reversering af input</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation>Udgaveomvending</translation>
+        <translation type="vanished">Udgangsvending</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="87"/>
         <source>Clear</source>
-        <translation>Ryd</translation>
+        <translation type="vanished">Klar</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation>Beregning</translation>
+        <translation type="vanished">Beregne</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation>Parametre</translation>
+        <translation type="vanished">Parametre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation>XOR-værdi</translation>
+        <translation type="vanished">XOR værdi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation>Højden er til venstre, og de lave bits er til højre</translation>
+        <translation type="vanished">Højden er til venstre og de lave bits er til højre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="157"/>
         <source>HEX</source>
-        <translation>HEX</translation>
+        <translation type="vanished">HEX</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation>ASCII</translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation>Resultat(HEX)</translation>
+        <translation type="vanished">Resultat (HEX)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation>Parametermodel</translation>
+        <translation type="vanished">Parameter model</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="214"/>
         <source>Width</source>
-        <translation>Bredde</translation>
+        <translation type="vanished">Bredde</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="221"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
         <source>Paloy</source>
-        <translation>Paloy</translation>
+        <translation type="vanished">Sæt farten ned</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="279"/>
         <source>Input data</source>
-        <translation>Inddata</translation>
+        <translation type="vanished">Indtast data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crc/crcassistant.ui" line="286"/>
         <source>Result(BIN)</source>
-        <translation>Resultat(BIN)</translation>
+        <translation type="vanished">Resultat (BIN)</translation>
     </message>
 </context>
 <context>
@@ -998,39 +899,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DataRecordsView</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="20"/>
         <source>Types</source>
-        <translation>Typer</translation>
+        <translation type="vanished">Typer</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="34"/>
         <source>Flags</source>
-        <translation>Flag</translation>
+        <translation type="vanished">Flag</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="48"/>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation type="vanished">Format</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="62"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="82"/>
         <source>Records</source>
-        <translation>Poste</translation>
+        <translation type="vanished">Optegnelser</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="96"/>
         <source>Data</source>
-        <translation>Data</translation>
+        <translation type="vanished">Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="103"/>
         <source>Search data...</source>
-        <translation>Søg data...</translation>
+        <translation type="vanished">Søg data...</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
@@ -1057,102 +951,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceConnectionParameterEditor</name>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation>Ny Modbus-enhed</translation>
+        <translation type="vanished">Ny Modbus-enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="33"/>
         <source>Connection parameters</source>
-        <translation>Forbindelsesparametre</translation>
+        <translation type="vanished">Forbindelsesparametre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="56"/>
         <source>Parity</source>
-        <translation>Lige/Ulige</translation>
+        <translation type="vanished">Paritet</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="63"/>
         <source>Baud rate</source>
-        <translation>Baudrate</translation>
+        <translation type="vanished">Baud rate</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="76"/>
         <source>Stop bits</source>
-        <translation>Stopbits</translation>
+        <translation type="vanished">Stop bits</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="95"/>
         <source>Refresh</source>
-        <translation>Opdater</translation>
+        <translation type="vanished">Opfriske</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="113"/>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Data bits</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="132"/>
         <source>Names</source>
-        <translation>Navne</translation>
+        <translation type="vanished">Navne</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="149"/>
         <source>IP Address</source>
-        <translation>IP-adresse</translation>
+        <translation type="vanished">IP-adresse</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="165"/>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation type="vanished">Havn</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="185"/>
         <source>Device type</source>
-        <translation>Enhedstype</translation>
+        <translation type="vanished">Enhedstype</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="208"/>
         <source>Timeout(ms)</source>
-        <translation>Timeout(ms)</translation>
+        <translation type="vanished">Timeout (ms)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="221"/>
         <source>Number of retries</source>
-        <translation>Antal forsøg</translation>
+        <translation type="vanished">Antal genforsøg</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="241"/>
         <source>Address</source>
-        <translation>Adresse</translation>
+        <translation type="vanished">Adresse</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="251"/>
         <source>Listen only mode</source>
-        <translation>Kun lyt tilstand</translation>
+        <translation type="vanished">Kun lytte-tilstand</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="262"/>
         <source>Device parameters</source>
-        <translation>Enhedsparametre</translation>
+        <translation type="vanished">Enhedsparametre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="286"/>
         <source>Device Name</source>
-        <translation>Enhedsnavn</translation>
+        <translation type="vanished">Enhedens navn</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/utilities/deviceconnectionparametereditor.ui" line="296"/>
         <source>Such as: Siemens S7-300</source>
-        <translation>Såsom: Siemens S7-300</translation>
+        <translation type="vanished">Såsom: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.ui" line="98"/>
         <source>Search</source>
-        <translation>Søg</translation>
+        <translation type="vanished">Søge</translation>
     </message>
 </context>
 <context>
@@ -1236,50 +1111,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceSettings</name>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="22"/>
         <source>Save tx data</source>
-        <translation>Gem tx-data</translation>
+        <translation type="vanished">Gem TX-data</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="32"/>
         <source>Browser</source>
-        <translation>Browser</translation>
+        <translation type="vanished">Browser</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="39"/>
         <source>Save millisecond</source>
-        <translation>Gem millisekund</translation>
+        <translation type="vanished">Spar millisekund</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="49"/>
         <source>Save rx data</source>
-        <translation>Gem rx-data</translation>
+        <translation type="vanished">Gem rx-data</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="59"/>
         <source>Save Date</source>
-        <translation>Gem dato</translation>
+        <translation type="vanished">Gem dato</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="69"/>
         <location filename="../../src/page/devicesettings.cpp" line="151"/>
         <source>Save to file</source>
         <translation>Gem til fil</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="76"/>
         <source>Save Time</source>
-        <translation>Gem tid</translation>
+        <translation type="vanished">Spar tid</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="94"/>
         <source>Save format</source>
-        <translation>Gem format</translation>
+        <translation type="vanished">Gem format</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.ui" line="104"/>
         <source>Max bytes</source>
-        <translation>Max bytes</translation>
+        <translation type="vanished">Max bytes</translation>
     </message>
     <message>
         <location filename="../../src/page/devicesettings.cpp" line="153"/>
@@ -1324,45 +1190,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>FileCheckAssistant</name>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation>Øverste resultat</translation>
+        <translation type="vanished">Øvre resultat</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation>Kontrolleret fil</translation>
+        <translation type="vanished">Kontrolleret fil</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation>Kontrolleret fremskridt</translation>
+        <translation type="vanished">Kontrollerede fremskridt</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation>Kontrolleret algoritme</translation>
+        <translation type="vanished">Tjekket algoritme</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation>Kontrolleret resultat</translation>
+        <translation type="vanished">Tjekket resultat</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
         <source>Calculate</source>
         <translation>Beregning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="132"/>
         <source>Open</source>
-        <translation>Åbn</translation>
+        <translation type="vanished">Åben</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
@@ -1383,44 +1241,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>FileMergeAssistant</name>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
         <source>File list</source>
-        <translation>Fil liste</translation>
+        <translation type="vanished">Filliste</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="60"/>
         <source>Import</source>
-        <translation>Importér</translation>
+        <translation type="vanished">Importere</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="74"/>
         <source>Up</source>
-        <translation>Op</translation>
+        <translation type="vanished">Op</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="81"/>
         <source>Down</source>
-        <translation>Ned</translation>
+        <translation type="vanished">Ned</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="88"/>
         <source>Remove</source>
-        <translation>Fjern</translation>
+        <translation type="vanished">Fjerne</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="95"/>
         <source>Clear</source>
-        <translation>Ryd</translation>
+        <translation type="vanished">Klar</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="102"/>
         <source>Merge</source>
-        <translation>Flet</translation>
+        <translation type="vanished">Flet sammen</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.cpp" line="60"/>
@@ -1494,9 +1344,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>HidDeviceUi</name>
     <message>
-        <location filename="../../src/device/hiddeviceui.ui" line="45"/>
         <source>Device</source>
-        <translation>Enhed</translation>
+        <translation type="vanished">Enhed</translation>
     </message>
     <message>
         <location filename="../../src/device/hiddeviceui.cpp" line="98"/>
@@ -1575,77 +1424,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>InputSettings</name>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="20"/>
         <source>Show data preview</source>
-        <translation>Vis datavisning</translation>
+        <translation type="vanished">Vis forhåndsvisning af data</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="35"/>
         <source>Append suffix</source>
-        <translation>Vedhæft suffiks</translation>
+        <translation type="vanished">Tilføj suffiks</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="48"/>
         <source>Append prefix</source>
-        <translation>Vedhæft præfiks</translation>
+        <translation type="vanished">Tilføj præfiks</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="64"/>
         <source>Escape character</source>
-        <translation>Escape-tegn</translation>
+        <translation type="vanished">Escape karakter</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="89"/>
         <source>Data Preprocessing</source>
-        <translation>Databehandling</translation>
+        <translation type="vanished">Dataforbehandling</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="102"/>
         <source>Append checking data</source>
-        <translation>Vedhæft kontroldata</translation>
+        <translation type="vanished">Tilføj kontroldata</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
-        <translation>Big endian</translation>
+        <translation type="vanished">Stor endian</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="121"/>
         <source>Start from Left</source>
-        <translation>Start fra venstre</translation>
+        <translation type="vanished">Start fra venstre</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="128"/>
         <source>Start from right</source>
-        <translation>Start fra højre</translation>
+        <translation type="vanished">Start fra højre</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="141"/>
         <source>Arithmetic</source>
-        <translation>Regning</translation>
+        <translation type="vanished">Aritmetik</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start index</source>
-        <translation>Startindeks</translation>
+        <translation type="vanished">Start indeks</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="174"/>
         <source>End index</source>
-        <translation>Slutindeks</translation>
+        <translation type="vanished">Slutindeks</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
-        <translation>Datakontrol</translation>
+        <translation type="vanished">Datakontrol</translation>
     </message>
 </context>
 <context>
     <name>LayoutManager</name>
     <message>
-        <location filename="../../src/layoutmanager.cpp" line="83"/>
         <source>Node Editor</source>
-        <translation>Node-editor</translation>
+        <translation type="vanished">Node Editor</translation>
     </message>
 </context>
 <context>
@@ -1664,34 +1499,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LineSettings</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="58"/>
         <source>Data type</source>
-        <translation>Datatype</translation>
+        <translation type="vanished">Datatype</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="68"/>
         <source>Legend</source>
-        <translation>Forklaring</translation>
+        <translation type="vanished">Legende</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="75"/>
         <source>Cache points</source>
-        <translation>Cache-punkter</translation>
+        <translation type="vanished">Cachepunkter</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
         <source>Clear</source>
-        <translation>Ryd</translation>
+        <translation type="vanished">Klar</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="vanished">Eksportere</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
         <source>Import</source>
-        <translation>Importér</translation>
+        <translation type="vanished">Importere</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
@@ -1746,14 +1575,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LocalServerUi</name>
     <message>
-        <location filename="../../src/device/localserverui.ui" line="32"/>
         <source>Write to</source>
-        <translation>Skriv til</translation>
+        <translation type="vanished">Skriv til</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.ui" line="45"/>
         <source>Server name</source>
-        <translation>Servernavn</translation>
+        <translation type="vanished">Servernavn</translation>
     </message>
     <message>
         <location filename="../../src/device/localserverui.cpp" line="20"/>
@@ -1764,47 +1591,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LocalSocketUi</name>
     <message>
-        <location filename="../../src/device/localsocketui.ui" line="32"/>
         <source>Server name</source>
-        <translation>Servernavn</translation>
+        <translation type="vanished">Servernavn</translation>
     </message>
 </context>
 <context>
     <name>LuaPanel</name>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
         <source>Test</source>
-        <translation>Test</translation>
+        <translation type="vanished">Prøve</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="39"/>
         <source>Test data</source>
-        <translation>Testdata</translation>
+        <translation type="vanished">Test data</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="63"/>
         <source>Result data</source>
-        <translation>Resultatdata</translation>
+        <translation type="vanished">Resultatdata</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="73"/>
         <source>Bypass</source>
-        <translation>Omgå</translation>
+        <translation type="vanished">Bypass</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation>Tabelparametre</translation>
+        <translation type="vanished">Tabel parametre</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation>Strengparametre</translation>
+        <translation type="vanished">Strengparametre</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
@@ -1825,247 +1644,246 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="130"/>
         <source>General</source>
-        <translation>Generelt</translation>
+        <translation type="vanished">Generel</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="332"/>
         <source>&amp;File</source>
         <translation>&amp;Fil</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="334"/>
         <source>New Window</source>
         <translation>Ny vindue</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="327"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Save Parameters</source>
         <translation>Gem parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="810"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
+        <location filename="../../src/mainwindow.cpp" line="825"/>
         <source>Import Parameters</source>
         <translation>Importer parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="838"/>
         <source>Export Parameters</source>
         <translation>Eksporter parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="353"/>
         <source>Exit Application</source>
         <translation>Afslut applikation</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>&amp;Tools</source>
         <translation>&amp;Værktøjer</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>New</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="401"/>
         <source>&amp;Options</source>
         <translation>&amp;Indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="410"/>
         <source>Use System Proxy</source>
         <translation>Brug systemproxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="405"/>
+        <location filename="../../src/mainwindow.cpp" line="420"/>
         <source>Exit to System Tray</source>
         <translation>Afslut til systembakke</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="423"/>
+        <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>Application Style</source>
         <translation>Applikationsstil</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
         <translation>Indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
         <translation>Ryd indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="455"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
         <translation>Åbn indstillingsmappe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="479"/>
         <source>HDPI Policy</source>
         <translation>HDPI-politik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="508"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
         <translation>Farveskema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="510"/>
+        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
         <translation>Mørk</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
+        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
         <translation>Lyse</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="553"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>&amp;Languages</source>
         <translation>&amp;Sprog</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="584"/>
+        <location filename="../../src/mainwindow.cpp" line="599"/>
         <source>&amp;View</source>
         <translation>&amp;Vis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Stays on Top</source>
         <translation>Forbliv øverst</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="656"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjælp</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="657"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>About Qt</source>
         <translation>Om Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="658"/>
-        <location filename="../../src/mainwindow.cpp" line="866"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="881"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Screenshot</source>
         <translation>Skærmbillede</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="686"/>
         <source>Buy from Store</source>
         <translation>Køb fra butik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
-        <location filename="../../src/mainwindow.cpp" line="715"/>
+        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="730"/>
         <source>Release History</source>
         <translation>Udgivelseshistorik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Join in QQ Group</source>
         <translation>Bliv medlem af QQ-gruppen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>Online Manual</source>
         <translation>Online manual</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="699"/>
         <source>Get Sources from Github</source>
         <translation>Få kilder fra Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>Get Sources from Gitee</source>
         <translation>Få kilder fra Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="705"/>
+        <location filename="../../src/mainwindow.cpp" line="720"/>
         <source>Third Party Open Source</source>
         <translation>Tredjeparts open source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="735"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>QR Code</source>
         <translation>QR-kode</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="744"/>
+        <location filename="../../src/mainwindow.cpp" line="759"/>
         <source>User QQ Group</source>
         <translation>Bruger QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="745"/>
+        <location filename="../../src/mainwindow.cpp" line="760"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="766"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Need to Reboot</source>
         <translation>Skal genstartes</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="767"/>
+        <location filename="../../src/mainwindow.cpp" line="782"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="769"/>
+        <location filename="../../src/mainwindow.cpp" line="784"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Genstart venligst din applikation manuelt.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="827"/>
+        <location filename="../../src/mainwindow.cpp" line="840"/>
         <source>Json Files (*.json)</source>
         <translation>Json-filer (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="854"/>
+        <location filename="../../src/mainwindow.cpp" line="869"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="860"/>
+        <location filename="../../src/mainwindow.cpp" line="875"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="862"/>
+        <location filename="../../src/mainwindow.cpp" line="877"/>
         <source>Commit time</source>
         <translation>Commit-tid</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="863"/>
+        <location filename="../../src/mainwindow.cpp" line="878"/>
         <source>Build Date</source>
         <translation>Bygge dato</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="864"/>
+        <location filename="../../src/mainwindow.cpp" line="879"/>
         <source>Copyright</source>
         <translation>Ophavsret</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="865"/>
+        <location filename="../../src/mainwindow.cpp" line="880"/>
         <source>All rights reserved.</source>
         <translation>Alle rettigheder forbeholdes.</translation>
     </message>
@@ -2073,12 +1891,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MdnsAssistant</name>
     <message>
-        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="20"/>
         <source>Service type</source>
-        <translation>Servicetype</translation>
+        <translation type="vanished">Servicetype</translation>
     </message>
     <message>
-        <location filename="../../src/tools/mdns/mdnsassistant.ui" line="27"/>
         <location filename="../../src/tools/mdns/mdnsassistant.cpp" line="123"/>
         <source>Start</source>
         <translation>Start</translation>
@@ -2122,170 +1938,137 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusAssistant</name>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="49"/>
         <source>Console</source>
-        <translation>Konsol</translation>
+        <translation type="vanished">Konsol</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="90"/>
         <source>Server Register</source>
-        <translation>Serverregister</translation>
+        <translation type="vanished">Server Register</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="125"/>
         <source>Send</source>
-        <translation>Send</translation>
+        <translation type="vanished">Sende</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="141"/>
         <source>Custom Protocol Data Unit</source>
-        <translation>Brugerdefineret protokoldataenhed</translation>
+        <translation type="vanished">Custom Protocol Data Unit</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="154"/>
         <source>Client Registers</source>
-        <translation>Klientregistre</translation>
+        <translation type="vanished">Kunderegistre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="189"/>
         <source>Device list</source>
-        <translation>Enhedsliste</translation>
+        <translation type="vanished">Enhedsliste</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="213"/>
         <source>Close</source>
-        <translation>Luk</translation>
+        <translation type="vanished">Tæt</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="220"/>
         <source>Open</source>
-        <translation>Åbn</translation>
+        <translation type="vanished">Åben</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="235"/>
         <source>Device Operations</source>
-        <translation>Enhedsoperationer</translation>
+        <translation type="vanished">Enhedsoperationer</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="286"/>
         <source>Network Settings</source>
-        <translation>Netværksindstillinger</translation>
+        <translation type="vanished">Netværksindstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="306"/>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation type="vanished">Havn</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="337"/>
         <source>Baud rate</source>
-        <translation>Baudrate</translation>
+        <translation type="vanished">Baud rate</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="357"/>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Data bits</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="370"/>
         <source>Serial Port Settings</source>
-        <translation>Indstillinger for seriel port</translation>
+        <translation type="vanished">Indstillinger for seriel port</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="390"/>
         <source>Parity</source>
-        <translation>Lige/Ulige</translation>
+        <translation type="vanished">Paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="409"/>
         <source>Port name</source>
-        <translation>Portnavn</translation>
+        <translation type="vanished">Portnavn</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="425"/>
         <source>Stop bits</source>
-        <translation>Stopbits</translation>
+        <translation type="vanished">Stop bits</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="450"/>
         <source>Device busy</source>
-        <translation>Enheden er optaget</translation>
+        <translation type="vanished">Enheden er optaget</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="463"/>
         <source>Server Parameters</source>
-        <translation>Serverparametre</translation>
+        <translation type="vanished">Server parametre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="470"/>
         <source>Server address</source>
-        <translation>Serveradresse</translation>
+        <translation type="vanished">Serveradresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="484"/>
         <source>Listen only mode</source>
-        <translation>Kun lyt tilstand</translation>
+        <translation type="vanished">Kun lytte-tilstand</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="560"/>
         <source>Target address</source>
-        <translation>Måladresse</translation>
+        <translation type="vanished">Måladresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="569"/>
         <source>Read</source>
-        <translation>Læs</translation>
+        <translation type="vanished">Læse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="576"/>
         <source>Write</source>
-        <translation> skriv</translation>
+        <translation type="vanished">Skrive</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="591"/>
         <source>Function code</source>
-        <translation>Funktionskode</translation>
+        <translation type="vanished">Funktionskode</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="604"/>
         <source>Address number</source>
-        <translation>Adressenummer</translation>
+        <translation type="vanished">Adressenummer</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
-        <translation>Startadresse</translation>
+        <translation type="vanished">Startadresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="666"/>
         <source>Repeat times</source>
-        <translation>Gentagelser</translation>
+        <translation type="vanished">Gentag gange</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="679"/>
         <source>Timeout</source>
-        <translation>Timeout</translation>
+        <translation type="vanished">Timeout</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="692"/>
         <source>Client Parameters</source>
-        <translation>Klientparametre</translation>
+        <translation type="vanished">Klientparametre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="717"/>
         <source>Input Control(address and value)</source>
-        <translation>Inddata kontrol (adresse og værdi)</translation>
+        <translation type="vanished">Inputkontrol (adresse og værdi)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.ui" line="732"/>
         <source>Input format</source>
-        <translation>Inddataformat</translation>
+        <translation type="vanished">Input format</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
@@ -2455,39 +2238,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>NumberAssistant</name>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
         <source>Raw data</source>
-        <translation>Rådata</translation>
+        <translation type="vanished">Rå data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="39"/>
         <source>Cooked data(Hex)</source>
-        <translation>Tilberedt data (Hex)</translation>
+        <translation type="vanished">Kogte data (Hex)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="53"/>
         <source>Cooked data type</source>
-        <translation>Tilberedt datatype</translation>
+        <translation type="vanished">Kogte datatype</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="89"/>
         <source>Cooked data(Dec)</source>
-        <translation>Tilberedt data (Dec)</translation>
+        <translation type="vanished">Kogte data (dec.)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="102"/>
         <source>Such as: 1, -1, 1.1, -1.1</source>
-        <translation>Såsom: 1, -1, 1.1, -1.1</translation>
+        <translation type="vanished">Såsom: 1, -1, 1,1, -1,1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="109"/>
         <source>Cooked data(Bin)</source>
-        <translation>Tilberedt data (Bin)</translation>
+        <translation type="vanished">Kogte data (Bin)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/number/numberassistant.ui" line="119"/>
         <source>From left to right is high to low</source>
-        <translation>Fra venstre mod højre er høj til lav</translation>
+        <translation type="vanished">Fra venstre mod højre er høj til lav</translation>
     </message>
 </context>
 <context>
@@ -2526,161 +2302,128 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable highlighter</source>
-        <translation>Aktivér fremhæver</translation>
+        <translation type="vanished">Aktiver highlighter</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="33"/>
         <source>Filter text</source>
-        <translation>Filtertekst</translation>
+        <translation type="vanished">Filtrer tekst</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="43"/>
         <source>Hello,Word</source>
-        <translation>Hej, Verden</translation>
+        <translation type="vanished">Hej, Word</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation>Vis statistiker</translation>
+        <translation type="vanished">Vis statistiker</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="60"/>
         <source>Enable filter</source>
-        <translation>Aktivér filter</translation>
+        <translation type="vanished">Aktiver filter</translation>
     </message>
 </context>
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="47"/>
         <source>Cycle interval</source>
-        <translation>Cykelinterval</translation>
+        <translation type="vanished">Cyklusinterval</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="56"/>
         <location filename="../../src/page/page.cpp" line="587"/>
         <source>Open</source>
         <translation>Åbn</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.ui" line="74"/>
-        <location filename="../../src/page/page.ui" line="244"/>
         <source>Settings</source>
-        <translation>Indstillinger</translation>
+        <translation type="vanished">Indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="81"/>
         <source>Clear</source>
-        <translation>Ryd</translation>
+        <translation type="vanished">Klar</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="122"/>
         <source>Rx</source>
-        <translation>Rx</translation>
+        <translation type="vanished">Rx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="129"/>
         <source>Tx</source>
-        <translation>Tx</translation>
+        <translation type="vanished">Tx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="136"/>
         <source>Date</source>
-        <translation>Dato</translation>
+        <translation type="vanished">Dato</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="143"/>
         <source>Flag</source>
-        <translation>Flag</translation>
+        <translation type="vanished">Flag</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="150"/>
         <source>Time</source>
-        <translation>Klokkeslæt</translation>
+        <translation type="vanished">Tid</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="157"/>
         <source>Ms</source>
-        <translation>Ms</translation>
+        <translation type="vanished">Ms</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="177"/>
         <source>Output control</source>
-        <translation>Udgivelseskontrol</translation>
+        <translation type="vanished">Output kontrol</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="199"/>
         <source>Input control</source>
-        <translation>Inddata kontrol</translation>
+        <translation type="vanished">Indgangskontrol</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="208"/>
         <source>Wrap</source>
-        <translation>Wrap</translation>
+        <translation type="vanished">Indpakning</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="215"/>
         <source>Terminal</source>
-        <translation>Terminal</translation>
+        <translation type="vanished">Terminal</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="235"/>
         <source>Communication control</source>
-        <translation>Kommunikationskontrol</translation>
+        <translation type="vanished">Kommunikationskontrol</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
         <source>Send</source>
-        <translation>Send</translation>
+        <translation type="vanished">Sende</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="260"/>
-        <location filename="../../src/page/page.ui" line="267"/>
         <source>Text format</source>
-        <translation>Tekstformat</translation>
+        <translation type="vanished">Tekstformat</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="288"/>
         <source>IO</source>
-        <translation>IO</translation>
+        <translation type="vanished">IO</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="341"/>
         <source>Output</source>
-        <translation>Udgivelse</translation>
+        <translation type="vanished">Produktion</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="514"/>
         <source>Input</source>
-        <translation>Inddata</translation>
+        <translation type="vanished">Input</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="521"/>
         <source>Preset data list</source>
-        <translation>Forudindstillet dataliste</translation>
+        <translation type="vanished">Forudindstillet dataliste</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="563"/>
         <source>Presets</source>
-        <translation>Forudindstillinger</translation>
+        <translation type="vanished">Forudindstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="568"/>
         <source>Emitter</source>
-        <translation>Sender</translation>
+        <translation type="vanished">Udsender</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="573"/>
         <source>Responder</source>
-        <translation>Responder</translation>
+        <translation type="vanished">Svar</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="578"/>
         <source>Transfers</source>
-        <translation>Overførsler</translation>
+        <translation type="vanished">Overførsler</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="319"/>
@@ -2891,54 +2634,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetViewGroupEditor</name>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="45"/>
         <source>Group interval(ms)</source>
-        <translation>Gruppeinterval(ms)</translation>
+        <translation type="vanished">Gruppeinterval(ms)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="68"/>
         <source>Add(update) Group</source>
-        <translation>Tilføj(opdater) gruppe</translation>
+        <translation type="vanished">Tilføj (opdater) gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="75"/>
         <source>Colums(split with space)</source>
-        <translation>Kolonner(split med mellemrum)</translation>
+        <translation type="vanished">Søjler (opdelt med mellemrum)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="87"/>
         <source>Up</source>
-        <translation>Op</translation>
+        <translation type="vanished">Op</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="94"/>
         <source>Down</source>
-        <translation>Ned</translation>
+        <translation type="vanished">Ned</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="103"/>
         <source>Delete Selected</source>
-        <translation>Slet markeret</translation>
+        <translation type="vanished">Slet valgte</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="116"/>
         <source>Untitled</source>
-        <translation>Uden titel</translation>
+        <translation type="vanished">Uden titel</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="139"/>
         <source>Name</source>
-        <translation>Navn</translation>
+        <translation type="vanished">Navn</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
         <source>Disable the group</source>
-        <translation>Deaktiver gruppen</translation>
+        <translation type="vanished">Deaktiver gruppen</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="169"/>
         <source>Item interval(ms)</source>
-        <translation>Vareinterval(ms)</translation>
+        <translation type="vanished">Vareinterval(ms)</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
@@ -2977,6 +2710,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>QObject</name>
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
@@ -3020,7 +2754,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="423"/>
         <location filename="../../src/common/xtools.cpp" line="736"/>
         <location filename="../../src/common/xtools.cpp" line="754"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="48"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="112"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
@@ -3065,25 +2799,25 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="49"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="113"/>
         <source>Even</source>
         <translation>Lige</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="738"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="50"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="114"/>
         <source>Odd</source>
         <translation>Ulig</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="739"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="51"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="115"/>
         <source>Space</source>
         <translation>Plads</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="740"/>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="52"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="116"/>
         <source>Mark</source>
         <translation>Markér</translation>
     </message>
@@ -3128,102 +2862,169 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Applikationen starter...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="469"/>
+        <location filename="../../src/mainwindow.cpp" line="484"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="485"/>
         <source>Round up for .5 and above</source>
         <translation>Afslut opad for .5 og derover</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="471"/>
+        <location filename="../../src/mainwindow.cpp" line="486"/>
         <source>Always round up</source>
         <translation>Afslut altid opad</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="472"/>
+        <location filename="../../src/mainwindow.cpp" line="487"/>
         <source>Always round down</source>
         <translation>Afslut altid nedad</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="473"/>
+        <location filename="../../src/mainwindow.cpp" line="488"/>
         <source>Round up for .75 and above</source>
         <translation>Afslut opad for .75 og derover</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="474"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Don&apos;t round</source>
         <translation>Rund ikke af</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="19"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
+        <source>Warning</source>
+        <translation>Advarsel</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
+        <source>No item selected. Please select an item first.</source>
+        <translation>Der er ikke valgt noget element. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
+        <source>Are you sure to clear all data in the view?</source>
+        <translation>Er du sikker på at rydde alle data i visningen?</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="52"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="144"/>
+        <source>Discrete Inputs</source>
+        <translation>Diskrete indgange</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="54"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="143"/>
+        <source>Coils</source>
+        <translation>Spoler</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="56"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="145"/>
+        <source>Input Registers</source>
+        <translation>Input registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
+        <source>Holding Registers</source>
+        <translation>Holde registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <source>Invalid</source>
+        <translation>Ugyldig</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
         <source>RTU Master</source>
         <translation>RTU Master</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="20"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="70"/>
         <source>RTU Slave</source>
         <translation>RTU Slave</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="21"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="72"/>
         <source>TCP Client</source>
         <translation>TCP-klient</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="22"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="74"/>
         <source>TCP Server</source>
         <translation>TCP-server</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="37"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="189"/>
+        <source>Untitled</source>
+        <translation>Uden titel</translation>
+    </message>
+    <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="38"/>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="39"/>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="40"/>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="58"/>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="60"/>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/common/xmodbuscommon.cpp" line="62"/>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
+        <source>Message</source>
+        <translation>Besked</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
+        <source>Error</source>
+        <translation>Fejl</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="30"/>
+        <source>Request</source>
+        <translation>Anmodning</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="32"/>
+        <source>Response</source>
+        <translation>Svar</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
+        <source>All</source>
+        <translation>Alle</translation>
     </message>
 </context>
 <context>
     <name>QRCodeAssistant</name>
     <message>
-        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="20"/>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="vanished">Eksportere</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcode/qrcodeassistant.ui" line="37"/>
         <source>Generate</source>
-        <translation>Generer</translation>
+        <translation type="vanished">Frembringe</translation>
     </message>
     <message>
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="47"/>
@@ -3293,44 +3094,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ScriptBase</name>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
         <source>Clear log</source>
-        <translation>Ryd log</translation>
+        <translation type="vanished">Ryd log</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="50"/>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation type="vanished">Log</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="72"/>
         <source>Open script directory</source>
-        <translation>Åbn scriptmappe</translation>
+        <translation type="vanished">Åbn script bibliotek</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="85"/>
         <source>New script</source>
-        <translation>Ny script</translation>
+        <translation type="vanished">Nyt script</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="98"/>
         <source>Refresh file list</source>
-        <translation>Opdater fil liste</translation>
+        <translation type="vanished">Opdater fillisten</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="111"/>
         <source>Online manual</source>
-        <translation>Online manual</translation>
+        <translation type="vanished">Online manual</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.ui" line="129"/>
         <source>Script</source>
-        <translation>Script</translation>
+        <translation type="vanished">Manuskript</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.cpp" line="152"/>
@@ -3395,29 +3188,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SearchPanel</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="52"/>
         <source>Search text</source>
-        <translation>Søg tekst</translation>
+        <translation type="vanished">Søg tekst</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="59"/>
         <source>Search</source>
-        <translation>Søg</translation>
+        <translation type="vanished">Søge</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="82"/>
         <source>Regular expression</source>
-        <translation>Regulært udtryk</translation>
+        <translation type="vanished">Regelmæssigt udtryk</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="89"/>
         <source>Case sensitive</source>
-        <translation>Store/små bogstaver følsom</translation>
+        <translation type="vanished">Der skelnes mellem store og små bogstaver</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="96"/>
         <source>Whole word</source>
-        <translation>Hele ord</translation>
+        <translation type="vanished">Hele ord</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
@@ -3530,44 +3318,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="41"/>
         <source>Baud rate</source>
-        <translation>Baudrate</translation>
+        <translation type="vanished">Baud rate</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="57"/>
         <source>Parity</source>
-        <translation>Lige/Ulige</translation>
+        <translation type="vanished">Paritet</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="64"/>
         <source>Ignored busy device</source>
-        <translation>Ignorer optaget enhed</translation>
+        <translation type="vanished">Ignoreret optaget enhed</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="87"/>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Data bits</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="107"/>
         <source>Flow control</source>
-        <translation>Flow kontrol</translation>
+        <translation type="vanished">Flow kontrol</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="120"/>
         <source>Stop bits</source>
-        <translation>Stopbits</translation>
+        <translation type="vanished">Stop bits</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="155"/>
         <source>Port name</source>
-        <translation>Portnavn</translation>
+        <translation type="vanished">Portnavn</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="193"/>
         <source>Enable frame interval</source>
-        <translation>Aktivér rammeinterval</translation>
+        <translation type="vanished">Aktiver rammeinterval</translation>
     </message>
 </context>
 <context>
@@ -3626,79 +3406,64 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SocketUi</name>
     <message>
-        <location filename="../../src/device/socketui.ui" line="32"/>
         <source>Write to</source>
-        <translation>Skriv til</translation>
+        <translation type="vanished">Skriv til</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="39"/>
         <source>Path</source>
-        <translation>Sti</translation>
+        <translation type="vanished">Sti</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="54"/>
         <source>Disconnect all clients</source>
-        <translation>Afslut alle klienter</translation>
+        <translation type="vanished">Afbryd forbindelsen til alle klienter</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="73"/>
         <source>Authentication</source>
-        <translation>Godkendelse</translation>
+        <translation type="vanished">Autentificering</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
-        <translation>Server IP</translation>
+        <translation type="vanished">Server IP</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="93"/>
         <source>Channel</source>
-        <translation>Kanal</translation>
+        <translation type="vanished">Kanal</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="119"/>
         <source>Enable multicast</source>
-        <translation>Aktivér multicast</translation>
+        <translation type="vanished">Aktiver multicast</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="126"/>
         <source>Just multicast</source>
-        <translation>Kun multicast</translation>
+        <translation type="vanished">Bare multicast</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation>post/hej</translation>
+        <translation type="vanished">post/hej</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="145"/>
         <source>Secure Mode</source>
-        <translation>Sikker tilstand</translation>
+        <translation type="vanished">Sikker tilstand</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="152"/>
         <source>Multicast Port</source>
-        <translation>Multicast-port</translation>
+        <translation type="vanished">Multicast port</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="159"/>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="172"/>
         <source>Server port</source>
-        <translation>Serverport</translation>
+        <translation type="vanished">Server port</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="191"/>
         <source>User name</source>
-        <translation>Brugernavn</translation>
+        <translation type="vanished">Brugernavn</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.ui" line="201"/>
         <source>Password</source>
-        <translation>Adgangskode</translation>
+        <translation type="vanished">Adgangskode</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.cpp" line="199"/>
@@ -3717,29 +3482,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>StringAssistant</name>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="20"/>
         <source>Raw data</source>
-        <translation>Rådata</translation>
+        <translation type="vanished">Rå data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="64"/>
         <source>Input format</source>
-        <translation>Inddataformat</translation>
+        <translation type="vanished">Input format</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="77"/>
         <source>Cooked data</source>
-        <translation>Tilberedt data</translation>
+        <translation type="vanished">Kogte data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="100"/>
         <source>Output format</source>
-        <translation>Uddataformat</translation>
+        <translation type="vanished">Outputformat</translation>
     </message>
     <message>
-        <location filename="../../src/tools/string/stringassistant.ui" line="110"/>
         <source>Create</source>
-        <translation>Opret</translation>
+        <translation type="vanished">Skabe</translation>
     </message>
 </context>
 <context>
@@ -3763,50 +3523,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TableView</name>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation>Formular</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation>Eksporter</translation>
+        <translation type="vanished">Eksportere</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="44"/>
         <source>Disable all items</source>
-        <translation>Deaktiver alle elementer</translation>
+        <translation type="vanished">Deaktiver alle elementer</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation>Slet</translation>
+        <translation type="vanished">Slet</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation>Op</translation>
+        <translation type="vanished">Op</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation>Tilføj</translation>
+        <translation type="vanished">Tilføje</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="93"/>
         <location filename="../../src/page/common/tableview.cpp" line="149"/>
         <source>Clear</source>
         <translation>Ryd</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation>Importer</translation>
+        <translation type="vanished">Importere</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation>Ned</translation>
+        <translation type="vanished">Ned</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="150"/>
@@ -3839,79 +3590,64 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TextItemEditor</name>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="14"/>
         <source>Data Editor</source>
-        <translation>Dataeditor</translation>
+        <translation type="vanished">Data Editor</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation>Annuller</translation>
+        <translation type="vanished">Ophæve</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="27"/>
         <source>CRC</source>
-        <translation>CRC</translation>
+        <translation type="vanished">CRC</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="33"/>
         <source>Algorithm</source>
-        <translation>Algoritme</translation>
+        <translation type="vanished">Algoritme</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="43"/>
         <source>Start index</source>
-        <translation>Startindeks</translation>
+        <translation type="vanished">Start indeks</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="53"/>
         <source>End index</source>
-        <translation>Slutindeks</translation>
+        <translation type="vanished">Slutindeks</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="63"/>
         <source>Append</source>
-        <translation>Tilføj</translation>
+        <translation type="vanished">Tilføj</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="70"/>
         <source>Big endian</source>
-        <translation>Big endian</translation>
+        <translation type="vanished">Stor endian</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="83"/>
         <source>Preprocessing</source>
-        <translation>Forbehandling</translation>
+        <translation type="vanished">Forbehandling</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="89"/>
         <source>Prefix</source>
-        <translation>Præfiks</translation>
+        <translation type="vanished">Præfiks</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="99"/>
         <source>Suffix</source>
-        <translation>Suffix</translation>
+        <translation type="vanished">Suffiks</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="109"/>
         <source>Escape character</source>
-        <translation>Escape-tegn</translation>
+        <translation type="vanished">Escape karakter</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="148"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="155"/>
         <source>Payload</source>
-        <translation>Nyttelast</translation>
+        <translation type="vanished">Nyttelast</translation>
     </message>
     <message>
-        <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation type="vanished">Format</translation>
     </message>
 </context>
 <context>
@@ -3971,14 +3707,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcastUi</name>
     <message>
-        <location filename="../../src/device/udpbroadcastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>Vælg et netværksinterface:</translation>
+        <translation type="vanished">Vælg en netværksgrænseflade:</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpbroadcastui.ui" line="58"/>
         <source>Broadcast Port</source>
-        <translation>Broadcast-port</translation>
+        <translation type="vanished">Broadcast Port</translation>
     </message>
     <message>
         <location filename="../../src/device/udpbroadcastui.cpp" line="23"/>
@@ -4012,80 +3746,347 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticastUi</name>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="32"/>
         <source>Selecte a network interface:</source>
-        <translation>Vælg et netværksinterface:</translation>
+        <translation type="vanished">Vælg en netværksgrænseflade:</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="55"/>
         <source>Multicast IP</source>
-        <translation>Multicast IP</translation>
+        <translation type="vanished">Multicast IP</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="85"/>
         <source>Multicast Port</source>
-        <translation>Multicast-port</translation>
+        <translation type="vanished">Multicast port</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
-        <translation>Multicast loopback</translation>
+        <translation type="vanished">Multicast loopback</translation>
     </message>
 </context>
 <context>
-    <name>xModbus::ModbusDeviceListView</name>
+    <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="37"/>
-        <source>Coils</source>
-        <translation>Spoler</translation>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
+        <source>Modbus Tool Bar</source>
+        <translation>Modbus værktøjslinje</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="41"/>
-        <source>Discrete Inputs</source>
-        <translation>Diskrete indgange</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="45"/>
-        <source>Holding Registers</source>
-        <translation>Holde registre</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistmodel.cpp" line="49"/>
-        <source>Input Registers</source>
-        <translation>Inddataregistre</translation>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
+        <source>Example Action</source>
+        <translation>Eksempel handling</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="43"/>
         <source>New RTU Device</source>
-        <translation>Ny RTU-enhed</translation>
+        <translation type="vanished">Ny RTU-enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="44"/>
         <source>New TCP Device</source>
-        <translation>Ny TCP-enhed</translation>
+        <translation type="vanished">Ny TCP-enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="46"/>
         <source>New Coils</source>
-        <translation>Ny spole</translation>
+        <translation type="vanished">Nye spoler</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="47"/>
         <source>New Discrete Inputs</source>
-        <translation>Ny diskret indgang</translation>
+        <translation type="vanished">Nye diskrete indgange</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="48"/>
         <source>New Holding Registers</source>
-        <translation>Ny holde register</translation>
+        <translation type="vanished">Nye Beholdningsregistre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/devicelist/devicelistview.cpp" line="49"/>
         <source>New Input Registers</source>
-        <translation>Ny inddata register</translation>
+        <translation type="vanished">Nye inputregistre</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusDevice</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="122"/>
+        <source>Modbus device connected.</source>
+        <translation>Modbus-enhed tilsluttet.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
+        <source>Modbus device disconnected.</source>
+        <translation>Modbus-enhed afbrudt.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
+        <source>Modbus device error: %1</source>
+        <translation>Modbus-enhedsfejl: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="153"/>
+        <source>Failed to connect Modbus device: %1</source>
+        <translation>Kunne ikke forbinde Modbus-enhed: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="400"/>
+        <source>Failed to send read request: %1</source>
+        <translation>Kunne ikke sende læseanmodning: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="426"/>
+        <source>Read error: %1</source>
+        <translation>Læsefejl: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
+        <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
+        <translation>Læs %1-svar: Serveradresse=%2, startadresse=%3, værdiantal=%4</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusDeviceListView</name>
+    <message>
+        <source>Coils</source>
+        <translation type="vanished">Spoler</translation>
+    </message>
+    <message>
+        <source>Discrete Inputs</source>
+        <translation type="vanished">Diskrete indgange</translation>
+    </message>
+    <message>
+        <source>Holding Registers</source>
+        <translation type="vanished">Holde registre</translation>
+    </message>
+    <message>
+        <source>Input Registers</source>
+        <translation type="vanished">Input registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <source>New Modbus Device</source>
+        <translation>Ny Modbus-enhed</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
+        <source>Remove the Selected Item</source>
+        <translation>Fjern det valgte element</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="205"/>
+        <source>Remove Device</source>
+        <translation>Fjern enhed</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <source>The device is running. Do you want to stop and remove it?</source>
+        <translation>Enheden kører. </translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="252"/>
+        <source>Rename Register Table</source>
+        <translation>Omdøb registertabel</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <source>Please input the new name for the register table:</source>
+        <translation>Indtast venligst det nye navn til registertabellen:</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <source>Rename Register Item</source>
+        <translation>Omdøb registreringselement</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <source>Please input the new name for the register item:</source>
+        <translation>Indtast venligst det nye navn for registerelementet:</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="278"/>
+        <source>Edit Modbus Device</source>
+        <translation>Rediger Modbus-enhed</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <source>Change Device parameters</source>
+        <translation>Skift enhedsparametre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <source>The device is running. Restarting it to apply new parameters now?</source>
+        <translation>Enheden kører. </translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusLogModel</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="168"/>
+        <source>Time</source>
+        <translation>Tid</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="170"/>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="172"/>
+        <source>Message</source>
+        <translation>Besked</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusLogView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="132"/>
+        <source>Clear Log</source>
+        <translation>Ryd log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="133"/>
+        <source>Are you sure you want to clear the log?</source>
+        <translation>Er du sikker på, at du vil rydde loggen?</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="145"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
+        <source>Save Log</source>
+        <translation>Gem log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
+        <source>Log Files (*.json)</source>
+        <translation>Logfiler (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="156"/>
+        <source>Failed to open file for writing: %1</source>
+        <translation>Kunne ikke åbne filen til skrivning: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="179"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="201"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="210"/>
+        <source>Open Log</source>
+        <translation>Åbn Log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="190"/>
+        <source>Failed to open file for reading: %1</source>
+        <translation>Kunne ikke åbne filen til læsning: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="202"/>
+        <source>Failed to parse log file: %1 at offset %2</source>
+        <translation>Kunne ikke parse logfil: %1 ved offset %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
+        <source>Invalid log file format: root element is not an array.</source>
+        <translation>Ugyldigt logfilformat: rodelementet er ikke et array.</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusRegisterTable</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="200"/>
+        <source>Register Address</source>
+        <translation>Registrer adresse</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
+        <source>Name</source>
+        <translation>Navn</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
+        <source>Server Address</source>
+        <translation>Server adresse</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
+        <source>Unit</source>
+        <translation>Enhed</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
+        <source>Description</source>
+        <translation>Beskrivelse</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
+        <source>Min</source>
+        <translation>Min</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
+        <source>Max</source>
+        <translation>Maks</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
+        <source>Decimals</source>
+        <translation>Decimaler</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
+        <source>Value</source>
+        <translation>Værdi</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::ModbusRegisterTableView</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="162"/>
+        <source>Save Registers</source>
+        <translation>Gem registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="164"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="188"/>
+        <source>json (*.json)</source>
+        <translation>json (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <source>Error</source>
+        <translation>Fejl</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="172"/>
+        <source>Failed to open file for saving.</source>
+        <translation>Filen kunne ikke åbnes til lagring.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <source>Load Registers</source>
+        <translation>Indlæs registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="196"/>
+        <source>Failed to open file for loading.</source>
+        <translation>Filen kunne ikke åbnes til indlæsning.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
+        <source>Invalid JSON format in the file.</source>
+        <translation>Ugyldigt JSON-format i filen.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <source>Import Registers</source>
+        <translation>Import registre</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="214"/>
+        <source>The register table is not empty. Do you want to merge existing registers?</source>
+        <translation>Registertabellen er ikke tom. </translation>
     </message>
 </context>
 </TS>
