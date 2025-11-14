@@ -49,7 +49,7 @@ private:
         QAction *remove;
         QAction *group;
         QAction *registers;
-    } m_addActions;
+    } m_actions;
 
 private:
     Ui::ModbusDeviceListView *ui;

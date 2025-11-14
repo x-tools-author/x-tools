@@ -26,6 +26,7 @@
 #include "modbusdevicelistmodel.h"
 #include "modbusdevicelistmodelfilter.h"
 #include "modbusregister.h"
+#include "modbusregistereditor.h"
 #include "modbusregistergroupeditor.h"
 #include "modbusregistertable.h"
 #include "modbusregistertableview.h"
@@ -70,11 +71,11 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
 
     QMenu *addMenu = new QMenu(this);
     // clang-format off
-    m_addActions.device = addMenu->addAction(tr("New Modbus Device"), this, &ModbusDeviceListView::onNewDevice);
-    m_addActions.group = addMenu->addAction(tr("New Register Group"), this, &ModbusDeviceListView::onNewRegisterGroup);
-    m_addActions.registers = addMenu->addAction(tr("New Register Table"), this, &ModbusDeviceListView::onNewRegisters);
+    m_actions.device = addMenu->addAction(tr("New Modbus Device"), this, &ModbusDeviceListView::onNewDevice);
+    m_actions.group = addMenu->addAction(tr("New Register Group"), this, &ModbusDeviceListView::onNewRegisterGroup);
+    m_actions.registers = addMenu->addAction(tr("New Registers"), this, &ModbusDeviceListView::onNewRegisters);
     addMenu->addSeparator();
-    m_addActions.remove = addMenu->addAction(tr("Remove the Selected Item"), this, &ModbusDeviceListView::onRemove);
+    m_actions.remove = addMenu->addAction(tr("Remove the Selected Item"), this, &ModbusDeviceListView::onRemove);
     // clang-format on
     ui->toolButtonAdd->setMenu(addMenu);
     ui->toolButtonAdd->setPopupMode(QToolButton::MenuButtonPopup);
@@ -146,21 +147,12 @@ QList<ModbusRegisterTableView *> ModbusDeviceListView::registerTableViews()
 
 void ModbusDeviceListView::contextMenuEvent(QContextMenuEvent *event)
 {
-    QPoint pos = ui->treeView->mapFrom(this, event->pos());
     QMenu contextMenu(this);
-    QModelIndex eventIndex = ui->treeView->indexAt(pos);
-    if (!eventIndex.isValid()) {
-        contextMenu.addAction(m_addActions.device);
-    } else {
-        QModelIndex index = ui->treeView->currentIndex();
-        int depth = this->treeItemDepth(index);
-        if (depth == MODBUS_INVALID_DEPTH) {
-            contextMenu.addAction(m_addActions.device);
-        } else {
-            contextMenu.addAction(m_addActions.remove);
-        }
-    }
-
+    contextMenu.addAction(m_actions.device);
+    contextMenu.addAction(m_actions.group);
+    contextMenu.addAction(m_actions.registers);
+    contextMenu.addSeparator();
+    contextMenu.addAction(m_actions.remove);
     contextMenu.exec(event->globalPos());
 }
 
@@ -210,7 +202,28 @@ void ModbusDeviceListView::onNewRegisterGroup()
     }
 }
 
-void ModbusDeviceListView::onNewRegisters() {}
+void ModbusDeviceListView::onNewRegisters()
+{
+    QModelIndex currentIndex = ui->treeView->currentIndex();
+    if (!currentIndex.isValid()) {
+        showEmptySelectedItemWarning();
+        return;
+    }
+
+    QModelIndex srcIndex = m_filter->mapToSource(currentIndex);
+    QStandardItem *item = m_model->itemFromIndex(srcIndex);
+    if (!item) {
+        showUnknownErrorMessage();
+        return;
+    }
+
+    ModbusRegisterEditor editor(xMainWindow);
+    editor.setModal(true);
+    int ret = editor.exec();
+    if (ret != QDialog::Accepted) {
+        return;
+    }
+}
 
 void ModbusDeviceListView::onRemove()
 {
@@ -222,7 +235,16 @@ void ModbusDeviceListView::onRemove()
     const QModelIndex srcIndex = m_filter->mapToSource(index);
     QStandardItem *item = m_model->itemFromIndex(srcIndex);
     if (!item) {
-        qInfo() << "ModbusDeviceListView::onRemove: item is nullptr";
+        showEmptySelectedItemWarning();
+        return;
+    }
+
+    int ret = QMessageBox::question(this,
+                                    tr("Remove Item"),
+                                    tr("Are you sure to remove the selected item?"),
+                                    QMessageBox::Yes | QMessageBox::No,
+                                    QMessageBox::No);
+    if (ret != QMessageBox::Yes) {
         return;
     }
 
@@ -230,11 +252,12 @@ void ModbusDeviceListView::onRemove()
     if (itemType == xItemTypeDevice) {
         ModbusDevice *device = item->data(xItemTypeDevice).value<ModbusDevice *>();
         if (!device) {
-            qWarning() << "ModbusDeviceListView::onRemove: device is nullptr";
+            showUnknownErrorMessage();
+            return;
         }
 
         if (device->isRunning()) {
-            int ret = QMessageBox::question(
+            ret = QMessageBox::question(
                 this,
                 tr("Remove Device"),
                 tr("The device is running. Do you want to stop and remove it?"),
@@ -384,18 +407,12 @@ void ModbusDeviceListView::onItemClicked(const QModelIndex &index)
 
 void ModbusDeviceListView::onAddMenuAboutToShow()
 {
-#if 0
-    QModelIndex currentIndex = ui->treeView->currentIndex();
-    int d = treeItemDepth(currentIndex);
-
-    bool isDeviceSelected = (d == MODBUS_DEVICE_DEPTH);
-    bool isRegGroupSelected = (d == MODBUS_TABLE_DEPTH);
-#endif
+    // Nothing to do yet...
 }
 
 void ModbusDeviceListView::onAddMenuAboutToHide()
 {
-    m_addActions.device->setEnabled(true);
+    // Nothing to do yet...
 }
 
 void ModbusDeviceListView::onStartButtonClicked()
