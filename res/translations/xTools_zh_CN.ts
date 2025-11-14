@@ -4927,7 +4927,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation>寄存器类型</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
