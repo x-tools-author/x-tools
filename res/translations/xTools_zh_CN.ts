@@ -4780,7 +4780,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation>日志视图</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
