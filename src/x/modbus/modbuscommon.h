@@ -22,6 +22,7 @@ namespace xModbus {
 // -------------------------------------------------------------------------------------------------
 QWidget *topLevelMainWindow();
 void showEmptySelectedItemWarning();
+void showUnknownErrorMessage();
 int showClearViewDataWarning();
 
 // -------------------------------------------------------------------------------------------------

@@ -26,6 +26,7 @@
 #include "modbusdevicelistmodel.h"
 #include "modbusdevicelistmodelfilter.h"
 #include "modbusregister.h"
+#include "modbusregistergroupeditor.h"
 #include "modbusregistertable.h"
 #include "modbusregistertableview.h"
 
@@ -70,6 +71,8 @@ ModbusDeviceListView::ModbusDeviceListView(QWidget *parent)
     QMenu *addMenu = new QMenu(this);
     // clang-format off
     m_addActions.device = addMenu->addAction(tr("New Modbus Device"), this, &ModbusDeviceListView::onNewDevice);
+    m_addActions.group = addMenu->addAction(tr("New Register Group"), this, &ModbusDeviceListView::onNewRegisterGroup);
+    m_addActions.registers = addMenu->addAction(tr("New Register Table"), this, &ModbusDeviceListView::onNewRegisters);
     addMenu->addSeparator();
     m_addActions.remove = addMenu->addAction(tr("Remove the Selected Item"), this, &ModbusDeviceListView::onRemove);
     // clang-format on
@@ -177,6 +180,37 @@ void ModbusDeviceListView::onNewDevice()
     ui->treeView->expand(m_filter->mapFromSource(index));
     emit tableViewsUpdated();
 }
+
+void ModbusDeviceListView::onNewRegisterGroup()
+{
+    QModelIndex currentIndex = ui->treeView->currentIndex();
+    if (!currentIndex.isValid()) {
+        showEmptySelectedItemWarning();
+        return;
+    }
+
+    QModelIndex srcIndex = m_filter->mapToSource(currentIndex);
+    QStandardItem *item = m_model->itemFromIndex(srcIndex);
+    if (!item) {
+        showUnknownErrorMessage();
+        return;
+    }
+
+    ModbusRegisterGroupEditor editor(xMainWindow);
+    editor.setModal(true);
+    int ret = editor.exec();
+    if (ret != QDialog::Accepted) {
+        return;
+    }
+
+    int itemType = item->data(xItemTypeRole).toInt();
+    if (itemType == xItemTypeDevice) {
+    } else if (itemType == xItemTypeTableView) {
+    } else if (itemType == xItemTypeRegister) {
+    }
+}
+
+void ModbusDeviceListView::onNewRegisters() {}
 
 void ModbusDeviceListView::onRemove()
 {

@@ -47,6 +47,8 @@ private:
     {
         QAction *device;
         QAction *remove;
+        QAction *group;
+        QAction *registers;
     } m_addActions;
 
 private:
@@ -56,6 +58,8 @@ private:
 
 private:
     void onNewDevice();
+    void onNewRegisterGroup();
+    void onNewRegisters();
     void onRemove();
     void onCloseAllItems();
     void onOpenAllItems();

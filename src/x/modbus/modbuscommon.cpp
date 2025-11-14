@@ -36,6 +36,14 @@ void showEmptySelectedItemWarning()
                          QMessageBox::Ok);
 }
 
+void showUnknownErrorMessage()
+{
+    QMessageBox::critical(topLevelMainWindow(),
+                          QObject::tr("Error"),
+                          QObject::tr("An unknown error occurred."),
+                          QMessageBox::Ok);
+}
+
 int showClearViewDataWarning()
 {
     return QMessageBox::warning(topLevelMainWindow(),
