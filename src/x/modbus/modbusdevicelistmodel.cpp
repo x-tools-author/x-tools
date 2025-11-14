@@ -17,7 +17,7 @@
 #include "modbusregistertable.h"
 #include "modbusregistertableview.h"
 
-#define DEFAULT_TABLE_QUANTITY 64
+#define DEFAULT_TABLE_QUANTITY 10
 
 namespace xModbus {
 
