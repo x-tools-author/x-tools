@@ -4942,17 +4942,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
         <source>Min</source>
-        <translation>最小</translation>
+        <translation>最小值</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
         <source>Max</source>
-        <translation>最大限度</translation>
+        <translation>最大值</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
         <source>Decimals</source>
-        <translation>小数</translation>
+        <translation>小数位</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
