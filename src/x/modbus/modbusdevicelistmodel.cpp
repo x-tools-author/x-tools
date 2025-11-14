@@ -182,23 +182,28 @@ QStandardItem *ModbusDeviceListModel::newRegister(QStandardItem *tableItem,
     return registerItem;
 }
 
-void ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
+QList<QStandardItem *> ModbusDeviceListModel::newDefaultTables(QStandardItem *deviceItem)
 {
     QList<QModbusDataUnit::RegisterType> types = {QModbusDataUnit::Coils,
                                                   QModbusDataUnit::DiscreteInputs,
                                                   QModbusDataUnit::HoldingRegisters,
                                                   QModbusDataUnit::InputRegisters};
+
+    QList<QStandardItem *> tableViewItems;
     for (QModbusDataUnit::RegisterType type : types) {
         ModbusDevice *device = deviceItem->data(ItemTypeDevice).value<ModbusDevice *>();
         ModbusRegisterTableView *tableView = new ModbusRegisterTableView();
         tableView->setWindowTitle(registerTypeToString(type));
         QStandardItem *tableItem = new QStandardItem(registerTypeToString(type));
+        tableViewItems.append(tableItem);
         tableItem->setData(int(ItemTypeTableView), xItemTypeRole);
         tableItem->setData(QVariant::fromValue(device), ItemTypeDevice);
         tableItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
         deviceItem->appendRow(tableItem);
         newDefaultRegisters(tableItem, type);
     }
+
+    return tableViewItems;
 }
 
 void ModbusDeviceListModel::newDefaultRegisters(QStandardItem *tableItem,

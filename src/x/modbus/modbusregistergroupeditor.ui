@@ -7,17 +7,48 @@
     <x>0</x>
     <y>0</y>
     <width>348</width>
-    <height>239</height>
+    <height>289</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>New Register Group</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Start address</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLineEdit" name="lineEditName">
+     <property name="placeholderText">
+      <string>Untitled</string>
+     </property>
+    </widget>
+   </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Quantity</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Register group name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>
@@ -38,44 +69,30 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Start address</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Register group name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLineEdit" name="lineEditName">
-     <property name="placeholderText">
-      <string>Untitled</string>
+   <item row="5" column="0">
+    <widget class="QSpinBox" name="spinBoxStartAddress">
+     <property name="maximum">
+      <number>65535</number>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QComboBox" name="comboBoxType"/>
    </item>
-   <item row="5" column="0">
-    <widget class="QSpinBox" name="spinBoxStartAddress">
+   <item row="8" column="0">
+    <widget class="QLabel" name="labelServerAddress">
+     <property name="text">
+      <string>Server address</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QSpinBox" name="spinBoxServerAddress">
      <property name="maximum">
-      <number>65535</number>
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>1</number>
      </property>
     </widget>
    </item>

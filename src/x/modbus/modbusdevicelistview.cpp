@@ -126,6 +126,7 @@ void ModbusDeviceListView::load(const QJsonObject &obj)
         ui->treeView->expandAll();
     }
 
+    onCloseAllItems();
     emit tableViewsUpdated();
 }
 
@@ -139,6 +140,8 @@ QList<ModbusRegisterTableView *> ModbusDeviceListView::registerTableViews()
             auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
             if (tableView) {
                 views.append(tableView);
+            } else {
+                qWarning() << "Can not get ModbusRegisterTableView from item:" << tableItem->text();
             }
         }
     }
@@ -184,7 +187,7 @@ void ModbusDeviceListView::onNewRegisterGroup()
     QModelIndex srcIndex = m_filter->mapToSource(currentIndex);
     QStandardItem *item = m_model->itemFromIndex(srcIndex);
     if (!item) {
-        showUnknownErrorMessage();
+        qWarning() << "Can not get the selected item.";
         return;
     }
 
@@ -195,11 +198,53 @@ void ModbusDeviceListView::onNewRegisterGroup()
         return;
     }
 
-    int itemType = item->data(xItemTypeRole).toInt();
-    if (itemType == xItemTypeDevice) {
-    } else if (itemType == xItemTypeTableView) {
-    } else if (itemType == xItemTypeRegister) {
+    ModbusDevice *device = item->data(xItemTypeDevice).value<ModbusDevice *>();
+    if (!device) {
+        qWarning() << "Can not get ModbusDevice from the selected item.";
+        return;
     }
+
+    ModbusRegisterGroupEditorParameters editorParams = editor.parameters();
+    ModbusRegisterTableView *tableView = new ModbusRegisterTableView();
+    tableView->setWindowTitle(editorParams.name);
+    QStandardItem *tableViewItem = new QStandardItem(editorParams.name);
+    tableViewItem->setData(QVariant::fromValue(device), xItemTypeDevice);
+    tableViewItem->setData(QVariant::fromValue(tableView), xItemTypeTableView);
+    tableViewItem->setData(int(xItemTypeTableView), xItemTypeRole);
+
+    int startAddress = editorParams.startAddress;
+    for (int i = 0; i < editorParams.quantity; ++i) {
+        ModbusRegister *reg = new ModbusRegister();
+        int address = startAddress + i;
+        QString name = QString("0x") + QString("%1").arg(address, 4, 16, QChar('0')).toUpper();
+        reg->setName(name);
+        reg->setAddress(address);
+        reg->setType(editorParams.type);
+        if (device->isClient()) {
+            reg->setServerAddress(editorParams.serverAddress);
+        } else {
+            reg->setServerAddress(device->parameters().serverAddress);
+        }
+
+        QStandardItem *regItem = new QStandardItem(reg->name());
+        regItem->setData(QVariant::fromValue(device), xItemTypeDevice);
+        regItem->setData(QVariant::fromValue(tableView), xItemTypeTableView);
+        regItem->setData(QVariant::fromValue(reg), xItemTypeRegister);
+        regItem->setData(int(xItemTypeRegister), xItemTypeRole);
+        tableViewItem->appendRow(regItem);
+
+        ModbusRegisterTable *regTable = tableView->registerTable();
+        regTable->addRegisterItem(reg);
+    }
+
+    QStandardItem *deviceItem = itemFromDevice(device);
+    if (!deviceItem) {
+        qWarning() << "Can not get device item from device.";
+        return;
+    }
+
+    deviceItem->appendRow(tableViewItem);
+    emit tableViewsUpdated();
 }
 
 void ModbusDeviceListView::onNewRegisters()

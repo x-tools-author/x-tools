@@ -40,7 +40,7 @@ public:
     QStandardItem *newDevice(const QJsonObject &parameters);
     QStandardItem *newTableView(QStandardItem *deviceItem, const QJsonObject &parameters);
     QStandardItem *newRegister(QStandardItem *tableItem, const QJsonObject &parameters);
-    void newDefaultTables(QStandardItem *deviceItem);
+    QList<QStandardItem *> newDefaultTables(QStandardItem *deviceItem);
     void newDefaultRegisters(QStandardItem *tableItem, QModbusDataUnit::RegisterType type);
 
 public:
