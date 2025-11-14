@@ -2608,6 +2608,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>ModbusRegisterEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="14"/>
+        <source>New Registers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="50"/>
+        <source>Start address</source>
+        <translation type="unfinished">Начальный адрес</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Server address</source>
+        <translation type="unfinished">Адрес сервера</translation>
+    </message>
+</context>
+<context>
+    <name>ModbusRegisterGroupEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="14"/>
+        <source>New Register Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <source>Register type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <source>Start address</source>
+        <translation type="unfinished">Начальный адрес</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <source>Register group name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <source>Untitled</source>
+        <translation type="unfinished">Без названия</translation>
+    </message>
+</context>
+<context>
     <name>ModbusRegisterTableView</name>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
@@ -2761,7 +2817,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="588"/>
+        <location filename="../../src/page/page.cpp" line="593"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
@@ -2889,43 +2945,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="320"/>
-        <location filename="../../src/page/page.cpp" line="764"/>
+        <location filename="../../src/page/page.cpp" line="325"/>
+        <location filename="../../src/page/page.cpp" line="769"/>
         <source>Error: No device is opened.</source>
         <translation>Ошибка: Устройство не открыто.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="422"/>
+        <location filename="../../src/page/page.cpp" line="427"/>
         <source>Disable</source>
         <translation>Отключить</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="579"/>
+        <location filename="../../src/page/page.cpp" line="584"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="595"/>
+        <location filename="../../src/page/page.cpp" line="600"/>
         <source>Error Occurred</source>
         <translation>Произошла ошибка</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="601"/>
+        <location filename="../../src/page/page.cpp" line="606"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="688"/>
+        <location filename="../../src/page/page.cpp" line="693"/>
         <source>Hide Scripts Panels</source>
         <translation>Скрыть панели скриптов</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="689"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Show Scripts Panels</source>
         <translation>Показать панели скриптов</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="792"/>
+        <location filename="../../src/page/page.cpp" line="797"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3180,10 +3236,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>ProtocolFactory</name>
+    <message>
+        <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
@@ -3227,7 +3291,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="423"/>
         <location filename="../../src/common/xtools.cpp" line="736"/>
         <location filename="../../src/common/xtools.cpp" line="754"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="112"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Нет</translation>
     </message>
@@ -3272,25 +3336,25 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="113"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Четный</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="738"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="114"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Нечетный</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="739"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="115"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Пробел</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="740"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="116"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Метка</translation>
     </message>
@@ -3366,7 +3430,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
@@ -3378,60 +3442,65 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
+        <source>An unknown error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
         <source>Are you sure to clear all data in the view?</source>
         <translation>Вы уверены, что удалите все данные в представлении?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="52"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="144"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="152"/>
         <source>Discrete Inputs</source>
         <translation>Дискретные входы</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="54"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="143"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="62"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="151"/>
         <source>Coils</source>
         <translation>Катушки</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="56"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="145"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="64"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="153"/>
         <source>Input Registers</source>
         <translation>Входные регистры</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="66"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="154"/>
         <source>Holding Registers</source>
         <translation>Регистры хранения</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
         <source>Invalid</source>
         <translation>Неверный</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>RTU Master</source>
         <translation>RTU Главный</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="70"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="78"/>
         <source>RTU Slave</source>
         <translation>RTU Условный</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="80"/>
         <source>TCP Client</source>
         <translation>TCP Клиент</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="74"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="82"/>
         <source>TCP Server</source>
         <translation>TCP Сервер</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="197"/>
         <source>Untitled</source>
         <translation>Без названия</translation>
     </message>
@@ -3469,6 +3538,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Сообщение</translation>
     </message>
     <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
         <source>Error</source>
         <translation>Ошибка</translation>
@@ -4410,67 +4480,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Входные регистры</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>New Modbus Device</source>
         <translation>Новое устройство Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
+        <source>New Register Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
+        <source>New Registers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
         <source>Remove the Selected Item</source>
         <translation>Удалить выбранный элемент</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <source>Remove Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <source>Are you sure to remove the selected item?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
         <source>Remove Device</source>
         <translation>Удалить устройство</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="207"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>Устройство работает. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
         <source>Rename Register Table</source>
         <translation>Переименование таблицы регистров</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="254"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
         <source>Please input the new name for the register table:</source>
         <translation>Пожалуйста, введите новое имя для таблицы регистров:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
         <source>Rename Register Item</source>
         <translation>Переименовать элемент регистрации</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
         <source>Please input the new name for the register item:</source>
         <translation>Пожалуйста, введите новое имя для элемента реестра:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="279"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
         <source>Edit Modbus Device</source>
         <translation>Редактировать устройство Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
         <source>Change Device parameters</source>
         <translation>Изменить параметры устройства</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Устройство работает. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="556"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
         <source>TCP Client Device</source>
         <translation>TCP-клиентское устройство</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="562"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
         <source>TCP Server Device</source>
         <translation>TCP-серверное устройство</translation>
     </message>

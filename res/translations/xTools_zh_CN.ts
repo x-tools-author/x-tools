@@ -2802,6 +2802,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>ModbusRegisterEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="14"/>
+        <source>New Registers</source>
+        <translation>新建寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="50"/>
+        <source>Start address</source>
+        <translation>起始地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
+        <source>Quantity</source>
+        <translation>寄存器数量</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Server address</source>
+        <translation>服务器地址</translation>
+    </message>
+</context>
+<context>
+    <name>ModbusRegisterGroupEditor</name>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="14"/>
+        <source>New Register Group</source>
+        <translation>新建寄存器分组</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <source>Quantity</source>
+        <translation>寄存器数量</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <source>Register type</source>
+        <translation>寄存器类型</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <source>Start address</source>
+        <translation>起始地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <source>Register group name</source>
+        <translation>寄存器分组名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <source>Untitled</source>
+        <translation>未命名</translation>
+    </message>
+</context>
+<context>
     <name>ModbusRegisterTableView</name>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
@@ -2816,7 +2872,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation>添加注册项</translation>
+        <translation>添加寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
@@ -2844,7 +2900,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation>导入登记表</translation>
+        <translation>导入寄存器表</translation>
     </message>
 </context>
 <context>
@@ -2968,7 +3024,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="588"/>
+        <location filename="../../src/page/page.cpp" line="593"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -3087,7 +3143,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="422"/>
+        <location filename="../../src/page/page.cpp" line="427"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
@@ -3120,38 +3176,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="320"/>
-        <location filename="../../src/page/page.cpp" line="764"/>
+        <location filename="../../src/page/page.cpp" line="325"/>
+        <location filename="../../src/page/page.cpp" line="769"/>
         <source>Error: No device is opened.</source>
         <translation>错误：没有打开的设备。</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="579"/>
+        <location filename="../../src/page/page.cpp" line="584"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="595"/>
+        <location filename="../../src/page/page.cpp" line="600"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="601"/>
+        <location filename="../../src/page/page.cpp" line="606"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="688"/>
+        <location filename="../../src/page/page.cpp" line="693"/>
         <source>Hide Scripts Panels</source>
         <translation>隐藏脚本面板</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="689"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Show Scripts Panels</source>
         <translation>显示脚本面本</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="792"/>
+        <location filename="../../src/page/page.cpp" line="797"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
     </message>
@@ -3406,6 +3462,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>ProtocolFactory</name>
+    <message>
+        <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Serial Port</source>
@@ -3429,7 +3493,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
         <source>Warning</source>
         <translation>警告</translation>
@@ -3441,60 +3505,65 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
+        <source>An unknown error occurred.</source>
+        <translation>出现未知错误。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
         <source>Are you sure to clear all data in the view?</source>
         <translation>您确定清除视图中的所有数据吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="52"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="144"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="152"/>
         <source>Discrete Inputs</source>
         <translation>离散输入</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="54"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="143"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="62"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="151"/>
         <source>Coils</source>
         <translation>线圈</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="56"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="145"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="64"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="153"/>
         <source>Input Registers</source>
         <translation>输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="58"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="146"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="66"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="154"/>
         <source>Holding Registers</source>
         <translation>保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
         <source>Invalid</source>
         <translation>无效的</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>RTU Master</source>
         <translation>RTU主机</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="70"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="78"/>
         <source>RTU Slave</source>
         <translation>RTU从机</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="80"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="74"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="82"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="197"/>
         <source>Untitled</source>
         <translation>无题</translation>
     </message>
@@ -3589,7 +3658,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xtools.cpp" line="423"/>
         <location filename="../../src/common/xtools.cpp" line="736"/>
         <location filename="../../src/common/xtools.cpp" line="754"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="112"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>无</translation>
     </message>
@@ -3627,25 +3696,25 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="113"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="738"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="114"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="739"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="115"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>0校验</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="740"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="116"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>1校验</translation>
     </message>
@@ -3724,7 +3793,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/common/crc.cpp" line="90"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
@@ -3739,6 +3808,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>信息</translation>
     </message>
     <message>
+        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
         <source>Error</source>
         <translation>错误</translation>
@@ -4771,67 +4841,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>New Modbus Device</source>
         <translation>新的 Modbus 设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
+        <source>New Register Group</source>
+        <translation>新建寄存器分组</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
+        <source>New Registers</source>
+        <translation>新建寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
         <source>Remove the Selected Item</source>
         <translation>删除所选项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <source>Remove Item</source>
+        <translation>删除项目</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <source>Are you sure to remove the selected item?</source>
+        <translation>您确定要移除所选的项目吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
         <source>Remove Device</source>
         <translation>删除设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="207"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
         <source>The device is running. Do you want to stop and remove it?</source>
-        <translation>设备正在运行。</translation>
+        <translation>设备正在运行。您想要移除设备吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="253"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
         <source>Rename Register Table</source>
         <translation>重命名寄存器表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="254"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
         <source>Please input the new name for the register table:</source>
         <translation>请输入寄存器表的新名称：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
         <source>Rename Register Item</source>
         <translation>重命名注册项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
         <source>Please input the new name for the register item:</source>
         <translation>请输入注册项的新名称：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="279"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
         <source>Edit Modbus Device</source>
         <translation>编辑 Modbus 设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
         <source>Change Device parameters</source>
         <translation>更改设备参数</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
-        <translation>设备正在运行。</translation>
+        <translation>设备正在运行。重启设备以使得新参数生效？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="556"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
         <source>TCP Client Device</source>
         <translation>TCP客户端设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="562"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
         <source>TCP Server Device</source>
         <translation>TCP 服务器设备</translation>
     </message>
@@ -5008,7 +5098,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
-        <translation>寄存器表不为空。</translation>
+        <translation>寄存器表不为空。您想要合并数据吗？</translation>
     </message>
 </context>
 </TS>
