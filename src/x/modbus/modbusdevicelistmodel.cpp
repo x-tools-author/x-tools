@@ -110,6 +110,11 @@ void ModbusDeviceListModel::load(const QJsonArray &array)
             auto tableView = tableItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
             auto registers = tableView->registerTable()->registerItems();
 
+            connect(tableView->registerTable(),
+                    &ModbusRegisterTable::dataModified,
+                    this,
+                    [=](const QModelIndex &index) { emit dataModified(tableItem, index); });
+
             for (ModbusRegister *reg : registers) {
                 QStandardItem *registerItem = new QStandardItem(reg->name());
                 registerItem->setData(int(ItemTypeRegister), xItemTypeRole);
@@ -178,7 +183,7 @@ QStandardItem *ModbusDeviceListModel::newRegister(QStandardItem *tableItem,
     registerItem->setData(QVariant::fromValue(reg), ItemTypeRegister);
     tableItem->appendRow(registerItem);
 
-    //connect(reg, &ModbusRegister::nameChanged, this, [=]() { registerItem->setText(reg->name); });
+    //connect(reg, &ModbusRegister::nameChanged, this, [=]() { registerItem->setText(reg->name()); });
     return registerItem;
 }
 
