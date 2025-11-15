@@ -16,6 +16,13 @@ class ModbusRegisterEditor;
 
 namespace xModbus {
 
+struct ModbusRegisterEditorParameters
+{
+    int startAddress;
+    int quantity;
+    int serverAddress;
+};
+
 class ModbusRegisterEditor : public QDialog
 {
     Q_OBJECT
@@ -23,8 +30,14 @@ public:
     explicit ModbusRegisterEditor(QWidget *parent = nullptr);
     ~ModbusRegisterEditor() override;
 
+    ModbusRegisterEditorParameters parameters() const;
+
 private:
     Ui::ModbusRegisterEditor *ui;
+    static ModbusRegisterEditorParameters s_ctx;
+
+private:
+    void cacheParameters() const;
 };
 
 } // namespace xModbus
