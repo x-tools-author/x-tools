@@ -2788,7 +2788,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
         <source>Ignore data log</source>
-        <translation>忽略数据日志</translation>
+        <translation>忽略数据</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
@@ -2798,7 +2798,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="113"/>
         <source>Audo scrolling</source>
-        <translation>我敢让你滚动</translation>
+        <translation>自动滚动</translation>
     </message>
 </context>
 <context>
