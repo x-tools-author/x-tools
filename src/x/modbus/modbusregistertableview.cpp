@@ -152,21 +152,15 @@ void ModbusRegisterTableView::onAddRegisterButtonClicked()
 
 void ModbusRegisterTableView::onRemoveRegisterButtonClicked()
 {
-    QModelIndexList selectedIndexes = ui->tableView->selectionModel()->selectedRows();
-    if (selectedIndexes.isEmpty()) {
+    QModelIndex currentIndex = ui->tableView->currentIndex();
+    if (!currentIndex.isValid()) {
         showEmptySelectedItemWarning();
         return;
     }
 
-    // Remove from the last selected row to avoid shifting issues
-    std::sort(selectedIndexes.begin(),
-              selectedIndexes.end(),
-              [](const QModelIndex &a, const QModelIndex &b) { return a.row() > b.row(); });
-
-    for (const QModelIndex &index : selectedIndexes) {
-        QModelIndex sourceIndex = m_registerTableFilter->mapToSource(index);
-        m_registerTable->removeRow(sourceIndex.row());
-    }
+    QModelIndex sourceIndex = m_registerTableFilter->mapToSource(currentIndex);
+    m_registerTable->removeRow(sourceIndex.row());
+    emit rowRemoved(sourceIndex.row());
 }
 
 void ModbusRegisterTableView::onClearRegistersButtonClicked()

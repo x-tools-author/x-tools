@@ -163,6 +163,7 @@ QStandardItem *ModbusDeviceListModel::newTableView(QStandardItem *deviceItem,
         emit dataModified(tableViewItem, index);
     });
 
+    setupTableView(tableViewItem);
     return tableViewItem;
 }
 
@@ -206,6 +207,7 @@ QList<QStandardItem *> ModbusDeviceListModel::newDefaultTables(QStandardItem *de
         tableItem->setData(QVariant::fromValue(tableView), ItemTypeTableView);
         deviceItem->appendRow(tableItem);
         newDefaultRegisters(tableItem, type);
+        setupTableView(tableItem);
     }
 
     return tableViewItems;
@@ -219,6 +221,27 @@ void ModbusDeviceListModel::newDefaultRegisters(QStandardItem *tableItem,
         QJsonObject registerObj = registers.at(i).toObject();
         newRegister(tableItem, registerObj);
     }
+}
+
+void ModbusDeviceListModel::setupTableView(QStandardItem *tableViewItem)
+{
+    ModbusDevice *device = tableViewItem->data(xItemTypeDevice).value<ModbusDevice *>();
+    auto tableView = tableViewItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+
+    connect(tableView, &ModbusRegisterTableView::rowAdded, this, [=](int row) {
+        auto table = tableView->registerTable();
+        ModbusRegister *reg = table->registerItemAt(row);
+        QStandardItem *regItem = new QStandardItem(reg->name());
+        regItem->setData(QVariant::fromValue(device), xItemTypeDevice);
+        regItem->setData(QVariant::fromValue(tableView), xItemTypeTableView);
+        regItem->setData(QVariant::fromValue(reg), xItemTypeRegister);
+        regItem->setData(int(xItemTypeRegister), xItemTypeRole);
+        tableViewItem->appendRow(regItem);
+    });
+
+    connect(tableView, &ModbusRegisterTableView::rowRemoved, this, [=](int row) {
+        tableViewItem->removeRow(row);
+    });
 }
 
 Qt::ItemFlags ModbusDeviceListModel::flags(const QModelIndex &index) const

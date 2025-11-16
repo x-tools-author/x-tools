@@ -113,10 +113,6 @@ QJsonObject ModbusDeviceListView::save()
 
 void ModbusDeviceListView::load(const QJsonObject &obj)
 {
-#if 0
-    createDefaultDevices();
-    return;
-#endif
     ModbusDeviceListViewKeys keys;
     QJsonArray devicesArray = obj.value(keys.devices).toArray();
     if (devicesArray.isEmpty()) {
@@ -211,6 +207,8 @@ void ModbusDeviceListView::onNewRegisterGroup()
     tableViewItem->setData(QVariant::fromValue(device), xItemTypeDevice);
     tableViewItem->setData(QVariant::fromValue(tableView), xItemTypeTableView);
     tableViewItem->setData(int(xItemTypeTableView), xItemTypeRole);
+
+    m_model->setupTableView(tableViewItem);
 
     int startAddress = editorParams.startAddress;
     for (int i = 0; i < editorParams.quantity; ++i) {

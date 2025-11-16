@@ -42,6 +42,7 @@ public:
     QStandardItem *newRegister(QStandardItem *tableItem, const QJsonObject &parameters);
     QList<QStandardItem *> newDefaultTables(QStandardItem *deviceItem);
     void newDefaultRegisters(QStandardItem *tableItem, QModbusDataUnit::RegisterType type);
+    void setupTableView(QStandardItem *tableViewItem);
 
 public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
