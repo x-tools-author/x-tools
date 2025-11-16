@@ -83,7 +83,7 @@ QVariant ModbusRegisterTable::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole) {
         switch (index.column()) {
         case REGISTER_TABLE_COLUMN_ADDRESS:
-            return QString("0x%1").arg(item->address(), 4, 16, QChar('0').toUpper());
+            return QString("0x") + QString("%1").arg(item->address(), 4, 16, QChar('0')).toUpper();
         case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
             return item->serverAddress();
         case REGISTER_TABLE_COLUMN_NAME:

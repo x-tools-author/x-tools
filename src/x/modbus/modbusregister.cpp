@@ -39,7 +39,6 @@ void ModbusRegister::load(const QJsonObject &json)
     RegisterItemKeys keys;
     m_address = static_cast<quint16>(json.value(keys.address).toInt(1));
     QString defaultName = QString("0x%1").arg(m_address, 4, 16, QChar('0').toUpper());
-
     int defaultType = static_cast<int>(QModbusDataUnit::Invalid);
     m_type = static_cast<QModbusDataUnit::RegisterType>(json.value(keys.type).toInt(defaultType));
     m_name = json.value(keys.name).toString(defaultName);

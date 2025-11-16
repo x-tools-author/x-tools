@@ -262,11 +262,38 @@ void ModbusDeviceListView::onNewRegisters()
         return;
     }
 
+    QStandardItem *tableViewItem = nullptr;
+    int itemType = item->data(xItemTypeRole).toInt();
+    if (itemType != xItemTypeTableView) {
+        QMessageBox::warning(this,
+                             tr("Invalid Selection"),
+                             tr("Please select a register table to add new registers."),
+                             QMessageBox::Ok);
+        return;
+    }
+
+    tableViewItem = item;
     ModbusRegisterEditor editor(xMainWindow);
     editor.setModal(true);
     int ret = editor.exec();
     if (ret != QDialog::Accepted) {
         return;
+    }
+
+    auto device = tableViewItem->data(xItemTypeDevice).value<ModbusDevice *>();
+    auto tableView = tableViewItem->data(xItemTypeTableView).value<ModbusRegisterTableView *>();
+    ModbusRegisterEditorParameters parameters = editor.parameters();
+    for (int i = 0; i < parameters.quantity; i++) {
+        RegisterItemKeys keys;
+        ModbusRegister tmp;
+        int address = parameters.startAddress + i;
+        QString name = QString("0x") + QString("%1").arg(address, 4, 16, QChar('0')).toUpper();
+        tmp.setName(name);
+        tmp.setAddress(parameters.startAddress + i);
+        tmp.setType(parameters.type);
+        tmp.setServerAddress(parameters.serverAddress);
+        QJsonObject regObj = tmp.save();
+        m_model->newRegister(tableViewItem, regObj);
     }
 }
 

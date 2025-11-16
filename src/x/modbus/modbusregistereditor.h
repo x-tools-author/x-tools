@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QModbusDataUnit>
 
 namespace Ui {
 class ModbusRegisterEditor;
@@ -18,6 +19,7 @@ namespace xModbus {
 
 struct ModbusRegisterEditorParameters
 {
+    QModbusDataUnit::RegisterType type;
     int startAddress;
     int quantity;
     int serverAddress;
