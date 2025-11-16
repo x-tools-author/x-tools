@@ -147,6 +147,7 @@ void ModbusRegisterTableView::onAddRegisterButtonClicked()
 {
     int row = m_registerTable->rowCount(QModelIndex());
     m_registerTable->insertRow(row);
+    emit rowAdded(row);
 }
 
 void ModbusRegisterTableView::onRemoveRegisterButtonClicked()

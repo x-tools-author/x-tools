@@ -36,6 +36,10 @@ public:
     void setServerAddressColumnVisible(bool visible);
     ModbusRegisterTable *registerTable() const;
 
+signals:
+    void rowAdded(int row);
+    void rowRemoved(int row);
+
 private:
     ModbusRegisterTable *m_registerTable{nullptr};
     ModbusRegisterTableFilter *m_registerTableFilter{nullptr};
