@@ -20,7 +20,7 @@ namespace xModbus {
 QWidget *topLevelMainWindow()
 {
     auto widgets = qApp->topLevelWidgets();
-    for (QWidget *widget : widgets) {
+    for (QWidget *&widget : widgets) {
         if (QMainWindow *mainWin = qobject_cast<QMainWindow *>(widget)) {
             return mainWin;
         }
@@ -228,16 +228,14 @@ QString deviceConnectionParametersToString(const DeviceConnectionParameters &par
     if (params.deviceType == static_cast<int>(XModbusType::RtuClient)
         || params.deviceType == static_cast<int>(XModbusType::RtuServer)) {
         return QString("%1: Port=%2, BaudRate=%3, DataBits=%4, Parity=%5, StopBits=%6")
-            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)))
-            .arg(params.portName)
+            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)), params.portName)
             .arg(params.baudRate)
             .arg(params.dataBits)
             .arg(params.parity)
             .arg(params.stopBits);
     } else {
         return QString("%1: Address=%2, Port=%3")
-            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)))
-            .arg(params.tcpAddress)
+            .arg(deviceTypeName(static_cast<XModbusType>(params.deviceType)), params.tcpAddress)
             .arg(params.tcpPort);
     }
 }

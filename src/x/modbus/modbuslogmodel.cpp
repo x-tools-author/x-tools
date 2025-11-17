@@ -13,7 +13,6 @@
 #include <QMenu>
 #include <QMessageBox>
 
-#include "modbuscommon.h"
 
 namespace xModbus {
 
@@ -151,9 +150,9 @@ QVariant ModbusLogModel::data(const QModelIndex &index, int role) const
         }
     } else if (role == Qt::BackgroundRole && m_usingColor) {
         if (item.type == LogTypeWarning) {
-            return QColor("#FF6B6B");
+            return QColor(0xff6b6b);
         } else if (item.type == LogTypeError) {
-            return QColor("#B00020");
+            return QColor(0xB00020);
         }
     }
 
