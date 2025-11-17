@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="319"/>
+        <location filename="../../src/application.cpp" line="313"/>
         <source>Transfer rx bytes with right page</source>
         <translation>העבר בייטים מתקבלים עם עמוד ימין</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="324"/>
+        <location filename="../../src/application.cpp" line="318"/>
         <source>Transfer rx bytes with left page</source>
         <translation>העבר בייטים מתקבלים עם עמוד שמאל</translation>
     </message>
@@ -1809,242 +1809,238 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">כְּלָלִי</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>&amp;File</source>
         <translation>&amp;קובץ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="307"/>
         <source>New Window</source>
         <translation>חלון חדש</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="315"/>
         <source>Save Parameters</source>
         <translation>שמור פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Import Parameters</source>
         <translation>ייבא פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="838"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Export Parameters</source>
         <translation>יצוא פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="326"/>
         <source>Exit Application</source>
         <translation>יציאה מהיישום</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="335"/>
         <source>&amp;Tools</source>
         <translation>&amp;כלים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>New</source>
         <translation>חדש</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="401"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Options</source>
         <translation>&amp;אפשרויות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="410"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>Use System Proxy</source>
         <translation>השתמש בפרוקסי של המערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="420"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Exit to System Tray</source>
         <translation>צא למגש המערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="438"/>
+        <location filename="../../src/mainwindow.cpp" line="413"/>
         <source>Application Style</source>
         <translation>סגנון היישום</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="436"/>
         <source>Settings</source>
         <translation>הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Clear Settings</source>
         <translation>נקה הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>Open Settings Directory</source>
         <translation>פתח תיקיית הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="479"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>HDPI Policy</source>
         <translation>מדיניות HDPI</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
-        <translation>סקמת צבעים</translation>
+        <translation type="vanished">סקמת צבעים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
-        <translation>כהה</translation>
+        <translation type="vanished">כהה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
-        <translation>בהיר</translation>
+        <translation type="vanished">בהיר</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
-        <translation>מערכת</translation>
+        <translation type="vanished">מערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
         <translation>&amp;שפות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="542"/>
         <source>&amp;View</source>
         <translation>&amp;תצוגה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Stays on Top</source>
         <translation>שמור למעלה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>&amp;Help</source>
         <translation>&amp;עזרה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>About Qt</source>
         <translation>על Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
-        <location filename="../../src/mainwindow.cpp" line="881"/>
+        <location filename="../../src/mainwindow.cpp" line="616"/>
+        <location filename="../../src/mainwindow.cpp" line="824"/>
         <source>About</source>
         <translation>על אודות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="620"/>
         <source>Screenshot</source>
         <translation>צילום מסך</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Buy from Store</source>
         <translation>קנה מהחנות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
-        <location filename="../../src/mainwindow.cpp" line="730"/>
+        <location filename="../../src/mainwindow.cpp" line="635"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Release History</source>
         <translation>היסטוריית גרסאות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Join in QQ Group</source>
         <translation>הצטרף לקבוצת QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Online Manual</source>
         <translation>מדריך מקוון</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Get Sources from Github</source>
         <translation>קבל מקורות מ-Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Get Sources from Gitee</source>
         <translation>קבל מקורות מ-Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="720"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Third Party Open Source</source>
         <translation>קוד פתוח של צד שלישי</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>QR Code</source>
         <translation>קוד QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>User QQ Group</source>
         <translation>קבוצת משתמשי QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="760"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Qt QQ Group</source>
         <translation>קבוצת Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Need to Reboot</source>
         <translation>צריך לאתחל</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="725"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>הפעולה דורשת אתחול כדי שתיכנס לתוקף, האם לאתחל את היישום עכשיו?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="784"/>
+        <location filename="../../src/mainwindow.cpp" line="727"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(אנא אתחל את היישום שלך ידנית.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="827"/>
-        <location filename="../../src/mainwindow.cpp" line="840"/>
+        <location filename="../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Json Files (*.json)</source>
         <translation>קבצי Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="818"/>
         <source>Commit hash</source>
         <translation>האש של התחייבות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="877"/>
+        <location filename="../../src/mainwindow.cpp" line="820"/>
         <source>Commit time</source>
         <translation>זמן התחייבות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="878"/>
+        <location filename="../../src/mainwindow.cpp" line="821"/>
         <source>Build Date</source>
         <translation>תאריך בנייה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="879"/>
+        <location filename="../../src/mainwindow.cpp" line="822"/>
         <source>Copyright</source>
         <translation>זכויות יוצרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="880"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>All rights reserved.</source>
         <translation>כל הזכויות שמורות.</translation>
     </message>
@@ -2621,11 +2617,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
-        <source>Quantity</source>
+        <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
         <translation type="unfinished">כתובת שרת</translation>
     </message>
@@ -2638,27 +2639,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
+        <source>Server address</source>
+        <translation type="unfinished">כתובת שרת</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
         <translation type="unfinished">כתובת התחלה</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
         <translation type="unfinished">ללא כותרת</translation>
     </message>
@@ -3399,32 +3405,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>היישום מתאפס...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="484"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <source>Color Scheme</source>
+        <translation type="unfinished">סקמת צבעים</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Dark</source>
+        <translation type="unfinished">כהה</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <source>Light</source>
+        <translation type="unfinished">בהיר</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/mainwindow.cpp" line="459"/>
         <source>System</source>
         <translation>מערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="460"/>
         <source>Round up for .5 and above</source>
         <translation>עגל כלפי מעלה עבור .5 ומעלה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="486"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Always round up</source>
         <translation>תמיד עגל כלפי מעלה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="487"/>
+        <location filename="../../src/mainwindow.cpp" line="462"/>
         <source>Always round down</source>
         <translation>תמיד עגל כלפי מטה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="488"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>Round up for .75 and above</source>
         <translation>עגל כלפי מעלה עבור .75 ומעלה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="489"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Don&apos;t round</source>
         <translation>אל תעגל</translation>
     </message>
@@ -4500,67 +4522,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>הסר את הפריט שנבחר</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <source>Invalid Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
+        <source>Please select a register table to add new registers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
         <source>Remove Device</source>
         <translation>הסר מכשיר</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="333"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>המכשיר פועל. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="379"/>
         <source>Rename Register Table</source>
         <translation>שנה שם טבלת רישום</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="380"/>
         <source>Please input the new name for the register table:</source>
         <translation>אנא הזן את השם החדש עבור טבלת הרישום:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="392"/>
         <source>Rename Register Item</source>
         <translation>שנה שם פריט רישום</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="393"/>
         <source>Please input the new name for the register item:</source>
         <translation>אנא הזן את השם החדש עבור פריט הרישום:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="405"/>
         <source>Edit Modbus Device</source>
         <translation>ערוך את התקן Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="438"/>
         <source>Change Device parameters</source>
         <translation>שנה פרמטרים של מכשיר</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="439"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>המכשיר פועל. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
         <source>TCP Client Device</source>
         <translation>התקן לקוח TCP</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
         <source>TCP Server Device</source>
         <translation>התקן שרת TCP</translation>
     </message>
@@ -4692,50 +4724,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
         <source>Save Registers</source>
         <translation>שמור רישומים</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="181"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Error</source>
         <translation>שְׁגִיאָה</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
         <source>Failed to open file for saving.</source>
         <translation>פתיחת הקובץ לשמירה נכשלה.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
         <source>Load Registers</source>
         <translation>טען רישומים</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
         <source>Failed to open file for loading.</source>
         <translation>פתיחת הקובץ לטעינה נכשלה.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Invalid JSON format in the file.</source>
         <translation>פורמט JSON לא חוקי בקובץ.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="230"/>
         <source>Import Registers</source>
         <translation>רישומי ייבוא</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>טבלת הרישום אינה ריקה. </translation>
     </message>

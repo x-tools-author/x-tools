@@ -41,12 +41,6 @@
 #define xUdpSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QUdpSocket::error)
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
-#define xEnableColorScheme 1
-#else
-#define xEnableColorScheme 0
-#endif
-
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 #define xComboBoxActivated &QComboBox::activated
 #else

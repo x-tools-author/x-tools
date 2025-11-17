@@ -45,6 +45,7 @@
 #include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
+#include "utilities/thememanager.h"
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
@@ -241,34 +242,6 @@ void MainWindow::hideHistoryAction()
     }
 }
 
-void MainWindow::updateWindowTitleArea()
-{
-#if defined(_MSC_VER)
-    if (QSysInfo::productVersion().contains("11")) {
-        QPalette paletee = xApp->palette();
-        // Change color of the caption
-        //const DWORD attribute = 35; // DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR
-        QWindow* window = windowHandle();
-        if (window) {
-            QColor c = paletee.color(QPalette::Window);
-            COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-            DwmSetWindowAttribute((HWND) window->winId(),
-                                  DWMWA_CAPTION_COLOR,
-                                  &colorref,
-                                  sizeof(colorref));
-#if 0
-            c = currentTheme.primaryColor;
-            colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-            DwmSetWindowAttribute((HWND) window->winId(),
-                                  DWMWA_BORDER_COLOR,
-                                  &colorref,
-                                  sizeof(colorref));
-#endif
-        }
-    }
-#endif
-}
-
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     m_ioPage00->aboutToClose();
@@ -380,6 +353,7 @@ void MainWindow::initToolMenu()
             } else {
                 assistant->activateWindow();
             }
+            xThemeMgr.updateWindowCaptionColor(assistant);
         });
 
         action = new QAction(name, this);
@@ -392,6 +366,7 @@ void MainWindow::initToolMenu()
 
             assistant->setAttribute(Qt::WA_DeleteOnClose, true);
             assistant->show();
+            xThemeMgr.updateWindowCaptionColor(assistant);
         });
     }
 }
@@ -513,42 +488,10 @@ void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 
 void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 {
-#if xEnableColorScheme
-    static QActionGroup* actionGroup = Q_NULLPTR;
-    if (actionGroup) {
-        return;
+    QMenu* colorSchemeMenu = xThemeMgr.themeMenu();
+    if (colorSchemeMenu) {
+        optionMenu->addMenu(colorSchemeMenu);
     }
-
-    actionGroup = new QActionGroup(this);
-    auto colorSchemeMenu = optionMenu->addMenu(tr("Color Scheme"));
-    QMap<Qt::ColorScheme, QString> colorSchemeMap;
-    colorSchemeMap.insert(Qt::ColorScheme::Dark, tr("Dark"));
-    colorSchemeMap.insert(Qt::ColorScheme::Light, tr("Light"));
-    colorSchemeMap.insert(Qt::ColorScheme::Unknown, tr("System"));
-
-    for (auto it = colorSchemeMap.begin(); it != colorSchemeMap.end(); ++it) {
-        auto action = new QAction(it.value(), this);
-        action->setCheckable(true);
-        actionGroup->addAction(action);
-        colorSchemeMenu->addAction(action);
-
-        if (it.key() == xApp->styleHints()->colorScheme()) {
-            action->setChecked(true);
-        }
-
-        Qt::ColorScheme colorScheme = it.key();
-        connect(action, &QAction::triggered, this, [=]() {
-            Application::SettingsKey keys;
-            xApp->settings()->setValue(keys.colorScheme, static_cast<int>(colorScheme));
-            xApp->setupColorScheme();
-            updateWindowTitleArea();
-        });
-    }
-
-    updateWindowTitleArea();
-#else
-    Q_UNUSED(optionMenu);
-#endif
 }
 
 void MainWindow::initMenuLanguage()

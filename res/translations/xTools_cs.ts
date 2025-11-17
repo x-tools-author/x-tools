@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="319"/>
+        <location filename="../../src/application.cpp" line="313"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Přenést rx bajty s pravou stranou</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="324"/>
+        <location filename="../../src/application.cpp" line="318"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Přenést rx bajty s levou stranou</translation>
     </message>
@@ -1809,242 +1809,238 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Generál</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>&amp;File</source>
         <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="307"/>
         <source>New Window</source>
         <translation>Nové okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="315"/>
         <source>Save Parameters</source>
         <translation>Uložit parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Import Parameters</source>
         <translation>Načíst parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="838"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Export Parameters</source>
         <translation>Exportovat parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="326"/>
         <source>Exit Application</source>
         <translation>Ukončit aplikaci</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="335"/>
         <source>&amp;Tools</source>
         <translation>&amp;Nástroje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>New</source>
         <translation>Nový</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="401"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Options</source>
         <translation>&amp;Možnosti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="410"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>Use System Proxy</source>
         <translation>Použít systémový proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="420"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Exit to System Tray</source>
         <translation>Minimálně do systémové lišty</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="438"/>
+        <location filename="../../src/mainwindow.cpp" line="413"/>
         <source>Application Style</source>
         <translation>Styl aplikace</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="436"/>
         <source>Settings</source>
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Clear Settings</source>
         <translation>Vymazat nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>Open Settings Directory</source>
         <translation>Otevřít adresář nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="479"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>HDPI Policy</source>
         <translation>HDPI politika</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
-        <translation>Barevné schéma</translation>
+        <translation type="vanished">Barevné schéma</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
-        <translation>Tmavý</translation>
+        <translation type="vanished">Tmavý</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
-        <translation>Světlý</translation>
+        <translation type="vanished">Světlý</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
-        <translation>Systémový</translation>
+        <translation type="vanished">Systémový</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
         <translation>&amp;Jazyky</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="542"/>
         <source>&amp;View</source>
         <translation>&amp;Zobrazit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Stays on Top</source>
         <translation>Zůstat nahoře</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
-        <location filename="../../src/mainwindow.cpp" line="881"/>
+        <location filename="../../src/mainwindow.cpp" line="616"/>
+        <location filename="../../src/mainwindow.cpp" line="824"/>
         <source>About</source>
         <translation>O aplikaci</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="620"/>
         <source>Screenshot</source>
         <translation>Screenshot</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Buy from Store</source>
         <translation>Koupit v obchodě</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
-        <location filename="../../src/mainwindow.cpp" line="730"/>
+        <location filename="../../src/mainwindow.cpp" line="635"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Release History</source>
         <translation>Historie verzí</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Join in QQ Group</source>
         <translation>Připojit se ke skupině QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Online Manual</source>
         <translation>Online příručka</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Get Sources from Github</source>
         <translation>Získat zdrojové kódy z Githubu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Get Sources from Gitee</source>
         <translation>Získat zdrojové kódy z Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="720"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Third Party Open Source</source>
         <translation>Třetí strana Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>QR Code</source>
         <translation>QR kód</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>User QQ Group</source>
         <translation>Uživatelská skupina QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="760"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Need to Reboot</source>
         <translation>Je třeba restartovat</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="725"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operace vyžaduje restartování, chcete nyní restartovat aplikaci?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="784"/>
+        <location filename="../../src/mainwindow.cpp" line="727"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Prosím, restartujte svou aplikaci ručně.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="827"/>
-        <location filename="../../src/mainwindow.cpp" line="840"/>
+        <location filename="../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Json Files (*.json)</source>
         <translation>Json soubory (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
         <source>Unknown</source>
         <translation>Neznámý</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="818"/>
         <source>Commit hash</source>
         <translation>Hash potvrzení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="877"/>
+        <location filename="../../src/mainwindow.cpp" line="820"/>
         <source>Commit time</source>
         <translation>Čas potvrzení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="878"/>
+        <location filename="../../src/mainwindow.cpp" line="821"/>
         <source>Build Date</source>
         <translation>Datum sestavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="879"/>
+        <location filename="../../src/mainwindow.cpp" line="822"/>
         <source>Copyright</source>
         <translation>Autorská práva</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="880"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>All rights reserved.</source>
         <translation>Všechna práva vyhrazena.</translation>
     </message>
@@ -2621,11 +2617,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
-        <source>Quantity</source>
+        <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
         <translation type="unfinished">Adresa serveru</translation>
     </message>
@@ -2638,27 +2639,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
+        <source>Server address</source>
+        <translation type="unfinished">Adresa serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
         <translation type="unfinished">Počáteční adresa</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
         <translation type="unfinished">Bez názvu</translation>
     </message>
@@ -3399,32 +3405,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Aplikace se spouští...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="484"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <source>Color Scheme</source>
+        <translation type="unfinished">Barevné schéma</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Dark</source>
+        <translation type="unfinished">Tmavý</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <source>Light</source>
+        <translation type="unfinished">Světlý</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/mainwindow.cpp" line="459"/>
         <source>System</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="460"/>
         <source>Round up for .5 and above</source>
         <translation>Zaokrouhlit na celé číslo pro .5 a vyšší</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="486"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Always round up</source>
         <translation>Vždy zaokrouhlit nahoru</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="487"/>
+        <location filename="../../src/mainwindow.cpp" line="462"/>
         <source>Always round down</source>
         <translation>Vždy zaokrouhlit dolů</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="488"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>Round up for .75 and above</source>
         <translation>Zaokrouhlit na celé číslo pro .75 a vyšší</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="489"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Don&apos;t round</source>
         <translation>Nezaokrouhlovat</translation>
     </message>
@@ -4500,67 +4522,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Odeberte vybranou položku</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <source>Invalid Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
+        <source>Please select a register table to add new registers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
         <source>Remove Device</source>
         <translation>Odebrat zařízení</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="333"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>Zařízení běží. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="379"/>
         <source>Rename Register Table</source>
         <translation>Přejmenovat tabulku registru</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="380"/>
         <source>Please input the new name for the register table:</source>
         <translation>Zadejte prosím nový název tabulky registrů:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="392"/>
         <source>Rename Register Item</source>
         <translation>Přejmenovat položku registru</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="393"/>
         <source>Please input the new name for the register item:</source>
         <translation>Zadejte prosím nový název položky registrace:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="405"/>
         <source>Edit Modbus Device</source>
         <translation>Upravit zařízení Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="438"/>
         <source>Change Device parameters</source>
         <translation>Změňte parametry zařízení</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="439"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Zařízení běží. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
         <source>TCP Client Device</source>
         <translation>TCP klientské zařízení</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
         <source>TCP Server Device</source>
         <translation>TCP Serverové zařízení</translation>
     </message>
@@ -4692,50 +4724,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
         <source>Save Registers</source>
         <translation>Uložit registry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="181"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
         <source>Failed to open file for saving.</source>
         <translation>Nepodařilo se otevřít soubor pro uložení.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
         <source>Load Registers</source>
         <translation>Načíst registry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
         <source>Failed to open file for loading.</source>
         <translation>Nepodařilo se otevřít soubor pro načtení.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Neplatný formát JSON v souboru.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="230"/>
         <source>Import Registers</source>
         <translation>Importovat registry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Tabulka registrů není prázdná. </translation>
     </message>

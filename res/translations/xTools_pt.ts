@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="319"/>
+        <location filename="../../src/application.cpp" line="313"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Transferir bytes rx com página direita</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="324"/>
+        <location filename="../../src/application.cpp" line="318"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Transferir bytes rx com página esquerda</translation>
     </message>
@@ -1809,242 +1809,238 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Em geral</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>&amp;File</source>
         <translation>&amp;Arquivo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="307"/>
         <source>New Window</source>
         <translation>Nova janela</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="315"/>
         <source>Save Parameters</source>
         <translation>Salvar parâmetros</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Import Parameters</source>
         <translation>Importar parâmetros</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="838"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Export Parameters</source>
         <translation>Exportar parâmetros</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="326"/>
         <source>Exit Application</source>
         <translation>Sair da aplicação</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="335"/>
         <source>&amp;Tools</source>
         <translation>&amp;Ferramentas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="401"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Options</source>
         <translation>&amp;Opções</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="410"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>Use System Proxy</source>
         <translation>Usar proxy do sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="420"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Exit to System Tray</source>
         <translation>Sair para a bandeja do sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="438"/>
+        <location filename="../../src/mainwindow.cpp" line="413"/>
         <source>Application Style</source>
         <translation>Estilo da aplicação</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="436"/>
         <source>Settings</source>
         <translation>Configurações</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Clear Settings</source>
         <translation>Limpar configurações</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>Open Settings Directory</source>
         <translation>Abrir diretório de configurações</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="479"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>HDPI Policy</source>
         <translation>Política HDPI</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
-        <translation>Esquema de cores</translation>
+        <translation type="vanished">Esquema de cores</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
-        <translation>Escuro</translation>
+        <translation type="vanished">Escuro</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
-        <translation>Claro</translation>
+        <translation type="vanished">Claro</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
-        <translation>Sistema</translation>
+        <translation type="vanished">Sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
         <translation>&amp;Idiomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="542"/>
         <source>&amp;View</source>
         <translation>&amp;Visualizar</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Stays on Top</source>
         <translation>Sempre no topo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>About Qt</source>
         <translation>Sobre o Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
-        <location filename="../../src/mainwindow.cpp" line="881"/>
+        <location filename="../../src/mainwindow.cpp" line="616"/>
+        <location filename="../../src/mainwindow.cpp" line="824"/>
         <source>About</source>
         <translation>Sobre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="620"/>
         <source>Screenshot</source>
         <translation>Captura de tela</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Buy from Store</source>
         <translation>Comprar na loja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
-        <location filename="../../src/mainwindow.cpp" line="730"/>
+        <location filename="../../src/mainwindow.cpp" line="635"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Release History</source>
         <translation>Histórico de versões</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Join in QQ Group</source>
         <translation>Ingressar no grupo QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Online Manual</source>
         <translation>Manual online</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Get Sources from Github</source>
         <translation>Obter código-fonte do Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Get Sources from Gitee</source>
         <translation>Obter código-fonte do Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="720"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Third Party Open Source</source>
         <translation>Código aberto de terceiros</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>QR Code</source>
         <translation>Código QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>User QQ Group</source>
         <translation>Grupo QQ de usuários</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="760"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Qt QQ Group</source>
         <translation>Grupo QQ do Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Need to Reboot</source>
         <translation>Necessário reiniciar</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="725"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>A operação precisa reiniciar para ter efeito, reiniciar a aplicação agora?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="784"/>
+        <location filename="../../src/mainwindow.cpp" line="727"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Por favor, reinicie sua aplicação manualmente.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="827"/>
-        <location filename="../../src/mainwindow.cpp" line="840"/>
+        <location filename="../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Json Files (*.json)</source>
         <translation>Arquivos Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
         <source>Unknown</source>
         <translation>Desconhecido</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="818"/>
         <source>Commit hash</source>
         <translation>Hash do commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="877"/>
+        <location filename="../../src/mainwindow.cpp" line="820"/>
         <source>Commit time</source>
         <translation>Horário do commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="878"/>
+        <location filename="../../src/mainwindow.cpp" line="821"/>
         <source>Build Date</source>
         <translation>Data de compilação</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="879"/>
+        <location filename="../../src/mainwindow.cpp" line="822"/>
         <source>Copyright</source>
         <translation>Direitos autorais</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="880"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>All rights reserved.</source>
         <translation>Todos os direitos reservados.</translation>
     </message>
@@ -2621,11 +2617,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
-        <source>Quantity</source>
+        <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
         <translation type="unfinished">Endereço do servidor</translation>
     </message>
@@ -2638,27 +2639,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
+        <source>Server address</source>
+        <translation type="unfinished">Endereço do servidor</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
         <translation type="unfinished">Endereço inicial</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
         <translation type="unfinished">Sem título</translation>
     </message>
@@ -3399,32 +3405,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>A aplicação está iniciando...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="484"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <source>Color Scheme</source>
+        <translation type="unfinished">Esquema de cores</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Dark</source>
+        <translation type="unfinished">Escuro</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <source>Light</source>
+        <translation type="unfinished">Claro</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/mainwindow.cpp" line="459"/>
         <source>System</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="460"/>
         <source>Round up for .5 and above</source>
         <translation>Arredondar para cima para .5 e acima</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="486"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Always round up</source>
         <translation>Sempre arredondar para cima</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="487"/>
+        <location filename="../../src/mainwindow.cpp" line="462"/>
         <source>Always round down</source>
         <translation>Sempre arredondar para baixo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="488"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>Round up for .75 and above</source>
         <translation>Arredondar para cima para .75 e acima</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="489"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Don&apos;t round</source>
         <translation>Não arredondar</translation>
     </message>
@@ -4500,67 +4522,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Remover o item selecionado</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <source>Invalid Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
+        <source>Please select a register table to add new registers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
         <source>Remove Device</source>
         <translation>Remover dispositivo</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="333"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>O dispositivo está funcionando. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="379"/>
         <source>Rename Register Table</source>
         <translation>Renomear tabela de registro</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="380"/>
         <source>Please input the new name for the register table:</source>
         <translation>Por favor insira o novo nome para a tabela de registro:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="392"/>
         <source>Rename Register Item</source>
         <translation>Renomear item de registro</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="393"/>
         <source>Please input the new name for the register item:</source>
         <translation>Por favor insira o novo nome para o item de registro:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="405"/>
         <source>Edit Modbus Device</source>
         <translation>Editar dispositivo Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="438"/>
         <source>Change Device parameters</source>
         <translation>Alterar parâmetros do dispositivo</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="439"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>O dispositivo está funcionando. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
         <source>TCP Client Device</source>
         <translation>Dispositivo cliente TCP</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
         <source>TCP Server Device</source>
         <translation>Dispositivo de servidor TCP</translation>
     </message>
@@ -4692,50 +4724,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
         <source>Save Registers</source>
         <translation>Salvar registros</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="181"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
         <source>Failed to open file for saving.</source>
         <translation>Falha ao abrir arquivo para salvar.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
         <source>Load Registers</source>
         <translation>Carregar registros</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
         <source>Failed to open file for loading.</source>
         <translation>Falha ao abrir arquivo para carregamento.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Formato JSON inválido no arquivo.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="230"/>
         <source>Import Registers</source>
         <translation>Registros de importação</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>A tabela de registro não está vazia. </translation>
     </message>

@@ -25,7 +25,6 @@ public:
         const QString style{"Application/style"};
         const QString language{"Application/language"};
         const QString clearSettings{"Application/clearSettings"};
-        const QString colorScheme{"colorScheme"};
     };
 
 signals:

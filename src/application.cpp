@@ -27,6 +27,7 @@
 #include <QTranslator>
 
 #include "common/xtools.h"
+#include "utilities/thememanager.h"
 
 Application::Application(int &argc, char **argv)
     : QApplication(argc, argv)
@@ -241,15 +242,8 @@ void Application::setupLanguage()
 
 void Application::setupColorScheme()
 {
-#if xEnableColorScheme
-    QSettings *settings = Application::settings();
-    auto def = qApp->styleHints()->colorScheme();
-    int colorScheme = settings->value(SettingsKey().colorScheme, static_cast<int>(def)).toInt();
-    Qt::ColorScheme cookedColorScheme = static_cast<Qt::ColorScheme>(colorScheme);
-    QStyleHints *hints = qApp->styleHints();
-    hints->setColorScheme(cookedColorScheme);
-    qInfo() << "The current color scheme is:" << qApp->styleHints()->colorScheme();
-#endif
+    xThemeMgr.setupSettings(settings());
+    xThemeMgr.updateApplicationColor();
 }
 
 QSplashScreen *Application::splashScreen()

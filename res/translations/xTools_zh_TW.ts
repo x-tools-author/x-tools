@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="319"/>
+        <location filename="../../src/application.cpp" line="313"/>
         <source>Transfer rx bytes with right page</source>
         <translation>與右頁面傳輸接收位元組</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="324"/>
+        <location filename="../../src/application.cpp" line="318"/>
         <source>Transfer rx bytes with left page</source>
         <translation>與左頁面傳輸接收位元組</translation>
     </message>
@@ -1809,242 +1809,238 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">一般的</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>&amp;File</source>
         <translation>&amp;文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="307"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="315"/>
         <source>Save Parameters</source>
         <translation>保存參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="825"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Import Parameters</source>
         <translation>導入參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="838"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Export Parameters</source>
         <translation>導出參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="326"/>
         <source>Exit Application</source>
         <translation>退出應用程序</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="335"/>
         <source>&amp;Tools</source>
         <translation>&amp;工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>New</source>
         <translation>新建</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="401"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Options</source>
         <translation>&amp;選項</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="410"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>Use System Proxy</source>
         <translation>使用系統代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="420"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Exit to System Tray</source>
         <translation>退出到系統托盤</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="438"/>
+        <location filename="../../src/mainwindow.cpp" line="413"/>
         <source>Application Style</source>
         <translation>應用程序風格</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="436"/>
         <source>Settings</source>
         <translation>設置</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Clear Settings</source>
         <translation>清除設置</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>Open Settings Directory</source>
         <translation>打開設置目錄</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="479"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>HDPI Policy</source>
         <translation>HDPI 策略</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>Color Scheme</source>
-        <translation>顏色方案</translation>
+        <translation type="vanished">顏色方案</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Dark</source>
-        <translation>黑暗</translation>
+        <translation type="vanished">黑暗</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Light</source>
-        <translation>淺色</translation>
+        <translation type="vanished">淺色</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="527"/>
         <source>System</source>
-        <translation>系統</translation>
+        <translation type="vanished">系統</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
         <translation>&amp;語言</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="542"/>
         <source>&amp;View</source>
         <translation>&amp;視圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Stays on Top</source>
         <translation>始終在最上層</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>&amp;Help</source>
         <translation>&amp;幫助</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>About Qt</source>
         <translation>關於 Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
-        <location filename="../../src/mainwindow.cpp" line="881"/>
+        <location filename="../../src/mainwindow.cpp" line="616"/>
+        <location filename="../../src/mainwindow.cpp" line="824"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="620"/>
         <source>Screenshot</source>
         <translation>截圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Buy from Store</source>
         <translation>從商店購買</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
-        <location filename="../../src/mainwindow.cpp" line="730"/>
+        <location filename="../../src/mainwindow.cpp" line="635"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Release History</source>
         <translation>版本歷史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Join in QQ Group</source>
         <translation>加入 QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Online Manual</source>
         <translation>在線手冊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Get Sources from Github</source>
         <translation>從 Github 獲取源代碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Get Sources from Gitee</source>
         <translation>從 Gitee 獲取源代碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="720"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Third Party Open Source</source>
         <translation>第三方開源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>QR Code</source>
         <translation>二維碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>User QQ Group</source>
         <translation>用戶 QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="760"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Need to Reboot</source>
         <translation>需要重啟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="725"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>該操作需要重啟才能生效，現在重啟應用程序嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="784"/>
+        <location filename="../../src/mainwindow.cpp" line="727"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(請手動重啟您的應用程序。)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="827"/>
-        <location filename="../../src/mainwindow.cpp" line="840"/>
+        <location filename="../../src/mainwindow.cpp" line="770"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Json Files (*.json)</source>
         <translation>Json 文件（*.json）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="869"/>
+        <location filename="../../src/mainwindow.cpp" line="812"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="875"/>
+        <location filename="../../src/mainwindow.cpp" line="818"/>
         <source>Commit hash</source>
         <translation>提交哈希</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="877"/>
+        <location filename="../../src/mainwindow.cpp" line="820"/>
         <source>Commit time</source>
         <translation>提交時間</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="878"/>
+        <location filename="../../src/mainwindow.cpp" line="821"/>
         <source>Build Date</source>
         <translation>構建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="879"/>
+        <location filename="../../src/mainwindow.cpp" line="822"/>
         <source>Copyright</source>
         <translation>版權</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="880"/>
+        <location filename="../../src/mainwindow.cpp" line="823"/>
         <source>All rights reserved.</source>
         <translation>版權所有。</translation>
     </message>
@@ -2621,11 +2617,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
-        <source>Quantity</source>
+        <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
         <translation type="unfinished">服務器地址</translation>
     </message>
@@ -2638,27 +2639,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="37"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="44"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
+        <source>Server address</source>
+        <translation type="unfinished">服務器地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
         <translation type="unfinished">起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="51"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
+        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
         <translation type="unfinished">無題</translation>
     </message>
@@ -3399,32 +3405,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>應用程序正在啟動...</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="484"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <source>Color Scheme</source>
+        <translation type="unfinished">顏色方案</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Dark</source>
+        <translation type="unfinished">黑暗</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <source>Light</source>
+        <translation type="unfinished">淺色</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/mainwindow.cpp" line="459"/>
         <source>System</source>
         <translation>系統</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="460"/>
         <source>Round up for .5 and above</source>
         <translation>對於 .5 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="486"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Always round up</source>
         <translation>始終向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="487"/>
+        <location filename="../../src/mainwindow.cpp" line="462"/>
         <source>Always round down</source>
         <translation>始終向下取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="488"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>Round up for .75 and above</source>
         <translation>對於 .75 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="489"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Don&apos;t round</source>
         <translation>不進行取整</translation>
     </message>
@@ -4500,67 +4522,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>刪除所選項目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="243"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
+        <source>Invalid Selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
+        <source>Please select a register table to add new registers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="244"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="262"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
         <source>Remove Device</source>
         <translation>刪除設備</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="263"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="333"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>設備正在運行。您想停止並刪除它嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="309"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="379"/>
         <source>Rename Register Table</source>
         <translation>重命名寄存器表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="380"/>
         <source>Please input the new name for the register table:</source>
         <translation>請輸入寄存器表的新名稱：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="322"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="392"/>
         <source>Rename Register Item</source>
         <translation>重命名註冊項目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="323"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="393"/>
         <source>Please input the new name for the register item:</source>
         <translation>請輸入註冊項的新名稱：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="335"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="405"/>
         <source>Edit Modbus Device</source>
         <translation>編輯 Modbus 設備</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="368"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="438"/>
         <source>Change Device parameters</source>
         <translation>更改設備參數</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="369"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="439"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>設備正在運行。現在重新啟動它以應用新參數嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="606"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
         <source>TCP Client Device</source>
         <translation>TCP客戶端設備</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="612"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
         <source>TCP Server Device</source>
         <translation>TCP 服務器設備</translation>
     </message>
@@ -4692,50 +4724,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
         <source>Save Registers</source>
         <translation>保存寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="181"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
         <source>Failed to open file for saving.</source>
         <translation>無法打開文件進行保存。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
         <source>Load Registers</source>
         <translation>加載寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
         <source>Failed to open file for loading.</source>
         <translation>無法打開文件進行加載。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Invalid JSON format in the file.</source>
         <translation>文件中的 JSON 格式無效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="230"/>
         <source>Import Registers</source>
         <translation>導入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>寄存器表不為空。您想合併現有的寄存器嗎？</translation>
     </message>
