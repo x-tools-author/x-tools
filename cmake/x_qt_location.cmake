@@ -1,0 +1,18 @@
+macro(x_remove_all_files_of_location)
+
+endmacro()
+
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Location)
+if(Qt${QT_VERSION_MAJOR}Location_FOUND AND QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
+  option(X_ENABLE_LOCATION "Enable Qt Location module" OFF)
+  if(X_ENABLE_LOCATION)
+    add_compile_definitions(X_ENABLE_LOCATION=1)
+    list(APPEND X_LIBS Qt::Location)
+  else()
+    add_compile_definitions(X_ENABLE_LOCATION=0)
+    x_remove_all_files_of_location()
+  endif()
+else()
+  add_compile_definitions(X_ENABLE_LOCATION=0)
+  x_remove_all_files_of_location()
+endif()

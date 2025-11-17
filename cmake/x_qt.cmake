@@ -6,6 +6,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_qt_serialbus.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt_serialport.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt_bluetooth.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt_websockets.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_qt_location.cmake)
 
 macro(x_remove_all_files_of_qt_optional module_name)
   message(STATUS "[xTools-${module_name}]Removing all flow files...")

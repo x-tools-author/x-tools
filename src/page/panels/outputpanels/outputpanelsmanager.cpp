@@ -34,7 +34,7 @@ OutputPanelsManager::OutputPanelsManager(QWidget *parent)
 #if 0
     addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), xIcon(":/res/icons/xy.svg"));
 #endif
-#if 0
+#if X_ENABLE_LOCATION
     addPanel<GpsPanel>(QString("GPS"), xIcon(":/res/icons/gps.svg"));
     addPanel<BdsPanel>(QString("BDS"), xIcon(":/res/icons/bds.svg"));
 #endif
