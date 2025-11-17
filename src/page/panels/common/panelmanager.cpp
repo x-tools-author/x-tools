@@ -10,8 +10,8 @@
 
 #include <QMetaObject>
 
-#include "common/iconengine.h"
 #include "panel.h"
+#include "utilities/iconengine.h"
 
 PanelManager::PanelManager(QWidget *parent)
     : QWidget(parent)
@@ -23,7 +23,7 @@ PanelManager::PanelManager(QWidget *parent)
 
     m_panelButton = new QToolButton(this);
     m_panelButton->setText(tr("Panels"));
-    m_panelButton->setIcon(QIcon(new IconEngine(":/res/icons/dock_to_right.svg")));
+    m_panelButton->setIcon(xIcon(":/res/icons/dock_to_right.svg"));
     m_panelButton->setCheckable(true);
     m_panelButton->setToolTip(tr("Hide/Show Panels"));
     m_panelButton->setToolButtonStyle(Qt::ToolButtonIconOnly);

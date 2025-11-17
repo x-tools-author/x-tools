@@ -8,13 +8,13 @@
  **************************************************************************************************/
 #include "outputpanelsmanager.h"
 
-#include "common/iconengine.h"
 #include "page/panels/common/luapanel.h"
 #include "page/panels/outputpanels/bds/bdspanel.h"
 #include "page/panels/outputpanels/datarecords/datarecordsview.h"
 #include "page/panels/outputpanels/gps/gpspanel.h"
 #include "page/panels/outputpanels/search/searchpanel.h"
 #include "page/panels/outputpanels/xymodem/xymodemreceiver.h"
+#include "utilities/iconengine.h"
 
 #ifdef X_ENABLE_CHARTS
 #include "charts/bar/barpanel.h"
@@ -24,19 +24,19 @@
 OutputPanelsManager::OutputPanelsManager(QWidget *parent)
     : PanelManager(parent)
 {
-    addPanel<DataRecordsView>(tr("Data Records"), QIcon(new IconEngine(":/res/icons/list.svg")));
-    addPanel<SearchPanel>(tr("Search"), QIcon(new IconEngine(":/res/icons/search.svg")));
-    addPanel<LuaPanel>(tr("Lua Script"), QIcon(new IconEngine(":/res/icons/lua.svg")));
+    addPanel<DataRecordsView>(tr("Data Records"), xIcon(":/res/icons/list.svg"));
+    addPanel<SearchPanel>(tr("Search"), xIcon(":/res/icons/search.svg"));
+    addPanel<LuaPanel>(tr("Lua Script"), xIcon(":/res/icons/lua.svg"));
 #ifdef X_ENABLE_CHARTS
-    addPanel<LinePanel>(tr("Line Chart"), QIcon(new IconEngine(":/res/icons/line_series.svg")));
-    addPanel<BarPanel>(tr("Bar Chart"), QIcon(new IconEngine(":/res/icons/bar.svg")));
+    addPanel<LinePanel>(tr("Line Chart"), xIcon(":/res/icons/line_series.svg"));
+    addPanel<BarPanel>(tr("Bar Chart"), xIcon(":/res/icons/bar.svg"));
 #endif
 #if 0
-    addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), QIcon(new IconEngine(":/res/icons/xy.svg")));
+    addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), xIcon(":/res/icons/xy.svg"));
 #endif
 #if 0
-    addPanel<GpsPanel>(QString("GPS"), QIcon(new IconEngine(":/res/icons/gps.svg")));
-    addPanel<BdsPanel>(QString("BDS"), QIcon(new IconEngine(":/res/icons/bds.svg")));
+    addPanel<GpsPanel>(QString("GPS"), xIcon(":/res/icons/gps.svg"));
+    addPanel<BdsPanel>(QString("BDS"), xIcon(":/res/icons/bds.svg"));
 #endif
 }
 

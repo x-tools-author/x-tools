@@ -12,9 +12,9 @@
 #include <QElapsedTimer>
 #include <QJsonArray>
 
-#include "common/iconengine.h"
 #include "modbusdevicelistview.h"
 #include "modbusregistertableview.h"
+#include "utilities/iconengine.h"
 
 namespace xModbus {
 

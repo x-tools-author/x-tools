@@ -11,11 +11,11 @@
 
 #include <QMessageBox>
 
-#include "common/iconengine.h"
 #include "common/xtools.h"
 #include "datarecordsmodel.h"
 #include "datarecordsmodelfilter.h"
 #include "utilities/compatibility.h"
+#include "utilities/iconengine.h"
 
 struct DataRecordsViewParameterKeys
 {

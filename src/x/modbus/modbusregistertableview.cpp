@@ -16,7 +16,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 
-#include "common/iconengine.h"
+#include "utilities/iconengine.h"
 #include "utilities/keepopenedmenu.h"
 
 #include "modbuscommon.h"

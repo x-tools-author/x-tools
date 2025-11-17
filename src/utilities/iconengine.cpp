@@ -13,6 +13,8 @@
 #include <QPainter>
 #include <QPalette>
 
+namespace xTools {
+
 IconEngine::IconEngine(const QString &iconFile)
     : QIconEngine()
     , m_iconFile(iconFile)
@@ -88,3 +90,5 @@ QPixmap IconEngine::pixmap(const QSize &size, QIcon::Mode mode, QIcon::State sta
     }
     return pix;
 }
+
+} // namespace xTools

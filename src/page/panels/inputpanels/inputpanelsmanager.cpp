@@ -8,10 +8,10 @@
  **************************************************************************************************/
 #include "inputpanelsmanager.h"
 
-#include "common/iconengine.h"
 #include "page/panels/common/luapanel.h"
 #include "page/panels/inputpanels/framserialnumber/frameserialnumber.h"
 #include "page/panels/inputpanels/xymodem/xymodemsender.h"
+#include "utilities/iconengine.h"
 
 InputPanelsManager::InputPanelsManager(QWidget *parent)
     : PanelManager(parent)

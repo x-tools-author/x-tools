@@ -10,7 +10,6 @@
 
 #include <QComboBox>
 
-#include "common/iconengine.h"
 #include "localserverui.h"
 #include "localsocketui.h"
 #include "tcpclientui.h"
@@ -19,6 +18,7 @@
 #include "udpclientui.h"
 #include "udpmulticastui.h"
 #include "udpserverui.h"
+#include "utilities/iconengine.h"
 
 #if X_ENABLE_SERIALPORT
 #include "serialportui.h"

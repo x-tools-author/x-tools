@@ -10,8 +10,10 @@
 
 #include <QIconEngine>
 
-#define xIcon(file) QIcon(new IconEngine(file))
-#define xColorIcon(file, color) QIcon(new IconEngine(file, color))
+#define xIcon(file) QIcon(new xTools::IconEngine(file))
+#define xColorIcon(file, color) QIcon(new xTools::IconEngine(file, color))
+
+namespace xTools {
 
 class IconEngine : public QIconEngine
 {
@@ -28,3 +30,5 @@ private:
     QString m_iconFile;
     QString m_color;
 };
+
+} // namespace xTools

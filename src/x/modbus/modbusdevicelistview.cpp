@@ -18,7 +18,7 @@
 #include <QMenu>
 #include <QMessageBox>
 
-#include "common/iconengine.h"
+#include "utilities/iconengine.h"
 
 #include "modbuscommon.h"
 #include "modbusdevice.h"
