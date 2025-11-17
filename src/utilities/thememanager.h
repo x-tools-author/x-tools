@@ -13,7 +13,9 @@
 #include <QSettings>
 #include <QWidget>
 
-#define xThemeMgr ThemeManager::singleton()
+#define xThemeMgr xTools::ThemeManager::singleton()
+
+namespace xTools {
 
 class ThemeManagerPrivate;
 class ThemeManager : public QObject
@@ -22,10 +24,9 @@ class ThemeManager : public QObject
     Q_DECLARE_PRIVATE(ThemeManager)
     Q_DISABLE_COPY(ThemeManager)
 
-public:
     ThemeManager(QObject *parent = nullptr);
-    ThemeManager(ThemeManager &) = delete;
-    ThemeManager &operator=(ThemeManager &) = delete;
+
+public:
     ~ThemeManager() override;
 
     static ThemeManager &singleton();
@@ -35,3 +36,5 @@ public:
     void updateWindowCaptionColor(QWidget *widget);
     QMenu *themeMenu();
 };
+
+} // namespace xTools

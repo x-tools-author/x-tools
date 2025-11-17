@@ -9,6 +9,8 @@
 #include "thememanager.h"
 #include "thememanager_p.h"
 
+namespace xTools {
+
 ThemeManager::ThemeManager(QObject *parent)
     : QObject(*new ThemeManagerPrivate, parent)
 {}
@@ -39,10 +41,16 @@ void ThemeManager::updateWindowCaptionColor()
     d->updateWindowCaption();
 }
 
-void ThemeManager::updateWindowCaptionColor(QWidget *widget) {}
+void ThemeManager::updateWindowCaptionColor(QWidget *widget)
+{
+    Q_D(ThemeManager);
+    d->updateWindowCaption(widget);
+}
 
 QMenu *ThemeManager::themeMenu()
 {
     Q_D(ThemeManager);
     return d->themeMenu();
 }
+
+} // namespace xTools

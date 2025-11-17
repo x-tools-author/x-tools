@@ -35,6 +35,8 @@
 
 #include "thememanager.h"
 
+namespace xTools {
+
 class ThemeManagerPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(ThemeManager)
@@ -143,3 +145,5 @@ public:
     QMenu *colorSchemeMenu{nullptr};
     const QString keyColorScheme{"Application/ColorScheme"};
 };
+
+}
