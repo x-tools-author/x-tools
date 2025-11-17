@@ -23,6 +23,7 @@
 
 #include "common/xtools.h"
 #include "linepanel.h"
+#include "utilities/compatibility.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;

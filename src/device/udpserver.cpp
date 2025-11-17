@@ -9,6 +9,7 @@
 #include "udpserver.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 UdpServer::UdpServer(QObject *parent)
     : SocketServer(parent)

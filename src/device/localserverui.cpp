@@ -11,6 +11,7 @@
 
 #include "common/xtools.h"
 #include "localserver.h"
+#include "utilities/compatibility.h"
 
 LocalServerUi::LocalServerUi(QWidget *parent)
     : DeviceUi(parent)

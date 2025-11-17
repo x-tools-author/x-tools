@@ -42,6 +42,7 @@
 #include "inputsettings.h"
 #include "outputsettings.h"
 #include "scripts/scriptsmanager.h"
+#include "utilities/compatibility.h"
 #include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
 

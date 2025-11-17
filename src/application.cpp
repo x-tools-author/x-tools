@@ -27,6 +27,7 @@
 #include <QTranslator>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 #include "utilities/thememanager.h"
 
 Application::Application(int &argc, char **argv)

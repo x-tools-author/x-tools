@@ -9,6 +9,7 @@
 #include "socket.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 Socket::Socket(QObject *parent)
     : Device(parent)

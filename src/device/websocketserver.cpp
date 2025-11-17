@@ -12,6 +12,7 @@
 #include <QWebSocket>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 WebSocketServer::WebSocketServer(QObject *parent)
     : SocketServer(parent)

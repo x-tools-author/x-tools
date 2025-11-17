@@ -10,6 +10,7 @@
 #include "ui_numberassistant.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 NumberAssistant::NumberAssistant(QWidget *parent)
     : QWidget(parent)
@@ -40,7 +41,7 @@ NumberAssistant::NumberAssistant(QWidget *parent)
     connect(ui->lineEditCookedDec, &QLineEdit::textEdited, this, &NumberAssistant::updateRawData);
     connect(ui->lineEditRawData, &QLineEdit::textEdited, this, &NumberAssistant::updateCookedData);
     connect(ui->comboBoxCookedDataType,
-            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
+            xComboBoxActivated,
             this,
             &NumberAssistant::onCookedDataTypeChanged);
 

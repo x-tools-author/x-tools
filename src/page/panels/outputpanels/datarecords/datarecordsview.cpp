@@ -15,6 +15,7 @@
 #include "common/xtools.h"
 #include "datarecordsmodel.h"
 #include "datarecordsmodelfilter.h"
+#include "utilities/compatibility.h"
 
 struct DataRecordsViewParameterKeys
 {

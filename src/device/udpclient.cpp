@@ -9,6 +9,7 @@
 #include "udpclient.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 #if 0
 #define X_UDP_CLIENT_MULTICAST

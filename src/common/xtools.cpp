@@ -52,6 +52,7 @@
 #endif
 
 #include "common/crc.h"
+#include "utilities/compatibility.h"
 
 #ifdef X_ENABLE_ICONV
 #include <iconv.h>

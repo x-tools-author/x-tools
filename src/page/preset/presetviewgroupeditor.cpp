@@ -14,6 +14,7 @@
 #include <QMessageBox>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 struct PresetViewGroupEditorGroupItem
 {

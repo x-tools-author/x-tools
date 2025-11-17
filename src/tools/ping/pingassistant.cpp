@@ -25,6 +25,7 @@
 #include <QThreadPool>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 static const QString fileName()
 {

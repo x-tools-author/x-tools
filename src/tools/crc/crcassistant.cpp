@@ -16,6 +16,7 @@
 
 #include "common/crc.h"
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 CrcAssistant::CrcAssistant(QWidget* parent)
     : QWidget(parent)

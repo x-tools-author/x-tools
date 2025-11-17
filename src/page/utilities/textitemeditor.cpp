@@ -11,6 +11,7 @@
 
 #include "common/crc.h"
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 TextItemEditor::TextItemEditor(QWidget *parent)
     : QDialog(parent)

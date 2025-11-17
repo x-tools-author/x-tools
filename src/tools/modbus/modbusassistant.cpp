@@ -43,6 +43,7 @@
 #include "application.h"
 #include "common/xtools.h"
 #include "modbusfactory.h"
+#include "utilities/compatibility.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"
@@ -427,10 +428,7 @@ void ModbusAssistant::initSignals()
 
 void ModbusAssistant::initSignalsDevice()
 {
-    connect(ui->comboBoxDeviceList,
-            static_cast<void (QComboBox::*)(int)>(xComboBoxActivated),
-            this,
-            &ModbusAssistant::onDeviceTypeChanged);
+    connect(ui->comboBoxDeviceList, xComboBoxActivated, this, &ModbusAssistant::onDeviceTypeChanged);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &ModbusAssistant::onOpenClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &ModbusAssistant::onCloseClicked);
 }

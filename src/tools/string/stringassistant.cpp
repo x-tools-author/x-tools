@@ -10,6 +10,7 @@
 #include "ui_stringassistant.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 StringAssistant::StringAssistant(QWidget* parent)
     : QWidget(parent)

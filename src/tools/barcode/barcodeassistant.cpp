@@ -23,6 +23,7 @@
 #include <QStringListModel>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 #if 0
 #define X_ENABLE_COMPLETER

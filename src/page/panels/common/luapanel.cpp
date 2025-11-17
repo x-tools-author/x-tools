@@ -14,6 +14,7 @@
 #include "common/luarunner.h"
 #include "common/syntaxhighlighterlua.h"
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 struct LuaPanelDataKeys
 {

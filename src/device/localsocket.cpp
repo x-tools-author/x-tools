@@ -9,6 +9,7 @@
 #include "localsocket.h"
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 LocalSocket::LocalSocket(QObject *parent)
     : Device(parent)

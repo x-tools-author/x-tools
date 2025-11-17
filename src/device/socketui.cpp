@@ -11,6 +11,7 @@
 
 #include "common/xtools.h"
 #include "device/socket.h"
+#include "utilities/compatibility.h"
 
 SocketUi::SocketUi(QWidget *parent)
     : DeviceUi(parent)

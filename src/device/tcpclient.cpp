@@ -11,6 +11,7 @@
 #include <QHostAddress>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 TcpClient::TcpClient(QObject *parent)
     : SocketClient(parent)

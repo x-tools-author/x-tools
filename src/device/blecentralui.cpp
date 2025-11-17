@@ -15,6 +15,7 @@
 #include "blecentral.h"
 #include "common/xtools.h"
 #include "utilities/blescanner.h"
+#include "utilities/compatibility.h"
 
 BleCentralUi::BleCentralUi(QWidget *parent)
     : DeviceUi(parent)

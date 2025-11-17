@@ -11,6 +11,7 @@
 #include <QTcpSocket>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 TcpServer::TcpServer(QObject *parent)
     : SocketServer(parent)

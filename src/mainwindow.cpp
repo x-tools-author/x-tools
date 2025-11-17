@@ -45,6 +45,7 @@
 #include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
+#include "utilities/compatibility.h"
 #include "utilities/thememanager.h"
 
 #ifdef Q_OS_WIN

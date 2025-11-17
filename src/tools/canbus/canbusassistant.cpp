@@ -19,6 +19,7 @@
 
 #include "application.h"
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 CanBusAssistant::CanBusAssistant(QWidget* parent)
     : QWidget{parent}
