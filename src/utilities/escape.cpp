@@ -1,11 +1,12 @@
 #include "escape.h"
+
 #include <QDebug>
+
+namespace xTools {
 
 static bool isHexDigit(const QChar ch)
 {
-    return (ch >= u'0' && ch <= u'9') ||
-           (ch >= u'A' && ch <= u'F') ||
-           (ch >= u'a' && ch <= u'f');
+    return (ch >= u'0' && ch <= u'9') || (ch >= u'A' && ch <= u'F') || (ch >= u'a' && ch <= u'f');
 }
 
 static int hexDigitValue(const QChar ch)
@@ -181,3 +182,5 @@ QString cEscape(const QString& src)
     dst.remove(dPos, dst.size() - dPos);
     return dst;
 }
+
+} // namespace xTools

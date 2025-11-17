@@ -7,7 +7,6 @@
  * directory.
  **************************************************************************************************/
 #include "xtools.h"
-#include "escape.h"
 
 #include <QAction>
 #include <QActionGroup>
@@ -53,6 +52,7 @@
 
 #include "common/crc.h"
 #include "utilities/compatibility.h"
+#include "utilities/escape.h"
 
 #ifdef X_ENABLE_ICONV
 #include <iconv.h>
@@ -453,7 +453,7 @@ QString cookedEscapeCharacter(const QString &text, int escapeCharacter)
         newStr.replace("\\r", "\r");
         newStr.replace("\\n", "\n");
     } else if (escapeCharacter == static_cast<int>(EscapeCharacter::C)) {
-        newStr = cEscape(text);
+        newStr = xTools::cEscape(text);
     }
 
     return newStr;
