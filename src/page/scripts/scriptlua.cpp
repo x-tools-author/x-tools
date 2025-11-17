@@ -8,13 +8,13 @@
  **************************************************************************************************/
 #include "scriptlua.h"
 
-#include "common/syntaxhighlighterlua.h"
 #include "scriptrunnerlua.h"
+#include "utilities/syntaxhighlighterlua.h"
 
 ScriptLua::ScriptLua(QWidget *parent)
     : ScriptBase(parent)
 {
-    auto ret = new SyntaxHighlighterLua(scriptDocument());
+    auto ret = new xTools::SyntaxHighlighterLua(scriptDocument());
     Q_UNUSED(ret);
 }
 

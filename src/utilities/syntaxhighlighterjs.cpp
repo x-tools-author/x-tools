@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "syntaxhighlighterjs.h"
 
+namespace xTools {
+
 SyntaxHighlighterJs::SyntaxHighlighterJs(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
@@ -82,3 +84,5 @@ void SyntaxHighlighterJs::highlightBlock(const QString &text)
         }
     }
 }
+
+} // namespace xTools

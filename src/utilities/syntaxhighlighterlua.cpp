@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "syntaxhighlighterlua.h"
 
+namespace xTools {
+
 SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
@@ -73,3 +75,5 @@ void SyntaxHighlighterLua::highlightBlock(const QString &text)
         }
     }
 }
+
+} // namespace xTools

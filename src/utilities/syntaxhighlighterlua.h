@@ -14,11 +14,13 @@
 #include <QTextCharFormat>
 #include <QTextDocument>
 
-class SyntaxHighlighterJs : public QSyntaxHighlighter
+namespace xTools {
+
+class SyntaxHighlighterLua : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    SyntaxHighlighterJs(QTextDocument *parent = nullptr);
+    SyntaxHighlighterLua(QTextDocument *parent = nullptr);
 
 protected:
     void highlightBlock(const QString &text) override;
@@ -31,3 +33,5 @@ private:
     };
     QVector<HighlightingRule> highlightingRules;
 };
+
+} // namespace xTools

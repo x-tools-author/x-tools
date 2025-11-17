@@ -8,13 +8,13 @@
  **************************************************************************************************/
 #include "scriptjs.h"
 
-#include "common/syntaxhighlighterjs.h"
 #include "scriptrunnerjs.h"
+#include "utilities/syntaxhighlighterjs.h"
 
 ScriptJs::ScriptJs(QWidget *parent)
     : ScriptBase(parent)
 {
-    auto ret = new SyntaxHighlighterJs(scriptDocument());
+    auto ret = new xTools::SyntaxHighlighterJs(scriptDocument());
     Q_UNUSED(ret);
 }
 
