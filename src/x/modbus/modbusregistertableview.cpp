@@ -17,7 +17,7 @@
 #include <QTextStream>
 
 #include "common/iconengine.h"
-#include "common/menu.h"
+#include "utilities/keepopenedmenu.h"
 
 #include "modbuscommon.h"
 #include "modbusregisterdelegate.h"
@@ -57,7 +57,7 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
 #endif
 
-    m_columnMenu = new Menu(ui->toolButtonColumns);
+    m_columnMenu = new xTools::KeepOpenedMenu(ui->toolButtonColumns);
     ui->toolButtonColumns->setMenu(m_columnMenu);
     ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
     resetColumnMenu();

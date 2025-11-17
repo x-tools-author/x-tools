@@ -19,15 +19,15 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#include "common/menu.h"
 #include "common/xtools.h"
 #include "presetmodel.h"
 #include "presetviewgroupeditor.h"
+#include "utilities/keepopenedmenu.h"
 
 PresetView::PresetView(QWidget *parent)
     : TableView(parent)
 {
-    m_menu = new Menu();
+    m_menu = new xTools::KeepOpenedMenu();
 
     setIdDisableCheckBoxVisible(false);
 

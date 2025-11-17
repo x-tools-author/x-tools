@@ -6,28 +6,20 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "menu.h"
+#pragma once
 
-#include <QMouseEvent>
+#include <QMenu>
 
-Menu::Menu(const QString& title, QWidget* parent)
-    : QMenu(title, parent)
-{}
+namespace xTools {
 
-Menu::Menu(QWidget* parent)
-    : QMenu{parent}
-{}
-
-void Menu::mouseReleaseEvent(QMouseEvent* e)
+class KeepOpenedMenu : public QMenu
 {
-    auto p = QCursor::pos();
-    if (geometry().contains(p)) {
-        QAction* a = actionAt(e->pos());
-        if (a) {
-            a->activate(QAction::Trigger);
-            return;
-        }
-    }
+public:
+    KeepOpenedMenu(const QString &title, QWidget *parent = nullptr);
+    KeepOpenedMenu(QWidget *parent = nullptr);
 
-    QMenu::mouseReleaseEvent(e);
-}
+protected:
+    virtual void mouseReleaseEvent(QMouseEvent *e) override;
+};
+
+} // namespace xTools
