@@ -36,12 +36,12 @@
 #include "page/panels/common/luapanel.h"
 #endif
 
-#include "common/crc.h"
 #include "common/xtools.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
 #include "scripts/scriptsmanager.h"
 #include "utilities/compatibility.h"
+#include "utilities/crc.h"
 #include "utilities/iconengine.h"
 #include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
@@ -978,12 +978,12 @@ QByteArray Page::payload() const
 QByteArray Page::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
-    CRC::Context ctx;
-    ctx.algorithm = static_cast<CRC::Algorithm>(parameters.algorithm);
+    xTools::CRC::Context ctx;
+    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(parameters.algorithm);
     ctx.startIndex = parameters.startIndex;
     ctx.endIndex = parameters.endIndex;
     ctx.bigEndian = parameters.bigEndian;
     ctx.data = payload;
 
-    return CRC::calculate(ctx);
+    return xTools::CRC::calculate(ctx);
 }

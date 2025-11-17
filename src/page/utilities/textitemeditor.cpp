@@ -9,9 +9,9 @@
 #include "textitemeditor.h"
 #include "ui_textitemeditor.h"
 
-#include "common/crc.h"
 #include "common/xtools.h"
 #include "utilities/compatibility.h"
+#include "utilities/crc.h"
 
 TextItemEditor::TextItemEditor(QWidget *parent)
     : QDialog(parent)
@@ -22,7 +22,7 @@ TextItemEditor::TextItemEditor(QWidget *parent)
     setupAddition(ui->comboBoxPrefix);
     setupAddition(ui->comboBoxSuffix);
     setupEscapeCharacter(ui->comboBoxEscapeCharacter);
-    CRC::setupAlgorithm(ui->comboBoxAlgorithm);
+    xTools::CRC::setupAlgorithm(ui->comboBoxAlgorithm);
     setupTextFormat(ui->comboBoxFormat);
 
     connect(ui->comboBoxFormat, xComboBoxActivated, this, &TextItemEditor::onTextFormatChanged);

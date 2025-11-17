@@ -10,6 +10,8 @@
 
 #include <utility>
 
+namespace xTools {
+
 QList<int> CRC::supportedAlgorithms(bool enableSumChecks, bool enableLrc)
 {
     QList<int> Algorithms;
@@ -498,3 +500,5 @@ QByteArray CRC::calculate(const Context &ctx)
     const QByteArray tmpData = ctx.data.mid(ctx.startIndex, length);
     return calculate(tmpData, static_cast<int>(ctx.algorithm), ctx.bigEndian);
 }
+
+} // namespace xTools

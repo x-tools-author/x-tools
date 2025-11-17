@@ -9,8 +9,8 @@
 #include "inputsettings.h"
 #include "ui_inputsettings.h"
 
-#include "common/crc.h"
 #include "common/xtools.h"
+#include "utilities/crc.h"
 
 InputSettings::InputSettings(QWidget *parent)
     : QWidget(parent)
@@ -21,7 +21,7 @@ InputSettings::InputSettings(QWidget *parent)
     setupAddition(ui->comboBoxPrefix);
     setupAddition(ui->comboBoxSuffix);
     setupEscapeCharacter(ui->comboBoxEscapeCharacter);
-    CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm, true, true);
+    xTools::CRC::setupAlgorithm(ui->comboBoxCrcAlgorithm, true, true);
 }
 
 InputSettings::~InputSettings()

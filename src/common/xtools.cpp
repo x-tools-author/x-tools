@@ -50,8 +50,8 @@
 #include <QSerialPortInfo>
 #endif
 
-#include "common/crc.h"
 #include "utilities/compatibility.h"
+#include "utilities/crc.h"
 #include "utilities/escape.h"
 
 #ifdef X_ENABLE_ICONV
@@ -569,7 +569,7 @@ TextItem defaultTextItem()
 
     context.crc.enable = false;
     context.crc.bigEndian = true;
-    context.crc.algorithm = static_cast<int>(CRC::Algorithm::CRC_8);
+    context.crc.algorithm = static_cast<int>(xTools::CRC::Algorithm::CRC_8);
     context.crc.startIndex = 0;
     context.crc.endIndex = 0;
     return context;
@@ -583,14 +583,14 @@ QString textItem2string(const TextItem &context)
     if (context.crc.enable) {
         QByteArray data = string2bytes(context.text, static_cast<int>(context.textFormat));
 
-        CRC::Context ctx;
-        ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
+        xTools::CRC::Context ctx;
+        ctx.algorithm = static_cast<xTools::CRC::Algorithm>(context.crc.algorithm);
         ctx.startIndex = context.crc.startIndex;
         ctx.endIndex = context.crc.endIndex;
         ctx.bigEndian = context.crc.bigEndian;
         ctx.data = data;
 
-        QByteArray crcArray = CRC::calculate(ctx);
+        QByteArray crcArray = xTools::CRC::calculate(ctx);
         crc = QString::fromLatin1(crcArray.toHex());
         crc = crc.toUpper();
     }
@@ -606,14 +606,14 @@ QByteArray textItem2array(const TextItem &context)
     QString text = cookedEscapeCharacter(context.text, esc);
     QByteArray payload = string2bytes(text, static_cast<int>(context.textFormat));
 
-    CRC::Context ctx;
-    ctx.algorithm = static_cast<CRC::Algorithm>(context.crc.algorithm);
+    xTools::CRC::Context ctx;
+    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(context.crc.algorithm);
     ctx.startIndex = context.crc.startIndex;
     ctx.endIndex = context.crc.endIndex;
     ctx.bigEndian = context.crc.bigEndian;
     ctx.data = payload;
 
-    QByteArray crc = CRC::calculate(ctx);
+    QByteArray crc = xTools::CRC::calculate(ctx);
     QByteArray suffix = cookedAffixes(static_cast<int>(context.suffix));
 
     if (context.crc.enable) {
