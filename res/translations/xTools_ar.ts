@@ -1825,13 +1825,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="738"/>
         <source>Import Parameters</source>
         <translation>استيراد المعلمات</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="325"/>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="751"/>
         <source>Export Parameters</source>
         <translation>تصدير المعلمات</translation>
     </message>
@@ -1907,139 +1907,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">نظام</translation>
     </message>
     <message>
+        <location filename="../../src/mainwindow.cpp" line="505"/>
         <source>&amp;Languages</source>
-        <translation type="vanished">&amp;اللغات</translation>
+        <translation>&amp;اللغات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
+        <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>&amp;View</source>
         <translation>&amp;عرض</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>Stays on Top</source>
         <translation>البقاء في المقدمة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="583"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>&amp;Help</source>
         <translation>&amp;مساعدة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="584"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
         <source>About Qt</source>
         <translation>حول Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="586"/>
+        <location filename="../../src/mainwindow.cpp" line="794"/>
         <source>About</source>
         <translation>حول</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="590"/>
         <source>Screenshot</source>
         <translation>لقطة شاشة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="599"/>
         <source>Buy from Store</source>
         <translation>اشترِ من المتجر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="605"/>
+        <location filename="../../src/mainwindow.cpp" line="643"/>
         <source>Release History</source>
         <translation>سجل الإصدارات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="605"/>
+        <location filename="../../src/mainwindow.cpp" line="606"/>
         <source>Join in QQ Group</source>
         <translation>انضم إلى مجموعة QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="608"/>
+        <location filename="../../src/mainwindow.cpp" line="609"/>
         <source>Online Manual</source>
         <translation>الدليل عبر الإنترنت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="611"/>
+        <location filename="../../src/mainwindow.cpp" line="612"/>
         <source>Get Sources from Github</source>
         <translation>احصل على المصادر من Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="614"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>Get Sources from Gitee</source>
         <translation>احصل على المصادر من Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="633"/>
         <source>Third Party Open Source</source>
         <translation>مصادر مفتوحة من طرف ثالث</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>QR Code</source>
         <translation>رمز الاستجابة السريعة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>User QQ Group</source>
         <translation>مجموعة مستخدمي QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Qt QQ Group</source>
         <translation>مجموعة Qt على QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>Need to Reboot</source>
         <translation>يحتاج إلى إعادة تشغيل</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>تحتاج العملية إلى إعادة تشغيل لتصبح سارية المفعول، هل تريد إعادة تشغيل التطبيق الآن؟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="697"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(يرجى إعادة تشغيل التطبيق يدويًا.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="740"/>
+        <location filename="../../src/mainwindow.cpp" line="753"/>
         <source>Json Files (*.json)</source>
         <translation>ملفات Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="782"/>
         <source>Unknown</source>
         <translation>غير معروف</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="787"/>
+        <location filename="../../src/mainwindow.cpp" line="788"/>
         <source>Commit hash</source>
         <translation>هاش الالتزام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Commit time</source>
         <translation>وقت الالتزام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Build Date</source>
         <translation>تاريخ البناء</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>Copyright</source>
         <translation>حقوق النشر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>All rights reserved.</source>
         <translation>جميع الحقوق محفوظة.</translation>
     </message>
@@ -3580,9 +3581,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>الجميع</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/i18n_p.h" line="81"/>
         <source>&amp;Languages</source>
-        <translation type="unfinished">&amp;اللغات</translation>
+        <translation type="obsolete">&amp;اللغات</translation>
     </message>
 </context>
 <context>
