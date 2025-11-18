@@ -28,6 +28,7 @@
 
 #include "common/xtools.h"
 #include "utilities/compatibility.h"
+#include "utilities/i18n.h"
 #include "utilities/thememanager.h"
 
 Application::Application(int &argc, char **argv)
@@ -188,57 +189,10 @@ void Application::execMs(int ms)
     loop.exec();
 }
 
-void setupLanguage(const QString &qmFile)
-{
-    QString appPath = QCoreApplication::applicationDirPath();
-    QString tmp = qmFile;
-    tmp = tmp.remove(appPath + "/");
-
-    QTranslator *translator = new QTranslator();
-    if (!translator->load(qmFile)) {
-        qWarning() << QString("The qm file(%1) can not be loaded.").arg(tmp);
-        return;
-    }
-
-    if (!qApp->installTranslator(translator)) {
-        qWarning() << QString("The qm file(%1) can not be installed.").arg(tmp);
-    }
-
-    qInfo() << QString("The qm file(%1) is installed.").arg(tmp);
-}
-
-void findQmFile(const QString &path, const QString &language, QStringList &qmFiles)
-{
-    QDir dir(path);
-    QFileInfoList infos = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
-    for (const QFileInfo &info : infos) {
-        if (info.isDir()) {
-            findQmFile(info.absoluteFilePath(), language, qmFiles);
-        } else if (info.isFile() && info.suffix().toLower() == "qm") {
-            QString fileName = info.fileName();
-            if (fileName.endsWith("_" + language + ".qm")) {
-                qmFiles.append(info.absoluteFilePath());
-            }
-        }
-    }
-}
-
 void Application::setupLanguage()
 {
-    QSettings *settings = Application::settings();
-    QString defaultLanguage = QLocale::system().name();
-    QString language = settings->value(SettingsKey().language, defaultLanguage).toString();
-
-    const QString appPath = QApplication::applicationDirPath();
-    const QString qmFilesPath = appPath + "/translations";
-
-    qInfo() << "The qm files path is:" << qmFilesPath;
-
-    QStringList qmFiles;
-    findQmFile(qmFilesPath, language, qmFiles);
-    for (const QString &qmFile : qmFiles) {
-        ::setupLanguage(qmFile);
-    }
+    xI18n.setupSettings(settings());
+    xI18n.setupLanguage();
 }
 
 void Application::setupColorScheme()

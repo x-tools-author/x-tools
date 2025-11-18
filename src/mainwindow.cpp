@@ -46,6 +46,7 @@
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 #include "utilities/compatibility.h"
+#include "utilities/i18n.h"
 #include "utilities/thememanager.h"
 
 #ifdef Q_OS_WIN
@@ -132,6 +133,8 @@ MainWindow::MainWindow(QWidget* parent)
     QToolButton* button = m_layoutManager->addLayoutPage(QString("xTools"), ioLayoutWidget);
     m_layoutManager->setupPages();
     button->setChecked(true);
+
+    connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
 }
 
 MainWindow::~MainWindow() {}
@@ -497,44 +500,9 @@ void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
 
 void MainWindow::initMenuLanguage()
 {
-    QString path = QCoreApplication::applicationDirPath();
-    path += "/translations/";
-    QDir dir(path);
-    QFileInfoList fileInfoList = dir.entryInfoList(QStringList("xTools_*.qm"),
-                                                   QDir::Files | QDir::NoDotAndDotDot);
-    QStringList languages;
-    for (const QFileInfo& fileInfo : fileInfoList) {
-        QString baseName = fileInfo.baseName();      // e.g., xTools_zh_CN
-        QString locale = baseName.remove("xTools_"); // e.g., zh_CN
-        languages.append(locale);
-    }
-
-    QMenu* languageMenu = menuBar()->addMenu(tr("&Languages"));
-    static auto languageActionGroup = new QActionGroup(this);
-    for (const QString& language : std::as_const(languages)) {
-        QString name = language;
-        QString nativeName = QLocale(language).nativeLanguageName();
-        if (nativeName.isEmpty()) {
-            continue;
-        }
-
-        QLocale locale(language);
-        auto* action = new QAction(nativeName, this);
-        action->setCheckable(true);
-        languageMenu->addAction(action);
-        languageActionGroup->addAction(action);
-
-        Application::SettingsKey keys;
-        connect(action, &QAction::triggered, this, [=]() {
-            xApp->settings()->setValue(keys.language, language);
-            tryToReboot();
-        });
-
-        QString defaultLanguage = QLocale::system().name();
-        QString tmp = xApp->settings()->value(keys.language, defaultLanguage).toString();
-        if (tmp == name) {
-            action->setChecked(true);
-        }
+    QMenu* languageMenu = xI18n.languageMenu();
+    if (languageMenu) {
+        menuBar()->addMenu(xI18n.languageMenu());
     }
 }
 

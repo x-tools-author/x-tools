@@ -70,9 +70,6 @@ QJsonObject xModbus::save()
 
 void xModbus::load(const QJsonObject& obj)
 {
-    QElapsedTimer timer;
-    timer.start();
-
     xModbusKeys keys;
     QJsonObject logTab = obj.value(keys.logTab).toObject();
     ui->tabLog->load(logTab);
@@ -84,9 +81,6 @@ void xModbus::load(const QJsonObject& obj)
         ui->tabWidget->setCurrentIndex(tabIndex);
     }
 #endif
-
-    qint64 elapsed = timer.elapsed();
-    qInfo("xModbus::load: loaded in %lld ms", static_cast<long long>(elapsed));
 }
 
 void xModbus::onInvokeShowRegisterView(ModbusRegisterTableView* registerView)
