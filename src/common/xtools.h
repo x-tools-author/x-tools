@@ -191,10 +191,3 @@ enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
 QList<int> supportedChartsDataFormats();
 QString chartsDataFormatName(int format);
 void setupChartsDataFormat(QComboBox *comboBox);
-
-/**************************************************************************************************/
-QString systemDateFormat();
-QString systemTimeFormat();
-QString dateTimeString(const QString &format);
-QDateTime buildDateTime();
-QString buildDateTimeString(const QString &format);

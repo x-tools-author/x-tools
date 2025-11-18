@@ -46,5 +46,4 @@ private:
     void initMenuBarHelpGrab();
 
     void showAboutInfo();
-    void updateWindowTitleArea(QWidget *widget);
 };

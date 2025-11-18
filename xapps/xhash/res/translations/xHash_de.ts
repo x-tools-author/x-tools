@@ -71,208 +71,210 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../../src/common/crc.cpp" line="68"/>
+        <location filename="../../../../src/utilities/crc.cpp" line="92"/>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="90"/>
         <source>Serial Port</source>
         <translation>Serieller Port</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="92"/>
         <source>BLE Central</source>
         <translation>BLE-Zentrale</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="94"/>
         <source>BLE Peripheral</source>
-        <translation>BLE-Peripherie</translation>
+        <translation>BLE-Peripheriegerät</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="96"/>
         <source>UDP Client</source>
         <translation>UDP-Client</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="98"/>
         <source>UDP Server</source>
         <translation>UDP-Server</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="100"/>
         <source>TCP Client</source>
         <translation>TCP-Client</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="102"/>
         <source>TCP Server</source>
         <translation>TCP-Server</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="104"/>
         <source>WebSocket Client</source>
         <translation>WebSocket-Client</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="106"/>
         <source>WebSocket Server</source>
         <translation>WebSocket-Server</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="108"/>
         <source>Local Socket</source>
         <translation>Lokaler Socket</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="110"/>
         <source>Local Server</source>
         <translation>Lokaler Server</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="112"/>
         <source>Charts Test</source>
-        <translation>Diagramm-Test</translation>
+        <translation>Diagrammtest</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="162"/>
-        <location filename="../../../../src/common/xtools.cpp" line="420"/>
-        <location filename="../../../../src/common/xtools.cpp" line="845"/>
-        <location filename="../../../../src/common/xtools.cpp" line="847"/>
         <source>Binary</source>
         <translation>Binär</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="164"/>
         <source>Octal</source>
         <translation>Oktal</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="166"/>
         <source>Decimal</source>
         <translation>Dezimal</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="168"/>
         <source>Hexadecimal</source>
         <translation>Hexadezimal</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="170"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="172"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="320"/>
-        <location filename="../../../../src/common/xtools.cpp" line="379"/>
-        <location filename="../../../../src/common/xtools.cpp" line="687"/>
-        <location filename="../../../../src/common/xtools.cpp" line="705"/>
         <source>None</source>
-        <translation>Keine</translation>
+        <translation>Keiner</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="418"/>
-        <location filename="../../../../src/common/xtools.cpp" line="849"/>
-        <location filename="../../../../src/common/xtools.cpp" line="851"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="455"/>
         <source>Echo</source>
         <translation>Echo</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="456"/>
         <source>Always</source>
-        <translation>Immer</translation>
+        <translation>Stets</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="457"/>
         <source>Input Equal Reference</source>
-        <translation>Eingabe gleich Referenz</translation>
+        <translation>Geben Sie die gleiche Referenz ein</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="458"/>
         <source>Input Contain Reference</source>
         <translation>Eingabe enthält Referenz</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="460"/>
         <source>Input Does not Contain Reference</source>
-        <translation>Eingabe enthält keine Referenz</translation>
+        <translation>Die Eingabe enthält keine Referenz</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="688"/>
         <source>Even</source>
-        <translation>Gerade</translation>
+        <translation>Sogar</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="689"/>
         <source>Odd</source>
-        <translation>Ungerade</translation>
+        <translation>Seltsam</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="690"/>
         <source>Space</source>
-        <translation>Leerzeichen</translation>
+        <translation>Raum</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="691"/>
         <source>Mark</source>
-        <translation>Markierung</translation>
+        <translation>Markieren</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="707"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="708"/>
         <source>X-ON/X-OFF</source>
-        <translation>X-ON/X-OFF</translation>
+        <translation>X-AN/X-AUS</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="710"/>
         <source>Hardware</source>
         <translation>Hardware</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="711"/>
         <source>Software</source>
         <translation>Software</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="810"/>
         <source>Disabled</source>
         <translation>Deaktiviert</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="812"/>
         <source>Bidirectional</source>
         <translation>Bidirektional</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="814"/>
         <source>Unidirectional</source>
         <translation>Unidirektional</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="61"/>
+        <source>System</source>
+        <translation>System</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
+        <source>Round up for .5 and above</source>
+        <translation>Bei 0,5 und höher aufrunden</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
+        <source>Always round up</source>
+        <translation>Immer aufrunden</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
+        <source>Always round down</source>
+        <translation>Immer abrunden</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
+        <source>Round up for .75 and above</source>
+        <translation>Bei 0,75 und höher aufrunden</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
+        <source>Don&apos;t round</source>
+        <translation>Don</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Color Scheme</source>
+        <translation>Farbschema</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="59"/>
+        <source>Dark</source>
+        <translation>Dunkel</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="60"/>
+        <source>Light</source>
+        <translation>Licht</translation>
     </message>
 </context>
 <context>
     <name>xApp</name>
     <message>
-        <location filename="../../../x/xapp.cpp" line="133"/>
+        <location filename="../../../x/xapp.cpp" line="136"/>
         <source>Need to Reboot</source>
         <translation>Neustart erforderlich</translation>
     </message>
     <message>
-        <location filename="../../../x/xapp.cpp" line="134"/>
+        <location filename="../../../x/xapp.cpp" line="137"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Der Vorgang erfordert einen Neustart, um wirksam zu werden. Anwendung jetzt neu starten?</translation>
     </message>
@@ -280,163 +282,163 @@
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="59"/>
+        <location filename="../../../x/xui.cpp" line="53"/>
         <source>Option</source>
         <translation>Option</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="60"/>
+        <location filename="../../../x/xui.cpp" line="54"/>
         <source>View</source>
         <translation>Ansicht</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="61"/>
+        <location filename="../../../x/xui.cpp" line="55"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="77"/>
+        <location filename="../../../x/xui.cpp" line="73"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="128"/>
+        <location filename="../../../x/xui.cpp" line="80"/>
         <source>Open Settings Directory</source>
         <translation>Einstellungsverzeichnis öffnen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="133"/>
+        <location filename="../../../x/xui.cpp" line="85"/>
         <source>Clear Settings File</source>
         <translation>Einstellungsdatei löschen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="155"/>
         <source>Round up for .5 and above</source>
-        <translation>Ab .5 aufrunden</translation>
+        <translation>Bei 0,5 und höher aufrunden</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="159"/>
         <source>Always round up</source>
         <translation>Immer aufrunden</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="161"/>
         <source>Always round down</source>
         <translation>Immer abrunden</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="157"/>
         <source>Round up for .75 and above</source>
-        <translation>Ab .75 aufrunden</translation>
+        <translation>Bei 0,75 und höher aufrunden</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="163"/>
         <source>Don&apos;t round</source>
-        <translation>Nicht runden</translation>
+        <translation>Don</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="168"/>
         <source>High DPI Settings</source>
         <translation>Hohe DPI-Einstellungen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="194"/>
         <source>Dark</source>
         <translation>Dunkel</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="195"/>
         <source>Light</source>
-        <translation>Hell</translation>
+        <translation>Licht</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="196"/>
         <source>System Default</source>
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="201"/>
         <source>Application Theme</source>
         <translation>Anwendungsthema</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="226"/>
+        <location filename="../../../x/xui.cpp" line="103"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>Richtlinie zur hohen DPI-Skalierung</translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="112"/>
+        <source>Theme</source>
+        <translation>Thema</translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="119"/>
         <source>Stays on Top</source>
         <translation>Immer im Vordergrund</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="241"/>
+        <location filename="../../../x/xui.cpp" line="134"/>
         <source>About Qt</source>
         <translation>Über Qt</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="244"/>
-        <location filename="../../../x/xui.cpp" line="333"/>
+        <location filename="../../../x/xui.cpp" line="137"/>
+        <location filename="../../../x/xui.cpp" line="226"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="257"/>
+        <location filename="../../../x/xui.cpp" line="150"/>
         <source>Get Source from Gitee</source>
         <translation>Quellcode von Gitee holen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="258"/>
+        <location filename="../../../x/xui.cpp" line="151"/>
         <source>Get Source from Github</source>
         <translation>Quellcode von GitHub holen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="259"/>
+        <location filename="../../../x/xui.cpp" line="152"/>
         <source>Visit Author Home Page</source>
         <translation>Autor-Homepage besuchen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="260"/>
+        <location filename="../../../x/xui.cpp" line="153"/>
         <source>Visit App Store</source>
         <translation>App Store besuchen</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="270"/>
+        <location filename="../../../x/xui.cpp" line="163"/>
         <source>User Feedback</source>
         <translation>Benutzerfeedback</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="284"/>
+        <location filename="../../../x/xui.cpp" line="177"/>
         <source>Grab and Save</source>
         <translation>Erfassen und speichern</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="288"/>
+        <location filename="../../../x/xui.cpp" line="181"/>
         <source>Save Grabbed Image</source>
         <translation>Erfasstes Bild speichern</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="299"/>
+        <location filename="../../../x/xui.cpp" line="192"/>
         <source>Grab and Copy</source>
         <translation>Erfassen und kopieren</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="313"/>
+        <location filename="../../../x/xui.cpp" line="206"/>
         <source>Commit time</source>
         <translation>Commit-Zeit</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="320"/>
+        <location filename="../../../x/xui.cpp" line="213"/>
         <source>Commit</source>
         <translation>Commit</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="330"/>
+        <location filename="../../../x/xui.cpp" line="223"/>
         <source>Build Date</source>
         <translation>Build-Datum</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="331"/>
+        <location filename="../../../x/xui.cpp" line="224"/>
         <source>Copyright</source>
         <translation>Urheberrecht</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="332"/>
+        <location filename="../../../x/xui.cpp" line="225"/>
         <source>All rights reserved.</source>
         <translation>Alle Rechte vorbehalten.</translation>
     </message>

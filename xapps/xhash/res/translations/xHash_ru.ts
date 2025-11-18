@@ -71,208 +71,210 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../../../src/common/crc.cpp" line="68"/>
+        <location filename="../../../../src/utilities/crc.cpp" line="92"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="90"/>
         <source>Serial Port</source>
         <translation>Последовательный порт</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="92"/>
         <source>BLE Central</source>
-        <translation>BLE Центральный</translation>
+        <translation>БЛЕ Центральный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="94"/>
         <source>BLE Peripheral</source>
-        <translation>BLE Периферийный</translation>
+        <translation>BLE-периферия</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="96"/>
         <source>UDP Client</source>
-        <translation>UDP Клиент</translation>
+        <translation>UDP-клиент</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="98"/>
         <source>UDP Server</source>
-        <translation>UDP Сервер</translation>
+        <translation>UDP-сервер</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="100"/>
         <source>TCP Client</source>
-        <translation>TCP Клиент</translation>
+        <translation>TCP-клиент</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="102"/>
         <source>TCP Server</source>
-        <translation>TCP Сервер</translation>
+        <translation>TCP-сервер</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="104"/>
         <source>WebSocket Client</source>
-        <translation>WebSocket Клиент</translation>
+        <translation>Вебсокет-клиент</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="106"/>
         <source>WebSocket Server</source>
-        <translation>WebSocket Сервер</translation>
+        <translation>Вебсокет-сервер</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="108"/>
         <source>Local Socket</source>
-        <translation>Локальный сокет</translation>
+        <translation>Локальное гнездо</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="110"/>
         <source>Local Server</source>
         <translation>Локальный сервер</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="112"/>
         <source>Charts Test</source>
         <translation>Тест графиков</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="162"/>
-        <location filename="../../../../src/common/xtools.cpp" line="420"/>
-        <location filename="../../../../src/common/xtools.cpp" line="845"/>
-        <location filename="../../../../src/common/xtools.cpp" line="847"/>
         <source>Binary</source>
         <translation>Двоичный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="164"/>
         <source>Octal</source>
         <translation>Восьмеричный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="166"/>
         <source>Decimal</source>
-        <translation>Десятичный</translation>
+        <translation>десятичный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="168"/>
         <source>Hexadecimal</source>
         <translation>Шестнадцатеричный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="170"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="172"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="320"/>
-        <location filename="../../../../src/common/xtools.cpp" line="379"/>
-        <location filename="../../../../src/common/xtools.cpp" line="687"/>
-        <location filename="../../../../src/common/xtools.cpp" line="705"/>
         <source>None</source>
-        <translation>Нет</translation>
+        <translation>Никто</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="418"/>
-        <location filename="../../../../src/common/xtools.cpp" line="849"/>
-        <location filename="../../../../src/common/xtools.cpp" line="851"/>
         <source>Text</source>
         <translation>Текст</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="455"/>
         <source>Echo</source>
         <translation>Эхо</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="456"/>
         <source>Always</source>
         <translation>Всегда</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="457"/>
         <source>Input Equal Reference</source>
-        <translation>Ввод равен ссылке</translation>
+        <translation>Входное равное задание</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="458"/>
         <source>Input Contain Reference</source>
-        <translation>Ввод содержит ссылку</translation>
+        <translation>Входная ссылка на содержание</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="460"/>
         <source>Input Does not Contain Reference</source>
-        <translation>Ввод не содержит ссылку</translation>
+        <translation>Входные данные не содержат ссылку</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="688"/>
         <source>Even</source>
-        <translation>Четный</translation>
+        <translation>Даже</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="689"/>
         <source>Odd</source>
-        <translation>Нечетный</translation>
+        <translation>Странный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="690"/>
         <source>Space</source>
-        <translation>Пробел</translation>
+        <translation>Космос</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="691"/>
         <source>Mark</source>
-        <translation>Метка</translation>
+        <translation>Отметка</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="707"/>
         <source>RTS/CTS</source>
-        <translation>RTS/CTS</translation>
+        <translation>РТС/КТС</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="708"/>
         <source>X-ON/X-OFF</source>
-        <translation>X-ON/X-OFF</translation>
+        <translation>Х-ВКЛ/Х-ВЫКЛ</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="710"/>
         <source>Hardware</source>
         <translation>Аппаратное обеспечение</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="711"/>
         <source>Software</source>
         <translation>Программное обеспечение</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="810"/>
         <source>Disabled</source>
-        <translation>Отключено</translation>
+        <translation>Неполноценный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="812"/>
         <source>Bidirectional</source>
         <translation>Двунаправленный</translation>
     </message>
     <message>
-        <location filename="../../../../src/common/xtools.cpp" line="814"/>
         <source>Unidirectional</source>
         <translation>Однонаправленный</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="61"/>
+        <source>System</source>
+        <translation>Система</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
+        <source>Round up for .5 and above</source>
+        <translation>Округлите в большую сторону до 0,5 и выше</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
+        <source>Always round up</source>
+        <translation>Всегда округляйте в большую сторону</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
+        <source>Always round down</source>
+        <translation>Всегда округлять в меньшую сторону</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
+        <source>Round up for .75 and above</source>
+        <translation>Округлите в большую сторону до 0,75 и выше.</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
+        <source>Don&apos;t round</source>
+        <translation>Дон</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="57"/>
+        <source>Color Scheme</source>
+        <translation>Цветовая схема</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="59"/>
+        <source>Dark</source>
+        <translation>Темный</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/utilities/thememanager_p.h" line="60"/>
+        <source>Light</source>
+        <translation>Свет</translation>
     </message>
 </context>
 <context>
     <name>xApp</name>
     <message>
-        <location filename="../../../x/xapp.cpp" line="133"/>
+        <location filename="../../../x/xapp.cpp" line="136"/>
         <source>Need to Reboot</source>
         <translation>Требуется перезагрузка</translation>
     </message>
     <message>
-        <location filename="../../../x/xapp.cpp" line="134"/>
+        <location filename="../../../x/xapp.cpp" line="137"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Операция требует перезагрузки для вступления в силу, перезагрузить приложение сейчас?</translation>
     </message>
@@ -280,163 +282,163 @@
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="59"/>
+        <location filename="../../../x/xui.cpp" line="53"/>
         <source>Option</source>
         <translation>Опция</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="60"/>
+        <location filename="../../../x/xui.cpp" line="54"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="61"/>
+        <location filename="../../../x/xui.cpp" line="55"/>
         <source>Help</source>
         <translation>Справка</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="77"/>
+        <location filename="../../../x/xui.cpp" line="73"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="128"/>
+        <location filename="../../../x/xui.cpp" line="80"/>
         <source>Open Settings Directory</source>
         <translation>Открыть каталог настроек</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="133"/>
+        <location filename="../../../x/xui.cpp" line="85"/>
         <source>Clear Settings File</source>
         <translation>Очистить файл настроек</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="155"/>
         <source>Round up for .5 and above</source>
-        <translation>Округлять вверх для 0,5 и выше</translation>
+        <translation>Округлите в большую сторону до 0,5 и выше</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="159"/>
         <source>Always round up</source>
-        <translation>Всегда округлять вверх</translation>
+        <translation>Всегда округляйте в большую сторону</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="161"/>
         <source>Always round down</source>
-        <translation>Всегда округлять вниз</translation>
+        <translation>Всегда округлять в меньшую сторону</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="157"/>
         <source>Round up for .75 and above</source>
-        <translation>Округлять вверх для 0,75 и выше</translation>
+        <translation>Округлите в большую сторону до 0,75 и выше.</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="163"/>
         <source>Don&apos;t round</source>
-        <translation>Не округлять</translation>
+        <translation>Дон</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="168"/>
         <source>High DPI Settings</source>
-        <translation>Настройки высокого DPI</translation>
+        <translation>Настройки высокого разрешения</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="194"/>
         <source>Dark</source>
-        <translation>Темная</translation>
+        <translation>Темный</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="195"/>
         <source>Light</source>
-        <translation>Светлая</translation>
+        <translation>Свет</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="196"/>
         <source>System Default</source>
-        <translation>По умолчанию системы</translation>
+        <translation>Системные настройки по умолчанию</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="201"/>
         <source>Application Theme</source>
         <translation>Тема приложения</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="226"/>
+        <location filename="../../../x/xui.cpp" line="103"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>Политика масштабирования высокого разрешения</translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="112"/>
+        <source>Theme</source>
+        <translation>Тема</translation>
+    </message>
+    <message>
+        <location filename="../../../x/xui.cpp" line="119"/>
         <source>Stays on Top</source>
         <translation>Поверх всех окон</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="241"/>
+        <location filename="../../../x/xui.cpp" line="134"/>
         <source>About Qt</source>
         <translation>О Qt</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="244"/>
-        <location filename="../../../x/xui.cpp" line="333"/>
+        <location filename="../../../x/xui.cpp" line="137"/>
+        <location filename="../../../x/xui.cpp" line="226"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="257"/>
+        <location filename="../../../x/xui.cpp" line="150"/>
         <source>Get Source from Gitee</source>
         <translation>Получить исходный код с Gitee</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="258"/>
+        <location filename="../../../x/xui.cpp" line="151"/>
         <source>Get Source from Github</source>
         <translation>Получить исходный код с GitHub</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="259"/>
+        <location filename="../../../x/xui.cpp" line="152"/>
         <source>Visit Author Home Page</source>
         <translation>Посетить домашнюю страницу автора</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="260"/>
+        <location filename="../../../x/xui.cpp" line="153"/>
         <source>Visit App Store</source>
         <translation>Посетить App Store</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="270"/>
+        <location filename="../../../x/xui.cpp" line="163"/>
         <source>User Feedback</source>
         <translation>Отзыв пользователя</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="284"/>
+        <location filename="../../../x/xui.cpp" line="177"/>
         <source>Grab and Save</source>
         <translation>Захватить и сохранить</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="288"/>
+        <location filename="../../../x/xui.cpp" line="181"/>
         <source>Save Grabbed Image</source>
         <translation>Сохранить захваченное изображение</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="299"/>
+        <location filename="../../../x/xui.cpp" line="192"/>
         <source>Grab and Copy</source>
         <translation>Захватить и скопировать</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="313"/>
+        <location filename="../../../x/xui.cpp" line="206"/>
         <source>Commit time</source>
         <translation>Время коммита</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="320"/>
+        <location filename="../../../x/xui.cpp" line="213"/>
         <source>Commit</source>
         <translation>Коммит</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="330"/>
+        <location filename="../../../x/xui.cpp" line="223"/>
         <source>Build Date</source>
         <translation>Дата сборки</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="331"/>
+        <location filename="../../../x/xui.cpp" line="224"/>
         <source>Copyright</source>
         <translation>Авторские права</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="332"/>
+        <location filename="../../../x/xui.cpp" line="225"/>
         <source>All rights reserved.</source>
         <translation>Все права защищены.</translation>
     </message>

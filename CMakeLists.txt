@@ -167,9 +167,6 @@ file(GLOB_RECURSE X_SOURCES_UI "${CMAKE_CURRENT_SOURCE_DIR}/src/*.ui")
 set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP} ${X_SOURCES_UI})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
-include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
-
 # --------------------------------------------------------------------------------------------------
 # if X_LATEST_GIT_TAG contain "v", remove it...
 if(NOT DEFINED X_LATEST_GIT_TAG)
@@ -186,6 +183,10 @@ include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
 if(NOT ${X_APP} STREQUAL "xTools")
   return()
 endif()
+
+# --------------------------------------------------------------------------------------------------
+include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application

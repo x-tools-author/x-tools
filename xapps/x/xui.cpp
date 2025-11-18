@@ -21,20 +21,11 @@
 #include <QStyleHints>
 #include <QUrl>
 
-#if defined(_MSC_VER)
-#include <dwmapi.h>
+#include "utilities/hdpimanager.h"
+#include "utilities/i18n.h"
+#include "utilities/thememanager.h"
+#include "utilities/x.h"
 
-#include <QColor>
-#include <QSysInfo>
-#include <QWindow>
-#endif
-
-#ifdef Q_OS_MACOS
-#import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
-#endif
-
-#include "common/xtools.h"
 #include "xapp.h"
 
 xUi::xUi(QWidget *parent)
@@ -77,44 +68,10 @@ void xUi::initMenuBarOption()
 
 void xUi::initMenuBarOptionLanguage()
 {
-    QString path = QCoreApplication::applicationDirPath();
-    path += "/translations/";
-    QDir dir(path);
-    QString appName = qApp->applicationName();
-    QString filter = QString("%1_*.qm").arg(appName);
-    QFileInfoList fileInfoList = dir.entryInfoList(QStringList(filter),
-                                                   QDir::Files | QDir::NoDotAndDotDot);
-    QStringList languages;
-    for (const QFileInfo &fileInfo : fileInfoList) {
-        QString baseName = fileInfo.baseName();                        // e.g., xTools_zh_CN
-        QString locale = baseName.remove(QString("%1_").arg(appName)); // e.g., zh_CN
-        languages.append(locale);
-    }
-
-    QMenu *menu = m_optionMenu->addMenu(tr("Language"));
-    QString appLanguage = xAPP->appLanguageFlag();
-    static QActionGroup *actionGroup = new QActionGroup(this);
-    for (const QString &lang : std::as_const(languages)) {
-        QLocale locale(lang);
-        QString name = locale.nativeLanguageName();
-        if (name.isEmpty()) {
-            continue;
-        }
-
-        QAction *action = menu->addAction(name);
-        action->setCheckable(true);
-        action->setData(lang);
-        actionGroup->addAction(action);
-        if (lang == appLanguage) {
-            action->setChecked(true);
-        }
-
-        connect(action, &QAction::triggered, this, [=]() {
-            QString lang = action->data().toString();
-            xAPP->setValue(xApp::SettingKeys().language, lang);
-            xAPP->setupLanguage();
-            xAPP->tryToReboot();
-        });
+    QMenu *lanuageMenu = xI18n.languageMenu();
+    if (lanuageMenu) {
+        lanuageMenu->setTitle(tr("Language"));
+        m_optionMenu->addMenu(lanuageMenu);
     }
 }
 
@@ -141,79 +98,20 @@ void xUi::initMenuBarView()
 
 void xUi::initMenuBarViewHdpi()
 {
-    struct item
-    {
-        int policy;
-        QString name;
-    };
-    QList<item> items = {{static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Round),
-                          tr("Round up for .5 and above")},
-                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor),
-                          tr("Round up for .75 and above")},
-                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Ceil),
-                          tr("Always round up")},
-                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::Floor),
-                          tr("Always round down")},
-                         {static_cast<int>(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough),
-                          tr("Don't round")}};
-
-    int defaultPolicy = static_cast<int>(xAPP->highDpiScaleFactorRoundingPolicy());
-    int currentPolicy = xAPP->value(xApp::SettingKeys().hdpi, defaultPolicy).toInt();
-    static QActionGroup *actionGroup = new QActionGroup(this);
-    QMenu *menu = m_viewMenu->addMenu(tr("High DPI Settings"));
-    for (const item &item : items) {
-        int policy = item.policy;
-        QString name = item.name;
-        QAction *action = menu->addAction(name);
-        action->setCheckable(true);
-        action->setData(policy);
-        if (policy == currentPolicy) {
-            action->setChecked(true);
-        }
-
-        connect(action, &QAction::triggered, this, [=]() {
-            auto policy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(action->data().toInt());
-            qApp->setHighDpiScaleFactorRoundingPolicy(policy);
-            xAPP->setValue(xApp::SettingKeys().hdpi, static_cast<int>(policy));
-        });
+    QMenu *hdpiMenu = xHdpiMgr.hdpiMenu();
+    if (hdpiMenu) {
+        hdpiMenu->setTitle(tr("High DPI Scaling Policy"));
+        m_viewMenu->addMenu(hdpiMenu);
     }
 }
 
 void xUi::initMenuBarViewTheme()
 {
-    struct item
-    {
-        int theme;
-        QString name;
-    };
-    QList<item> items = {{static_cast<int>(Qt::ColorScheme::Dark), tr("Dark")},
-                         {static_cast<int>(Qt::ColorScheme::Light), tr("Light")},
-                         {static_cast<int>(Qt::ColorScheme::Unknown), tr("System Default")}};
-
-    int defaultTheme = static_cast<int>(qApp->styleHints()->colorScheme());
-    int currentTheme = xAPP->value(xApp::SettingKeys().theme, defaultTheme).toInt();
-    static QActionGroup *actionGroup = new QActionGroup(this);
-    QMenu *menu = m_viewMenu->addMenu(tr("Application Theme"));
-    for (const item &item : items) {
-        int theme = item.theme;
-        QString name = item.name;
-        QAction *action = menu->addAction(name);
-        action->setCheckable(true);
-        action->setData(static_cast<int>(theme));
-        if (theme == static_cast<int>(currentTheme)) {
-            action->setChecked(true);
-        }
-
-        actionGroup->addAction(action);
-        connect(action, &QAction::triggered, this, [=]() {
-            auto theme = static_cast<Qt::ColorScheme>(action->data().toInt());
-            qApp->styleHints()->setColorScheme(theme);
-            xAPP->setValue(xApp::SettingKeys().theme, static_cast<int>(theme));
-            updateWindowTitleArea(this);
-        });
+    QMenu *themeMenu = xThemeMgr.themeMenu();
+    if (themeMenu) {
+        themeMenu->setTitle(tr("Theme"));
+        m_viewMenu->addMenu(themeMenu);
     }
-
-    updateWindowTitleArea(this);
 }
 
 void xUi::initializeMenuBarViewStaysOnTop()
@@ -320,53 +218,10 @@ void xUi::showAboutInfo()
     QString buildDateTimeFormat = locale.dateFormat();
     buildDateTimeFormat += " ";
     buildDateTimeFormat += locale.timeFormat();
-    QString dtString = buildDateTimeString(buildDateTimeFormat);
-    QString year = buildDateTimeString("yyyy");
+    QString dtString = xTools::buildDateTimeString(buildDateTimeFormat);
+    QString year = xTools::buildDateTimeString("yyyy");
     info += tr("Build Date") + ": " + dtString + "\n\n";
     info += tr("Copyright") + QString(" 2025-%1 x-tools-author(x-tools@outlook.com).").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About") + QString(" ") + xAPP->applicationName(), info);
-}
-
-void xUi::updateWindowTitleArea(QWidget *widget)
-{
-#if defined(_MSC_VER)
-    if (QSysInfo::productVersion().contains("11")) {
-        // const DWORD attribute = 35;
-        // DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR
-        QWindow *window = widget->windowHandle();
-        if (window) {
-            QColor c = xAPP->palette().color(QPalette::Window);
-            COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-            DwmSetWindowAttribute((HWND) window->winId(),
-                                  DWMWA_CAPTION_COLOR,
-                                  &colorref,
-                                  sizeof(colorref));
-#if 0
-            c = currentTheme.primaryColor;
-            colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-            DwmSetWindowAttribute((HWND) window->winId(),
-                                  DWMWA_BORDER_COLOR,
-                                  &colorref,
-                                  sizeof(colorref));
-#endif
-        }
-    }
-#endif
-
-#if defined(Q_OS_LINUX)
-    // Nothing to do yet...
-#endif
-
-#if defined(Q_OS_MACOS)
-    NSView *view = reinterpret_cast<NSView *>(winId());
-    NSWindow *w = [view window];
-
-    [w setStyleMask:([w styleMask] | NSWindowStyleMaskFullSizeContentView)];
-    [w setTitlebarAppearsTransparent:YES];
-    [w setTitleVisibility:NSWindowTitleHidden];
-
-    NSButton *zoomButton = [w standardWindowButton:NSWindowZoomButton];
-    [zoomButton setEnabled:YES];
-#endif
 }

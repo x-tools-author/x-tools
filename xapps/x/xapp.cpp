@@ -23,7 +23,10 @@
 #include <QTimer>
 #include <QTranslator>
 
-#include "common/xtools.h"
+#include "utilities/hdpimanager.h"
+#include "utilities/i18n.h"
+#include "utilities/stylemanager.h"
+#include "utilities/thememanager.h"
 
 xApp::xApp(int &argc, char **argv)
     : QApplication(argc, argv)
@@ -142,52 +145,18 @@ void xApp::tryToReboot()
 
 void xApp::setupHdpi()
 {
-    QSettings *settings = xApp::settings();
-    int defaultPolicy = static_cast<int>(QApplication::highDpiScaleFactorRoundingPolicy());
-    int policy = settings->value(SettingKeys().hdpi, defaultPolicy).toInt();
-
-    const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
-    QApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-    qInfo() << "The current high dpi policy is:" << cookedPolicy;
-}
-
-void setupLanguage(const QString &qmFile)
-{
-    QTranslator *translator = new QTranslator();
-    if (!translator->load(qmFile)) {
-        auto info = QString("The language file(%1) can not be loaded, English will be used.")
-                        .arg(qmFile);
-        qWarning() << info;
-        return;
-    }
-
-    if (!qApp->installTranslator(translator)) {
-        qWarning() << "The language has been setup, English will be used.";
-    } else {
-        qInfo() << "The language has been setup, current language file is:" << qmFile;
-    }
+    xHdpiMgr.setupSettings(settings());
+    xHdpiMgr.setupHdpi();
 }
 
 void xApp::setupLanguage()
 {
-    QString language = appLanguageFlag();
-
-    QString appPath = QApplication::applicationDirPath();
-    QString qtQmFile = QString("%1/translations/qt_%2.qm").arg(appPath, language);
-    ::setupLanguage(qtQmFile);
-
-    QString appQmFile = QString("%1/translations/%2_%3.qm").arg(appPath, applicationName(), language);
-    ::setupLanguage(appQmFile);
+    xI18n.setupSettings(settings());
+    xI18n.setupLanguage();
 }
 
 void xApp::setupTheme()
 {
-    SettingKeys keys;
-    QSettings *settings = xApp::settings();
-    auto def = qApp->styleHints()->colorScheme();
-    int theme = settings->value(keys.theme, static_cast<int>(def)).toInt();
-    Qt::ColorScheme cookedColorScheme = static_cast<Qt::ColorScheme>(theme);
-    QStyleHints *hints = qApp->styleHints();
-    hints->setColorScheme(cookedColorScheme);
-    qInfo() << "The current color scheme is:" << qApp->styleHints()->colorScheme();
+    xThemeMgr.setupSettings(settings());
+    xThemeMgr.updateApplicationColor();
 }
