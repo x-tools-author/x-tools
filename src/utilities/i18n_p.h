@@ -78,7 +78,7 @@ public:
             }
         }
 
-        languageMenu = new QMenu(QObject::tr("&Languages"));
+        languageMenu = new QMenu();
         static auto languageActionGroup = new QActionGroup(languageMenu);
         for (const QString& language : std::as_const(languages)) {
             QString name = language;

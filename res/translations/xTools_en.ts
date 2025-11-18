@@ -3339,7 +3339,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="25"/>
         <source>Warning</source>
         <translation></translation>
     </message>
@@ -3413,23 +3413,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
         <source>Message</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="27"/>
         <source>Error</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="30"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="29"/>
         <source>Request</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="32"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="31"/>
         <source>Response</source>
         <translation></translation>
     </message>
@@ -4420,17 +4420,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogModel</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="168"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="167"/>
         <source>Time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="170"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="169"/>
         <source>Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="172"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="171"/>
         <source>Message</source>
         <translation></translation>
     </message>

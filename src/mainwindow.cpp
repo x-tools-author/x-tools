@@ -502,6 +502,7 @@ void MainWindow::initMenuLanguage()
 {
     QMenu* languageMenu = xI18n.languageMenu();
     if (languageMenu) {
+        languageMenu->setTitle(tr("&Languages"));
         menuBar()->addMenu(xI18n.languageMenu());
     }
 }
