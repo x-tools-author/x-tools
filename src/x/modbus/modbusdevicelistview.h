@@ -38,6 +38,7 @@ public:
 signals:
     void tableViewsUpdated();
     void invokeShowRegisterView(ModbusRegisterTableView *view);
+    void startOrStopClicked();
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;

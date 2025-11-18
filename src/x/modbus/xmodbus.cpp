@@ -51,6 +51,13 @@ xModbus::xModbus(QWidget* parent)
             this,
             &xModbus::onTableViewsUpdated);
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &xModbus::onCurrentTabChanged);
+    connect(ui->widgetDeviceListView, &ModbusDeviceListView::startOrStopClicked, this, [this]() {
+        ui->tabWidget->setCurrentIndex(0);
+        QList<QAction*> actions = m_cornerToolButtonMenuActionGroup->actions();
+        if (!actions.isEmpty()) {
+            actions.at(0)->setChecked(true);
+        }
+    });
 }
 
 xModbus::~xModbus()

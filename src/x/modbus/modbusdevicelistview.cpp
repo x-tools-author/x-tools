@@ -516,6 +516,8 @@ void ModbusDeviceListView::onStartButtonClicked()
             }
         }
     }
+
+    emit startOrStopClicked();
 }
 
 void ModbusDeviceListView::onStopButtonClicked()
@@ -542,6 +544,8 @@ void ModbusDeviceListView::onStopButtonClicked()
             }
         }
     }
+
+    emit startOrStopClicked();
 }
 
 void ModbusDeviceListView::onFilterTextChanged(const QString &text)

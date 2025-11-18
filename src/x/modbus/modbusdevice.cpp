@@ -122,8 +122,8 @@ void ModbusDevice::run()
             QString msg = tr("Modbus device connected.");
             msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
             xModbusLog.addLogThreadSafely(LogTypeMsg, msg);
-            if (isClient()) {
-                m_sendReadRequestsTimer->start();
+            if (isClient() && this->m_sendReadRequestsTimer) {
+                this->m_sendReadRequestsTimer->start();
             }
         } else if (state == QModbusDevice::UnconnectedState) {
             QString msg = tr("Modbus device disconnected.");
@@ -149,13 +149,6 @@ void ModbusDevice::run()
                 setValueInThreadInner(serverAddress, registerType, address, value);
             });
 
-    if (!m_device->connectDevice()) {
-        QString msg = tr("Failed to connect Modbus device: %1").arg(m_device->errorString());
-        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
-        xModbusLog.addLogThreadSafely(LogTypeError, msg);
-        return;
-    }
-
     if (isClient()) {
         m_sendReadRequestsTimer = new QTimer();
         m_sendReadRequestsTimer->setInterval(10);
@@ -167,6 +160,13 @@ void ModbusDevice::run()
                 Qt::DirectConnection);
 
         m_readRequestIndex.store(0);
+    }
+
+    if (!m_device->connectDevice()) {
+        QString msg = tr("Failed to connect Modbus device: %1").arg(m_device->errorString());
+        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+        xModbusLog.addLogThreadSafely(LogTypeError, msg);
+        return;
     }
 
     exec();
@@ -200,14 +200,14 @@ QModbusDevice *ModbusDevice::newModbusDevice(const DeviceConnectionParameters &p
     }
 
     // Set additional parameters for client
-    QModbusTcpClient *client = qobject_cast<QModbusTcpClient *>(device);
+    QModbusClient *client = qobject_cast<QModbusClient *>(device);
     if (client) {
         client->setNumberOfRetries(params.numberOfRetries);
         client->setTimeout(params.timeout);
     }
 
     // Set additional parameters for server
-    QModbusTcpServer *server = qobject_cast<QModbusTcpServer *>(device);
+    QModbusServer *server = qobject_cast<QModbusServer *>(device);
     if (server) {
         server->setServerAddress(params.serverAddress);
         server->setValue(QModbusServer::ListenOnlyMode, params.listenOnlyMode);
@@ -470,7 +470,8 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
             if (reply->error() == QModbusDevice::NoError) {
                 qInfo() << "Write response received - Address:" << address << "Value:" << value;
             } else {
-                qInfo() << "Write error:" << reply->errorString();
+                qInfo() << "Write error - Address:" << address << "Value:" << value;
+                qInfo() << "Write error:" << reply->errorString() << reply->error();
             }
 
             reply->deleteLater();
@@ -481,7 +482,7 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
         if (success) {
             qInfo() << "Set value in server - Address:" << address << "Value:" << value;
         } else {
-            qInfo() << "Failed to set value in server.";
+            qInfo() << "Failed to set value in server - Address:" << address << "Value:" << value;
         }
     }
 }
