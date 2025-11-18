@@ -68,12 +68,17 @@ QWidget *ModbusRegisterDelegate::createEditor(QWidget *parent,
         if (column == REGISTER_TABLE_COLUMN_VALUE && disable) {
             return nullptr;
         }
+    } else {
+        // You can not change the server address on server device
+        if (column == REGISTER_TABLE_COLUMN_SERVER_ADDRESS) {
+            return nullptr;
+        }
     }
 
     switch (column) {
     case REGISTER_TABLE_COLUMN_REGISTER_TYPE:
         return new QComboBox(parent);
-    case REGISTER_TABLE_COLUMN_SERVER_ADDRESS:
+    case REGISTER_TABLE_COLUMN_ADDRESS:
     case REGISTER_TABLE_COLUMN_MIN:
     case REGISTER_TABLE_COLUMN_MAX:
     case REGISTER_TABLE_COLUMN_DECIMALS:
@@ -141,6 +146,13 @@ void ModbusRegisterDelegate::setEditorData(QWidget *editor, const QModelIndex &i
         if (lineEdit) {
             lineEdit->setText(value.toString());
         }
+    } else if (column == REGISTER_TABLE_COLUMN_ADDRESS) {
+        QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
+        if (spinBox) {
+            spinBox->setMinimum(0);
+            spinBox->setMaximum(65535);
+            spinBox->setValue(value.toInt());
+        }
     }
 }
 
@@ -171,6 +183,7 @@ void ModbusRegisterDelegate::setModelData(QWidget *editor,
     isSpinBox |= column == REGISTER_TABLE_COLUMN_MAX;
     isSpinBox |= column == REGISTER_TABLE_COLUMN_VALUE;
     isSpinBox |= column == REGISTER_TABLE_COLUMN_DECIMALS;
+    isSpinBox |= column == REGISTER_TABLE_COLUMN_ADDRESS;
     bool isLineEdit = column == REGISTER_TABLE_COLUMN_NAME;
     isLineEdit |= column == REGISTER_TABLE_COLUMN_UNIT;
     isLineEdit |= column == REGISTER_TABLE_COLUMN_DESCRIPTION;

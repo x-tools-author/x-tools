@@ -270,11 +270,7 @@ Qt::ItemFlags ModbusRegisterTable::flags(const QModelIndex &index) const
     }
 
     auto defaultFlags = QAbstractTableModel::flags(index);
-    if (index.column() != REGISTER_TABLE_COLUMN_ADDRESS) {
-        return defaultFlags | Qt::ItemIsEditable;
-    }
-
-    return defaultFlags;
+    return (defaultFlags | Qt::ItemIsEditable);
 }
 
 void ModbusRegisterTable::onRegisterItemValueChanged(ModbusRegister *item)
