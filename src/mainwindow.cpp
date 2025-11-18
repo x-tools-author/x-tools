@@ -46,6 +46,7 @@
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 #include "utilities/compatibility.h"
+#include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
@@ -137,6 +138,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
     connect(&xStyleMgr.singleton(), &xTools::StyleManager::styleChanged, this, [=]() {
+        tryToReboot();
+    });
+    connect(&xHdpiMgr.singleton(), &xTools::HdpiManager::hdpiChanged, this, [=]() {
         tryToReboot();
     });
 }
@@ -444,40 +448,11 @@ void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
 
 void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QMenu* menu = optionMenu->addMenu(tr("HDPI Policy"));
-    QActionGroup* actionGroup = new QActionGroup(this);
-
-    typedef Qt::HighDpiScaleFactorRoundingPolicy Policy;
-    QMap<Policy, QString> policyMap;
-    policyMap.insert(Policy::Unset, QObject::tr("System"));
-    policyMap.insert(Policy::Round, QObject::tr("Round up for .5 and above"));
-    policyMap.insert(Policy::Ceil, QObject::tr("Always round up"));
-    policyMap.insert(Policy::Floor, QObject::tr("Always round down"));
-    policyMap.insert(Policy::RoundPreferFloor, QObject::tr("Round up for .75 and above"));
-    policyMap.insert(Policy::PassThrough, QObject::tr("Don't round"));
-
-    for (auto it = policyMap.begin(); it != policyMap.end(); ++it) {
-        QString name = it.value();
-        int policy = static_cast<int>(it.key());
-        auto action = menu->addAction(name, this, [=]() {
-            Application::SettingsKey settingKeys;
-            xApp->settings()->setValue(settingKeys.hdpi, policy);
-            tryToReboot();
-        });
-
-        actionGroup->addAction(action);
-        action->setCheckable(true);
-        if (policy == static_cast<int>(xApp->highDpiScaleFactorRoundingPolicy())) {
-            action->setChecked(true);
-        }
+    QMenu* menu = xHdpiMgr.hdpiMenu();
+    if (menu) {
+        menu->setTitle(tr("HDPI Policy"));
+        optionMenu->addMenu(menu);
     }
-
-    menu->addActions(actionGroup->actions());
-    optionMenu->addMenu(menu);
-#else
-    Q_UNUSED(optionMenu);
-#endif
 }
 
 void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)

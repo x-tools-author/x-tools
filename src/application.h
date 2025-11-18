@@ -21,9 +21,6 @@ class Application : public QApplication
 public:
     struct SettingsKey
     {
-        const QString hdpi{"Application/hdpi"};
-        const QString style{"Application/style"};
-        const QString language{"Application/language"};
         const QString clearSettings{"Application/clearSettings"};
     };
 

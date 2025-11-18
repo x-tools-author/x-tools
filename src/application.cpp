@@ -28,6 +28,7 @@
 
 #include "common/xtools.h"
 #include "utilities/compatibility.h"
+#include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
@@ -134,15 +135,8 @@ void Application::uninstallLog()
 
 void Application::setupHdpi()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QSettings *settings = Application::settings();
-    int defaultPolicy = static_cast<int>(QGuiApplication::highDpiScaleFactorRoundingPolicy());
-    int policy = settings->value(SettingsKey().hdpi, defaultPolicy).toInt();
-
-    const auto cookedPolicy = static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy);
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-    qInfo() << "The current high dpi policy is:" << cookedPolicy;
-#endif
+    xHdpiMgr.setupSettings(Application::settings());
+    xHdpiMgr.setupHdpi();
 }
 
 QSettings *Application::settings()
