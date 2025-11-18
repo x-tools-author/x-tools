@@ -29,6 +29,7 @@
 #include "common/xtools.h"
 #include "utilities/compatibility.h"
 #include "utilities/i18n.h"
+#include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
 
 Application::Application(int &argc, char **argv)
@@ -163,20 +164,8 @@ QString Application::settingsPath()
 
 void Application::setupAppStyle()
 {
-    QSettings *settings = Application::settings();
-    if (!qApp || !Application::style()) {
-        return;
-    }
-
-    QString defaultStyle = xDefaultStyleName;
-    QString style = settings->value(SettingsKey().style, defaultStyle).toString();
-    for (QString &key : QStyleFactory::keys()) {
-        if (key.toLower() == style.toLower()) {
-            Application::setStyle(QStyleFactory::create(style));
-        }
-    }
-
-    qInfo() << "The current application style is:" << style;
+    xStyleMgr.setupSettings(settings());
+    xStyleMgr.setupAppStyle();
 }
 
 void Application::execMs(int ms)

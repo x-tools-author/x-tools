@@ -46,12 +46,6 @@
 #define xComboBoxIndexChanged qOverload<int>(&QComboBox::currentIndexChanged)
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 1, 0)
-#define xDefaultStyleName Application::style()->name()
-#else
-#define xDefaultStyleName QString("fusion")
-#endif
-
 #if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
 #define xCheckStateChanged &QCheckBox::checkStateChanged
 #else

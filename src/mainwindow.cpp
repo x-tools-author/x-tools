@@ -47,6 +47,7 @@
 #include "tools/assistantfactory.h"
 #include "utilities/compatibility.h"
 #include "utilities/i18n.h"
+#include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
 
 #ifdef Q_OS_WIN
@@ -135,6 +136,9 @@ MainWindow::MainWindow(QWidget* parent)
     button->setChecked(true);
 
     connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
+    connect(&xStyleMgr.singleton(), &xTools::StyleManager::styleChanged, this, [=]() {
+        tryToReboot();
+    });
 }
 
 MainWindow::~MainWindow() {}
@@ -414,25 +418,11 @@ void MainWindow::initOptionMenu()
 
 void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
 {
-    QMenu* appStyleMenu = optionMenu->addMenu(tr("Application Style"));
-    static QActionGroup* appStyleActionGroup = new QActionGroup(this);
-    for (QString& key : QStyleFactory::keys()) {
-        auto* action = new QAction(key, this);
-        action->setCheckable(true);
-        appStyleActionGroup->addAction(action);
-
-        if (key.toUpper() == xDefaultStyleName.toUpper()) {
-            action->setChecked(true);
-        }
-
-        connect(action, &QAction::triggered, this, [=]() {
-            Application::SettingsKey keys;
-            xApp->settings()->setValue(keys.style, key.toLower());
-            tryToReboot();
-        });
+    QMenu* appStyleMenu = xStyleMgr.styleMenu();
+    if (appStyleMenu) {
+        appStyleMenu->setTitle(tr("Application Style"));
+        optionMenu->addMenu(appStyleMenu);
     }
-
-    appStyleMenu->addActions(appStyleActionGroup->actions());
 }
 
 void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)

@@ -1,0 +1,40 @@
+﻿/***************************************************************************************************
+ * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
+ *
+ * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
+ * code directory.
+ **************************************************************************************************/
+#pragma once
+
+#include <QMenu>
+#include <QObject>
+#include <QSettings>
+
+#define xStyleMgr xTools::StyleManager::singleton()
+
+namespace xTools {
+
+class StyleManagerPrivate;
+class StyleManager : public QObject
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE(StyleManager)
+    Q_DISABLE_COPY(StyleManager)
+
+    StyleManager(QObject* parent = nullptr);
+
+public:
+    ~StyleManager();
+
+    static StyleManager& singleton();
+    void setupAppStyle();
+    void setupSettings(QSettings* settings); // You must call this before calling
+    QMenu* styleMenu();
+
+signals:
+    void styleChanged();
+};
+
+} // namespace xTools
