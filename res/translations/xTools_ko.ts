@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="268"/>
+        <location filename="../../src/application.cpp" line="251"/>
         <source>Transfer rx bytes with right page</source>
         <translation>오른쪽 페이지로 수신 바이트 전송</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="273"/>
+        <location filename="../../src/application.cpp" line="256"/>
         <source>Transfer rx bytes with left page</source>
         <translation>왼쪽 페이지로 수신 바이트 전송</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">일반적인</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="309"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
         <source>&amp;File</source>
         <translation>파일(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="311"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="738"/>
+        <location filename="../../src/mainwindow.cpp" line="329"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="325"/>
-        <location filename="../../src/mainwindow.cpp" line="751"/>
+        <location filename="../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../src/mainwindow.cpp" line="716"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="330"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
         <translation>애플리케이션 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="339"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="350"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="380"/>
+        <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>&amp;Options</source>
         <translation>옵션(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="389"/>
+        <location filename="../../src/mainwindow.cpp" line="397"/>
         <source>Use System Proxy</source>
         <translation>시스템 프록시 사용</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="399"/>
+        <location filename="../../src/mainwindow.cpp" line="407"/>
         <source>Exit to System Tray</source>
         <translation>시스템 트레이로 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="417"/>
+        <location filename="../../src/mainwindow.cpp" line="427"/>
         <source>Application Style</source>
         <translation>애플리케이션 스타일</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="440"/>
+        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="443"/>
+        <location filename="../../src/mainwindow.cpp" line="437"/>
         <source>Clear Settings</source>
         <translation>설정 지우기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Open Settings Directory</source>
         <translation>설정 디렉터리 열기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="458"/>
+        <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>HDPI Policy</source>
         <translation>HDPI 정책</translation>
     </message>
@@ -1907,140 +1907,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">시스템</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>&amp;Languages</source>
         <translation>언어(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="477"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="529"/>
         <source>Stays on Top</source>
         <translation>항상 위에</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="584"/>
+        <location filename="../../src/mainwindow.cpp" line="549"/>
         <source>&amp;Help</source>
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="550"/>
         <source>About Qt</source>
         <translation>Qt 정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="586"/>
-        <location filename="../../src/mainwindow.cpp" line="794"/>
+        <location filename="../../src/mainwindow.cpp" line="551"/>
+        <location filename="../../src/mainwindow.cpp" line="759"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="590"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>Screenshot</source>
         <translation>스크린샷</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>Buy from Store</source>
         <translation>스토어에서 구매</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="605"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="606"/>
+        <location filename="../../src/mainwindow.cpp" line="571"/>
         <source>Join in QQ Group</source>
         <translation>QQ 그룹 참여</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="609"/>
+        <location filename="../../src/mainwindow.cpp" line="574"/>
         <source>Online Manual</source>
         <translation>온라인 매뉴얼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="612"/>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>Get Sources from Github</source>
         <translation>Github에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="580"/>
         <source>Get Sources from Gitee</source>
         <translation>Gitee에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="633"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="637"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Need to Reboot</source>
         <translation>재시작 필요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="660"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>작업을 적용하려면 재시작이 필요합니다. 지금 애플리케이션을 재시작하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="697"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="740"/>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
+        <location filename="../../src/mainwindow.cpp" line="718"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="747"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="788"/>
+        <location filename="../../src/mainwindow.cpp" line="753"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="755"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="756"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="757"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="758"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -3420,33 +3420,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished">밝은 모드</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>시스템</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <source>Round up for .5 and above</source>
         <translation>.5 이상에서 반올림</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="465"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Always round up</source>
         <translation>항상 반올림</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="466"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round down</source>
         <translation>항상 내림</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="467"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Round up for .75 and above</source>
         <translation>.75 이상에서 반올림</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Don&apos;t round</source>
         <translation>반올림하지 않음</translation>
     </message>

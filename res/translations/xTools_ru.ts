@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="268"/>
+        <location filename="../../src/application.cpp" line="251"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Передать rx байты с правой страницы</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="273"/>
+        <location filename="../../src/application.cpp" line="256"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Передать rx байты с левой страницы</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Общий</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="309"/>
+        <location filename="../../src/mainwindow.cpp" line="317"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="311"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>New Window</source>
         <translation>Новое окно</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="327"/>
         <source>Save Parameters</source>
         <translation>Сохранить параметры</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="738"/>
+        <location filename="../../src/mainwindow.cpp" line="329"/>
+        <location filename="../../src/mainwindow.cpp" line="703"/>
         <source>Import Parameters</source>
         <translation>Импорт параметров</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="325"/>
-        <location filename="../../src/mainwindow.cpp" line="751"/>
+        <location filename="../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../src/mainwindow.cpp" line="716"/>
         <source>Export Parameters</source>
         <translation>Экспорт параметров</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="330"/>
+        <location filename="../../src/mainwindow.cpp" line="338"/>
         <source>Exit Application</source>
         <translation>Выйти из приложения</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="339"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>&amp;Tools</source>
         <translation>&amp;Инструменты</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="350"/>
         <source>New</source>
         <translation>Новый</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="380"/>
+        <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>&amp;Options</source>
         <translation>&amp;Параметры</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="389"/>
+        <location filename="../../src/mainwindow.cpp" line="397"/>
         <source>Use System Proxy</source>
         <translation>Использовать системный прокси</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="399"/>
+        <location filename="../../src/mainwindow.cpp" line="407"/>
         <source>Exit to System Tray</source>
         <translation>Свернуть в системный трей</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="417"/>
+        <location filename="../../src/mainwindow.cpp" line="427"/>
         <source>Application Style</source>
         <translation>Стиль приложения</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="440"/>
+        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="443"/>
+        <location filename="../../src/mainwindow.cpp" line="437"/>
         <source>Clear Settings</source>
         <translation>Очистить настройки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Open Settings Directory</source>
         <translation>Открыть папку настроек</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="458"/>
+        <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>HDPI Policy</source>
         <translation>Политика HDPI</translation>
     </message>
@@ -1907,140 +1907,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Системная</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>&amp;Languages</source>
         <translation>&amp;Языки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="477"/>
         <source>&amp;View</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="529"/>
         <source>Stays on Top</source>
         <translation>Поверх всех окон</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="584"/>
+        <location filename="../../src/mainwindow.cpp" line="549"/>
         <source>&amp;Help</source>
         <translation>&amp;Справка</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="550"/>
         <source>About Qt</source>
         <translation>О Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="586"/>
-        <location filename="../../src/mainwindow.cpp" line="794"/>
+        <location filename="../../src/mainwindow.cpp" line="551"/>
+        <location filename="../../src/mainwindow.cpp" line="759"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="590"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>Screenshot</source>
         <translation>Скриншот</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="599"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>Buy from Store</source>
         <translation>Купить в магазине</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="605"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Release History</source>
         <translation>История релизов</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="606"/>
+        <location filename="../../src/mainwindow.cpp" line="571"/>
         <source>Join in QQ Group</source>
         <translation>Присоединиться к группе QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="609"/>
+        <location filename="../../src/mainwindow.cpp" line="574"/>
         <source>Online Manual</source>
         <translation>Онлайн руководство</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="612"/>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>Get Sources from Github</source>
         <translation>Получить исходный код с Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="580"/>
         <source>Get Sources from Gitee</source>
         <translation>Получить исходный код с Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="633"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Third Party Open Source</source>
         <translation>Сторонние открытые исходники</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
         <source>QR Code</source>
         <translation>QR код</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="637"/>
         <source>User QQ Group</source>
         <translation>Пользовательская группа QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Qt QQ Group</source>
         <translation>Qt группа QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Need to Reboot</source>
         <translation>Требуется перезапуск</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="660"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Для применения изменений требуется перезапуск. Перезапустить приложение сейчас?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="697"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Пожалуйста, перезапустите приложение вручную.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="740"/>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="705"/>
+        <location filename="../../src/mainwindow.cpp" line="718"/>
         <source>Json Files (*.json)</source>
         <translation>Файлы Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="782"/>
+        <location filename="../../src/mainwindow.cpp" line="747"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="788"/>
+        <location filename="../../src/mainwindow.cpp" line="753"/>
         <source>Commit hash</source>
         <translation>Хеш коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="755"/>
         <source>Commit time</source>
         <translation>Время коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="756"/>
         <source>Build Date</source>
         <translation>Дата сборки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="757"/>
         <source>Copyright</source>
         <translation>Авторские права</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="758"/>
         <source>All rights reserved.</source>
         <translation>Все права защищены.</translation>
     </message>
@@ -3420,33 +3420,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished">Светлая</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <source>Round up for .5 and above</source>
         <translation>Округлять вверх для .5 и выше</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="465"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Always round up</source>
         <translation>Всегда округлять вверх</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="466"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round down</source>
         <translation>Всегда округлять вниз</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="467"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Round up for .75 and above</source>
         <translation>Округлять вверх для .75 и выше</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Don&apos;t round</source>
         <translation>Не округлять</translation>
     </message>
