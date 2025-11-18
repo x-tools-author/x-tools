@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="313"/>
+        <location filename="../../src/application.cpp" line="268"/>
         <source>Transfer rx bytes with right page</source>
         <translation>與右頁面傳輸接收位元組</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="318"/>
+        <location filename="../../src/application.cpp" line="273"/>
         <source>Transfer rx bytes with left page</source>
         <translation>與左頁面傳輸接收位元組</translation>
     </message>
@@ -328,23 +328,23 @@
         <translation>010000000000</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="39"/>
         <source>Barcode Assistant</source>
         <translation>條碼助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Save Image</source>
         <translation>儲存圖片</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
         <translation>PNG 圖片 (*.png);;JPEG 圖片 (*.jpg);;BMP 圖片 (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Failed to save image.</source>
         <translation>儲存圖片失敗。</translation>
     </message>
@@ -357,32 +357,32 @@
         <translation>數據格式</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Channel</source>
         <translation>通道</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Color</source>
         <translation>顏色</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="46"/>
         <source>Name</source>
         <translation>名稱</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="160"/>
         <source>Line</source>
         <translation>線</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="162"/>
         <source>Spline</source>
         <translation>樣條曲線</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="164"/>
         <source>Scatter</source>
         <translation>散點</translation>
     </message>
@@ -467,13 +467,13 @@
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
-        <location filename="../../src/device/blecentralui.cpp" line="324"/>
+        <location filename="../../src/device/blecentralui.cpp" line="325"/>
         <source>Scan</source>
         <translation>掃描</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
-        <location filename="../../src/device/blecentralui.cpp" line="125"/>
+        <location filename="../../src/device/blecentralui.cpp" line="126"/>
         <source>Notify</source>
         <translation>通知</translation>
     </message>
@@ -503,32 +503,32 @@
         <translation>設備掃描</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="123"/>
+        <location filename="../../src/device/blecentralui.cpp" line="124"/>
         <source>Disnotify</source>
         <translation>取消通知</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="135"/>
+        <location filename="../../src/device/blecentralui.cpp" line="136"/>
         <source>With Response</source>
         <translation>帶回應</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="140"/>
+        <location filename="../../src/device/blecentralui.cpp" line="141"/>
         <source>Without Response</source>
         <translation>無回應</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="193"/>
+        <location filename="../../src/device/blecentralui.cpp" line="194"/>
         <source>(No name)</source>
         <translation>(無名稱)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="317"/>
+        <location filename="../../src/device/blecentralui.cpp" line="318"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="336"/>
+        <location filename="../../src/device/blecentralui.cpp" line="337"/>
         <source>Error Occurred</source>
         <translation>發生錯誤</translation>
     </message>
@@ -740,82 +740,82 @@
         <translation>發送</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="77"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>DataFrame</source>
         <translation>數據幀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>ErrorFrame</source>
         <translation>錯誤幀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="110"/>
         <source>RemoteRequestFrame</source>
         <translation>遠程請求幀</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="132"/>
         <source>Hex</source>
         <translation>十六進位</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface Name is Empty</source>
         <translation>介面名稱為空</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="210"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>介面名稱為空，請輸入名稱後再試一次！</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="218"/>
         <source>Error Occurred</source>
         <translation>發生錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection Error</source>
         <translation>連接錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="234"/>
         <source>Connection error: %1</source>
         <translation>連接錯誤：%1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is Not Ready</source>
         <translation>設備未準備好</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="316"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>設備未準備好，請連接設備後再試一次！</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="356"/>
         <source>Error Occure</source>
         <translation>發生錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="392"/>
         <source>unspecified</source>
         <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>false</source>
         <translation>假</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="395"/>
         <source>true</source>
         <translation>真</translation>
     </message>
@@ -1033,23 +1033,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>搜索數據...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="35"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="38"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="39"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="40"/>
         <source>No Limit</source>
         <translation>不限制</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
         <source>Clear Records</source>
         <translation>清除記錄</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>您確定要清除所有記錄嗎？</translation>
     </message>
@@ -1674,43 +1674,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>進口</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="229"/>
         <source>Channel</source>
         <translation>通道</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Visible</source>
         <translation>可見</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="52"/>
         <source>Type</source>
         <translation>類型</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Color</source>
         <translation>顏色</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="56"/>
         <source>Name</source>
         <translation>名稱</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="240"/>
         <source>Line</source>
         <translation>線</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="242"/>
         <source>Spline</source>
         <translation>樣條曲線</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="244"/>
         <source>Scatter</source>
         <translation>散點</translation>
     </message>
@@ -1736,7 +1736,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>服務器名稱</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <location filename="../../src/device/localserverui.cpp" line="21"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
@@ -1787,17 +1787,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>字符串參數</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Default Lua Script</source>
         <translation>預設 Lua 腳本</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="40"/>
         <source>Checksum Lua Script</source>
         <translation>校驗和 Lua 腳本</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="41"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="42"/>
         <source>Lua Script(String)</source>
         <translation>Lua 腳本（字串）</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">一般的</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="305"/>
+        <location filename="../../src/mainwindow.cpp" line="309"/>
         <source>&amp;File</source>
         <translation>&amp;文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="307"/>
+        <location filename="../../src/mainwindow.cpp" line="311"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="315"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>Save Parameters</source>
         <translation>保存參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>導入參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="325"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>導出參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="326"/>
+        <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>Exit Application</source>
         <translation>退出應用程序</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="335"/>
+        <location filename="../../src/mainwindow.cpp" line="339"/>
         <source>&amp;Tools</source>
         <translation>&amp;工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>New</source>
         <translation>新建</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>&amp;Options</source>
         <translation>&amp;選項</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="389"/>
         <source>Use System Proxy</source>
         <translation>使用系統代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="399"/>
         <source>Exit to System Tray</source>
         <translation>退出到系統托盤</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="413"/>
+        <location filename="../../src/mainwindow.cpp" line="417"/>
         <source>Application Style</source>
         <translation>應用程序風格</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="436"/>
+        <location filename="../../src/mainwindow.cpp" line="440"/>
         <source>Settings</source>
         <translation>設置</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="439"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Clear Settings</source>
         <translation>清除設置</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Open Settings Directory</source>
         <translation>打開設置目錄</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>HDPI Policy</source>
         <translation>HDPI 策略</translation>
     </message>
@@ -1907,140 +1907,139 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">系統</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
-        <translation>&amp;語言</translation>
+        <translation type="vanished">&amp;語言</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="542"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;View</source>
         <translation>&amp;視圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>Stays on Top</source>
         <translation>始終在最上層</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="614"/>
+        <location filename="../../src/mainwindow.cpp" line="583"/>
         <source>&amp;Help</source>
         <translation>&amp;幫助</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>About Qt</source>
         <translation>關於 Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="616"/>
-        <location filename="../../src/mainwindow.cpp" line="824"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="620"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Screenshot</source>
         <translation>截圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Buy from Store</source>
         <translation>從商店購買</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="635"/>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>版本歷史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="605"/>
         <source>Join in QQ Group</source>
         <translation>加入 QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Online Manual</source>
         <translation>在線手冊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Get Sources from Github</source>
         <translation>從 Github 獲取源代碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>Get Sources from Gitee</source>
         <translation>從 Gitee 獲取源代碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Third Party Open Source</source>
         <translation>第三方開源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>二維碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>用戶 QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>需要重啟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="725"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>該操作需要重啟才能生效，現在重啟應用程序嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="727"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(請手動重啟您的應用程序。)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="770"/>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json 文件（*.json）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="818"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>提交哈希</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="820"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>提交時間</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>構建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="822"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>版權</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>版權所有。</translation>
     </message>
@@ -2143,7 +2142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
@@ -2263,143 +2262,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>輸入格式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuClient</source>
         <translation>RTU 客戶端</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>RtuServer</source>
         <translation>RTU 伺服器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpClient</source>
         <translation>TCP 客戶端</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="173"/>
         <source>TcpServer</source>
         <translation>TCP 伺服器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>NoParity</source>
         <translation>無奇偶校驗</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>EvenParity</source>
         <translation>偶數奇偶校驗</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>OddParity</source>
         <translation>奇數奇偶校驗</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>SpaceParity</source>
         <translation>空格奇偶校驗</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
         <source>MarkParity</source>
         <translation>標記奇偶校驗</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadCoils</source>
         <translation>讀取線圈</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadDiscreteInputs</source>
         <translation>讀取離散輸入</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadHoldingRegisters</source>
         <translation>讀取保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>ReadInputRegisters</source>
         <translation>讀取輸入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleCoil</source>
         <translation>寫入單個線圈</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteSingleRegister</source>
         <translation>寫入單個寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleCoils</source>
         <translation>寫入多個線圈</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="243"/>
         <source>WriteMultipleRegisters</source>
         <translation>寫入多個寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>Coils</source>
         <translation>線圈</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>DiscreteInputs</source>
         <translation>離散輸入</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>InputRegisters</source>
         <translation>輸入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>HoldingRegisters</source>
         <translation>保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="545"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1314"/>
         <source>Error occured</source>
         <translation>發生錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="622"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>無法打開設備：%1。請檢查參數後再試一次！</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="625"/>
         <source>Can not open device</source>
         <translation>無法打開設備</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1364"/>
         <source>Device is not Ready</source>
         <translation>設備未準備好</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1365"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Modbus 設備未準備好，請檢查設置後稍後再試！</translation>
     </message>
@@ -2823,7 +2822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="593"/>
+        <location filename="../../src/page/page.cpp" line="594"/>
         <source>Open</source>
         <translation>打開</translation>
     </message>
@@ -2951,43 +2950,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="325"/>
-        <location filename="../../src/page/page.cpp" line="769"/>
+        <location filename="../../src/page/page.cpp" line="326"/>
+        <location filename="../../src/page/page.cpp" line="770"/>
         <source>Error: No device is opened.</source>
         <translation>錯誤：未打開設備。</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="427"/>
+        <location filename="../../src/page/page.cpp" line="428"/>
         <source>Disable</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="584"/>
+        <location filename="../../src/page/page.cpp" line="585"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="600"/>
+        <location filename="../../src/page/page.cpp" line="601"/>
         <source>Error Occurred</source>
         <translation>發生錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="606"/>
+        <location filename="../../src/page/page.cpp" line="607"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="693"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Hide Scripts Panels</source>
         <translation>隱藏腳本面板</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="695"/>
         <source>Show Scripts Panels</source>
         <translation>顯示腳本面板</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="797"/>
+        <location filename="../../src/page/page.cpp" line="798"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3008,119 +3007,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PingAssistant</name>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="157"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
         <translation>總計：--，活動：--，完成：--，剩餘：--</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Target Address</source>
         <translation>目標地址</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Online Status</source>
         <translation>在線狀態</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Comparing</source>
         <translation>比較中</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="168"/>
         <source>Host Name</source>
         <translation>主機名稱</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="186"/>
         <source>Start scan</source>
         <translation>開始掃描</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="194"/>
         <source>Pause scan</source>
         <translation>暫停掃描</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="202"/>
         <source>Stop scan</source>
         <translation>停止掃描</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="215"/>
         <source>Start address</source>
         <translation>起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="225"/>
         <source>End address</source>
         <translation>結束地址</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="236"/>
         <source>Timeout(S)</source>
         <translation>超時（秒）</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show all</source>
         <translation>顯示全部</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="256"/>
         <source>Show online</source>
         <translation>顯示在線</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP Error</source>
         <translation>IP 錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="388"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
         <translation>IP 設置錯誤，必須設置起始 IP 和結束 IP，請檢查後再試一次。</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="403"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
         <translation>IP 設置錯誤，起始 IP 和結束 IP 必須在同一網段，請檢查後再試一次。</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="412"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
         <translation>IP 設置錯誤，起始 IP 必須小於結束 IP，請檢查後再試一次。</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="458"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
         <translation>總計：%1，活動：%2，完成：%3，剩餘：%4</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="517"/>
         <source>Scanning</source>
         <translation>掃描中</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Online</source>
         <translation>在線</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Offline</source>
         <translation>離線</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning Finished</source>
         <translation>掃描完成</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="566"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
         <translation>掃描完成，您可以通過工具欄篩選結果。</translation>
     </message>
@@ -3209,34 +3208,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>項目間隔(ms)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="69"/>
         <source>Group Sending</source>
         <translation>組發送</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="180"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
         <source>The group name cannot be empty.</source>
         <translation>組名稱不能為空。</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <source>The columns cannot be empty.</source>
         <translation>列不能為空。</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="182"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
         <translation>組名稱 &quot;%1&quot; 已經存在。要替換它嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="240"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
         <translation>發送組</translation>
     </message>
@@ -3252,150 +3251,150 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/utilities/crc.cpp" line="92"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="87"/>
         <source>Bin</source>
         <translation>二進位</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="89"/>
         <source>Oct</source>
         <translation>八進位</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="91"/>
         <source>Dec</source>
         <translation>十進位</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="93"/>
         <source>Hex</source>
         <translation>十六進位</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="95"/>
         <source>Hex(No Space)</source>
         <translation>十六進位（無空格）</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="361"/>
-        <location filename="../../src/common/xtools.cpp" line="423"/>
-        <location filename="../../src/common/xtools.cpp" line="736"/>
-        <location filename="../../src/common/xtools.cpp" line="754"/>
+        <location filename="../../src/common/xtools.cpp" line="362"/>
+        <location filename="../../src/common/xtools.cpp" line="424"/>
+        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="755"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>無</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="464"/>
-        <location filename="../../src/common/xtools.cpp" line="903"/>
-        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="465"/>
+        <location filename="../../src/common/xtools.cpp" line="904"/>
+        <location filename="../../src/common/xtools.cpp" line="906"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="466"/>
-        <location filename="../../src/common/xtools.cpp" line="899"/>
-        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="467"/>
+        <location filename="../../src/common/xtools.cpp" line="900"/>
+        <location filename="../../src/common/xtools.cpp" line="902"/>
         <source>Binary</source>
         <translation>二進位</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="501"/>
+        <location filename="../../src/common/xtools.cpp" line="502"/>
         <source>Echo</source>
         <translation>回聲</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="502"/>
+        <location filename="../../src/common/xtools.cpp" line="503"/>
         <source>Always</source>
         <translation>始終</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="503"/>
+        <location filename="../../src/common/xtools.cpp" line="504"/>
         <source>Input Equal Reference</source>
         <translation>輸入等於參考</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="504"/>
+        <location filename="../../src/common/xtools.cpp" line="505"/>
         <source>Input Contain Reference</source>
         <translation>輸入包含參考</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="506"/>
+        <location filename="../../src/common/xtools.cpp" line="507"/>
         <source>Input Does not Contain Reference</source>
         <translation>輸入不包含參考</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>偶數</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>奇數</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>空格</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>標記</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="756"/>
+        <location filename="../../src/common/xtools.cpp" line="757"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="759"/>
+        <location filename="../../src/common/xtools.cpp" line="760"/>
         <source>Hardware</source>
         <translation>硬體</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Software</source>
         <translation>軟體</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="864"/>
+        <location filename="../../src/common/xtools.cpp" line="865"/>
         <source>Disabled</source>
         <translation>已禁用</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="866"/>
+        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Bidirectional</source>
         <translation>雙向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="868"/>
+        <location filename="../../src/common/xtools.cpp" line="869"/>
         <source>Unidirectional</source>
         <translation>單向</translation>
     </message>
@@ -3405,48 +3404,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>應用程序正在啟動...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation type="unfinished">顏色方案</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation type="unfinished">黑暗</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation type="unfinished">淺色</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
-        <location filename="../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>系統</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="460"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Round up for .5 and above</source>
         <translation>對於 .5 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="465"/>
         <source>Always round up</source>
         <translation>始終向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="462"/>
+        <location filename="../../src/mainwindow.cpp" line="466"/>
         <source>Always round down</source>
         <translation>始終向下取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Round up for .75 and above</source>
         <translation>對於 .75 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Don&apos;t round</source>
         <translation>不進行取整</translation>
     </message>
@@ -3579,6 +3578,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
         <translation>全部</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/i18n_p.h" line="81"/>
+        <source>&amp;Languages</source>
+        <translation type="unfinished">&amp;語言</translation>
     </message>
 </context>
 <context>
@@ -4069,7 +4073,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>密碼</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.cpp" line="199"/>
+        <location filename="../../src/device/socketui.cpp" line="200"/>
         <source>All clients</source>
         <translation>所有客戶端</translation>
     </message>
@@ -4331,7 +4335,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcast</name>
     <message>
-        <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
+        <location filename="../../src/device/udpbroadcast.cpp" line="65"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>無法綁定 UDP 套接字：%1</translation>
     </message>
@@ -4357,22 +4361,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticast</name>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="68"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="69"/>
         <source>Invalid network interface: %1</source>
         <translation>無效的網絡介面：%1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="75"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="76"/>
         <source>Network interface %1 does not support multicast</source>
         <translation>網絡介面 %1 不支持多播</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="93"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="94"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>無法綁定 UDP 套接字：%1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="102"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="103"/>
         <source>Failed to join multicast group %1:%2: %3</source>
         <translation>無法加入多播組 %1:%2：%3</translation>
     </message>

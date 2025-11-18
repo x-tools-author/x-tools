@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="313"/>
+        <location filename="../../src/application.cpp" line="268"/>
         <source>Transfer rx bytes with right page</source>
         <translation>نقل البايتات المستقبلة مع الصفحة اليمنى</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="318"/>
+        <location filename="../../src/application.cpp" line="273"/>
         <source>Transfer rx bytes with left page</source>
         <translation>نقل البايتات المستقبلة مع الصفحة اليسرى</translation>
     </message>
@@ -328,23 +328,23 @@
         <translation>010000000000</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="39"/>
         <source>Barcode Assistant</source>
         <translation>مساعد الرموز الشريطية</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Save Image</source>
         <translation>حفظ الصورة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
         <translation>صورة PNG (*.png);;صورة JPEG (*.jpg);;صورة BMP (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Failed to save image.</source>
         <translation>فشل في حفظ الصورة.</translation>
     </message>
@@ -357,32 +357,32 @@
         <translation>تنسيق البيانات</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Channel</source>
         <translation>القناة</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Color</source>
         <translation>اللون</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="46"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="160"/>
         <source>Line</source>
         <translation>خط</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="162"/>
         <source>Spline</source>
         <translation>منحنى</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="164"/>
         <source>Scatter</source>
         <translation>تشتت</translation>
     </message>
@@ -467,13 +467,13 @@
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
-        <location filename="../../src/device/blecentralui.cpp" line="324"/>
+        <location filename="../../src/device/blecentralui.cpp" line="325"/>
         <source>Scan</source>
         <translation>بحث</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
-        <location filename="../../src/device/blecentralui.cpp" line="125"/>
+        <location filename="../../src/device/blecentralui.cpp" line="126"/>
         <source>Notify</source>
         <translation>إشعار</translation>
     </message>
@@ -503,32 +503,32 @@
         <translation>مسح الجهاز</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="123"/>
+        <location filename="../../src/device/blecentralui.cpp" line="124"/>
         <source>Disnotify</source>
         <translation>إلغاء الإشعار</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="135"/>
+        <location filename="../../src/device/blecentralui.cpp" line="136"/>
         <source>With Response</source>
         <translation>مع استجابة</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="140"/>
+        <location filename="../../src/device/blecentralui.cpp" line="141"/>
         <source>Without Response</source>
         <translation>بدون استجابة</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="193"/>
+        <location filename="../../src/device/blecentralui.cpp" line="194"/>
         <source>(No name)</source>
         <translation>(لا اسم)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="317"/>
+        <location filename="../../src/device/blecentralui.cpp" line="318"/>
         <source>Stop</source>
         <translation>إيقاف</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="336"/>
+        <location filename="../../src/device/blecentralui.cpp" line="337"/>
         <source>Error Occurred</source>
         <translation>حدث خطأ</translation>
     </message>
@@ -740,82 +740,82 @@
         <translation>يرسل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="77"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>DataFrame</source>
         <translation>إطار البيانات</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>ErrorFrame</source>
         <translation>إطار الخطأ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="110"/>
         <source>RemoteRequestFrame</source>
         <translation>إطار طلب عن بُعد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="132"/>
         <source>Hex</source>
         <translation>سادس عشر</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface Name is Empty</source>
         <translation>اسم الواجهة فارغ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="210"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>اسم الواجهة فارغ، يرجى إدخال الاسم ثم المحاولة مرة أخرى!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="218"/>
         <source>Error Occurred</source>
         <translation>حدث خطأ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection Error</source>
         <translation>خطأ في الاتصال</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="234"/>
         <source>Connection error: %1</source>
         <translation>خطأ في الاتصال: %1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is Not Ready</source>
         <translation>الجهاز غير جاهز</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="316"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>الجهاز غير جاهز، يرجى توصيل الجهاز ثم المحاولة مرة أخرى!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="356"/>
         <source>Error Occure</source>
         <translation>حدث خطأ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="392"/>
         <source>unspecified</source>
         <translation>غير محدد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>false</source>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="395"/>
         <source>true</source>
         <translation>صحيح</translation>
     </message>
@@ -1033,23 +1033,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>بيانات البحث...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="35"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="38"/>
         <source>All</source>
         <translation>الكل</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="39"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="40"/>
         <source>No Limit</source>
         <translation>بدون حد</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
         <source>Clear Records</source>
         <translation>مسح السجلات</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>هل أنت متأكد من أنك تريد مسح جميع السجلات؟</translation>
     </message>
@@ -1674,43 +1674,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>يستورد</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="229"/>
         <source>Channel</source>
         <translation>القناة</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Visible</source>
         <translation>مرئي</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="52"/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Color</source>
         <translation>اللون</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="56"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="240"/>
         <source>Line</source>
         <translation>خط</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="242"/>
         <source>Spline</source>
         <translation>منحنى</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="244"/>
         <source>Scatter</source>
         <translation>تشتت</translation>
     </message>
@@ -1736,7 +1736,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>اسم الخادم</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <location filename="../../src/device/localserverui.cpp" line="21"/>
         <source>All</source>
         <translation>الكل</translation>
     </message>
@@ -1787,17 +1787,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>معلمات السلسلة</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Default Lua Script</source>
         <translation>سكريبت Lua الافتراضي</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="40"/>
         <source>Checksum Lua Script</source>
         <translation>سكريبت Lua لمجموع الاختبار</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="41"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="42"/>
         <source>Lua Script(String)</source>
         <translation>سكريبت Lua (سلسلة)</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">عام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="305"/>
+        <location filename="../../src/mainwindow.cpp" line="309"/>
         <source>&amp;File</source>
         <translation>&amp;ملف</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="307"/>
+        <location filename="../../src/mainwindow.cpp" line="311"/>
         <source>New Window</source>
         <translation>نافذة جديدة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="315"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>Save Parameters</source>
         <translation>حفظ المعلمات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>استيراد المعلمات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="325"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>تصدير المعلمات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="326"/>
+        <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>Exit Application</source>
         <translation>خروج من التطبيق</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="335"/>
+        <location filename="../../src/mainwindow.cpp" line="339"/>
         <source>&amp;Tools</source>
         <translation>&amp;أدوات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>New</source>
         <translation>جديد</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>&amp;Options</source>
         <translation>&amp;خيارات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="389"/>
         <source>Use System Proxy</source>
         <translation>استخدام وكيل النظام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="399"/>
         <source>Exit to System Tray</source>
         <translation>الخروج إلى علبة النظام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="413"/>
+        <location filename="../../src/mainwindow.cpp" line="417"/>
         <source>Application Style</source>
         <translation>نمط التطبيق</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="436"/>
+        <location filename="../../src/mainwindow.cpp" line="440"/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="439"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Clear Settings</source>
         <translation>مسح الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Open Settings Directory</source>
         <translation>فتح دليل الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>HDPI Policy</source>
         <translation>سياسة HDPI</translation>
     </message>
@@ -1907,140 +1907,139 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">نظام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
-        <translation>&amp;اللغات</translation>
+        <translation type="vanished">&amp;اللغات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="542"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;View</source>
         <translation>&amp;عرض</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>Stays on Top</source>
         <translation>البقاء في المقدمة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="614"/>
+        <location filename="../../src/mainwindow.cpp" line="583"/>
         <source>&amp;Help</source>
         <translation>&amp;مساعدة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>About Qt</source>
         <translation>حول Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="616"/>
-        <location filename="../../src/mainwindow.cpp" line="824"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>حول</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="620"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Screenshot</source>
         <translation>لقطة شاشة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Buy from Store</source>
         <translation>اشترِ من المتجر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="635"/>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>سجل الإصدارات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="605"/>
         <source>Join in QQ Group</source>
         <translation>انضم إلى مجموعة QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Online Manual</source>
         <translation>الدليل عبر الإنترنت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Get Sources from Github</source>
         <translation>احصل على المصادر من Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>Get Sources from Gitee</source>
         <translation>احصل على المصادر من Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Third Party Open Source</source>
         <translation>مصادر مفتوحة من طرف ثالث</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>رمز الاستجابة السريعة</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>مجموعة مستخدمي QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>مجموعة Qt على QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>يحتاج إلى إعادة تشغيل</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="725"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>تحتاج العملية إلى إعادة تشغيل لتصبح سارية المفعول، هل تريد إعادة تشغيل التطبيق الآن؟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="727"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(يرجى إعادة تشغيل التطبيق يدويًا.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="770"/>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>ملفات Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>غير معروف</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="818"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>هاش الالتزام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="820"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>وقت الالتزام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>تاريخ البناء</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="822"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>حقوق النشر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>جميع الحقوق محفوظة.</translation>
     </message>
@@ -2143,7 +2142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -2263,143 +2262,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>تنسيق الإدخال</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuClient</source>
         <translation>عميل Rtu</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>RtuServer</source>
         <translation>خادم Rtu</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpClient</source>
         <translation>عميل Tcp</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="173"/>
         <source>TcpServer</source>
         <translation>خادم Tcp</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>NoParity</source>
         <translation>بدون تحقق من الصحة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>EvenParity</source>
         <translation>تحقق من الصحة زوجي</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>OddParity</source>
         <translation>تحقق من الصحة فردي</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>SpaceParity</source>
         <translation>تحقق من الصحة (مسافة)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
         <source>MarkParity</source>
         <translation>تحقق من الصحة (علامة)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadCoils</source>
         <translation>اقرأ الملفات</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadDiscreteInputs</source>
         <translation>اقرأ المدخلات المتقطعة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadHoldingRegisters</source>
         <translation>اقرأ سجلات الاستبقاء</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>ReadInputRegisters</source>
         <translation>اقرأ سجلات المدخلات</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleCoil</source>
         <translation>اكتب ملف فردي</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteSingleRegister</source>
         <translation>اكتب سجل فردي</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleCoils</source>
         <translation>اكتب ملفات متعددة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="243"/>
         <source>WriteMultipleRegisters</source>
         <translation>اكتب سجلات متعددة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>Coils</source>
         <translation>ملفات</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>DiscreteInputs</source>
         <translation>مدخلات متقطعة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>InputRegisters</source>
         <translation>سجلات المدخلات</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>HoldingRegisters</source>
         <translation>سجلات الاستبقاء</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="545"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1314"/>
         <source>Error occured</source>
         <translation>حدث خطأ</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="622"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>لا يمكن فتح الجهاز: %1. يرجى التحقق من المعلمات والمحاولة مرة أخرى!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="625"/>
         <source>Can not open device</source>
         <translation>لا يمكن فتح الجهاز</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Value</source>
         <translation>القيمة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1364"/>
         <source>Device is not Ready</source>
         <translation>الجهاز غير جاهز</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1365"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>جهاز modbus غير جاهز، يرجى التحقق من الإعدادات والمحاولة مرة أخرى لاحقًا!</translation>
     </message>
@@ -2823,7 +2822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="593"/>
+        <location filename="../../src/page/page.cpp" line="594"/>
         <source>Open</source>
         <translation>فتح</translation>
     </message>
@@ -2951,43 +2950,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="325"/>
-        <location filename="../../src/page/page.cpp" line="769"/>
+        <location filename="../../src/page/page.cpp" line="326"/>
+        <location filename="../../src/page/page.cpp" line="770"/>
         <source>Error: No device is opened.</source>
         <translation>خطأ: لا يوجد جهاز مفتوح.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="427"/>
+        <location filename="../../src/page/page.cpp" line="428"/>
         <source>Disable</source>
         <translation>تعطيل</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="584"/>
+        <location filename="../../src/page/page.cpp" line="585"/>
         <source>Close</source>
         <translation>إغلاق</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="600"/>
+        <location filename="../../src/page/page.cpp" line="601"/>
         <source>Error Occurred</source>
         <translation>حدث خطأ</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="606"/>
+        <location filename="../../src/page/page.cpp" line="607"/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="693"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Hide Scripts Panels</source>
         <translation>إخفاء لوحات السكربتات</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="695"/>
         <source>Show Scripts Panels</source>
         <translation>عرض لوحات السكربتات</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="797"/>
+        <location filename="../../src/page/page.cpp" line="798"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3008,119 +3007,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PingAssistant</name>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="157"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
         <translation>الإجمالي: --، النشط: --، المنتهي: --، المتبقي: --</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Target Address</source>
         <translation>عنوان الهدف</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Online Status</source>
         <translation>حالة الاتصال بالإنترنت</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Comparing</source>
         <translation>مقارنة</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="168"/>
         <source>Host Name</source>
         <translation>اسم المضيف</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="186"/>
         <source>Start scan</source>
         <translation>بدء المسح</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="194"/>
         <source>Pause scan</source>
         <translation>إيقاف مؤقت للمسح</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="202"/>
         <source>Stop scan</source>
         <translation>إيقاف المسح</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="215"/>
         <source>Start address</source>
         <translation>عنوان البداية</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="225"/>
         <source>End address</source>
         <translation>عنوان النهاية</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="236"/>
         <source>Timeout(S)</source>
         <translation>مهلة (ثواني)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show all</source>
         <translation>عرض الكل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="256"/>
         <source>Show online</source>
         <translation>عرض المتصلين</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP Error</source>
         <translation>خطأ في IP</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="388"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
         <translation>خطأ في إعدادات IP، يجب تعيين IP البداية و IP النهاية، يرجى التحقق والمحاولة مرة أخرى.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="403"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
         <translation>خطأ في إعدادات IP، يجب أن يكون IP البداية و IP النهاية في نفس نطاق الشبكة، يرجى التحقق والمحاولة مرة أخرى.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="412"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
         <translation>خطأ في إعدادات IP، يجب أن يكون IP البداية أقل من IP النهاية، يرجى التحقق والمحاولة مرة أخرى.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="458"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
         <translation>الإجمالي: %1، النشط: %2، المنتهي: %3، المتبقي: %4</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="517"/>
         <source>Scanning</source>
         <translation>جارٍ المسح</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Online</source>
         <translation>متصل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Offline</source>
         <translation>غير متصل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning Finished</source>
         <translation>اكتمل المسح</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="566"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
         <translation>اكتمل المسح، يمكنك تصفية النتائج من خلال شريط الأدوات.</translation>
     </message>
@@ -3209,34 +3208,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>الفاصل الزمني للعنصر (بالمللي ثانية)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="69"/>
         <source>Group Sending</source>
         <translation>إرسال المجموعة</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="180"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
         <source>The group name cannot be empty.</source>
         <translation>لا يمكن أن يكون اسم المجموعة فارغًا.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <source>The columns cannot be empty.</source>
         <translation>لا يمكن أن تكون الأعمدة فارغة.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="182"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
         <translation>اسم المجموعة &quot;%1&quot; موجود بالفعل. هل تريد استبداله؟</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="240"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
         <translation>إرسال المجموعات</translation>
     </message>
@@ -3252,150 +3251,150 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/utilities/crc.cpp" line="92"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>غير معروف</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="87"/>
         <source>Bin</source>
         <translation>ثنائي</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="89"/>
         <source>Oct</source>
         <translation>ثماني</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="91"/>
         <source>Dec</source>
         <translation>عشري</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="93"/>
         <source>Hex</source>
         <translation>سادس عشر</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="95"/>
         <source>Hex(No Space)</source>
         <translation>سادس عشر (بدون مسافة)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="361"/>
-        <location filename="../../src/common/xtools.cpp" line="423"/>
-        <location filename="../../src/common/xtools.cpp" line="736"/>
-        <location filename="../../src/common/xtools.cpp" line="754"/>
+        <location filename="../../src/common/xtools.cpp" line="362"/>
+        <location filename="../../src/common/xtools.cpp" line="424"/>
+        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="755"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>لا شيء</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="464"/>
-        <location filename="../../src/common/xtools.cpp" line="903"/>
-        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="465"/>
+        <location filename="../../src/common/xtools.cpp" line="904"/>
+        <location filename="../../src/common/xtools.cpp" line="906"/>
         <source>Text</source>
         <translation>نص</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="466"/>
-        <location filename="../../src/common/xtools.cpp" line="899"/>
-        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="467"/>
+        <location filename="../../src/common/xtools.cpp" line="900"/>
+        <location filename="../../src/common/xtools.cpp" line="902"/>
         <source>Binary</source>
         <translation>ثنائي</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="501"/>
+        <location filename="../../src/common/xtools.cpp" line="502"/>
         <source>Echo</source>
         <translation>صدى</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="502"/>
+        <location filename="../../src/common/xtools.cpp" line="503"/>
         <source>Always</source>
         <translation>دائمًا</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="503"/>
+        <location filename="../../src/common/xtools.cpp" line="504"/>
         <source>Input Equal Reference</source>
         <translation>الإدخال يساوي المرجع</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="504"/>
+        <location filename="../../src/common/xtools.cpp" line="505"/>
         <source>Input Contain Reference</source>
         <translation>الإدخال يحتوي على المرجع</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="506"/>
+        <location filename="../../src/common/xtools.cpp" line="507"/>
         <source>Input Does not Contain Reference</source>
         <translation>الإدخال لا يحتوي على المرجع</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>زوجي</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>فردي</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>مسافة</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="756"/>
+        <location filename="../../src/common/xtools.cpp" line="757"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="759"/>
+        <location filename="../../src/common/xtools.cpp" line="760"/>
         <source>Hardware</source>
         <translation>عتاد</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Software</source>
         <translation>برمجيات</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="864"/>
+        <location filename="../../src/common/xtools.cpp" line="865"/>
         <source>Disabled</source>
         <translation>معطل</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="866"/>
+        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Bidirectional</source>
         <translation>ثنائي الاتجاه</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="868"/>
+        <location filename="../../src/common/xtools.cpp" line="869"/>
         <source>Unidirectional</source>
         <translation>اتجاه واحد</translation>
     </message>
@@ -3405,48 +3404,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>يتم تشغيل التطبيق...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation type="unfinished">نظام الألوان</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation type="unfinished">داكن</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation type="unfinished">فاتح</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
-        <location filename="../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>نظام</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="460"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Round up for .5 and above</source>
         <translation>التقريب للأعلى للقيم 0.5 وما فوق</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="465"/>
         <source>Always round up</source>
         <translation>التقريب للأعلى دائمًا</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="462"/>
+        <location filename="../../src/mainwindow.cpp" line="466"/>
         <source>Always round down</source>
         <translation>التقريب للأسفل دائمًا</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Round up for .75 and above</source>
         <translation>التقريب للأعلى للقيم 0.75 وما فوق</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Don&apos;t round</source>
         <translation>لا تقرب</translation>
     </message>
@@ -3579,6 +3578,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
         <translation>الجميع</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/i18n_p.h" line="81"/>
+        <source>&amp;Languages</source>
+        <translation type="unfinished">&amp;اللغات</translation>
     </message>
 </context>
 <context>
@@ -4069,7 +4073,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>كلمة المرور</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.cpp" line="199"/>
+        <location filename="../../src/device/socketui.cpp" line="200"/>
         <source>All clients</source>
         <translation>جميع العملاء</translation>
     </message>
@@ -4331,7 +4335,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcast</name>
     <message>
-        <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
+        <location filename="../../src/device/udpbroadcast.cpp" line="65"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>فشل ربط مقبس UDP: %1</translation>
     </message>
@@ -4357,22 +4361,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticast</name>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="68"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="69"/>
         <source>Invalid network interface: %1</source>
         <translation>واجهة الشبكة غير صالحة: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="75"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="76"/>
         <source>Network interface %1 does not support multicast</source>
         <translation>واجهة الشبكة %1 لا تدعم البث المتعدد</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="93"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="94"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>فشل ربط مقبس UDP: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="102"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="103"/>
         <source>Failed to join multicast group %1:%2: %3</source>
         <translation>فشل الانضمام إلى مجموعة البث المتعدد %1:%2: %3</translation>
     </message>

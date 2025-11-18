@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="313"/>
+        <location filename="../../src/application.cpp" line="268"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Overfør rx bytes med højre side</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="318"/>
+        <location filename="../../src/application.cpp" line="273"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Overfør rx bytes med venstre side</translation>
     </message>
@@ -328,23 +328,23 @@
         <translation>010000000000</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="39"/>
         <source>Barcode Assistant</source>
         <translation>Stregkode-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Save Image</source>
         <translation>Gem billede</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
         <translation>PNG-billede (*.png);;JPEG-billede (*.jpg);;BMP-billede (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Failed to save image.</source>
         <translation>Kunne ikke gemme billede.</translation>
     </message>
@@ -357,32 +357,32 @@
         <translation>Dataformat</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Channel</source>
         <translation>Kanal</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Color</source>
         <translation>Farve</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="46"/>
         <source>Name</source>
         <translation>Navn</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="160"/>
         <source>Line</source>
         <translation>Linje</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="162"/>
         <source>Spline</source>
         <translation>Kurve</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="164"/>
         <source>Scatter</source>
         <translation>Spredning</translation>
     </message>
@@ -467,13 +467,13 @@
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
-        <location filename="../../src/device/blecentralui.cpp" line="324"/>
+        <location filename="../../src/device/blecentralui.cpp" line="325"/>
         <source>Scan</source>
         <translation>Scan</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
-        <location filename="../../src/device/blecentralui.cpp" line="125"/>
+        <location filename="../../src/device/blecentralui.cpp" line="126"/>
         <source>Notify</source>
         <translation>Underret</translation>
     </message>
@@ -503,32 +503,32 @@
         <translation>Enhedsscanning</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="123"/>
+        <location filename="../../src/device/blecentralui.cpp" line="124"/>
         <source>Disnotify</source>
         <translation>Afmeld</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="135"/>
+        <location filename="../../src/device/blecentralui.cpp" line="136"/>
         <source>With Response</source>
         <translation>Med svar</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="140"/>
+        <location filename="../../src/device/blecentralui.cpp" line="141"/>
         <source>Without Response</source>
         <translation>Uden svar</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="193"/>
+        <location filename="../../src/device/blecentralui.cpp" line="194"/>
         <source>(No name)</source>
         <translation>(Intet navn)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="317"/>
+        <location filename="../../src/device/blecentralui.cpp" line="318"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="336"/>
+        <location filename="../../src/device/blecentralui.cpp" line="337"/>
         <source>Error Occurred</source>
         <translation>Fejl opstod</translation>
     </message>
@@ -740,82 +740,82 @@
         <translation>Sende</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="77"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>DataFrame</source>
         <translation>DataFrame</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>ErrorFrame</source>
         <translation>Fejlramme</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="110"/>
         <source>RemoteRequestFrame</source>
         <translation>Fjernanmodningsramme</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="132"/>
         <source>Hex</source>
         <translation>Hex</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface Name is Empty</source>
         <translation>Grænsefladenavn er tomt</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="210"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>Grænsefladenavnet er tomt, indtast venligst navnet og prøv igen!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="218"/>
         <source>Error Occurred</source>
         <translation>Fejl opstod</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection Error</source>
         <translation>Forbindelsesfejl</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="234"/>
         <source>Connection error: %1</source>
         <translation>Forbindelsesfejl: %1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is Not Ready</source>
         <translation>Enheden er ikke klar</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="316"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>Enheden er ikke klar, tilslut venligst enheden og prøv igen!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="356"/>
         <source>Error Occure</source>
         <translation>Fejl opstod</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="392"/>
         <source>unspecified</source>
         <translation>uspecificeret</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>false</source>
         <translation>falsk</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="395"/>
         <source>true</source>
         <translation>sand</translation>
     </message>
@@ -1033,23 +1033,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Søg data...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="35"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="38"/>
         <source>All</source>
         <translation>Alle</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="39"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="40"/>
         <source>No Limit</source>
         <translation>Ingen grænse</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
         <source>Clear Records</source>
         <translation>Ryd poster</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>Er du sikker på, at du vil rydde alle poster?</translation>
     </message>
@@ -1674,43 +1674,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Importere</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="229"/>
         <source>Channel</source>
         <translation>Kanal</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Visible</source>
         <translation>Synlig</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="52"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Color</source>
         <translation>Farve</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="56"/>
         <source>Name</source>
         <translation>Navn</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="240"/>
         <source>Line</source>
         <translation>Linje</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="242"/>
         <source>Spline</source>
         <translation>Kurve</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="244"/>
         <source>Scatter</source>
         <translation>Spredning</translation>
     </message>
@@ -1736,7 +1736,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Servernavn</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <location filename="../../src/device/localserverui.cpp" line="21"/>
         <source>All</source>
         <translation>Alle</translation>
     </message>
@@ -1787,17 +1787,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Strengparametre</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Default Lua Script</source>
         <translation>Standard Lua-script</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="40"/>
         <source>Checksum Lua Script</source>
         <translation>Checksum Lua-script</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="41"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="42"/>
         <source>Lua Script(String)</source>
         <translation>Lua-script(streng)</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Generel</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="305"/>
+        <location filename="../../src/mainwindow.cpp" line="309"/>
         <source>&amp;File</source>
         <translation>&amp;Fil</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="307"/>
+        <location filename="../../src/mainwindow.cpp" line="311"/>
         <source>New Window</source>
         <translation>Ny vindue</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="315"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>Save Parameters</source>
         <translation>Gem parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>Importer parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="325"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>Eksporter parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="326"/>
+        <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>Exit Application</source>
         <translation>Afslut applikation</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="335"/>
+        <location filename="../../src/mainwindow.cpp" line="339"/>
         <source>&amp;Tools</source>
         <translation>&amp;Værktøjer</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>New</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>&amp;Options</source>
         <translation>&amp;Indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="389"/>
         <source>Use System Proxy</source>
         <translation>Brug systemproxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="399"/>
         <source>Exit to System Tray</source>
         <translation>Afslut til systembakke</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="413"/>
+        <location filename="../../src/mainwindow.cpp" line="417"/>
         <source>Application Style</source>
         <translation>Applikationsstil</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="436"/>
+        <location filename="../../src/mainwindow.cpp" line="440"/>
         <source>Settings</source>
         <translation>Indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="439"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Clear Settings</source>
         <translation>Ryd indstillinger</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Open Settings Directory</source>
         <translation>Åbn indstillingsmappe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>HDPI Policy</source>
         <translation>HDPI-politik</translation>
     </message>
@@ -1907,140 +1907,139 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">System</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
-        <translation>&amp;Sprog</translation>
+        <translation type="vanished">&amp;Sprog</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="542"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;View</source>
         <translation>&amp;Vis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>Stays on Top</source>
         <translation>Forbliv øverst</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="614"/>
+        <location filename="../../src/mainwindow.cpp" line="583"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjælp</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>About Qt</source>
         <translation>Om Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="616"/>
-        <location filename="../../src/mainwindow.cpp" line="824"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="620"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Screenshot</source>
         <translation>Skærmbillede</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Buy from Store</source>
         <translation>Køb fra butik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="635"/>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>Udgivelseshistorik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="605"/>
         <source>Join in QQ Group</source>
         <translation>Bliv medlem af QQ-gruppen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Online Manual</source>
         <translation>Online manual</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Get Sources from Github</source>
         <translation>Få kilder fra Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>Get Sources from Gitee</source>
         <translation>Få kilder fra Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Third Party Open Source</source>
         <translation>Tredjeparts open source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>QR-kode</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>Bruger QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>Skal genstartes</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="725"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="727"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Genstart venligst din applikation manuelt.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="770"/>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json-filer (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="818"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="820"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>Commit-tid</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>Bygge dato</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="822"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>Ophavsret</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>Alle rettigheder forbeholdes.</translation>
     </message>
@@ -2143,7 +2142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
@@ -2263,143 +2262,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Input format</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuClient</source>
         <translation>RtuKlient</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>RtuServer</source>
         <translation>RtuServer</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpClient</source>
         <translation>TcpKlient</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="173"/>
         <source>TcpServer</source>
         <translation>TcpServer</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>NoParity</source>
         <translation>Ingen paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>EvenParity</source>
         <translation>Lige paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>OddParity</source>
         <translation>Ulige paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>SpaceParity</source>
         <translation>Plads paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
         <source>MarkParity</source>
         <translation>Markér paritet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadCoils</source>
         <translation>Læs spoler</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadDiscreteInputs</source>
         <translation>Læs diskrete indgange</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadHoldingRegisters</source>
         <translation>Læs holde registre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>ReadInputRegisters</source>
         <translation>Læs inddataregistre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleCoil</source>
         <translation>Skriv enkelt spole</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteSingleRegister</source>
         <translation>Skriv enkelt register</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleCoils</source>
         <translation>Skriv flere spoler</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="243"/>
         <source>WriteMultipleRegisters</source>
         <translation>Skriv flere registre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>Coils</source>
         <translation>Spoler</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>DiscreteInputs</source>
         <translation>Diskrete indgange</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>InputRegisters</source>
         <translation>Inddataregistre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>HoldingRegisters</source>
         <translation>Holde registre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="545"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1314"/>
         <source>Error occured</source>
         <translation>Fejl opstod</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="622"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>Kan ikke åbne enhed: %1. Kontroller venligst parametrene og prøv igen!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="625"/>
         <source>Can not open device</source>
         <translation>Kan ikke åbne enhed</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Value</source>
         <translation>Værdi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Description</source>
         <translation>Beskrivelse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1364"/>
         <source>Device is not Ready</source>
         <translation>Enheden er ikke klar</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1365"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Modbus-enheden er ikke klar, kontroller venligst indstillingerne og prøv igen senere!</translation>
     </message>
@@ -2823,7 +2822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="593"/>
+        <location filename="../../src/page/page.cpp" line="594"/>
         <source>Open</source>
         <translation>Åbn</translation>
     </message>
@@ -2951,43 +2950,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="325"/>
-        <location filename="../../src/page/page.cpp" line="769"/>
+        <location filename="../../src/page/page.cpp" line="326"/>
+        <location filename="../../src/page/page.cpp" line="770"/>
         <source>Error: No device is opened.</source>
         <translation>Fejl: Ingen enhed er åbnet.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="427"/>
+        <location filename="../../src/page/page.cpp" line="428"/>
         <source>Disable</source>
         <translation>Deaktiver</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="584"/>
+        <location filename="../../src/page/page.cpp" line="585"/>
         <source>Close</source>
         <translation>Luk</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="600"/>
+        <location filename="../../src/page/page.cpp" line="601"/>
         <source>Error Occurred</source>
         <translation>Fejl opstod</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="606"/>
+        <location filename="../../src/page/page.cpp" line="607"/>
         <source>Warning</source>
         <translation>Advarsel</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="693"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Hide Scripts Panels</source>
         <translation>Skjul scriptpaneler</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="695"/>
         <source>Show Scripts Panels</source>
         <translation>Vis scriptpaneler</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="797"/>
+        <location filename="../../src/page/page.cpp" line="798"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3008,119 +3007,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PingAssistant</name>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="157"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
         <translation>I alt: --, Aktiv: --, Færdig: --, Resterende: --</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Target Address</source>
         <translation>Måladresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Online Status</source>
         <translation>Online-status</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Comparing</source>
         <translation>Sammenligning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="168"/>
         <source>Host Name</source>
         <translation>Værtens navn</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="186"/>
         <source>Start scan</source>
         <translation>Start scanning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="194"/>
         <source>Pause scan</source>
         <translation>Pause scanning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="202"/>
         <source>Stop scan</source>
         <translation>Stop scanning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="215"/>
         <source>Start address</source>
         <translation>Startadresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="225"/>
         <source>End address</source>
         <translation>Slutadresse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="236"/>
         <source>Timeout(S)</source>
         <translation>Timeout(S)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show all</source>
         <translation>Vis alle</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="256"/>
         <source>Show online</source>
         <translation>Vis online</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP Error</source>
         <translation>IP-fejl</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="388"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
         <translation>IP-indstillingsfejl, start-ip og slut-ip skal være indstillet, kontroller venligst og prøv igen.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="403"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
         <translation>IP-indstillingsfejl, start-ip og slut-ip skal være i det samme netværkssegment, kontroller venligst og prøv igen.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="412"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
         <translation>IP-indstillingsfejl, start-ip skal være mindre end slut-ip, kontroller venligst og prøv igen.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="458"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
         <translation>I alt：%1，Aktiv：%2，Færdig：%3，Resterende：%4</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="517"/>
         <source>Scanning</source>
         <translation>Scanning</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning Finished</source>
         <translation>Scanning afsluttet</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="566"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
         <translation>Scanning afsluttet, du kan filtrere resultatet via værktøjslinjen.</translation>
     </message>
@@ -3209,34 +3208,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vareinterval(ms)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="69"/>
         <source>Group Sending</source>
         <translation>Gruppeafsendelse</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="180"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
         <translation>Advarsel</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
         <source>The group name cannot be empty.</source>
         <translation>Gruppens navn kan ikke være tomt.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <source>The columns cannot be empty.</source>
         <translation>Kolonnerne kan ikke være tomme.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="182"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
         <translation>Gruppens navn &quot;%1&quot; findes allerede. Erstat det?</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="240"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
         <translation>Send grupper</translation>
     </message>
@@ -3252,150 +3251,150 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/utilities/crc.cpp" line="92"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="87"/>
         <source>Bin</source>
         <translation>Bin</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="89"/>
         <source>Oct</source>
         <translation>Okt</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="91"/>
         <source>Dec</source>
         <translation>Dec</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="93"/>
         <source>Hex</source>
         <translation>Hex</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="95"/>
         <source>Hex(No Space)</source>
         <translation>Hex(Uden mellemrum)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="361"/>
-        <location filename="../../src/common/xtools.cpp" line="423"/>
-        <location filename="../../src/common/xtools.cpp" line="736"/>
-        <location filename="../../src/common/xtools.cpp" line="754"/>
+        <location filename="../../src/common/xtools.cpp" line="362"/>
+        <location filename="../../src/common/xtools.cpp" line="424"/>
+        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="755"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="464"/>
-        <location filename="../../src/common/xtools.cpp" line="903"/>
-        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="465"/>
+        <location filename="../../src/common/xtools.cpp" line="904"/>
+        <location filename="../../src/common/xtools.cpp" line="906"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="466"/>
-        <location filename="../../src/common/xtools.cpp" line="899"/>
-        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="467"/>
+        <location filename="../../src/common/xtools.cpp" line="900"/>
+        <location filename="../../src/common/xtools.cpp" line="902"/>
         <source>Binary</source>
         <translation>Binær</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="501"/>
+        <location filename="../../src/common/xtools.cpp" line="502"/>
         <source>Echo</source>
         <translation>Echo</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="502"/>
+        <location filename="../../src/common/xtools.cpp" line="503"/>
         <source>Always</source>
         <translation>Altid</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="503"/>
+        <location filename="../../src/common/xtools.cpp" line="504"/>
         <source>Input Equal Reference</source>
         <translation>Inddata lig med reference</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="504"/>
+        <location filename="../../src/common/xtools.cpp" line="505"/>
         <source>Input Contain Reference</source>
         <translation>Inddata indeholder reference</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="506"/>
+        <location filename="../../src/common/xtools.cpp" line="507"/>
         <source>Input Does not Contain Reference</source>
         <translation>Inddata indeholder ikke reference</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Lige</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Ulig</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Plads</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Markér</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="756"/>
+        <location filename="../../src/common/xtools.cpp" line="757"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="759"/>
+        <location filename="../../src/common/xtools.cpp" line="760"/>
         <source>Hardware</source>
         <translation>Hardware</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Software</source>
         <translation>Software</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="864"/>
+        <location filename="../../src/common/xtools.cpp" line="865"/>
         <source>Disabled</source>
         <translation>Deaktiveret</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="866"/>
+        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Bidirectional</source>
         <translation>To-vejs</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="868"/>
+        <location filename="../../src/common/xtools.cpp" line="869"/>
         <source>Unidirectional</source>
         <translation>En-vejs</translation>
     </message>
@@ -3405,48 +3404,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Applikationen starter...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation type="unfinished">Farveskema</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation type="unfinished">Mørk</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation type="unfinished">Lyse</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
-        <location filename="../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="460"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Round up for .5 and above</source>
         <translation>Afslut opad for .5 og derover</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="465"/>
         <source>Always round up</source>
         <translation>Afslut altid opad</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="462"/>
+        <location filename="../../src/mainwindow.cpp" line="466"/>
         <source>Always round down</source>
         <translation>Afslut altid nedad</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Round up for .75 and above</source>
         <translation>Afslut opad for .75 og derover</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Don&apos;t round</source>
         <translation>Rund ikke af</translation>
     </message>
@@ -3579,6 +3578,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
         <translation>Alle</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/i18n_p.h" line="81"/>
+        <source>&amp;Languages</source>
+        <translation type="unfinished">&amp;Sprog</translation>
     </message>
 </context>
 <context>
@@ -4069,7 +4073,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Adgangskode</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.cpp" line="199"/>
+        <location filename="../../src/device/socketui.cpp" line="200"/>
         <source>All clients</source>
         <translation>Alle klienter</translation>
     </message>
@@ -4331,7 +4335,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcast</name>
     <message>
-        <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
+        <location filename="../../src/device/udpbroadcast.cpp" line="65"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>Kunne ikke binde UDP-sokkel: %1</translation>
     </message>
@@ -4357,22 +4361,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticast</name>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="68"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="69"/>
         <source>Invalid network interface: %1</source>
         <translation>Ugyldigt netværksinterface: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="75"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="76"/>
         <source>Network interface %1 does not support multicast</source>
         <translation>Netværksinterface %1 understøtter ikke multicast</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="93"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="94"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>Kunne ikke binde UDP-sokkel: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="102"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="103"/>
         <source>Failed to join multicast group %1:%2: %3</source>
         <translation>Kunne ikke tilslutte multicast-gruppe %1:%2: %3</translation>
     </message>

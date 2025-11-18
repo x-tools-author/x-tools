@@ -4,12 +4,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="313"/>
+        <location filename="../../src/application.cpp" line="268"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Prenesi rx bajte z desno stran</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="318"/>
+        <location filename="../../src/application.cpp" line="273"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Prenesi rx bajte z levo stran</translation>
     </message>
@@ -328,23 +328,23 @@
         <translation>010000000000</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="38"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="39"/>
         <source>Barcode Assistant</source>
         <translation>Pomočnik za črtne kode</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Save Image</source>
         <translation>Shrani sliko</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="78"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="79"/>
         <source>PNG Image (*.png);;JPEG Image (*.jpg);;BMP Image (*.bmp)</source>
         <translation>PNG slika (*.png);;JPEG slika (*.jpg);;BMP slika (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="89"/>
+        <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="90"/>
         <source>Failed to save image.</source>
         <translation>Shhranitev slike ni uspela.</translation>
     </message>
@@ -357,32 +357,32 @@
         <translation>Format podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="43"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
         <source>Channel</source>
         <translation>Kanala</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
         <source>Color</source>
         <translation>Barva</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="46"/>
         <source>Name</source>
         <translation>Ime</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="159"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="160"/>
         <source>Line</source>
         <translation>Črta</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="161"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="162"/>
         <source>Spline</source>
         <translation>Krivulja</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="163"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="164"/>
         <source>Scatter</source>
         <translation>Razpršeno</translation>
     </message>
@@ -467,13 +467,13 @@
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
-        <location filename="../../src/device/blecentralui.cpp" line="324"/>
+        <location filename="../../src/device/blecentralui.cpp" line="325"/>
         <source>Scan</source>
         <translation>Skener</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="96"/>
-        <location filename="../../src/device/blecentralui.cpp" line="125"/>
+        <location filename="../../src/device/blecentralui.cpp" line="126"/>
         <source>Notify</source>
         <translation>Obvesti</translation>
     </message>
@@ -503,32 +503,32 @@
         <translation>Skeniranje naprave</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="123"/>
+        <location filename="../../src/device/blecentralui.cpp" line="124"/>
         <source>Disnotify</source>
         <translation>Prekliči obvestilo</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="135"/>
+        <location filename="../../src/device/blecentralui.cpp" line="136"/>
         <source>With Response</source>
         <translation>S odgovorom</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="140"/>
+        <location filename="../../src/device/blecentralui.cpp" line="141"/>
         <source>Without Response</source>
         <translation>Brez odgovora</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="193"/>
+        <location filename="../../src/device/blecentralui.cpp" line="194"/>
         <source>(No name)</source>
         <translation>(Brez imena)</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="317"/>
+        <location filename="../../src/device/blecentralui.cpp" line="318"/>
         <source>Stop</source>
         <translation>Ustavi</translation>
     </message>
     <message>
-        <location filename="../../src/device/blecentralui.cpp" line="336"/>
+        <location filename="../../src/device/blecentralui.cpp" line="337"/>
         <source>Error Occurred</source>
         <translation>Napaka</translation>
     </message>
@@ -740,82 +740,82 @@
         <translation>Pošlji</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="76"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="77"/>
         <source>can0</source>
         <translation>can0</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="107"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
         <source>DataFrame</source>
         <translation>Podatkovni okvir</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="108"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
         <source>ErrorFrame</source>
         <translation>Okvir napake</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="109"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="110"/>
         <source>RemoteRequestFrame</source>
         <translation>Okvir oddaljene zahteve</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="131"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="132"/>
         <source>Hex</source>
         <translation>Šestnajstiški</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="208"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
         <source>Interface Name is Empty</source>
         <translation>Ime vmesnika je prazno</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="209"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="210"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>Ime vmesnika je prazno, prosimo vnesite ime in poskusite znova!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="217"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="218"/>
         <source>Error Occurred</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="232"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
         <source>Connection Error</source>
         <translation>Napaka povezave</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="233"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="234"/>
         <source>Connection error: %1</source>
         <translation>Napaka povezave: %1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="314"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
         <source>Device is Not Ready</source>
         <translation>Naprava ni pripravljena</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="315"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="316"/>
         <source>Device is not ready, please connect the device then try angin!</source>
         <translation>Naprava ni pripravljena, prosimo povežite napravo in poskusite znova!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="355"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="356"/>
         <source>Error Occure</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="391"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="392"/>
         <source>unspecified</source>
         <translation>nespecificirano</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="393"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
         <source>false</source>
         <translation>ne</translation>
     </message>
     <message>
-        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="394"/>
+        <location filename="../../src/tools/canbus/canbusassistant.cpp" line="395"/>
         <source>true</source>
         <translation>da</translation>
     </message>
@@ -1033,23 +1033,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Iskanje podatkov ...</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="34"/>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="37"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="35"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="38"/>
         <source>All</source>
         <translation>Vse</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="39"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="40"/>
         <source>No Limit</source>
         <translation>Brez omejitev</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="147"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
         <source>Clear Records</source>
         <translation>Počisti zapise</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="148"/>
+        <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>Ste prepričani, da želite izbrisati vse zapise?</translation>
     </message>
@@ -1674,43 +1674,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Uvozi</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="49"/>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="228"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="229"/>
         <source>Channel</source>
         <translation>Kanala</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
         <source>Visible</source>
         <translation>Vidno</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="52"/>
         <source>Type</source>
         <translation>Tip</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="54"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
         <source>Color</source>
         <translation>Barva</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="56"/>
         <source>Name</source>
         <translation>Ime</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="239"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="240"/>
         <source>Line</source>
         <translation>Črta</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="241"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="242"/>
         <source>Spline</source>
         <translation>Krivulja</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="244"/>
         <source>Scatter</source>
         <translation>Razpršeno</translation>
     </message>
@@ -1736,7 +1736,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Ime strežnika</translation>
     </message>
     <message>
-        <location filename="../../src/device/localserverui.cpp" line="20"/>
+        <location filename="../../src/device/localserverui.cpp" line="21"/>
         <source>All</source>
         <translation>Vse</translation>
     </message>
@@ -1787,17 +1787,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Parametri niza</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="38"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
         <source>Default Lua Script</source>
         <translation>Privzeta Lua skripta</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="40"/>
         <source>Checksum Lua Script</source>
         <translation>Lua skripta za kontrolno vsoto</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/common/luapanel.cpp" line="41"/>
+        <location filename="../../src/page/panels/common/luapanel.cpp" line="42"/>
         <source>Lua Script(String)</source>
         <translation>Lua skripta (niz)</translation>
     </message>
@@ -1809,84 +1809,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Splošno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="305"/>
+        <location filename="../../src/mainwindow.cpp" line="309"/>
         <source>&amp;File</source>
         <translation>&amp;Datoteka</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="307"/>
+        <location filename="../../src/mainwindow.cpp" line="311"/>
         <source>New Window</source>
         <translation>Nova okna</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="315"/>
+        <location filename="../../src/mainwindow.cpp" line="319"/>
         <source>Save Parameters</source>
         <translation>Shrani nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="321"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>Uvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="321"/>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="325"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>Izvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="326"/>
+        <location filename="../../src/mainwindow.cpp" line="330"/>
         <source>Exit Application</source>
         <translation>Zapri aplikacijo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="335"/>
+        <location filename="../../src/mainwindow.cpp" line="339"/>
         <source>&amp;Tools</source>
         <translation>&amp;Orodja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>New</source>
         <translation>Nov</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>&amp;Options</source>
         <translation>&amp;Možnosti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="389"/>
         <source>Use System Proxy</source>
         <translation>Uporabi sistemski proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="399"/>
         <source>Exit to System Tray</source>
         <translation>Izstopi v sistemsko pladenj</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="413"/>
+        <location filename="../../src/mainwindow.cpp" line="417"/>
         <source>Application Style</source>
         <translation>Slika aplikacije</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="436"/>
+        <location filename="../../src/mainwindow.cpp" line="440"/>
         <source>Settings</source>
         <translation>Nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="439"/>
+        <location filename="../../src/mainwindow.cpp" line="443"/>
         <source>Clear Settings</source>
         <translation>Počisti nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Open Settings Directory</source>
         <translation>Odpri mapo z nastavitvami</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>HDPI Policy</source>
         <translation>HDPI politika</translation>
     </message>
@@ -1907,140 +1907,139 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Sistem</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;Languages</source>
-        <translation>&amp;Jeziki</translation>
+        <translation type="vanished">&amp;Jeziki</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="542"/>
+        <location filename="../../src/mainwindow.cpp" line="511"/>
         <source>&amp;View</source>
         <translation>&amp;Pogled</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>Stays on Top</source>
         <translation>Ostani na vrhu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="614"/>
+        <location filename="../../src/mainwindow.cpp" line="583"/>
         <source>&amp;Help</source>
         <translation>&amp;Pomoč</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="584"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="616"/>
-        <location filename="../../src/mainwindow.cpp" line="824"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>O aplikaciji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="620"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Screenshot</source>
         <translation>Posnetek zaslona</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Buy from Store</source>
         <translation>Kupi v trgovini</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="635"/>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>Zgodovina različic</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="605"/>
         <source>Join in QQ Group</source>
         <translation>Pridruži se QQ skupini</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="608"/>
         <source>Online Manual</source>
         <translation>Online priročnik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Get Sources from Github</source>
         <translation>Pridobi vire iz Githuba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="614"/>
         <source>Get Sources from Gitee</source>
         <translation>Pridobi vire iz Giteea</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Third Party Open Source</source>
         <translation>Tretje osebe odprtokodni viri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>QR koda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>Uporabniška QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>Potrebno je ponovno zagnati</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="725"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacijo je treba ponovno zagnati, da začne veljati, želite zdaj znova zagnati aplikacijo?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="727"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Prosimo, da ročno znova zaženete aplikacijo.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="770"/>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json datoteke (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="812"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>Neznano</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="818"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>Hash spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="820"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>Čas spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="821"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>Datum gradnje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="822"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>Avtorske pravice</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="823"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>Vse pravice pridržane.</translation>
     </message>
@@ -2143,7 +2142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="273"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Address</source>
         <translation>Naslov</translation>
     </message>
@@ -2263,143 +2262,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vnosni format</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="169"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
         <source>RtuClient</source>
         <translation>RtuOdjemalec</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="170"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
         <source>RtuServer</source>
         <translation>RtuStrežnik</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="171"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
         <source>TcpClient</source>
         <translation>TcpOdjemalec</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="172"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="173"/>
         <source>TcpServer</source>
         <translation>TcpStrežnik</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="226"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
         <source>NoParity</source>
         <translation>Brez paritete</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="227"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
         <source>EvenParity</source>
         <translation>Pariteta sodih števil</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="228"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
         <source>OddParity</source>
         <translation>Pariteta lihe številke</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="229"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
         <source>SpaceParity</source>
         <translation>Prostor paritete</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="230"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
         <source>MarkParity</source>
         <translation>Označi pariteto</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="235"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
         <source>ReadCoils</source>
         <translation>Preberi tuljave</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
         <source>ReadDiscreteInputs</source>
         <translation>Preberi diskretne vhode</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="237"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
         <source>ReadHoldingRegisters</source>
         <translation>Preberi registre zadrževanja</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="238"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
         <source>ReadInputRegisters</source>
         <translation>Preberi vhodne registre</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="239"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
         <source>WriteSingleCoil</source>
         <translation>Piši eno tuljavo</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="240"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
         <source>WriteSingleRegister</source>
         <translation>Piši en register</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="241"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
         <source>WriteMultipleCoils</source>
         <translation>Piši več tuljav</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="242"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="243"/>
         <source>WriteMultipleRegisters</source>
         <translation>Piši več registrov</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>Coils</source>
         <translation>Coils</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="284"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
         <source>DiscreteInputs</source>
         <translation>Diskretni vhodi</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>InputRegisters</source>
         <translation>Vhodni registri</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="285"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="286"/>
         <source>HoldingRegisters</source>
         <translation>Registre zadrževanja</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="547"/>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1316"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="545"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1314"/>
         <source>Error occured</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="624"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="622"/>
         <source>Can not open device: %1.Please check the parameters and try again!</source>
         <translation>Ne morem odpreti naprave: %1. Prosimo, preverite nastavitve in poskusite znova!</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="627"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="625"/>
         <source>Can not open device</source>
         <translation>Ne morem odpreti naprave</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Value</source>
         <translation>Vrednost</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="955"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="953"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1366"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1364"/>
         <source>Device is not Ready</source>
         <translation>Naprava ni pripravljena</translation>
     </message>
     <message>
-        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1367"/>
+        <location filename="../../src/tools/modbus/modbusassistant.cpp" line="1365"/>
         <source>The modbus device is not ready, please check settings and try again later!</source>
         <translation>Modbus naprava ni pripravljena, prosimo, preverite nastavitve in poskusite znova pozneje!</translation>
     </message>
@@ -2823,7 +2822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="593"/>
+        <location filename="../../src/page/page.cpp" line="594"/>
         <source>Open</source>
         <translation>Odpri</translation>
     </message>
@@ -2951,43 +2950,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="325"/>
-        <location filename="../../src/page/page.cpp" line="769"/>
+        <location filename="../../src/page/page.cpp" line="326"/>
+        <location filename="../../src/page/page.cpp" line="770"/>
         <source>Error: No device is opened.</source>
         <translation>Napaka: Nobena naprava ni odprta.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="427"/>
+        <location filename="../../src/page/page.cpp" line="428"/>
         <source>Disable</source>
         <translation>Onemogoči</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="584"/>
+        <location filename="../../src/page/page.cpp" line="585"/>
         <source>Close</source>
         <translation>Zapri</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="600"/>
+        <location filename="../../src/page/page.cpp" line="601"/>
         <source>Error Occurred</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="606"/>
+        <location filename="../../src/page/page.cpp" line="607"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="693"/>
+        <location filename="../../src/page/page.cpp" line="694"/>
         <source>Hide Scripts Panels</source>
         <translation>Skrij panele skript</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="695"/>
         <source>Show Scripts Panels</source>
         <translation>Prikaži panele skript</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="797"/>
+        <location filename="../../src/page/page.cpp" line="798"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3008,119 +3007,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PingAssistant</name>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="156"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="157"/>
         <source>Total: --, Active: --, Finished: --, Remain: --</source>
         <translation>Skupaj: --, Aktivno: --, Končano: --, Preostalo: --</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Target Address</source>
         <translation>Ciljni naslov</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Online Status</source>
         <translation>Stanje povezave</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="166"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
         <source>Comparing</source>
         <translation>Primerjanje</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="167"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="168"/>
         <source>Host Name</source>
         <translation>Ime gostitelja</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="185"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="186"/>
         <source>Start scan</source>
         <translation>Začni skeniranje</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="193"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="194"/>
         <source>Pause scan</source>
         <translation>Pauziraj skeniranje</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="201"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="202"/>
         <source>Stop scan</source>
         <translation>Ustavi skeniranje</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="214"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="215"/>
         <source>Start address</source>
         <translation>Začetni naslov</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="224"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="225"/>
         <source>End address</source>
         <translation>Končni naslov</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="235"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="236"/>
         <source>Timeout(S)</source>
         <translation>Časovna omejitev (S)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="254"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
         <source>Show all</source>
         <translation>Prikaži vse</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="255"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="256"/>
         <source>Show online</source>
         <translation>Prikaži online</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="386"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="401"/>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="410"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
         <source>IP Error</source>
         <translation>IP napaka</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="387"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="388"/>
         <source>IP settings error, the start ip and end ip must be set, please check and try again. </source>
         <translation>Napaka v nastavitvah IP, začetni in končni IP morata biti nastavljena, prosimo, preverite in poskusite znova.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="402"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="403"/>
         <source>IP settings error, the start ip and end ip must be in the same network segment, please check and try again. </source>
         <translation>Napaka v nastavitvah IP, začetni in končni IP morata biti v istem omrežnem segmentu, prosimo, preverite in poskusite znova.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="411"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="412"/>
         <source>IP settings error, the start ip must be less than the end ip, please check and try again.</source>
         <translation>Napaka v nastavitvah IP, začetni IP mora biti manjši od končnega IP, prosimo, preverite in poskusite znova.</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="457"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="458"/>
         <source>Total：%1，Active：%2，Finished：%3，Remain：%4</source>
         <translation>Skupaj: %1, Aktivno: %2, Končano: %3, Preostalo: %4</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="516"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="517"/>
         <source>Scanning</source>
         <translation>Skeniranje</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Online</source>
         <translation>Na voljo</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="528"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="529"/>
         <source>Offline</source>
         <translation>Izven dosega</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="564"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
         <source>Scanning Finished</source>
         <translation>Skeniranje končano</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ping/pingassistant.cpp" line="565"/>
+        <location filename="../../src/tools/ping/pingassistant.cpp" line="566"/>
         <source>Scanning finished, you can screen out the result by the toolbar.</source>
         <translation>Skeniranje končano, rezultate lahko filtrirate z orodno vrstico.</translation>
     </message>
@@ -3209,34 +3208,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Interval elementa (ms)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="68"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="69"/>
         <source>Group Sending</source>
         <translation>Pošiljanje skupine</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="180"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="165"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
         <source>The group name cannot be empty.</source>
         <translation>Ime skupine ne more biti prazno.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="171"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <source>The columns cannot be empty.</source>
         <translation>Stolpci ne morejo biti prazni.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="182"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
         <translation>Ime skupine &quot;%1&quot; že obstaja. Zamenjati?</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="240"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
         <translation>Pošlji skupine</translation>
     </message>
@@ -3252,150 +3251,150 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/common/crc.cpp" line="90"/>
+        <location filename="../../src/utilities/crc.cpp" line="92"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>Neznano</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="86"/>
+        <location filename="../../src/common/xtools.cpp" line="87"/>
         <source>Bin</source>
         <translation>Dvojiški</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="88"/>
+        <location filename="../../src/common/xtools.cpp" line="89"/>
         <source>Oct</source>
         <translation>Osmiški</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="90"/>
+        <location filename="../../src/common/xtools.cpp" line="91"/>
         <source>Dec</source>
         <translation>Decimalni</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="92"/>
+        <location filename="../../src/common/xtools.cpp" line="93"/>
         <source>Hex</source>
         <translation>Šestnajstiški</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="94"/>
+        <location filename="../../src/common/xtools.cpp" line="95"/>
         <source>Hex(No Space)</source>
         <translation>Šestnajstiški (brez presledkov)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="96"/>
+        <location filename="../../src/common/xtools.cpp" line="97"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="98"/>
+        <location filename="../../src/common/xtools.cpp" line="99"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="361"/>
-        <location filename="../../src/common/xtools.cpp" line="423"/>
-        <location filename="../../src/common/xtools.cpp" line="736"/>
-        <location filename="../../src/common/xtools.cpp" line="754"/>
+        <location filename="../../src/common/xtools.cpp" line="362"/>
+        <location filename="../../src/common/xtools.cpp" line="424"/>
+        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="755"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Brez</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="464"/>
-        <location filename="../../src/common/xtools.cpp" line="903"/>
-        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="465"/>
+        <location filename="../../src/common/xtools.cpp" line="904"/>
+        <location filename="../../src/common/xtools.cpp" line="906"/>
         <source>Text</source>
         <translation>Besedilo</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="466"/>
-        <location filename="../../src/common/xtools.cpp" line="899"/>
-        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="467"/>
+        <location filename="../../src/common/xtools.cpp" line="900"/>
+        <location filename="../../src/common/xtools.cpp" line="902"/>
         <source>Binary</source>
         <translation>Binaren</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="501"/>
+        <location filename="../../src/common/xtools.cpp" line="502"/>
         <source>Echo</source>
         <translation>Odmev</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="502"/>
+        <location filename="../../src/common/xtools.cpp" line="503"/>
         <source>Always</source>
         <translation>Vedno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="503"/>
+        <location filename="../../src/common/xtools.cpp" line="504"/>
         <source>Input Equal Reference</source>
         <translation>Vhod enak referenci</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="504"/>
+        <location filename="../../src/common/xtools.cpp" line="505"/>
         <source>Input Contain Reference</source>
         <translation>Vhod vsebuje referenco</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="506"/>
+        <location filename="../../src/common/xtools.cpp" line="507"/>
         <source>Input Does not Contain Reference</source>
         <translation>Vhod ne vsebuje reference</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Parno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Liho</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Prostor</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Označi</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="756"/>
+        <location filename="../../src/common/xtools.cpp" line="757"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="759"/>
+        <location filename="../../src/common/xtools.cpp" line="760"/>
         <source>Hardware</source>
         <translation>Strojna oprema</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Software</source>
         <translation>Programska oprema</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="864"/>
+        <location filename="../../src/common/xtools.cpp" line="865"/>
         <source>Disabled</source>
         <translation>Onemogočeno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="866"/>
+        <location filename="../../src/common/xtools.cpp" line="867"/>
         <source>Bidirectional</source>
         <translation>Obojestransko</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="868"/>
+        <location filename="../../src/common/xtools.cpp" line="869"/>
         <source>Unidirectional</source>
         <translation>Samoosmerno</translation>
     </message>
@@ -3405,48 +3404,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Aplikacija se zažene...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation type="unfinished">Barvna shema</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation type="unfinished">Temno</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation type="unfinished">Svetlo</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
-        <location filename="../../src/mainwindow.cpp" line="459"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/mainwindow.cpp" line="463"/>
         <source>System</source>
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="460"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Round up for .5 and above</source>
         <translation>Zaokroži navzgor za .5 in več</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
+        <location filename="../../src/mainwindow.cpp" line="465"/>
         <source>Always round up</source>
         <translation>Vedno zaokroži navzgor</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="462"/>
+        <location filename="../../src/mainwindow.cpp" line="466"/>
         <source>Always round down</source>
         <translation>Vedno zaokroži navzdol</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="463"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Round up for .75 and above</source>
         <translation>Zaokroži navzgor za .75 in več</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Don&apos;t round</source>
         <translation>Ne zaokroži</translation>
     </message>
@@ -3579,6 +3578,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
         <translation>Vse</translation>
+    </message>
+    <message>
+        <location filename="../../src/utilities/i18n_p.h" line="81"/>
+        <source>&amp;Languages</source>
+        <translation type="unfinished">&amp;Jeziki</translation>
     </message>
 </context>
 <context>
@@ -4069,7 +4073,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Geslo</translation>
     </message>
     <message>
-        <location filename="../../src/device/socketui.cpp" line="199"/>
+        <location filename="../../src/device/socketui.cpp" line="200"/>
         <source>All clients</source>
         <translation>Vsi odjemalci</translation>
     </message>
@@ -4331,7 +4335,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpBroadcast</name>
     <message>
-        <location filename="../../src/device/udpbroadcast.cpp" line="64"/>
+        <location filename="../../src/device/udpbroadcast.cpp" line="65"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>Ne morem povezati UDP vtičnice: %1</translation>
     </message>
@@ -4357,22 +4361,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UdpMulticast</name>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="68"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="69"/>
         <source>Invalid network interface: %1</source>
         <translation>Neveljaven omrežni vmesnik: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="75"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="76"/>
         <source>Network interface %1 does not support multicast</source>
         <translation>Omrežni vmesnik %1 ne podpira multicast</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="93"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="94"/>
         <source>Failed to bind UDP socket: %1</source>
         <translation>Ne morem povezati UDP vtičnice: %1</translation>
     </message>
     <message>
-        <location filename="../../src/device/udpmulticast.cpp" line="102"/>
+        <location filename="../../src/device/udpmulticast.cpp" line="103"/>
         <source>Failed to join multicast group %1:%2: %3</source>
         <translation>Neuspešno pridružitev multicast skupini %1:%2: %3</translation>
     </message>
