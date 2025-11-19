@@ -157,6 +157,8 @@ function(x_install_3rd_library target_name dir_name)
     COMMENT "Deploy 3rd libraries")
 endfunction()
 
+# --------------------------------------------------------------------------------------------------
+# Copy resources to app output directory
 function(x_deploy_resources TARGET)
   set(dst_dir $<TARGET_FILE_DIR:${TARGET}>/scripts)
   if(APPLE)
