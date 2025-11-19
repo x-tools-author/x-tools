@@ -102,6 +102,7 @@ function(x_generate_zip target version)
 
     add_custom_target(
       ${target}_zip
+      COMMAND ${CMAKE_COMMAND} -E rm ${target}/${target}.pdb || ${CMAKE_COMMAND} -E true
       COMMAND ${CMAKE_COMMAND} -E make_directory ${target}-zip
       COMMAND ${CMAKE_COMMAND} -E tar "cfv" ${target}-zip/${X_ASSET_NAME}.zip --format=zip ${target}
       WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../"
