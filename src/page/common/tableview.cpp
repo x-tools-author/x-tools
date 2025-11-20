@@ -18,6 +18,7 @@
 
 #include "page/utilities/textitemeditor.h"
 #include "tablemodel.h"
+#include "utilities/iconengine.h"
 
 TableView::TableView(QWidget *parent)
     : QWidget(parent)
@@ -29,14 +30,38 @@ TableView::TableView(QWidget *parent)
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
     vHeaderView->hide();
 
+    ui->toolButtonUp->setIcon(xIcon(":/res/icons/arrow_upward.svg"));
+    ui->toolButtonDown->setIcon(xIcon(":/res/icons/arrow_downward.svg"));
+    ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
+    ui->toolButtonImport->setIcon(xIcon(":/res/icons/download.svg"));
+    ui->toolButtonExport->setIcon(xIcon(":/res/icons/upload.svg"));
+    ui->toolButtonDelete->setIcon(xIcon(":/res/icons/remove.svg"));
+    ui->toolButtonAdd->setIcon(xIcon(":/res/icons/add.svg"));
+
+    ui->toolButtonUp->setToolTip(tr("Move Up"));
+    ui->toolButtonDown->setToolTip(tr("Move Down"));
+    ui->toolButtonClear->setToolTip(tr("Clear All Items"));
+    ui->toolButtonImport->setToolTip(tr("Import Items from JSON File"));
+    ui->toolButtonExport->setToolTip(tr("Export Items to JSON File"));
+    ui->toolButtonDelete->setToolTip(tr("Delete Selected Item"));
+    ui->toolButtonAdd->setToolTip(tr("Add New Item"));
+
+    ui->toolButtonUp->setStatusTip(ui->toolButtonUp->toolTip());
+    ui->toolButtonDown->setStatusTip(ui->toolButtonDown->toolTip());
+    ui->toolButtonClear->setStatusTip(ui->toolButtonClear->toolTip());
+    ui->toolButtonImport->setStatusTip(ui->toolButtonImport->toolTip());
+    ui->toolButtonExport->setStatusTip(ui->toolButtonExport->toolTip());
+    ui->toolButtonDelete->setStatusTip(ui->toolButtonDelete->toolTip());
+    ui->toolButtonAdd->setStatusTip(ui->toolButtonAdd->toolTip());
+
     // clang-format off
-    connect(ui->pushButtonClear, &QPushButton::clicked, this, &TableView::onPushButtonClearClicked);
-    connect(ui->pushButtonDelete, &QPushButton::clicked, this, &TableView::onPushButtonDeleteClicked);
-    connect(ui->pushButtonImport, &QPushButton::clicked, this, &TableView::onPushButtonImportClicked);
-    connect(ui->pushButtonExport, &QPushButton::clicked, this, &TableView::onPushButtonExportClicked);
-    connect(ui->pushButtonAdd, &QPushButton::clicked, this, &TableView::onPushButtonAddClicked);
-    connect(ui->pushButtonUp, &QPushButton::clicked, this, &TableView::onUpButtonClicked);
-    connect(ui->pushButtonDown, &QPushButton::clicked, this, &TableView::onDownButtonClicked);
+    connect(ui->toolButtonClear, &QToolButton::clicked, this, &TableView::onPushButtonClearClicked);
+    connect(ui->toolButtonDelete, &QToolButton::clicked, this, &TableView::onPushButtonDeleteClicked);
+    connect(ui->toolButtonImport, &QToolButton::clicked, this, &TableView::onPushButtonImportClicked);
+    connect(ui->toolButtonExport, &QToolButton::clicked, this, &TableView::onPushButtonExportClicked);
+    connect(ui->toolButtonAdd, &QToolButton::clicked, this, &TableView::onPushButtonAddClicked);
+    connect(ui->toolButtonUp, &QToolButton::clicked, this, &TableView::onUpButtonClicked);
+    connect(ui->toolButtonDown, &QToolButton::clicked, this, &TableView::onDownButtonClicked);
     // clang-format on
 
     m_editor = new TextItemEditor(this);
@@ -78,8 +103,8 @@ void TableView::setVerticalHeaderVisible(bool visible)
 
 void TableView::setMoveRowEnabled(bool enable)
 {
-    ui->pushButtonUp->setVisible(enable);
-    ui->pushButtonDown->setVisible(enable);
+    ui->toolButtonUp->setVisible(enable);
+    ui->toolButtonDown->setVisible(enable);
 }
 
 TableModel *TableView::tableModel()

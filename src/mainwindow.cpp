@@ -257,6 +257,11 @@ void MainWindow::hideHistoryAction()
 
 void MainWindow::showLiteMode()
 {
+    m_ioPage00->showLiteMode();
+    m_ioPage01->showLiteMode();
+    m_ioPage10->showLiteMode();
+    m_ioPage11->showLiteMode();
+
     QWidget* connerwidget = menuBar()->cornerWidget(Qt::TopRightCorner);
     if (connerwidget) {
         connerwidget->hide();

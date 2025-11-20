@@ -51,6 +51,7 @@ public:
     void hideTransferWidgets();
     void removeTestDevices();
     void aboutToClose();
+    void showLiteMode();
 
 signals:
     void bytesWritten(const QByteArray &bytes, const QString &to);

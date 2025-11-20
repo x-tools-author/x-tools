@@ -38,16 +38,6 @@ xAssistant::xAssistant(QWidget* parent)
 
     hideHistoryAction();
 
-    m_ioPage00->hideTransferWidgets();
-    m_ioPage01->hideTransferWidgets();
-    m_ioPage10->hideTransferWidgets();
-    m_ioPage11->hideTransferWidgets();
-
-    m_ioPage00->removeTestDevices();
-    m_ioPage01->removeTestDevices();
-    m_ioPage10->removeTestDevices();
-    m_ioPage11->removeTestDevices();
-
     m_pipe = new Pipe(m_ioPage00, m_ioPage01, this);
     Q_UNUSED(m_pipe);
 }

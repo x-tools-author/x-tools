@@ -361,6 +361,30 @@ void Page::aboutToClose()
     ui->widgetScripts->aboutToClose();
 }
 
+void hideAllWidgets(QHBoxLayout *layout)
+{
+    int count = layout->count();
+    for (int i = count - 1; i >= 0; i--) {
+        QLayoutItem *item = layout->itemAt(i);
+        if (item) {
+            QWidget *w = item->widget();
+            if (w) {
+                w->hide();
+            }
+        }
+    }
+}
+
+void Page::showLiteMode()
+{
+    hideTransferWidgets();
+    removeTestDevices();
+    hideAllWidgets(ui->horizontalLayoutOutputPanelsController);
+    hideAllWidgets(ui->horizontalLayoutInputPanelsController);
+
+    ui->toolButtonRightPanel->hide();
+}
+
 void Page::initUi()
 {
 #if 0

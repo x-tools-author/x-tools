@@ -44,5 +44,8 @@
         <file>res/icons/collapse_all.svg</file>
         <file>res/icons/bds.svg</file>
         <file>res/icons/gps.svg</file>
+        <file>res/icons/mop.svg</file>
+        <file>res/icons/download.svg</file>
+        <file>res/icons/upload.svg</file>
     </qresource>
 </RCC>
