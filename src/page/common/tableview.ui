@@ -26,55 +26,25 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="1" column="2">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="1" column="1">
     <layout class="QHBoxLayout" name="horizontalLayoutWidgets"/>
    </item>
-   <item row="1" column="3">
-    <widget class="QToolButton" name="toolButtonUp">
+   <item row="1" column="10">
+    <widget class="QToolButton" name="toolButtonAdd">
      <property name="text">
       <string notr="true"/>
      </property>
     </widget>
-   </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QCheckBox" name="checkBoxDisable">
-       <property name="text">
-        <string>Disable all items</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="5">
-    <widget class="QToolButton" name="toolButtonClear">
-     <property name="text">
-      <string notr="true"/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="11">
-    <widget class="QTableView" name="tableView"/>
    </item>
    <item row="1" column="8">
     <widget class="QToolButton" name="toolButtonExport">
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QToolButton" name="toolButtonUp">
      <property name="text">
       <string notr="true"/>
      </property>
@@ -94,8 +64,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="10">
-    <widget class="QToolButton" name="toolButtonAdd">
+   <item row="1" column="5">
+    <widget class="QToolButton" name="toolButtonClear">
      <property name="text">
       <string notr="true"/>
      </property>
@@ -107,6 +77,36 @@
       <string notr="true"/>
      </property>
     </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="checkBoxDisable">
+       <property name="text">
+        <string>Disable all items</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="11">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="12">
+    <widget class="QTableView" name="tableView"/>
    </item>
   </layout>
  </widget>
