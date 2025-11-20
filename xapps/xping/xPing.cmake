@@ -3,15 +3,17 @@ set(X_BASE_PATH ${CMAKE_SOURCE_DIR}/xapps/xping)
 file(GLOB_RECURSE X_PING_SOURCES ${X_BASE_PATH}/src/*.*)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
 
+include(cmake/x_qt_deploy.cmake)
+include(cmake/x_qt_linguist.cmake)
+
 set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xPing)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-qt_add_executable(xPing MANUAL_FINALIZATION ${X_PING_SOURCES} ${CMAKE_CURRENT_LIST_DIR}/xPing.rc
+qt_add_executable(xPing ${X_PING_SOURCES} ${CMAKE_CURRENT_LIST_DIR}/xPing.rc
                   ${CMAKE_CURRENT_LIST_DIR}/xPing.qrc)
 x_output_env(xPing)
 x_deploy_qt(xPing)
-x_generate_translations(xPing)
 
-target_link_libraries(xPing PRIVATE Qt6::Widgets Qt6::Qml Qt6::Quick Qt6::QuickControls2)
+target_link_libraries(xPing PRIVATE Qt::Widgets Qt::Qml Qt::Quick Qt::QuickControls2)
 if(X_USING_VS_CODE)
   set_target_properties(xPing PROPERTIES MACOSX_BUNDLE TRUE)
 else()
