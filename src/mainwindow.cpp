@@ -566,7 +566,7 @@ void MainWindow::initHelpMenu()
     auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
     connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
 
-#if defined(QT_DEBUG)
+#if 1
     helpMenu->addAction(tr("Screenshot"), this, [=]() {
         QPixmap pix = this->grab();
         // copy to clipboard
@@ -602,16 +602,22 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("lua"), QString("https://github.com/lua/lua")));
     ctxs.append(qMakePair(QString("glog"), QString("https://github.com/google/glog")));
     ctxs.append(qMakePair(QString("zint"), QString("https://github.com/zint/zint")));
-    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("libiconv"), QString("https://ftp.gnu.org/pub/gnu/libiconv")));
     ctxs.append(qMakePair(QString("libqrencode"), QString("https://github.com/fukuchi/libqrencode")));
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
     ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
     ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
+    ctxs.append(qMakePair(QString(""), QString("")));
+    ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
+    ctxs.append(qMakePair(QString("QCustomPlot"), QString("https://www.qcustomplot.com/")));
     // clang-format on
 
     QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
     for (auto& ctx : ctxs) {
+        if (ctx.first.isEmpty() && ctx.second.isEmpty()) {
+            menu->addSeparator();
+            continue;
+        }
         menu->addAction(ctx.first, this, [ctx]() { QDesktopServices::openUrl(QUrl(ctx.second)); });
     }
 }
