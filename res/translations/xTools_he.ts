@@ -52,172 +52,172 @@
         <translation>תיאור</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>NUL (NULL)</source>
         <translation>NUL (ריק)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>SOH (Start Of Headling)</source>
         <translation>SOH (תחילת כותרת)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>STX (Start Of Text)</source>
         <translation>STX (תחילת טקסט)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>ETX (End Of Text)</source>
         <translation>ETX (סוף טקסט)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>EOT (End Of Transmission)</source>
         <translation>EOT (סוף שידור)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>ENQ (Enquiry)</source>
         <translation>ENQ (בירור)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ACK (Acknowledge)</source>
         <translation>ACK (אישור)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>BEL (Bell)</source>
         <translation>BEL (פעמון)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>BS (Backspace)</source>
         <translation>BS (רווח לאחור)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>HT (Horizontal Tab)</source>
         <translation>HT (טאב אופקי)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>LF/NL(Line Feed/New Line)</source>
         <translation>LF/NL(הזנת שורה/שורה חדשה)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>VT (Vertical Tab)</source>
         <translation>VT (טאב אנכי)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>FF/NP (Form Feed/New Page)</source>
         <translation>FF/NP (הזנת טופס/עמוד חדש)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>CR (Carriage Return)</source>
         <translation>CR (החזרת עגלה)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>SO (Shift Out)</source>
         <translation>SO (העברה החוצה)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
         <source>SI (Shift In)</source>
         <translation>SI (העברה פנימה)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DLE (Data Link Escape)</source>
         <translation>DLE (בריחת קישור נתונים)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="97"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
         <translation>DC1/XON(בקרת מכשיר 1/שידור פועל)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="98"/>
         <source>DC2 (Device Control 2)</source>
         <translation>DC2 (בקרת מכשיר 2)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="99"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
         <translation>DC3/XOFF(בקרת מכשיר 3/שידור כבוי)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="100"/>
         <source>DC4 (Device Control 4)</source>
         <translation>DC4 (בקרת מכשיר 4)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="101"/>
         <source>NAK (Negative Acknowledge)</source>
         <translation>NAK (אישור שלילי)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="102"/>
         <source>SYN (Synchronous Idle)</source>
         <translation>SYN (סנכרון בטל)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="103"/>
         <source>ETB (End of Transmission Block)</source>
         <translation>ETB (סוף בלוק שידור)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="104"/>
         <source>CAN (Cancel)</source>
         <translation>CAN (ביטול)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="105"/>
         <source>EM (End of Medium)</source>
         <translation>EM (סוף מדיום)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="106"/>
         <source>SUB (Substitute)</source>
         <translation>SUB (תחליף)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="107"/>
         <source>ESC (Escape)</source>
         <translation>ESC (בריחה)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="108"/>
         <source>FS (File Separator)</source>
         <translation>FS (מפריד קבצים)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="109"/>
         <source>GS (Group Separator)</source>
         <translation>GS (מפריד קבוצות)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="110"/>
         <source>RS (Record Separator)</source>
         <translation>RS (מפריד רשומות)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="111"/>
         <source>US (Unit Separator)</source>
         <translation>US (מפריד יחידות)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="112"/>
         <source>(Space)</source>
         <translation>(רווח)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="113"/>
         <source>DEL (Delete)</source>
         <translation>DEL (מחיקה)</translation>
     </message>
@@ -1058,43 +1058,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">מכשיר Modbus חדש</translation>
+        <translation>מכשיר Modbus חדש</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">פרמטרים של חיבור</translation>
+        <translation>פרמטרים של חיבור</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">שִׁוּוּי</translation>
+        <translation>שִׁוּוּי</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">שיעור באוד</translation>
+        <translation>שיעור באוד</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">עצור ביטים</translation>
+        <translation>עצור ביטים</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">לְרַעֲנֵן</translation>
+        <translation>לְרַעֲנֵן</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">סיביות נתונים</translation>
+        <translation>סיביות נתונים</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">שמות</translation>
+        <translation>שמות</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">כתובת IP</translation>
+        <translation>כתובת IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">נָמָל</translation>
+        <translation>נָמָל</translation>
     </message>
     <message>
         <source>Device type</source>
@@ -1102,15 +1102,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">זמן קצוב (ms)</translation>
+        <translation>זמן קצוב (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">מספר ניסיונות חוזרים</translation>
+        <translation>מספר ניסיונות חוזרים</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">כְּתוֹבֶת</translation>
+        <translation>כְּתוֹבֶת</translation>
     </message>
     <message>
         <source>Listen only mode</source>
@@ -1122,7 +1122,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">שם המכשיר</translation>
+        <translation>שם המכשיר</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
@@ -1806,87 +1806,87 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">כְּלָלִי</translation>
+        <translation>כְּלָלִי</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="332"/>
         <source>&amp;File</source>
         <translation>&amp;קובץ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="334"/>
         <source>New Window</source>
         <translation>חלון חדש</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="327"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Save Parameters</source>
         <translation>שמור פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Import Parameters</source>
         <translation>ייבא פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="716"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Export Parameters</source>
         <translation>יצוא פרמטרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="353"/>
         <source>Exit Application</source>
         <translation>יציאה מהיישום</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>&amp;Tools</source>
         <translation>&amp;כלים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>New</source>
         <translation>חדש</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="388"/>
+        <location filename="../../src/mainwindow.cpp" line="403"/>
         <source>&amp;Options</source>
         <translation>&amp;אפשרויות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="397"/>
+        <location filename="../../src/mainwindow.cpp" line="412"/>
         <source>Use System Proxy</source>
         <translation>השתמש בפרוקסי של המערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="407"/>
+        <location filename="../../src/mainwindow.cpp" line="422"/>
         <source>Exit to System Tray</source>
         <translation>צא למגש המערכת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="427"/>
+        <location filename="../../src/mainwindow.cpp" line="442"/>
         <source>Application Style</source>
         <translation>סגנון היישום</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Settings</source>
         <translation>הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="437"/>
+        <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>Clear Settings</source>
         <translation>נקה הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="443"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>Open Settings Directory</source>
         <translation>פתח תיקיית הגדרות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="453"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>HDPI Policy</source>
         <translation>מדיניות HDPI</translation>
     </message>
@@ -1904,143 +1904,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>System</source>
-        <translation type="vanished">מערכת</translation>
+        <translation>מַעֲרֶכֶת</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="485"/>
         <source>&amp;Languages</source>
         <translation>&amp;שפות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="477"/>
+        <location filename="../../src/mainwindow.cpp" line="492"/>
         <source>&amp;View</source>
         <translation>&amp;תצוגה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="544"/>
         <source>Stays on Top</source>
         <translation>שמור למעלה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="549"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>&amp;Help</source>
         <translation>&amp;עזרה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="550"/>
+        <location filename="../../src/mainwindow.cpp" line="565"/>
         <source>About Qt</source>
         <translation>על Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="551"/>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="566"/>
+        <location filename="../../src/mainwindow.cpp" line="780"/>
         <source>About</source>
         <translation>על אודות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="555"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
         <source>Screenshot</source>
         <translation>צילום מסך</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="579"/>
         <source>Buy from Store</source>
         <translation>קנה מהחנות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
-        <location filename="../../src/mainwindow.cpp" line="608"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Release History</source>
         <translation>היסטוריית גרסאות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="571"/>
+        <location filename="../../src/mainwindow.cpp" line="586"/>
         <source>Join in QQ Group</source>
         <translation>הצטרף לקבוצת QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="574"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Online Manual</source>
         <translation>מדריך מקוון</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
+        <location filename="../../src/mainwindow.cpp" line="592"/>
         <source>Get Sources from Github</source>
         <translation>קבל מקורות מ-Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="580"/>
+        <location filename="../../src/mainwindow.cpp" line="595"/>
         <source>Get Sources from Gitee</source>
         <translation>קבל מקורות מ-Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>Third Party Open Source</source>
         <translation>קוד פתוח של צד שלישי</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="649"/>
         <source>QR Code</source>
         <translation>קוד QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="637"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
         <source>User QQ Group</source>
         <translation>קבוצת משתמשי QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="638"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Qt QQ Group</source>
         <translation>קבוצת Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Need to Reboot</source>
         <translation>צריך לאתחל</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="660"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>הפעולה דורשת אתחול כדי שתיכנס לתוקף, האם לאתחל את היישום עכשיו?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(אנא אתחל את היישום שלך ידנית.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="705"/>
-        <location filename="../../src/mainwindow.cpp" line="718"/>
+        <location filename="../../src/mainwindow.cpp" line="726"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Json Files (*.json)</source>
         <translation>קבצי Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="747"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="774"/>
         <source>Commit hash</source>
         <translation>האש של התחייבות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="755"/>
+        <location filename="../../src/mainwindow.cpp" line="776"/>
         <source>Commit time</source>
         <translation>זמן התחייבות</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="756"/>
+        <location filename="../../src/mainwindow.cpp" line="777"/>
         <source>Build Date</source>
         <translation>תאריך בנייה</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="757"/>
+        <location filename="../../src/mainwindow.cpp" line="778"/>
         <source>Copyright</source>
         <translation>זכויות יוצרים</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="758"/>
+        <location filename="../../src/mainwindow.cpp" line="779"/>
         <source>All rights reserved.</source>
         <translation>כל הזכויות שמורות.</translation>
     </message>
@@ -2409,7 +2409,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation type="unfinished">מכשיר Modbus חדש</translation>
+        <translation>מכשיר Modbus חדש</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
@@ -2419,7 +2419,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
         <source>IP Address</source>
-        <translation type="unfinished">כתובת IP</translation>
+        <translation>כתובת IP</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
@@ -2459,7 +2459,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
         <source>Device Name</source>
-        <translation type="unfinished">שם המכשיר</translation>
+        <translation>שם המכשיר</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
@@ -2469,22 +2469,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
         <source>Data bits</source>
-        <translation type="unfinished">סיביות נתונים</translation>
+        <translation>סיביות נתונים</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
         <source>Refresh</source>
-        <translation type="unfinished">לְרַעֲנֵן</translation>
+        <translation>לְרַעֲנֵן</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
         <source>Names</source>
-        <translation type="unfinished">שמות</translation>
+        <translation>שמות</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
         <source>Retries</source>
-        <translation type="unfinished"></translation>
+        <translation>מנסה שוב</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="310"/>
@@ -2590,7 +2590,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
         <source>Ignore data log</source>
-        <translation type="unfinished"></translation>
+        <translation>התעלם יומן נתונים</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
@@ -2613,7 +2613,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="50"/>
         <source>Start address</source>
-        <translation type="unfinished">כתובת התחלה</translation>
+        <translation>כתובת התחלה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
@@ -2628,7 +2628,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
-        <translation type="unfinished">כתובת שרת</translation>
+        <translation>כתובת שרת</translation>
     </message>
 </context>
 <context>
@@ -2636,7 +2636,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="14"/>
         <source>New Register Group</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוצת רישום חדשה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
@@ -2646,7 +2646,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
-        <translation type="unfinished"></translation>
+        <translation>סוג הרשמה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
@@ -2656,7 +2656,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
-        <translation type="unfinished">כתובת התחלה</translation>
+        <translation>כתובת התחלה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
@@ -2674,12 +2674,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
         <source>Columns visible</source>
-        <translation type="unfinished"></translation>
+        <translation>עמודות גלויות</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>לְחַפֵּשׂ...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
@@ -2712,7 +2712,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation type="unfinished"></translation>
+        <translation>טבלת רישום ייבוא</translation>
     </message>
 </context>
 <context>
@@ -2823,7 +2823,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="594"/>
+        <location filename="../../src/page/page.cpp" line="618"/>
         <source>Open</source>
         <translation>פתח</translation>
     </message>
@@ -2952,42 +2952,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="326"/>
-        <location filename="../../src/page/page.cpp" line="770"/>
+        <location filename="../../src/page/page.cpp" line="794"/>
         <source>Error: No device is opened.</source>
         <translation>שגיאה: אין מכשיר פתוח.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="428"/>
+        <location filename="../../src/page/page.cpp" line="452"/>
         <source>Disable</source>
         <translation>בטל</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="585"/>
+        <location filename="../../src/page/page.cpp" line="609"/>
         <source>Close</source>
         <translation>סגור</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="601"/>
+        <location filename="../../src/page/page.cpp" line="625"/>
         <source>Error Occurred</source>
         <translation>שגיאה התרחשה</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="607"/>
+        <location filename="../../src/page/page.cpp" line="631"/>
         <source>Warning</source>
         <translation>אזהרה</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="718"/>
         <source>Hide Scripts Panels</source>
         <translation>הסתר לוחות סקריפטים</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="695"/>
+        <location filename="../../src/page/page.cpp" line="719"/>
         <source>Show Scripts Panels</source>
         <translation>הצג לוחות סקריפטים</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="798"/>
+        <location filename="../../src/page/page.cpp" line="822"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3246,7 +3246,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -3407,17 +3407,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
-        <translation type="unfinished">סקמת צבעים</translation>
+        <translation>ערכת צבעים</translation>
     </message>
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
-        <translation type="unfinished">כהה</translation>
+        <translation>כֵּהֶה</translation>
     </message>
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
-        <translation type="unfinished">בהיר</translation>
+        <translation>אוֹר</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
@@ -3528,11 +3528,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
@@ -3540,11 +3540,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
@@ -3552,7 +3552,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -4140,70 +4140,98 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>טוֹפֶס</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
-        <translation>יְצוּא</translation>
+        <translation type="vanished">יְצוּא</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="44"/>
+        <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>השבת את כל הפריטים</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
-        <translation>לִמְחוֹק</translation>
+        <translation type="vanished">לִמְחוֹק</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
-        <translation>לְמַעלָה</translation>
+        <translation type="vanished">לְמַעלָה</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
-        <translation>לְהוֹסִיף</translation>
+        <translation type="vanished">לְהוֹסִיף</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="93"/>
-        <location filename="../../src/page/common/tableview.cpp" line="149"/>
+        <location filename="../../src/page/common/tableview.cpp" line="174"/>
         <source>Clear</source>
         <translation>נקה</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
-        <translation>יְבוּא</translation>
+        <translation type="vanished">יְבוּא</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
-        <translation>לְמַטָה</translation>
+        <translation type="vanished">לְמַטָה</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="150"/>
+        <location filename="../../src/page/common/tableview.cpp" line="41"/>
+        <source>Move Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="42"/>
+        <source>Move Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="43"/>
+        <source>Clear All Items</source>
+        <translation>נקה את כל הפריטים</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="44"/>
+        <source>Import Items from JSON File</source>
+        <translation>ייבוא ​​פריטים מקובץ JSON</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="45"/>
+        <source>Export Items to JSON File</source>
+        <translation>ייצא פריטים לקובץ JSON</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="46"/>
+        <source>Delete Selected Item</source>
+        <translation>מחק פריט נבחר</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="47"/>
+        <source>Add New Item</source>
+        <translation>הוסף פריט חדש</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Are you sure to clear all items?</source>
         <translation>האם אתה בטוח שברצונך לנקות את כל הפריטים?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="165"/>
+        <location filename="../../src/page/common/tableview.cpp" line="190"/>
         <source>No Item be Selected</source>
         <translation>לא נבחר פריט</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="165"/>
+        <location filename="../../src/page/common/tableview.cpp" line="190"/>
         <source>Please select a item first!</source>
         <translation>אנא בחר פריט קודם!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
+        <location filename="../../src/page/common/tableview.cpp" line="200"/>
+        <location filename="../../src/page/common/tableview.cpp" line="228"/>
         <source>Import data</source>
         <translation>ייבוא נתונים</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="177"/>
-        <location filename="../../src/page/common/tableview.cpp" line="205"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;הכל (*)</translation>
     </message>
@@ -4419,34 +4447,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation type="unfinished">עֵץ</translation>
+        <translation>עֵץ</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">מכשיר RTU חדש</translation>
+        <translation>מכשיר RTU חדש</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">מכשיר TCP חדש</translation>
+        <translation>מכשיר TCP חדש</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">סלילים חדשים</translation>
+        <translation>סלילים חדשים</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">כניסות דיסקרטיות חדשות</translation>
+        <translation>כניסות דיסקרטיות חדשות</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">רישומי אחזקות חדשים</translation>
+        <translation>רישומי אחזקות חדשים</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">רישומי קלט חדשים</translation>
+        <translation>רישומי קלט חדשים</translation>
     </message>
 </context>
 <context>
@@ -4467,7 +4495,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>שגיאת התקן Modbus: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="153"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="166"/>
         <source>Failed to connect Modbus device: %1</source>
         <translation>נכשל חיבור התקן Modbus: %1</translation>
     </message>
@@ -4491,19 +4519,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">סלילים</translation>
+        <translation>סלילים</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">כניסות דיסקרטיות</translation>
+        <translation>כניסות דיסקרטיות</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">החזקת רישומים</translation>
+        <translation>החזקת רישומים</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">רישומי קלט</translation>
+        <translation>רישומי קלט</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -4513,12 +4541,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
         <source>New Register Group</source>
-        <translation type="unfinished"></translation>
+        <translation>קבוצת רישום חדשה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>New Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>רישומים חדשים</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
@@ -4528,22 +4556,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Invalid Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>בחירה לא חוקית</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
         <source>Please select a register table to add new registers.</source>
-        <translation type="unfinished"></translation>
+        <translation>אנא בחר טבלת רישום כדי להוסיף אוגרים חדשים.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>הסר פריט</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
-        <translation type="unfinished"></translation>
+        <translation>האם אתה בטוח להסיר את הפריט שנבחר?</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
@@ -4591,12 +4619,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>המכשיר פועל. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="680"/>
         <source>TCP Client Device</source>
         <translation>התקן לקוח TCP</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="686"/>
         <source>TCP Server Device</source>
         <translation>התקן שרת TCP</translation>
     </message>

@@ -52,172 +52,172 @@
         <translation>Beschrijving</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="63"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
         <source>NUL (NULL)</source>
         <translation>NUL (NULL)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="64"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
         <source>SOH (Start Of Headling)</source>
         <translation>SOH (Start van kop)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="65"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
         <source>STX (Start Of Text)</source>
         <translation>STX (Start van tekst)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="66"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
         <source>ETX (End Of Text)</source>
         <translation>ETX (Einde van tekst)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="67"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
         <source>EOT (End Of Transmission)</source>
         <translation>EOT (Einde van transmissie)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="68"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
         <source>ENQ (Enquiry)</source>
         <translation>ENQ (Onderzoek)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="69"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
         <source>ACK (Acknowledge)</source>
         <translation>ACK (Bevestiging)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="70"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
         <source>BEL (Bell)</source>
         <translation>BEL (Bel)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="71"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
         <source>BS (Backspace)</source>
         <translation>BS (Backspace)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="72"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
         <source>HT (Horizontal Tab)</source>
         <translation>HT (Horizontale tab)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="73"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
         <source>LF/NL(Line Feed/New Line)</source>
         <translation>LF/NL (Regelvoeding/Nieuwe regel)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="74"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
         <source>VT (Vertical Tab)</source>
         <translation>VT (Verticale tab)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="75"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
         <source>FF/NP (Form Feed/New Page)</source>
         <translation>FF/NP (Paginavoeding/Nieuwe pagina)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="76"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
         <source>CR (Carriage Return)</source>
         <translation>CR (Wagenretour)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="77"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
         <source>SO (Shift Out)</source>
         <translation>SO (Uitschakelen)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="78"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
         <source>SI (Shift In)</source>
         <translation>SI (Inschakelen)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="79"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
         <source>DLE (Data Link Escape)</source>
         <translation>DLE (Datalink escape)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="80"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="97"/>
         <source>DC1/XON(Device Control 1/Transmission On)</source>
         <translation>DC1/XON (Apparaatbesturing 1/Transmissie aan)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="81"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="98"/>
         <source>DC2 (Device Control 2)</source>
         <translation>DC2 (Apparaatbesturing 2)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="82"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="99"/>
         <source>DC3/XOFF(Device Control 3/Transmission Off)</source>
         <translation>DC3/XOFF (Apparaatbesturing 3/Transmissie uit)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="83"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="100"/>
         <source>DC4 (Device Control 4)</source>
         <translation>DC4 (Apparaatbesturing 4)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="84"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="101"/>
         <source>NAK (Negative Acknowledge)</source>
         <translation>NAK (Negatieve bevestiging)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="85"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="102"/>
         <source>SYN (Synchronous Idle)</source>
         <translation>SYN (Synchrone rust)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="86"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="103"/>
         <source>ETB (End of Transmission Block)</source>
         <translation>ETB (Einde van transmissieblok)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="87"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="104"/>
         <source>CAN (Cancel)</source>
         <translation>CAN (Annuleren)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="88"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="105"/>
         <source>EM (End of Medium)</source>
         <translation>EM (Einde van medium)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="89"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="106"/>
         <source>SUB (Substitute)</source>
         <translation>SUB (Vervangen)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="90"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="107"/>
         <source>ESC (Escape)</source>
         <translation>ESC (Escape)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="91"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="108"/>
         <source>FS (File Separator)</source>
         <translation>FS (Bestandsscheidingsteken)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="92"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="109"/>
         <source>GS (Group Separator)</source>
         <translation>GS (Groepscheidingsteken)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="93"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="110"/>
         <source>RS (Record Separator)</source>
         <translation>RS (Recordscheidingsteken)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="94"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="111"/>
         <source>US (Unit Separator)</source>
         <translation>US (Eenheidscheidingsteken)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="95"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="112"/>
         <source>(Space)</source>
         <translation>(Spatie)</translation>
     </message>
     <message>
-        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="96"/>
+        <location filename="../../src/tools/ascii/asciiassistant.cpp" line="113"/>
         <source>DEL (Delete)</source>
         <translation>DEL (Verwijderen)</translation>
     </message>
@@ -1058,7 +1058,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Nieuw Modbus-apparaat</translation>
+        <translation>Nieuw Modbus-apparaat</translation>
     </message>
     <message>
         <source>Connection parameters</source>
@@ -1066,11 +1066,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteit</translation>
+        <translation>Pariteit</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Baudsnelheid</translation>
+        <translation>Baudsnelheid</translation>
     </message>
     <message>
         <source>Stop bits</source>
@@ -1090,50 +1090,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP-adres</translation>
+        <translation>IP-adres</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Haven</translation>
+        <translation>Haven</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Apparaattype</translation>
+        <translation>Apparaattype</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Time-out (ms)</translation>
+        <translation>Time-out (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Aantal nieuwe pogingen</translation>
+        <translation>Aantal nieuwe pogingen</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Alleen luisteren-modus</translation>
+        <translation>Alleen luisteren-modus</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Apparaatparameters</translation>
+        <translation>Apparaatparameters</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Apparaatnaam</translation>
+        <translation>Apparaatnaam</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Zoals: Siemens S7-300</translation>
+        <translation>Zoals: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Zoekopdracht</translation>
+        <translation>Zoekopdracht</translation>
     </message>
 </context>
 <context>
@@ -1625,7 +1625,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Knooppunt-editor</translation>
+        <translation>Knooppunt-editor</translation>
     </message>
 </context>
 <context>
@@ -1806,241 +1806,241 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="317"/>
+        <location filename="../../src/mainwindow.cpp" line="332"/>
         <source>&amp;File</source>
         <translation>&amp;Bestand</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="319"/>
+        <location filename="../../src/mainwindow.cpp" line="334"/>
         <source>New Window</source>
         <translation>Nieuw venster</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="327"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Save Parameters</source>
         <translation>Parameters opslaan</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="329"/>
-        <location filename="../../src/mainwindow.cpp" line="703"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
+        <location filename="../../src/mainwindow.cpp" line="724"/>
         <source>Import Parameters</source>
         <translation>Parameters importeren</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
-        <location filename="../../src/mainwindow.cpp" line="716"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Export Parameters</source>
         <translation>Parameters exporteren</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="338"/>
+        <location filename="../../src/mainwindow.cpp" line="353"/>
         <source>Exit Application</source>
         <translation>Toepassing afsluiten</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>&amp;Tools</source>
         <translation>&amp;Hulpmiddelen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="350"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>New</source>
         <translation>Nieuw</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="388"/>
+        <location filename="../../src/mainwindow.cpp" line="403"/>
         <source>&amp;Options</source>
         <translation>&amp;Opties</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="397"/>
+        <location filename="../../src/mainwindow.cpp" line="412"/>
         <source>Use System Proxy</source>
         <translation>Systeemproxy gebruiken</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="407"/>
+        <location filename="../../src/mainwindow.cpp" line="422"/>
         <source>Exit to System Tray</source>
         <translation>Afsluiten naar systeemvak</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="427"/>
+        <location filename="../../src/mainwindow.cpp" line="442"/>
         <source>Application Style</source>
         <translation>Toepassingsstijl</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="437"/>
+        <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>Clear Settings</source>
         <translation>Instellingen wissen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="443"/>
+        <location filename="../../src/mainwindow.cpp" line="458"/>
         <source>Open Settings Directory</source>
         <translation>Instellingenmap openen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="453"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>HDPI Policy</source>
         <translation>HDPI-beleid</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation type="vanished">Kleurenchema</translation>
+        <translation>Kleurenschema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="vanished">Donker</translation>
+        <translation>Donker</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="vanished">Helder</translation>
+        <translation>Licht</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="vanished">Systeem</translation>
+        <translation>Systeem</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="485"/>
         <source>&amp;Languages</source>
         <translation>&amp;Talen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="477"/>
+        <location filename="../../src/mainwindow.cpp" line="492"/>
         <source>&amp;View</source>
         <translation>&amp;Weergave</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="544"/>
         <source>Stays on Top</source>
         <translation>Blijf bovenaan</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="549"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="550"/>
+        <location filename="../../src/mainwindow.cpp" line="565"/>
         <source>About Qt</source>
         <translation>Over Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="551"/>
-        <location filename="../../src/mainwindow.cpp" line="759"/>
+        <location filename="../../src/mainwindow.cpp" line="566"/>
+        <location filename="../../src/mainwindow.cpp" line="780"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="555"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
         <source>Screenshot</source>
         <translation>Screenshot</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="579"/>
         <source>Buy from Store</source>
         <translation>Kopen in de winkel</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
-        <location filename="../../src/mainwindow.cpp" line="608"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="629"/>
         <source>Release History</source>
         <translation>Releasegeschiedenis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="571"/>
+        <location filename="../../src/mainwindow.cpp" line="586"/>
         <source>Join in QQ Group</source>
         <translation>Deelnemen aan QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="574"/>
+        <location filename="../../src/mainwindow.cpp" line="589"/>
         <source>Online Manual</source>
         <translation>Online handleiding</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
+        <location filename="../../src/mainwindow.cpp" line="592"/>
         <source>Get Sources from Github</source>
         <translation>Bronnen ophalen van Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="580"/>
+        <location filename="../../src/mainwindow.cpp" line="595"/>
         <source>Get Sources from Gitee</source>
         <translation>Bronnen ophalen van Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="615"/>
         <source>Third Party Open Source</source>
         <translation>Derde partij Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="649"/>
         <source>QR Code</source>
         <translation>QR-code</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="637"/>
+        <location filename="../../src/mainwindow.cpp" line="658"/>
         <source>User QQ Group</source>
         <translation>Gebruiker QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="638"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Need to Reboot</source>
         <translation>Herstart vereist</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="660"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>De bewerking moet opnieuw worden opgestart om effect te hebben, de toepassing nu opnieuw opstarten?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Herstart uw toepassing handmatig.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="705"/>
-        <location filename="../../src/mainwindow.cpp" line="718"/>
+        <location filename="../../src/mainwindow.cpp" line="726"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Json Files (*.json)</source>
         <translation>Json-bestanden (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="747"/>
+        <location filename="../../src/mainwindow.cpp" line="768"/>
         <source>Unknown</source>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="753"/>
+        <location filename="../../src/mainwindow.cpp" line="774"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="755"/>
+        <location filename="../../src/mainwindow.cpp" line="776"/>
         <source>Commit time</source>
         <translation>Commit-tijd</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="756"/>
+        <location filename="../../src/mainwindow.cpp" line="777"/>
         <source>Build Date</source>
         <translation>Bouwdatum</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="757"/>
+        <location filename="../../src/mainwindow.cpp" line="778"/>
         <source>Copyright</source>
         <translation>Auteursrecht</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="758"/>
+        <location filename="../../src/mainwindow.cpp" line="779"/>
         <source>All rights reserved.</source>
         <translation>Alle rechten voorbehouden.</translation>
     </message>
@@ -2409,42 +2409,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation type="unfinished">Nieuw Modbus-apparaat</translation>
+        <translation>Nieuw Modbus-apparaat</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
         <source>Listen only mode</source>
-        <translation type="unfinished">Alleen luisteren-modus</translation>
+        <translation>Alleen luisteren-modus</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
         <source>IP Address</source>
-        <translation type="unfinished">IP-adres</translation>
+        <translation>IP-adres</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
         <source>Timeout(ms)</source>
-        <translation type="unfinished">Time-out (ms)</translation>
+        <translation>Time-out (ms)</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="81"/>
         <source>Baud rate</source>
-        <translation type="unfinished">Baudsnelheid</translation>
+        <translation>Baudsnelheid</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="94"/>
         <source>Stop bits</source>
-        <translation type="unfinished">Stop stukjes</translation>
+        <translation>Stop stukjes</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
         <source>Device type</source>
-        <translation type="unfinished">Apparaattype</translation>
+        <translation>Apparaattype</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="143"/>
@@ -2454,7 +2454,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="156"/>
         <source>Parity</source>
-        <translation type="unfinished">Pariteit</translation>
+        <translation>Pariteit</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
@@ -2469,12 +2469,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
         <source>Data bits</source>
-        <translation type="unfinished">Databits</translation>
+        <translation>Databits</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
         <source>Refresh</source>
-        <translation type="unfinished">Vernieuwen</translation>
+        <translation>Vernieuwen</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
@@ -2502,7 +2502,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparaat/groep/registreren verwijderen</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
@@ -2575,7 +2575,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.ui" line="73"/>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="86"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
@@ -2590,7 +2590,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
         <source>Ignore data log</source>
-        <translation type="unfinished"></translation>
+        <translation>Negeer datalog</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
@@ -2608,7 +2608,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="14"/>
         <source>New Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe registers</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="50"/>
@@ -2618,7 +2618,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
         <source>Register type</source>
-        <translation type="unfinished"></translation>
+        <translation>Registertype</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
@@ -2651,7 +2651,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
         <source>Server address</source>
-        <translation type="unfinished">Serveradres</translation>
+        <translation>Serveradres</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
@@ -2679,12 +2679,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoekopdracht...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation type="unfinished"></translation>
+        <translation>Registeritem toevoegen</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
@@ -2692,7 +2692,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
@@ -2702,7 +2702,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
         <source>Clear register table</source>
-        <translation type="unfinished"></translation>
+        <translation>Duidelijke registertabel</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
@@ -2823,7 +2823,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="56"/>
-        <location filename="../../src/page/page.cpp" line="594"/>
+        <location filename="../../src/page/page.cpp" line="618"/>
         <source>Open</source>
         <translation>Openen</translation>
     </message>
@@ -2952,42 +2952,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="326"/>
-        <location filename="../../src/page/page.cpp" line="770"/>
+        <location filename="../../src/page/page.cpp" line="794"/>
         <source>Error: No device is opened.</source>
         <translation>Fout: Geen apparaat geopend.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="428"/>
+        <location filename="../../src/page/page.cpp" line="452"/>
         <source>Disable</source>
         <translation>Uitschakelen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="585"/>
+        <location filename="../../src/page/page.cpp" line="609"/>
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="601"/>
+        <location filename="../../src/page/page.cpp" line="625"/>
         <source>Error Occurred</source>
         <translation>Er is een fout opgetreden</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="607"/>
+        <location filename="../../src/page/page.cpp" line="631"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="694"/>
+        <location filename="../../src/page/page.cpp" line="718"/>
         <source>Hide Scripts Panels</source>
         <translation>Verberg scripts-panelen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="695"/>
+        <location filename="../../src/page/page.cpp" line="719"/>
         <source>Show Scripts Panels</source>
         <translation>Toon scripts-panelen</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="798"/>
+        <location filename="../../src/page/page.cpp" line="822"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -3246,7 +3246,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -3532,7 +3532,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
@@ -3544,15 +3544,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -4140,70 +4140,98 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Formulier</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="32"/>
         <source>Export</source>
         <translation>Exporteren</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="44"/>
+        <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>Schakel alle artikelen uit</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="69"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="79"/>
         <source>Up</source>
         <translation>Omhoog</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="86"/>
         <source>Add</source>
         <translation>Toevoegen</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="93"/>
-        <location filename="../../src/page/common/tableview.cpp" line="149"/>
+        <location filename="../../src/page/common/tableview.cpp" line="174"/>
         <source>Clear</source>
         <translation>Wissen</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="100"/>
         <source>Import</source>
         <translation>Importeren</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.ui" line="107"/>
         <source>Down</source>
         <translation>Omlaag</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="150"/>
+        <location filename="../../src/page/common/tableview.cpp" line="41"/>
+        <source>Move Up</source>
+        <translation>Ga omhoog</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="42"/>
+        <source>Move Down</source>
+        <translation>Ga naar beneden</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="43"/>
+        <source>Clear All Items</source>
+        <translation>Wis alle items</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="44"/>
+        <source>Import Items from JSON File</source>
+        <translation>Items importeren uit JSON-bestand</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="45"/>
+        <source>Export Items to JSON File</source>
+        <translation>Items exporteren naar JSON-bestand</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="46"/>
+        <source>Delete Selected Item</source>
+        <translation>Geselecteerd item verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="47"/>
+        <source>Add New Item</source>
+        <translation>Nieuw artikel toevoegen</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Are you sure to clear all items?</source>
         <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="165"/>
+        <location filename="../../src/page/common/tableview.cpp" line="190"/>
         <source>No Item be Selected</source>
         <translation>Geen item geselecteerd</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="165"/>
+        <location filename="../../src/page/common/tableview.cpp" line="190"/>
         <source>Please select a item first!</source>
         <translation>Selecteer eerst een item!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
+        <location filename="../../src/page/common/tableview.cpp" line="200"/>
+        <location filename="../../src/page/common/tableview.cpp" line="228"/>
         <source>Import data</source>
         <translation>Gegevens importeren</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="177"/>
-        <location filename="../../src/page/common/tableview.cpp" line="205"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Alles (*)</translation>
     </message>
@@ -4419,34 +4447,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation type="unfinished">Logboek</translation>
+        <translation>Logboek</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nieuw RTU-apparaat</translation>
+        <translation>Nieuw RTU-apparaat</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Nieuw TCP-apparaat</translation>
+        <translation>Nieuw TCP-apparaat</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nieuwe spoelen</translation>
+        <translation>Nieuwe spoelen</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nieuwe discrete ingangen</translation>
+        <translation>Nieuwe discrete ingangen</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Nieuwe holdingregisters</translation>
+        <translation>Nieuwe holdingregisters</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Nieuwe invoerregisters</translation>
+        <translation>Nieuwe invoerregisters</translation>
     </message>
 </context>
 <context>
@@ -4467,7 +4495,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Modbus-apparaatfout: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="153"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="166"/>
         <source>Failed to connect Modbus device: %1</source>
         <translation>Kan geen verbinding maken met Modbus-apparaat: %1</translation>
     </message>
@@ -4491,19 +4519,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Spoelen</translation>
+        <translation>Spoelen</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Discrete ingangen</translation>
+        <translation>Discrete ingangen</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Registers bijhouden</translation>
+        <translation>Registers bijhouden</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Invoerregisters</translation>
+        <translation>Invoerregisters</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -4513,12 +4541,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
         <source>New Register Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe registratiegroep</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>New Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe registers</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
@@ -4528,22 +4556,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Invalid Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige selectie</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
         <source>Please select a register table to add new registers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer een registertabel om nieuwe registers toe te voegen.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikel verwijderen</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
-        <translation type="unfinished"></translation>
+        <translation>Weet u zeker dat u het geselecteerde item wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
@@ -4591,12 +4619,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Het apparaat is actief. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="676"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="680"/>
         <source>TCP Client Device</source>
         <translation>TCP-clientapparaat</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="682"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="686"/>
         <source>TCP Server Device</source>
         <translation>TCP-serverapparaat</translation>
     </message>
