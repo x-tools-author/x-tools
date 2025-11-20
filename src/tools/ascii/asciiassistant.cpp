@@ -16,7 +16,7 @@ AsciiAssistant::AsciiAssistant(QWidget *parent)
     , ui(new Ui::AsciiAssistant)
 {
     ui->setupUi(this);
-    initDescirption();
+    initDescription();
 
     connect(ui->lineEdit, &QLineEdit::textChanged, this, &AsciiAssistant::setupFilter);
     connect(ui->checkBox, &QCheckBox::clicked, this, [=]() {
@@ -74,7 +74,7 @@ AsciiAssistant::~AsciiAssistant()
     delete ui;
 }
 
-void AsciiAssistant::initDescirption()
+void AsciiAssistant::initDescription()
 {
     m_descirption.clear();
     m_descirption.insert(0, tr("NUL (NULL)"));

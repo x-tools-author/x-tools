@@ -27,6 +27,6 @@ private:
     QMap<int, QString> m_descirption;
 
 private:
-    void initDescirption();
+    void initDescription();
     void setupFilter(const QString& text);
 };
