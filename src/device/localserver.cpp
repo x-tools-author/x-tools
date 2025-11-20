@@ -24,7 +24,7 @@ void LocalServer::setTarget(QLocalSocket *socket)
 
 QObject *LocalServer::initDevice()
 {
-    m_server = new QLocalServer(this);
+    m_server = new QLocalServer();
     connect(m_server, &QLocalServer::newConnection, this, [this]() {
         QLocalSocket *socket = m_server->nextPendingConnection();
         emit this->socketConnected(socket, getClientName(socket));

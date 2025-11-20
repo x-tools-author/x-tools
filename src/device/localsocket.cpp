@@ -19,7 +19,7 @@ LocalSocket::~LocalSocket() {}
 
 QObject *LocalSocket::initDevice()
 {
-    m_socket = new QLocalSocket(this);
+    m_socket = new QLocalSocket();
     connect(m_socket, &QLocalSocket::connected, this, &LocalSocket::opened);
     connect(m_socket, &QLocalSocket::disconnected, this, &LocalSocket::closed);
     connect(m_socket, &QLocalSocket::readyRead, this, [this]() {
