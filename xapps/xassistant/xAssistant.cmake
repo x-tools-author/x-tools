@@ -1,5 +1,8 @@
-﻿message(STATUS "[xAssistant]xAssistant information...")
-message(STATUS "[xAssistant]Libs: ${X_LIBS}")
+﻿message(STATUS "[xAssistant] xAssistant information...")
+message(STATUS "[xAssistant] Libs: ${X_LIBS}")
+
+include(cmake/x_qt.cmake)
+include(cmake/x_3rd.cmake)
 
 # Remove all main.cpp xTools.rc  files from X_SOURCES
 set(X_APPS_SOURCES ${X_SOURCES})
@@ -19,8 +22,7 @@ list(APPEND X_ASSISTANT_SOURCES ${CMAKE_CURRENT_LIST_DIR}/xAssistant.qrc)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/src/modbus)
 
-set(bin ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}/xAssistant)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/xAssistant)
 qt_add_executable(xAssistant ${X_ASSISTANT_SOURCES})
 x_output_env(xAssistant)
 x_deploy_qt(xAssistant)

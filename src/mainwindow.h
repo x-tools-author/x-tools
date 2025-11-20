@@ -30,6 +30,7 @@ public:
     void updateGrid(WindowGrid grid);
     void moveToCenter();
     void hideHistoryAction();
+    void showLiteMode();
 
 protected:
     void closeEvent(QCloseEvent* event) override;

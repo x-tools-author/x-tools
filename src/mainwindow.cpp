@@ -255,6 +255,15 @@ void MainWindow::hideHistoryAction()
     }
 }
 
+void MainWindow::showLiteMode()
+{
+    QWidget* connerwidget = menuBar()->cornerWidget(Qt::TopRightCorner);
+    if (connerwidget) {
+        connerwidget->hide();
+    }
+    m_layoutManager->setCurrentIndex(0);
+}
+
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     m_ioPage00->aboutToClose();
