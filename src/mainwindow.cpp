@@ -335,6 +335,7 @@ void MainWindow::initFileMenu()
         auto* w = new Page(Page::Left, xApp->settings());
         w->setWindowTitle("xTools");
         w->show();
+        xThemeMgr.updateWindowCaptionColor(w);
     });
     action->setShortcut(QKeySequence::New);
     fileMenu->addSeparator();
