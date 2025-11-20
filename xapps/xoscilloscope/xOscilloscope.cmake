@@ -6,11 +6,13 @@ list(APPEND SRC_FILES ${CMAKE_CURRENT_LIST_DIR}/xOscilloscope.rc)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
 
-qt_add_executable(xOscilloscope MANUAL_FINALIZATION ${SRC_FILES})
-x_deploy_qt(xOscilloscope)
-target_link_libraries(xOscilloscope PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::SerialPort
-                                            Qt6::PrintSupport)
+include(cmake/x_qt_deploy.cmake)
+include(cmake/x_qt_linguist.cmake)
 
+qt_add_executable(xOscilloscope ${SRC_FILES})
+x_deploy_qt(xOscilloscope)
+target_link_libraries(xOscilloscope PRIVATE Qt::Core Qt::Gui Qt::Widgets Qt::SerialPort
+                                            Qt::PrintSupport)
 # --------------------------------------------------------------------------------------------------
 # Generate Microsoft Store package(MSIX)
 if(WIN32)
