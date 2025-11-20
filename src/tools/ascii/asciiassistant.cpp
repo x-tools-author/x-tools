@@ -11,7 +11,7 @@
 
 #include <QDebug>
 
-AsciiAssistant::AsciiAssistant(QWidget* parent)
+AsciiAssistant::AsciiAssistant(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::AsciiAssistant)
 {
@@ -33,6 +33,12 @@ AsciiAssistant::AsciiAssistant(QWidget* parent)
         ui->tableWidget->verticalHeader()->hide();
     }
 
+    int last = ui->tableWidget->columnCount() - 1;
+    ui->tableWidget->model()->setHeaderData(last,
+                                            Qt::Horizontal,
+                                            QVariant(Qt::AlignLeft | Qt::AlignVCenter),
+                                            Qt::TextAlignmentRole);
+
     for (int i = 0; i < 128; i++) {
         QString bin = QString("%1").arg(i, 8, 2, QChar('0'));
         QString oct = QString("%1").arg(i, 3, 8, QChar('0'));
@@ -44,11 +50,22 @@ AsciiAssistant::AsciiAssistant(QWidget* parent)
             desc = QString("%1").arg(QChar(i));
         }
 
-        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(bin));
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(oct));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(dec));
-        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(hex));
-        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(desc));
+        QTableWidgetItem *binItem = new QTableWidgetItem(bin);
+        binItem->setTextAlignment(Qt::AlignCenter);
+        QTableWidgetItem *octItem = new QTableWidgetItem(oct);
+        octItem->setTextAlignment(Qt::AlignCenter);
+        QTableWidgetItem *hexItem = new QTableWidgetItem(hex);
+        hexItem->setTextAlignment(Qt::AlignCenter);
+        QTableWidgetItem *decItem = new QTableWidgetItem(dec);
+        decItem->setTextAlignment(Qt::AlignCenter);
+        QTableWidgetItem *descItem = new QTableWidgetItem(desc);
+        descItem->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
+        ui->tableWidget->setItem(i, 0, binItem);
+        ui->tableWidget->setItem(i, 1, octItem);
+        ui->tableWidget->setItem(i, 2, decItem);
+        ui->tableWidget->setItem(i, 3, hexItem);
+        ui->tableWidget->setItem(i, 4, descItem);
     }
 }
 
@@ -96,7 +113,7 @@ void AsciiAssistant::initDescirption()
     m_descirption.insert(127, tr("DEL (Delete)"));
 }
 
-void AsciiAssistant::setupFilter(const QString& text)
+void AsciiAssistant::setupFilter(const QString &text)
 {
     bool preserveCase = ui->checkBox->isChecked();
     for (int row = 0; row < ui->tableWidget->rowCount(); row++) {
