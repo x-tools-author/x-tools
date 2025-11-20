@@ -4889,7 +4889,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
-        <translation>读取 %1 响应：服务器地址=%2，起始地址=%3，值计数=%4</translation>
+        <translation>读取 %1 响应：服务器地址=%2，起始地址=%3，数量=%4</translation>
     </message>
 </context>
 <context>
