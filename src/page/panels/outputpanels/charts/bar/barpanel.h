@@ -60,4 +60,5 @@ private:
 
     void onChannelColorChanged(int channelIndex, const QColor &color);
     void onChannelNameChanged(int channelIndex, const QString &name);
+    void onDataFormatChanged(int type);
 };

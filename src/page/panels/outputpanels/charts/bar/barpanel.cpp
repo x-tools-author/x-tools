@@ -27,6 +27,7 @@
 #include <QTimer>
 #include <QWidgetAction>
 
+#include "../common/chartdatahandler.h"
 #include "barsettings.h"
 
 BarPanel::BarPanel(QWidget *parent)
@@ -35,6 +36,7 @@ BarPanel::BarPanel(QWidget *parent)
     m_settings = new BarSettings();
     connect(m_settings, &BarSettings::channelColorChanged, this, &BarPanel::onChannelColorChanged);
     connect(m_settings, &BarSettings::channelNameChanged, this, &BarPanel::onChannelNameChanged);
+    connect(m_settings, &BarSettings::dataFormatChanged, this, &BarPanel::onDataFormatChanged);
 
     m_axisX = new QBarCategoryAxis();
     QStringList labels;
@@ -176,4 +178,9 @@ void BarPanel::onChannelNameChanged(int channelIndex, const QString &name)
         categories[channelIndex] = name;
         m_axisX->setCategories(categories);
     }
+}
+
+void BarPanel::onDataFormatChanged(int type)
+{
+    m_chartDataHandler->setDataFormat(type);
 }
