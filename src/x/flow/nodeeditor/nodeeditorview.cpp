@@ -33,6 +33,7 @@
 #include "application.h"
 #include "nodeeditorregistry.h"
 #include "nodeeditorscene.h"
+#include "nodes/common/basenodeui.h"
 
 namespace xFlow {
 
@@ -51,6 +52,9 @@ NodeEditorView::NodeEditorView(const QColor &rulerColor, QWidget *parent)
     connect(m_scene, &QtNodes::DataFlowGraphicsScene::sceneLoaded, this, &NodeEditorView::sceneLoaded);
     connect(m_scene, &QtNodes::DataFlowGraphicsScene::nodeClicked, this, &NodeEditorView::nodeClicked);
     connect(m_scene, &QtNodes::DataFlowGraphicsScene::nodeSelected, this, [this](const QtNodes::NodeId &id) { this->m_latestSelectedNodeId = id; });
+#if 1
+    connect(m_scene, &QtNodes::DataFlowGraphicsScene::nodeDoubleClicked, this, &NodeEditorView::onNodeDoubleClicked);
+#endif
     connect(m_model, &QtNodes::DataFlowGraphModel::connectionCreated, this, &NodeEditorView::connectionCreated);
     connect(m_model, &QtNodes::DataFlowGraphModel::connectionDeleted, this, &NodeEditorView::connectionDeleted);
     connect(m_model, &QtNodes::DataFlowGraphModel::nodeCreated, this, &NodeEditorView::nodeCreated);
@@ -526,6 +530,25 @@ void NodeEditorView::onRubberBandChanged(QRect viewportRect,
     Q_UNUSED(toScenePoint);
     m_rubberBandRect = viewportRect;
     update();
+}
+
+void NodeEditorView::onNodeDoubleClicked(const QtNodes::NodeId nodeId)
+{
+    QWidget *w = m_model->nodeData(nodeId, QtNodes::NodeRole::Widget).value<QWidget *>();
+    BaseNodeUi *baseNodeUi = qobject_cast<BaseNodeUi *>(w);
+    if (!baseNodeUi) {
+        return;
+    }
+
+    QWidget *popupUi = baseNodeUi->embeddedWidget();
+    if (!popupUi) {
+        return;
+    }
+
+    popupUi->setVisible(!popupUi->isVisible());
+    baseNodeUi->adjustSize();
+    m_scene->nodeGeometry().recomputeSize(nodeId);
+    viewport()->update();
 }
 
 qreal NodeEditorView::minXOfSelectedNodes()

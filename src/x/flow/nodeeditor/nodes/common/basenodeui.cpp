@@ -37,7 +37,10 @@ BaseNodeUi::BaseNodeUi(BaseNode *node, QWidget *parent)
     ui->toolButtonPause->setToolTip(tr("Ignore the input data and no data output..."));
     ui->toolButtonWarning->setToolTip(tr("No message..."));
 
+    ui->toolButtonExpand->setVisible(false);
+#if 0
     connect(ui->toolButtonExpand, &QToolButton::clicked, this, &BaseNodeUi::onExpandButtonClicked);
+#endif
 }
 
 BaseNodeUi::~BaseNodeUi()
@@ -74,6 +77,11 @@ void BaseNodeUi::load(const QJsonObject &parameters)
         adjustSize();
         emit m_node->embeddedWidgetSizeUpdated();
     }
+}
+
+QWidget *BaseNodeUi::embeddedWidget() const
+{
+    return m_innerWidget;
 }
 
 void BaseNodeUi::setEmbeddedWidget(QWidget *widget)

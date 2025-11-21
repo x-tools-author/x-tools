@@ -22,6 +22,7 @@ class BaseNodeUi : public QWidget
 public:
     BaseNodeUi(BaseNode *node, QWidget *parent = nullptr);
     ~BaseNodeUi() override;
+    QWidget *embeddedWidget() const;
     void setEmbeddedWidget(QWidget *widget);
     void setMessage(const QString &message);
 

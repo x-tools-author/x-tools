@@ -15,6 +15,7 @@
 #include <QtNodes/NodeData>
 #include <QtNodes/NodeDelegateModelRegistry>
 
+#include <QDialog>
 #include <QFrame>
 #include <QMap>
 #include <QPoint>
@@ -103,6 +104,7 @@ private:
     void alignNodesToVEquidistance();
 
     void onRubberBandChanged(QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint);
+    void onNodeDoubleClicked(const QtNodes::NodeId nodeId);
 
     qreal minXOfSelectedNodes();
     qreal minYOfSelectedNodes();
