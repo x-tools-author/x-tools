@@ -19,6 +19,8 @@ NodeEditor::NodeEditor(QWidget *parent)
     : QScrollArea(parent)
 {
     m_view = new NodeEditorView(QColor(Qt::white), this);
+    m_view->setObjectName("nodeEditorView");
+    m_view->setStyleSheet("QWidget#nodeEditorView { border: none; }");
     m_view->setScaleRange(1.0, 1.0);
     setContentsMargins(0, 0, 0, 0);
     setWidget(m_view);

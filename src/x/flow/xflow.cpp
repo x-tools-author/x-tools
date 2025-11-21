@@ -20,8 +20,10 @@
 #include "nodeeditor/nodeeditorview.h"
 #include "utilities/thememanager.h"
 
+#include "dockwidgets/log/logdockwidgetcontent.h"
 #include "dockwidgets/navigator/navigatordockwidgetcontent.h"
 #include "dockwidgets/nodes/nodesdockwidgetcontent.h"
+#include "dockwidgets/output/outputdockwidgetcontent.h"
 
 namespace xFlow {
 
@@ -36,6 +38,7 @@ xFlow::xFlow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->widgetNodeEditor->setupRuler(ui->widgetHRuler, ui->widgetVRuler);
+    ui->widgetNodeEditor->setStyleSheet("QWidget#widgetNodeEditor { border: none; }");
     ui->widgetHRuler->setup(ui->widgetNodeEditor, Qt::Orientation::Horizontal);
     ui->widgetVRuler->setup(ui->widgetNodeEditor, Qt::Orientation::Vertical);
     ui->widgetNodeEditor->setContentsMargins(0, 0, 0, 0);
@@ -46,19 +49,24 @@ xFlow::xFlow(QWidget *parent)
     connect(&xThemeMgr, &xTools::ThemeManager::colorSchemeChanged, this, &xFlow::onThemeChanged);
     onThemeChanged();
 
-    QLabel *spacerLabel = new QLabel(tr("Navigator Window"), ui->widgetLeftPanel);
-    ui->widgetLeftPanel->layout()->addWidget(spacerLabel);
+    QLabel *spacerLabel = new QLabel(tr("Navigator Window"), ui->frameLeftPanel);
+    ui->frameLeftPanel->layout()->addWidget(spacerLabel);
     m_navigator = new NavigatorDockWidgetContent(ui->widgetNodeEditor);
-    ui->widgetLeftPanel->layout()->addWidget(m_navigator);
-    ui->widgetLeftPanel->layout()->addWidget(new QLabel(tr("Nodes List"), ui->widgetLeftPanel));
+    ui->frameLeftPanel->layout()->addWidget(m_navigator);
+    ui->frameLeftPanel->layout()->addWidget(new QLabel(tr("Nodes List"), ui->frameLeftPanel));
     m_nodes = new NodesDockWidgetContent(ui->widgetNodeEditor->view());
-    ui->widgetLeftPanel->layout()->addWidget(m_nodes);
-    ui->widgetLeftPanel->setMaximumWidth(m_navigator->maximumWidth());
+    ui->frameLeftPanel->layout()->addWidget(m_nodes);
+    ui->frameLeftPanel->setMaximumWidth(m_navigator->maximumWidth());
     ui->splitterLeftRight->setChildrenCollapsible(false);
     ui->splitterLeftRight->setSizes({168, width() - 168});
 #if 0
     ui->splitterLeftRight->handle(1)->setEnabled(false);
 #endif
+    ui->splitterTopBottom->setChildrenCollapsible(false);
+    ui->splitterTopBottom->setSizes({height() - 268, 268});
+
+    ui->tabWidget->addTab(new OutputDockWidgetContext(ui->tabWidget), tr("Output"));
+    ui->tabWidget->addTab(new LogDockWidgetContent(ui->tabWidget), tr("Log"));
 }
 
 xFlow::~xFlow()
@@ -190,7 +198,7 @@ QJsonObject xFlow::cookedConnectionStyle(const QJsonObject &style)
 {
     QJsonObject connectionStyle = style;
     QPalette palette = qApp->palette();
-    QColor normalColor = palette.color(QPalette::ColorRole::ButtonText);
+    QColor normalColor = palette.color(QPalette::ColorRole::Accent);
     QJsonArray rgb;
     rgb.append(normalColor.red());
     rgb.append(normalColor.green());

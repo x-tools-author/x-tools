@@ -60,7 +60,9 @@ NodeEditorRegistry::NodeEditorRegistry()
     registerModelCommunication();
     registerModelInputOutput();
     registerModelDataProcess();
+#if 0
     registerModelInstruments();
+#endif
     registerModelScript();
     registerModelHub();
     registerModelPlugin();
