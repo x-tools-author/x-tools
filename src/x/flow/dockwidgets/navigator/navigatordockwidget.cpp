@@ -15,14 +15,16 @@
 
 #include "navigatordockwidgetcontent.h"
 
+namespace xFlow {
+
 NavigatorDockWidget::NavigatorDockWidget(QScrollArea *scrollArea, QWidget *parent)
     : m_scrollArea(scrollArea)
 {
     setWindowTitle(tr("Navigator"));
     m_content = new NavigatorDockWidgetContent(scrollArea, this);
     setWidget(m_content);
-    setMaximumHeight(200);
-    setMinimumWidth(256);
+    setMaximumHeight(168);
+    setMinimumWidth(168);
 }
 
 NavigatorDockWidget::~NavigatorDockWidget() {}
@@ -31,3 +33,5 @@ void NavigatorDockWidget::updateNavigator()
 {
     m_content->update();
 }
+
+} // namespace xFlow

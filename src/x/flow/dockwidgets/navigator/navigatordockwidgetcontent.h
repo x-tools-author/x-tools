@@ -10,6 +10,8 @@
 
 #include <QGraphicsView>
 
+namespace xFlow {
+
 class NavigatorDockWidgetContent : public QWidget
 {
     Q_OBJECT
@@ -33,3 +35,5 @@ private:
     QPoint m_pressPos;
     bool m_dragging{false};
 };
+
+} // namespace xFlow

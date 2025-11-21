@@ -13,6 +13,8 @@
 #include <QMouseEvent>
 #include <QScrollBar>
 
+namespace xFlow {
+
 NavigatorDockWidgetContent::NavigatorDockWidgetContent(QScrollArea *scrollArea, QWidget *parent)
     : m_scrollArea(scrollArea)
 {
@@ -201,3 +203,5 @@ void NavigatorDockWidgetContent::updateRect()
 
     m_viewPortRect = QRect{x, y, fitViewportW, fitViewportH};
 }
+
+} // namespace xFlow

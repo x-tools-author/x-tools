@@ -17,6 +17,8 @@ class xFlow;
 
 namespace xFlow {
 
+class NodesDockWidgetContent;
+class NavigatorDockWidgetContent;
 class xFlow : public QWidget
 {
     Q_OBJECT
@@ -29,6 +31,8 @@ public:
 
 private:
     Ui::xFlow *ui;
+    NodesDockWidgetContent *m_nodes{nullptr};
+    NavigatorDockWidgetContent *m_navigator{nullptr};
 
 private:
     void onThemeChanged();

@@ -18,6 +18,8 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 
+#include "utilities/iconengine.h"
+
 #include "../../nodeeditor/nodeeditorregistry.h"
 #include "../../nodeeditor/nodeeditorscene.h"
 #include "../../nodeeditor/nodeeditorview.h"
@@ -58,7 +60,7 @@ NodesDockWidgetContent::NodesDockWidgetContent(NodeEditorView *view, QWidget *pa
             const QString rawName = node.name;
             QTreeWidgetItem *item = new QTreeWidgetItem(categoryItem);
             item->setText(0, friendlyName);
-            item->setIcon(0, QIcon(":/res/icons/commit.svg"));
+            item->setIcon(0, xIcon(":/res/icons/commit.svg"));
             item->setData(0, Qt::UserRole, rawName);
         }
     }
@@ -80,17 +82,17 @@ NodesDockWidgetContent::~NodesDockWidgetContent()
 QIcon NodesDockWidgetContent::categoryIcon(const QString &category)
 {
     if (category == QString("Communication")) {
-        return QIcon(":/res/icons/satellite_alt.svg");
+        return xIcon(":/res/icons/satellite_alt.svg");
     } else if (category == QString("Input/Output")) {
-        return QIcon(":/res/icons/page_info.svg");
+        return xIcon(":/res/icons/page_info.svg");
     } else if (category == QString("DataProcess")) {
-        return QIcon(":/res/icons/function.svg");
+        return xIcon(":/res/icons/function.svg");
     } else if (category == QString("Scripts")) {
-        return QIcon(":/res/icons/script.svg");
+        return xIcon(":/res/icons/script.svg");
     } else if (category == QString("Hub")) {
-        return QIcon(":/res/icons/hub.svg");
+        return xIcon(":/res/icons/hub.svg");
     } else if (category == QString("Plugins")) {
-        return QIcon(":/res/icons/extension.svg");
+        return xIcon(":/res/icons/extension.svg");
     } else {
         return QIcon();
     }

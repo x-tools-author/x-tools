@@ -11,6 +11,8 @@
 #include <QDockWidget>
 #include <QScrollArea>
 
+namespace xFlow {
+
 class NavigatorDockWidgetContent;
 class NavigatorDockWidget : public QDockWidget
 {
@@ -25,3 +27,5 @@ private:
     QScrollArea *m_scrollArea;
     NavigatorDockWidgetContent *m_content;
 };
+
+} // namespace xFlow

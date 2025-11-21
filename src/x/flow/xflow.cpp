@@ -13,11 +13,15 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QLabel>
 #include <QPalette>
 
 #include "nodeeditor/nodeeditor.h"
 #include "nodeeditor/nodeeditorview.h"
 #include "utilities/thememanager.h"
+
+#include "dockwidgets/navigator/navigatordockwidgetcontent.h"
+#include "dockwidgets/nodes/nodesdockwidgetcontent.h"
 
 namespace xFlow {
 
@@ -41,6 +45,20 @@ xFlow::xFlow(QWidget *parent)
 
     connect(&xThemeMgr, &xTools::ThemeManager::colorSchemeChanged, this, &xFlow::onThemeChanged);
     onThemeChanged();
+
+    QLabel *spacerLabel = new QLabel(tr("Navigator Window"), ui->widgetLeftPanel);
+    ui->widgetLeftPanel->layout()->addWidget(spacerLabel);
+    m_navigator = new NavigatorDockWidgetContent(ui->widgetNodeEditor);
+    ui->widgetLeftPanel->layout()->addWidget(m_navigator);
+    ui->widgetLeftPanel->layout()->addWidget(new QLabel(tr("Nodes List"), ui->widgetLeftPanel));
+    m_nodes = new NodesDockWidgetContent(ui->widgetNodeEditor->view());
+    ui->widgetLeftPanel->layout()->addWidget(m_nodes);
+    ui->widgetLeftPanel->setMaximumWidth(m_navigator->maximumWidth());
+    ui->splitterLeftRight->setChildrenCollapsible(false);
+    ui->splitterLeftRight->setSizes({168, width() - 168});
+#if 0
+    ui->splitterLeftRight->handle(1)->setEnabled(false);
+#endif
 }
 
 xFlow::~xFlow()
