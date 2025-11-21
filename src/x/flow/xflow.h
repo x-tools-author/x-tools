@@ -10,6 +10,10 @@
 
 #include <QWidget>
 
+namespace Ui {
+class xFlow;
+}
+
 namespace xFlow {
 
 class xFlow : public QWidget
@@ -18,5 +22,9 @@ class xFlow : public QWidget
 public:
     explicit xFlow(QWidget* parent = nullptr);
     ~xFlow() override;
+
+private:
+    Ui::xFlow* ui;
 };
+
 } // namespace xFlow

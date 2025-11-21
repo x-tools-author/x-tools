@@ -47,5 +47,9 @@
         <file>res/icons/mop.svg</file>
         <file>res/icons/download.svg</file>
         <file>res/icons/upload.svg</file>
+        <file>res/icons/warning.svg</file>
+        <file>res/icons/web_asset.svg</file>
+        <file>res/icons/fast_forward.svg</file>
+        <file>res/icons/pause.svg</file>
     </qresource>
 </RCC>

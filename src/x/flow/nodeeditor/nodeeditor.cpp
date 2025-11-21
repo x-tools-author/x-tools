@@ -13,11 +13,13 @@
 #include "nodeeditorruler.h"
 #include "nodeeditorview.h"
 
-NodeEditor::NodeEditor(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler, QWidget *parent)
+namespace xFlow {
+
+NodeEditor::NodeEditor(QWidget *parent)
     : QScrollArea(parent)
-    , m_hRuler(hRuler)
-    , m_vRuler(vRuler)
 {
+    m_hRuler = new NodeEditorRuler(this);
+    m_vRuler = new NodeEditorRuler(this);
     m_view = new NodeEditorView(QColor(Qt::white), this);
     m_view->setScaleRange(1.0, 1.0);
     setContentsMargins(0, 0, 0, 0);
@@ -102,3 +104,5 @@ qreal NodeEditor::maxScale()
 {
     return 2.0;
 }
+
+} // namespace xFlow

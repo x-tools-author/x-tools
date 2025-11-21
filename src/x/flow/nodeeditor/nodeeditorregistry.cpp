@@ -36,6 +36,8 @@
 #include "plugin/pluginmanager.h"
 #include "plugin/pluginnode.h"
 
+namespace xFlow {
+
 template<typename T>
 void registerNode(NodeEditorRegistry *nodeRegister,
                   const QString &category,
@@ -107,11 +109,11 @@ void NodeEditorRegistry::registerModelInputOutput()
 {
     static const QString category = QString("Input/Output");
     static const QString friendlyCategory = QObject::tr("Input/Output");
-    ::registerModelInputOutput<UserInput>(this, category, friendlyCategory);
-    ::registerModelInputOutput<DebugOutput>(this, category, friendlyCategory);
-    ::registerModelInputOutput<RandomGenerator>(this, category, friendlyCategory);
-    ::registerModelInputOutput<DataPersistence>(this, category, friendlyCategory);
-    ::registerModelInputOutput<DataView>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<UserInput>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<DebugOutput>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<RandomGenerator>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<DataPersistence>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<DataView>(this, category, friendlyCategory);
 }
 
 void NodeEditorRegistry::registerModelDataProcess()
@@ -252,3 +254,5 @@ QString NodeEditorRegistry::friendlyNodeCategory(const QString &category) const
 
     return category;
 }
+
+} // namespace xFlow

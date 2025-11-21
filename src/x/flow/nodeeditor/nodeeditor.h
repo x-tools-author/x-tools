@@ -10,13 +10,15 @@
 
 #include <QScrollArea>
 
+namespace xFlow {
+
 class NodeEditorView;
 class NodeEditorRuler;
 class NodeEditor : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit NodeEditor(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler, QWidget *parent = nullptr);
+    explicit NodeEditor(QWidget *parent = nullptr);
     ~NodeEditor() override;
 
     NodeEditorView *view() const;
@@ -39,3 +41,5 @@ private:
     NodeEditorRuler *m_vRuler;
     qreal m_scale{1.0};
 };
+
+} // namespace xFlow

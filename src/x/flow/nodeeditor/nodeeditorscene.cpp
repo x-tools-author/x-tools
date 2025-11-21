@@ -62,6 +62,8 @@ static void insertSerializedItems(QJsonObject const &json, QtNodes::BasicGraphic
     }
 }
 
+namespace xFlow {
+
 class CreateCommand : public QUndoCommand
 {
 public:
@@ -259,3 +261,5 @@ void NodeEditorScene::dropEvent(QGraphicsSceneDragDropEvent *event)
     DataFlowGraphicsScene::dropEvent(event);
     event->accept();
 }
+
+} // namespace xFlow

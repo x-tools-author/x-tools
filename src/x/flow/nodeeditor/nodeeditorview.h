@@ -22,6 +22,8 @@
 #include <QVariant>
 #include <QVariantList>
 
+namespace xFlow {
+
 class NodeEditorScene;
 class NodeEditorRuler;
 class NodeEditorView : public QtNodes::GraphicsView
@@ -111,3 +113,5 @@ private:
     QList<QtNodes::NodeId> orderSelectedNodesByY();
     QPixmap toPixMap(QGraphicsItem *item);
 };
+
+} // namespace xFlow

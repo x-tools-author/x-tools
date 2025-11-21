@@ -10,6 +10,8 @@
 
 #include <QtNodes/NodeDelegateModelRegistry>
 
+namespace xFlow {
+
 class NodeEditorRegistry : public QtNodes::NodeDelegateModelRegistry
 {
 public:
@@ -42,3 +44,5 @@ public:
 private:
     QList<NodeContext> m_nodeContexts;
 };
+
+} // namespace xFlow

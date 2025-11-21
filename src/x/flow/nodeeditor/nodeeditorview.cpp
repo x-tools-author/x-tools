@@ -33,6 +33,8 @@
 #include "nodeeditorregistry.h"
 #include "nodeeditorscene.h"
 
+namespace xFlow {
+
 NodeEditorView::NodeEditorView(const QColor &rulerColor, QWidget *parent)
     : QtNodes::GraphicsView{parent}
 {
@@ -650,3 +652,5 @@ QPixmap NodeEditorView::toPixMap(QGraphicsItem *item)
     return pixmap;
 #endif
 }
+
+} // namespace xFlow

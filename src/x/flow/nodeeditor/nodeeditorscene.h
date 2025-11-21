@@ -14,6 +14,8 @@
 
 #define X_TRIAL_NODES_COUNT 8
 
+namespace xFlow {
+
 class NodeEditorScene : public QtNodes::DataFlowGraphicsScene
 {
     Q_OBJECT
@@ -33,3 +35,5 @@ private:
     QtNodes::NodeId m_nodeId;
     QtNodes::DataFlowGraphModel &m_graphModel;
 };
+
+} // namespace xFlow

@@ -7,13 +7,22 @@
  * code directory.
  **************************************************************************************************/
 #include "xflow.h"
+#include "ui_xflow.h"
+
+#include "nodeeditor/nodeeditor.h"
 
 namespace xFlow {
 
-xFlow::xFlow(QWidget* parent)
+xFlow::xFlow(QWidget *parent)
     : QWidget(parent)
-{}
+    , ui(new Ui::xFlow)
+{
+    ui->setupUi(this);
+}
 
-xFlow::~xFlow() {}
+xFlow::~xFlow()
+{
+    delete ui;
+}
 
 } // namespace xFlow

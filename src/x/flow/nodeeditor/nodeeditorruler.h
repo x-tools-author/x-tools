@@ -16,6 +16,8 @@
 #include <QResizeEvent>
 #include <QScrollBar>
 
+namespace xFlow {
+
 class NodeEditor;
 class NodeEditorRuler : public QWidget
 {
@@ -60,3 +62,5 @@ private:
     QColor m_vernierColor{Qt::red};
     bool m_setShowVernier{true};
 };
+
+} // namespace xFlow

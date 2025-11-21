@@ -16,6 +16,8 @@
 
 #include "nodeeditor.h"
 
+namespace xFlow {
+
 NodeEditorRuler::NodeEditorRuler(QWidget* parent)
     : QWidget(parent)
     , m_editor(nullptr)
@@ -258,3 +260,5 @@ bool NodeEditorRuler::isViewContainsMouse()
     QPoint pos = m_view->mapFromGlobal(QCursor::pos());
     return m_view->rect().contains(pos);
 }
+
+} // namespace xFlow
