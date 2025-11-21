@@ -13,8 +13,9 @@
 #include <QHeaderView>
 #include <QStandardItemModel>
 
-#include "common/common.h"
+#include "common/xtools.h"
 #include "dataview.h"
+#include "utilities/crc.h"
 
 DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)

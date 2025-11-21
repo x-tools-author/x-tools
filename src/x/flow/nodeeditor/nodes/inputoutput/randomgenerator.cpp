@@ -102,10 +102,10 @@ QJsonObject RandomGenerator::data2jsonObject(const RandomGenerator::Data &data)
 RandomGenerator::Data RandomGenerator::jsonObject2Data(const QJsonObject &data)
 {
     static Data defaultData{
-        .dataType = static_cast<int>(DataType::Uint32),
-        .outputFormat = static_cast<int>(OutputFormat::Binary),
-        .interval = 1000,
-        .bigEndian = true,
+        static_cast<int>(DataType::Uint32),
+        static_cast<int>(OutputFormat::Binary),
+        1000,
+        true,
     };
 
     QVariantMap tmp = data.toVariantMap();

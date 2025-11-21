@@ -9,7 +9,8 @@
 #include "crccalculator.h"
 #include "crccalculatorui.h"
 
-#include "common/crc.h"
+#include "common/xtools.h"
+#include "utilities/crc.h"
 
 CrcCalculator::CrcCalculator(QObject *parent)
     : BaseNode(parent)
@@ -60,14 +61,14 @@ void CrcCalculator::handleData(std::shared_ptr<BaseNodeData> nodeData,
     int algorithm = parameters.value(keys.algorithm).toInt();
     bool bigEndian = parameters.value(keys.bigEndian).toBool();
 
-    CRC::Context ctx;
-    ctx.algorithm = static_cast<CRC::Algorithm>(algorithm);
+    xTools::CRC::Context ctx;
+    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
     ctx.bigEndian = bigEndian;
     ctx.startIndex = startIndex;
     ctx.endIndex = endIndex;
     ctx.data = nodeData->bytes();
 
-    QByteArray ret = CRC::calculate(ctx);
+    QByteArray ret = xTools::CRC::calculate(ctx);
     setOutData(std::make_shared<BaseNodeData>(ctx.data + ret));
     emit dataUpdated(index);
 }

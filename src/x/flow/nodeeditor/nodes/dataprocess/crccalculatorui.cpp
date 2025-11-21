@@ -9,8 +9,8 @@
 #include "crccalculatorui.h"
 #include "ui_crccalculatorui.h"
 
-#include "common/crc.h"
 #include "crccalculator.h"
+#include "utilities/crc.h"
 
 CrcCalculatorUi::CrcCalculatorUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
@@ -20,7 +20,7 @@ CrcCalculatorUi::CrcCalculatorUi(BaseNode *node, QWidget *parent)
     ui->setupUi(w);
     setEmbeddedWidget(w);
     ui->checkBoxBigEndian->setChecked(true);
-    CRC::setupAlgorithm(ui->comboBoxArithmetic);
+    xTools::CRC::setupAlgorithm(ui->comboBoxArithmetic);
 }
 
 CrcCalculatorUi::~CrcCalculatorUi()
@@ -45,7 +45,7 @@ void CrcCalculatorUi::load(const QJsonObject &parameters)
     QVariantMap parametersMap = parameters.toVariantMap();
     CrcCalculatorParametersKeys keys;
 
-    int defaultAlgorithm = static_cast<int>(CRC::Algorithm::CRC_8);
+    int defaultAlgorithm = static_cast<int>(xTools::CRC::Algorithm::CRC_8);
     int algorithm = parametersMap.value(keys.algorithm, defaultAlgorithm).toInt();
     int startIndex = parametersMap.value(keys.startIndex, 0).toInt();
     int endIndex = parametersMap.value(keys.endIndex, 0).toInt();

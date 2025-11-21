@@ -252,6 +252,7 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
     }
 
     QMenu *menu = new QMenu(this);
+#if 0
     menu->addAction(tr("Save as Image"), this, [=]() {
         auto tmp = xApp->saveImagePath();
         tmp += "/" + m_model->nodeData(node->nodeId(), QtNodes::NodeRole::Caption).toString();
@@ -270,6 +271,7 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
         QPixmap pixMap = toPixMap(item);
         pixMap.save(fileName);
     });
+#endif
     menu->addAction(tr("Copy to Clipboard"), this, [=]() {
         QApplication::clipboard()->setPixmap(toPixMap(item));
     });

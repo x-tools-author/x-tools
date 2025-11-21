@@ -28,6 +28,9 @@ public:
     virtual QList<QWidget *> deviceControllers();
     virtual void setUiEnabled(bool enabled);
 
+signals:
+    void parametersChanged();
+
 protected:
     virtual Device *newDevice() = 0;
 

@@ -16,7 +16,7 @@
 #include <QMenu>
 #include <QToolButton>
 
-#include "common/common.h"
+#include "common/xtools.h"
 #include "debugoutput.h"
 
 DebugOutputUi::DebugOutputUi(BaseNode *node, QWidget *parent)

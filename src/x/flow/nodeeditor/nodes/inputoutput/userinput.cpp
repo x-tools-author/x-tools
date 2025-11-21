@@ -12,7 +12,7 @@
 #include <QJsonObject>
 #include <QTimer>
 
-#include "common/common.h"
+#include "common/xtools.h"
 
 UserInput::UserInput(QObject *parent)
     : BaseNode(parent)

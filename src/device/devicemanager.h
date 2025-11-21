@@ -48,8 +48,11 @@ public:
         //----------------------------------------------------------------------------------------------
         ChartsTest = 0x00300000
     };
+    Q_ENUM(DeviceType);
+
     QList<int> supportedDeviceTypes();
     QString deviceName(int type);
+    QString deviceRawName(int type);
     void setupDeviceTypes(QComboBox *comboBox);
     DeviceUi *newDeviceUi(int type);
     QString deviceIconPath(int type);

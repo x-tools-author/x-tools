@@ -9,6 +9,7 @@
 #include "devicemanager.h"
 
 #include <QComboBox>
+#include <QMetaEnum>
 
 #include "localserverui.h"
 #include "localsocketui.h"
@@ -120,6 +121,17 @@ QString DeviceManager::deviceName(int type)
         return tr("Charts Test");
     default:
         return "Unknown";
+    }
+}
+
+QString DeviceManager::deviceRawName(int type)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<DeviceManager::DeviceType>();
+    const char *key = metaEnum.valueToKey(type);
+    if (key) {
+        return QString(key);
+    } else {
+        return QString("Unknown");
     }
 }
 

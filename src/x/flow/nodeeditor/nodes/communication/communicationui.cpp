@@ -11,14 +11,14 @@
 #include <QHBoxLayout>
 
 #include "communication.h"
-#include "device/devicefactory.h"
+#include "device/devicemanager.h"
 #include "device/deviceui.h"
 
 CommunicationUi::CommunicationUi(int type, BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
     , m_deviceUi(nullptr)
 {
-    m_deviceUi = DeviceFactory::singleton().newDeviceUi(type);
+    m_deviceUi = DeviceManager::singleton().newDeviceUi(type);
     setEmbeddedWidget(m_deviceUi);
 }
 
@@ -40,7 +40,7 @@ void CommunicationUi::rebootDevice()
 QJsonObject CommunicationUi::save() const
 {
     QJsonObject parameters = BaseNodeUi::save();
-    QJsonObject deviceParameters = m_deviceUi->save();
+    QJsonObject deviceParameters = QJsonObject::fromVariantMap(m_deviceUi->save());
     QStringList keys = deviceParameters.keys();
     for (QString &key : keys) {
         parameters.insert(key, deviceParameters.value(key));
@@ -51,5 +51,5 @@ QJsonObject CommunicationUi::save() const
 void CommunicationUi::load(const QJsonObject &parameters)
 {
     BaseNodeUi::load(parameters);
-    m_deviceUi->load(parameters);
+    //m_deviceUi->load(parameters);
 }

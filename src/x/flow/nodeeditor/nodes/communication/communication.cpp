@@ -13,7 +13,7 @@
 #include <QTimer>
 
 #include "device/device.h"
-#include "device/devicefactory.h"
+#include "device/devicemanager.h"
 #include "device/deviceui.h"
 
 Communication::Communication(int type, QObject *parent)
@@ -39,12 +39,12 @@ Communication::~Communication() {}
 
 QString Communication::caption() const
 {
-    return DeviceFactory::singleton().deviceName(m_type);
+    return DeviceManager::singleton().deviceName(m_type);
 }
 
 QString Communication::name() const
 {
-    return DeviceFactory::singleton().deviceRawName(m_type);
+    return DeviceManager::singleton().deviceRawName(m_type);
 }
 
 unsigned int Communication::nPorts(QtNodes::PortType portType) const
