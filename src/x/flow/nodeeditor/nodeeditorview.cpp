@@ -57,7 +57,7 @@ NodeEditorView::NodeEditorView(const QColor &rulerColor, QWidget *parent)
 #endif
     connect(m_model, &QtNodes::DataFlowGraphModel::connectionCreated, this, &NodeEditorView::connectionCreated);
     connect(m_model, &QtNodes::DataFlowGraphModel::connectionDeleted, this, &NodeEditorView::connectionDeleted);
-    connect(m_model, &QtNodes::DataFlowGraphModel::nodeCreated, this, &NodeEditorView::nodeCreated);
+    connect(m_model, &QtNodes::DataFlowGraphModel::nodeCreated, this, &NodeEditorView::onNodeCreated);
     connect(m_model, &QtNodes::DataFlowGraphModel::nodeDeleted, this, &NodeEditorView::nodeDeleted);
     connect(m_model, &QtNodes::DataFlowGraphModel::nodeUpdated, this, &NodeEditorView::nodeUpdated);
     connect(m_model, &QtNodes::DataFlowGraphModel::nodeFlagsUpdated, this, &NodeEditorView::nodeFlagsUpdated);
@@ -549,6 +549,25 @@ void NodeEditorView::onNodeDoubleClicked(const QtNodes::NodeId nodeId)
     baseNodeUi->adjustSize();
     m_scene->nodeGeometry().recomputeSize(nodeId);
     viewport()->update();
+}
+
+void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
+{
+    QWidget *w = m_model->nodeData(nodeId, QtNodes::NodeRole::Widget).value<QWidget *>();
+    BaseNodeUi *baseNodeUi = qobject_cast<BaseNodeUi *>(w);
+    if (!baseNodeUi) {
+        return;
+    }
+
+    QWidget *popupUi = baseNodeUi->embeddedWidget();
+    if (!popupUi) {
+        return;
+    }
+
+    baseNodeUi->adjustSize();
+    m_scene->nodeGeometry().recomputeSize(nodeId);
+
+    emit nodeCreated(nodeId);
 }
 
 qreal NodeEditorView::minXOfSelectedNodes()

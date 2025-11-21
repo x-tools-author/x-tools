@@ -105,6 +105,7 @@ private:
 
     void onRubberBandChanged(QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint);
     void onNodeDoubleClicked(const QtNodes::NodeId nodeId);
+    void onNodeCreated(QtNodes::NodeId nodeId);
 
     qreal minXOfSelectedNodes();
     qreal minYOfSelectedNodes();
