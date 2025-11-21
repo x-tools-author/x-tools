@@ -10,8 +10,8 @@
 
 #include <QAction>
 
-#if X_ENABLE_X_NODE_EDITOR
-#include "x/nodeeditor/nodeeditor.h"
+#if X_ENABLE_X_FLOW
+#include "x/flow/nodeeditor.h"
 #endif
 
 #if X_ENABLE_X_MODBUS
@@ -97,7 +97,7 @@ void LayoutManager::setupPages()
     m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
     addLayoutPage(QString("xCANBus"), m_canbus);
 #endif
-#if X_ENABLE_X_NODE_EDITOR
+#if X_ENABLE_X_FLOW
     m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
     addLayoutPage(QString("xFlow"), m_nodeEditor);
 #endif
