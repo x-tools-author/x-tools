@@ -29,6 +29,7 @@ TableView::TableView(QWidget *parent)
 
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
     vHeaderView->hide();
+    ui->tableView->setAlternatingRowColors(true);
 
     ui->toolButtonUp->setIcon(xIcon(":/res/icons/arrow_upward.svg"));
     ui->toolButtonDown->setIcon(xIcon(":/res/icons/arrow_downward.svg"));
