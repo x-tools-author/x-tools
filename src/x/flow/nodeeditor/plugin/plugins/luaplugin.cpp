@@ -8,7 +8,11 @@
  **************************************************************************************************/
 #include "luaplugin.h"
 
-#include <lua.hpp>
+extern "C" {
+#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+}
 
 LuaPlugin::LuaPlugin(const QString &libFile, QObject *parent)
     : AbstractPlugin(libFile, parent)

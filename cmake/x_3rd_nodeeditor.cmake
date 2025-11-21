@@ -60,3 +60,11 @@ message(STATUS "[xFlow] Enabled xFlow support.")
 
 # Qt-AES
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qtaes.cmake)
+
+# Remove all files of python(pyplugin.h pyplugin.cpp) from X_SOURCES
+foreach(file IN LISTS X_SOURCES)
+  if(file MATCHES "pyplugin\\.h$" OR file MATCHES "pyplugin\\.cpp$")
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[xFlow] Removed file: ${file}")
+  endif()
+endforeach()

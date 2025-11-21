@@ -9,8 +9,8 @@
 #include "crccheckerui.h"
 #include "ui_crccheckerui.h"
 
-#include "common/crc.h"
 #include "crcchecker.h"
+#include "utilities/crc.h"
 
 CrcCheckerUi::CrcCheckerUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
@@ -21,7 +21,7 @@ CrcCheckerUi::CrcCheckerUi(BaseNode *node, QWidget *parent)
     setEmbeddedWidget(w);
 
     ui->checkBoxBigEndian->setChecked(true);
-    CRC::setupAlgorithm(ui->comboBoxArithmetic);
+    xTools::CRC::setupAlgorithm(ui->comboBoxArithmetic);
 }
 
 CrcCheckerUi::~CrcCheckerUi()
@@ -46,7 +46,7 @@ void CrcCheckerUi::load(const QJsonObject &parameters)
     QVariantMap parametersMap = parameters.toVariantMap();
     CrcCheckerParametersKeys keys;
 
-    int defaultAlgorithm = static_cast<int>(CRC::Algorithm::CRC_8);
+    int defaultAlgorithm = static_cast<int>(xTools::CRC::Algorithm::CRC_8);
     int algorithm = parametersMap.value(keys.algorithm, defaultAlgorithm).toInt();
     int startIndex = parametersMap.value(keys.startIndex, 0).toInt();
     int endIndex = parametersMap.value(keys.endIndex, 0).toInt();

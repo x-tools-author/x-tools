@@ -18,7 +18,9 @@
 #include <QTimer>
 #include <QVariantMap>
 
-#include "common/common.h"
+#include "common/xtools.h"
+
+//#include "../common/common.h"
 
 class DataPersistenceThread : public QThread
 {

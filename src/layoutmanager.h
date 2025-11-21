@@ -19,14 +19,23 @@
 #include <QToolButton>
 #include <QWidget>
 
-// clang-format off
-namespace xMqtt { class xMqtt; }
-namespace xCanBus { class xCanBus; }
+namespace xMqtt {
+class xMqtt;
+}
+namespace xCanBus {
+class xCanBus;
+}
 #if X_ENABLE_X_MODBUS
-namespace xModbus { class xModbus; }
+namespace xModbus {
+class xModbus;
+}
 #endif
-namespace xFlow { class NodeEditor; }
-// clang-format on
+#if X_ENABLE_X_FLOW
+namespace xFlow {
+class xFlow;
+}
+#endif
+
 class LayoutManager : public QObject
 {
     Q_OBJECT
@@ -51,8 +60,9 @@ private:
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
     QHash<QWidget*, QToolButton*> m_pageButtons;
-
-    xFlow::NodeEditor* m_nodeEditor{nullptr};
+#if X_ENABLE_X_FLOW
+    xFlow::xFlow* m_flow{nullptr};
+#endif
 #if X_ENABLE_X_MODBUS
     xModbus::xModbus* m_modbus{nullptr};
 #endif

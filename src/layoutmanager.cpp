@@ -11,7 +11,7 @@
 #include <QAction>
 
 #if X_ENABLE_X_FLOW
-#include "x/flow/nodeeditor.h"
+#include "x/flow/xflow.h"
 #endif
 
 #if X_ENABLE_X_MODBUS
@@ -98,8 +98,8 @@ void LayoutManager::setupPages()
     addLayoutPage(QString("xCANBus"), m_canbus);
 #endif
 #if X_ENABLE_X_FLOW
-    m_nodeEditor = new xFlow::NodeEditor(m_layout->parentWidget());
-    addLayoutPage(QString("xFlow"), m_nodeEditor);
+    m_flow = new xFlow::xFlow(m_layout->parentWidget());
+    addLayoutPage(QString("xFlow"), m_flow);
 #endif
 
     if (m_layout->count() == 1) {

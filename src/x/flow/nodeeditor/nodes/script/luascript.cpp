@@ -9,7 +9,11 @@
 #include "luascript.h"
 #include "luascriptui.h"
 
-#include <lua.hpp>
+extern "C" {
+#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+}
 
 #include <QFile>
 #include <QStandardPaths>

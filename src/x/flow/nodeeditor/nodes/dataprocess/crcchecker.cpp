@@ -9,8 +9,8 @@
 #include "crcchecker.h"
 #include "crccheckerui.h"
 
-#include "common/crc.h"
-#include "nodeeditor/nodes/common/basenodeui.h"
+#include "../common/basenodeui.h"
+#include "utilities/crc.h"
 
 CrcChecker::CrcChecker(QObject *parent)
     : BaseNode(parent)
@@ -60,17 +60,17 @@ void CrcChecker::handleData(std::shared_ptr<BaseNodeData> nodeData, QtNodes::Por
     int algorithm = parameters.value(keys.algorithm).toInt();
     bool bigEndian = parameters.value(keys.bigEndian).toBool();
 
-    int bitsWidth = CRC::bitsWidth(static_cast<CRC::Algorithm>(algorithm));
+    int bitsWidth = xTools::CRC::bitsWidth(static_cast<xTools::CRC::Algorithm>(algorithm));
     int bytesWidth = bitsWidth / 8;
 
-    CRC::Context ctx;
-    ctx.algorithm = static_cast<CRC::Algorithm>(algorithm);
+    xTools::CRC::Context ctx;
+    ctx.algorithm = static_cast<xTools::CRC::Algorithm>(algorithm);
     ctx.bigEndian = bigEndian;
     ctx.startIndex = startIndex;
     ctx.endIndex = endIndex;
     ctx.data = nodeData->bytes().left(nodeData->bytes().length() - bytesWidth); // CRC计算数据
 
-    QByteArray refCrcValue = CRC::calculate(ctx);                      // 参考crc值
+    QByteArray refCrcValue = xTools::CRC::calculate(ctx);              // 参考crc值
     QByteArray actuallyCrcValue = nodeData->bytes().right(bytesWidth); // 实际crc值
     if (actuallyCrcValue != refCrcValue) {
         if (embeddedWidget()) {

@@ -32,7 +32,7 @@
 
 #include "nodes/instruments/flowmeter.h"
 
-#include "device/devicefactory.h"
+#include "device/devicemanager.h"
 #include "plugin/pluginmanager.h"
 #include "plugin/pluginnode.h"
 
@@ -68,7 +68,7 @@ void NodeEditorRegistry::registerModelCommunication()
 {
     static const QString category = QString("Communication");
     static const QString friendlyCategory = QObject::tr("Communication");
-
+#if 0
     QList<int> deviceTypes = DeviceFactory::singleton().supportedDeviceTypes();
     for (int &type : deviceTypes) {
         // clang-format off
@@ -83,6 +83,7 @@ void NodeEditorRegistry::registerModelCommunication()
         nodeContext.name = node->name();
         addNodeContext(nodeContext);
     }
+#endif
 }
 
 template<typename T>

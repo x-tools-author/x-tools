@@ -31,6 +31,7 @@ LuaScriptThread::~LuaScriptThread()
 
 void LuaScriptThread::run()
 {
+#if 0
     typedef std::shared_ptr<QtNodes::NodeData> Data;
     typedef QtNodes::PortIndex Index;
     QObject *obj = new QObject();
@@ -48,12 +49,14 @@ void LuaScriptThread::run()
     lua_pop(lua, 0);
     obj->deleteLater();
     obj = nullptr;
+#endif
 }
 
 void LuaScriptThread::onInput2Thread(lua_State *lua,
                                      std::shared_ptr<QtNodes::NodeData> nodeData,
                                      QtNodes::PortIndex const)
 {
+#if 0
     auto baseDataBase = std::dynamic_pointer_cast<BaseNodeData>(nodeData);
     if (!baseDataBase) {
         qWarning("The input data is not a BaseNodeData.");
@@ -104,4 +107,5 @@ void LuaScriptThread::onInput2Thread(lua_State *lua,
 
     m_lua->setOutData(std::make_shared<BaseNodeData>(outBytes));
     emit m_lua->dataUpdated(0);
+#endif
 }

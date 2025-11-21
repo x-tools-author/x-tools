@@ -9,7 +9,7 @@
 #include "filterui.h"
 #include "ui_filterui.h"
 
-#include "common/common.h"
+#include "common/xtools.h"
 #include "filter.h"
 
 FilterUi::FilterUi(BaseNode *node, QWidget *parent)
