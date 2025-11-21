@@ -21,6 +21,11 @@
 
 namespace xFlow {
 
+struct xFlowParameterKeys
+{
+    const QString scale{"xFlow/Scale"};
+};
+
 xFlow::xFlow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::xFlow)
@@ -38,6 +43,21 @@ xFlow::xFlow(QWidget *parent)
 xFlow::~xFlow()
 {
     delete ui;
+}
+
+QJsonObject xFlow::save()
+{
+    xFlowParameterKeys keys;
+    QJsonObject obj;
+    obj[keys.scale] = ui->widgetNodeEditor->scale();
+    return obj;
+}
+
+void xFlow::load(const QJsonObject &obj)
+{
+    xFlowParameterKeys keys;
+    qreal scale = obj.value(keys.scale).toDouble(1.0);
+    ui->widgetNodeEditor->setScale(scale);
 }
 
 void xFlow::onThemeChanged()

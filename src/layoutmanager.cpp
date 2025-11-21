@@ -30,6 +30,7 @@ struct LayoutManagerKeys
 {
     const QString xIndex{"xIndex"};
     const QString xModbus{"xModbus"};
+    const QString xFlow{"xFlow"};
 };
 
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
@@ -145,6 +146,9 @@ QJsonObject LayoutManager::save()
     obj[keys.xIndex] = currentIndex();
     obj[keys.xModbus] = m_modbus ? m_modbus->save() : QJsonObject();
 #endif
+#if X_ENABLE_X_FLOW
+    obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
+#endif
 
     return obj;
 }
@@ -159,6 +163,12 @@ void LayoutManager::load(const QJsonObject& obj)
     if (m_modbus) {
         QJsonObject modbusObj = obj.value(keys.xModbus).toObject(QJsonObject());
         m_modbus->load(modbusObj);
+    }
+#endif
+#if X_ENABLE_X_FLOW
+    if (m_flow) {
+        QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
+        m_flow->load(flowObj);
     }
 #endif
 }

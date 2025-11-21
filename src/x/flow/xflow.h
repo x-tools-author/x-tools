@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
 
 namespace Ui {
@@ -22,6 +23,9 @@ class xFlow : public QWidget
 public:
     explicit xFlow(QWidget *parent = nullptr);
     ~xFlow() override;
+
+    QJsonObject save();
+    void load(const QJsonObject &obj);
 
 private:
     Ui::xFlow *ui;
