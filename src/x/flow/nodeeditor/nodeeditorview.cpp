@@ -24,6 +24,7 @@
 #include <QJsonObject>
 #include <QMetaEnum>
 #include <QMouseEvent>
+#include <QPalette>
 #include <QPixmap>
 #include <QStandardPaths>
 #include <QVBoxLayout>
@@ -377,8 +378,9 @@ void NodeEditorView::paintEvent(QPaintEvent *event)
         return;
     }
 
+    QPalette palette = qApp->palette();
     QPainter painter(viewport());
-    painter.setPen(QPen(Qt::green, 2));
+    painter.setPen(QPen(palette.color(QPalette::ColorRole::Accent), 2));
     painter.setBrush(backgroundBrush());
     painter.setOpacity(0.6);
     painter.drawRect(m_rubberBandRect);

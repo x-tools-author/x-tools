@@ -21,7 +21,9 @@ namespace xFlow {
 NodeEditorRuler::NodeEditorRuler(QWidget* parent)
     : QWidget(parent)
     , m_editor(nullptr)
-{}
+{
+    m_vernierColor = palette().color(QPalette::ColorRole::Accent);
+}
 
 void NodeEditorRuler::setColor(QColor const& color)
 {
