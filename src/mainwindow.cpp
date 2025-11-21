@@ -313,18 +313,6 @@ void MainWindow::initMenuBar()
     initMenuLanguage();
     xApp->showSplashScreenMessage(QString("Create help menu..."));
     initHelpMenu();
-
-#if 0
-    menuBar()->addSeparator();
-    auto a1 = menuBar()->addAction("xTools");
-    auto a2 = menuBar()->addAction("xModbus");
-    QActionGroup* ag = new QActionGroup(this);
-    a1->setCheckable(true);
-    a2->setCheckable(true);
-    ag->addAction(a1);
-    ag->addAction(a2);
-    a1->setChecked(true);
-#endif
 }
 
 void MainWindow::initFileMenu()
