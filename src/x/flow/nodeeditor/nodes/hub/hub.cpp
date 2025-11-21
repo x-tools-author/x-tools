@@ -19,7 +19,7 @@ Hub::~Hub() {}
 
 QString Hub::caption() const
 {
-    return tr("%1 In %2 Out").arg(m_inPorts).arg(m_outPorts);
+    return tr("%1In%2Out").arg(m_inPorts).arg(m_outPorts);
 }
 
 QString Hub::name() const
