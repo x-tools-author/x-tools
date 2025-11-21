@@ -13,6 +13,7 @@
 #include <QPushButton>
 
 #include "basenode.h"
+#include "utilities/iconengine.h"
 
 BaseNodeUi::BaseNodeUi(BaseNode *node, QWidget *parent)
     : QWidget(parent)
@@ -21,10 +22,10 @@ BaseNodeUi::BaseNodeUi(BaseNode *node, QWidget *parent)
     , m_innerWidget(nullptr)
 {
     ui->setupUi(this);
-    ui->toolButtonExpand->setIcon(QIcon(":/res/icons/web_asset.svg"));
-    ui->toolButtonFast->setIcon(QIcon(":/res/icons/fast_forward.svg"));
-    ui->toolButtonPause->setIcon(QIcon(":/res/icons/pause.svg"));
-    ui->toolButtonWarning->setIcon(QIcon(":/res/icons/warning.svg"));
+    ui->toolButtonExpand->setIcon(xIcon(":/res/icons/web_asset.svg"));
+    ui->toolButtonFast->setIcon(xIcon(":/res/icons/fast_forward.svg"));
+    ui->toolButtonPause->setIcon(xIcon(":/res/icons/pause.svg"));
+    ui->toolButtonWarning->setIcon(xIcon(":/res/icons/warning.svg"));
 
     ui->toolButtonExpand->setCheckable(true);
     ui->toolButtonExpand->setChecked(true);
