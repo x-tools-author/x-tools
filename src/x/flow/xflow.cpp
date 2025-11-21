@@ -34,8 +34,10 @@ xFlow::xFlow(QWidget *parent)
     ui->widgetNodeEditor->setupRuler(ui->widgetHRuler, ui->widgetVRuler);
     ui->widgetHRuler->setup(ui->widgetNodeEditor, Qt::Orientation::Horizontal);
     ui->widgetVRuler->setup(ui->widgetNodeEditor, Qt::Orientation::Vertical);
+    ui->widgetNodeEditor->setContentsMargins(0, 0, 0, 0);
     ui->widgetHRuler->setContentsMargins(0, 0, 0, 0);
     ui->widgetVRuler->setContentsMargins(0, 0, 0, 0);
+
     connect(&xThemeMgr, &xTools::ThemeManager::colorSchemeChanged, this, &xFlow::onThemeChanged);
     onThemeChanged();
 }

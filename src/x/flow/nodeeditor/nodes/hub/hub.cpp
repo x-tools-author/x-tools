@@ -1,7 +1,7 @@
 /***************************************************************************************************
  * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of xFlow project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
@@ -19,12 +19,12 @@ Hub::~Hub() {}
 
 QString Hub::caption() const
 {
-    return tr("%1in%2out").arg(m_inPorts).arg(m_outPorts);
+    return tr("%1 In %2 Out").arg(m_inPorts).arg(m_outPorts);
 }
 
 QString Hub::name() const
 {
-    return QString("%1in%2out").arg(m_inPorts).arg(m_outPorts);
+    return QString("%1In%2Out").arg(m_inPorts).arg(m_outPorts);
 }
 
 unsigned int Hub::nPorts(QtNodes::PortType portType) const
