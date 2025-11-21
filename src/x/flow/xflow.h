@@ -20,11 +20,18 @@ class xFlow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit xFlow(QWidget* parent = nullptr);
+    explicit xFlow(QWidget *parent = nullptr);
     ~xFlow() override;
 
 private:
-    Ui::xFlow* ui;
+    Ui::xFlow *ui;
+
+private:
+    void onThemeChanged();
+
+    QJsonObject cookedGraphicsViewStyle(const QJsonObject &style);
+    QJsonObject cookedNodeStyle(const QJsonObject &style);
+    QJsonObject cookedConnectionStyle(const QJsonObject &style);
 };
 
 } // namespace xFlow

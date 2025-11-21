@@ -51,5 +51,6 @@
         <file>res/icons/web_asset.svg</file>
         <file>res/icons/fast_forward.svg</file>
         <file>res/icons/pause.svg</file>
+        <file>res/x/flow/nodeeditorstyle.json</file>
     </qresource>
 </RCC>

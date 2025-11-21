@@ -24,6 +24,7 @@ public:
     NodeEditorView *view() const;
     void setRulerVisible(bool visible);
     void setRulerColor(const QColor &color);
+    void setupRuler(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler);
 
     void zoomIn();
     void zoomOut();
@@ -37,8 +38,8 @@ signals:
 
 private:
     NodeEditorView *m_view;
-    NodeEditorRuler *m_hRuler;
-    NodeEditorRuler *m_vRuler;
+    NodeEditorRuler *m_hRuler{nullptr};
+    NodeEditorRuler *m_vRuler{nullptr};
     qreal m_scale{1.0};
 };
 

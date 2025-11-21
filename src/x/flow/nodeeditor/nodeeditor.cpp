@@ -18,8 +18,6 @@ namespace xFlow {
 NodeEditor::NodeEditor(QWidget *parent)
     : QScrollArea(parent)
 {
-    m_hRuler = new NodeEditorRuler(this);
-    m_vRuler = new NodeEditorRuler(this);
     m_view = new NodeEditorView(QColor(Qt::white), this);
     m_view->setScaleRange(1.0, 1.0);
     setContentsMargins(0, 0, 0, 0);
@@ -35,14 +33,28 @@ NodeEditorView *NodeEditor::view() const
 
 void NodeEditor::setRulerVisible(bool visible)
 {
+    if (m_hRuler == nullptr || m_vRuler == nullptr) {
+        return;
+    }
+
     m_hRuler->setVisible(visible);
     m_vRuler->setVisible(visible);
 }
 
 void NodeEditor::setRulerColor(const QColor &color)
 {
+    if (m_hRuler == nullptr || m_vRuler == nullptr) {
+        return;
+    }
+
     m_hRuler->setColor(color);
     m_vRuler->setColor(color);
+}
+
+void NodeEditor::setupRuler(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler)
+{
+    m_hRuler = hRuler;
+    m_vRuler = vRuler;
 }
 
 void NodeEditor::zoomIn()
