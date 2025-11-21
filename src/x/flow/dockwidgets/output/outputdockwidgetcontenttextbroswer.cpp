@@ -20,6 +20,7 @@ OutputDockWidgetContextTextBrowser::OutputDockWidgetContextTextBrowser(QWidget *
 {
     document()->setMaximumBlockCount(2000);
     setReadOnly(true);
+    setStyleSheet("QTextBrowser { border: none; }");
 }
 
 OutputDockWidgetContextTextBrowser::~OutputDockWidgetContextTextBrowser() {}

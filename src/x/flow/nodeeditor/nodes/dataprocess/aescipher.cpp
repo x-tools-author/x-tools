@@ -9,7 +9,7 @@
 #include "aescipher.h"
 #include "aescipherui.h"
 
-#include <QtAES/QAESEncryption>
+#include <qaesencryption.h>
 
 #include <QThread>
 
