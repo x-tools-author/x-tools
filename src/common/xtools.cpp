@@ -722,6 +722,7 @@ void setupBaudRate(QComboBox *comboBox)
         comboBox->addItem(QString::number(baudRate), baudRate);
     }
     comboBox->setCurrentText("9600");
+    comboBox->setMaxVisibleItems(comboBox->count() + 1);
 }
 
 void setupDataBits(QComboBox *comboBox)
