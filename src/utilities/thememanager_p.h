@@ -77,6 +77,7 @@ public:
                 }
 
                 updateApplicationColor();
+                emit q->colorSchemeChanged();
             });
 
             updateApplicationColor();

@@ -35,6 +35,9 @@ public:
     void updateWindowCaptionColor();
     void updateWindowCaptionColor(QWidget *widget);
     QMenu *themeMenu();
+
+signals:
+    void colorSchemeChanged();
 };
 
 } // namespace xTools
