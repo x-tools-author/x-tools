@@ -24,14 +24,18 @@ DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
     QWidget *w = new QWidget(this);
     ui->setupUi(w);
     setEmbeddedWidget(w);
-
+#if 0
     setMinimumWidth(520);
-
+#endif
     setupTextFormat(ui->comboBoxFormat);
 
     QStandardItemModel *model = new QStandardItemModel(0, 2, this);
     model->setHorizontalHeaderLabels(QStringList() << tr("Time") << tr("Data"));
     ui->tableView->setModel(model);
+    ui->tableView->setAlternatingRowColors(true);
+    int tmp = int(Qt::AlignLeft | Qt::AlignVCenter);
+    model->setHeaderData(0, Qt::Horizontal, tmp, Qt::TextAlignmentRole);
+    model->setHeaderData(1, Qt::Horizontal, tmp, Qt::TextAlignmentRole);
 
     QHeaderView *vHeader = ui->tableView->verticalHeader();
     vHeader->hide();

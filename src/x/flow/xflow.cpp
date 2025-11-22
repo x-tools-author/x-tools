@@ -63,7 +63,7 @@ xFlow::xFlow(QWidget *parent)
     ui->splitterLeftRight->handle(1)->setEnabled(false);
 #endif
     ui->splitterTopBottom->setChildrenCollapsible(false);
-    ui->splitterTopBottom->setSizes({height() - 268, 268});
+    ui->splitterTopBottom->setSizes({height() - 218, 218});
 
     ui->tabWidget->addTab(new OutputDockWidgetContext(ui->tabWidget), tr("Output"));
     ui->tabWidget->addTab(new LogDockWidgetContent(ui->tabWidget), tr("Log"));
