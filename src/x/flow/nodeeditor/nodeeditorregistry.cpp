@@ -74,6 +74,9 @@ void NodeEditorRegistry::registerModelCommunication()
     static const QString friendlyCategory = QObject::tr("Communication");
 
     QList<int> deviceTypes = DeviceManager::singleton().supportedDeviceTypes();
+    deviceTypes.removeAll(int(DeviceManager::BleCentral));
+    deviceTypes.removeAll(int(DeviceManager::BlePeripheral));
+
     for (int &type : deviceTypes) {
         // clang-format off
         registerModel<Communication>([=]() { return std::make_unique<Communication>(type); }, category);
