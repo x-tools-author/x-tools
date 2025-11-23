@@ -25,7 +25,7 @@ public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
 
-    void load(const QString& fileName = QString()) const;
+    void load(const QString& fileName = QString());
     void save(const QString& fileName = QString()) const;
     void updateGrid(WindowGrid grid);
     void moveToCenter();

@@ -64,6 +64,11 @@
 #include <QWindow>
 #endif
 
+struct MainWindowParameterKeys
+{
+    QString showMax{"MainWindow/showMax"};
+};
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , m_ioPage00(Q_NULLPTR)
@@ -149,7 +154,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow() {}
 
-void MainWindow::load(const QString& fileName) const
+void MainWindow::load(const QString& fileName)
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
@@ -177,6 +182,13 @@ void MainWindow::load(const QString& fileName) const
     m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
     m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
     m_layoutManager->load(obj.value("layoutManager").toObject());
+
+    MainWindowParameterKeys keys;
+    bool showMax = obj.value(keys.showMax).toBool(false);
+    if (showMax) {
+        showMaximized();
+        move(QPoint(0, 0));
+    }
 }
 
 void MainWindow::save(const QString& fileName) const
@@ -187,6 +199,9 @@ void MainWindow::save(const QString& fileName) const
     obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
     obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
     obj.insert("layoutManager", m_layoutManager->save());
+
+    MainWindowParameterKeys keys;
+    obj.insert(keys.showMax, isMaximized());
 
     QJsonDocument doc;
     doc.setObject(obj);

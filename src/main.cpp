@@ -71,8 +71,8 @@ int main(int argc, char *argv[])
     splash->finish(&window);
     window.resize(1280, 720);
     window.show();
-    window.load();
     window.moveToCenter();
+    window.load();
 
 #if X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
