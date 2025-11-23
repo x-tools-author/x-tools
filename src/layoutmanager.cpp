@@ -172,3 +172,21 @@ void LayoutManager::load(const QJsonObject& obj)
     }
 #endif
 }
+
+void LayoutManager::outputBytes(const QString& txt, int channel)
+{
+#if X_ENABLE_X_FLOW
+    if (m_flow) {
+        m_flow->outputBytes(txt, channel);
+    }
+#endif
+}
+
+void LayoutManager::clearOutput(int channel)
+{
+#if X_ENABLE_X_FLOW
+    if (m_flow) {
+        m_flow->clearOutput(channel);
+    }
+#endif
+}

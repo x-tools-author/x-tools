@@ -18,6 +18,8 @@
 
 #include "outputdockwidgetcontenttextbroswer.h"
 
+namespace xFlow {
+
 OutputDockWidgetContext::OutputDockWidgetContext(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::OutputDockWidgetContext)
@@ -51,3 +53,5 @@ void OutputDockWidgetContext::clearOutput(int channel)
         view->clear();
     }
 }
+
+} // namespace xFlow

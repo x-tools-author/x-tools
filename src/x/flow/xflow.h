@@ -18,6 +18,7 @@ class xFlow;
 namespace xFlow {
 
 class NodesDockWidgetContent;
+class OutputDockWidgetContext;
 class NavigatorDockWidgetContent;
 class xFlow : public QWidget
 {
@@ -29,12 +30,16 @@ public:
     QJsonObject save();
     void load(const QJsonObject &obj);
 
+    Q_INVOKABLE void outputBytes(const QString &txt, int channel);
+    Q_INVOKABLE void clearOutput(int channel);
+
 protected:
     bool event(QEvent *event) override;
 
 private:
     Ui::xFlow *ui{nullptr};
     NodesDockWidgetContent *m_nodes{nullptr};
+    OutputDockWidgetContext *m_output{nullptr};
     NavigatorDockWidgetContent *m_navigator{nullptr};
     int m_leftPanelWidth{180};
     int m_bottomPanelHeight{218};

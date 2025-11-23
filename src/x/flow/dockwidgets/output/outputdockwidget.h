@@ -11,6 +11,8 @@
 #include <QDockWidget>
 #include <QTextBrowser>
 
+namespace xFlow {
+
 class OutputDockWidgetContext;
 class OutputDockWidget : public QDockWidget
 {
@@ -25,3 +27,5 @@ public:
 private:
     OutputDockWidgetContext *m_content;
 };
+
+} // namespace xFlow

@@ -129,6 +129,7 @@ MainWindow::MainWindow(QWidget* parent)
     initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
+    setObjectName("MainWindow");
 
     // Initialize layout manager
     menuBar()->addSeparator();
@@ -267,6 +268,16 @@ void MainWindow::showLiteMode()
         connerwidget->hide();
     }
     m_layoutManager->setCurrentIndex(0);
+}
+
+void MainWindow::outputBytes(const QString& txt, int channel)
+{
+    m_layoutManager->outputBytes(txt, channel);
+}
+
+void MainWindow::clearOutput(int channel)
+{
+    m_layoutManager->clearOutput(channel);
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)

@@ -17,6 +17,8 @@
 
 #include "outputdockwidgetcontent.h"
 
+namespace xFlow {
+
 OutputDockWidget::OutputDockWidget(QWidget *parent)
     : QDockWidget(parent)
 {
@@ -36,3 +38,5 @@ void OutputDockWidget::clearOutput(int channel)
 {
     m_content->clearOutput(channel);
 }
+
+} // namespace xFlow

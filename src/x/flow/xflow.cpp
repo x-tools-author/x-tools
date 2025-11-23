@@ -67,7 +67,8 @@ xFlow::xFlow(QWidget *parent)
     ui->splitterTopBottom->setChildrenCollapsible(false);
     ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
 
-    ui->tabWidget->addTab(new OutputDockWidgetContext(ui->tabWidget), tr("Output"));
+    m_output = new OutputDockWidgetContext(ui->tabWidget);
+    ui->tabWidget->addTab(m_output, tr("Output"));
     ui->tabWidget->addTab(new LogDockWidgetContent(ui->tabWidget), tr("Log"));
 
     connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
@@ -104,6 +105,16 @@ void xFlow::load(const QJsonObject &obj)
     m_bottomPanelHeight = obj.value(keys.bottomPanelHeight).toInt(218);
     ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
     ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
+}
+
+void xFlow::outputBytes(const QString &txt, int channel)
+{
+    m_output->outputBytes(txt, channel);
+}
+
+void xFlow::clearOutput(int channel)
+{
+    m_output->clearOutput(channel);
 }
 
 bool xFlow::event(QEvent *event)

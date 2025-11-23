@@ -51,6 +51,9 @@ public:
     QJsonObject save();
     void load(const QJsonObject& obj);
 
+    void outputBytes(const QString& txt, int channel);
+    void clearOutput(int channel);
+
 private:
     QStackedLayout* m_layout{nullptr};
     QButtonGroup* m_group{nullptr};

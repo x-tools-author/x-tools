@@ -15,6 +15,8 @@ namespace Ui {
 class OutputDockWidgetContext;
 }
 
+namespace xFlow {
+
 class OutputDockWidgetContext : public QWidget
 {
     Q_OBJECT
@@ -29,3 +31,5 @@ private:
     Ui::OutputDockWidgetContext *ui;
     QList<QTextBrowser *> m_outputViews;
 };
+
+} // namespace xFlow

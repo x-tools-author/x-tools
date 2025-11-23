@@ -15,6 +15,8 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 
+namespace xFlow {
+
 OutputDockWidgetContextTextBrowser::OutputDockWidgetContextTextBrowser(QWidget *parent)
     : QTextBrowser(parent)
 {
@@ -51,3 +53,5 @@ void OutputDockWidgetContextTextBrowser::contextMenuEvent(QContextMenuEvent *eve
     menu->exec(event->globalPos());
     menu->deleteLater();
 }
+
+} // namespace xFlow

@@ -32,6 +32,10 @@ public:
     void hideHistoryAction();
     void showLiteMode();
 
+    // Just for xFlow
+    Q_INVOKABLE void outputBytes(const QString& txt, int channel);
+    Q_INVOKABLE void clearOutput(int channel);
+
 protected:
     void closeEvent(QCloseEvent* event) override;
     virtual QUrl storeUrl() const;

@@ -10,6 +10,8 @@
 
 #include <QTextBrowser>
 
+namespace xFlow {
+
 class OutputDockWidgetContextTextBrowser : public QTextBrowser
 {
     Q_OBJECT
@@ -20,3 +22,5 @@ public:
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;
 };
+
+} // namespace xFlow

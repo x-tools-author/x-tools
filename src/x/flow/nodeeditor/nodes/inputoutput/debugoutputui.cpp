@@ -127,7 +127,7 @@ void DebugOutputUi::onClearButtonClicked()
 {
     QList<QWidget *> widgets = qApp->topLevelWidgets();
     for (QWidget *&widget : widgets) {
-        if (widget->objectName() == "MainWindow") {
+        if (widget->objectName() == QString("MainWindow")) {
             int channel = ui->comboBoxChannel->currentData().toInt();
             widget->metaObject()->invokeMethod(widget, "clearOutput", channel);
         }
