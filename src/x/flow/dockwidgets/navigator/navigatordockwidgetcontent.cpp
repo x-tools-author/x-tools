@@ -19,6 +19,8 @@ NavigatorDockWidgetContent::NavigatorDockWidgetContent(QScrollArea *scrollArea, 
     : m_scrollArea(scrollArea)
 {
     setMinimumHeight(168);
+    setObjectName("NavigatorDockWidgetContent");
+    setStyleSheet("#NavigatorDockWidgetContent {  border: none; }");
 
     m_scrollArea->installEventFilter(this);
     m_scrollArea->widget()->installEventFilter(this);
@@ -52,6 +54,10 @@ void NavigatorDockWidgetContent::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    QPalette palette = qApp->palette();
+    QColor backgroundColor = palette.color(QPalette::ColorRole::Base);
+    painter.fillRect(event->rect(), backgroundColor);
+
     if (m_widgetRect.isValid()) {
         QWidget *w = m_scrollArea->widget();
         QGraphicsView *view = qobject_cast<QGraphicsView *>(w);
@@ -75,7 +81,7 @@ void NavigatorDockWidgetContent::paintEvent(QPaintEvent *event)
     }
 
     if (m_viewPortRect.isValid()) {
-        painter.setPen(Qt::lightGray);
+        painter.setPen(palette.color(QPalette::ColorRole::Accent));
         painter.drawRect(m_viewPortRect);
     }
 }
