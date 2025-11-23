@@ -13,12 +13,6 @@ macro(remove_all_files_of_flow)
   add_compile_definitions(X_ENABLE_X_FLOW=0)
 endmacro()
 
-option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
-if(NOT X_ENABLE_X_FLOW)
-  remove_all_files_of_flow()
-  return()
-endif()
-
 # Not supported on Android or iOS
 if(ANDROID OR IOS)
   remove_all_files_of_flow()
@@ -27,11 +21,17 @@ endif()
 
 # Not supported on Qt versions less than 6.8.0
 if(QT_VERSION VERSION_LESS "6.8.0")
+  option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
+else()
+  option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" ON)
+endif()
+
+if(NOT X_ENABLE_X_FLOW)
   remove_all_files_of_flow()
   return()
 endif()
 
-# Just for windows now
+# Just for windows yet
 if(NOT WIN32)
   remove_all_files_of_flow()
   return()

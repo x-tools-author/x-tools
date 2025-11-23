@@ -1,6 +1,7 @@
 # cmake-format: off
 cmake_minimum_required(VERSION 3.22)
 set(CMAKE_POLICY_VERSION_MINIMUM "3.22" CACHE STRING "CMake policy version" FORCE)
+set(QT_NO_PRIVATE_MODULE_WARNING CACHE BOOL "Suppress Qt private module warnings" ON)
 # cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
