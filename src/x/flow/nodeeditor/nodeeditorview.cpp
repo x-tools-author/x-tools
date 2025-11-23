@@ -265,7 +265,7 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
 
     QMenu *menu = new QMenu(this);
 #if 1
-    menu->addAction(tr("Save as Image"), this, [=]() {
+    menu->addAction(tr("Save Image as..."), this, [=]() {
         auto tmp = m_saveImagePath.isEmpty()
                        ? QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)
                        : m_saveImagePath;
@@ -286,7 +286,7 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
         pixMap.save(fileName);
     });
 #endif
-    menu->addAction(tr("Copy to Clipboard"), this, [=]() {
+    menu->addAction(tr("Save Image to Clipboard"), this, [=]() {
         QApplication::clipboard()->setPixmap(toPixMap(item));
     });
     menu->addAction(tr("Delete"), this, [=]() {
