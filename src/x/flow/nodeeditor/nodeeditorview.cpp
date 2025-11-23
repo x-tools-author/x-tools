@@ -179,7 +179,9 @@ void NodeEditorView::deleteSelectedNodes()
 
 void NodeEditorView::clearAllNodes()
 {
-    m_scene->clearScene();
+    selectAllNodes();
+    auto *cmd = new QtNodes::DeleteCommand(m_scene);
+    m_scene->undoStack().push(cmd);
 }
 
 void NodeEditorView::selectAllNodes()
@@ -570,6 +572,7 @@ void NodeEditorView::onNodeDoubleClicked(const QtNodes::NodeId nodeId)
 
 void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
 {
+    qInfo() << "Node created:" << nodeId;
     QWidget *w = m_model->nodeData(nodeId, QtNodes::NodeRole::Widget).value<QWidget *>();
     BaseNodeUi *baseNodeUi = qobject_cast<BaseNodeUi *>(w);
     if (!baseNodeUi) {
