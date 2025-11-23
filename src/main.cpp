@@ -20,6 +20,25 @@
 #include "singleapplication.h"
 #endif
 
+#ifdef Q_OS_WIN
+#include <qt_windows.h>
+#include <QAbstractNativeEventFilter>
+// QTBUG-77974: https://blog.csdn.net/omg_orange/article/details/116779492
+class NativeEventFilter : public QAbstractNativeEventFilter
+{
+public:
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override
+    {
+        MSG *msg = (MSG *) message;
+        if (msg->message == WM_GETOBJECT) {
+            return true;
+        }
+
+        return false;
+    }
+};
+#endif
+
 int main(int argc, char *argv[])
 {
     Application::setOrganizationName("xTools");
@@ -27,6 +46,9 @@ int main(int argc, char *argv[])
     Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
+#ifdef Q_OS_WIN
+    app.installNativeEventFilter(new NativeEventFilter());
+#endif
 
 #if X_ENABLE_SINGLE_APPLICATION
     SingleApplication sApp(argc, argv);
