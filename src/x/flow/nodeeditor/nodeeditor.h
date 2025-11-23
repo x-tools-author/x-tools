@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QScrollArea>
 
 namespace xFlow {
@@ -25,6 +26,9 @@ public:
     void setRulerVisible(bool visible);
     void setRulerColor(const QColor &color);
     void setupRuler(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler);
+
+    QJsonObject save();
+    void load(const QJsonObject &parameters);
 
     void zoomIn();
     void zoomOut();

@@ -11,9 +11,18 @@
 #include <QHBoxLayout>
 
 #include "nodeeditorruler.h"
+#include "nodeeditorscene.h"
 #include "nodeeditorview.h"
 
 namespace xFlow {
+
+struct NodeEditorParameterKeys
+{
+    const QString scale{"scale"};
+    const QString model{"model"};
+    const QString hScrollBarValue{"hScrollBarValue"};
+    const QString vScrollBarValue{"vScrollBarValue"};
+};
 
 NodeEditor::NodeEditor(QWidget *parent)
     : QScrollArea(parent)
@@ -57,6 +66,39 @@ void NodeEditor::setupRuler(NodeEditorRuler *hRuler, NodeEditorRuler *vRuler)
 {
     m_hRuler = hRuler;
     m_vRuler = vRuler;
+}
+
+QJsonObject NodeEditor::save()
+{
+    QJsonObject parameters;
+    NodeEditorParameterKeys keys;
+
+    parameters.insert(keys.scale, m_scale);
+    parameters.insert(keys.hScrollBarValue, horizontalScrollBar()->value());
+    parameters.insert(keys.vScrollBarValue, verticalScrollBar()->value());
+    parameters.insert(keys.model, m_view->model()->save());
+
+    return parameters;
+}
+
+void NodeEditor::load(const QJsonObject &parameters)
+{
+    NodeEditorParameterKeys keys;
+    m_scale = parameters.value(keys.scale).toDouble(1.0);
+    setScale(m_scale);
+
+    int hValue = parameters.value(keys.hScrollBarValue).toInt(0);
+    int vValue = parameters.value(keys.vScrollBarValue).toInt(0);
+    horizontalScrollBar()->setValue(hValue);
+    verticalScrollBar()->setValue(vValue);
+
+    QJsonObject modelObject = parameters.value(keys.model).toObject();
+    m_view->model()->load(modelObject);
+    auto model = m_view->model();
+    for (auto nodeId : model->allNodeIds()) {
+        auto scene = m_view->cookedScene();
+        scene->nodeGeometry().recomputeSize(nodeId);
+    }
 }
 
 void NodeEditor::zoomIn()

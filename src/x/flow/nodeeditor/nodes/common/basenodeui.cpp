@@ -52,7 +52,7 @@ QJsonObject BaseNodeUi::save() const
 {
     BaseNode::BaseNodeParametersKeys keys;
     QJsonObject obj;
-    obj[keys.expanded] = ui->toolButtonExpand->isChecked();
+    obj[keys.expanded] = m_innerWidget ? m_innerWidget->isVisible() : true;
     obj[keys.fastForward] = ui->toolButtonFast->isChecked();
     obj[keys.paused] = ui->toolButtonPause->isChecked();
 
@@ -73,7 +73,7 @@ void BaseNodeUi::load(const QJsonObject &parameters)
     ui->toolButtonPause->setChecked(paused);
 
     if (m_innerWidget) {
-        m_innerWidget->setVisible(ui->toolButtonExpand->isChecked());
+        m_innerWidget->setVisible(expanded);
         adjustSize();
         emit m_node->embeddedWidgetSizeUpdated();
     }

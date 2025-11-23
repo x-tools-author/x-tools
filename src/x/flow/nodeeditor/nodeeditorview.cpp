@@ -220,6 +220,11 @@ QtNodes::DataFlowGraphModel *NodeEditorView::model()
     return m_model;
 }
 
+NodeEditorScene *NodeEditorView::cookedScene()
+{
+    return m_scene;
+}
+
 void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
 {
     if (!itemAt(event->pos())) {

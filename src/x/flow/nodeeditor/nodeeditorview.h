@@ -60,6 +60,7 @@ public:
 
     static QRectF defaultSceneRect();
     QtNodes::DataFlowGraphModel *model();
+    NodeEditorScene *cookedScene();
 
 signals:
     void sceneLoaded();
