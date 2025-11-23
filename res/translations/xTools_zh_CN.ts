@@ -1173,7 +1173,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
         <source>Big Endian</source>
-        <translation>大尾数法</translation>
+        <translation>大端字节序</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
@@ -1183,7 +1183,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
         <source>Arithmetic</source>
-        <translation>算术</translation>
+        <translation>CRC算法</translation>
     </message>
 </context>
 <context>
@@ -1891,12 +1891,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
         <source>Split flag</source>
-        <translation>分裂旗</translation>
+        <translation>分割标志</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
         <source>Length</source>
-        <translation>长度</translation>
+        <translation>固定长度</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
