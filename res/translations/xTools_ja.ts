@@ -2,6 +2,57 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ja">
 <context>
+    <name>AesCipher</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipher.cpp" line="113"/>
+        <source>AES Cipher</source>
+        <translation>AES暗号</translation>
+    </message>
+</context>
+<context>
+    <name>AesCipherUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="33"/>
+        <source>Padding</source>
+        <translation>パディング</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
+        <source>IV</source>
+        <translation>Ⅳ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
+        <source>Mode</source>
+        <translation>モード</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="57"/>
+        <source>Level</source>
+        <translation>レベル</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="67"/>
+        <source>Key</source>
+        <translation>鍵</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="77"/>
+        <source>Way</source>
+        <translation>方法</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="24"/>
+        <source>Encrypt</source>
+        <translation>暗号化する</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="25"/>
+        <source>Decrypt</source>
+        <translation>復号化</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="251"/>
@@ -431,6 +482,29 @@
     </message>
 </context>
 <context>
+    <name>BaseNodeUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="35"/>
+        <source>Show/hide settings panel...</source>
+        <translation>設定パネルの表示/非表示...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="36"/>
+        <source>Output the data immediately...</source>
+        <translation>すぐにデータを出力します...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
+        <source>Ignore the input data and no data output...</source>
+        <translation>入力データを無視し、データが出力されません...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="38"/>
+        <source>No message...</source>
+        <translation>メッセージがありません...</translation>
+    </message>
+</context>
+<context>
     <name>BleCentral</name>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
@@ -857,6 +931,70 @@
     </message>
 </context>
 <context>
+    <name>CommandLine</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandline.cpp" line="35"/>
+        <source>Command Line</source>
+        <translation>コマンドライン</translation>
+    </message>
+</context>
+<context>
+    <name>CommandLineUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="14"/>
+        <source>Form</source>
+        <translation>形状</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="42"/>
+        <source>Execute</source>
+        <translation>実行する</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="49"/>
+        <source>Browse</source>
+        <translation>ブラウズ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="62"/>
+        <source>Program</source>
+        <translation>プログラム</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="72"/>
+        <source>Arguments</source>
+        <translation>引数</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
+        <source>Input data is hex string</source>
+        <translation>入力データは 16 進文字列です</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="88"/>
+        <source>Input data is utf8 string</source>
+        <translation>入力データはutf8文字列です</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="69"/>
+        <source>Open File</source>
+        <translation>ファイルを開く</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="71"/>
+        <source>Executable Files (*.exe)</source>
+        <translation>実行可能ファイル (*.exe)</translation>
+    </message>
+</context>
+<context>
+    <name>Communication</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/communication/communication.cpp" line="141"/>
+        <source>Device is working normally.</source>
+        <translation>デバイスは正常に動作しています。</translation>
+    </message>
+</context>
+<context>
     <name>CrcAssistant</name>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
@@ -973,6 +1111,149 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>CrcCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculator.cpp" line="23"/>
+        <source>CRC Calculator</source>
+        <translation>CRC計算機</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <source>Start byte index is start from left</source>
+        <translation>開始バイトインデックスは左から始まります</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <source>End byte index</source>
+        <translation>終了バイトインデックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <source>Start byte index</source>
+        <translation>開始バイトインデックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <source>Big Endian</source>
+        <translation>ビッグエンディアン</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <source>End byte index is start from right</source>
+        <translation>終了バイトインデックスは右から始まります</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <source>Arithmetic</source>
+        <translation>算術</translation>
+    </message>
+</context>
+<context>
+    <name>CrcChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="23"/>
+        <source>CRC Checker</source>
+        <translation>CRCチェッカー</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="82"/>
+        <source>CRC check failed, expected: %1, got: %2</source>
+        <translation>CRC チェックに失敗しました。期待値: %1、取得結果: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="92"/>
+        <source>CRC checking passed.</source>
+        <translation>CRC チェックに合格しました。</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <source>End byte index</source>
+        <translation>終了バイトインデックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <source>Start byte index</source>
+        <translation>開始バイトインデックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <source>Arithmetic</source>
+        <translation>算術</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="50"/>
+        <source>Big Endian</source>
+        <translation>ビッグエンディアン</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="57"/>
+        <source>Start byte index is start from left</source>
+        <translation>開始バイトインデックスは左から始まります</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="64"/>
+        <source>End byte index is start from right</source>
+        <translation>終了バイトインデックスは右から始まります</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistence</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
+        <source>Data Persistence</source>
+        <translation>データの永続性</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistenceUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="38"/>
+        <source>File path</source>
+        <translation>ファイルパス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="51"/>
+        <source>Text format</source>
+        <translation>テキスト形式</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="61"/>
+        <source>Browser</source>
+        <translation>ブラウザ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="77"/>
+        <source>Save date</source>
+        <translation>保存日</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
+        <source>Svae time</source>
+        <translation>心配しないで</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
+        <source>Save ms</source>
+        <translation>ミリ秒を節約</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="98"/>
+        <source>Binary</source>
+        <translation>バイナリ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.cpp" line="35"/>
+        <source>txt(*.txt);;bin(*.bin);;All files(*.*)</source>
+        <translation>txt(*.txt);;bin(*.bin);;すべてのファイル(*.*)</translation>
+    </message>
+</context>
+<context>
     <name>DataRecordsModel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="155"/>
@@ -1052,6 +1333,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>すべてのレコードをクリアしてもよろしいですか？</translation>
+    </message>
+</context>
+<context>
+    <name>DataView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataview.cpp" line="21"/>
+        <source>Data View</source>
+        <translation>データビュー</translation>
+    </message>
+</context>
+<context>
+    <name>DataViewUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="41"/>
+        <source>Text format</source>
+        <translation>テキスト形式</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="51"/>
+        <source>Clear</source>
+        <translation>クリア</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Time</source>
+        <translation>時間</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Data</source>
+        <translation>データ</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutput.cpp" line="20"/>
+        <source>Debug Output</source>
+        <translation>デバッグ出力</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="20"/>
+        <source>Output flag</source>
+        <translation>出力フラグ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="27"/>
+        <source>Output format</source>
+        <translation>出力フォーマット</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="34"/>
+        <source>Output channel</source>
+        <translation>出力チャンネル</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
+        <source>Show time</source>
+        <translation>ショータイム</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
+        <source>Clear</source>
+        <translation>クリア</translation>
     </message>
 </context>
 <context>
@@ -1139,77 +1487,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="92"/>
+        <location filename="../../src/device/devicemanager.cpp" line="93"/>
         <source>Serial Port</source>
         <translation>シリアルポート</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="94"/>
+        <location filename="../../src/device/devicemanager.cpp" line="95"/>
         <source>HID Device</source>
         <translation>HIDデバイス</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="96"/>
+        <location filename="../../src/device/devicemanager.cpp" line="97"/>
         <source>BLE Central</source>
         <translation>BLEセントラル</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="98"/>
+        <location filename="../../src/device/devicemanager.cpp" line="99"/>
         <source>BLE Peripheral</source>
         <translation>BLE周辺機器</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="100"/>
+        <location filename="../../src/device/devicemanager.cpp" line="101"/>
         <source>UDP Client</source>
         <translation>UDPクライアント</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="102"/>
+        <location filename="../../src/device/devicemanager.cpp" line="103"/>
         <source>UDP Server</source>
         <translation>UDPサーバー</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="104"/>
+        <location filename="../../src/device/devicemanager.cpp" line="105"/>
         <source>UDP Multicast</source>
         <translation>UDPマルチキャスト</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="106"/>
+        <location filename="../../src/device/devicemanager.cpp" line="107"/>
         <source>UDP Broadcast</source>
         <translation>UDPブロードキャスト</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="108"/>
+        <location filename="../../src/device/devicemanager.cpp" line="109"/>
         <source>TCP Client</source>
         <translation>TCPクライアント</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="110"/>
+        <location filename="../../src/device/devicemanager.cpp" line="111"/>
         <source>TCP Server</source>
         <translation>TCPサーバー</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="112"/>
+        <location filename="../../src/device/devicemanager.cpp" line="113"/>
         <source>WebSocket Client</source>
         <translation>WebSocketクライアント</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="114"/>
+        <location filename="../../src/device/devicemanager.cpp" line="115"/>
         <source>WebSocket Server</source>
         <translation>WebSocketサーバー</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="116"/>
+        <location filename="../../src/device/devicemanager.cpp" line="117"/>
         <source>Local Socket</source>
         <translation>ローカルソケット</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="118"/>
+        <location filename="../../src/device/devicemanager.cpp" line="119"/>
         <source>Local Server</source>
         <translation>ローカルサーバー</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="120"/>
+        <location filename="../../src/device/devicemanager.cpp" line="121"/>
         <source>Charts Test</source>
         <translation>チャートテスト</translation>
     </message>
@@ -1447,6 +1795,86 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Filter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filter.cpp" line="33"/>
+        <source>Filter</source>
+        <translation>フィルター</translation>
+    </message>
+</context>
+<context>
+    <name>FilterUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="20"/>
+        <source>Reference</source>
+        <translation>参照</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="27"/>
+        <source>Option</source>
+        <translation>オプション</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="40"/>
+        <source>Escape</source>
+        <translation>逃げる</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="47"/>
+        <source>Format</source>
+        <translation>形式</translation>
+    </message>
+</context>
+<context>
+    <name>Flowmeter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/instruments/flowmeter.cpp" line="22"/>
+        <source>Flowmeter</source>
+        <translation>流量計</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzer</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzer.cpp" line="73"/>
+        <source>Frame Analyzer</source>
+        <translation>フレームアナライザー</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="32"/>
+        <source>Fixed frame length</source>
+        <translation>固定フレーム長</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="39"/>
+        <source>(Hex format)</source>
+        <translation>(16 進形式)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
+        <source>Split flag</source>
+        <translation>スプリットフラグ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
+        <source>Length</source>
+        <translation>長さ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
+        <source>Cache Bytes</source>
+        <translation>キャッシュバイト数</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="100"/>
+        <source>Clear Cache</source>
+        <translation>キャッシュのクリア</translation>
+    </message>
+</context>
+<context>
     <name>HashCalculator</name>
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
@@ -1536,6 +1964,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Hub</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/hub/hub.cpp" line="22"/>
+        <source>%1In%2Out</source>
+        <translation>%1イン%2アウト</translation>
+    </message>
+</context>
+<context>
     <name>InputPanelsManager</name>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="19"/>
@@ -1619,6 +2055,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
         <translation>データチェック</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
+        <source>Java Script</source>
+        <translation>JavaScript</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptThread</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
+        <source>The script is invalid.</source>
+        <translation>スクリプトが無効です。</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="14"/>
+        <source>Form</source>
+        <translation>形状</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="32"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(bytes) {&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1750,6 +2224,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="14"/>
+        <source>Log</source>
+        <translation>ログ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="35"/>
+        <source>Log level</source>
+        <translation>ログレベル</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="42"/>
+        <source>Clear</source>
+        <translation>クリア</translation>
+    </message>
+</context>
+<context>
     <name>LuaPanel</name>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
@@ -1803,18 +2295,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LuaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascript.cpp" line="37"/>
+        <source>Lua Script</source>
+        <translation>スクリプトを取る</translation>
+    </message>
+</context>
+<context>
+    <name>LuaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascriptui.ui" line="38"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &amp;quot;input string is: &amp;quot; .. input&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>General</source>
         <translation>一般的な</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="331"/>
         <source>&amp;File</source>
         <translation>&amp;ファイル</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New Window</source>
         <translation>新しいウィンドウ</translation>
     </message>
@@ -2043,6 +2560,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="779"/>
         <source>All rights reserved.</source>
         <translation>全著作権所有。</translation>
+    </message>
+</context>
+<context>
+    <name>Masker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
+        <source>Masker</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MaskerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>形状</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="38"/>
+        <source>Mask</source>
+        <translation>マスク</translation>
     </message>
 </context>
 <context>
@@ -2464,22 +3002,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
         <source>Such as: Siemens S7-300</source>
-        <translation type="unfinished">例: シーメンス S7-300</translation>
+        <translation>例: シーメンス S7-300</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
         <source>Data bits</source>
-        <translation type="unfinished">データビット</translation>
+        <translation>データビット</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
         <source>Refresh</source>
-        <translation type="unfinished">リフレッシュ</translation>
+        <translation>リフレッシュ</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
         <source>Names</source>
-        <translation type="unfinished">名前</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
@@ -2502,7 +3040,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation type="unfinished"></translation>
+        <translation>デバイス/グループ/レジスタの削除</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
@@ -2512,12 +3050,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
         <source>Open all devices</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのデバイスを開く</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
         <source>Expand all items</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての項目を展開する</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
@@ -3295,23 +3833,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="362"/>
         <location filename="../../src/common/xtools.cpp" line="424"/>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/common/xtools.cpp" line="755"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="756"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>なし</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="465"/>
-        <location filename="../../src/common/xtools.cpp" line="904"/>
-        <location filename="../../src/common/xtools.cpp" line="906"/>
+        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="907"/>
         <source>Text</source>
         <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="467"/>
-        <location filename="../../src/common/xtools.cpp" line="900"/>
-        <location filename="../../src/common/xtools.cpp" line="902"/>
+        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="903"/>
         <source>Binary</source>
         <translation>バイナリ</translation>
     </message>
@@ -3341,66 +3879,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>入力が参照を含まない</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>偶数</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>奇数</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>スペース</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="741"/>
+        <location filename="../../src/common/xtools.cpp" line="742"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>マーク</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="758"/>
+        <location filename="../../src/common/xtools.cpp" line="759"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Hardware</source>
         <translation>ハードウェア</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="761"/>
+        <location filename="../../src/common/xtools.cpp" line="762"/>
         <source>Software</source>
         <translation>ソフトウェア</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="865"/>
+        <location filename="../../src/common/xtools.cpp" line="866"/>
         <source>Disabled</source>
         <translation>無効</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="867"/>
+        <location filename="../../src/common/xtools.cpp" line="868"/>
         <source>Bidirectional</source>
         <translation>双方向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="869"/>
+        <location filename="../../src/common/xtools.cpp" line="870"/>
         <source>Unidirectional</source>
         <translation>単方向</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="39"/>
+        <location filename="../../src/main.cpp" line="61"/>
         <source>Application is booting...</source>
         <translation>アプリケーションを起動中...</translation>
     </message>
@@ -3584,6 +4122,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>&amp;Languages</source>
         <translation type="obsolete">&amp;言語</translation>
     </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
+        <source>Communication</source>
+        <translation>コミュニケーション</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="115"/>
+        <source>Input/Output</source>
+        <translation>入力/出力</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="126"/>
+        <source>Data Process</source>
+        <translation>データ処理</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="141"/>
+        <source>Instruments</source>
+        <translation>楽器</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="149"/>
+        <source>Scripts</source>
+        <translation>スクリプト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="159"/>
+        <source>Hub</source>
+        <translation>ハブ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
+        <source>Plugins</source>
+        <translation>プラグイン</translation>
+    </message>
 </context>
 <context>
     <name>QRCodeAssistant</name>
@@ -3616,6 +4189,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
         <translation>PNG画像（*.png）；；JPG画像（*.jpg）</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGenerator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgenerator.cpp" line="22"/>
+        <source>Random Generator</source>
+        <translation>ランダムジェネレータ</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGeneratorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="38"/>
+        <source>Output format</source>
+        <translation>出力フォーマット</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="51"/>
+        <source>Data type</source>
+        <translation>データ型</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="67"/>
+        <source>Auto(ms)</source>
+        <translation>自動(ミリ秒)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="80"/>
+        <source>Generate</source>
+        <translation>生成する</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="87"/>
+        <source>Big endian</source>
+        <translation>ビッグエンディアン</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
+        <source>Binary</source>
+        <translation>バイナリ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
+        <source>Text</source>
+        <translation>文章</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="33"/>
+        <source>Disable</source>
+        <translation>無効にする</translation>
     </message>
 </context>
 <context>
@@ -4115,6 +4739,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>SumCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculator.cpp" line="20"/>
+        <source>Sum Calculator</source>
+        <translation>合計計算機</translation>
+    </message>
+</context>
+<context>
+    <name>SumCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="14"/>
+        <source>Form</source>
+        <translation>形状</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="38"/>
+        <source>Result bytes</source>
+        <translation>結果バイト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>ビッグエンディアン</translation>
+    </message>
+</context>
+<context>
+    <name>SumChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumchecker.cpp" line="20"/>
+        <source>Sum Checker</source>
+        <translation>サムチェッカー</translation>
+    </message>
+</context>
+<context>
+    <name>SumCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>形状</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="41"/>
+        <source>Result bytes</source>
+        <translation>結果バイト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>ビッグエンディアン</translation>
+    </message>
+</context>
+<context>
     <name>SystemTrayIcon</name>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
@@ -4141,7 +4817,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">輸出</translation>
+        <translation>輸出</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -4150,7 +4826,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">消去</translation>
+        <translation>消去</translation>
     </message>
     <message>
         <source>Up</source>
@@ -4158,80 +4834,80 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">追加</translation>
+        <translation>追加</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="174"/>
+        <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>クリア</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">輸入</translation>
+        <translation>輸入</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">下</translation>
-    </message>
-    <message>
-        <location filename="../../src/page/common/tableview.cpp" line="41"/>
-        <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
+        <source>Move Up</source>
+        <translation>上に移動</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="43"/>
         <source>Move Down</source>
         <translation>下に移動</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="43"/>
+        <location filename="../../src/page/common/tableview.cpp" line="44"/>
         <source>Clear All Items</source>
         <translation>すべての項目をクリア</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="44"/>
-        <source>Import Items from JSON File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="45"/>
-        <source>Export Items to JSON File</source>
-        <translation type="unfinished"></translation>
+        <source>Import Items from JSON File</source>
+        <translation>JSONファイルからアイテムをインポート</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="46"/>
-        <source>Delete Selected Item</source>
-        <translation type="unfinished"></translation>
+        <source>Export Items to JSON File</source>
+        <translation>アイテムを JSON ファイルにエクスポート</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="47"/>
-        <source>Add New Item</source>
-        <translation type="unfinished"></translation>
+        <source>Delete Selected Item</source>
+        <translation>選択した項目を削除</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="48"/>
+        <source>Add New Item</source>
+        <translation>新しいアイテムを追加</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Are you sure to clear all items?</source>
         <translation>すべてのアイテムをクリアしてもよろしいですか？</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>No Item be Selected</source>
         <translation>アイテムが選択されていません</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>Please select a item first!</source>
         <translation>最初にアイテムを選択してください！</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="200"/>
-        <location filename="../../src/page/common/tableview.cpp" line="228"/>
+        <location filename="../../src/page/common/tableview.cpp" line="201"/>
+        <location filename="../../src/page/common/tableview.cpp" line="229"/>
         <source>Import data</source>
         <translation>データをインポート</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="202"/>
-        <location filename="../../src/page/common/tableview.cpp" line="230"/>
+        <location filename="../../src/page/common/tableview.cpp" line="203"/>
+        <location filename="../../src/page/common/tableview.cpp" line="231"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON（*.json）；；すべて（*）</translation>
     </message>
@@ -4433,14 +5109,321 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>UserInput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinput.cpp" line="25"/>
+        <source>User Input</source>
+        <translation>ユーザー入力</translation>
+    </message>
+</context>
+<context>
+    <name>UserInputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="26"/>
+        <source>Format</source>
+        <translation>形式</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="42"/>
+        <source>Prefix</source>
+        <translation>プレフィックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
+        <source>Escape</source>
+        <translation>逃げる</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
+        <source>Suffix</source>
+        <translation>サフィックス</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="90"/>
+        <source>Cycle(ms)</source>
+        <translation>周期(ミリ秒)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="100"/>
+        <source>Send</source>
+        <translation>送信</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
+        <source>Please &quot;Enter&quot; to send...</source>
+        <translation>お願いします</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
+        <source>Disable</source>
+        <translation>無効にする</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <source>Interfce Name</source>
+        <translation>インターフェース名</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <source>CAN Plugin</source>
+        <translation>CANプラグイン</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <source>Bitrate</source>
+        <translation>ビットレート</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <source>Bitrate switch</source>
+        <translation>ビットレートスイッチ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <source>Extended format</source>
+        <translation>拡張フォーマット</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <source>Data bitrate</source>
+        <translation>データビットレート</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <source>Flexible data rate</source>
+        <translation>柔軟なデータレート</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <source>Error filter</source>
+        <translation>エラーフィルター</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <source>Loopback</source>
+        <translation>ループバック</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
+        <source>Custom configuration</source>
+        <translation>カスタム構成</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <source>Receive own</source>
+        <translation>自分のものを受け取る</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidget.cpp" line="18"/>
+        <source>Log</source>
+        <translation>ログ</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <source>Debug</source>
+        <translation>デバッグ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <source>Information</source>
+        <translation>情報</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <source>Critical</source>
+        <translation>致命的</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <source>Fatal</source>
+        <translation>致命的</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContentModel</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
+        <source>The is a debug message.</source>
+        <translation>はデバッグ メッセージです。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
+        <source>The is a information message.</source>
+        <translation>は情報メッセージです。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
+        <source>The is a warning message.</source>
+        <translation>は警告メッセージです。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
+        <source>The is a critical message.</source>
+        <translation>は重要なメッセージです。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
+        <source>The is a fatal message.</source>
+        <translation>これは致命的なメッセージです。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
+        <source>Type</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="141"/>
+        <source>Time</source>
+        <translation>時間</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="143"/>
+        <source>Message</source>
+        <translation>メッセージ</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NavigatorDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/navigator/navigatordockwidget.cpp" line="23"/>
+        <source>Navigator</source>
+        <translation>ナビゲーター</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodeEditorView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <source>Delete connection</source>
+        <translation>接続の削除</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <source>Save Image as...</source>
+        <translation>画像に名前を付けて保存...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <source>Save Image</source>
+        <translation>画像の保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <source>Images (*.png)</source>
+        <translation>画像 (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <source>Save Image to Clipboard</source>
+        <translation>画像をクリップボードに保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <source>Delete</source>
+        <translation>消去</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidget.cpp" line="27"/>
+        <source>Nodes</source>
+        <translation>ノード</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidgetcontent.cpp" line="34"/>
+        <source>Nodes</source>
+        <translation>ノード</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidget.cpp" line="25"/>
+        <source>Output</source>
+        <translation>出力</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidgetContextTextBrowser</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="34"/>
+        <source>Clear</source>
+        <translation>クリア</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="35"/>
+        <source>Save Current</source>
+        <translation>現在の保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="39"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="41"/>
+        <source>Text (*.txt)</source>
+        <translation>テキスト (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Failed to save file!</source>
+        <translation>ファイルの保存に失敗しました!</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::xFlow</name>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <source>Navigator Window</source>
+        <translation>ナビゲータウィンドウ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <source>Nodes List</source>
+        <translation>ノードリスト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <source>Output</source>
+        <translation>出力</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <source>Log</source>
+        <translation>ログ</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
         <translation>Modbusツールバー</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>アクション例</translation>
     </message>
@@ -4454,7 +5437,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">新しい RTU デバイス</translation>
+        <translation>新しい RTU デバイス</translation>
     </message>
     <message>
         <source>New TCP Device</source>
@@ -4802,6 +5785,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>レジスタテーブルは空ではありません。</translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::xModbus</name>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
+        <source>Modbus Tool Bar</source>
+        <translation>Modbusツールバー</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
+        <source>Example Action</source>
+        <translation>アクション例</translation>
     </message>
 </context>
 </TS>

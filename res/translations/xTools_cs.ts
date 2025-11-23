@@ -2,6 +2,57 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="cs">
 <context>
+    <name>AesCipher</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipher.cpp" line="113"/>
+        <source>AES Cipher</source>
+        <translation>AES šifra</translation>
+    </message>
+</context>
+<context>
+    <name>AesCipherUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="33"/>
+        <source>Padding</source>
+        <translation>Vycpávka</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
+        <source>IV</source>
+        <translation>IV</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
+        <source>Mode</source>
+        <translation>Režim</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="57"/>
+        <source>Level</source>
+        <translation>Úroveň</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="67"/>
+        <source>Key</source>
+        <translation>Klíč</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="77"/>
+        <source>Way</source>
+        <translation>Cesta</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="24"/>
+        <source>Encrypt</source>
+        <translation>Šifrovat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="25"/>
+        <source>Decrypt</source>
+        <translation>Dešifrovat</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="251"/>
@@ -431,6 +482,29 @@
     </message>
 </context>
 <context>
+    <name>BaseNodeUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="35"/>
+        <source>Show/hide settings panel...</source>
+        <translation>Zobrazit/skrýt panel nastavení...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="36"/>
+        <source>Output the data immediately...</source>
+        <translation>Okamžitý výstup dat...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
+        <source>Ignore the input data and no data output...</source>
+        <translation>Ignorovat vstupní data a žádný výstup dat...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="38"/>
+        <source>No message...</source>
+        <translation>Žádná zpráva...</translation>
+    </message>
+</context>
+<context>
     <name>BleCentral</name>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
@@ -857,6 +931,70 @@
     </message>
 </context>
 <context>
+    <name>CommandLine</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandline.cpp" line="35"/>
+        <source>Command Line</source>
+        <translation>Příkazový řádek</translation>
+    </message>
+</context>
+<context>
+    <name>CommandLineUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="42"/>
+        <source>Execute</source>
+        <translation>Vykonat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="49"/>
+        <source>Browse</source>
+        <translation>Prohlížet</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="62"/>
+        <source>Program</source>
+        <translation>Naprogramovat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="72"/>
+        <source>Arguments</source>
+        <translation>Argumenty</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
+        <source>Input data is hex string</source>
+        <translation>Vstupní data jsou hexadecimální řetězec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="88"/>
+        <source>Input data is utf8 string</source>
+        <translation>Vstupní data jsou řetězec utf8</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="69"/>
+        <source>Open File</source>
+        <translation>Otevřete soubor</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="71"/>
+        <source>Executable Files (*.exe)</source>
+        <translation>Spustitelné soubory (*.exe)</translation>
+    </message>
+</context>
+<context>
+    <name>Communication</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/communication/communication.cpp" line="141"/>
+        <source>Device is working normally.</source>
+        <translation>Zařízení funguje normálně.</translation>
+    </message>
+</context>
+<context>
     <name>CrcAssistant</name>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
@@ -973,6 +1111,149 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>CrcCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculator.cpp" line="23"/>
+        <source>CRC Calculator</source>
+        <translation>Kalkulačka CRC</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <source>Start byte index is start from left</source>
+        <translation>Index počátečního bajtu začíná zleva</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <source>End byte index</source>
+        <translation>Index koncového bajtu</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <source>Start byte index</source>
+        <translation>Počáteční bajtový index</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <source>Big Endian</source>
+        <translation>Velký Endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <source>End byte index is start from right</source>
+        <translation>Index koncového bajtu začíná zprava</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <source>Arithmetic</source>
+        <translation>Aritmetický</translation>
+    </message>
+</context>
+<context>
+    <name>CrcChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="23"/>
+        <source>CRC Checker</source>
+        <translation>Kontrola CRC</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="82"/>
+        <source>CRC check failed, expected: %1, got: %2</source>
+        <translation>Kontrola CRC se nezdařila, očekáváno: %1, nalezeno: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="92"/>
+        <source>CRC checking passed.</source>
+        <translation>Kontrola CRC prošla.</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <source>End byte index</source>
+        <translation>Index koncového bajtu</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <source>Start byte index</source>
+        <translation>Počáteční bajtový index</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <source>Arithmetic</source>
+        <translation>Aritmetický</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="50"/>
+        <source>Big Endian</source>
+        <translation>Velký Endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="57"/>
+        <source>Start byte index is start from left</source>
+        <translation>Index počátečního bajtu začíná zleva</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="64"/>
+        <source>End byte index is start from right</source>
+        <translation>Index koncového bajtu začíná zprava</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistence</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
+        <source>Data Persistence</source>
+        <translation>Stálost dat</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistenceUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="38"/>
+        <source>File path</source>
+        <translation>Cesta k souboru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="51"/>
+        <source>Text format</source>
+        <translation>Textový formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="61"/>
+        <source>Browser</source>
+        <translation>Prohlížeč</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="77"/>
+        <source>Save date</source>
+        <translation>Uložit datum</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
+        <source>Svae time</source>
+        <translation>Nebojte se</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
+        <source>Save ms</source>
+        <translation>Uložit ms</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="98"/>
+        <source>Binary</source>
+        <translation>Binární</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.cpp" line="35"/>
+        <source>txt(*.txt);;bin(*.bin);;All files(*.*)</source>
+        <translation>txt(*.txt);;bin(*.bin);;Všechny soubory(*.*)</translation>
+    </message>
+</context>
+<context>
     <name>DataRecordsModel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="155"/>
@@ -1052,6 +1333,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
         <translation>Opravdu chcete vymazat všechny záznamy?</translation>
+    </message>
+</context>
+<context>
+    <name>DataView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataview.cpp" line="21"/>
+        <source>Data View</source>
+        <translation>Zobrazení dat</translation>
+    </message>
+</context>
+<context>
+    <name>DataViewUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="41"/>
+        <source>Text format</source>
+        <translation>Textový formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="51"/>
+        <source>Clear</source>
+        <translation>Jasný</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Time</source>
+        <translation>Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Data</source>
+        <translation>Data</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutput.cpp" line="20"/>
+        <source>Debug Output</source>
+        <translation>Výstup ladění</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="20"/>
+        <source>Output flag</source>
+        <translation>Výstupní příznak</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="27"/>
+        <source>Output format</source>
+        <translation>Výstupní formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="34"/>
+        <source>Output channel</source>
+        <translation>Výstupní kanál</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
+        <source>Show time</source>
+        <translation>Zobrazit čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
+        <source>Clear</source>
+        <translation>Jasný</translation>
     </message>
 </context>
 <context>
@@ -1139,77 +1487,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="92"/>
+        <location filename="../../src/device/devicemanager.cpp" line="93"/>
         <source>Serial Port</source>
         <translation>Řadový port</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="94"/>
+        <location filename="../../src/device/devicemanager.cpp" line="95"/>
         <source>HID Device</source>
         <translation>Zařízení HID</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="96"/>
+        <location filename="../../src/device/devicemanager.cpp" line="97"/>
         <source>BLE Central</source>
         <translation>BLE Centrální</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="98"/>
+        <location filename="../../src/device/devicemanager.cpp" line="99"/>
         <source>BLE Peripheral</source>
         <translation>BLE Periferní</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="100"/>
+        <location filename="../../src/device/devicemanager.cpp" line="101"/>
         <source>UDP Client</source>
         <translation>UDP Klient</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="102"/>
+        <location filename="../../src/device/devicemanager.cpp" line="103"/>
         <source>UDP Server</source>
         <translation>UDP Server</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="104"/>
+        <location filename="../../src/device/devicemanager.cpp" line="105"/>
         <source>UDP Multicast</source>
         <translation>UDP Multicast</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="106"/>
+        <location filename="../../src/device/devicemanager.cpp" line="107"/>
         <source>UDP Broadcast</source>
         <translation>UDP Broadcast</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="108"/>
+        <location filename="../../src/device/devicemanager.cpp" line="109"/>
         <source>TCP Client</source>
         <translation>TCP Klient</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="110"/>
+        <location filename="../../src/device/devicemanager.cpp" line="111"/>
         <source>TCP Server</source>
         <translation>TCP Server</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="112"/>
+        <location filename="../../src/device/devicemanager.cpp" line="113"/>
         <source>WebSocket Client</source>
         <translation>WebSocket Klient</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="114"/>
+        <location filename="../../src/device/devicemanager.cpp" line="115"/>
         <source>WebSocket Server</source>
         <translation>WebSocket Server</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="116"/>
+        <location filename="../../src/device/devicemanager.cpp" line="117"/>
         <source>Local Socket</source>
         <translation>Lokální zásuvka</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="118"/>
+        <location filename="../../src/device/devicemanager.cpp" line="119"/>
         <source>Local Server</source>
         <translation>Lokální server</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="120"/>
+        <location filename="../../src/device/devicemanager.cpp" line="121"/>
         <source>Charts Test</source>
         <translation>Test grafů</translation>
     </message>
@@ -1447,6 +1795,86 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Filter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filter.cpp" line="33"/>
+        <source>Filter</source>
+        <translation>Filtr</translation>
+    </message>
+</context>
+<context>
+    <name>FilterUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="20"/>
+        <source>Reference</source>
+        <translation>Odkaz</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="27"/>
+        <source>Option</source>
+        <translation>Volba</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="40"/>
+        <source>Escape</source>
+        <translation>Uniknout</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="47"/>
+        <source>Format</source>
+        <translation>Formát</translation>
+    </message>
+</context>
+<context>
+    <name>Flowmeter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/instruments/flowmeter.cpp" line="22"/>
+        <source>Flowmeter</source>
+        <translation>Průtokoměr</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzer</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzer.cpp" line="73"/>
+        <source>Frame Analyzer</source>
+        <translation>Rámový analyzátor</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="32"/>
+        <source>Fixed frame length</source>
+        <translation>Pevná délka rámu</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="39"/>
+        <source>(Hex format)</source>
+        <translation>(hexadecimální formát)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
+        <source>Split flag</source>
+        <translation>Rozdělit vlajku</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
+        <source>Length</source>
+        <translation>Délka</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
+        <source>Cache Bytes</source>
+        <translation>Bajty mezipaměti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="100"/>
+        <source>Clear Cache</source>
+        <translation>Vymazat mezipaměť</translation>
+    </message>
+</context>
+<context>
     <name>HashCalculator</name>
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
@@ -1536,6 +1964,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Hub</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/hub/hub.cpp" line="22"/>
+        <source>%1In%2Out</source>
+        <translation>%1In%2Out</translation>
+    </message>
+</context>
+<context>
     <name>InputPanelsManager</name>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="19"/>
@@ -1619,6 +2055,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
         <translation>Kontrola dat</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
+        <source>Java Script</source>
+        <translation>Java Script</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptThread</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
+        <source>The script is invalid.</source>
+        <translation>Skript je neplatný.</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="32"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(bytes) {&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1750,6 +2224,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="14"/>
+        <source>Log</source>
+        <translation>Log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="35"/>
+        <source>Log level</source>
+        <translation>Úroveň protokolu</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="42"/>
+        <source>Clear</source>
+        <translation>Jasný</translation>
+    </message>
+</context>
+<context>
     <name>LuaPanel</name>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
@@ -1803,18 +2295,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LuaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascript.cpp" line="37"/>
+        <source>Lua Script</source>
+        <translation>Vezměte skript</translation>
+    </message>
+</context>
+<context>
+    <name>LuaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascriptui.ui" line="38"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &amp;quot;input string is: &amp;quot; .. input&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>General</source>
         <translation>Generál</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="331"/>
         <source>&amp;File</source>
         <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New Window</source>
         <translation>Nové okno</translation>
     </message>
@@ -2043,6 +2560,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="779"/>
         <source>All rights reserved.</source>
         <translation>Všechna práva vyhrazena.</translation>
+    </message>
+</context>
+<context>
+    <name>Masker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
+        <source>Masker</source>
+        <translation>Obličejová maska</translation>
+    </message>
+</context>
+<context>
+    <name>MaskerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="38"/>
+        <source>Mask</source>
+        <translation>Maska</translation>
     </message>
 </context>
 <context>
@@ -2618,12 +3156,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
         <source>Register type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ registrace</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
@@ -2636,37 +3174,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="14"/>
         <source>New Register Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová registrační skupina</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ registrace</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
         <source>Server address</source>
-        <translation type="unfinished">Adresa serveru</translation>
+        <translation>Adresa serveru</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
-        <translation type="unfinished">Počáteční adresa</translation>
+        <translation>Počáteční adresa</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaregistrujte název skupiny</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
-        <translation type="unfinished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
 </context>
 <context>
@@ -2674,17 +3212,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
         <source>Columns visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Viditelné sloupce</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyhledávání...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat položku registru</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
@@ -2692,7 +3230,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
@@ -2702,17 +3240,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
         <source>Clear register table</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat tabulku registrů</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>Save register table</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit tabulku registrů</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat tabulku registru</translation>
     </message>
 </context>
 <context>
@@ -2948,7 +3486,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="583"/>
         <source>Protocol Factory</source>
-        <translation type="unfinished"></translation>
+        <translation>Továrna na protokoly</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="326"/>
@@ -3246,7 +3784,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -3295,23 +3833,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="362"/>
         <location filename="../../src/common/xtools.cpp" line="424"/>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/common/xtools.cpp" line="755"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="756"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="465"/>
-        <location filename="../../src/common/xtools.cpp" line="904"/>
-        <location filename="../../src/common/xtools.cpp" line="906"/>
+        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="907"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="467"/>
-        <location filename="../../src/common/xtools.cpp" line="900"/>
-        <location filename="../../src/common/xtools.cpp" line="902"/>
+        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="903"/>
         <source>Binary</source>
         <translation>Binární</translation>
     </message>
@@ -3341,83 +3879,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vstup neobsahuje referenci</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Sudá</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Nejvyšší</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Mezery</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="741"/>
+        <location filename="../../src/common/xtools.cpp" line="742"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Označení</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="758"/>
+        <location filename="../../src/common/xtools.cpp" line="759"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Hardware</source>
         <translation>Hardware</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="761"/>
+        <location filename="../../src/common/xtools.cpp" line="762"/>
         <source>Software</source>
         <translation>Software</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="865"/>
+        <location filename="../../src/common/xtools.cpp" line="866"/>
         <source>Disabled</source>
         <translation>Zakázáno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="867"/>
+        <location filename="../../src/common/xtools.cpp" line="868"/>
         <source>Bidirectional</source>
         <translation>Obousměrné</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="869"/>
+        <location filename="../../src/common/xtools.cpp" line="870"/>
         <source>Unidirectional</source>
         <translation>Jednosměrné</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="39"/>
+        <location filename="../../src/main.cpp" line="61"/>
         <source>Application is booting...</source>
         <translation>Aplikace se spouští...</translation>
     </message>
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
-        <translation type="unfinished">Barevné schéma</translation>
+        <translation>Barevné schéma</translation>
     </message>
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
-        <translation type="unfinished">Tmavý</translation>
+        <translation>Tmavý</translation>
     </message>
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
-        <translation type="unfinished">Světlý</translation>
+        <translation>Světlo</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
@@ -3465,7 +4003,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
         <source>An unknown error occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Došlo k neznámé chybě.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
@@ -3528,7 +4066,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
@@ -3540,19 +4078,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -3583,6 +4121,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>&amp;Languages</source>
         <translation type="obsolete">&amp;Jazyky</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
+        <source>Communication</source>
+        <translation>Sdělení</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="115"/>
+        <source>Input/Output</source>
+        <translation>Vstup/Výstup</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="126"/>
+        <source>Data Process</source>
+        <translation>Data Process</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="141"/>
+        <source>Instruments</source>
+        <translation>Nástroje</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="149"/>
+        <source>Scripts</source>
+        <translation>Skripty</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="159"/>
+        <source>Hub</source>
+        <translation>Hub</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
+        <source>Plugins</source>
+        <translation>Pluginy</translation>
     </message>
 </context>
 <context>
@@ -3616,6 +4189,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
         <translation>PNG obrázky (*.png);;JPG obrázky (*.jpg)</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGenerator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgenerator.cpp" line="22"/>
+        <source>Random Generator</source>
+        <translation>Náhodný generátor</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGeneratorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="38"/>
+        <source>Output format</source>
+        <translation>Výstupní formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="51"/>
+        <source>Data type</source>
+        <translation>Typ dat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="67"/>
+        <source>Auto(ms)</source>
+        <translation>Auto (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="80"/>
+        <source>Generate</source>
+        <translation>Generovat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="87"/>
+        <source>Big endian</source>
+        <translation>Velký endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
+        <source>Binary</source>
+        <translation>Binární</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
+        <source>Text</source>
+        <translation>Text</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="33"/>
+        <source>Disable</source>
+        <translation>Zakázat</translation>
     </message>
 </context>
 <context>
@@ -4115,6 +4739,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>SumCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculator.cpp" line="20"/>
+        <source>Sum Calculator</source>
+        <translation>Součtová kalkulačka</translation>
+    </message>
+</context>
+<context>
+    <name>SumCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="38"/>
+        <source>Result bytes</source>
+        <translation>Výsledné bajty</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>Velký Endian</translation>
+    </message>
+</context>
+<context>
+    <name>SumChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumchecker.cpp" line="20"/>
+        <source>Sum Checker</source>
+        <translation>Kontrola součtu</translation>
+    </message>
+</context>
+<context>
+    <name>SumCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Formulář</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="41"/>
+        <source>Result bytes</source>
+        <translation>Výsledné bajty</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>Velký Endian</translation>
+    </message>
+</context>
+<context>
     <name>SystemTrayIcon</name>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
@@ -4150,18 +4826,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Vymazat</translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Nahoru</translation>
+        <translation>Nahoru</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Přidat</translation>
+        <translation>Přidat</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="174"/>
+        <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>Vymazat</translation>
     </message>
@@ -4174,64 +4850,64 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Dolů</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="41"/>
-        <source>Move Up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
-        <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <source>Move Up</source>
+        <translation>Posunout nahoru</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="43"/>
+        <source>Move Down</source>
+        <translation>Přesunout dolů</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="44"/>
         <source>Clear All Items</source>
         <translation>Vymazat všechny položky</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="44"/>
+        <location filename="../../src/page/common/tableview.cpp" line="45"/>
         <source>Import Items from JSON File</source>
         <translation>Importujte položky ze souboru JSON</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="45"/>
+        <location filename="../../src/page/common/tableview.cpp" line="46"/>
         <source>Export Items to JSON File</source>
         <translation>Exportujte položky do souboru JSON</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="46"/>
-        <source>Delete Selected Item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="47"/>
-        <source>Add New Item</source>
-        <translation type="unfinished"></translation>
+        <source>Delete Selected Item</source>
+        <translation>Smazat vybranou položku</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="48"/>
+        <source>Add New Item</source>
+        <translation>Přidat novou položku</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Are you sure to clear all items?</source>
         <translation>Opravdu chcete vymazat všechny položky?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>No Item be Selected</source>
         <translation>Žádná položka není vybrána</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>Please select a item first!</source>
         <translation>Nejprve prosím vyberte položku!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="200"/>
-        <location filename="../../src/page/common/tableview.cpp" line="228"/>
+        <location filename="../../src/page/common/tableview.cpp" line="201"/>
+        <location filename="../../src/page/common/tableview.cpp" line="229"/>
         <source>Import data</source>
         <translation>Načíst data</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="202"/>
-        <location filename="../../src/page/common/tableview.cpp" line="230"/>
+        <location filename="../../src/page/common/tableview.cpp" line="203"/>
+        <location filename="../../src/page/common/tableview.cpp" line="231"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Všechny (*)</translation>
     </message>
@@ -4433,40 +5109,347 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>UserInput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinput.cpp" line="25"/>
+        <source>User Input</source>
+        <translation>Uživatelský vstup</translation>
+    </message>
+</context>
+<context>
+    <name>UserInputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="26"/>
+        <source>Format</source>
+        <translation>Formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="42"/>
+        <source>Prefix</source>
+        <translation>Předpona</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
+        <source>Escape</source>
+        <translation>Uniknout</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
+        <source>Suffix</source>
+        <translation>Přípona</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="90"/>
+        <source>Cycle(ms)</source>
+        <translation>Cyklus (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="100"/>
+        <source>Send</source>
+        <translation>Poslat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
+        <source>Please &quot;Enter&quot; to send...</source>
+        <translation>Prosím</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
+        <source>Disable</source>
+        <translation>Zakázat</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <source>Interfce Name</source>
+        <translation>Název rozhraní</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <source>CAN Plugin</source>
+        <translation>Plugin CAN</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <source>Bitrate</source>
+        <translation>Bitová rychlost</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <source>Bitrate switch</source>
+        <translation>Přepínač bitrate</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <source>Extended format</source>
+        <translation>Rozšířený formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <source>Data bitrate</source>
+        <translation>Datový tok</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <source>Flexible data rate</source>
+        <translation>Flexibilní rychlost přenosu dat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <source>Error filter</source>
+        <translation>Chybový filtr</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <source>Loopback</source>
+        <translation>Loopback</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
+        <source>Custom configuration</source>
+        <translation>Vlastní konfigurace</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <source>Receive own</source>
+        <translation>Přijmout vlastní</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidget.cpp" line="18"/>
+        <source>Log</source>
+        <translation>Log</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <source>Debug</source>
+        <translation>Ladit</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <source>Information</source>
+        <translation>Informace</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <source>Warning</source>
+        <translation>Varování</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <source>Critical</source>
+        <translation>Kritické</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <source>Fatal</source>
+        <translation>Fatální</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContentModel</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
+        <source>The is a debug message.</source>
+        <translation>Jedná se o ladicí zprávu.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
+        <source>The is a information message.</source>
+        <translation>Jedná se o informační zprávu.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
+        <source>The is a warning message.</source>
+        <translation>Je to varovná zpráva.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
+        <source>The is a critical message.</source>
+        <translation>Je to kritická zpráva.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
+        <source>The is a fatal message.</source>
+        <translation>To je fatální zpráva.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="141"/>
+        <source>Time</source>
+        <translation>Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="143"/>
+        <source>Message</source>
+        <translation>Zpráva</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NavigatorDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/navigator/navigatordockwidget.cpp" line="23"/>
+        <source>Navigator</source>
+        <translation>Navigátor</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodeEditorView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <source>Delete connection</source>
+        <translation>Smazat připojení</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <source>Save Image as...</source>
+        <translation>Uložit obrázek jako...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <source>Save Image</source>
+        <translation>Uložit obrázek</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <source>Images (*.png)</source>
+        <translation>Obrázky (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <source>Save Image to Clipboard</source>
+        <translation>Uložit obrázek do schránky</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <source>Delete</source>
+        <translation>Vymazat</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidget.cpp" line="27"/>
+        <source>Nodes</source>
+        <translation>Uzly</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidgetcontent.cpp" line="34"/>
+        <source>Nodes</source>
+        <translation>Uzly</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidget.cpp" line="25"/>
+        <source>Output</source>
+        <translation>Výstup</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidgetContextTextBrowser</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="34"/>
+        <source>Clear</source>
+        <translation>Jasný</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="35"/>
+        <source>Save Current</source>
+        <translation>Uložit aktuální</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="39"/>
+        <source>Save</source>
+        <translation>Uložit</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="41"/>
+        <source>Text (*.txt)</source>
+        <translation>Text (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Warning</source>
+        <translation>Varování</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Failed to save file!</source>
+        <translation>Soubor se nepodařilo uložit!</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::xFlow</name>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <source>Navigator Window</source>
+        <translation>Okno navigátoru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <source>Nodes List</source>
+        <translation>Seznam uzlů</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <source>Output</source>
+        <translation>Výstup</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <source>Log</source>
+        <translation>Log</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
         <translation>Panel nástrojů Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Příklad akce</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation type="unfinished">Log</translation>
+        <translation>Log</translation>
     </message>
 </context>
 <context>
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nové zařízení RTU</translation>
+        <translation>Nové zařízení RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Nové TCP zařízení</translation>
+        <translation>Nové TCP zařízení</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nové cívky</translation>
+        <translation>Nové cívky</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nové diskrétní vstupy</translation>
+        <translation>Nové diskrétní vstupy</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
@@ -4474,7 +5457,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Nové vstupní registry</translation>
+        <translation>Nové vstupní registry</translation>
     </message>
 </context>
 <context>
@@ -4519,19 +5502,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Cívky</translation>
+        <translation>Cívky</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskrétní vstupy</translation>
+        <translation>Diskrétní vstupy</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Vedení rejstříků</translation>
+        <translation>Vedení rejstříků</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Vstupní registry</translation>
+        <translation>Vstupní registry</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -4546,7 +5529,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>New Registers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové registry</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
@@ -4556,17 +5539,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Invalid Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatný výběr</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
         <source>Please select a register table to add new registers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete-li přidat nové registry, vyberte tabulku registrů.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Odebrat položku</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
@@ -4802,6 +5785,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Tabulka registrů není prázdná. </translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::xModbus</name>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
+        <source>Modbus Tool Bar</source>
+        <translation>Panel nástrojů Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
+        <source>Example Action</source>
+        <translation>Příklad akce</translation>
     </message>
 </context>
 </TS>

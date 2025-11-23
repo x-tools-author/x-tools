@@ -2,6 +2,57 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="sl">
 <context>
+    <name>AesCipher</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipher.cpp" line="113"/>
+        <source>AES Cipher</source>
+        <translation>Šifra AES</translation>
+    </message>
+</context>
+<context>
+    <name>AesCipherUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="33"/>
+        <source>Padding</source>
+        <translation>Oblazinjenje</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
+        <source>IV</source>
+        <translation>IV</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
+        <source>Mode</source>
+        <translation>Način</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="57"/>
+        <source>Level</source>
+        <translation>Raven</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="67"/>
+        <source>Key</source>
+        <translation>Ključ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="77"/>
+        <source>Way</source>
+        <translation>Pot</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="24"/>
+        <source>Encrypt</source>
+        <translation>Šifriraj</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="25"/>
+        <source>Decrypt</source>
+        <translation>Dešifriraj</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <location filename="../../src/application.cpp" line="251"/>
@@ -431,6 +482,29 @@
     </message>
 </context>
 <context>
+    <name>BaseNodeUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="35"/>
+        <source>Show/hide settings panel...</source>
+        <translation>Pokaži/skrij ploščo z nastavitvami ...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="36"/>
+        <source>Output the data immediately...</source>
+        <translation>Takoj izpišite podatke ...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
+        <source>Ignore the input data and no data output...</source>
+        <translation>Ignoriraj vhodne podatke in brez izhodnih podatkov ...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="38"/>
+        <source>No message...</source>
+        <translation>Ni sporočila ...</translation>
+    </message>
+</context>
+<context>
     <name>BleCentral</name>
     <message>
         <location filename="../../src/device/blecentral.cpp" line="92"/>
@@ -857,6 +931,70 @@
     </message>
 </context>
 <context>
+    <name>CommandLine</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandline.cpp" line="35"/>
+        <source>Command Line</source>
+        <translation>Ukazna vrstica</translation>
+    </message>
+</context>
+<context>
+    <name>CommandLineUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="14"/>
+        <source>Form</source>
+        <translation>obrazec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="42"/>
+        <source>Execute</source>
+        <translation>Izvedi</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="49"/>
+        <source>Browse</source>
+        <translation>Prebrskaj</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="62"/>
+        <source>Program</source>
+        <translation>Program</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="72"/>
+        <source>Arguments</source>
+        <translation>Argumenti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
+        <source>Input data is hex string</source>
+        <translation>Vhodni podatek je šestnajstiški niz</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="88"/>
+        <source>Input data is utf8 string</source>
+        <translation>Vhodni podatek je niz utf8</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="69"/>
+        <source>Open File</source>
+        <translation>Odpri datoteko</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="71"/>
+        <source>Executable Files (*.exe)</source>
+        <translation>Izvedljive datoteke (*.exe)</translation>
+    </message>
+</context>
+<context>
+    <name>Communication</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/communication/communication.cpp" line="141"/>
+        <source>Device is working normally.</source>
+        <translation>Naprava deluje normalno.</translation>
+    </message>
+</context>
+<context>
     <name>CrcAssistant</name>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="14"/>
@@ -973,6 +1111,149 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>CrcCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculator.cpp" line="23"/>
+        <source>CRC Calculator</source>
+        <translation>Kalkulator CRC</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <source>Start byte index is start from left</source>
+        <translation>Indeks začetnega bajta se začne z leve</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <source>End byte index</source>
+        <translation>Končni bajtni indeks</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <source>Start byte index</source>
+        <translation>Začetni bajtni indeks</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <source>Big Endian</source>
+        <translation>Big Endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <source>End byte index is start from right</source>
+        <translation>Indeks končnega bajta se začne z desne</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <source>Arithmetic</source>
+        <translation>Aritmetika</translation>
+    </message>
+</context>
+<context>
+    <name>CrcChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="23"/>
+        <source>CRC Checker</source>
+        <translation>Preverjevalnik CRC</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="82"/>
+        <source>CRC check failed, expected: %1, got: %2</source>
+        <translation>Preverjanje CRC ni uspelo, pričakovano: %1, pridobljeno: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="92"/>
+        <source>CRC checking passed.</source>
+        <translation>Preverjanje CRC uspešno.</translation>
+    </message>
+</context>
+<context>
+    <name>CrcCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <source>End byte index</source>
+        <translation>Končni bajtni indeks</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <source>Start byte index</source>
+        <translation>Začetni bajtni indeks</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <source>Arithmetic</source>
+        <translation>Aritmetika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="50"/>
+        <source>Big Endian</source>
+        <translation>Big Endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="57"/>
+        <source>Start byte index is start from left</source>
+        <translation>Indeks začetnega bajta se začne z leve</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="64"/>
+        <source>End byte index is start from right</source>
+        <translation>Indeks končnega bajta se začne z desne</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistence</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
+        <source>Data Persistence</source>
+        <translation>Obstojnost podatkov</translation>
+    </message>
+</context>
+<context>
+    <name>DataPersistenceUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="38"/>
+        <source>File path</source>
+        <translation>Pot datoteke</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="51"/>
+        <source>Text format</source>
+        <translation>Oblika besedila</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="61"/>
+        <source>Browser</source>
+        <translation>Brskalnik</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="77"/>
+        <source>Save date</source>
+        <translation>Shrani datum</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
+        <source>Svae time</source>
+        <translation>Ne skrbi</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
+        <source>Save ms</source>
+        <translation>Shrani ms</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="98"/>
+        <source>Binary</source>
+        <translation>Binarno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.cpp" line="35"/>
+        <source>txt(*.txt);;bin(*.bin);;All files(*.*)</source>
+        <translation>txt(*.txt);;bin(*.bin);;Vse datoteke(*.*)</translation>
+    </message>
+</context>
+<context>
     <name>DataRecordsModel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsmodel.cpp" line="155"/>
@@ -1055,10 +1336,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>DataView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataview.cpp" line="21"/>
+        <source>Data View</source>
+        <translation>Pogled podatkov</translation>
+    </message>
+</context>
+<context>
+    <name>DataViewUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="41"/>
+        <source>Text format</source>
+        <translation>Oblika besedila</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="51"/>
+        <source>Clear</source>
+        <translation>jasno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Time</source>
+        <translation>Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <source>Data</source>
+        <translation>podatki</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutput.cpp" line="20"/>
+        <source>Debug Output</source>
+        <translation>Izhod za odpravljanje napak</translation>
+    </message>
+</context>
+<context>
+    <name>DebugOutputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="20"/>
+        <source>Output flag</source>
+        <translation>Izhodna zastavica</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="27"/>
+        <source>Output format</source>
+        <translation>Izhodni format</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="34"/>
+        <source>Output channel</source>
+        <translation>Izhodni kanal</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
+        <source>Show time</source>
+        <translation>Pokaži čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
+        <source>Clear</source>
+        <translation>jasno</translation>
+    </message>
+</context>
+<context>
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Nova naprava Modbus</translation>
+        <translation>Nova naprava Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
@@ -1139,77 +1487,77 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="92"/>
+        <location filename="../../src/device/devicemanager.cpp" line="93"/>
         <source>Serial Port</source>
         <translation>Serijska vrata</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="94"/>
+        <location filename="../../src/device/devicemanager.cpp" line="95"/>
         <source>HID Device</source>
         <translation>HID naprava</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="96"/>
+        <location filename="../../src/device/devicemanager.cpp" line="97"/>
         <source>BLE Central</source>
         <translation>BLE osrednja naprava</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="98"/>
+        <location filename="../../src/device/devicemanager.cpp" line="99"/>
         <source>BLE Peripheral</source>
         <translation>BLE periferna naprava</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="100"/>
+        <location filename="../../src/device/devicemanager.cpp" line="101"/>
         <source>UDP Client</source>
         <translation>UDP odjemalec</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="102"/>
+        <location filename="../../src/device/devicemanager.cpp" line="103"/>
         <source>UDP Server</source>
         <translation>UDP strežnik</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="104"/>
+        <location filename="../../src/device/devicemanager.cpp" line="105"/>
         <source>UDP Multicast</source>
         <translation>UDP večkratno oddajanje</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="106"/>
+        <location filename="../../src/device/devicemanager.cpp" line="107"/>
         <source>UDP Broadcast</source>
         <translation>UDP oddajanje</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="108"/>
+        <location filename="../../src/device/devicemanager.cpp" line="109"/>
         <source>TCP Client</source>
         <translation>TCP odjemalec</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="110"/>
+        <location filename="../../src/device/devicemanager.cpp" line="111"/>
         <source>TCP Server</source>
         <translation>TCP strežnik</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="112"/>
+        <location filename="../../src/device/devicemanager.cpp" line="113"/>
         <source>WebSocket Client</source>
         <translation>WebSocket odjemalec</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="114"/>
+        <location filename="../../src/device/devicemanager.cpp" line="115"/>
         <source>WebSocket Server</source>
         <translation>WebSocket strežnik</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="116"/>
+        <location filename="../../src/device/devicemanager.cpp" line="117"/>
         <source>Local Socket</source>
         <translation>Lokalen vtič</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="118"/>
+        <location filename="../../src/device/devicemanager.cpp" line="119"/>
         <source>Local Server</source>
         <translation>Lokalen strežnik</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="120"/>
+        <location filename="../../src/device/devicemanager.cpp" line="121"/>
         <source>Charts Test</source>
         <translation>Preizkus grafikonov</translation>
     </message>
@@ -1447,6 +1795,86 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Filter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filter.cpp" line="33"/>
+        <source>Filter</source>
+        <translation>Filter</translation>
+    </message>
+</context>
+<context>
+    <name>FilterUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="20"/>
+        <source>Reference</source>
+        <translation>Referenca</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="27"/>
+        <source>Option</source>
+        <translation>Možnost</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="40"/>
+        <source>Escape</source>
+        <translation>Pobegniti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="47"/>
+        <source>Format</source>
+        <translation>Oblika</translation>
+    </message>
+</context>
+<context>
+    <name>Flowmeter</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/instruments/flowmeter.cpp" line="22"/>
+        <source>Flowmeter</source>
+        <translation>Merilnik pretoka</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzer</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzer.cpp" line="73"/>
+        <source>Frame Analyzer</source>
+        <translation>Analizator okvirjev</translation>
+    </message>
+</context>
+<context>
+    <name>FrameAnalyzerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="32"/>
+        <source>Fixed frame length</source>
+        <translation>Fiksna dolžina okvirja</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="39"/>
+        <source>(Hex format)</source>
+        <translation>(Hex format)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
+        <source>Split flag</source>
+        <translation>Razcepljena zastava</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
+        <source>Length</source>
+        <translation>Dolžina</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
+        <source>Cache Bytes</source>
+        <translation>Bajti predpomnilnika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="100"/>
+        <source>Clear Cache</source>
+        <translation>Počisti predpomnilnik</translation>
+    </message>
+</context>
+<context>
     <name>HashCalculator</name>
     <message>
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
@@ -1536,6 +1964,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>Hub</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/hub/hub.cpp" line="22"/>
+        <source>%1In%2Out</source>
+        <translation>%1Vhod%2Izhod</translation>
+    </message>
+</context>
+<context>
     <name>InputPanelsManager</name>
     <message>
         <location filename="../../src/page/panels/inputpanels/inputpanelsmanager.cpp" line="19"/>
@@ -1619,6 +2055,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="186"/>
         <source>Data Checking</source>
         <translation>Preverjanje podatkov</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
+        <source>Java Script</source>
+        <translation>Java Script</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptThread</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
+        <source>The script is invalid.</source>
+        <translation>Skript je neveljaven.</translation>
+    </message>
+</context>
+<context>
+    <name>JavaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="14"/>
+        <source>Form</source>
+        <translation>obrazec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="32"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(bytes) {&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1750,6 +2224,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="14"/>
+        <source>Log</source>
+        <translation>Dnevnik</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="35"/>
+        <source>Log level</source>
+        <translation>Raven dnevnika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="42"/>
+        <source>Clear</source>
+        <translation>jasno</translation>
+    </message>
+</context>
+<context>
     <name>LuaPanel</name>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
@@ -1803,18 +2295,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LuaScript</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascript.cpp" line="37"/>
+        <source>Lua Script</source>
+        <translation>Vzemi Script</translation>
+    </message>
+</context>
+<context>
+    <name>LuaScriptUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascriptui.ui" line="38"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &amp;quot;input string is: &amp;quot; .. input&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>General</source>
         <translation>Splošno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="332"/>
+        <location filename="../../src/mainwindow.cpp" line="331"/>
         <source>&amp;File</source>
         <translation>&amp;Datoteka</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="334"/>
+        <location filename="../../src/mainwindow.cpp" line="333"/>
         <source>New Window</source>
         <translation>Nova okna</translation>
     </message>
@@ -2043,6 +2560,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="779"/>
         <source>All rights reserved.</source>
         <translation>Vse pravice pridržane.</translation>
+    </message>
+</context>
+<context>
+    <name>Masker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
+        <source>Masker</source>
+        <translation>Obrazna maska</translation>
+    </message>
+</context>
+<context>
+    <name>MaskerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>obrazec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="38"/>
+        <source>Mask</source>
+        <translation>Maska</translation>
     </message>
 </context>
 <context>
@@ -2502,7 +3040,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation type="unfinished"></translation>
+        <translation>Izbrišite napravo/skupino/register</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
@@ -2512,12 +3050,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
         <source>Open all devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Odprite vse naprave</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
         <source>Expand all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Razširi vse elemente</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
@@ -2558,7 +3096,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="34"/>
         <source>Log type</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrsta dnevnika</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="47"/>
@@ -2575,12 +3113,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.ui" line="73"/>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="86"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
         <source>Open a log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Odprite dnevniško datoteko</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
@@ -2679,12 +3217,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Iskanje ...</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj element registra</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
@@ -2712,7 +3250,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabela uvoznega registra</translation>
     </message>
 </context>
 <context>
@@ -2948,7 +3486,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.ui" line="583"/>
         <source>Protocol Factory</source>
-        <translation type="unfinished"></translation>
+        <translation>Tovarna protokolov</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="326"/>
@@ -3295,23 +3833,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="362"/>
         <location filename="../../src/common/xtools.cpp" line="424"/>
-        <location filename="../../src/common/xtools.cpp" line="737"/>
-        <location filename="../../src/common/xtools.cpp" line="755"/>
+        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="756"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Brez</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="465"/>
-        <location filename="../../src/common/xtools.cpp" line="904"/>
-        <location filename="../../src/common/xtools.cpp" line="906"/>
+        <location filename="../../src/common/xtools.cpp" line="905"/>
+        <location filename="../../src/common/xtools.cpp" line="907"/>
         <source>Text</source>
         <translation>Besedilo</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="467"/>
-        <location filename="../../src/common/xtools.cpp" line="900"/>
-        <location filename="../../src/common/xtools.cpp" line="902"/>
+        <location filename="../../src/common/xtools.cpp" line="901"/>
+        <location filename="../../src/common/xtools.cpp" line="903"/>
         <source>Binary</source>
         <translation>Binaren</translation>
     </message>
@@ -3341,66 +3879,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vhod ne vsebuje reference</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
+        <location filename="../../src/common/xtools.cpp" line="739"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Parno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
+        <location filename="../../src/common/xtools.cpp" line="740"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Liho</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
+        <location filename="../../src/common/xtools.cpp" line="741"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Prostor</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="741"/>
+        <location filename="../../src/common/xtools.cpp" line="742"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Označi</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="757"/>
+        <location filename="../../src/common/xtools.cpp" line="758"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="758"/>
+        <location filename="../../src/common/xtools.cpp" line="759"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="761"/>
         <source>Hardware</source>
         <translation>Strojna oprema</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="761"/>
+        <location filename="../../src/common/xtools.cpp" line="762"/>
         <source>Software</source>
         <translation>Programska oprema</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="865"/>
+        <location filename="../../src/common/xtools.cpp" line="866"/>
         <source>Disabled</source>
         <translation>Onemogočeno</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="867"/>
+        <location filename="../../src/common/xtools.cpp" line="868"/>
         <source>Bidirectional</source>
         <translation>Obojestransko</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="869"/>
+        <location filename="../../src/common/xtools.cpp" line="870"/>
         <source>Unidirectional</source>
         <translation>Samoosmerno</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="39"/>
+        <location filename="../../src/main.cpp" line="61"/>
         <source>Application is booting...</source>
         <translation>Aplikacija se zažene...</translation>
     </message>
@@ -3417,7 +3955,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
-        <translation type="unfinished">Svetlo</translation>
+        <translation>Svetloba</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
@@ -3465,7 +4003,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
         <source>An unknown error occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prišlo je do neznane napake.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
@@ -3528,7 +4066,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
@@ -3544,7 +4082,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
@@ -3552,7 +4090,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -3583,6 +4121,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>&amp;Languages</source>
         <translation type="obsolete">&amp;Jeziki</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
+        <source>Communication</source>
+        <translation>Komunikacija</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="115"/>
+        <source>Input/Output</source>
+        <translation>Vhod/izhod</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="126"/>
+        <source>Data Process</source>
+        <translation>Obdelava podatkov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="141"/>
+        <source>Instruments</source>
+        <translation>instrumenti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="149"/>
+        <source>Scripts</source>
+        <translation>Skripte</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="159"/>
+        <source>Hub</source>
+        <translation>Hub</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
+        <source>Plugins</source>
+        <translation>Vtičniki</translation>
     </message>
 </context>
 <context>
@@ -3616,6 +4189,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
         <translation>PNG slike (*.png);;JPG slike (*.jpg)</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGenerator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgenerator.cpp" line="22"/>
+        <source>Random Generator</source>
+        <translation>Generator naključij</translation>
+    </message>
+</context>
+<context>
+    <name>RandomGeneratorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="38"/>
+        <source>Output format</source>
+        <translation>Izhodni format</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="51"/>
+        <source>Data type</source>
+        <translation>Vrsta podatkov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="67"/>
+        <source>Auto(ms)</source>
+        <translation>Samodejno (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="80"/>
+        <source>Generate</source>
+        <translation>Ustvari</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="87"/>
+        <source>Big endian</source>
+        <translation>Veliki endian</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
+        <source>Binary</source>
+        <translation>Binarno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
+        <source>Text</source>
+        <translation>Besedilo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="33"/>
+        <source>Disable</source>
+        <translation>Onemogoči</translation>
     </message>
 </context>
 <context>
@@ -4115,6 +4739,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>SumCalculator</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculator.cpp" line="20"/>
+        <source>Sum Calculator</source>
+        <translation>Kalkulator vsote</translation>
+    </message>
+</context>
+<context>
+    <name>SumCalculatorUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="14"/>
+        <source>Form</source>
+        <translation>obrazec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="38"/>
+        <source>Result bytes</source>
+        <translation>Rezultati bajtov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>Big Endian</translation>
+    </message>
+</context>
+<context>
+    <name>SumChecker</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumchecker.cpp" line="20"/>
+        <source>Sum Checker</source>
+        <translation>Preverjevalnik vsote</translation>
+    </message>
+</context>
+<context>
+    <name>SumCheckerUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="14"/>
+        <source>Form</source>
+        <translation>obrazec</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="41"/>
+        <source>Result bytes</source>
+        <translation>Rezultati bajtov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="48"/>
+        <source>Big Endian</source>
+        <translation>Big Endian</translation>
+    </message>
+</context>
+<context>
     <name>SystemTrayIcon</name>
     <message>
         <location filename="../../src/systemtrayicon.cpp" line="19"/>
@@ -4154,84 +4830,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Gor</translation>
+        <translation>Gor</translation>
     </message>
     <message>
         <source>Add</source>
         <translation>Dodaj</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="174"/>
+        <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>Počisti</translation>
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Uvozi</translation>
+        <translation>Uvozi</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dol</translation>
-    </message>
-    <message>
-        <location filename="../../src/page/common/tableview.cpp" line="41"/>
-        <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Dol</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
-        <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <source>Move Up</source>
+        <translation>Premakni gor</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="43"/>
-        <source>Clear All Items</source>
-        <translation type="unfinished"></translation>
+        <source>Move Down</source>
+        <translation>Premakni navzdol</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="44"/>
-        <source>Import Items from JSON File</source>
-        <translation type="unfinished"></translation>
+        <source>Clear All Items</source>
+        <translation>Počisti vse elemente</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="45"/>
+        <source>Import Items from JSON File</source>
+        <translation>Uvozi elemente iz datoteke JSON</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="46"/>
         <source>Export Items to JSON File</source>
         <translation>Izvozi predmete v datoteko JSON</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="46"/>
-        <source>Delete Selected Item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="47"/>
-        <source>Add New Item</source>
-        <translation type="unfinished"></translation>
+        <source>Delete Selected Item</source>
+        <translation>Izbriši izbrani element</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="48"/>
+        <source>Add New Item</source>
+        <translation>Dodaj nov predmet</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Are you sure to clear all items?</source>
         <translation>Ste prepričani, da želite izbrisati vse elemente?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>No Item be Selected</source>
         <translation>Ni izbranega elementa</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="190"/>
+        <location filename="../../src/page/common/tableview.cpp" line="191"/>
         <source>Please select a item first!</source>
         <translation>Najprej izberite element!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="200"/>
-        <location filename="../../src/page/common/tableview.cpp" line="228"/>
+        <location filename="../../src/page/common/tableview.cpp" line="201"/>
+        <location filename="../../src/page/common/tableview.cpp" line="229"/>
         <source>Import data</source>
         <translation>Uvozi podatke</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="202"/>
-        <location filename="../../src/page/common/tableview.cpp" line="230"/>
+        <location filename="../../src/page/common/tableview.cpp" line="203"/>
+        <location filename="../../src/page/common/tableview.cpp" line="231"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Vse (*)</translation>
     </message>
@@ -4433,14 +5109,321 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>UserInput</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinput.cpp" line="25"/>
+        <source>User Input</source>
+        <translation>Uporabniški vnos</translation>
+    </message>
+</context>
+<context>
+    <name>UserInputUi</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="26"/>
+        <source>Format</source>
+        <translation>Oblika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="42"/>
+        <source>Prefix</source>
+        <translation>Predpona</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
+        <source>Escape</source>
+        <translation>Pobegniti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
+        <source>Suffix</source>
+        <translation>Pripona</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="90"/>
+        <source>Cycle(ms)</source>
+        <translation>Cikel (ms)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="100"/>
+        <source>Send</source>
+        <translation>Pošlji</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
+        <source>Please &quot;Enter&quot; to send...</source>
+        <translation>prosim</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
+        <source>Disable</source>
+        <translation>Onemogoči</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <source>Interfce Name</source>
+        <translation>Ime vmesnika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <source>CAN Plugin</source>
+        <translation>Vtičnik CAN</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <source>Bitrate</source>
+        <translation>Bitna hitrost</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <source>Bitrate switch</source>
+        <translation>Stikalo bitne hitrosti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <source>Extended format</source>
+        <translation>Razširjena oblika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <source>Data bitrate</source>
+        <translation>Bitna hitrost podatkov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <source>Flexible data rate</source>
+        <translation>Prilagodljiva hitrost prenosa podatkov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <source>Error filter</source>
+        <translation>Filter napak</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <source>Loopback</source>
+        <translation>Povratna zanka</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
+        <source>Custom configuration</source>
+        <translation>Konfiguracija po meri</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <source>Receive own</source>
+        <translation>Prejmi lastno</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidget.cpp" line="18"/>
+        <source>Log</source>
+        <translation>Dnevnik</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <source>Debug</source>
+        <translation>Odpravljanje napak</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <source>Information</source>
+        <translation>Informacije</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <source>Warning</source>
+        <translation>Opozorilo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <source>Critical</source>
+        <translation>Kritično</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <source>Fatal</source>
+        <translation>Usodno</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::LogDockWidgetContentModel</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
+        <source>The is a debug message.</source>
+        <translation>Je sporočilo o odpravljanju napak.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
+        <source>The is a information message.</source>
+        <translation>Je informativno sporočilo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
+        <source>The is a warning message.</source>
+        <translation>Je opozorilno sporočilo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
+        <source>The is a critical message.</source>
+        <translation>To je kritično sporočilo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
+        <source>The is a fatal message.</source>
+        <translation>To je usodno sporočilo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
+        <source>Type</source>
+        <translation>Vrsta</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="141"/>
+        <source>Time</source>
+        <translation>Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="143"/>
+        <source>Message</source>
+        <translation>Sporočilo</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NavigatorDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/navigator/navigatordockwidget.cpp" line="23"/>
+        <source>Navigator</source>
+        <translation>Navigator</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodeEditorView</name>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <source>Delete connection</source>
+        <translation>Izbriši povezavo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <source>Save Image as...</source>
+        <translation>Shrani sliko kot ...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <source>Save Image</source>
+        <translation>Shrani sliko</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <source>Images (*.png)</source>
+        <translation>Slike (*.png)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <source>Save Image to Clipboard</source>
+        <translation>Shrani sliko v odložišče</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <source>Delete</source>
+        <translation>Izbriši</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidget.cpp" line="27"/>
+        <source>Nodes</source>
+        <translation>Vozlišča</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::NodesDockWidgetContent</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidgetcontent.cpp" line="34"/>
+        <source>Nodes</source>
+        <translation>Vozlišča</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidget</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidget.cpp" line="25"/>
+        <source>Output</source>
+        <translation type="unfinished">Izhod</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::OutputDockWidgetContextTextBrowser</name>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="34"/>
+        <source>Clear</source>
+        <translation>jasno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="35"/>
+        <source>Save Current</source>
+        <translation>Shrani trenutno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="39"/>
+        <source>Save</source>
+        <translation>Shrani</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="41"/>
+        <source>Text (*.txt)</source>
+        <translation>Besedilo (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Warning</source>
+        <translation>Opozorilo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
+        <source>Failed to save file!</source>
+        <translation>Datoteke ni bilo mogoče shraniti!</translation>
+    </message>
+</context>
+<context>
+    <name>xFlow::xFlow</name>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <source>Navigator Window</source>
+        <translation>Okno navigatorja</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <source>Nodes List</source>
+        <translation>Seznam vozlišč</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <source>Output</source>
+        <translation>Izhod</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <source>Log</source>
+        <translation>Dnevnik</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
         <translation>Orodna vrstica Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Primer dejanja</translation>
     </message>
@@ -4454,7 +5437,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nova naprava RTU</translation>
+        <translation>Nova naprava RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
@@ -4470,11 +5453,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Novi registri gospodarstev</translation>
+        <translation>Novi registri gospodarstev</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Novi vhodni registri</translation>
+        <translation>Novi vhodni registri</translation>
     </message>
 </context>
 <context>
@@ -4519,19 +5502,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Tuljave</translation>
+        <translation>Tuljave</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskretni vhodi</translation>
+        <translation>Diskretni vhodi</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Registri gospodarstev</translation>
+        <translation>Registri gospodarstev</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Vhodni registri</translation>
+        <translation>Vhodni registri</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -4541,7 +5524,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
         <source>New Register Group</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova registracijska skupina</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
@@ -4556,12 +5539,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Invalid Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Neveljavna izbira</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
         <source>Please select a register table to add new registers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Izberite tabelo registrov, da dodate nove registre.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
@@ -4802,6 +5785,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Registrska tabela ni prazna. </translation>
+    </message>
+</context>
+<context>
+    <name>xModbus::xModbus</name>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
+        <source>Modbus Tool Bar</source>
+        <translation>orodna vrstica Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
+        <source>Example Action</source>
+        <translation>Primer dejanja</translation>
     </message>
 </context>
 </TS>
