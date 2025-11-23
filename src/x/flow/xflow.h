@@ -8,7 +8,10 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QAction>
 #include <QJsonObject>
+#include <QLineEdit>
+#include <QToolBar>
 #include <QWidget>
 
 namespace Ui {
@@ -47,11 +50,73 @@ private:
     int m_bottomPanelHeight{218};
 
 private:
+    struct ActionContext
+    {
+        QAction *leftPanel{nullptr};
+        QAction *bottomPanel{nullptr};
+        QAction *ruler{nullptr};
+
+        QAction *newProject{nullptr};
+        QAction *openProject{nullptr};
+        QAction *saveProject{nullptr};
+        QAction *saveAsProject{nullptr};
+
+        QAction *fitScreen{nullptr};
+        QAction *zoomIn{nullptr};
+        QAction *zoomOut{nullptr};
+        QAction *resetZoom{nullptr};
+        QLineEdit *zoomFactor{nullptr};
+
+        QAction *alignLeft{nullptr};
+        QAction *alignRight{nullptr};
+        QAction *alignTop{nullptr};
+        QAction *alignBottom{nullptr};
+        QAction *alignVCenter{nullptr};
+        QAction *alignHCenter{nullptr};
+
+        QAction *selectAll{nullptr};
+        QAction *deleteSelected{nullptr};
+        QAction *clearAllNodes{nullptr};
+    } m_actions;
+    QToolBar *m_toolBar{nullptr};
+    QString m_projectFilePath;
+
+    void initToolBar();
+
+    void onNewProject();
+    void onOpenProject();
+    void onSaveProject();
+    void onSaveAsProject();
+
+    void onFitScreen();
+    void onZoomIn();
+    void onZoomOut();
+    void onResetZoom();
+
+    void onAlignLeft();
+    void onAlignRight();
+    void onAlignTop();
+    void onAlignBottom();
+    void onAlignVCenter();
+    void onAlignHCenter();
+
+    void onSelectAll();
+    void onClearSelection();
+    void onDeleteSelected();
+    void onClearAllNodes();
+
+    void onLeftPanel();
+    void onBottomPanel();
+    void onRuler();
+
+private:
     void onThemeChanged();
 
     QJsonObject cookedGraphicsViewStyle(const QJsonObject &style);
     QJsonObject cookedNodeStyle(const QJsonObject &style);
     QJsonObject cookedConnectionStyle(const QJsonObject &style);
+
+    void updateScaleLineEdit();
 };
 
 } // namespace xFlow

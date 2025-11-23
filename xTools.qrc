@@ -56,6 +56,28 @@
         <file>res/icons/script.svg</file>
         <file>res/icons/commit.svg</file>
         <file>res/icons/satellite_alt.svg</file>
+        <file>res/icons/note_add.svg</file>
+        <file>res/icons/save_as.svg</file>
+        <file>res/icons/file_open.svg</file>
+        <file>res/icons/save.svg</file>
+        <file>res/icons/restart_alt.svg</file>
+        <file>res/icons/arrows_input.svg</file>
+        <file>res/icons/arrows_output.svg</file>
+        <file>res/icons/align_vertical_top.svg</file>
+        <file>res/icons/align_horizontal_center.svg</file>
+        <file>res/icons/align_horizontal_left.svg</file>
+        <file>res/icons/align_horizontal_right.svg</file>
+        <file>res/icons/align_justify_space_even.svg</file>
+        <file>res/icons/align_space_even.svg</file>
+        <file>res/icons/align_vertical_bottom.svg</file>
+        <file>res/icons/align_vertical_center.svg</file>
+        <file>res/icons/delete_sweep.svg</file>
+        <file>res/icons/select_all.svg</file>
+        <file>res/icons/delete.svg</file>
+        <file>res/icons/fit_screen.svg</file>
+        <file>res/icons/dock_to_bottom.svg</file>
+        <file>res/icons/dock_to_right.svg</file>
+        <file>res/icons/design_services.svg</file>
         <file>res/x/flow/nodeeditorstyle.json</file>
     </qresource>
 </RCC>

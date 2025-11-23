@@ -11,6 +11,7 @@
 
 #include <QApplication>
 #include <QFile>
+#include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QLabel>
@@ -18,6 +19,7 @@
 
 #include "nodeeditor/nodeeditor.h"
 #include "nodeeditor/nodeeditorview.h"
+#include "utilities/iconengine.h"
 #include "utilities/thememanager.h"
 
 #include "dockwidgets/log/logdockwidgetcontent.h"
@@ -32,6 +34,9 @@ struct xFlowParameterKeys
     const QString nodeEditor{"xFlow/nodeEditor"};
     const QString leftPanelWidth{"xFlow/leftPanelWidth"};
     const QString bottomPanelHeight{"xFlow/bottomPanelHeight"};
+    const QString leftPanelVisible{"xFlow/leftPanelVisible"};
+    const QString bottomPanelVisible{"xFlow/bottomPanelVisible"};
+    const QString rulerVisible{"xFlow/rulerVisible"};
 };
 
 xFlow::xFlow(QWidget *parent)
@@ -83,6 +88,8 @@ xFlow::xFlow(QWidget *parent)
     connect(ui->splitterTopBottom, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_bottomPanelHeight = ui->splitterTopBottom->sizes().at(1);
     });
+
+    initToolBar();
 }
 
 xFlow::~xFlow()
@@ -97,6 +104,9 @@ QJsonObject xFlow::save()
     obj.insert(keys.nodeEditor, ui->widgetNodeEditor->save());
     obj.insert(keys.leftPanelWidth, m_leftPanelWidth);
     obj.insert(keys.bottomPanelHeight, m_bottomPanelHeight);
+    obj.insert(keys.leftPanelVisible, m_actions.leftPanel->isChecked());
+    obj.insert(keys.bottomPanelVisible, m_actions.bottomPanel->isChecked());
+    obj.insert(keys.rulerVisible, m_actions.ruler->isChecked());
     return obj;
 }
 
@@ -111,6 +121,14 @@ void xFlow::load(const QJsonObject &obj)
     m_bottomPanelHeight = obj.value(keys.bottomPanelHeight).toInt(218);
     ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
     ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
+    m_actions.leftPanel->setChecked(obj.value(keys.leftPanelVisible).toBool(true));
+    m_actions.bottomPanel->setChecked(obj.value(keys.bottomPanelVisible).toBool(true));
+    m_actions.ruler->setChecked(obj.value(keys.rulerVisible).toBool(true));
+    ui->frameLeftPanel->setVisible(m_actions.leftPanel->isChecked());
+    ui->tabWidget->setVisible(m_actions.bottomPanel->isChecked());
+    ui->widgetNodeEditor->setRulerVisible(m_actions.ruler->isChecked());
+
+    updateScaleLineEdit();
 }
 
 void xFlow::outputBytes(const QString &txt, int channel)
@@ -135,6 +153,197 @@ bool xFlow::event(QEvent *event)
         ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
     }
     return ret;
+}
+
+void xFlow::initToolBar()
+{
+    if (m_toolBar) {
+        return;
+    }
+
+    m_toolBar = new QToolBar(this);
+    QLayout *layout = this->layout();
+    QVBoxLayout *vBoxLayout = qobject_cast<QVBoxLayout *>(layout);
+    if (vBoxLayout) {
+        vBoxLayout->insertWidget(0, m_toolBar);
+    } else {
+        qWarning() << "The layout of xFlow is not QVBoxLayout.";
+        return;
+    }
+
+    // clang-format off
+    m_actions.leftPanel = m_toolBar->addAction(xIcon(":/res/icons/dock_to_right.svg"), tr("Toggle Left Panel"), this, &xFlow::onLeftPanel);
+    m_actions.bottomPanel = m_toolBar->addAction(xIcon(":/res/icons/dock_to_bottom.svg"), tr("Toggle Bottom Panel"), this, &xFlow::onBottomPanel);
+    m_actions.ruler = m_toolBar->addAction(xIcon(":/res/icons/design_services.svg"), tr("Show Ruler"), this, &xFlow::onRuler);
+    m_actions.leftPanel->setCheckable(true);
+    m_actions.leftPanel->setChecked(true);
+    m_actions.bottomPanel->setCheckable(true);
+    m_actions.bottomPanel->setChecked(true);
+    m_actions.ruler->setCheckable(true);
+    m_actions.ruler->setChecked(true);
+    m_toolBar->addSeparator();
+    m_actions.newProject = m_toolBar->addAction(xIcon(":/res/icons/note_add.svg"), tr("New Project"), this, &xFlow::onNewProject);
+    m_actions.openProject = m_toolBar->addAction(xIcon(":/res/icons/file_open.svg"), tr("Open Project"), this, &xFlow::onOpenProject);
+    m_actions.saveProject = m_toolBar->addAction(xIcon(":/res/icons/save.svg"), tr("Save Project"), this, &xFlow::onSaveProject);
+    m_actions.saveAsProject = m_toolBar->addAction(xIcon(":/res/icons/save_as.svg"), tr("Save Project As..."), this, &xFlow::onSaveAsProject);
+    m_toolBar->addSeparator();
+    m_actions.fitScreen = m_toolBar->addAction(xIcon(":/res/icons/fit_screen.svg"), tr("Fit Screen"), this, &xFlow::onFitScreen);
+    m_actions.fitScreen->setVisible(false);
+    m_actions.zoomIn = m_toolBar->addAction(xIcon(":/res/icons/arrows_output.svg"), tr("Zoom In"), this, &xFlow::onZoomIn);
+    m_actions.zoomFactor = new QLineEdit(m_toolBar);
+    m_actions.zoomFactor->setFixedWidth(60);
+    m_actions.zoomFactor->setReadOnly(true);
+    m_toolBar->addWidget(m_actions.zoomFactor);
+    m_actions.zoomOut = m_toolBar->addAction(xIcon(":/res/icons/arrows_input.svg"), tr("Zoom Out"), this, &xFlow::onZoomOut);
+    m_actions.resetZoom = m_toolBar->addAction(xIcon(":/res/icons/restart_alt.svg"), tr("Reset Zoom"), this, &xFlow::onResetZoom);
+    m_toolBar->addSeparator();
+    m_actions.alignLeft = m_toolBar->addAction(xIcon(":/res/icons/align_horizontal_left.svg"), tr("Align Left"), this, &xFlow::onAlignLeft);
+    m_actions.alignRight = m_toolBar->addAction(xIcon(":/res/icons/align_horizontal_right.svg"), tr("Align Right"), this, &xFlow::onAlignRight);
+    m_actions.alignTop = m_toolBar->addAction(xIcon(":/res/icons/align_vertical_top.svg"), tr("Align Top"), this, &xFlow::onAlignTop);
+    m_actions.alignBottom = m_toolBar->addAction(xIcon(":/res/icons/align_vertical_bottom.svg"), tr("Align Bottom"), this, &xFlow::onAlignBottom);
+    m_actions.alignVCenter = m_toolBar->addAction(xIcon(":/res/icons/align_vertical_center.svg"), tr("Align Vertical Center"), this, &xFlow::onAlignVCenter);
+    m_actions.alignHCenter = m_toolBar->addAction(xIcon(":/res/icons/align_horizontal_center.svg"), tr("Align Horizontal Center"), this, &xFlow::onAlignHCenter);
+    m_toolBar->addSeparator();
+    m_actions.selectAll = m_toolBar->addAction(xIcon(":/res/icons/select_all.svg"), tr("Select All"), this, &xFlow::onSelectAll);
+    m_actions.deleteSelected = m_toolBar->addAction(xIcon(":/res/icons/delete.svg"), tr("Delete Selected"), this, &xFlow::onDeleteSelected);
+    m_actions.clearAllNodes = m_toolBar->addAction(xIcon(":/res/icons/mop.svg"), tr("Clear All Nodes"), this, &xFlow::onClearAllNodes);
+    // clang-format on
+}
+
+void xFlow::onNewProject()
+{
+    ui->widgetNodeEditor->view()->clearAllNodes();
+}
+
+void xFlow::onOpenProject()
+{
+    QString fileName
+        = QFileDialog::getOpenFileName(this,
+                                       tr("Open Project"),
+                                       QString(),
+                                       tr("xFlow Project Files (*.xflow);;All Files (*)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+    ui->widgetNodeEditor->view()->loadProject(fileName);
+    updateScaleLineEdit();
+}
+
+void xFlow::onSaveProject()
+{
+    if (m_projectFilePath.isEmpty()) {
+        onSaveAsProject();
+        return;
+    }
+
+    ui->widgetNodeEditor->view()->saveProject(m_projectFilePath);
+}
+
+void xFlow::onSaveAsProject()
+{
+    QString fileName
+        = QFileDialog::getSaveFileName(this,
+                                       tr("Save Project As..."),
+                                       QString(),
+                                       tr("xFlow Project Files (*.xflow);;All Files (*)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    ui->widgetNodeEditor->view()->saveProject(fileName);
+}
+
+void xFlow::onFitScreen()
+{
+    ui->widgetNodeEditor->view()->fitInViewToAllItems();
+    updateScaleLineEdit();
+}
+
+void xFlow::onZoomIn()
+{
+    ui->widgetNodeEditor->zoomIn();
+    updateScaleLineEdit();
+}
+
+void xFlow::onZoomOut()
+{
+    ui->widgetNodeEditor->zoomOut();
+    updateScaleLineEdit();
+}
+
+void xFlow::onResetZoom()
+{
+    ui->widgetNodeEditor->setScale(1.0);
+    updateScaleLineEdit();
+}
+
+void xFlow::onAlignLeft()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeLeft);
+}
+
+void xFlow::onAlignRight()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeRight);
+}
+
+void xFlow::onAlignTop()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeTop);
+}
+
+void xFlow::onAlignBottom()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeBottom);
+}
+
+void xFlow::onAlignVCenter()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeVCenter);
+}
+
+void xFlow::onAlignHCenter()
+{
+    ui->widgetNodeEditor->view()->alignNodes(NodeEditorView::AlignTypeHCenter);
+}
+
+void xFlow::onSelectAll()
+{
+    ui->widgetNodeEditor->view()->selectAllNodes();
+}
+
+void xFlow::onClearSelection()
+{
+    ui->widgetNodeEditor->view()->deleteSelectedNodes();
+}
+
+void xFlow::onDeleteSelected()
+{
+    ui->widgetNodeEditor->view()->deleteSelectedNodes();
+}
+
+void xFlow::onClearAllNodes()
+{
+    ui->widgetNodeEditor->view()->clearAllNodes();
+}
+
+void xFlow::onLeftPanel()
+{
+    bool visible = ui->frameLeftPanel->isVisible();
+    ui->frameLeftPanel->setVisible(!visible);
+}
+
+void xFlow::onBottomPanel()
+{
+    bool visible = ui->tabWidget->isVisible();
+    ui->tabWidget->setVisible(!visible);
+}
+
+void xFlow::onRuler()
+{
+    bool visible = m_actions.ruler->isChecked();
+    ui->widgetHRuler->setVisible(visible);
+    ui->widgetVRuler->setVisible(visible);
 }
 
 void xFlow::onThemeChanged()
@@ -261,6 +470,12 @@ QJsonObject xFlow::cookedConnectionStyle(const QJsonObject &style)
     connectionStyle["SelectedColor"] = rgb;
 
     return connectionStyle;
+}
+
+void xFlow::updateScaleLineEdit()
+{
+    double scale = ui->widgetNodeEditor->scale();
+    m_actions.zoomFactor->setText(QString::number(scale * 100.0, 'f', 1) + "%");
 }
 
 } // namespace xFlow
