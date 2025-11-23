@@ -12,6 +12,7 @@
 #include <QtNodes/internal/AbstractNodePainter.hpp>
 #include <QtNodes/internal/ConnectionGraphicsObject.hpp>
 #include <QtNodes/internal/NodeGraphicsObject.hpp>
+#include <QtNodes/internal/UndoCommands.hpp>
 
 #include <QApplication>
 #include <QClipboard>
@@ -239,7 +240,13 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
     if (connection) {
         QMenu *menu = new QMenu(this);
         menu->addAction(tr("Delete connection"), this, [=]() {
+#if 0
             m_model->deleteConnection(connection->connectionId());
+#else
+            auto *scene = static_cast<NodeEditorScene *>(this->scene());
+            auto *cmd = new QtNodes::DeleteCommand(scene);
+            scene->undoStack().push(cmd);
+#endif
         });
         menu->exec(event->globalPos());
         return;
@@ -299,8 +306,9 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
             m_model->deleteNode(id);
         }
 #else
-        // 删除当前节点
-        m_model->deleteNode(node->nodeId());
+        auto *scene = static_cast<NodeEditorScene *>(this->scene());
+        auto *cmd = new QtNodes::DeleteCommand(scene);
+        scene->undoStack().push(cmd);
 #endif
     });
 

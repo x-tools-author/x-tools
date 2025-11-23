@@ -12,6 +12,7 @@
 #include <QtNodes/internal/BasicGraphicsScene.hpp>
 #include <QtNodes/internal/ConnectionGraphicsObject.hpp>
 #include <QtNodes/internal/NodeGraphicsObject.hpp>
+#include <QtNodes/internal/UndoCommands.hpp>
 
 #include <QDebug>
 #include <QGraphicsSceneDragDropEvent>
@@ -252,10 +253,14 @@ void NodeEditorScene::dropEvent(QGraphicsSceneDragDropEvent *event)
         }
 
         QString name = roleDataMap.value(Qt::UserRole).toString();
-        qInfo() << "Node name:" << name;
+#if 1
+        auto cmd = new QtNodes::CreateCommand(this, name, event->scenePos());
+        undoStack().push(cmd);
+#else
         m_nodeId = graphModel().addNode(name);
         graphModel().setNodeData(m_nodeId, QtNodes::NodeRole::Position, event->scenePos());
         nodeGeometry().recomputeSize(m_nodeId);
+#endif
     }
 
     DataFlowGraphicsScene::dropEvent(event);

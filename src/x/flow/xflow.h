@@ -77,6 +77,9 @@ private:
         QAction *selectAll{nullptr};
         QAction *deleteSelected{nullptr};
         QAction *clearAllNodes{nullptr};
+
+        QAction *undo{nullptr};
+        QAction *redo{nullptr};
     } m_actions;
     QToolBar *m_toolBar{nullptr};
     QString m_projectFilePath;
@@ -108,6 +111,9 @@ private:
     void onLeftPanel();
     void onBottomPanel();
     void onRuler();
+
+    void onUndo();
+    void onRedo();
 
 private:
     void onThemeChanged();

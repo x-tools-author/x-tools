@@ -78,6 +78,8 @@
         <file>res/icons/dock_to_bottom.svg</file>
         <file>res/icons/dock_to_right.svg</file>
         <file>res/icons/design_services.svg</file>
+        <file>res/icons/undo.svg</file>
+        <file>res/icons/redo.svg</file>
         <file>res/x/flow/nodeeditorstyle.json</file>
     </qresource>
 </RCC>

@@ -16,8 +16,10 @@
 #include <QJsonObject>
 #include <QLabel>
 #include <QPalette>
+#include <QUndoStack>
 
 #include "nodeeditor/nodeeditor.h"
+#include "nodeeditor/nodeeditorscene.h"
 #include "nodeeditor/nodeeditorview.h"
 #include "utilities/iconengine.h"
 #include "utilities/thememanager.h"
@@ -132,6 +134,12 @@ void xFlow::load(const QJsonObject &obj)
     ui->tabWidget->setVisible(m_actions.bottomPanel->isChecked());
     ui->widgetNodeEditor->setRulerVisible(m_actions.ruler->isChecked());
 
+    auto *view = ui->widgetNodeEditor->view();
+    auto *scene = view->cookedScene();
+    if (scene->undoStack().canUndo()) {
+        scene->undoStack().clear();
+    }
+
     updateScaleLineEdit();
 }
 
@@ -211,6 +219,9 @@ void xFlow::initToolBar()
     m_actions.selectAll = m_toolBar->addAction(xIcon(":/res/icons/select_all.svg"), tr("Select All"), this, &xFlow::onSelectAll);
     m_actions.deleteSelected = m_toolBar->addAction(xIcon(":/res/icons/delete.svg"), tr("Delete Selected"), this, &xFlow::onDeleteSelected);
     m_actions.clearAllNodes = m_toolBar->addAction(xIcon(":/res/icons/mop.svg"), tr("Clear All Nodes"), this, &xFlow::onClearAllNodes);
+    m_toolBar->addSeparator();
+    m_actions.undo = m_toolBar->addAction(xIcon(":/res/icons/undo.svg"), tr("Undo"), this, &xFlow::onUndo);
+    m_actions.redo = m_toolBar->addAction(xIcon(":/res/icons/redo.svg"), tr("Redo"), this, &xFlow::onRedo);
     // clang-format on
 }
 
@@ -348,6 +359,24 @@ void xFlow::onRuler()
     bool visible = m_actions.ruler->isChecked();
     ui->widgetHRuler->setVisible(visible);
     ui->widgetVRuler->setVisible(visible);
+}
+
+void xFlow::onUndo()
+{
+    auto *view = ui->widgetNodeEditor->view();
+    auto *scene = view->cookedScene();
+    if (scene->undoStack().canUndo()) {
+        scene->undoStack().undo();
+    }
+}
+
+void xFlow::onRedo()
+{
+    auto *view = ui->widgetNodeEditor->view();
+    auto *scene = view->cookedScene();
+    if (scene->undoStack().canRedo()) {
+        scene->undoStack().redo();
+    }
 }
 
 void xFlow::onThemeChanged()
