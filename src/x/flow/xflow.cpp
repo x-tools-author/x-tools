@@ -82,6 +82,10 @@ xFlow::xFlow(QWidget *parent)
     ui->tabWidget->setStyleSheet("QTabWidget#tabWidget { border: none; }");
 #endif
 
+    NodeEditorView *view = ui->widgetNodeEditor->view();
+    connect(view, &NodeEditorView::nodeCreated, this, &xFlow::onNodeCreated);
+    connect(view, &NodeEditorView::nodeDeleted, this, &xFlow::onNodeDeleted);
+
     connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_leftPanelWidth = ui->splitterLeftRight->sizes().at(0);
     });
@@ -366,6 +370,16 @@ void xFlow::onThemeChanged()
 
     NodeEditorView *view = ui->widgetNodeEditor->view();
     view->setStylesheet(style);
+}
+
+void xFlow::onNodeCreated()
+{
+    m_navigator->update();
+}
+
+void xFlow::onNodeDeleted()
+{
+    m_navigator->update();
 }
 
 QJsonObject xFlow::cookedGraphicsViewStyle(const QJsonObject &style)
