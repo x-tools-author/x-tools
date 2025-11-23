@@ -586,7 +586,6 @@ void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
 
     baseNodeUi->adjustSize();
     m_scene->nodeGeometry().recomputeSize(nodeId);
-
     emit nodeCreated(nodeId);
 }
 
