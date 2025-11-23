@@ -264,9 +264,11 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
     }
 
     QMenu *menu = new QMenu(this);
-#if 0
+#if 1
     menu->addAction(tr("Save as Image"), this, [=]() {
-        auto tmp = xApp->saveImagePath();
+        auto tmp = m_saveImagePath.isEmpty()
+                       ? QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)
+                       : m_saveImagePath;
         tmp += "/" + m_model->nodeData(node->nodeId(), QtNodes::NodeRole::Caption).toString();
         tmp += ".png";
         QString fileName = QFileDialog::getSaveFileName(this,
@@ -278,7 +280,7 @@ void NodeEditorView::contextMenuEvent(QContextMenuEvent *event)
         }
 
         QString path = fileName.left(fileName.lastIndexOf('/'));
-        xApp->setSaveImagePath(path);
+        m_saveImagePath = path;
 
         QPixmap pixMap = toPixMap(item);
         pixMap.save(fileName);

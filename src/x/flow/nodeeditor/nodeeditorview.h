@@ -93,6 +93,7 @@ private:
     QPointF m_clickPos;
     bool m_gridVisible{true};
     QRect m_rubberBandRect;
+    QString m_saveImagePath;
 
 private:
     void alignNodesToTop();
