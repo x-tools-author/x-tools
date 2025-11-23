@@ -29,10 +29,15 @@ public:
     QJsonObject save();
     void load(const QJsonObject &obj);
 
+protected:
+    bool event(QEvent *event) override;
+
 private:
-    Ui::xFlow *ui;
+    Ui::xFlow *ui{nullptr};
     NodesDockWidgetContent *m_nodes{nullptr};
     NavigatorDockWidgetContent *m_navigator{nullptr};
+    int m_leftPanelWidth{180};
+    int m_bottomPanelHeight{218};
 
 private:
     void onThemeChanged();

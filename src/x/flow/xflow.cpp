@@ -30,6 +30,8 @@ namespace xFlow {
 struct xFlowParameterKeys
 {
     const QString nodeEditor{"xFlow/nodeEditor"};
+    const QString leftPanelWidth{"xFlow/leftPanelWidth"};
+    const QString bottomPanelHeight{"xFlow/bottomPanelHeight"};
 };
 
 xFlow::xFlow(QWidget *parent)
@@ -58,15 +60,22 @@ xFlow::xFlow(QWidget *parent)
     ui->frameLeftPanel->layout()->addWidget(m_nodes);
     ui->frameLeftPanel->setMaximumWidth(m_navigator->maximumWidth());
     ui->splitterLeftRight->setChildrenCollapsible(false);
-    ui->splitterLeftRight->setSizes({168, width() - 168});
+    ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
 #if 0
     ui->splitterLeftRight->handle(1)->setEnabled(false);
 #endif
     ui->splitterTopBottom->setChildrenCollapsible(false);
-    ui->splitterTopBottom->setSizes({height() - 218, 218});
+    ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
 
     ui->tabWidget->addTab(new OutputDockWidgetContext(ui->tabWidget), tr("Output"));
     ui->tabWidget->addTab(new LogDockWidgetContent(ui->tabWidget), tr("Log"));
+
+    connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
+        this->m_leftPanelWidth = ui->splitterLeftRight->sizes().at(0);
+    });
+    connect(ui->splitterTopBottom, &QSplitter::splitterMoved, this, [=](int pos, int index) {
+        this->m_bottomPanelHeight = ui->splitterTopBottom->sizes().at(1);
+    });
 }
 
 xFlow::~xFlow()
@@ -79,6 +88,8 @@ QJsonObject xFlow::save()
     xFlowParameterKeys keys;
     QJsonObject obj;
     obj.insert(keys.nodeEditor, ui->widgetNodeEditor->save());
+    obj.insert(keys.leftPanelWidth, m_leftPanelWidth);
+    obj.insert(keys.bottomPanelHeight, m_bottomPanelHeight);
     return obj;
 }
 
@@ -88,6 +99,25 @@ void xFlow::load(const QJsonObject &obj)
     QJsonObject nodeEditorObject = obj.value(keys.nodeEditor).toObject();
     ui->widgetNodeEditor->load(nodeEditorObject);
     m_navigator->update();
+
+    m_leftPanelWidth = obj.value(keys.leftPanelWidth).toInt(180);
+    m_bottomPanelHeight = obj.value(keys.bottomPanelHeight).toInt(218);
+    ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
+    ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
+}
+
+bool xFlow::event(QEvent *event)
+{
+    if (!ui) {
+        return QWidget::event(event);
+    }
+
+    bool ret = QWidget::event(event);
+    if (event->type() == QEvent::Resize) {
+        ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
+        ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
+    }
+    return ret;
 }
 
 void xFlow::onThemeChanged()
