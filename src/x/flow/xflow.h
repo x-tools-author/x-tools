@@ -17,6 +17,7 @@ class xFlow;
 
 namespace xFlow {
 
+class LogDockWidgetContent;
 class NodesDockWidgetContent;
 class OutputDockWidgetContext;
 class NavigatorDockWidgetContent;
@@ -38,6 +39,7 @@ protected:
 
 private:
     Ui::xFlow *ui{nullptr};
+    LogDockWidgetContent *m_log{nullptr};
     NodesDockWidgetContent *m_nodes{nullptr};
     OutputDockWidgetContext *m_output{nullptr};
     NavigatorDockWidgetContent *m_navigator{nullptr};

@@ -14,6 +14,8 @@ namespace Ui {
 class LogDockWidgetContent;
 }
 
+namespace xFlow {
+
 class LogDockWidgetContent : public QWidget
 {
     Q_OBJECT
@@ -24,3 +26,5 @@ public:
 private:
     Ui::LogDockWidgetContent *ui;
 };
+
+} // namespace xFlow

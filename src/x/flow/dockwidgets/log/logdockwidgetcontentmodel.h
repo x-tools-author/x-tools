@@ -14,6 +14,8 @@
 #define LOG_COLUMN_TIME 1
 #define LOG_COLUMN_MSG 2
 
+namespace xFlow {
+
 class LogDockWidgetContentModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -45,3 +47,5 @@ private:
 
     QList<LogItem> m_logItems;
 };
+
+} // namespace xFlow

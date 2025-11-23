@@ -11,6 +11,8 @@
 #include <QDateTime>
 #include <QtLogging>
 
+namespace xFlow {
+
 LogDockWidgetContentModelFilter::LogDockWidgetContentModelFilter(QObject *parent)
     : QSortFilterProxyModel(parent)
 {}
@@ -48,3 +50,5 @@ bool LogDockWidgetContentModelFilter::filterAcceptsRow(int sourceRow,
         return false;
     }
 }
+
+} // namespace xFlow

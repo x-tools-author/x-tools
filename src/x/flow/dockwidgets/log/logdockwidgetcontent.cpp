@@ -15,6 +15,8 @@
 #include "logdockwidgetcontentmodel.h"
 #include "logdockwidgetcontentmodelfilter.h"
 
+namespace xFlow {
+
 LogDockWidgetContent::LogDockWidgetContent(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LogDockWidgetContent)
@@ -54,3 +56,5 @@ LogDockWidgetContent::~LogDockWidgetContent()
 {
     delete ui;
 }
+
+} // namespace xFlow

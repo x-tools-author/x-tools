@@ -10,6 +10,8 @@
 
 #include <QSortFilterProxyModel>
 
+namespace xFlow {
+
 class LogDockWidgetContentModelFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
@@ -23,3 +25,5 @@ public:
 private:
     QtMsgType m_level = QtDebugMsg;
 };
+
+} // namespace xFlow

@@ -10,6 +10,8 @@
 
 #include "logdockwidgetcontent.h"
 
+namespace xFlow {
+
 LogDockWidget::LogDockWidget(QWidget *parent)
     : QDockWidget(parent)
 {
@@ -19,7 +21,6 @@ LogDockWidget::LogDockWidget(QWidget *parent)
     setWidget(m_content);
 }
 
-LogDockWidget::~LogDockWidget()
-{
+LogDockWidget::~LogDockWidget() {}
 
-}
+} // namespace xFlow

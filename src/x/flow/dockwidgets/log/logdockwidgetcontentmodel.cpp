@@ -11,6 +11,8 @@
 #include <QDateTime>
 #include <QtLogging>
 
+namespace xFlow {
+
 LogDockWidgetContentModel::LogDockWidgetContentModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
@@ -156,3 +158,5 @@ QVariant LogDockWidgetContentModel::headerData(int section,
 
     return QVariant();
 }
+
+} // namespace xFlow

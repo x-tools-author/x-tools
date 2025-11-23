@@ -10,6 +10,8 @@
 
 #include <QDockWidget>
 
+namespace xFlow {
+
 class LogDockWidgetContent;
 class LogDockWidget : public QDockWidget
 {
@@ -21,3 +23,5 @@ public:
 private:
     LogDockWidgetContent *m_content;
 };
+
+} // namespace xFlow

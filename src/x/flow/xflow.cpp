@@ -68,8 +68,14 @@ xFlow::xFlow(QWidget *parent)
     ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
 
     m_output = new OutputDockWidgetContext(ui->tabWidget);
+    m_log = new LogDockWidgetContent(ui->tabWidget);
+
     ui->tabWidget->addTab(m_output, tr("Output"));
-    ui->tabWidget->addTab(new LogDockWidgetContent(ui->tabWidget), tr("Log"));
+    ui->tabWidget->addTab(m_log, tr("Log"));
+#if 1
+    ui->tabWidget->tabBar()->hide();
+    ui->tabWidget->setStyleSheet("QTabWidget#tabWidget { border: none; }");
+#endif
 
     connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_leftPanelWidth = ui->splitterLeftRight->sizes().at(0);
