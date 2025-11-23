@@ -5164,7 +5164,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
         <source>Interfce Name</source>
-        <translation>Ім'я інтерфейсу</translation>
+        <translation>Ім&apos;я інтерфейсу</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
@@ -5397,24 +5397,132 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>Вікно навігатора</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>Список вузлів</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>Журнал</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>Перемкнути ліву панель</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>Перемкнути нижню панель</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>Показати лінійку</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>Новий проект</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>Відкрити проект</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>Зберегти проект</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>Зберегти проект як...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>Fit Screen</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>Збільшити</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>Зменшити</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>Скинути масштаб</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>Вирівняти по лівому краю</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>Вирівняти праворуч</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>Вирівняти зверху</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>Вирівняти нижню частину</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>Вирівняти вертикально по центру</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>Вирівняти по центру по горизонталі</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>Виберіть усі</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>Видалити вибране</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>Очистити всі вузли</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>Файли проекту xFlow (*.xflow);;Усі файли (*)</translation>
     </message>
 </context>
 <context>

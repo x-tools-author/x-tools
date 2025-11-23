@@ -1418,11 +1418,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Tiedonsiirtonopeus</translation>
+        <translation>Tiedonsiirtonopeus</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Lopeta bittejä</translation>
+        <translation>Stop bits</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -1830,7 +1830,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/instruments/flowmeter.cpp" line="22"/>
         <source>Flowmeter</source>
-        <translation type="unfinished"></translation>
+        <translation>Virtausmittari</translation>
     </message>
 </context>
 <context>
@@ -1838,7 +1838,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzer.cpp" line="73"/>
         <source>Frame Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehysanalysaattori</translation>
     </message>
 </context>
 <context>
@@ -1846,32 +1846,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="32"/>
         <source>Fixed frame length</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiinteä rungon pituus</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="39"/>
         <source>(Hex format)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Heksamuoto)</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
         <source>Split flag</source>
-        <translation type="unfinished"></translation>
+        <translation>Jaettu lippu</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Pituus</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
         <source>Cache Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Välimuistin tavut</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="100"/>
         <source>Clear Cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennä välimuisti</translation>
     </message>
 </context>
 <context>
@@ -1968,7 +1968,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/hub/hub.cpp" line="22"/>
         <source>%1In%2Out</source>
-        <translation type="unfinished"></translation>
+        <translation>%1In%2Out</translation>
     </message>
 </context>
 <context>
@@ -2062,7 +2062,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
         <source>Java Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Java Script</translation>
     </message>
 </context>
 <context>
@@ -2070,7 +2070,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
         <source>The script is invalid.</source>
-        <translation type="unfinished"></translation>
+        <translation>Käsikirjoitus on virheellinen.</translation>
     </message>
 </context>
 <context>
@@ -2228,12 +2228,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="14"/>
         <source>Log</source>
-        <translation type="unfinished">Loki</translation>
+        <translation>Loki</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="35"/>
         <source>Log level</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokin taso</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="42"/>
@@ -5397,24 +5397,132 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>Navigaattori-ikkuna</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>Solmujen luettelo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>Lähtö</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>Loki</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>Vaihda vasen paneeli</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>Vaihda alapaneelia</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>Näytä Viivain</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>Uusi projekti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>Avaa projekti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>Tallenna projekti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>Tallenna projekti nimellä...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>Sovita näyttö</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>Lähennä</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>Loitonna</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>Palauta zoomaus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>Tasaa vasemmalle</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>Kohdista oikealle</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>Kohdista yläosa</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>Tasaa alas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>Tasaa pystysuoraan keskelle</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>Kohdista vaakakeskus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>Valitse Kaikki</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>Poista valitut</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>Tyhjennä kaikki solmut</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>xFlow Project Files (*.xflow);;Kaikki tiedostot (*)</translation>
     </message>
 </context>
 <context>

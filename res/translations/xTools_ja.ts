@@ -2567,7 +2567,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
         <source>Masker</source>
-        <translation type="unfinished"></translation>
+        <translation>フェイスマスク</translation>
     </message>
 </context>
 <context>
@@ -5397,24 +5397,132 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>ナビゲータウィンドウ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>ノードリスト</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>出力</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>ログ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>左パネルの切り替え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>底部パネルの切り替え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>定規を表示</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>新しいプロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>プロジェクトを開く</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>プロジェクトの保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>プロジェクトに名前を付けて保存...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>画面に合わせる</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>ズームイン</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>ズームアウト</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>ズームをリセット</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>左揃え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>右揃え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>上揃え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>下揃え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>垂直方向の中心を揃える</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>水平方向の中央揃え</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>すべて選択</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>選択したものを削除</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>すべてのノードをクリア</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>xFlow プロジェクト ファイル (*.xflow);;すべてのファイル (*)</translation>
     </message>
 </context>
 <context>

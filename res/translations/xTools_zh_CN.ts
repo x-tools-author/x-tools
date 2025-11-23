@@ -2686,7 +2686,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Office Web Site</source>
-        <translation>办公室网站</translation>
+        <translation>办公网站</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="649"/>
@@ -5794,24 +5794,132 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>导航窗口</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>节点列表</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>日志</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>切换左侧面板</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>切换底部面板</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>显示标尺</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>新项目</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>开放项目</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>保存项目</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>将项目另存为...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>适合屏幕</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>放大</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>缩小</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>重置缩放</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>左对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>右对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>顶部对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>底部对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>垂直居中对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>水平居中对齐</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>选择全部</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>删除所选内容</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>清除所有节点</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>xFlow 项目文件 (*.xflow);;所有文件 (*)</translation>
     </message>
 </context>
 <context>

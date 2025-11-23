@@ -5397,24 +5397,132 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>نافذة الملاح</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>قائمة العقد</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>الإخراج</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>سجل</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>تبديل اللوحة اليسرى</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>تبديل اللوحة السفلية</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>عرض الحاكم</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>مشروع جديد</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>افتح المشروع</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>حفظ المشروع</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>حفظ المشروع باسم...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>شاشة ملائمة</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>تكبير</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>تصغير</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>إعادة ضبط التكبير</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>محاذاة لليسار</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>محاذاة لليمين</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>محاذاة الأعلى</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>محاذاة القاع</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>محاذاة المركز العمودي</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>محاذاة المركز الأفقي</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>حدد الكل</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>حذف المحدد</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>مسح كافة العقد</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>ملفات مشروع xFlow (*.xflow)؛؛كافة الملفات (*)</translation>
     </message>
 </context>
 <context>

@@ -496,7 +496,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
         <source>Ignore the input data and no data output...</source>
-        <translation>Ignorer les données d'entrée et aucune sortie de données...</translation>
+        <translation>Ignorer les données d&apos;entrée et aucune sortie de données...</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="38"/>
@@ -968,12 +968,12 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
         <source>Input data is hex string</source>
-        <translation>Les données d'entrée sont une chaîne hexadécimale</translation>
+        <translation>Les données d&apos;entrée sont une chaîne hexadécimale</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="88"/>
         <source>Input data is utf8 string</source>
-        <translation>Les données d'entrée sont une chaîne utf8</translation>
+        <translation>Les données d&apos;entrée sont une chaîne utf8</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="69"/>
@@ -991,7 +991,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/communication/communication.cpp" line="141"/>
         <source>Device is working normally.</source>
-        <translation>L'appareil fonctionne normalement.</translation>
+        <translation>L&apos;appareil fonctionne normalement.</translation>
     </message>
 </context>
 <context>
@@ -1123,17 +1123,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
         <source>Start byte index is start from left</source>
-        <translation>L'index de l'octet de départ commence à gauche</translation>
+        <translation>L&apos;index de l&apos;octet de départ commence à gauche</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
         <source>End byte index</source>
-        <translation>Index d'octet de fin</translation>
+        <translation>Index d&apos;octet de fin</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
         <source>Start byte index</source>
-        <translation>Index d'octet de départ</translation>
+        <translation>Index d&apos;octet de départ</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
@@ -1143,7 +1143,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
         <source>End byte index is start from right</source>
-        <translation>L'index de l'octet de fin commence à droite</translation>
+        <translation>L&apos;index de l&apos;octet de fin commence à droite</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
@@ -1174,12 +1174,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
         <source>End byte index</source>
-        <translation>Index d'octet de fin</translation>
+        <translation>Index d&apos;octet de fin</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
         <source>Start byte index</source>
-        <translation>Index d'octet de départ</translation>
+        <translation>Index d&apos;octet de départ</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
@@ -1194,12 +1194,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="57"/>
         <source>Start byte index is start from left</source>
-        <translation>L'index de l'octet de départ commence à gauche</translation>
+        <translation>L&apos;index de l&apos;octet de départ commence à gauche</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="64"/>
         <source>End byte index is start from right</source>
-        <translation>L'index de l'octet de fin commence à droite</translation>
+        <translation>L&apos;index de l&apos;octet de fin commence à droite</translation>
     </message>
 </context>
 <context>
@@ -1235,7 +1235,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
         <source>Svae time</source>
-        <translation>Ne t'inquiète pas</translation>
+        <translation>Ne t&apos;inquiète pas</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
@@ -1394,7 +1394,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
         <source>Show time</source>
-        <translation>Afficher l'heure</translation>
+        <translation>Afficher l&apos;heure</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
@@ -1817,7 +1817,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="40"/>
         <source>Escape</source>
-        <translation>S'échapper</translation>
+        <translation>S&apos;échapper</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="47"/>
@@ -2070,7 +2070,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
         <source>The script is invalid.</source>
-        <translation>Le script n'est pas valide.</translation>
+        <translation>Le script n&apos;est pas valide.</translation>
     </message>
 </context>
 <context>
@@ -2977,7 +2977,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
         <source>Device type</source>
-        <translation>Type d'appareil</translation>
+        <translation>Type d&apos;appareil</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
@@ -2997,12 +2997,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
         <source>Device Name</source>
-        <translation>Nom de l'appareil</translation>
+        <translation>Nom de l&apos;appareil</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
         <source>Such as: Siemens S7-300</source>
-        <translation>Tels que : Siemens S7-300</translation>
+        <translation>Tels que&#xa0;:&#xa0;Siemens S7-300</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
@@ -3040,7 +3040,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation>Supprimer l'appareil/le groupe/le registre</translation>
+        <translation>Supprimer l&apos;appareil/le groupe/le registre</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
@@ -4003,7 +4003,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
         <source>An unknown error occurred.</source>
-        <translation>Une erreur inconnue s'est produite.</translation>
+        <translation>Une erreur inconnue s&apos;est produite.</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
@@ -4877,7 +4877,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="47"/>
         <source>Delete Selected Item</source>
-        <translation>Supprimer l'élément sélectionné</translation>
+        <translation>Supprimer l&apos;élément sélectionné</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="48"/>
@@ -5113,7 +5113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinput.cpp" line="25"/>
         <source>User Input</source>
-        <translation>Entrée de l'utilisateur</translation>
+        <translation>Entrée de l&apos;utilisateur</translation>
     </message>
 </context>
 <context>
@@ -5131,7 +5131,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
         <source>Escape</source>
-        <translation>S'échapper</translation>
+        <translation>S&apos;échapper</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
@@ -5151,7 +5151,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
         <source>Please &quot;Enter&quot; to send...</source>
-        <translation>S'il te plaît</translation>
+        <translation>S&apos;il te plaît</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
@@ -5164,7 +5164,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
         <source>Interfce Name</source>
-        <translation>Nom de l'interface</translation>
+        <translation>Nom de l&apos;interface</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
@@ -5199,7 +5199,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
         <source>Error filter</source>
-        <translation>Filtre d'erreur</translation>
+        <translation>Filtre d&apos;erreur</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
@@ -5230,7 +5230,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Déboguer</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
@@ -5258,17 +5258,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
         <source>The is a debug message.</source>
-        <translation>Il s'agit d'un message de débogage.</translation>
+        <translation>Il s&apos;agit d&apos;un message de débogage.</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
         <source>The is a information message.</source>
-        <translation>Il s'agit d'un message d'information.</translation>
+        <translation>Il s&apos;agit d&apos;un message d&apos;information.</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
         <source>The is a warning message.</source>
-        <translation>Il s'agit d'un message d'avertissement.</translation>
+        <translation>Il s&apos;agit d&apos;un message d&apos;avertissement.</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
@@ -5278,7 +5278,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
         <source>The is a fatal message.</source>
-        <translation>C'est un message fatal.</translation>
+        <translation>C&apos;est un message fatal.</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
@@ -5314,12 +5314,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
         <source>Save Image as...</source>
-        <translation>Enregistrer l'image sous...</translation>
+        <translation>Enregistrer l&apos;image sous...</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
         <source>Save Image</source>
-        <translation>Enregistrer l'image</translation>
+        <translation>Enregistrer l&apos;image</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
@@ -5329,7 +5329,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
         <source>Save Image to Clipboard</source>
-        <translation>Enregistrer l'image dans le presse-papiers</translation>
+        <translation>Enregistrer l&apos;image dans le presse-papiers</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
@@ -5391,30 +5391,138 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
         <source>Failed to save file!</source>
-        <translation>Échec de l'enregistrement du fichier !</translation>
+        <translation>Échec de l&apos;enregistrement du fichier&#xa0;!</translation>
     </message>
 </context>
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="54"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
         <source>Navigator Window</source>
         <translation>Fenêtre du navigateur</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="58"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
         <source>Nodes List</source>
         <translation>Liste des nœuds</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="73"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
         <source>Output</source>
         <translation>Sortir</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="74"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
         <source>Log</source>
         <translation>Enregistrer</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <source>Toggle Left Panel</source>
+        <translation>Basculer le panneau gauche</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <source>Toggle Bottom Panel</source>
+        <translation>Basculer le panneau inférieur</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <source>Show Ruler</source>
+        <translation>Afficher la règle</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <source>New Project</source>
+        <translation>Nouveau projet</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <source>Open Project</source>
+        <translation>Projet ouvert</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <source>Save Project</source>
+        <translation>Enregistrer le projet</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <source>Save Project As...</source>
+        <translation>Enregistrer le projet sous...</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <source>Fit Screen</source>
+        <translation>Ajuster l'écran</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <source>Zoom In</source>
+        <translation>Zoomer</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <source>Zoom Out</source>
+        <translation>Zoom arrière</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <source>Reset Zoom</source>
+        <translation>Réinitialiser le zoom</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <source>Align Left</source>
+        <translation>Aligner à gauche</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <source>Align Right</source>
+        <translation>Aligner à droite</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <source>Align Top</source>
+        <translation>Aligner en haut</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <source>Align Bottom</source>
+        <translation>Aligner en bas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <source>Align Vertical Center</source>
+        <translation>Aligner le centre vertical</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <source>Align Horizontal Center</source>
+        <translation>Aligner le centre horizontal</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <source>Select All</source>
+        <translation>Sélectionner tout</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <source>Delete Selected</source>
+        <translation>Supprimer la sélection</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <source>Clear All Nodes</source>
+        <translation>Effacer tous les nœuds</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <source>xFlow Project Files (*.xflow);;All Files (*)</source>
+        <translation>Fichiers de projet xFlow (*.xflow);;Tous les fichiers (*)</translation>
     </message>
 </context>
 <context>
@@ -5792,12 +5900,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
-        <translation>Barre d'outils Modbus</translation>
+        <translation>Barre d&apos;outils Modbus</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
-        <translation>Exemple d'action</translation>
+        <translation>Exemple d&apos;action</translation>
     </message>
 </context>
 </TS>

@@ -47,6 +47,8 @@ NodeEditorView::NodeEditorView(const QColor &rulerColor, QWidget *parent)
     m_model = new QtNodes::DataFlowGraphModel(m_registry);
     m_scene = new NodeEditorScene(*m_model, this);
     setScene(m_scene);
+    setObjectName("NodeEditorView");
+    setStyleSheet("QGraphicsView#NodeEditorView { border: none; }");
 
     // clang-format off
     connect(m_scene, &QtNodes::DataFlowGraphicsScene::sceneLoaded, this, &NodeEditorView::sceneLoaded);
@@ -211,7 +213,7 @@ void NodeEditorView::setGridVisible(bool visible)
 
 QRectF NodeEditorView::defaultSceneRect()
 {
-    static QRectF rect(2, 2, 3840, 2160);
+    static QRectF rect(1, 1, 3840, 2160);
     return rect;
 }
 
