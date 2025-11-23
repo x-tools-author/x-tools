@@ -6,7 +6,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipher.cpp" line="113"/>
         <source>AES Cipher</source>
-        <translation>AES 密码</translation>
+        <translation>AES密码器</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
         <source>IV</source>
-        <translation>四号</translation>
+        <translation>向量</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
@@ -1270,7 +1270,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
         <source>Svae time</source>
-        <translation>不用担心</translation>
+        <translation>保存时间</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
@@ -1429,7 +1429,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
         <source>Show time</source>
-        <translation>开演时间</translation>
+        <translation>显示时间</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
@@ -1834,7 +1834,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filter.cpp" line="33"/>
         <source>Filter</source>
-        <translation>筛选</translation>
+        <translation>过滤器</translation>
     </message>
 </context>
 <context>
@@ -2413,7 +2413,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/luascript.cpp" line="37"/>
         <source>Lua Script</source>
-        <translation>拍摄脚本</translation>
+        <translation>Lua脚本</translation>
     </message>
 </context>
 <context>
@@ -2725,7 +2725,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
         <source>Masker</source>
-        <translation>口罩</translation>
+        <translation>掩码器</translation>
     </message>
 </context>
 <context>
@@ -4584,12 +4584,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="80"/>
         <source>Generate</source>
-        <translation>产生</translation>
+        <translation>生成</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="87"/>
         <source>Big endian</source>
-        <translation>大尾数</translation>
+        <translation>大端序</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
@@ -5140,7 +5140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculator.cpp" line="20"/>
         <source>Sum Calculator</source>
-        <translation>总和计算器</translation>
+        <translation>和计算器</translation>
     </message>
 </context>
 <context>
@@ -5166,7 +5166,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumchecker.cpp" line="20"/>
         <source>Sum Checker</source>
-        <translation>总和检查器</translation>
+        <translation>和检查器</translation>
     </message>
 </context>
 <context>
@@ -5518,22 +5518,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="26"/>
         <source>Format</source>
-        <translation>格式</translation>
+        <translation>输入格式</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="42"/>
         <source>Prefix</source>
-        <translation>前缀</translation>
+        <translation>追加前缀</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
         <source>Escape</source>
-        <translation>逃脱</translation>
+        <translation>转义字符</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
         <source>Suffix</source>
-        <translation>后缀</translation>
+        <translation>追加后缀</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="90"/>
@@ -5548,7 +5548,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
         <source>Please &quot;Enter&quot; to send...</source>
-        <translation>请</translation>
+        <translation>请按“回车”发送...</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>

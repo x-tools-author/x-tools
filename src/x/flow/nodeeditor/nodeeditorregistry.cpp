@@ -115,9 +115,9 @@ void NodeEditorRegistry::registerModelInputOutput()
     static const QString friendlyCategory = QObject::tr("Input/Output");
     xFlow::registerModelInputOutput<UserInput>(this, category, friendlyCategory);
     xFlow::registerModelInputOutput<DebugOutput>(this, category, friendlyCategory);
+    xFlow::registerModelInputOutput<DataView>(this, category, friendlyCategory);
     xFlow::registerModelInputOutput<RandomGenerator>(this, category, friendlyCategory);
     xFlow::registerModelInputOutput<DataPersistence>(this, category, friendlyCategory);
-    xFlow::registerModelInputOutput<DataView>(this, category, friendlyCategory);
 }
 
 void NodeEditorRegistry::registerModelDataProcess()
@@ -129,9 +129,9 @@ void NodeEditorRegistry::registerModelDataProcess()
     registerNode<CrcCalculator>(this, category, friendlyCategory);
     registerNode<CrcChecker>(this, category, friendlyCategory);
     registerNode<Filter>(this, category, friendlyCategory);
-    registerNode<FrameAnalyzer>(this, category, friendlyCategory);
     registerNode<Masker>(this, category, friendlyCategory);
     registerNode<SumCalculator>(this, category, friendlyCategory);
+    registerNode<FrameAnalyzer>(this, category, friendlyCategory);
     registerNode<SumChecker>(this, category, friendlyCategory);
 }
 
