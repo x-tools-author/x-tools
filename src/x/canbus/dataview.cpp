@@ -23,6 +23,7 @@ DataView::DataView(QWidget *parent)
     m_filter = new DataFilter(this);
     m_filter->setSourceModel(m_model);
     ui->tableView->setModel(m_filter);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
 

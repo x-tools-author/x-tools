@@ -57,4 +57,8 @@ bool xCanBus::event(QEvent* event)
     return QWidget::event(event);
 }
 
+void xCanBus::onDisconnect() {}
+
+void xCanBus::onConnect() {}
+
 } // namespace xCanBus
