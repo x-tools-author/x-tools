@@ -1121,32 +1121,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCalculatorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="57"/>
         <source>Start byte index is start from left</source>
         <translation>L&apos;index de l&apos;octet de départ commence à gauche</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
         <source>End byte index</source>
         <translation>Index d&apos;octet de fin</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>Index d&apos;octet de départ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="50"/>
         <source>Big Endian</source>
         <translation>Gros boutien</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="64"/>
         <source>End byte index is start from right</source>
         <translation>L&apos;index de l&apos;octet de fin commence à droite</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>Arithmétique</translation>
     </message>
@@ -1172,17 +1172,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCheckerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
         <source>End byte index</source>
         <translation>Index d&apos;octet de fin</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>Index d&apos;octet de départ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>Arithmétique</translation>
     </message>
@@ -2326,84 +2326,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="331"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
         <source>New Window</source>
         <translation>Nouvelle fenêtre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>Enregistrer les paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="359"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Import Parameters</source>
         <translation>Importer les paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="363"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Export Parameters</source>
         <translation>Exporter les paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
         <source>Exit Application</source>
         <translation>Quitter l&apos;application</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="377"/>
         <source>&amp;Tools</source>
         <translation>&amp;Outils</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="403"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;Options</source>
         <translation>&amp;Options</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="412"/>
+        <location filename="../../src/mainwindow.cpp" line="427"/>
         <source>Use System Proxy</source>
         <translation>Utiliser le proxy système</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="422"/>
+        <location filename="../../src/mainwindow.cpp" line="437"/>
         <source>Exit to System Tray</source>
         <translation>Quitter vers la barre système</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="442"/>
+        <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Application Style</source>
         <translation>Style d&apos;application</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Clear Settings</source>
         <translation>Effacer les paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="458"/>
+        <location filename="../../src/mainwindow.cpp" line="473"/>
         <source>Open Settings Directory</source>
         <translation>Ouvrir le répertoire des paramètres</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>HDPI Policy</source>
         <translation>Politique HDPI</translation>
     </message>
@@ -2424,140 +2424,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Système</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>&amp;Languages</source>
         <translation>&amp;Langues</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="492"/>
+        <location filename="../../src/mainwindow.cpp" line="507"/>
         <source>&amp;View</source>
         <translation>&amp;Affichage</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="544"/>
+        <location filename="../../src/mainwindow.cpp" line="559"/>
         <source>Stays on Top</source>
         <translation>Rester au premier plan</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="579"/>
         <source>&amp;Help</source>
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="565"/>
+        <location filename="../../src/mainwindow.cpp" line="580"/>
         <source>About Qt</source>
         <translation>À propos de Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
-        <location filename="../../src/mainwindow.cpp" line="780"/>
+        <location filename="../../src/mainwindow.cpp" line="581"/>
+        <location filename="../../src/mainwindow.cpp" line="795"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
         <source>Screenshot</source>
         <translation>Capture d&apos;écran</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Buy from Store</source>
         <translation>Acheter dans le magasin</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="644"/>
         <source>Release History</source>
         <translation>Historique des versions</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="586"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Join in QQ Group</source>
         <translation>Rejoindre le groupe QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Online Manual</source>
         <translation>Manuel en ligne</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="592"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Github</source>
         <translation>Obtenir les sources depuis Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="595"/>
+        <location filename="../../src/mainwindow.cpp" line="610"/>
         <source>Get Sources from Gitee</source>
         <translation>Obtenir les sources depuis Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Third Party Open Source</source>
         <translation>Open Source tiers</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="649"/>
+        <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>QR Code</source>
         <translation>QR Code</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>User QQ Group</source>
         <translation>Groupe QQ utilisateur</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Qt QQ Group</source>
         <translation>Groupe QQ Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>Need to Reboot</source>
         <translation>Redémarrage nécessaire</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>L&apos;opération nécessite un redémarrage pour prendre effet, redémarrer l&apos;application maintenant ?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="698"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Veuillez redémarrer votre application manuellement.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="726"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="741"/>
+        <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Json Files (*.json)</source>
         <translation>Fichiers Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Unknown</source>
         <translation>Inconnu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="774"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit hash</source>
         <translation>Hash de commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Commit time</source>
         <translation>Heure de commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="777"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>Build Date</source>
         <translation>Date de compilation</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>Copyright</source>
         <translation>Droits d&apos;auteur</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="779"/>
+        <location filename="../../src/mainwindow.cpp" line="794"/>
         <source>All rights reserved.</source>
         <translation>Tous droits réservés.</translation>
     </message>
@@ -5307,32 +5307,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="241"/>
         <source>Delete connection</source>
         <translation>Supprimer la connexion</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="276"/>
         <source>Save Image as...</source>
         <translation>Enregistrer l&apos;image sous...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="283"/>
         <source>Save Image</source>
         <translation>Enregistrer l&apos;image</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
         <source>Images (*.png)</source>
         <translation>Images (*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="297"/>
         <source>Save Image to Clipboard</source>
         <translation>Enregistrer l&apos;image dans le presse-papiers</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="300"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
@@ -5397,132 +5397,148 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="62"/>
         <source>Navigator Window</source>
         <translation>Fenêtre du navigateur</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="66"/>
         <source>Nodes List</source>
         <translation>Liste des nœuds</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="81"/>
         <source>Output</source>
         <translation>Sortir</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
         <source>Log</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
         <source>Toggle Left Panel</source>
         <translation>Basculer le panneau gauche</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
         <source>Toggle Bottom Panel</source>
         <translation>Basculer le panneau inférieur</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
         <source>Show Ruler</source>
         <translation>Afficher la règle</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
         <source>New Project</source>
         <translation>Nouveau projet</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Open Project</source>
         <translation>Projet ouvert</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
         <source>Save Project</source>
         <translation>Enregistrer le projet</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
         <source>Save Project As...</source>
         <translation>Enregistrer le projet sous...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
         <source>Fit Screen</source>
-        <translation>Ajuster l'écran</translation>
+        <translation>Ajuster l&apos;écran</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
         <source>Zoom In</source>
         <translation>Zoomer</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
         <source>Zoom Out</source>
         <translation>Zoom arrière</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Reset Zoom</source>
         <translation>Réinitialiser le zoom</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
         <source>Align Left</source>
         <translation>Aligner à gauche</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
         <source>Align Right</source>
         <translation>Aligner à droite</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
         <source>Align Top</source>
         <translation>Aligner en haut</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Align Bottom</source>
         <translation>Aligner en bas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Align Vertical Center</source>
         <translation>Aligner le centre vertical</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
         <source>Align Horizontal Center</source>
         <translation>Aligner le centre horizontal</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Select All</source>
         <translation>Sélectionner tout</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Delete Selected</source>
         <translation>Supprimer la sélection</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
         <source>Clear All Nodes</source>
         <translation>Effacer tous les nœuds</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <source>Undo</source>
+        <translation>Défaire</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <source>Redo</source>
+        <translation>Refaire</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>Fichiers de projet xFlow (*.xflow);;Tous les fichiers (*)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <source>Are you sure to clear all nodes?</source>
+        <translation>Êtes-vous sûr d'avoir effacé tous les nœuds ?</translation>
     </message>
 </context>
 <context>

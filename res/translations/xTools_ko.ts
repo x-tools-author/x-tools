@@ -1121,32 +1121,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCalculatorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="57"/>
         <source>Start byte index is start from left</source>
         <translation>시작 바이트 인덱스는 왼쪽부터 시작됩니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
         <source>End byte index</source>
         <translation>끝 바이트 인덱스</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>시작 바이트 인덱스</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="50"/>
         <source>Big Endian</source>
         <translation>빅엔디안</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="64"/>
         <source>End byte index is start from right</source>
         <translation>끝 바이트 인덱스는 오른쪽부터 시작됩니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>산수</translation>
     </message>
@@ -1172,17 +1172,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCheckerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
         <source>End byte index</source>
         <translation>끝 바이트 인덱스</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>시작 바이트 인덱스</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>산수</translation>
     </message>
@@ -2326,84 +2326,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>일반적인</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="331"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
         <translation>파일(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
         <source>New Window</source>
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="359"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="363"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
         <source>Exit Application</source>
         <translation>애플리케이션 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="377"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="403"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;Options</source>
         <translation>옵션(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="412"/>
+        <location filename="../../src/mainwindow.cpp" line="427"/>
         <source>Use System Proxy</source>
         <translation>시스템 프록시 사용</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="422"/>
+        <location filename="../../src/mainwindow.cpp" line="437"/>
         <source>Exit to System Tray</source>
         <translation>시스템 트레이로 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="442"/>
+        <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Application Style</source>
         <translation>애플리케이션 스타일</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Clear Settings</source>
         <translation>설정 지우기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="458"/>
+        <location filename="../../src/mainwindow.cpp" line="473"/>
         <source>Open Settings Directory</source>
         <translation>설정 디렉터리 열기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>HDPI Policy</source>
         <translation>HDPI 정책</translation>
     </message>
@@ -2424,140 +2424,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>체계</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>&amp;Languages</source>
         <translation>언어(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="492"/>
+        <location filename="../../src/mainwindow.cpp" line="507"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="544"/>
+        <location filename="../../src/mainwindow.cpp" line="559"/>
         <source>Stays on Top</source>
         <translation>항상 위에</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="579"/>
         <source>&amp;Help</source>
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="565"/>
+        <location filename="../../src/mainwindow.cpp" line="580"/>
         <source>About Qt</source>
         <translation>Qt 정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
-        <location filename="../../src/mainwindow.cpp" line="780"/>
+        <location filename="../../src/mainwindow.cpp" line="581"/>
+        <location filename="../../src/mainwindow.cpp" line="795"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
         <source>Screenshot</source>
         <translation>스크린샷</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Buy from Store</source>
         <translation>스토어에서 구매</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="644"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="586"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Join in QQ Group</source>
         <translation>QQ 그룹 참여</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Online Manual</source>
         <translation>온라인 매뉴얼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="592"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Github</source>
         <translation>Github에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="595"/>
+        <location filename="../../src/mainwindow.cpp" line="610"/>
         <source>Get Sources from Gitee</source>
         <translation>Gitee에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="649"/>
+        <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>Need to Reboot</source>
         <translation>재시작 필요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>작업을 적용하려면 재시작이 필요합니다. 지금 애플리케이션을 재시작하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="698"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="726"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="741"/>
+        <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="774"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="777"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="779"/>
+        <location filename="../../src/mainwindow.cpp" line="794"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -5307,32 +5307,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="241"/>
         <source>Delete connection</source>
         <translation>연결 삭제</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="276"/>
         <source>Save Image as...</source>
         <translation>이미지를 다른 이름으로 저장...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="283"/>
         <source>Save Image</source>
         <translation>이미지 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
         <source>Images (*.png)</source>
         <translation>이미지(*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="297"/>
         <source>Save Image to Clipboard</source>
         <translation>이미지를 클립보드에 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="300"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
@@ -5397,132 +5397,148 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="62"/>
         <source>Navigator Window</source>
         <translation>네비게이터 창</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="66"/>
         <source>Nodes List</source>
         <translation>노드 목록</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="81"/>
         <source>Output</source>
         <translation>산출</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
         <source>Log</source>
         <translation>통나무</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
         <source>Toggle Left Panel</source>
         <translation>왼쪽 패널 전환</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
         <source>Toggle Bottom Panel</source>
         <translation>하단 패널 전환</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
         <source>Show Ruler</source>
         <translation>눈금자 표시</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
         <source>New Project</source>
         <translation>새 프로젝트</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Open Project</source>
         <translation>프로젝트 열기</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
         <source>Save Project</source>
         <translation>프로젝트 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
         <source>Save Project As...</source>
         <translation>프로젝트를 다른 이름으로 저장...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
         <source>Fit Screen</source>
         <translation>화면 맞춤</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
         <source>Zoom In</source>
         <translation>확대</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
         <source>Zoom Out</source>
         <translation>축소</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Reset Zoom</source>
         <translation>줌 재설정</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
         <source>Align Left</source>
         <translation>왼쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
         <source>Align Right</source>
         <translation>오른쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
         <source>Align Top</source>
         <translation>위쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Align Bottom</source>
         <translation>하단 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Align Vertical Center</source>
         <translation>수직 중심 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
         <source>Align Horizontal Center</source>
         <translation>수평 중심 정렬</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Select All</source>
         <translation>모두 선택</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Delete Selected</source>
         <translation>선택 항목 삭제</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
         <source>Clear All Nodes</source>
         <translation>모든 노드 지우기</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <source>Undo</source>
+        <translation>끄르다</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <source>Redo</source>
+        <translation>다시 하다</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow 프로젝트 파일(*.xflow);;모든 파일(*)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <source>Are you sure to clear all nodes?</source>
+        <translation>모든 노드를 삭제하시겠습니까?</translation>
     </message>
 </context>
 <context>

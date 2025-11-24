@@ -1121,32 +1121,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCalculatorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="57"/>
         <source>Start byte index is start from left</source>
         <translation>Pradinio baito indeksas prasideda iš kairės</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
         <source>End byte index</source>
         <translation>Pabaigos baitų indeksas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>Pradėti baitų indeksą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="47"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="50"/>
         <source>Big Endian</source>
         <translation>Didysis Endianas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="54"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="64"/>
         <source>End byte index is start from right</source>
         <translation>Pabaigos baitų indeksas prasideda iš dešinės</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="61"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>Aritmetika</translation>
     </message>
@@ -1172,17 +1172,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCheckerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
         <source>End byte index</source>
         <translation>Pabaigos baitų indeksas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="30"/>
         <source>Start byte index</source>
         <translation>Pradėti baitų indeksą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
         <source>Arithmetic</source>
         <translation>Aritmetika</translation>
     </message>
@@ -2326,84 +2326,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Generolas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="331"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
         <translation>&amp;Failas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="333"/>
+        <location filename="../../src/mainwindow.cpp" line="348"/>
         <source>New Window</source>
         <translation>Naujas langas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>Išsaugoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
-        <location filename="../../src/mainwindow.cpp" line="724"/>
+        <location filename="../../src/mainwindow.cpp" line="359"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
         <source>Import Parameters</source>
         <translation>Importuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="363"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Export Parameters</source>
         <translation>Eksportuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="353"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
         <source>Exit Application</source>
         <translation>Išeiti iš programos</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="377"/>
         <source>&amp;Tools</source>
         <translation>&amp;Įrankiai</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="380"/>
         <source>New</source>
         <translation>Naujas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="403"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;Options</source>
         <translation>&amp;Parinktys</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="412"/>
+        <location filename="../../src/mainwindow.cpp" line="427"/>
         <source>Use System Proxy</source>
         <translation>Naudoti sistemos proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="422"/>
+        <location filename="../../src/mainwindow.cpp" line="437"/>
         <source>Exit to System Tray</source>
         <translation>Išeiti į sistemos dėklą</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="442"/>
+        <location filename="../../src/mainwindow.cpp" line="457"/>
         <source>Application Style</source>
         <translation>Programos stilius</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Settings</source>
         <translation>Nustatymai</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="467"/>
         <source>Clear Settings</source>
         <translation>Išvalyti nustatymus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="458"/>
+        <location filename="../../src/mainwindow.cpp" line="473"/>
         <source>Open Settings Directory</source>
         <translation>Atidaryti nustatymų katalogą</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>HDPI Policy</source>
         <translation>HDPI politika</translation>
     </message>
@@ -2424,140 +2424,140 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="485"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>&amp;Languages</source>
         <translation>&amp;Kalbos</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="492"/>
+        <location filename="../../src/mainwindow.cpp" line="507"/>
         <source>&amp;View</source>
         <translation>&amp;Peržiūra</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="544"/>
+        <location filename="../../src/mainwindow.cpp" line="559"/>
         <source>Stays on Top</source>
         <translation>Visada viršuje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="579"/>
         <source>&amp;Help</source>
         <translation>&amp;Pagalba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="565"/>
+        <location filename="../../src/mainwindow.cpp" line="580"/>
         <source>About Qt</source>
         <translation>Apie Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
-        <location filename="../../src/mainwindow.cpp" line="780"/>
+        <location filename="../../src/mainwindow.cpp" line="581"/>
+        <location filename="../../src/mainwindow.cpp" line="795"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="585"/>
         <source>Screenshot</source>
         <translation>Ekrano kopija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="594"/>
         <source>Buy from Store</source>
         <translation>Pirkti parduotuvėje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
-        <location filename="../../src/mainwindow.cpp" line="629"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="644"/>
         <source>Release History</source>
         <translation>Leidimų istorija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="586"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Join in QQ Group</source>
         <translation>Prisijungti prie QQ grupės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Online Manual</source>
         <translation>Internetinis vadovas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="592"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Github</source>
         <translation>Gauti šaltinius iš Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="595"/>
+        <location filename="../../src/mainwindow.cpp" line="610"/>
         <source>Get Sources from Gitee</source>
         <translation>Gauti šaltinius iš Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="615"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Third Party Open Source</source>
         <translation>Trečiųjų šalių atviras kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="649"/>
+        <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>QR Code</source>
         <translation>QR kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="658"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>User QQ Group</source>
         <translation>Vartotojų QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>Need to Reboot</source>
         <translation>Reikia perkrauti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacijai įsigalioti reikia perkrovimo, perkrauti programą dabar?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="698"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Prašome perkrauti programą rankiniu būdu.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="726"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="741"/>
+        <location filename="../../src/mainwindow.cpp" line="754"/>
         <source>Json Files (*.json)</source>
         <translation>Json failai (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="768"/>
+        <location filename="../../src/mainwindow.cpp" line="783"/>
         <source>Unknown</source>
         <translation>Nežinomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="774"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit hash</source>
         <translation>Commit hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="776"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Commit time</source>
         <translation>Commit laikas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="777"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>Build Date</source>
         <translation>Kompiliavimo data</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="778"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>Copyright</source>
         <translation>Autorių teisės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="779"/>
+        <location filename="../../src/mainwindow.cpp" line="794"/>
         <source>All rights reserved.</source>
         <translation>Visos teisės saugomos.</translation>
     </message>
@@ -5307,32 +5307,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="239"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="241"/>
         <source>Delete connection</source>
         <translation>Ištrinti ryšį</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="268"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="276"/>
         <source>Save Image as...</source>
         <translation>Išsaugoti vaizdą kaip...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="275"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="283"/>
         <source>Save Image</source>
         <translation>Išsaugoti vaizdą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="277"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
         <source>Images (*.png)</source>
         <translation>Vaizdai (*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="297"/>
         <source>Save Image to Clipboard</source>
         <translation>Išsaugoti vaizdą į mainų sritį</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="292"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="300"/>
         <source>Delete</source>
         <translation>Ištrinti</translation>
     </message>
@@ -5397,132 +5397,148 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="59"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="62"/>
         <source>Navigator Window</source>
         <translation>Navigatoriaus langas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="66"/>
         <source>Nodes List</source>
         <translation>Mazgų sąrašas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="78"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="81"/>
         <source>Output</source>
         <translation>Išvestis</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="79"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
         <source>Log</source>
         <translation>Žurnalas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="175"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
         <source>Toggle Left Panel</source>
         <translation>Perjungti kairįjį skydelį</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="176"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
         <source>Toggle Bottom Panel</source>
         <translation>Perjungti apatinį skydelį</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="177"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
         <source>Show Ruler</source>
         <translation>Rodyti liniuotę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="185"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
         <source>New Project</source>
         <translation>Naujas Projektas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="186"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Open Project</source>
         <translation>Atidaryti projektą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="187"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
         <source>Save Project</source>
         <translation>Išsaugoti projektą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="188"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
         <source>Save Project As...</source>
         <translation>Išsaugoti projektą kaip...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
         <source>Fit Screen</source>
         <translation>Fit Screen</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="192"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
         <source>Zoom In</source>
         <translation>Priartinti</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
         <source>Zoom Out</source>
         <translation>Sumažinti</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="198"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Reset Zoom</source>
         <translation>Iš naujo nustatykite mastelį</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
         <source>Align Left</source>
         <translation>Lygiuoti į kairę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
         <source>Align Right</source>
         <translation>Sulygiuoti į dešinę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
         <source>Align Top</source>
         <translation>Išlyginti viršų</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="203"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Align Bottom</source>
         <translation>Sulygiuoti apačioje</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Align Vertical Center</source>
         <translation>Sulygiuoti vertikaliai centre</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
         <source>Align Horizontal Center</source>
         <translation>Sulygiuokite horizontalųjį centrą</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Select All</source>
         <translation>Pasirinkite Viskas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Delete Selected</source>
         <translation>Ištrinti pasirinktus</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
         <source>Clear All Nodes</source>
         <translation>Išvalyti visus mazgus</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="248"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <source>Undo</source>
+        <translation>Anuliuoti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <source>Redo</source>
+        <translation>Perdaryti</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow projekto failai (*.xflow);;Visi failai (*)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <source>Are you sure to clear all nodes?</source>
+        <translation>Ar tikrai išvalysite visus mazgus?</translation>
     </message>
 </context>
 <context>
