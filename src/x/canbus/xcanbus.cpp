@@ -9,6 +9,9 @@
 #include "xcanbus.h"
 #include "ui_xcanbus.h"
 
+#include <QCanBus>
+#include <QCanBusDeviceInfo>
+
 namespace xCanBus {
 
 struct xCanBusParameterKeys
@@ -26,6 +29,9 @@ xCanBus::xCanBus(QWidget* parent)
     connect(ui->splitter, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_leftWidth = ui->splitter->sizes().first();
     });
+
+    connect(ui->comboBoxPlugins, &QComboBox::currentTextChanged, this, &xCanBus::onPluginChanged);
+    ui->comboBoxPlugins->addItems(QCanBus::instance()->plugins());
 }
 
 xCanBus::~xCanBus()
@@ -60,5 +66,14 @@ bool xCanBus::event(QEvent* event)
 void xCanBus::onDisconnect() {}
 
 void xCanBus::onConnect() {}
+
+void xCanBus::onPluginChanged(const QString& pluginName)
+{
+    ui->comboBoxName->clear();
+    QList<QCanBusDeviceInfo> devices = QCanBus::instance()->availableDevices(pluginName);
+    for (auto& device : devices) {
+        ui->comboBoxName->addItem(device.name());
+    }
+}
 
 } // namespace xCanBus

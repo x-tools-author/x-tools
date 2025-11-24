@@ -29,7 +29,7 @@
         </widget>
        </item>
        <item row="10" column="1">
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="checkBoxCanFd">
          <property name="text">
           <string notr="true">CAN FD</string>
          </property>
@@ -43,10 +43,10 @@
         </widget>
        </item>
        <item row="9" column="1">
-        <widget class="QComboBox" name="comboBox_6"/>
+        <widget class="QComboBox" name="comboBoxDataBitrate"/>
        </item>
        <item row="12" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="checkBoxExtendedFormat">
          <property name="text">
           <string>Extended format</string>
          </property>
@@ -73,7 +73,7 @@
         </widget>
        </item>
        <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkBoxCustomConf">
          <property name="text">
           <string>Custom configuration</string>
          </property>
@@ -81,8 +81,11 @@
        </item>
        <item row="16" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="lineEditPayload">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -92,7 +95,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="toolButton">
+          <widget class="QToolButton" name="toolButtonSend">
            <property name="text">
             <string>...</string>
            </property>
@@ -104,10 +107,10 @@
         <widget class="QComboBox" name="comboBoxName"/>
        </item>
        <item row="7" column="1">
-        <widget class="QComboBox" name="comboBox_4"/>
+        <widget class="QComboBox" name="comboBoxReceiveOwn"/>
        </item>
        <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="lineEditErrorFilter">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -124,14 +127,14 @@
         </widget>
        </item>
        <item row="13" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="checkBoxFlexibleDataRate">
          <property name="text">
           <string>Flexible data rate</string>
          </property>
         </widget>
        </item>
        <item row="8" column="1">
-        <widget class="QComboBox" name="comboBox_5"/>
+        <widget class="QComboBox" name="comboBoxBitrate"/>
        </item>
        <item row="11" column="0" colspan="2">
         <widget class="QPushButton" name="pushButton_2">
@@ -147,7 +150,7 @@
         </widget>
        </item>
        <item row="14" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBox_5">
+        <widget class="QCheckBox" name="checkBoxBitrateSwitch">
          <property name="text">
           <string>Bitrate switch</string>
          </property>
@@ -161,7 +164,7 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QComboBox" name="comboBox_3"/>
+        <widget class="QComboBox" name="comboBoxLoopback"/>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label">

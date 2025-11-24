@@ -39,6 +39,8 @@ private:
 private:
     void onDisconnect();
     void onConnect();
+
+    void onPluginChanged(const QString& pluginName);
 };
 
 } // namespace xCanBus
