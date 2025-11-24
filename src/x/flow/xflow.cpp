@@ -15,6 +15,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QLabel>
+#include <QMessageBox>
 #include <QPalette>
 #include <QUndoStack>
 
@@ -340,7 +341,15 @@ void xFlow::onDeleteSelected()
 
 void xFlow::onClearAllNodes()
 {
-    ui->widgetNodeEditor->view()->clearAllNodes();
+    int ret = QMessageBox::warning(this,
+                                   tr("Clear All Nodes"),
+                                   tr("Are you sure to clear all nodes?"),
+                                   QMessageBox::Yes | QMessageBox::No,
+                                   QMessageBox::No);
+
+    if (ret == QMessageBox::Yes) {
+        ui->widgetNodeEditor->view()->clearAllNodes();
+    }
 }
 
 void xFlow::onLeftPanel()

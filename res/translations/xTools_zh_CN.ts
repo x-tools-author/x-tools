@@ -4395,7 +4395,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
         <source>Communication</source>
-        <translation>沟通</translation>
+        <translation>通信模块</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="115"/>
@@ -4415,17 +4415,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="149"/>
         <source>Scripts</source>
-        <translation>脚本</translation>
+        <translation>脚本模块</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="159"/>
         <source>Hub</source>
-        <translation>中心</translation>
+        <translation>集线器/分线器</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
         <source>Plugins</source>
-        <translation>插件</translation>
+        <translation>插件模块</translation>
     </message>
 </context>
 <context>
