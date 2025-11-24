@@ -569,7 +569,6 @@ void NodeEditorView::onNodeDoubleClicked(const QtNodes::NodeId nodeId)
 
 void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
 {
-    qInfo() << "Node created:" << nodeId;
     QWidget *w = m_model->nodeData(nodeId, QtNodes::NodeRole::Widget).value<QWidget *>();
     BaseNodeUi *baseNodeUi = qobject_cast<BaseNodeUi *>(w);
     if (!baseNodeUi) {
