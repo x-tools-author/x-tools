@@ -87,6 +87,7 @@ xFlow::xFlow(QWidget *parent)
     NodeEditorView *view = ui->widgetNodeEditor->view();
     connect(view, &NodeEditorView::nodeCreated, this, &xFlow::onNodeCreated);
     connect(view, &NodeEditorView::nodeDeleted, this, &xFlow::onNodeDeleted);
+    connect(view, &NodeEditorView::nodeUpdated, this, &xFlow::onNodeUpdated);
 
     connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_leftPanelWidth = ui->splitterLeftRight->sizes().at(0);
@@ -407,6 +408,11 @@ void xFlow::onNodeCreated()
 }
 
 void xFlow::onNodeDeleted()
+{
+    m_navigator->update();
+}
+
+void xFlow::onNodeUpdated()
 {
     m_navigator->update();
 }

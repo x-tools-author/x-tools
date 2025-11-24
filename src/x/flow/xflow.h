@@ -119,6 +119,7 @@ private:
     void onThemeChanged();
     void onNodeCreated();
     void onNodeDeleted();
+    void onNodeUpdated();
 
     QJsonObject cookedGraphicsViewStyle(const QJsonObject &style);
     QJsonObject cookedNodeStyle(const QJsonObject &style);
