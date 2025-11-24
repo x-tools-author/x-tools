@@ -75,7 +75,6 @@ void BaseNodeUi::load(const QJsonObject &parameters)
     if (m_innerWidget) {
         m_innerWidget->setVisible(expanded);
         adjustSize();
-        emit m_node->embeddedWidgetSizeUpdated();
     }
 }
 

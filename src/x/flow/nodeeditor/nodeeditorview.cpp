@@ -31,7 +31,6 @@
 #include <QVBoxLayout>
 #include <QtOpenGLWidgets/QtOpenGLWidgets>
 
-#include "application.h"
 #include "nodeeditorregistry.h"
 #include "nodeeditorscene.h"
 #include "nodes/common/basenodeui.h"
@@ -582,8 +581,20 @@ void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
         return;
     }
 
+#if 1
+    // TODO: Fixme
+    // Wait for parameters loaded(Undo/Redo)
+    QTimer::singleShot(10, popupUi, [=]() {
+        baseNodeUi->adjustSize();
+        m_scene->nodeGeometry().recomputeSize(nodeId);
+        viewport()->update();
+    });
+#else
     baseNodeUi->adjustSize();
     m_scene->nodeGeometry().recomputeSize(nodeId);
+    viewport()->update();
+#endif
+
     emit nodeCreated(nodeId);
 }
 
