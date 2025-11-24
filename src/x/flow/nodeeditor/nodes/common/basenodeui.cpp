@@ -52,7 +52,7 @@ QJsonObject BaseNodeUi::save() const
 {
     BaseNode::BaseNodeParametersKeys keys;
     QJsonObject obj;
-    obj[keys.expanded] = m_innerWidget ? m_innerWidget->isVisible() : true;
+    obj[keys.expanded] = m_innerWidget ? m_innerWidget->isVisible() : false;
     obj[keys.fastForward] = ui->toolButtonFast->isChecked();
     obj[keys.paused] = ui->toolButtonPause->isChecked();
 
