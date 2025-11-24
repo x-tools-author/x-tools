@@ -171,10 +171,8 @@ void NodeEditorView::fitInViewToAllItems()
 
 void NodeEditorView::deleteSelectedNodes()
 {
-    auto nodeIds = m_scene->selectedNodes();
-    for (QtNodes::NodeId id : nodeIds) {
-        m_model->deleteNode(id);
-    }
+    auto *cmd = new QtNodes::DeleteCommand(m_scene);
+    m_scene->undoStack().push(cmd);
 }
 
 void NodeEditorView::clearAllNodes()
@@ -587,6 +585,7 @@ void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
     baseNodeUi->adjustSize();
     m_scene->nodeGeometry().recomputeSize(nodeId);
     emit nodeCreated(nodeId);
+    qInfo() << "Node created signal emitted:" << nodeId;
 }
 
 qreal NodeEditorView::minXOfSelectedNodes()
