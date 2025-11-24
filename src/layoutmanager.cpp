@@ -29,7 +29,9 @@
 struct LayoutManagerKeys
 {
     const QString xIndex{"xIndex"};
+
     const QString xModbus{"xModbus"};
+    const QString xCanbus{"xCanbus"};
     const QString xFlow{"xFlow"};
 };
 
@@ -142,12 +144,15 @@ QJsonObject LayoutManager::save()
     LayoutManagerKeys keys;
     QJsonObject obj;
 
-#if X_ENABLE_X_MODBUS
     obj[keys.xIndex] = currentIndex();
+#if X_ENABLE_X_MODBUS
     obj[keys.xModbus] = m_modbus ? m_modbus->save() : QJsonObject();
 #endif
 #if X_ENABLE_X_FLOW
     obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
+#endif
+#if X_ENABLE_X_CANBUS
+    obj[keys.xCanbus] = m_canbus ? m_canbus->save() : QJsonObject();
 #endif
 
     return obj;
@@ -169,6 +174,12 @@ void LayoutManager::load(const QJsonObject& obj)
     if (m_flow) {
         QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
         m_flow->load(flowObj);
+    }
+#endif
+#if X_ENABLE_X_CANBUS
+    if (m_canbus) {
+        QJsonObject canbusObj = obj.value(keys.xCanbus).toObject(QJsonObject());
+        m_canbus->load(canbusObj);
     }
 #endif
 }

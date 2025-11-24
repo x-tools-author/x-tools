@@ -22,9 +22,12 @@
 namespace xMqtt {
 class xMqtt;
 }
+
+#if X_ENABLE_X_CANBUS
 namespace xCanBus {
 class xCanBus;
 }
+#endif
 #if X_ENABLE_X_MODBUS
 namespace xModbus {
 class xModbus;
@@ -70,5 +73,7 @@ private:
     xModbus::xModbus* m_modbus{nullptr};
 #endif
     xMqtt::xMqtt* m_mqtt{nullptr};
+#if X_ENABLE_X_CANBUS
     xCanBus::xCanBus* m_canbus{nullptr};
+#endif
 };

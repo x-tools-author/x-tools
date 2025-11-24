@@ -22,4 +22,16 @@ xCanBus::~xCanBus()
 {
     delete ui;
 }
+
+QJsonObject xCanBus::save()
+{
+    QJsonObject obj;
+    return obj;
+}
+
+void xCanBus::load(const QJsonObject& obj)
+{
+    Q_UNUSED(obj);
+}
+
 } // namespace xCanBus

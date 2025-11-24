@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
 
 namespace Ui {
@@ -21,6 +22,9 @@ class xCanBus : public QWidget
 public:
     explicit xCanBus(QWidget* parent = nullptr);
     ~xCanBus();
+
+    QJsonObject save();
+    void load(const QJsonObject& obj);
 
 private:
     Ui::xCanBus* ui;
