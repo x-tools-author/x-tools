@@ -25,6 +25,7 @@ DataView::DataView(QWidget *parent)
     ui->tableView->setModel(m_filter);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->horizontalHeader()->setMinimumSectionSize(60);
 }
 
 DataView::~DataView()
