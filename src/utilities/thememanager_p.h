@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include <private/qobject_p.h>
 
+#include <QApplication>
 #include <QMenu>
 #include <QSettings>
 
@@ -24,7 +25,6 @@
 
 #include <QAction>
 #include <QActionGroup>
-#include <QApplication>
 #include <QColor>
 #include <QPalette>
 #include <QStyleHints>
@@ -147,4 +147,4 @@ public:
     const QString keyColorScheme{"Application/ColorScheme"};
 };
 
-}
+} // namespace xTools
