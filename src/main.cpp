@@ -9,46 +9,16 @@
 #include <QDebug>
 #include <QMessageBox>
 
+#include "application.h"
+#include "common/nativeeventfilter.h"
+#include "mainwindow.h"
+
 #if X_ENABLE_HID
 #include <hidapi.h>
 #endif
 
-#include "application.h"
-#include "mainwindow.h"
-#include "utilities/thememanager.h"
-
 #if X_ENABLE_SINGLE_APPLICATION
 #include "singleapplication.h"
-#endif
-
-#ifdef Q_OS_WIN
-#include <qt_windows.h>
-#include <QAbstractNativeEventFilter>
-// QTBUG-77974: https://blog.csdn.net/omg_orange/article/details/116779492
-class NativeEventFilter : public QAbstractNativeEventFilter
-{
-public:
-    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override
-    {
-        MSG *msg = (MSG *) message;
-        if (msg->message == WM_GETOBJECT) {
-            return true;
-        }
-
-        if (eventType == "windows_generic_MSG") {
-            MSG *msg = static_cast<MSG *>(message);
-            if (msg->message == WM_ACTIVATE) {
-                HWND hwnd = msg->hwnd;
-                QWidget *w = QWidget::find((WId) hwnd);
-                if (w) {
-                    xThemeMgr.updateWindowCaptionColor(w);
-                }
-            }
-        }
-
-        return false;
-    }
-};
 #endif
 
 int main(int argc, char *argv[])
@@ -59,7 +29,7 @@ int main(int argc, char *argv[])
     Application::setupHdpi();
     Application app(argc, argv);
 #ifdef Q_OS_WIN
-    app.installNativeEventFilter(new NativeEventFilter());
+    app.installNativeEventFilter(new xTools::NativeEventFilter());
 #endif
 
 #if X_ENABLE_SINGLE_APPLICATION
