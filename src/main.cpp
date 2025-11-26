@@ -15,6 +15,7 @@
 
 #include "application.h"
 #include "mainwindow.h"
+#include "utilities/thememanager.h"
 
 #if X_ENABLE_SINGLE_APPLICATION
 #include "singleapplication.h"
@@ -32,6 +33,17 @@ public:
         MSG *msg = (MSG *) message;
         if (msg->message == WM_GETOBJECT) {
             return true;
+        }
+
+        if (eventType == "windows_generic_MSG") {
+            MSG *msg = static_cast<MSG *>(message);
+            if (msg->message == WM_ACTIVATE) {
+                HWND hwnd = msg->hwnd;
+                QWidget *w = QWidget::find((WId) hwnd);
+                if (w) {
+                    xThemeMgr.updateWindowCaptionColor(w);
+                }
+            }
         }
 
         return false;

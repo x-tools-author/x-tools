@@ -349,7 +349,6 @@ void MainWindow::initFileMenu()
         auto* w = new Page(Page::Left, xApp->settings());
         w->setWindowTitle("xTools");
         w->show();
-        xThemeMgr.updateWindowCaptionColor(w);
     });
     action->setShortcut(QKeySequence::New);
     fileMenu->addSeparator();
@@ -395,7 +394,6 @@ void MainWindow::initToolMenu()
             } else {
                 assistant->activateWindow();
             }
-            xThemeMgr.updateWindowCaptionColor(assistant);
         });
 
         action = new QAction(name, this);
@@ -408,7 +406,6 @@ void MainWindow::initToolMenu()
 
             assistant->setAttribute(Qt::WA_DeleteOnClose, true);
             assistant->show();
-            xThemeMgr.updateWindowCaptionColor(assistant);
         });
     }
 }
@@ -792,12 +789,5 @@ void MainWindow::onAboutActionTriggered()
     info += tr("Build Date") + ": " + dtString + "\n\n";
     info += tr("Copyright") + QString(" 2018-%1 x-tools-author(x-tools@outlook.com).\n").arg(year);
     info += tr("All rights reserved.");
-    QMessageBox box;
-    box.setWindowTitle(tr("About"));
-    box.setIconPixmap(QPixmap(":/res/icons/logo.svg"));
-    box.setText(info);
-    box.setModal(true);
-    box.show();
-    xThemeMgr.updateWindowCaptionColor(&box);
-    box.exec();
+    QMessageBox::about(this, tr("About") + " " + qApp->applicationName(), info);
 }
