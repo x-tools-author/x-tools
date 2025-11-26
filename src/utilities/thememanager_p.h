@@ -96,11 +96,7 @@ public:
 
     void updateWindowCaption(QWidget *widget)
     {
-#if (xEnableColorScheme == 0)
-        Q_UNUSED(widget);
-        return;
-#endif
-
+#if xEnableColorScheme
 #if defined(_MSC_VER)
         bool isWindows11 = QSysInfo::productVersion().contains("11");
         bool isWindows10 = QSysInfo::productVersion().contains("10");
@@ -128,6 +124,9 @@ public:
                               &colorref,
                               sizeof(colorref));
 #endif
+#endif
+#else
+        Q_UNUSED(widget);
 #endif
     }
 
