@@ -96,33 +96,38 @@ public:
 
     void updateWindowCaption(QWidget *widget)
     {
-#if xEnableColorScheme
-#if defined(_MSC_VER)
-        if (QSysInfo::productVersion().contains("11")) {
-            QPalette paletee = qApp->palette();
-            QWindow *window = widget->windowHandle();
-            if (!window) {
-                return;
-            }
+#if (xEnableColorScheme == 0)
+        Q_UNUSED(widget);
+        return;
+#endif
 
-            QColor c = paletee.color(QPalette::Window);
-            COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-            DwmSetWindowAttribute((HWND) window->winId(),
-                                  DWMWA_CAPTION_COLOR,
-                                  &colorref,
-                                  sizeof(colorref));
+#if defined(_MSC_VER)
+        bool isWindows11 = QSysInfo::productVersion().contains("11");
+        bool isWindows10 = QSysInfo::productVersion().contains("10");
+        if (!isWindows10 && !isWindows11) {
+            return;
+        }
+
+        QPalette palette = qApp->palette();
+        QWindow *window = widget->windowHandle();
+        if (!window) {
+            return;
+        }
+
+        QColor c = palette.color(QPalette::Window);
+        COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
+        DwmSetWindowAttribute((HWND) window->winId(),
+                              DWMWA_CAPTION_COLOR,
+                              &colorref,
+                              sizeof(colorref));
 #if 0
-        c = paletee.color(QPalette::Accent);
+        c = palette.color(QPalette::Accent);
         colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
         DwmSetWindowAttribute((HWND) window->winId(),
                               DWMWA_BORDER_COLOR,
                               &colorref,
                               sizeof(colorref));
 #endif
-        }
-#endif
-#else
-        Q_UNUSED(widget);
 #endif
     }
 
