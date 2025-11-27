@@ -8,31 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
-#include <QWidget>
+#include <QAbstractTableModel>
 
-namespace Ui {
-class xMqtt;
-}
+namespace xMQTT {
 
-namespace xMqtt {
-
-class xMqtt : public QWidget
+class MqttDataModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
-
-    QJsonObject save();
-    void load(const QJsonObject& obj);
-
-private:
-    Ui::xMqtt* ui;
-
-private:
-    void onClientButtonClicked(bool checked);
-    void onServerButtonClicked(bool checked);
+    explicit MqttDataModel(QObject *parent = nullptr);
+    ~MqttDataModel() override;
 };
 
-} // namespace xMqtt
+} // namespace xMQTT

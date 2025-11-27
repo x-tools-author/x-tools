@@ -12,27 +12,34 @@
 #include <QWidget>
 
 namespace Ui {
-class xMqtt;
+class MqttServerUi;
 }
 
-namespace xMqtt {
+namespace xMQTT {
 
-class xMqtt : public QWidget
+class MqttServer;
+class MqttServerUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
+    explicit MqttServerUi(QWidget *parent = nullptr);
+    ~MqttServerUi() override;
 
     QJsonObject save();
-    void load(const QJsonObject& obj);
+    void load(const QJsonObject &obj);
+
+protected:
+    bool event(QEvent *event) override;
 
 private:
-    Ui::xMqtt* ui;
+    Ui::MqttServerUi *ui;
+    MqttServer *m_server{nullptr};
+    int m_rightWidth{168};
 
 private:
-    void onClientButtonClicked(bool checked);
-    void onServerButtonClicked(bool checked);
+    void onOpenBtnClicked();
+    void onCloseBtnClicked();
+    void onLogMessageReceived(const QString &msg, bool isError);
 };
 
-} // namespace xMqtt
+} // namespace xMQTT

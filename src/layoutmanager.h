@@ -19,10 +19,11 @@
 #include <QToolButton>
 #include <QWidget>
 
+#if X_ENABLE_X_MQTT
 namespace xMqtt {
 class xMqtt;
 }
-
+#endif
 #if X_ENABLE_X_CANBUS
 namespace xCanBus {
 class xCanBus;
@@ -66,14 +67,18 @@ private:
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
     QHash<QWidget*, QToolButton*> m_pageButtons;
+
+private:
 #if X_ENABLE_X_FLOW
     xFlow::xFlow* m_flow{nullptr};
 #endif
 #if X_ENABLE_X_MODBUS
     xModbus::xModbus* m_modbus{nullptr};
 #endif
-    xMqtt::xMqtt* m_mqtt{nullptr};
 #if X_ENABLE_X_CANBUS
     xCanBus::xCanBus* m_canbus{nullptr};
+#endif
+#if X_ENABLE_X_MQTT
+    xMqtt::xMqtt* m_mqtt{nullptr};
 #endif
 };

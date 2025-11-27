@@ -8,31 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
 #include <QWidget>
 
 namespace Ui {
-class xMqtt;
-}
+class MqttDataView;
+} // namespace Ui
 
-namespace xMqtt {
+namespace xMQTT {
 
-class xMqtt : public QWidget
+class MqttDataView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
-
-    QJsonObject save();
-    void load(const QJsonObject& obj);
+    explicit MqttDataView(QWidget *parent = nullptr);
+    ~MqttDataView() override;
 
 private:
-    Ui::xMqtt* ui;
-
-private:
-    void onClientButtonClicked(bool checked);
-    void onServerButtonClicked(bool checked);
+    Ui::MqttDataView *ui;
 };
 
-} // namespace xMqtt
+} // namespace xMQTT

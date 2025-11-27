@@ -6,33 +6,21 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#pragma once
+#include "mqttdataview.h"
+#include "ui_mqttdataview.h"
 
-#include <QJsonObject>
-#include <QWidget>
+namespace xMQTT {
 
-namespace Ui {
-class xMqtt;
+MqttDataView::MqttDataView(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::MqttDataView)
+{
+    ui->setupUi(this);
 }
 
-namespace xMqtt {
-
-class xMqtt : public QWidget
+MqttDataView::~MqttDataView()
 {
-    Q_OBJECT
-public:
-    explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
+    delete ui;
+}
 
-    QJsonObject save();
-    void load(const QJsonObject& obj);
-
-private:
-    Ui::xMqtt* ui;
-
-private:
-    void onClientButtonClicked(bool checked);
-    void onServerButtonClicked(bool checked);
-};
-
-} // namespace xMqtt
+} // namespace xMQTT

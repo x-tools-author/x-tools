@@ -8,31 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
-#include <QWidget>
+#include <QComboBox>
+#include <QSpinBox>
 
-namespace Ui {
-class xMqtt;
-}
+struct mg_addr;
+namespace xMQTT {
 
-namespace xMqtt {
+enum class QoS { AtMostOnce = 0, AtLeastOnce = 1, ExactlyOnce = 2 };
+void setupQosComboBox(QComboBox *comboBox);
+void setupSocketAddress(QComboBox *cb);
+void setupPortSpinBox(QSpinBox *spinBox, quint16 defaultPort = 1883);
+void setupVersionComboBox(QComboBox *comboBox);
 
-class xMqtt : public QWidget
-{
-    Q_OBJECT
-public:
-    explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
+QString mgAddressToIpV4(const struct mg_addr *addr);
+bool ipV4ToMgAddress(const QString &ip, struct mg_addr *addr);
 
-    QJsonObject save();
-    void load(const QJsonObject& obj);
-
-private:
-    Ui::xMqtt* ui;
-
-private:
-    void onClientButtonClicked(bool checked);
-    void onServerButtonClicked(bool checked);
-};
-
-} // namespace xMqtt
+} // namespace xMQTT

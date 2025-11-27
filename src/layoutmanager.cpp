@@ -13,17 +13,14 @@
 #if X_ENABLE_X_FLOW
 #include "x/flow/xflow.h"
 #endif
-
 #if X_ENABLE_X_MODBUS
 #include "x/modbus/xmodbus.h"
 #endif
-
-#if X_ENABLE_X_MQTT
-#include "x/mqtt/xmqtt.h"
-#endif
-
 #if X_ENABLE_X_CANBUS
 #include "x/canbus/xcanbus.h"
+#endif
+#if X_ENABLE_X_MQTT
+#include "x/mqtt/xmqtt.h"
 #endif
 
 struct LayoutManagerKeys
@@ -32,6 +29,7 @@ struct LayoutManagerKeys
 
     const QString xModbus{"xModbus"};
     const QString xCanbus{"xCanbus"};
+    const QString xMqtt{"xMqtt"};
     const QString xFlow{"xFlow"};
 };
 
@@ -92,13 +90,13 @@ void LayoutManager::setupPages()
     m_modbus = new xModbus::xModbus(m_layout->parentWidget());
     addLayoutPage(QString("xModbus"), m_modbus);
 #endif
-#if X_ENABLE_X_MQTT
-    m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
-    addLayoutPage(QString("xMQTT"), m_mqtt);
-#endif
 #if X_ENABLE_X_CANBUS
     m_canbus = new xCanBus::xCanBus(m_layout->parentWidget());
     addLayoutPage(QString("xCANBus"), m_canbus);
+#endif
+#if X_ENABLE_X_MQTT
+    m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
+    addLayoutPage(QString("xMQTT"), m_mqtt);
 #endif
 #if X_ENABLE_X_FLOW
     m_flow = new xFlow::xFlow(m_layout->parentWidget());
@@ -148,11 +146,14 @@ QJsonObject LayoutManager::save()
 #if X_ENABLE_X_MODBUS
     obj[keys.xModbus] = m_modbus ? m_modbus->save() : QJsonObject();
 #endif
+#if X_ENABLE_X_CANBUS
+    obj[keys.xCanbus] = m_canbus ? m_canbus->save() : QJsonObject();
+#endif
 #if X_ENABLE_X_FLOW
     obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
 #endif
-#if X_ENABLE_X_CANBUS
-    obj[keys.xCanbus] = m_canbus ? m_canbus->save() : QJsonObject();
+#if X_ENABLE_X_MQTT
+    obj[keys.xMqtt] = m_mqtt ? m_mqtt->save() : QJsonObject();
 #endif
 
     return obj;
@@ -170,16 +171,22 @@ void LayoutManager::load(const QJsonObject& obj)
         m_modbus->load(modbusObj);
     }
 #endif
-#if X_ENABLE_X_FLOW
-    if (m_flow) {
-        QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
-        m_flow->load(flowObj);
-    }
-#endif
 #if X_ENABLE_X_CANBUS
     if (m_canbus) {
         QJsonObject canbusObj = obj.value(keys.xCanbus).toObject(QJsonObject());
         m_canbus->load(canbusObj);
+    }
+#endif
+#if X_ENABLE_X_MQTT
+    if (m_mqtt) {
+        QJsonObject mqttObj = obj.value(keys.xMqtt).toObject(QJsonObject());
+        m_mqtt->load(mqttObj);
+    }
+#endif
+#if X_ENABLE_X_FLOW
+    if (m_flow) {
+        QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
+        m_flow->load(flowObj);
     }
 #endif
 }
