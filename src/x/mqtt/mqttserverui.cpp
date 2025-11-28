@@ -12,6 +12,7 @@
 #include <QApplication>
 
 #include "mqttcommon.h"
+#include "mqttdatamodel.h"
 #include "mqttserver.h"
 #include "utilities/x.h"
 
@@ -45,6 +46,7 @@ MqttServerUi::MqttServerUi(QWidget *parent)
 
     m_server = new MqttServer(this);
     connect(m_server, &MqttServer::logMessage, this, &MqttServerUi::onLogMessageReceived);
+    connect(m_server, &MqttServer::mqttMessageRx, this, &MqttServerUi::onMqttMessageRx);
 }
 
 MqttServerUi::~MqttServerUi()
@@ -102,6 +104,11 @@ void MqttServerUi::onLogMessageReceived(const QString &msg, bool isError)
         onCloseBtnClicked();
         QApplication::beep();
     }
+}
+
+void MqttServerUi::onMqttMessageRx(std::shared_ptr<MqttMessage> message)
+{
+    ui->widgetMqttDataView->model()->addMessage(message);
 }
 
 } // namespace xMQTT

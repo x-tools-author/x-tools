@@ -65,9 +65,4 @@ void MqttServer::run()
     emit logMessage(QStringLiteral("Server stopped"));
 }
 
-void MqttServer::outputLogMessage(const QString &msg, bool isError)
-{
-    emit logMessage(msg, isError);
-}
-
 } // namespace xMQTT

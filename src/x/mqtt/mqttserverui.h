@@ -17,6 +17,7 @@ class MqttServerUi;
 
 namespace xMQTT {
 
+struct MqttMessage;
 class MqttServer;
 class MqttServerUi : public QWidget
 {
@@ -40,6 +41,7 @@ private:
     void onOpenBtnClicked();
     void onCloseBtnClicked();
     void onLogMessageReceived(const QString &msg, bool isError);
+    void onMqttMessageRx(std::shared_ptr<MqttMessage> message);
 };
 
 } // namespace xMQTT

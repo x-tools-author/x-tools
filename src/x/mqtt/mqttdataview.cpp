@@ -9,6 +9,9 @@
 #include "mqttdataview.h"
 #include "ui_mqttdataview.h"
 
+#include "mqttdatafilter.h"
+#include "mqttdatamodel.h"
+
 namespace xMQTT {
 
 MqttDataView::MqttDataView(QWidget *parent)
@@ -16,11 +19,23 @@ MqttDataView::MqttDataView(QWidget *parent)
     , ui(new Ui::MqttDataView)
 {
     ui->setupUi(this);
+    m_model = new MqttDataModel(this);
+    m_filter = new MqttDataFilter(this);
+    m_filter->setSourceModel(m_model);
+    ui->tableView->setModel(m_filter);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
 
 MqttDataView::~MqttDataView()
 {
     delete ui;
+}
+
+MqttDataModel *MqttDataView::model() const
+{
+    return m_model;
 }
 
 } // namespace xMQTT

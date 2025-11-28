@@ -81,7 +81,22 @@ public:
 
         if (ev == MG_EV_MQTT_CMD) {
             struct mg_mqtt_message *mm = (struct mg_mqtt_message *) ev_data;
-            MG_DEBUG(("cmd %d qos %d", mm->cmd, mm->qos));
+            if (!mm) {
+                return;
+            }
+
+            std::shared_ptr<MqttMessage> msg = std::make_shared<MqttMessage>();
+            msg->id = mm->id;
+            msg->cmd = mm->cmd;
+            msg->qos = mm->qos;
+            msg->ack = mm->ack;
+            msg->props_start = mm->props_start;
+            msg->props_size = mm->props_size;
+            msg->topic = QString::fromUtf8(mm->topic.buf, static_cast<int>(mm->topic.len));
+            msg->data = QByteArray(mm->data.buf, static_cast<int>(mm->data.len));
+            msg->dgram = QByteArray(mm->dgram.buf, static_cast<int>(mm->dgram.len));
+            emit server->mqttMessageRx(msg);
+
             switch (mm->cmd) {
             case MQTT_CMD_CONNECT: {
                 // Client connects
@@ -118,7 +133,7 @@ public:
                                       .arg(remIp)
                                       .arg(remPort)
                                       .arg(topicStr);
-                    server->outputLogMessage(msg, false);
+                    emit server->logMessage(msg, false);
                     // MG_INFO(("SUB %p [%.*s]", c->fd, (int) sub->topic.len, sub->topic.buf));
                     // Change '+' to '*' for topic matching using mg_match
                     for (size_t i = 0; i < sub->topic.len; i++) {
@@ -147,7 +162,7 @@ public:
                 QString msg = QString("Message received on topic %1: %2")
                                   .arg(topicStr)
                                   .arg(QString::fromUtf8(payload.toHex()));
-                server->outputLogMessage(msg, false);
+                emit server->logMessage(msg, false);
                 for (struct SubscriptionContext *sub = d->m_subs; sub != NULL; sub = sub->next) {
                     if (mg_match(mm->topic, sub->topic, NULL)) {
                         struct mg_mqtt_opts pub_opts;
@@ -170,7 +185,7 @@ public:
             // c->is_hexdumping = 1;
             QString remIp = mgAddressToIpV4(&c->rem);
             QString msg = QString("Client connected: %1:%2").arg(remIp).arg(c->rem.port);
-            emit server->outputLogMessage(msg, false);
+            emit server->logMessage(msg, false);
             emit server->clientConnected(remIp, c->rem.port);
         } else if (ev == MG_EV_CLOSE) {
             // Client disconnects. Remove from the subscription list
@@ -190,7 +205,7 @@ public:
                 emit server->clientDisconnected(remIp, c->rem.port);
 
                 QString msg = QString("Client disconnected: %1:%2").arg(remIp).arg(c->rem.port);
-                emit server->outputLogMessage(msg, false);
+                emit server->logMessage(msg, false);
             }
         }
     }

@@ -16,6 +16,8 @@ class MqttDataView;
 
 namespace xMQTT {
 
+class MqttDataModel;
+class MqttDataFilter;
 class MqttDataView : public QWidget
 {
     Q_OBJECT
@@ -23,8 +25,12 @@ public:
     explicit MqttDataView(QWidget *parent = nullptr);
     ~MqttDataView() override;
 
+    MqttDataModel *model() const;
+
 private:
     Ui::MqttDataView *ui;
+    MqttDataModel *m_model{nullptr};
+    MqttDataFilter *m_filter{nullptr};
 };
 
 } // namespace xMQTT

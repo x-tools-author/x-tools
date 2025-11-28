@@ -8,10 +8,15 @@
  **************************************************************************************************/
 #pragma once
 
+#include <memory>
+
 #include <QThread>
+
+#include "mqttcommon.h"
 
 namespace xMQTT {
 
+struct MqttMessage;
 class MqttServerPrivate;
 class MqttServer : public QThread
 {
@@ -25,6 +30,7 @@ public:
 
 signals:
     void logMessage(const QString &msg, bool isError = false);
+    void mqttMessageRx(std::shared_ptr<MqttMessage> message);
     void serverStarted();
     void clientConnected(const QString &ip, quint16 port);
     void clientDisconnected(const QString &ip, quint16 port);
@@ -35,7 +41,6 @@ protected:
 private:
     friend class MqttServerPrivate;
     MqttServerPrivate *d{nullptr};
-    void outputLogMessage(const QString &msg, bool isError = false);
 };
 
 } // namespace xMQTT
