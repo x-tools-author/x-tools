@@ -192,7 +192,7 @@ void MqttClientUi::onSubscribeButtonClicked()
         return;
     }
 
-    m_client->subscribe("test/topic");
+    m_client->subscribe(ui->lineEditSubscribe->text().trimmed());
 }
 
 void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError)

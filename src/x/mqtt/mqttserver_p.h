@@ -134,6 +134,7 @@ public:
                                       .arg(remPort)
                                       .arg(topicStr);
                     emit server->logMessage(msg, false);
+                    emit server->clientSubscribed(remIp, mg_ntohs(c->rem.port), topicStr);
                     // MG_INFO(("SUB %p [%.*s]", c->fd, (int) sub->topic.len, sub->topic.buf));
                     // Change '+' to '*' for topic matching using mg_match
                     for (size_t i = 0; i < sub->topic.len; i++) {

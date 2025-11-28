@@ -26,6 +26,7 @@ public:
     bool isOpened() const;
     void publish(const QString &topic, const QByteArray &message);
     void subscribe(const QString &topic);
+    void unsubscribe(const QString &topic);
 
 signals:
     void logMessage(const QString &msg, bool isError = false);
@@ -36,7 +37,6 @@ protected:
 private:
     MqttClientPrivate *d{nullptr};
     friend class MqttClientPrivate;
-    void outputLogMessage(const QString &msg, bool isError = false);
 };
 
 } // namespace xMQTT

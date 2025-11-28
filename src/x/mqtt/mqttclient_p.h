@@ -16,6 +16,12 @@
 #include "mqttclient.h"
 #include "mqttcommon.h"
 
+#if 0
+size_t get_props_size(struct mg_mqtt_prop *props, size_t count);
+bool mg_send_u16(struct mg_connection *c, uint16_t value);
+void mg_send_mqtt_properties(struct mg_connection *c, struct mg_mqtt_prop *props, size_t nprops);
+#endif
+
 namespace xMQTT {
 
 class MqttClient;
@@ -50,7 +56,44 @@ public:
         opts.qos = d->m_qos;
         mg_mqtt_sub(c, &opts);
         QString msg = QString("Subscribed to %1").arg(QString(topic));
-        client->outputLogMessage(msg, false);
+        emit client->logMessage(msg, false);
+    }
+
+    static void mg_mqtt_unsub(struct mg_connection *c, const struct mg_mqtt_opts *opts)
+    {
+#if 0
+        // https://github.com/cesanta/mongoose/issues/2695
+        uint8_t qos_ = opts->qos & 3;
+        size_t plen = c->is_mqtt5 ? get_props_size(opts->props, opts->num_props) : 0;
+        size_t len = 2 + opts->topic.len + 2 + 1 + plen;
+
+        mg_mqtt_send_header(c, MQTT_CMD_UNSUBSCRIBE, 2, (uint32_t) len);
+        if (++c->mgr->mqtt_id == 0) {
+            ++c->mgr->mqtt_id;
+        }
+
+        mg_send_u16(c, mg_htons(c->mgr->mqtt_id));
+        if (c->is_mqtt5) {
+            mg_send_mqtt_properties(c, opts->props, opts->num_props);
+        }
+
+        mg_send_u16(c, mg_htons((uint16_t) opts->topic.len));
+        mg_send(c, opts->topic.buf, opts->topic.len);
+        mg_send(c, &qos_, sizeof(qos_));
+#endif
+    }
+
+    static void unsubscribe(struct mg_connection *c, const QString &topic)
+    {
+        MqttClient *client = static_cast<MqttClient *>(c->fn_data);
+        MqttClientPrivate *d = client->d;
+
+        struct mg_mqtt_opts opts = {};
+        memset(&opts, 0, sizeof(opts));
+        opts.topic = mg_str(topic.toUtf8().constData());
+        mg_mqtt_unsub(c, &opts);
+        QString msg = QString("Unsubscribed from %1").arg(QString(topic));
+        emit client->logMessage(msg, false);
     }
 
     static void publish(struct mg_connection *c, const QString &topic, const QByteArray &message)
@@ -65,7 +108,7 @@ public:
         opts.qos = d->m_qos;
         mg_mqtt_pub(c, &opts);
         QString msg = QString("Published to %1:%2").arg(QString(topic)).arg(QString(message));
-        client->outputLogMessage(msg, false);
+        emit client->logMessage(msg, false);
     }
 
     static void eventHandler(struct mg_connection *c, int ev, void *ev_data)
@@ -87,13 +130,13 @@ public:
             // On error, log error message
             // MG_ERROR(("%lu ERROR %s", c->id, (char *) ev_data));
             QString errMsg = QString("Connection error: %1").arg(QString((char *) ev_data));
-            client->outputLogMessage(errMsg, false);
+            emit client->logMessage(errMsg, false);
         } else if (ev == MG_EV_MQTT_OPEN) {
             // MQTT connect is successful
             //MG_INFO(("%lu CONNECTED to %s", c->id, d->url().toUtf8().constData()));
             //subscribe(c, s_sub_topic);
             d->m_opened = true;
-            client->outputLogMessage(QString("Connected to %1").arg(d->url()), false);
+            emit client->logMessage(QString("Connected to %1").arg(d->url()), false);
         } else if (ev == MG_EV_MQTT_MSG) {
             // When we get echo response, print it
             char response[100];
@@ -113,7 +156,7 @@ public:
             } else if (mm->cmd == MQTT_CMD_SUBACK) {
                 QString msg = QString("Subscribed to %1")
                                   .arg(mm->ack == 0 ? "successfully" : "with failure");
-                client->outputLogMessage(msg, false);
+                emit client->logMessage(msg, false);
                 qInfo() << "Subscription acknowledged";
             }
         } else if (ev == MG_EV_CLOSE) {
@@ -121,7 +164,7 @@ public:
             //s_mqtt_conn = NULL; // Mark that we're closed
             d->m_conn = nullptr;
             d->m_opened = false;
-            client->outputLogMessage(QString("Disconnected from %1").arg(d->url()), false);
+            emit client->logMessage(QString("Disconnected from %1").arg(d->url()), false);
         }
     }
 

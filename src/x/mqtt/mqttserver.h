@@ -31,6 +31,8 @@ public:
 signals:
     void logMessage(const QString &msg, bool isError = false);
     void mqttMessageRx(std::shared_ptr<MqttMessage> message);
+    void clientSubscribed(const QString &ip, quint16 port, const QString &topic);
+    void clientUnsubscribed(const QString &ip, quint16 port, const QString &topic);
     void serverStarted();
     void clientConnected(const QString &ip, quint16 port);
     void clientDisconnected(const QString &ip, quint16 port);

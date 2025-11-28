@@ -32,6 +32,8 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     ui->splitter->setSizes(QList<int>({width() - m_rightWidth, m_rightWidth}));
     ui->textBrowserLog->setWordWrapMode(QTextOption::NoWrap);
     ui->textBrowserLog->document()->setMaximumBlockCount(1024);
+    ui->pushButtonClose->setEnabled(false);
+    ui->treeViewClients->header()->hide();
     setupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
     xSetNoneBorder(ui->treeViewClients);
@@ -44,9 +46,16 @@ MqttServerUi::MqttServerUi(QWidget *parent)
         this->m_rightWidth = ui->widgetServer->width();
     });
 
+    m_clientsModel = new QStandardItemModel(this);
+    ui->treeViewClients->setModel(m_clientsModel);
+
     m_server = new MqttServer(this);
     connect(m_server, &MqttServer::logMessage, this, &MqttServerUi::onLogMessageReceived);
     connect(m_server, &MqttServer::mqttMessageRx, this, &MqttServerUi::onMqttMessageRx);
+    connect(m_server, &MqttServer::serverStarted, this, &MqttServerUi::onServerStarted);
+    connect(m_server, &MqttServer::finished, this, &MqttServerUi::onServerStopped);
+    connect(m_server, &MqttServer::clientSubscribed, this, &MqttServerUi::onClientSubscribed);
+    connect(m_server, &MqttServer::clientUnsubscribed, this, &MqttServerUi::onClientUnsubscribed);
 }
 
 MqttServerUi::~MqttServerUi()
@@ -77,11 +86,80 @@ bool MqttServerUi::event(QEvent *event)
     return QWidget::event(event);
 }
 
+QString MqttServerUi::clientFlag(const QString &ip, quint16 port)
+{
+    return QString("%1:%2").arg(ip).arg(port);
+}
+
+QStandardItem *MqttServerUi::findClientItem(const QString &ip, quint16 port)
+{
+    const QString flag = clientFlag(ip, port);
+    QList<QStandardItem *> items = m_clientsModel->findItems(flag);
+    if (items.isEmpty()) {
+        return nullptr;
+    }
+    return items.first();
+}
+
+QStandardItem *MqttServerUi::addClientItem(const QString &ip, quint16 port)
+{
+    const QString flag = clientFlag(ip, port);
+    QStandardItem *item = new QStandardItem(flag);
+    m_clientsModel->appendRow(item);
+    return item;
+}
+
+void MqttServerUi::removeClientItem(const QString &ip, quint16 port)
+{
+    QStandardItem *item = findClientItem(ip, port);
+    if (item) {
+        m_clientsModel->removeRow(item->row());
+    }
+}
+
+QStandardItem *MqttServerUi::findSubscriptionItem(QStandardItem *clientItem, const QString &topic)
+{
+    if (!clientItem) {
+        return nullptr;
+    }
+
+    for (int i = 0; i < clientItem->rowCount(); ++i) {
+        QStandardItem *subItem = clientItem->child(i);
+        if (subItem && subItem->text() == topic) {
+            return subItem;
+        }
+    }
+
+    return nullptr;
+}
+
+QStandardItem *MqttServerUi::addSubscriptionItem(QStandardItem *clientItem, const QString &topic)
+{
+    if (!clientItem) {
+        return nullptr;
+    }
+
+    QStandardItem *subItem = new QStandardItem(topic);
+    clientItem->appendRow(subItem);
+    return subItem;
+}
+
+void MqttServerUi::removeSubscriptionItem(QStandardItem *clientItem, const QString &topic)
+{
+    QStandardItem *subItem = findSubscriptionItem(clientItem, topic);
+    if (subItem) {
+        clientItem->removeRow(subItem->row());
+    }
+}
+
 void MqttServerUi::onOpenBtnClicked()
 {
     if (!m_server) {
         return;
     }
+
+    ui->pushButtonClose->setEnabled(false);
+    ui->pushButtonOpen->setEnabled(false);
 
     const QString ip = ui->comboBoxServerAddress->currentText();
     const quint16 port = static_cast<quint16>(ui->spinBoxServerPort->value());
@@ -90,6 +168,9 @@ void MqttServerUi::onOpenBtnClicked()
 
 void MqttServerUi::onCloseBtnClicked()
 {
+    ui->pushButtonClose->setEnabled(false);
+    ui->pushButtonOpen->setEnabled(false);
+
     if (m_server) {
         m_server->stopServer();
     }
@@ -109,6 +190,43 @@ void MqttServerUi::onLogMessageReceived(const QString &msg, bool isError)
 void MqttServerUi::onMqttMessageRx(std::shared_ptr<MqttMessage> message)
 {
     ui->widgetMqttDataView->model()->addMessage(message);
+}
+
+void MqttServerUi::onServerStarted()
+{
+    ui->pushButtonClose->setEnabled(true);
+    ui->pushButtonOpen->setEnabled(false);
+}
+
+void MqttServerUi::onServerStopped()
+{
+    ui->pushButtonClose->setEnabled(false);
+    ui->pushButtonOpen->setEnabled(true);
+}
+
+void MqttServerUi::onClientSubscribed(const QString &ip, quint16 port, const QString &topic)
+{
+    const QString flag = clientFlag(ip, port);
+    QStandardItem *clientItem = findClientItem(ip, port);
+    if (!clientItem) {
+        clientItem = addClientItem(ip, port);
+        addSubscriptionItem(clientItem, topic);
+    } else {
+        QStandardItem *subItem = findSubscriptionItem(clientItem, topic);
+        if (!subItem) {
+            addSubscriptionItem(clientItem, topic);
+        }
+    }
+
+    ui->treeViewClients->expandAll();
+}
+
+void MqttServerUi::onClientUnsubscribed(const QString &ip, quint16 port, const QString &topic)
+{
+    QStandardItem *clientItem = findClientItem(ip, port);
+    if (clientItem) {
+        removeSubscriptionItem(clientItem, topic);
+    }
 }
 
 } // namespace xMQTT

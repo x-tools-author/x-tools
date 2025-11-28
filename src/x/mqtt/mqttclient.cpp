@@ -62,6 +62,13 @@ void MqttClient::subscribe(const QString &topic)
     }
 }
 
+void MqttClient::unsubscribe(const QString &topic)
+{
+    if (d->m_conn) {
+        d->unsubscribe(d->m_conn, topic);
+    }
+}
+
 void MqttClient::run()
 {
     d->m_opened = false;
@@ -78,11 +85,6 @@ void MqttClient::run()
         mg_mgr_poll(&mgr, 1000);
     }
     mg_mgr_free(&mgr);
-}
-
-void MqttClient::outputLogMessage(const QString &msg, bool isError)
-{
-    emit logMessage(msg, isError);
 }
 
 } // namespace xMQTT

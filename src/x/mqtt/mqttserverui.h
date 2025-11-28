@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QStandardItemModel>
 #include <QWidget>
 
 namespace Ui {
@@ -36,12 +37,25 @@ private:
     Ui::MqttServerUi *ui;
     MqttServer *m_server{nullptr};
     int m_rightWidth{168};
+    QStandardItemModel *m_clientsModel{nullptr};
 
 private:
+    QString clientFlag(const QString &ip, quint16 port);
+    QStandardItem *findClientItem(const QString &ip, quint16 port);
+    QStandardItem *addClientItem(const QString &ip, quint16 port);
+    void removeClientItem(const QString &ip, quint16 port);
+    QStandardItem *findSubscriptionItem(QStandardItem *clientItem, const QString &topic);
+    QStandardItem *addSubscriptionItem(QStandardItem *clientItem, const QString &topic);
+    void removeSubscriptionItem(QStandardItem *clientItem, const QString &topic);
+
     void onOpenBtnClicked();
     void onCloseBtnClicked();
     void onLogMessageReceived(const QString &msg, bool isError);
     void onMqttMessageRx(std::shared_ptr<MqttMessage> message);
+    void onServerStarted();
+    void onServerStopped();
+    void onClientSubscribed(const QString &ip, quint16 port, const QString &topic);
+    void onClientUnsubscribed(const QString &ip, quint16 port, const QString &topic);
 };
 
 } // namespace xMQTT
