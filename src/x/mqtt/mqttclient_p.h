@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QByteArray>
 #include <QObject>
 
 #include <mongoose.h>
@@ -33,33 +34,34 @@ public:
     QString m_ip;
     quint16 m_port{1883};
     mg_connection *m_conn{nullptr};
+    bool m_opened{false};
 
 public:
     QString url() const { return QString("mqtt://%1:%2").arg(m_ip).arg(m_port); }
 
-    static void subscribe(struct mg_connection *c, const char *topic)
+    static void subscribe(struct mg_connection *c, const QString &topic)
     {
-        MqttClient *client = static_cast<MqttClient *>(c->pfn_data);
+        MqttClient *client = static_cast<MqttClient *>(c->fn_data);
         MqttClientPrivate *d = client->d;
 
         struct mg_mqtt_opts opts = {};
         memset(&opts, 0, sizeof(opts));
-        opts.topic = mg_str(topic);
+        opts.topic = mg_str(topic.toUtf8().constData());
         opts.qos = d->m_qos;
         mg_mqtt_sub(c, &opts);
         QString msg = QString("Subscribed to %1").arg(QString(topic));
         client->outputLogMessage(msg, false);
     }
 
-    static void publish(struct mg_connection *c, const char *topic, const char *message)
+    static void publish(struct mg_connection *c, const QString &topic, const QByteArray &message)
     {
-        MqttClient *client = static_cast<MqttClient *>(c->pfn_data);
+        MqttClient *client = static_cast<MqttClient *>(c->fn_data);
         MqttClientPrivate *d = client->d;
 
         struct mg_mqtt_opts opts = {};
         memset(&opts, 0, sizeof(opts));
-        opts.topic = mg_str(topic);
-        opts.message = mg_str(message);
+        opts.topic = mg_str(topic.toUtf8().constData());
+        opts.message = mg_str(message.constData());
         opts.qos = d->m_qos;
         mg_mqtt_pub(c, &opts);
         QString msg = QString("Published to %1:%2").arg(QString(topic)).arg(QString(message));
@@ -90,6 +92,7 @@ public:
             // MQTT connect is successful
             //MG_INFO(("%lu CONNECTED to %s", c->id, d->url().toUtf8().constData()));
             //subscribe(c, s_sub_topic);
+            d->m_opened = true;
             client->outputLogMessage(QString("Connected to %1").arg(d->url()), false);
         } else if (ev == MG_EV_MQTT_MSG) {
             // When we get echo response, print it
@@ -107,11 +110,17 @@ public:
             struct mg_mqtt_message *mm = (struct mg_mqtt_message *) ev_data;
             if (mm->cmd == MQTT_CMD_PINGREQ) {
                 mg_mqtt_pong(c);
+            } else if (mm->cmd == MQTT_CMD_SUBACK) {
+                QString msg = QString("Subscribed to %1")
+                                  .arg(mm->ack == 0 ? "successfully" : "with failure");
+                client->outputLogMessage(msg, false);
+                qInfo() << "Subscription acknowledged";
             }
         } else if (ev == MG_EV_CLOSE) {
             // MG_INFO(("%lu CLOSED", c->id));
             //s_mqtt_conn = NULL; // Mark that we're closed
             d->m_conn = nullptr;
+            d->m_opened = false;
             client->outputLogMessage(QString("Disconnected from %1").arg(d->url()), false);
         }
     }

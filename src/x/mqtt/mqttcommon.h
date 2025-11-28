@@ -18,7 +18,13 @@ enum class QoS { AtMostOnce = 0, AtLeastOnce = 1, ExactlyOnce = 2 };
 void setupQosComboBox(QComboBox *comboBox);
 void setupSocketAddress(QComboBox *cb);
 void setupPortSpinBox(QSpinBox *spinBox, quint16 defaultPort = 1883);
+enum class MqttVersion { V3_1_1 = 4, V5_0 = 5 };
 void setupVersionComboBox(QComboBox *comboBox);
+
+enum class MessageFormat { UTF8 = 0, Hex = 1 };
+void setupMessageFormatComboBox(QComboBox *comboBox);
+QByteArray cookedMessage(const QString &message, MessageFormat format);
+QString uncookedMessage(const QByteArray &message, MessageFormat format);
 
 QString mgAddressToIpV4(const struct mg_addr *addr);
 bool ipV4ToMgAddress(const QString &ip, struct mg_addr *addr);

@@ -124,12 +124,12 @@
         </layout>
        </item>
        <item>
-        <widget class="QTabWidget" name="tabWidget_2">
+        <widget class="QTabWidget" name="tabWidgetLeft">
          <property name="tabPosition">
           <enum>QTabWidget::TabPosition::South</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
@@ -148,8 +148,42 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
            <item row="0" column="0">
-            <widget class="QListWidget" name="listWidget"/>
+            <layout class="QGridLayout" name="gridLayout_5">
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="lineEditPublish">
+               <property name="placeholderText">
+                <string>Topic</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QToolButton" name="toolButtonPublish">
+               <property name="toolTip">
+                <string>Publish topic</string>
+               </property>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QToolButton" name="toolButtonWrap">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QComboBox" name="comboBoxTextFormat"/>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QTextEdit" name="textEditPublish"/>
            </item>
           </layout>
          </widget>
@@ -170,8 +204,32 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
+           <item row="1" column="0">
+            <widget class="QListView" name="listViewSubscribe"/>
+           </item>
            <item row="0" column="0">
-            <widget class="QListView" name="listView"/>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="lineEditSubscribe">
+               <property name="placeholderText">
+                <string>Topic</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QToolButton" name="toolButtonSubscribe">
+               <property name="toolTip">
+                <string>Subscribe topic</string>
+               </property>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -188,8 +246,23 @@
         <string>Log</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>4</number>
+        </property>
         <item row="0" column="0">
-         <widget class="QTextBrowser" name="textBrowser"/>
+         <widget class="QTextBrowser" name="textBrowserLog"/>
         </item>
        </layout>
       </widget>

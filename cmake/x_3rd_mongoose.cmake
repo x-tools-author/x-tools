@@ -1,7 +1,10 @@
 # * https://github.com/cesanta/mongoose
 # * https://codeload.github.com/cesanta/mongoose/zip/refs/tags/7.20 Do not use version 7.20, OOM
 #   error occurs: https://github.com/cesanta/mongoose/issues/3343
-set(package_version "7.19")
+set(X_3RD_VERSION_MONGOOSE
+    "7.19"
+    CACHE STRING "Mongoose version")
+set(package_version ${X_3RD_VERSION_MONGOOSE})
 set(package_name "mongoose-${package_version}")
 set(package_url "https://codeload.github.com/cesanta/mongoose/zip/refs/tags/${package_version}")
 

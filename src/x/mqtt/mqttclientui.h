@@ -39,7 +39,12 @@ private:
 private:
     void onOpenButtonClicked();
     void onCloseButtonClicked();
+    void onPublishButtonClicked();
+    void onSubscribeButtonClicked();
     void onLogMessageReceived(const QString &msg, bool isError);
+
+    void showNotOpenedWarning();
+    void showEmptyTopicWarning();
 };
 
 } // namespace xMQTT

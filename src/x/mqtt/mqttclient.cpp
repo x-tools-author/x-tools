@@ -43,8 +43,28 @@ void MqttClient::stopClient()
     wait();
 }
 
+bool MqttClient::isOpened() const
+{
+    return d->m_opened;
+}
+
+void MqttClient::publish(const QString &topic, const QByteArray &message)
+{
+    if (d->m_conn) {
+        d->publish(d->m_conn, topic, message);
+    }
+}
+
+void MqttClient::subscribe(const QString &topic)
+{
+    if (d->m_conn) {
+        d->subscribe(d->m_conn, topic);
+    }
+}
+
 void MqttClient::run()
 {
+    d->m_opened = false;
     struct mg_mgr mgr;
     mg_mgr_init(&mgr);
     mgr.userdata = this;

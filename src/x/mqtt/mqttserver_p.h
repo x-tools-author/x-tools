@@ -11,6 +11,7 @@
 #include <atomic>
 #include <thread>
 
+#include <QByteArray>
 #include <QString>
 
 #include <mongoose.h>
@@ -110,7 +111,15 @@ public:
                     sub->topic = mg_strdup(topic);
                     sub->qos = qos;
                     LIST_ADD_HEAD(struct SubscriptionContext, &d->m_subs, sub);
-                    MG_INFO(("SUB %p [%.*s]", c->fd, (int) sub->topic.len, sub->topic.buf));
+                    QString topicStr = QString::fromUtf8(topic.buf, int(topic.len));
+                    QString remIp = mgAddressToIpV4(&c->rem);
+                    QString remPort = QString::number(mg_ntohs(c->rem.port));
+                    QString msg = QString("Client(%1:%2) subscribed to topic: %3")
+                                      .arg(remIp)
+                                      .arg(remPort)
+                                      .arg(topicStr);
+                    server->outputLogMessage(msg, false);
+                    // MG_INFO(("SUB %p [%.*s]", c->fd, (int) sub->topic.len, sub->topic.buf));
                     // Change '+' to '*' for topic matching using mg_match
                     for (size_t i = 0; i < sub->topic.len; i++) {
                         if (sub->topic.buf[i] == '+') {
@@ -133,6 +142,12 @@ public:
                          mm->data.buf,
                          (int) mm->topic.len,
                          mm->topic.buf));
+                QByteArray payload = QByteArray(mm->data.buf, static_cast<int>(mm->data.len));
+                QString topicStr = QString::fromUtf8(mm->topic.buf, int(mm->topic.len));
+                QString msg = QString("Message received on topic %1: %2")
+                                  .arg(topicStr)
+                                  .arg(QString::fromUtf8(payload.toHex()));
+                server->outputLogMessage(msg, false);
                 for (struct SubscriptionContext *sub = d->m_subs; sub != NULL; sub = sub->next) {
                     if (mg_match(mm->topic, sub->topic, NULL)) {
                         struct mg_mqtt_opts pub_opts;

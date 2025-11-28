@@ -10,6 +10,9 @@
 
 #include <QDateTime>
 #include <QString>
+#include <QWidget>
+
+#define xSetNoneBorder(w) xTools::setNoneBorder(w)
 
 namespace xTools {
 
@@ -18,5 +21,7 @@ QString systemTimeFormat();
 QString dateTimeString(const QString &format);
 QDateTime buildDateTime();
 QString buildDateTimeString(const QString &format);
+
+void setNoneBorder(QWidget *widget);
 
 } // namespace xTools

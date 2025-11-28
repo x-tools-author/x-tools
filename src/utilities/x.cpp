@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "x.h"
 
+#include <QMetaObject>
+
 namespace xTools {
 
 QString systemDateFormat()
@@ -38,6 +40,19 @@ QDateTime buildDateTime()
 QString buildDateTimeString(const QString &format)
 {
     return buildDateTime().toString(format);
+}
+
+void setNoneBorder(QWidget *widget)
+{
+    if (!widget) {
+        return;
+    }
+
+    const QMetaObject *metaObj = widget->metaObject();
+    QString className = QString::fromLatin1(metaObj->className());
+    QString objectName = widget->objectName();
+    QString styleSheet = QString("%1#%2 {border: none;}").arg(className, objectName);
+    widget->setStyleSheet(styleSheet);
 }
 
 } // namespace xTools

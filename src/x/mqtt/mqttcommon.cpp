@@ -68,6 +68,36 @@ void setupVersionComboBox(QComboBox *comboBox)
     comboBox->setCurrentIndex(0);
 }
 
+void setupMessageFormatComboBox(QComboBox *comboBox)
+{
+    comboBox->clear();
+    comboBox->addItem(QString("UTF-8"), static_cast<int>(MessageFormat::UTF8));
+    comboBox->addItem(QString("Hex"), static_cast<int>(MessageFormat::Hex));
+    comboBox->setCurrentIndex(0);
+}
+
+QByteArray cookedMessage(const QString &message, MessageFormat format)
+{
+    if (format == MessageFormat::UTF8) {
+        return message.toUtf8();
+    } else if (format == MessageFormat::Hex) {
+        return QByteArray::fromHex(message.toUtf8());
+    }
+
+    return QByteArray();
+}
+
+QString uncookedMessage(const QByteArray &message, MessageFormat format)
+{
+    if (format == MessageFormat::UTF8) {
+        return QString::fromUtf8(message);
+    } else if (format == MessageFormat::Hex) {
+        return QString::fromUtf8(message.toHex().toUpper());
+    }
+
+    return QString();
+}
+
 QString mgAddressToIpV4(const struct mg_addr *addr)
 {
     if (addr == nullptr) {

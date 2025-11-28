@@ -13,6 +13,7 @@
 
 #include "mqttcommon.h"
 #include "mqttserver.h"
+#include "utilities/x.h"
 
 namespace xMQTT {
 
@@ -28,9 +29,12 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     ui->setupUi(this);
     ui->splitter->setChildrenCollapsible(false);
     ui->splitter->setSizes(QList<int>({width() - m_rightWidth, m_rightWidth}));
-    ui->textBrowser->setWordWrapMode(QTextOption::NoWrap);
+    ui->textBrowserLog->setWordWrapMode(QTextOption::NoWrap);
+    ui->textBrowserLog->document()->setMaximumBlockCount(1024);
     setupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
+    xSetNoneBorder(ui->treeViewClients);
+    xSetNoneBorder(ui->treeViewTopics);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttServerUi::onOpenBtnClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttServerUi::onCloseBtnClicked);
     connect(ui->splitter, &QSplitter::splitterMoved, this, [this](int pos, int index) {
@@ -92,7 +96,7 @@ void MqttServerUi::onCloseBtnClicked()
 void MqttServerUi::onLogMessageReceived(const QString &msg, bool isError)
 {
     Q_UNUSED(isError);
-    ui->textBrowser->append(msg);
+    ui->textBrowserLog->append(msg);
 
     if (isError) {
         onCloseBtnClicked();
