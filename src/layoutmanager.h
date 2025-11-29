@@ -10,7 +10,6 @@
 
 #include <QButtonGroup>
 #include <QHBoxLayout>
-#include <QHash>
 #include <QJsonObject>
 #include <QLabel>
 #include <QMenuBar>
