@@ -23,7 +23,7 @@ public:
 
     void startClient(const QString &host, quint16 port, int qos, int version);
     void stopClient();
-    bool isOpened() const;
+     [[nodiscard]] bool isOpened() const;
     void publish(const QString &topic, const QByteArray &message);
     void subscribe(const QString &topic);
     void unsubscribe(const QString &topic);

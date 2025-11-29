@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QTimer>
 #include <QWidget>
 
 namespace Ui {
@@ -25,7 +26,7 @@ public:
     explicit MqttClientUi(QWidget *parent = nullptr);
     ~MqttClientUi() override;
 
-    QJsonObject save() const;
+    [[nodiscard]] QJsonObject save() const;
     void load(const QJsonObject &obj) const;
 
 protected:
@@ -35,16 +36,21 @@ private:
     Ui::MqttClientUi *ui;
     int m_leftWidth{168};
     MqttClient *m_client{nullptr};
+    QTimer *m_publishingTimer{nullptr};
 
 private:
     void onOpenButtonClicked() const;
     void onCloseButtonClicked() const;
     void onPublishButtonClicked();
     void onSubscribeButtonClicked();
+    void onTimerButtonClicked(bool checked);
     void onLogMessageReceived(const QString &msg, bool isError) const;
+    void onPublishingTimerTimeout();
 
     void showNotOpenedWarning();
     void showEmptyTopicWarning();
+    void startPublishingTimer();
+    void stopPublishingTimer();
 };
 
 } // namespace xMQTT

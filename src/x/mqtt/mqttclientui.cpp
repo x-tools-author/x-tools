@@ -65,6 +65,7 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttClientUi::onCloseButtonClicked);
     connect(ui->toolButtonPublish, &QToolButton::clicked, this, &MqttClientUi::onPublishButtonClicked);
     connect(ui->toolButtonSubscribe, &QToolButton::clicked, this, &MqttClientUi::onSubscribeButtonClicked);
+    connect(ui->toolButtonTimer, &QToolButton::clicked, this, &MqttClientUi::onTimerButtonClicked);
     // clang-format on
     connect(ui->splitter, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         Q_UNUSED(index);
@@ -81,6 +82,10 @@ MqttClientUi::MqttClientUi(QWidget *parent)
 
 MqttClientUi::~MqttClientUi()
 {
+    if (m_publishingTimer && m_publishingTimer->isActive()) {
+        m_publishingTimer->stop();
+    }
+
     delete ui;
 }
 
@@ -197,9 +202,42 @@ void MqttClientUi::onSubscribeButtonClicked()
     m_client->subscribe(ui->lineEditSubscribe->text().trimmed());
 }
 
+void MqttClientUi::onTimerButtonClicked(bool checked)
+{
+    // If client is not opened, disable timer start
+    if (!m_client || (m_client && !m_client->isOpened())) {
+        showNotOpenedWarning();
+        ui->toolButtonTimer->setChecked(false);
+        return;
+    }
+
+    if (checked) {
+        startPublishingTimer();
+    } else {
+        stopPublishingTimer();
+    }
+}
+
 void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError) const
 {
     ui->textBrowserLog->append(msg);
+}
+
+void MqttClientUi::onPublishingTimerTimeout()
+{
+    if (!m_client || !m_client->isOpened()) {
+        return;
+    }
+
+    if (ui->lineEditPublish->text().trimmed().isEmpty()) {
+        return;
+    }
+
+    QString topic = ui->lineEditPublish->text().trimmed();
+    QString txt = ui->textEditPublish->toPlainText();
+    int data = ui->comboBoxTextFormat->currentData().toInt();
+    QByteArray msg = cookedMessage(txt, static_cast<MessageFormat>(data));
+    m_client->publish(topic, msg);
 }
 
 void MqttClientUi::showNotOpenedWarning()
@@ -210,6 +248,24 @@ void MqttClientUi::showNotOpenedWarning()
 void MqttClientUi::showEmptyTopicWarning()
 {
     QMessageBox::warning(this, tr("Warning"), tr("The topic is empty."));
+}
+
+void MqttClientUi::startPublishingTimer()
+{
+    if (!m_publishingTimer) {
+        m_publishingTimer = new QTimer(this);
+        connect(m_publishingTimer, &QTimer::timeout, this, &MqttClientUi::onPublishingTimerTimeout);
+    }
+
+    int interval = ui->spinBoxInterval->value();
+    m_publishingTimer->start(interval < 100 ? 100 : interval); // Ensure minimum interval of 100ms
+}
+
+void MqttClientUi::stopPublishingTimer()
+{
+    if (m_publishingTimer) {
+        m_publishingTimer->stop();
+    }
 }
 
 } // namespace xMQTT
