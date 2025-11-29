@@ -57,6 +57,8 @@ private:
     void onMqttMessageRx(std::shared_ptr<MqttMessage> message);
     void onServerStarted();
     void onServerStopped();
+    void onClientConnected(const QString &ip, quint16 port);
+    void onClientDisconnected(const QString &ip, quint16 port);
     void onClientSubscribed(const QString &ip, quint16 port, const QString &topic);
     void onClientUnsubscribed(const QString &ip, quint16 port, const QString &topic);
 };

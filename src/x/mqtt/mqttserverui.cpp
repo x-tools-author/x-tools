@@ -55,6 +55,8 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     connect(m_server, &MqttServer::mqttMessageRx, this, &MqttServerUi::onMqttMessageRx);
     connect(m_server, &MqttServer::serverStarted, this, &MqttServerUi::onServerStarted);
     connect(m_server, &MqttServer::finished, this, &MqttServerUi::onServerStopped);
+    connect(m_server, &MqttServer::clientConnected, this, &MqttServerUi::onClientConnected);
+    connect(m_server, &MqttServer::clientDisconnected, this, &MqttServerUi::onClientDisconnected);
     connect(m_server, &MqttServer::clientSubscribed, this, &MqttServerUi::onClientSubscribed);
     connect(m_server, &MqttServer::clientUnsubscribed, this, &MqttServerUi::onClientUnsubscribed);
 }
@@ -215,6 +217,21 @@ void MqttServerUi::onServerStopped()
 {
     ui->pushButtonClose->setEnabled(false);
     ui->pushButtonOpen->setEnabled(true);
+}
+
+void MqttServerUi::onClientConnected(const QString &ip, quint16 port)
+{
+    QStandardItem *clientItem = findClientItem(ip, port);
+    if (!clientItem) {
+        addClientItem(ip, port);
+    }
+
+    ui->treeViewClients->expandAll();
+}
+
+void MqttServerUi::onClientDisconnected(const QString &ip, quint16 port)
+{
+    removeClientItem(ip, port);
 }
 
 void MqttServerUi::onClientSubscribed(const QString &ip, quint16 port, const QString &topic)
