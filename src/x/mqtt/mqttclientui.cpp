@@ -55,6 +55,8 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     ui->toolButtonPublish->setIcon(xIcon(":/res/icons/upload.svg"));
     ui->toolButtonSubscribe->setIcon(xIcon(":/res/icons/download.svg"));
     ui->toolButtonWrap->setIcon(xIcon(":/res/icons/wrap_text.svg"));
+    ui->toolButtonTimer->setIcon(xIcon(":/res/icons/timer.svg"));
+    ui->toolButtonTimer->setCheckable(true);
     ui->toolButtonWrap->setCheckable(true);
     ui->toolButtonWrap->setChecked(true);
     ui->textBrowserLog->document()->setMaximumBlockCount(1024);

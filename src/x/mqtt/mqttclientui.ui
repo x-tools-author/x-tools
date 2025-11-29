@@ -153,14 +153,17 @@
            </property>
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_5">
-             <item row="0" column="0">
-              <widget class="QLineEdit" name="lineEditPublish">
-               <property name="placeholderText">
-                <string>Topic</string>
+             <item row="2" column="2">
+              <widget class="QToolButton" name="toolButtonTimer">
+               <property name="toolTip">
+                <string>Timer sending</string>
+               </property>
+               <property name="text">
+                <string notr="true"/>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
+             <item row="0" column="2">
               <widget class="QToolButton" name="toolButtonPublish">
                <property name="toolTip">
                 <string>Publish topic</string>
@@ -170,15 +173,54 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
+             <item row="1" column="2">
               <widget class="QToolButton" name="toolButtonWrap">
+               <property name="toolTip">
+                <string>Wrap text</string>
+               </property>
                <property name="text">
                 <string notr="true"/>
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
+             <item row="2" column="0">
+              <widget class="QSpinBox" name="spinBoxInterval">
+               <property name="minimum">
+                <number>100</number>
+               </property>
+               <property name="maximum">
+                <number>10000</number>
+               </property>
+               <property name="singleStep">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="label_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string notr="true">ms</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
               <widget class="QComboBox" name="comboBoxTextFormat"/>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <widget class="QLineEdit" name="lineEditPublish">
+               <property name="placeholderText">
+                <string>Topic</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -189,7 +231,7 @@
          </widget>
          <widget class="QWidget" name="tab_2">
           <attribute name="title">
-           <string>Subscribe</string>
+           <string>Topics</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_2">
            <property name="leftMargin">
