@@ -43,7 +43,7 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     xSetNoneBorder(ui->textEditPublish);
 #endif
     xSetNoneBorder(ui->listViewSubscribe);
-    xSetNoneBorder(ui->textBrowserLog);
+    xSetNoneBorder(ui->widgetLog);
     setupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
     setupQosComboBox(ui->comboBoxQos);
@@ -51,7 +51,6 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     setupMessageFormatComboBox(ui->comboBoxTextFormat);
     ui->splitter->setChildrenCollapsible(false);
     ui->splitter->setSizes(QList<int>({m_leftWidth, width() - m_leftWidth}));
-    ui->textBrowserLog->setWordWrapMode(QTextOption::NoWrap);
     ui->toolButtonPublish->setIcon(xIcon(":/res/icons/upload.svg"));
     ui->toolButtonSubscribe->setIcon(xIcon(":/res/icons/download.svg"));
     ui->toolButtonWrap->setIcon(xIcon(":/res/icons/wrap_text.svg"));
@@ -59,7 +58,6 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     ui->toolButtonTimer->setCheckable(true);
     ui->toolButtonWrap->setCheckable(true);
     ui->toolButtonWrap->setChecked(true);
-    ui->textBrowserLog->document()->setMaximumBlockCount(1024);
     // clang-format off
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttClientUi::onOpenButtonClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttClientUi::onCloseButtonClicked);
@@ -111,11 +109,11 @@ QJsonObject MqttClientUi::save() const
 
 void MqttClientUi::load(const QJsonObject &obj) const
 {
-    MqttClientUiParameterKeys keys;
-    int index = ui->comboBoxServerAddress->findText(obj.value(keys.serverAddress).toString());
-    ui->comboBoxServerAddress->setCurrentIndex(index >= 0 ? index : 0);
+    const MqttClientUiParameterKeys keys;
+    const QString address = obj.value(keys.serverAddress).toString();
+    ui->comboBoxServerAddress->setCurrentText(address);
     ui->spinBoxServerPort->setValue(obj.value(keys.serverPort).toInt(1883));
-    index = obj.value(keys.qos).toInt(static_cast<int>(QoS::AtMostOnce));
+    int index = obj.value(keys.qos).toInt(static_cast<int>(QoS::AtMostOnce));
     ui->comboBoxQos->setCurrentIndex(index >= 0 && index < ui->comboBoxQos->count() ? index : 0);
     int leftWidth = obj.value(keys.leftWidth).toInt(m_leftWidth);
     ui->splitter->setSizes({leftWidth, width() - leftWidth});
@@ -220,7 +218,7 @@ void MqttClientUi::onTimerButtonClicked(bool checked)
 
 void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError) const
 {
-    ui->textBrowserLog->append(msg);
+    ui->widgetLog->appendLogMessage(msg, isError);
 }
 
 void MqttClientUi::onPublishingTimerTimeout()

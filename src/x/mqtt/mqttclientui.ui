@@ -59,7 +59,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBoxServerAddress"/>
+        <widget class="QComboBox" name="comboBoxServerAddress">
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_2">
@@ -304,7 +308,7 @@
          <number>4</number>
         </property>
         <item row="0" column="0">
-         <widget class="QTextBrowser" name="textBrowserLog"/>
+         <widget class="xMQTT::MqttLogView" name="widgetLog" native="true"/>
         </item>
        </layout>
       </widget>
@@ -318,6 +322,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>xMQTT::MqttLogView</class>
+   <extends>QWidget</extends>
+   <header location="global">x/mqtt/mqttlogview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

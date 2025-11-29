@@ -21,6 +21,9 @@ namespace xMQTT {
 struct MqttServerUiParameterKeys
 {
     const QString rightWidth{"rightWidth"};
+    const QString serverAddress{"serverAddress"};
+    const QString serverPort{"serverPort"};
+    const QString tabIndex{"tabIndex"};
 };
 
 MqttServerUi::MqttServerUi(QWidget *parent)
@@ -30,8 +33,6 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     ui->setupUi(this);
     ui->splitter->setChildrenCollapsible(false);
     ui->splitter->setSizes(QList<int>({width() - m_rightWidth, m_rightWidth}));
-    ui->textBrowserLog->setWordWrapMode(QTextOption::NoWrap);
-    ui->textBrowserLog->document()->setMaximumBlockCount(1024);
     ui->pushButtonClose->setEnabled(false);
     ui->treeViewClients->header()->hide();
     setupSocketAddress(ui->comboBoxServerAddress);
@@ -65,16 +66,25 @@ MqttServerUi::~MqttServerUi()
 
 QJsonObject MqttServerUi::save()
 {
+    const MqttServerUiParameterKeys keys;
     QJsonObject obj;
-    obj.insert(MqttServerUiParameterKeys().rightWidth, static_cast<int>(m_rightWidth));
+    obj.insert(keys.rightWidth, static_cast<int>(m_rightWidth));
+    obj.insert(keys.serverAddress, ui->comboBoxServerAddress->currentText());
+    obj.insert(keys.serverPort, ui->spinBoxServerPort->value());
+    obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
     return obj;
 }
 
 void MqttServerUi::load(const QJsonObject &obj)
 {
-    int rightWidth = obj.value(MqttServerUiParameterKeys().rightWidth).toInt(168);
+    const MqttServerUiParameterKeys keys;
+    const int rightWidth = obj.value(keys.rightWidth).toInt(168);
     m_rightWidth = rightWidth;
     ui->splitter->setSizes(QList<int>({width() - m_rightWidth, m_rightWidth}));
+    const QString serverAddress = obj.value(keys.serverAddress).toString("127.0.0.1");
+    ui->comboBoxServerAddress->setCurrentText(serverAddress);
+    ui->spinBoxServerPort->setValue(obj.value(keys.serverPort).toInt());
+    ui->tabWidget->setCurrentIndex(obj.value(keys.tabIndex).toInt(0));
 }
 
 bool MqttServerUi::event(QEvent *event)
@@ -182,7 +192,7 @@ void MqttServerUi::onCloseBtnClicked()
 void MqttServerUi::onLogMessageReceived(const QString &msg, bool isError)
 {
     Q_UNUSED(isError);
-    ui->textBrowserLog->append(msg);
+    ui->widgetLog->appendLogMessage(msg, isError);
 
     if (isError) {
         onCloseBtnClicked();

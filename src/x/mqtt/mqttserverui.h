@@ -12,6 +12,8 @@
 #include <QStandardItemModel>
 #include <QWidget>
 
+#include "utilities/serializable.h"
+
 namespace Ui {
 class MqttServerUi;
 }
@@ -20,15 +22,15 @@ namespace xMQTT {
 
 struct MqttMessage;
 class MqttServer;
-class MqttServerUi : public QWidget
+class MqttServerUi : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit MqttServerUi(QWidget *parent = nullptr);
     ~MqttServerUi() override;
 
-    QJsonObject save();
-    void load(const QJsonObject &obj);
+    QJsonObject save() override;
+    void load(const QJsonObject &obj) override;
 
 protected:
     bool event(QEvent *event) override;

@@ -60,7 +60,7 @@ void MqttServer::run()
 
     emit serverStarted();
     while (!isInterruptionRequested()) {
-        mg_mgr_poll(&mgr, 1000); // Event loop, 1s timeout
+        mg_mgr_poll(&mgr, 1000);
     }
     mg_mgr_free(&mgr);
     emit logMessage(QStringLiteral("Server stopped"));
