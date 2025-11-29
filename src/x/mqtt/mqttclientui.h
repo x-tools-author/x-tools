@@ -25,8 +25,8 @@ public:
     explicit MqttClientUi(QWidget *parent = nullptr);
     ~MqttClientUi() override;
 
-    QJsonObject save();
-    void load(const QJsonObject &obj);
+    QJsonObject save() const;
+    void load(const QJsonObject &obj) const;
 
 protected:
     bool event(QEvent *event) override;
@@ -37,11 +37,11 @@ private:
     MqttClient *m_client{nullptr};
 
 private:
-    void onOpenButtonClicked();
-    void onCloseButtonClicked();
+    void onOpenButtonClicked() const;
+    void onCloseButtonClicked() const;
     void onPublishButtonClicked();
     void onSubscribeButtonClicked();
-    void onLogMessageReceived(const QString &msg, bool isError);
+    void onLogMessageReceived(const QString &msg, bool isError) const;
 
     void showNotOpenedWarning();
     void showEmptyTopicWarning();

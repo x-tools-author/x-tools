@@ -84,7 +84,7 @@ MqttClientUi::~MqttClientUi()
     delete ui;
 }
 
-QJsonObject MqttClientUi::save()
+QJsonObject MqttClientUi::save() const
 {
     MqttClientUiParameterKeys keys;
     QJsonObject obj;
@@ -104,7 +104,7 @@ QJsonObject MqttClientUi::save()
     return obj;
 }
 
-void MqttClientUi::load(const QJsonObject &obj)
+void MqttClientUi::load(const QJsonObject &obj) const
 {
     MqttClientUiParameterKeys keys;
     int index = ui->comboBoxServerAddress->findText(obj.value(keys.serverAddress).toString());
@@ -141,20 +141,20 @@ bool MqttClientUi::event(QEvent *event)
     return QWidget::event(event);
 }
 
-void MqttClientUi::onOpenButtonClicked()
+void MqttClientUi::onOpenButtonClicked() const
 {
     if (!m_client) {
         return;
     }
 
-    QString host = ui->comboBoxServerAddress->currentText();
-    quint16 port = static_cast<quint16>(ui->spinBoxServerPort->value());
-    int qos = ui->comboBoxQos->currentData().toInt();
-    int version = ui->comboBoxVersions->currentData().toInt();
+    const QString host = ui->comboBoxServerAddress->currentText();
+    const auto port = static_cast<quint16>(ui->spinBoxServerPort->value());
+    const int qos = ui->comboBoxQos->currentData().toInt();
+    const int version = ui->comboBoxVersions->currentData().toInt();
     m_client->startClient(host, port, qos, version);
 }
 
-void MqttClientUi::onCloseButtonClicked()
+void MqttClientUi::onCloseButtonClicked() const
 {
     if (m_client) {
         m_client->stopClient();
@@ -197,7 +197,7 @@ void MqttClientUi::onSubscribeButtonClicked()
     m_client->subscribe(ui->lineEditSubscribe->text().trimmed());
 }
 
-void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError)
+void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError) const
 {
     ui->textBrowserLog->append(msg);
 }
