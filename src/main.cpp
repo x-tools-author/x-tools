@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     });
 #endif
 
-    int ret = app.exec();
+    const int ret = Application::exec();
 
 #if X_ENABLE_HID
     hid_exit();
