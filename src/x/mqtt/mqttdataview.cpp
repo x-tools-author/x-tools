@@ -24,8 +24,10 @@ MqttDataView::MqttDataView(QWidget *parent)
     m_filter->setSourceModel(m_model);
     ui->tableView->setModel(m_filter);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    QHeaderView *hView = ui->tableView->horizontalHeader();
+    hView->setSectionResizeMode(QHeaderView::ResizeToContents);
+    hView->setStretchLastSection(true);
+    hView->setMinimumSectionSize(80);
 }
 
 MqttDataView::~MqttDataView()

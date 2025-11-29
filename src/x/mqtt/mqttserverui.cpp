@@ -152,15 +152,20 @@ void MqttServerUi::removeSubscriptionItem(QStandardItem *clientItem, const QStri
     }
 }
 
+void MqttServerUi::disableOpenBtnAndCloseBtn()
+{
+    ui->pushButtonClose->setEnabled(false);
+    ui->pushButtonOpen->setEnabled(false);
+    QApplication::processEvents(); // Make buttons status updated
+}
+
 void MqttServerUi::onOpenBtnClicked()
 {
     if (!m_server) {
         return;
     }
 
-    ui->pushButtonClose->setEnabled(false);
-    ui->pushButtonOpen->setEnabled(false);
-
+    disableOpenBtnAndCloseBtn();
     const QString ip = ui->comboBoxServerAddress->currentText();
     const quint16 port = static_cast<quint16>(ui->spinBoxServerPort->value());
     m_server->startServer(ip, port);
@@ -168,9 +173,7 @@ void MqttServerUi::onOpenBtnClicked()
 
 void MqttServerUi::onCloseBtnClicked()
 {
-    ui->pushButtonClose->setEnabled(false);
-    ui->pushButtonOpen->setEnabled(false);
-
+    disableOpenBtnAndCloseBtn();
     if (m_server) {
         m_server->stopServer();
     }

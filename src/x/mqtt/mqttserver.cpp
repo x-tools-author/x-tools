@@ -58,6 +58,7 @@ void MqttServer::run()
         return;
     }
 
+    emit serverStarted();
     while (!isInterruptionRequested()) {
         mg_mgr_poll(&mgr, 1000); // Event loop, 1s timeout
     }

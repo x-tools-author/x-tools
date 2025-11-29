@@ -47,6 +47,7 @@ private:
     QStandardItem *findSubscriptionItem(QStandardItem *clientItem, const QString &topic);
     QStandardItem *addSubscriptionItem(QStandardItem *clientItem, const QString &topic);
     void removeSubscriptionItem(QStandardItem *clientItem, const QString &topic);
+    void disableOpenBtnAndCloseBtn();
 
     void onOpenBtnClicked();
     void onCloseBtnClicked();
