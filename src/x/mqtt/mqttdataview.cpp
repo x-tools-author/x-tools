@@ -11,6 +11,7 @@
 
 #include "mqttdatafilter.h"
 #include "mqttdatamodel.h"
+#include "utilities/iconengine.h"
 
 namespace xMQTT {
 
@@ -28,6 +29,7 @@ MqttDataView::MqttDataView(QWidget *parent)
     hView->setSectionResizeMode(QHeaderView::ResizeToContents);
     hView->setStretchLastSection(true);
     hView->setMinimumSectionSize(80);
+    ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
 }
 
 MqttDataView::~MqttDataView()

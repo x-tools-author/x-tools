@@ -137,6 +137,7 @@ public:
             //subscribe(c, s_sub_topic);
             d->m_opened = true;
             emit client->logMessage(QString("Connected to %1").arg(d->url()), false);
+            emit client->connected();
         } else if (ev == MG_EV_MQTT_MSG) {
             // When we get echo response, print it
             char response[100];

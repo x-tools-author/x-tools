@@ -46,11 +46,14 @@ private:
     void onTimerButtonClicked(bool checked);
     void onLogMessageReceived(const QString &msg, bool isError) const;
     void onPublishingTimerTimeout();
+    void onFinished();
+    void onConnected();
 
     void showNotOpenedWarning();
     void showEmptyTopicWarning();
     void startPublishingTimer();
     void stopPublishingTimer();
+    void disableOpenBtnAndCloseBtn() const;
 };
 
 } // namespace xMQTT

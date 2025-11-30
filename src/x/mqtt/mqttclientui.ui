@@ -285,7 +285,7 @@
      </widget>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabLog">
        <attribute name="title">
@@ -316,6 +316,11 @@
        <attribute name="title">
         <string>Message</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="xMQTT::MqttDataView" name="widgetMessage" native="true"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </widget>
@@ -327,6 +332,12 @@
    <class>xMQTT::MqttLogView</class>
    <extends>QWidget</extends>
    <header location="global">x/mqtt/mqttlogview.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>xMQTT::MqttDataView</class>
+   <extends>QWidget</extends>
+   <header location="global">x/mqtt/mqttdataview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

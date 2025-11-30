@@ -58,6 +58,7 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     ui->toolButtonTimer->setCheckable(true);
     ui->toolButtonWrap->setCheckable(true);
     ui->toolButtonWrap->setChecked(true);
+    ui->pushButtonClose->setEnabled(false);
     // clang-format off
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttClientUi::onOpenButtonClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttClientUi::onCloseButtonClicked);
@@ -76,6 +77,8 @@ MqttClientUi::MqttClientUi(QWidget *parent)
 
     m_client = new MqttClient(this);
     connect(m_client, &MqttClient::logMessage, this, &MqttClientUi::onLogMessageReceived);
+    connect(m_client, &MqttClient::finished, this, &MqttClientUi::onFinished);
+    connect(m_client, &MqttClient::connected, this, &MqttClientUi::onConnected);
 }
 
 MqttClientUi::~MqttClientUi()
@@ -150,6 +153,7 @@ void MqttClientUi::onOpenButtonClicked() const
         return;
     }
 
+    disableOpenBtnAndCloseBtn();
     const QString host = ui->comboBoxServerAddress->currentText();
     const auto port = static_cast<quint16>(ui->spinBoxServerPort->value());
     const int qos = ui->comboBoxQos->currentData().toInt();
@@ -159,6 +163,7 @@ void MqttClientUi::onOpenButtonClicked() const
 
 void MqttClientUi::onCloseButtonClicked() const
 {
+    disableOpenBtnAndCloseBtn();
     if (m_client) {
         m_client->stopClient();
     }
@@ -238,6 +243,18 @@ void MqttClientUi::onPublishingTimerTimeout()
     m_client->publish(topic, msg);
 }
 
+void MqttClientUi::onFinished()
+{
+    ui->pushButtonOpen->setEnabled(true);
+    ui->pushButtonClose->setEnabled(false);
+}
+
+void MqttClientUi::onConnected()
+{
+    ui->pushButtonClose->setEnabled(true);
+    ui->pushButtonOpen->setEnabled(false);
+}
+
 void MqttClientUi::showNotOpenedWarning()
 {
     QMessageBox::warning(this, tr("Warning"), tr("The MQTT client is not opened."));
@@ -264,6 +281,13 @@ void MqttClientUi::stopPublishingTimer()
     if (m_publishingTimer) {
         m_publishingTimer->stop();
     }
+}
+
+void MqttClientUi::disableOpenBtnAndCloseBtn() const
+{
+    ui->pushButtonClose->setEnabled(false);
+    ui->pushButtonOpen->setEnabled(false);
+    QApplication::processEvents();
 }
 
 } // namespace xMQTT

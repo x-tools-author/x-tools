@@ -23,13 +23,14 @@ public:
 
     void startClient(const QString &host, quint16 port, int qos, int version);
     void stopClient();
-     [[nodiscard]] bool isOpened() const;
+    [[nodiscard]] bool isOpened() const;
     void publish(const QString &topic, const QByteArray &message);
     void subscribe(const QString &topic);
     void unsubscribe(const QString &topic);
 
 signals:
     void logMessage(const QString &msg, bool isError = false);
+    void connected();
 
 protected:
     void run() override;
