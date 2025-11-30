@@ -75,11 +75,22 @@ void MqttClient::run()
     struct mg_mgr mgr;
     mg_mgr_init(&mgr);
     mgr.userdata = this;
-    mg_timer_add(&mgr,
-                 3000,
-                 MG_TIMER_REPEAT | MG_TIMER_RUN_NOW,
-                 &MqttClientPrivate::timerCallback,
-                 &mgr);
+    d->m_conn = mg_mqtt_connect(&mgr,
+                                d->url().toUtf8().constData(),
+                                nullptr,
+                                &MqttClientPrivate::eventHandler,
+                                this);
+    if (d->m_conn) {
+        d->m_conn->fn_data = this;
+        mg_timer_add(&mgr,
+                     3000,
+                     MG_TIMER_REPEAT | MG_TIMER_RUN_NOW,
+                     &MqttClientPrivate::timerCallback,
+                     &mgr);
+    } else {
+        emit logMessage(QString("Failed to connect to %1").arg(d->url()), true);
+        return;
+    }
 
     while (!isInterruptionRequested()) {
         mg_mgr_poll(&mgr, 1000);

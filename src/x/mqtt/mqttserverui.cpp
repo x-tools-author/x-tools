@@ -38,7 +38,6 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     setupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
     xSetNoneBorder(ui->treeViewClients);
-    xSetNoneBorder(ui->treeViewTopics);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttServerUi::onOpenBtnClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttServerUi::onCloseBtnClicked);
     connect(ui->splitter, &QSplitter::splitterMoved, this, [this](int pos, int index) {

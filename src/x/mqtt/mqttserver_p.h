@@ -185,9 +185,9 @@ public:
         } else if (ev == MG_EV_ACCEPT) {
             // c->is_hexdumping = 1;
             QString remIp = mgAddressToIpV4(&c->rem);
-            QString msg = QString("Client connected: %1:%2").arg(remIp).arg(c->rem.port);
+            QString msg = QString("Client connected: %1:%2").arg(remIp).arg(mg_ntohs(c->rem.port));
             emit server->logMessage(msg, false);
-            emit server->clientConnected(remIp, c->rem.port);
+            emit server->clientConnected(remIp, mg_ntohs(c->rem.port));
         } else if (ev == MG_EV_CLOSE) {
             // Client disconnects. Remove from the subscription list
             for (struct SubscriptionContext *next, *sub = d->m_subs; sub != NULL; sub = next) {
@@ -203,7 +203,7 @@ public:
 
             if (c != d->m_conn) {
                 QString remIp = mgAddressToIpV4(&c->rem);
-                emit server->clientDisconnected(remIp, c->rem.port);
+                emit server->clientDisconnected(remIp, mg_ntohs(c->rem.port));
 
                 QString msg = QString("Client disconnected: %1:%2").arg(remIp).arg(c->rem.port);
                 emit server->logMessage(msg, false);

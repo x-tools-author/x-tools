@@ -173,24 +173,7 @@ public:
         struct mg_mgr *mgr = (struct mg_mgr *) arg;
         MqttClient *client = static_cast<MqttClient *>(mgr->userdata);
         MqttClientPrivate *d = client->d;
-
-        struct mg_mqtt_opts opts;
-        opts.clean = true;
-        opts.qos = d->m_qos;
-        opts.topic = mg_str("hello/from/mongoose");
-        opts.keepalive = 5;
-        opts.version = d->m_version;
-        opts.message = mg_str("bye");
-        if (d->m_conn == nullptr) {
-            d->m_conn = mg_mqtt_connect(mgr,
-                                        d->url().toUtf8().constData(),
-                                        &opts,
-                                        &MqttClientPrivate::eventHandler,
-                                        client);
-            if (d->m_conn) {
-                d->m_conn->fn_data = client;
-            }
-        } else {
+        if (d->m_conn) {
             mg_mqtt_ping(d->m_conn);
         }
     }
