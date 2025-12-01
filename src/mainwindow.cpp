@@ -619,6 +619,7 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("qmdnsengine"), QString("https://github.com/nitroshare/qmdnsengine")));
     ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
     ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
+    ctxs.append(qMakePair(QString("mongoose"), QString("https://github.com/cesanta/mongoose")));
     ctxs.append(qMakePair(QString(""), QString("")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("QCustomPlot"), QString("https://www.qcustomplot.com/")));
