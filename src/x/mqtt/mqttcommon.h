@@ -32,30 +32,17 @@ bool ipV4ToMgAddress(const QString &ip, struct mg_addr *addr);
 
 // -------------------------------------------------------------------------------------------------
 struct MqttMessage
-{                       // Seed mg_mqtt_message for more information...
-    uint16_t id;        // For PUBACK, PUBREC, PUBREL, PUBCOMP, SUBACK, PUBLISH
-    uint8_t cmd;        // MQTT command, one of MQTT_CMD_*
-    uint8_t qos;        // Quality of service
-    uint8_t ack;        // CONNACK return code, 0 = success
-    size_t props_start; // Offset to the start of the properties (MQTT5)
-    size_t props_size;  // Length of the properties
-    QString topic;      // Parsed topic for PUBLISH
-    QByteArray data;    // Parsed message for PUBLISH
-    QByteArray dgram;   // Whole MQTT packet, including headers
-
-    MqttMessage() = default;
-    MqttMessage(const MqttMessage &other)
-        : id(other.id)
-        , cmd(other.cmd)
-        , qos(other.qos)
-        , ack(other.ack)
-        , props_start(other.props_start)
-        , props_size(other.props_size)
-        , topic(other.topic)
-        , data(other.data)
-        , dgram(other.dgram)
-    {}
+{
+    bool isRx;
+    uint8_t cmd;      // MQTT command, one of MQTT_CMD_*
+    QByteArray dgram; // Whole MQTT packet, including headers
+    QString serverAddress;
+    quint16 serverPort{0};
+    QString clientAddress;
+    quint16 clientPort{0};
 };
+
+QString mqttCmd2String(uint8_t cmd);
 
 } // namespace xMQTT
 

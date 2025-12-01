@@ -18,6 +18,7 @@
     <file>res/icons/arrows_output.svg</file>
     <file>res/icons/bar.svg</file>
     <file>res/icons/bds.svg</file>
+    <file>res/icons/bigtop_updates.svg</file>
     <file>res/icons/bluetooth_searching.svg</file>
     <file>res/icons/bluetooth.svg</file>
     <file>res/icons/bring_your_own_ip.svg</file>
@@ -51,6 +52,7 @@
     <file>res/icons/line_series.svg</file>
     <file>res/icons/list.svg</file>
     <file>res/icons/logo.svg</file>
+    <file>res/icons/low_priority.svg</file>
     <file>res/icons/lua.svg</file>
     <file>res/icons/mop.svg</file>
     <file>res/icons/note_add.svg</file>

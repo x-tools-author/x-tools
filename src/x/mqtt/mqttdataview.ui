@@ -33,6 +33,29 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QToolButton" name="toolButtonClear">
+       <property name="toolTip">
+        <string>Clear all message</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonPing">
+       <property name="toolTip">
+        <string>Show ping-pong message</string>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonScrolling">
+       <property name="toolTip">
+        <string>Scrolling to bottom automatically</string>
+       </property>
        <property name="text">
         <string notr="true"/>
        </property>
@@ -50,6 +73,27 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Format</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBoxFormat">
+       <property name="toolTip">
+        <string>Payload data format</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditFilter">
+       <property name="placeholderText">
+        <string notr="true">Filter</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

@@ -137,4 +137,39 @@ bool ipV4ToMgAddress(const QString &ip, struct mg_addr *addr)
     return true;
 }
 
+QString mqttCmd2String(uint8_t cmd)
+{
+    if (cmd == MQTT_CMD_PINGREQ) {
+        return QStringLiteral("PINGREQ");
+    } else if (cmd == MQTT_CMD_PINGRESP) {
+        return QStringLiteral("PINGRESP");
+    } else if (cmd == MQTT_CMD_CONNECT) {
+        return QStringLiteral("CONNECT");
+    } else if (cmd == MQTT_CMD_CONNACK) {
+        return QStringLiteral("CONNACK");
+    } else if (cmd == MQTT_CMD_PUBLISH) {
+        return QStringLiteral("PUBLISH");
+    } else if (cmd == MQTT_CMD_PUBACK) {
+        return QStringLiteral("PUBACK");
+    } else if (cmd == MQTT_CMD_PUBREC) {
+        return QStringLiteral("PUBREC");
+    } else if (cmd == MQTT_CMD_PUBREL) {
+        return QStringLiteral("PUBREL");
+    } else if (cmd == MQTT_CMD_PUBCOMP) {
+        return QStringLiteral("PUBCOMP");
+    } else if (cmd == MQTT_CMD_SUBSCRIBE) {
+        return QStringLiteral("SUBSCRIBE");
+    } else if (cmd == MQTT_CMD_SUBACK) {
+        return QStringLiteral("SUBACK");
+    } else if (cmd == MQTT_CMD_UNSUBSCRIBE) {
+        return QStringLiteral("UNSUBSCRIBE");
+    } else if (cmd == MQTT_CMD_UNSUBACK) {
+        return QStringLiteral("UNSUBACK");
+    } else if (cmd == MQTT_CMD_DISCONNECT) {
+        return QStringLiteral("DISCONNECT");
+    } else {
+        return QStringLiteral("UNKNOWN");
+    }
+}
+
 } // namespace xMQTT

@@ -10,6 +10,8 @@
 
 #include <QWidget>
 
+#include "utilities/serializable.h"
+
 namespace Ui {
 class MqttDataView;
 } // namespace Ui
@@ -18,12 +20,14 @@ namespace xMQTT {
 
 class MqttDataModel;
 class MqttDataFilter;
-class MqttDataView : public QWidget
+class MqttDataView : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit MqttDataView(QWidget *parent = nullptr);
     ~MqttDataView() override;
+    QJsonObject save() override;
+    void load(const QJsonObject &obj) override;
 
     MqttDataModel *model() const;
 
@@ -31,6 +35,11 @@ private:
     Ui::MqttDataView *ui;
     MqttDataModel *m_model{nullptr};
     MqttDataFilter *m_filter{nullptr};
+
+private:
+    void onRowInserted();
+    void onPingPongToggled(bool checked);
+    void onFilterTextChanged(const QString &text);
 };
 
 } // namespace xMQTT

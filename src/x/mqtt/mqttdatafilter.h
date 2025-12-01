@@ -18,6 +18,11 @@ class MqttDataFilter : public QSortFilterProxyModel
 public:
     explicit MqttDataFilter(QObject *parent = nullptr);
     ~MqttDataFilter() override;
+
+    void setPingPongMessagesVisible(bool visible);
+
+private:
+    mutable bool m_pingPongMessagesVisible{true};
 };
 
 } // namespace xMQTT

@@ -36,7 +36,7 @@
      </property>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabLog">
        <attribute name="title">
@@ -84,7 +84,7 @@
          <number>4</number>
         </property>
         <item row="0" column="0">
-         <widget class="xMQTT::MqttDataView" name="widgetMqttDataView" native="true"/>
+         <widget class="xMQTT::MqttDataView" name="widgetMessage" native="true"/>
         </item>
        </layout>
       </widget>
@@ -145,7 +145,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTabWidget" name="tabWidget_2">
+        <widget class="QTabWidget" name="tabWidgetRight">
          <property name="tabPosition">
           <enum>QTabWidget::TabPosition::South</enum>
          </property>

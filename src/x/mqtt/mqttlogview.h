@@ -10,18 +10,22 @@
 
 #include <QWidget>
 
+#include "utilities/serializable.h"
+
 namespace Ui {
 class MqttLogView;
 } // namespace Ui
 
 namespace xMQTT {
 
-class MqttLogView : public QWidget
+class MqttLogView : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit MqttLogView(QWidget *parent = nullptr);
     ~MqttLogView() override;
+    QJsonObject save() override;
+    void load(const QJsonObject &obj) override;
 
     void appendLogMessage(const QString &msg, bool isError);
 

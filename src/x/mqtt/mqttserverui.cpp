@@ -24,6 +24,9 @@ struct MqttServerUiParameterKeys
     const QString serverAddress{"serverAddress"};
     const QString serverPort{"serverPort"};
     const QString tabIndex{"tabIndex"};
+
+    const QString logPage{"logPage"};
+    const QString messagePage{"messagePage"};
 };
 
 MqttServerUi::MqttServerUi(QWidget *parent)
@@ -58,6 +61,11 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     connect(m_server, &MqttServer::clientDisconnected, this, &MqttServerUi::onClientDisconnected);
     connect(m_server, &MqttServer::clientSubscribed, this, &MqttServerUi::onClientSubscribed);
     connect(m_server, &MqttServer::clientUnsubscribed, this, &MqttServerUi::onClientUnsubscribed);
+
+#if 1
+    ui->tabWidget->removeTab(1); // Remove Message tab
+    disconnect(m_server, &MqttServer::mqttMessageRx, this, &MqttServerUi::onMqttMessageRx);
+#endif
 }
 
 MqttServerUi::~MqttServerUi()
@@ -73,6 +81,8 @@ QJsonObject MqttServerUi::save()
     obj.insert(keys.serverAddress, ui->comboBoxServerAddress->currentText());
     obj.insert(keys.serverPort, ui->spinBoxServerPort->value());
     obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
+    obj.insert(keys.logPage, ui->widgetLog->save());
+    obj.insert(keys.messagePage, ui->widgetMessage->save());
     return obj;
 }
 
@@ -86,6 +96,9 @@ void MqttServerUi::load(const QJsonObject &obj)
     ui->comboBoxServerAddress->setCurrentText(serverAddress);
     ui->spinBoxServerPort->setValue(obj.value(keys.serverPort).toInt());
     ui->tabWidget->setCurrentIndex(obj.value(keys.tabIndex).toInt(0));
+
+    ui->widgetLog->load(obj.value(keys.logPage).toObject());
+    ui->widgetMessage->load(obj.value(keys.messagePage).toObject());
 }
 
 bool MqttServerUi::event(QEvent *event)
@@ -203,7 +216,7 @@ void MqttServerUi::onLogMessageReceived(const QString &msg, bool isError)
 
 void MqttServerUi::onMqttMessageRx(std::shared_ptr<MqttMessage> message)
 {
-    ui->widgetMqttDataView->model()->addMessage(message);
+    ui->widgetMessage->model()->addMessage(message);
 }
 
 void MqttServerUi::onServerStarted()

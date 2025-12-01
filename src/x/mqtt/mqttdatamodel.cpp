@@ -24,6 +24,14 @@ void MqttDataModel::addMessage(std::shared_ptr<MqttMessage> message)
     endInsertRows();
 }
 
+void MqttDataModel::clear()
+{
+    beginResetModel();
+    qDeleteAll(m_data);
+    m_data.clear();
+    endResetModel();
+}
+
 int MqttDataModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
@@ -33,7 +41,7 @@ int MqttDataModel::rowCount(const QModelIndex &parent) const
 int MqttDataModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 8;
+    return 5;
 }
 
 QVariant MqttDataModel::data(const QModelIndex &index, int role) const
@@ -47,30 +55,22 @@ QVariant MqttDataModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
+    int column = index.column();
     if (role == Qt::DisplayRole) {
         MqttMessage *msg = m_data.at(row);
-        switch (index.column()) {
-        case MQTT_DATA_COLUMN_ID:
-            return msg->id;
-        case MQTT_DATA_COLUMN_CMD:
-            return msg->cmd;
-        case MQTT_DATA_COLUMN_QOS:
-            return msg->qos;
-        case MQTT_DATA_COLUMN_ACK:
-            return msg->ack;
-        case MQTT_DATA_COLUMN_POPS_START:
-            return msg->props_start;
-        case MQTT_DATA_COLUMN_PROPS_SIZE:
-            return msg->props_size;
-        case MQTT_DATA_COLUMN_TOPIC:
-            return msg->topic;
-        case MQTT_DATA_COLUMN_DATA:
-            return QString::fromLatin1(msg->data.toHex(' '));
-        default:
-            return QVariant();
+        if (column == MQTT_DATA_COLUMN_TYPE) {
+            return msg->isRx ? tr("Rx") : tr("TX");
+        } else if (column == MQTT_DATA_COLUMN_CMD) {
+            return mqttCmd2String(msg->cmd);
+        } else if (column == MQTT_DATA_COLUMN_SERVER) {
+            return QString("%1:%2").arg(msg->serverAddress).arg(msg->serverPort);
+        } else if (column == MQTT_DATA_COLUMN_CLIENT) {
+            return QString("%1:%2").arg(msg->clientAddress).arg(msg->clientPort);
+        } else if (column == MQTT_DATA_COLUMN_DATA) {
+            return QString(msg->dgram.toHex(' '));
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (index.column() == MQTT_DATA_COLUMN_DATA) {
+        if (column == MQTT_DATA_COLUMN_DATA) {
             return int(Qt::AlignLeft | Qt::AlignVCenter);
         } else {
             return Qt::AlignCenter;
@@ -98,25 +98,16 @@ QVariant MqttDataModel::headerData(int section, Qt::Orientation orientation, int
     }
 
     if (role == Qt::DisplayRole) {
-        switch (section) {
-        case MQTT_DATA_COLUMN_ID:
-            return tr("ID");
-        case MQTT_DATA_COLUMN_CMD:
-            return tr("CMD");
-        case MQTT_DATA_COLUMN_QOS:
-            return tr("QoS");
-        case MQTT_DATA_COLUMN_ACK:
-            return tr("ACK");
-        case MQTT_DATA_COLUMN_POPS_START:
-            return tr("Props Start");
-        case MQTT_DATA_COLUMN_PROPS_SIZE:
-            return tr("Props Size");
-        case MQTT_DATA_COLUMN_TOPIC:
-            return tr("Topic");
-        case MQTT_DATA_COLUMN_DATA:
+        if (section == MQTT_DATA_COLUMN_TYPE) {
+            return tr("Type");
+        } else if (section == MQTT_DATA_COLUMN_CMD) {
+            return tr("Command");
+        } else if (section == MQTT_DATA_COLUMN_SERVER) {
+            return tr("Server");
+        } else if (section == MQTT_DATA_COLUMN_CLIENT) {
+            return tr("Client");
+        } else if (section == MQTT_DATA_COLUMN_DATA) {
             return tr("Data");
-        default:
-            return QVariant();
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (section == MQTT_DATA_COLUMN_DATA) {

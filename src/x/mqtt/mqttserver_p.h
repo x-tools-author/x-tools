@@ -85,17 +85,17 @@ public:
                 return;
             }
 
+#if 0
             std::shared_ptr<MqttMessage> msg = std::make_shared<MqttMessage>();
-            msg->id = mm->id;
+            msg->isRx = true;
             msg->cmd = mm->cmd;
-            msg->qos = mm->qos;
-            msg->ack = mm->ack;
-            msg->props_start = mm->props_start;
-            msg->props_size = mm->props_size;
-            msg->topic = QString::fromUtf8(mm->topic.buf, static_cast<int>(mm->topic.len));
-            msg->data = QByteArray(mm->data.buf, static_cast<int>(mm->data.len));
             msg->dgram = QByteArray(mm->dgram.buf, static_cast<int>(mm->dgram.len));
+            msg->serverAddress = mgAddressToIpV4(&c->loc);
+            msg->serverPort = mg_ntohs(c->loc.port);
+            msg->clientAddress = mgAddressToIpV4(&c->rem);
+            msg->clientPort = mg_ntohs(c->rem.port);
             emit server->mqttMessageRx(msg);
+#endif
 
             switch (mm->cmd) {
             case MQTT_CMD_CONNECT: {
@@ -208,6 +208,8 @@ public:
                 QString msg = QString("Client disconnected: %1:%2").arg(remIp).arg(c->rem.port);
                 emit server->logMessage(msg, false);
             }
+        } else if (ev == MG_EV_WRITE) {
+            // Data has been sent
         }
     }
 };

@@ -92,6 +92,9 @@ MqttClientUi::MqttClientUi(QWidget *parent)
 
     m_topicsModel = new QStandardItemModel(this);
     ui->listViewSubscribe->setModel(m_topicsModel);
+#if 1
+    ui->tabWidget->removeTab(1); // Remove Message tab
+#endif
 }
 
 MqttClientUi::~MqttClientUi()

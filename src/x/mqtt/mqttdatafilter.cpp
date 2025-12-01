@@ -16,4 +16,10 @@ MqttDataFilter::MqttDataFilter(QObject *parent)
 
 MqttDataFilter::~MqttDataFilter() {}
 
+void MqttDataFilter::setPingPongMessagesVisible(bool visible)
+{
+    m_pingPongMessagesVisible = visible;
+    invalidateFilter();
+}
+
 } // namespace xMQTT

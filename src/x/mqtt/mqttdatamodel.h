@@ -14,14 +14,11 @@
 
 #include <QAbstractTableModel>
 
-#define MQTT_DATA_COLUMN_ID 0
+#define MQTT_DATA_COLUMN_TYPE 0
 #define MQTT_DATA_COLUMN_CMD 1
-#define MQTT_DATA_COLUMN_QOS 2
-#define MQTT_DATA_COLUMN_ACK 3
-#define MQTT_DATA_COLUMN_POPS_START 4
-#define MQTT_DATA_COLUMN_PROPS_SIZE 5
-#define MQTT_DATA_COLUMN_TOPIC 6
-#define MQTT_DATA_COLUMN_DATA 7
+#define MQTT_DATA_COLUMN_SERVER 2
+#define MQTT_DATA_COLUMN_CLIENT 3
+#define MQTT_DATA_COLUMN_DATA 4
 
 namespace xMQTT {
 
@@ -33,6 +30,7 @@ public:
     explicit MqttDataModel(QObject *parent = nullptr);
     ~MqttDataModel() override;
     void addMessage(std::shared_ptr<MqttMessage> message);
+    void clear();
 
 protected:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

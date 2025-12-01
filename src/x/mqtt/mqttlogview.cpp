@@ -31,6 +31,17 @@ MqttLogView::~MqttLogView()
     delete ui;
 }
 
+QJsonObject MqttLogView::save()
+{
+    QJsonObject obj;
+    return obj;
+}
+
+void MqttLogView::load(const QJsonObject &obj)
+{
+    Q_UNUSED(obj);
+}
+
 void MqttLogView::appendLogMessage(const QString &msg, bool isError)
 {
     ui->textBrowser->append(msg);
