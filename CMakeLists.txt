@@ -92,7 +92,7 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
 # Global settings
 set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
-set(tmp ${CMAKE_SOURCE_DIR}/libs)
+set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
 set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
 message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
 message(STATUS "------------------------------------------------------------")
