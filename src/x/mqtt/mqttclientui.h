@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QStandardItemModel>
 #include <QTimer>
 #include <QWidget>
 
@@ -37,12 +38,15 @@ private:
     int m_leftWidth{168};
     MqttClient *m_client{nullptr};
     QTimer *m_publishingTimer{nullptr};
+    QStandardItemModel *m_topicsModel{nullptr};
 
 private:
     void onOpenButtonClicked() const;
     void onCloseButtonClicked() const;
     void onPublishButtonClicked();
     void onSubscribeButtonClicked();
+    void onRemoveTopicButtonClicked();
+    void onClearTopicsButtonClicked();
     void onTimerButtonClicked(bool checked);
     void onLogMessageReceived(const QString &msg, bool isError) const;
     void onPublishingTimerTimeout();

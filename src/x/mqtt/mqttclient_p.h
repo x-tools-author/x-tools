@@ -130,7 +130,7 @@ public:
             // On error, log error message
             // MG_ERROR(("%lu ERROR %s", c->id, (char *) ev_data));
             QString errMsg = QString("Connection error: %1").arg(QString((char *) ev_data));
-            emit client->logMessage(errMsg, false);
+            emit client->logMessage(errMsg, true);
         } else if (ev == MG_EV_MQTT_OPEN) {
             // MQTT connect is successful
             //MG_INFO(("%lu CONNECTED to %s", c->id, d->url().toUtf8().constData()));

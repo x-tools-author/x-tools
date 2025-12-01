@@ -9,6 +9,7 @@
 #include "mqttclientui.h"
 #include "ui_mqttclientui.h"
 
+#include <QJsonArray>
 #include <QMessageBox>
 
 #include "utilities/iconengine.h"
@@ -27,11 +28,16 @@ struct MqttClientUiParameterKeys
     const QString versions{"versions"};
     const QString keepAlive{"keepAlive"};
     const QString leftWidth{"leftWidth"};
+    const QString tabIndex{"tabIndex"};
+    // Publish panel
     const QString publishTopic{"publishTopic"};
     const QString publicMessage{"message"};
-    const QString subscribeTopic{"subscribeTopic"};
     const QString wrapText{"wrapText"};
     const QString leftTabIndex{"leftTabIndex"};
+    const QString interval{"interval"};
+    // Subscribe panel
+    const QString subscribeTopic{"subscribeTopic"};
+    const QString topics{"topics"};
 };
 
 MqttClientUi::MqttClientUi(QWidget *parent)
@@ -52,7 +58,9 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     ui->splitter->setChildrenCollapsible(false);
     ui->splitter->setSizes(QList<int>({m_leftWidth, width() - m_leftWidth}));
     ui->toolButtonPublish->setIcon(xIcon(":/res/icons/upload.svg"));
-    ui->toolButtonSubscribe->setIcon(xIcon(":/res/icons/download.svg"));
+    ui->toolButtonTopicSubscribe->setIcon(xIcon(":/res/icons/add.svg"));
+    ui->toolButtonTopicClear->setIcon(xIcon(":/res/icons/mop.svg"));
+    ui->toolButtonTopicRemove->setIcon(xIcon(":/res/icons/remove.svg"));
     ui->toolButtonWrap->setIcon(xIcon(":/res/icons/wrap_text.svg"));
     ui->toolButtonTimer->setIcon(xIcon(":/res/icons/timer.svg"));
     ui->toolButtonTimer->setCheckable(true);
@@ -63,7 +71,9 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttClientUi::onOpenButtonClicked);
     connect(ui->pushButtonClose, &QPushButton::clicked, this, &MqttClientUi::onCloseButtonClicked);
     connect(ui->toolButtonPublish, &QToolButton::clicked, this, &MqttClientUi::onPublishButtonClicked);
-    connect(ui->toolButtonSubscribe, &QToolButton::clicked, this, &MqttClientUi::onSubscribeButtonClicked);
+    connect(ui->toolButtonTopicSubscribe, &QToolButton::clicked, this, &MqttClientUi::onSubscribeButtonClicked);
+    connect(ui->toolButtonTopicRemove, &QToolButton::clicked, this, &MqttClientUi::onRemoveTopicButtonClicked);
+    connect(ui->toolButtonTopicClear, &QToolButton::clicked, this, &MqttClientUi::onClearTopicsButtonClicked);
     connect(ui->toolButtonTimer, &QToolButton::clicked, this, &MqttClientUi::onTimerButtonClicked);
     // clang-format on
     connect(ui->splitter, &QSplitter::splitterMoved, this, [=](int pos, int index) {
@@ -79,6 +89,9 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     connect(m_client, &MqttClient::logMessage, this, &MqttClientUi::onLogMessageReceived);
     connect(m_client, &MqttClient::finished, this, &MqttClientUi::onFinished);
     connect(m_client, &MqttClient::connected, this, &MqttClientUi::onConnected);
+
+    m_topicsModel = new QStandardItemModel(this);
+    ui->listViewSubscribe->setModel(m_topicsModel);
 }
 
 MqttClientUi::~MqttClientUi()
@@ -100,13 +113,23 @@ QJsonObject MqttClientUi::save() const
     obj.insert(keys.versions, ui->comboBoxVersions->currentIndex());
     obj.insert(keys.keepAlive, ui->spinBoxKeepAlive->value());
     obj.insert(keys.leftWidth, ui->widgetClient->width());
+    obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
     // Publish panel
     obj.insert(keys.publishTopic, ui->lineEditPublish->text());
     obj.insert(keys.publicMessage, ui->textEditPublish->toPlainText());
     obj.insert(keys.wrapText, ui->toolButtonWrap->isChecked());
     obj.insert(keys.leftTabIndex, ui->tabWidgetLeft->currentIndex());
+    obj.insert(keys.interval, ui->spinBoxInterval->value());
     // Subscribe panel
     obj.insert(keys.subscribeTopic, ui->lineEditSubscribe->text());
+    QJsonArray topicsArray;
+    for (int row = 0; row < m_topicsModel->rowCount(); ++row) {
+        QStandardItem *item = m_topicsModel->item(row);
+        if (item) {
+            topicsArray.append(item->text());
+        }
+    }
+    obj.insert(keys.topics, topicsArray);
     return obj;
 }
 
@@ -124,6 +147,7 @@ void MqttClientUi::load(const QJsonObject &obj) const
     index = ui->comboBoxVersions->findData(version);
     ui->comboBoxVersions->setCurrentIndex(index == -1 ? 0 : index);
     ui->spinBoxKeepAlive->setValue(obj.value(keys.keepAlive).toInt(5));
+    ui->tabWidget->setCurrentIndex(obj.value(keys.tabIndex).toInt(0));
 
     // Publish panel
     ui->lineEditPublish->setText(obj.value(keys.publishTopic).toString());
@@ -133,9 +157,19 @@ void MqttClientUi::load(const QJsonObject &obj) const
     ui->textEditPublish->setLineWrapMode(wrapText ? QTextEdit::WidgetWidth : QTextEdit::NoWrap);
     index = obj.value(keys.leftTabIndex).toInt(0);
     ui->tabWidgetLeft->setCurrentIndex(index);
+    ui->spinBoxInterval->setValue(obj.value(keys.interval).toInt(1000));
 
     // Subscribe panel
     ui->lineEditSubscribe->setText(obj.value(keys.subscribeTopic).toString());
+    m_topicsModel->clear();
+    QJsonArray topicsArray = obj.value(keys.topics).toArray();
+    for (const QJsonValue &val : topicsArray) {
+        QString topic = val.toString();
+        if (!topic.isEmpty()) {
+            QStandardItem *item = new QStandardItem(topic);
+            m_topicsModel->appendRow(item);
+        }
+    }
 }
 
 bool MqttClientUi::event(QEvent *event)
@@ -191,18 +225,52 @@ void MqttClientUi::onPublishButtonClicked()
 
 void MqttClientUi::onSubscribeButtonClicked()
 {
-    if (!m_client || !m_client->isOpened()) {
-        showNotOpenedWarning();
-        return;
-    }
-
-    if (ui->lineEditSubscribe->text().trimmed().isEmpty()) {
+    const QString topic = ui->lineEditSubscribe->text().trimmed();
+    if (topic.isEmpty()) {
         showEmptyTopicWarning();
         ui->lineEditSubscribe->setFocus();
         return;
     }
 
+    if (!m_client || (m_client && !m_client->isOpened())) {
+        for (int i = 0; i < m_topicsModel->rowCount(); ++i) {
+            QStandardItem *existingItem = m_topicsModel->item(i);
+            if (existingItem && existingItem->text() == topic) {
+                return; // Topic already exists
+            }
+        }
+
+        QStandardItem *item = new QStandardItem(topic);
+        m_topicsModel->appendRow(item);
+        return;
+    }
+
+    QStandardItem *item = new QStandardItem(topic);
+    m_topicsModel->appendRow(item);
     m_client->subscribe(ui->lineEditSubscribe->text().trimmed());
+}
+
+void MqttClientUi::onRemoveTopicButtonClicked()
+{
+    QModelIndexList selectedIndexes = ui->listViewSubscribe->selectionModel()->selectedIndexes();
+    for (const QModelIndex &index : selectedIndexes) {
+        m_topicsModel->removeRow(index.row());
+    }
+}
+
+void MqttClientUi::onClearTopicsButtonClicked()
+{
+    if (m_topicsModel->rowCount() == 0) {
+        return;
+    }
+
+    int ret = QMessageBox::question(this,
+                                    tr("Clear Topics"),
+                                    tr("Are you sure you want to clear all subscribed topics?"),
+                                    QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+        m_topicsModel->clear();
+    }
 }
 
 void MqttClientUi::onTimerButtonClicked(bool checked)
@@ -224,6 +292,9 @@ void MqttClientUi::onTimerButtonClicked(bool checked)
 void MqttClientUi::onLogMessageReceived(const QString &msg, bool isError) const
 {
     ui->widgetLog->appendLogMessage(msg, isError);
+    if (isError && m_client) {
+        m_client->stopClient();
+    }
 }
 
 void MqttClientUi::onPublishingTimerTimeout()
@@ -247,12 +318,26 @@ void MqttClientUi::onFinished()
 {
     ui->pushButtonOpen->setEnabled(true);
     ui->pushButtonClose->setEnabled(false);
+
+    ui->toolButtonTopicClear->setEnabled(true);
+    ui->toolButtonTopicRemove->setEnabled(true);
 }
 
 void MqttClientUi::onConnected()
 {
     ui->pushButtonClose->setEnabled(true);
     ui->pushButtonOpen->setEnabled(false);
+
+    ui->toolButtonTopicClear->setEnabled(false);
+    ui->toolButtonTopicRemove->setEnabled(false);
+
+    // Subscribe to topics in the list
+    for (int row = 0; row < m_topicsModel->rowCount(); ++row) {
+        QStandardItem *item = m_topicsModel->item(row);
+        if (item) {
+            m_client->subscribe(item->text());
+        }
+    }
 }
 
 void MqttClientUi::showNotOpenedWarning()

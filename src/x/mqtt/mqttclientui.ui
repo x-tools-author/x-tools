@@ -133,7 +133,7 @@
           <enum>QTabWidget::TabPosition::South</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
@@ -256,8 +256,15 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_4">
              <property name="spacing">
-              <number>4</number>
+              <number>0</number>
              </property>
+             <item row="0" column="1">
+              <widget class="QToolButton" name="toolButtonTopicRemove">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="0">
               <widget class="QLineEdit" name="lineEditSubscribe">
                <property name="placeholderText">
@@ -265,11 +272,18 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QToolButton" name="toolButtonSubscribe">
+             <item row="0" column="3">
+              <widget class="QToolButton" name="toolButtonTopicSubscribe">
                <property name="toolTip">
                 <string>Subscribe topic</string>
                </property>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QToolButton" name="toolButtonTopicClear">
                <property name="text">
                 <string notr="true"/>
                </property>
