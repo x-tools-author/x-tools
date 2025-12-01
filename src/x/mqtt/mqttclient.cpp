@@ -76,6 +76,7 @@ void MqttClient::run()
     struct mg_mgr mgr;
     mg_mgr_init(&mgr);
     mgr.userdata = this;
+#if 0
     struct mg_mqtt_opts opts;
     opts.clean = true;
     opts.qos = static_cast<uint8_t>(d->m_qos);
@@ -86,6 +87,13 @@ void MqttClient::run()
                                 &opts,
                                 &MqttClientPrivate::eventHandler,
                                 this);
+#else
+    d->m_conn = mg_mqtt_connect(&mgr,
+                                d->url().toUtf8().constData(),
+                                nullptr,
+                                &MqttClientPrivate::eventHandler,
+                                this);
+#endif
     if (d->m_conn) {
         d->m_conn->fn_data = this;
         mg_timer_add(&mgr,
