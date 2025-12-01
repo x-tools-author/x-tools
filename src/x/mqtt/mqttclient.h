@@ -21,7 +21,7 @@ public:
     explicit MqttClient(QObject *parent = nullptr);
     ~MqttClient() override;
 
-    void startClient(const QString &host, quint16 port, int qos, int version);
+    void startClient(const QString &host, quint16 port, int qos, int version, int keepAlive);
     void stopClient();
     [[nodiscard]] bool isOpened() const;
     void publish(const QString &topic, const QByteArray &message);
@@ -31,6 +31,7 @@ public:
 signals:
     void logMessage(const QString &msg, bool isError = false);
     void connected();
+    void disconnected();
 
 protected:
     void run() override;

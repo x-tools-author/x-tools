@@ -52,6 +52,7 @@ private:
     void onPublishingTimerTimeout();
     void onFinished();
     void onConnected();
+    void onDisconnected();
 
     void showNotOpenedWarning();
     void showEmptyTopicWarning();

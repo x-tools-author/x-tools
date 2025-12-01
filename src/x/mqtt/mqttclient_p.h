@@ -37,6 +37,7 @@ public:
     MqttClient *q{nullptr};
     int m_qos{static_cast<int>(QoS::ExactlyOnce)};
     int m_version{4};
+    int m_keepAlive{5};
     QString m_ip;
     quint16 m_port{1883};
     mg_connection *m_conn{nullptr};
@@ -158,7 +159,6 @@ public:
                 QString msg = QString("Subscribed to %1")
                                   .arg(mm->ack == 0 ? "successfully" : "with failure");
                 emit client->logMessage(msg, false);
-                qInfo() << "Subscription acknowledged";
             }
         } else if (ev == MG_EV_CLOSE) {
             // MG_INFO(("%lu CLOSED", c->id));
@@ -166,6 +166,7 @@ public:
             d->m_conn = nullptr;
             d->m_opened = false;
             emit client->logMessage(QString("Disconnected from %1").arg(d->url()), false);
+            emit client->disconnected();
         }
     }
 

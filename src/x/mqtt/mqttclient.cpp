@@ -26,12 +26,13 @@ MqttClient::~MqttClient()
     delete d;
 }
 
-void MqttClient::startClient(const QString &host, quint16 port, int qos, int version)
+void MqttClient::startClient(const QString &host, quint16 port, int qos, int version, int keepAlive)
 {
     d->m_ip = host;
     d->m_port = port;
     d->m_qos = qos;
     d->m_version = version;
+    d->m_keepAlive = keepAlive;
     stopClient();
     start();
 }
@@ -75,9 +76,14 @@ void MqttClient::run()
     struct mg_mgr mgr;
     mg_mgr_init(&mgr);
     mgr.userdata = this;
+    struct mg_mqtt_opts opts;
+    opts.clean = true;
+    opts.qos = static_cast<uint8_t>(d->m_qos);
+    opts.keepalive = d->m_keepAlive;
+    opts.version = static_cast<uint8_t>(d->m_version);
     d->m_conn = mg_mqtt_connect(&mgr,
                                 d->url().toUtf8().constData(),
-                                nullptr,
+                                &opts,
                                 &MqttClientPrivate::eventHandler,
                                 this);
     if (d->m_conn) {

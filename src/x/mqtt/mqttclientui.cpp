@@ -89,6 +89,7 @@ MqttClientUi::MqttClientUi(QWidget *parent)
     connect(m_client, &MqttClient::logMessage, this, &MqttClientUi::onLogMessageReceived);
     connect(m_client, &MqttClient::finished, this, &MqttClientUi::onFinished);
     connect(m_client, &MqttClient::connected, this, &MqttClientUi::onConnected);
+    connect(m_client, &MqttClient::disconnected, this, &MqttClientUi::onDisconnected);
 
     m_topicsModel = new QStandardItemModel(this);
     ui->listViewSubscribe->setModel(m_topicsModel);
@@ -195,7 +196,8 @@ void MqttClientUi::onOpenButtonClicked() const
     const auto port = static_cast<quint16>(ui->spinBoxServerPort->value());
     const int qos = ui->comboBoxQos->currentData().toInt();
     const int version = ui->comboBoxVersions->currentData().toInt();
-    m_client->startClient(host, port, qos, version);
+    const int keepAlive = ui->spinBoxKeepAlive->value();
+    m_client->startClient(host, port, qos, version, keepAlive);
 }
 
 void MqttClientUi::onCloseButtonClicked() const
@@ -341,6 +343,16 @@ void MqttClientUi::onConnected()
             m_client->subscribe(item->text());
         }
     }
+}
+
+void MqttClientUi::onDisconnected()
+{
+    ui->pushButtonOpen->setEnabled(true);
+    ui->pushButtonClose->setEnabled(false);
+
+    ui->toolButtonTopicClear->setEnabled(true);
+    ui->toolButtonTopicRemove->setEnabled(true);
+    m_client->stopClient();
 }
 
 void MqttClientUi::showNotOpenedWarning()
