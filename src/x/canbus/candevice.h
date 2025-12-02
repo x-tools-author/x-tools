@@ -12,12 +12,12 @@
 
 namespace xCanBus {
 
-class CanDevice : public QThread
+class CanBusDevice : public QThread
 {
     Q_OBJECT
 public:
-    explicit CanDevice(QObject *parent = nullptr);
-    ~CanDevice() override;
+    explicit CanBusDevice(QObject *parent = nullptr);
+    ~CanBusDevice() override;
 };
 
 } // namespace xCanBus

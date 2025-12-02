@@ -10,10 +10,10 @@
 
 namespace xCanBus {
 
-CanDevice::CanDevice(QObject *parent)
+CanBusDevice::CanBusDevice(QObject *parent)
     : QThread(parent)
 {}
 
-CanDevice::~CanDevice() {}
+CanBusDevice::~CanBusDevice() {}
 
 }

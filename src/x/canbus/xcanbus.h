@@ -11,6 +11,8 @@
 #include <QJsonObject>
 #include <QWidget>
 
+#include "utilities/serializable.h"
+
 namespace Ui {
 class xCanBus;
 }
@@ -18,15 +20,15 @@ class xCanBus;
 namespace xCanBus {
 
 class CanDevice;
-class xCanBus : public QWidget
+class xCanBus : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit xCanBus(QWidget* parent = nullptr);
     ~xCanBus();
 
-    QJsonObject save();
-    void load(const QJsonObject& obj);
+    QJsonObject save() override;
+    void load(const QJsonObject& obj) override;
 
 protected:
     bool event(QEvent* event) override;
