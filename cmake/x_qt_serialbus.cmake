@@ -35,7 +35,7 @@ if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
       add_compile_definitions(X_ENABLE_X_MODBUS=0)
     endif()
 
-    option(X_ENABLE_X_CANBUS "Enable xCanbus module" OFF)
+    option(X_ENABLE_X_CANBUS "Enable xCanbus module" ON)
     if(X_ENABLE_X_CANBUS)
       add_compile_definitions(X_ENABLE_X_CANBUS=1)
     else()

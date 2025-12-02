@@ -18,7 +18,7 @@ V7.6.0 2025年12月xx日
     01. 全新的Modbus调试功能（xModbus）
     02. 基于节点编辑器的数据转发工具(xFlow)
     03. MQTT调试功能
-    04. 新的CAN Bus调试功能(ing)
+    04. 新的CAN Bus调试功能
     bug修复：
     01. 条形图无法更改输入的数据类型
     02. 本地套接字（QLocalSocket和QLocalServer）创建失败
