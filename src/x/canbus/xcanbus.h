@@ -19,7 +19,7 @@ class xCanBus;
 
 namespace xCanBus {
 
-class CanDevice;
+class CanBusDevice;
 class xCanBus : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
@@ -36,7 +36,7 @@ protected:
 private:
     Ui::xCanBus* ui;
     int m_leftWidth{168};
-    CanDevice* m_device{nullptr};
+    CanBusDevice* m_device{nullptr};
 
 private:
     void onDisconnect();
