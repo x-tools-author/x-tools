@@ -16,10 +16,24 @@ DataModel::DataModel(QObject *parent)
 
 DataModel::~DataModel() {}
 
+void DataModel::addFrame(const QCanBusFrame &frame, bool isRx)
+{
+    beginInsertRows(QModelIndex(), m_items.count(), m_items.count());
+    m_items.append(FrameItem{isRx, frame});
+    endInsertRows();
+}
+
+void DataModel::clear()
+{
+    beginResetModel();
+    m_items.clear();
+    endResetModel();
+}
+
 int DataModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 0;
+    return m_items.count();
 }
 
 int DataModel::columnCount(const QModelIndex &parent) const
@@ -28,10 +42,63 @@ int DataModel::columnCount(const QModelIndex &parent) const
     return 6;
 }
 
+static QString frameFlags(const QCanBusFrame &frame)
+{
+    QString result{" --- "};
+
+    if (frame.hasBitrateSwitch()) {
+        result[1] = u'B';
+    }
+
+    if (frame.hasErrorStateIndicator()) {
+        result[2] = u'E';
+    }
+
+    if (frame.hasLocalEcho()) {
+        result[3] = u'L';
+    }
+
+    return result;
+}
+
 QVariant DataModel::data(const QModelIndex &index, int role) const
 {
-    Q_UNUSED(index);
-    Q_UNUSED(role);
+    if (!index.isValid()) {
+        return QVariant();
+    }
+
+    const int column = index.column();
+    const int row = index.row();
+    FrameItem item = m_items.at(row);
+    QCanBusFrame frame = item.frame;
+    if (role == Qt::DisplayRole) {
+        if (column == X_CAN_BUS_COLUMN_TIME) {
+            return QString::fromLatin1("%1.%2  ")
+                .arg(frame.timeStamp().seconds(), 10, 10, ' ')
+                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, '0');
+        } else if (column == X_CAN_BUS_COLUMN_TYPE) {
+            return item.isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
+        } else if (column == X_CAN_BUS_COLUMN_FLAGS) {
+            return frameFlags(frame);
+        } else if (column == X_CAN_BUS_COLUMN_ID) {
+            return QString::number(frame.frameId(), 16).toUpper();
+        } else if (column == X_CAN_BUS_COLUMN_DLC) {
+            return QString::number(frame.payload().size());
+        } else if (column == X_CAN_BUS_COLUMN_DATA) {
+            if (frame.frameType() == QCanBusFrame::ErrorFrame)
+                return QString::fromLatin1("<Error Frame>");
+            else {
+                return QString::fromLatin1(frame.payload().toHex(' ').toUpper());
+            }
+        }
+    } else if (role == Qt::TextAlignmentRole) {
+        if (column == X_CAN_BUS_COLUMN_DATA) {
+            return int(Qt::AlignLeft | Qt::AlignVCenter);
+        } else {
+            return int(Qt::AlignCenter);
+        }
+    }
+
     return QVariant();
 }
 

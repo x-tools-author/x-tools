@@ -10,6 +10,8 @@
 
 #include <QWidget>
 
+#include "utilities/serializable.h"
+
 namespace Ui {
 class DataView;
 }
@@ -18,17 +20,25 @@ namespace xCanBus {
 
 class DataModel;
 class DataFilter;
-class DataView : public QWidget
+class DataView : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit DataView(QWidget *parent = nullptr);
     ~DataView() override;
+    QJsonObject save() override;
+    void load(const QJsonObject &obj) override;
+
+    DataModel *model();
 
 private:
     Ui::DataView *ui{nullptr};
     DataModel *m_model{nullptr};
     DataFilter *m_filter{nullptr};
+
+private:
+    void onClearBtnClicked();
+    void onRowInserted();
 };
 
 } // namespace xCanBus

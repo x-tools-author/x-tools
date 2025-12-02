@@ -817,7 +817,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
         <source>Loopback</source>
-        <translation>回环</translation>
+        <translation>回环模式</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="386"/>
@@ -5586,7 +5586,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
         <source>Data bitrate</source>
-        <translation>数据比特率</translation>
+        <translation>负载比特率</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
@@ -5596,7 +5596,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
         <source>Error filter</source>
-        <translation>错误过滤器</translation>
+        <translation>错误过滤</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
@@ -5611,7 +5611,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
         <source>Receive own</source>
-        <translation>收到自己的</translation>
+        <translation>接收自己</translation>
     </message>
 </context>
 <context>

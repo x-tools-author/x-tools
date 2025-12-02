@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>546</width>
-    <height>534</height>
+    <height>658</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,51 +51,39 @@
        <property name="spacing">
         <number>4</number>
        </property>
+       <item row="22" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Input format</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBoxName"/>
+       </item>
+       <item row="23" column="1">
+        <widget class="QComboBox" name="comboBoxFrameType"/>
+       </item>
+       <item row="27" column="0" colspan="2">
+        <widget class="QCheckBox" name="checkBoxBitrateSwitch">
+         <property name="text">
+          <string>Bitrate switch</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_12">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Device selecting</string>
+         </property>
+        </widget>
+       </item>
        <item row="7" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Receive own</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QCheckBox" name="checkBoxCanFd">
-         <property name="text">
-          <string notr="true">CAN FD</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Loopback</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QComboBox" name="comboBoxDataBitrate"/>
-       </item>
-       <item row="12" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBoxExtendedFormat">
-         <property name="text">
-          <string>Extended format</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>89</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="9" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Data bitrate</string>
@@ -103,49 +91,32 @@
         </widget>
        </item>
        <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBoxCustomConf">
+        <widget class="QLabel" name="label_11">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
-          <string>Custom configuration</string>
+          <string>Specify configuration</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="lineEditPayload">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="toolButtonSend">
-           <property name="text">
-            <string>...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="comboBoxName"/>
-       </item>
-       <item row="7" column="1">
+       <item row="9" column="1">
         <widget class="QComboBox" name="comboBoxReceiveOwn"/>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEditErrorFilter">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="21" column="1">
+        <widget class="QComboBox" name="comboBoxTimedSending"/>
+       </item>
+       <item row="20" column="0" colspan="2">
+        <widget class="QLabel" name="label_13">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sending settings</string>
          </property>
         </widget>
        </item>
@@ -156,93 +127,7 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBoxFlexibleDataRate">
-         <property name="text">
-          <string>Flexible data rate</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="comboBoxBitrate"/>
-       </item>
-       <item row="11" column="0" colspan="2">
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>1</height>
-          </size>
-         </property>
-         <property name="text">
-          <string notr="true">PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0" colspan="2">
-        <widget class="QCheckBox" name="checkBoxBitrateSwitch">
-         <property name="text">
-          <string>Bitrate switch</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Interfce Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="comboBoxLoopback"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>CAN Plugin</string>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="0" colspan="2">
-        <widget class="QPushButton" name="pushButton">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>1</height>
-          </size>
-         </property>
-         <property name="text">
-          <string notr="true">PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Bitrate</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="comboBoxPlugins">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="sizeAdjustPolicy">
-          <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QPushButton" name="pushButtonDisconnect">
@@ -260,15 +145,182 @@
          </item>
         </layout>
        </item>
+       <item row="12" column="1">
+        <widget class="QComboBox" name="comboBoxCanFd"/>
+       </item>
+       <item row="26" column="0" colspan="2">
+        <widget class="QCheckBox" name="checkBoxFlexibleDataRate">
+         <property name="text">
+          <string>Flexible data rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="comboBoxDataBitrate"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="comboBoxBitrate"/>
+       </item>
+       <item row="28" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="lineEditPayload">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonSend">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="24" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Frame ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>CAN FD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Timed sending</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Receive own</string>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Frame type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Interfce Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>CAN Plugin</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="pushButtonErrorFilter">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBoxPlugins">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="22" column="1">
+        <widget class="QComboBox" name="comboBoxInputFormat"/>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Loopback</string>
+         </property>
+        </widget>
+       </item>
+       <item row="25" column="0" colspan="2">
+        <widget class="QCheckBox" name="checkBoxExtendedFormat">
+         <property name="text">
+          <string>Extended format</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Bitrate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="comboBoxLoopback"/>
+       </item>
+       <item row="24" column="1">
+        <widget class="QLineEdit" name="lineEditFrameId">
+         <property name="placeholderText">
+          <string notr="true">Hex</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
-     <widget class="xCanBus::DataView" name="widgetDataView" native="true">
+     <widget class="QTabWidget" name="tabWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <widget class="xCanBus::DataView" name="tabWidgetData">
+       <attribute name="title">
+        <string>Data View</string>
+       </attribute>
+      </widget>
      </widget>
     </widget>
    </item>

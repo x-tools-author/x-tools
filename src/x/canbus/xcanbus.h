@@ -8,9 +8,13 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QCanBusFrame>
+#include <QComboBox>
 #include <QJsonObject>
+#include <QTimer>
 #include <QWidget>
 
+#include "utilities/keepopenedmenu.h"
 #include "utilities/serializable.h"
 
 namespace Ui {
@@ -37,12 +41,31 @@ private:
     Ui::xCanBus* ui;
     int m_leftWidth{168};
     CanBusDevice* m_device{nullptr};
+    xTools::KeepOpenedMenu* m_menu{nullptr};
+    QTimer* m_timedSender{nullptr};
 
 private:
-    void onDisconnect();
-    void onConnect();
-
+    void onDisconnectBtnClicked();
+    void onConnectBtnClicked();
+    void onDeviceOpened();
+    void onDeviceClosed();
     void onPluginChanged(const QString& pluginName);
+    void onSendBtnClicked();
+    void onTimedSendingChanged();
+    void onTimedSenderTimeout();
+    void onFrameRx(const QCanBusFrame& frame);
+    void onFrameTx(const QCanBusFrame& frame);
+
+    void setupOptions(QComboBox* cb, bool usingUnspecified);
+    void setupBitRates(QComboBox* cb, bool isFlexibleDataRateEnable);
+    void setupFrameTypes(QComboBox* cb);
+    void setupTimedSending(QComboBox* cb);
+
+    QCanBusFrame::FrameErrors errorFilter() const;
+    bool hasErrorFilter() const;
+    void updateErrorFilterBtn();
+    void updateInputValidator();
+    void sendFrame();
 };
 
 } // namespace xCanBus

@@ -9,9 +9,11 @@
 #pragma once
 
 #include <QAbstractTableModel>
+#include <QCanBusFrame>
+#include <QList>
 
-#define X_CAN_BUS_COLUMN_TIME 0
-#define X_CAN_BUS_COLUMN_TYPE 1
+#define X_CAN_BUS_COLUMN_TYPE 0
+#define X_CAN_BUS_COLUMN_TIME 1
 #define X_CAN_BUS_COLUMN_FLAGS 2
 #define X_CAN_BUS_COLUMN_ID 3
 #define X_CAN_BUS_COLUMN_DLC 4
@@ -26,10 +28,21 @@ public:
     explicit DataModel(QObject *parent = nullptr);
     ~DataModel() override;
 
+    void addFrame(const QCanBusFrame &frame, bool isRx);
+    void clear();
+
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+private:
+    struct FrameItem
+    {
+        bool isRx;
+        QCanBusFrame frame;
+    };
+    QList<FrameItem> m_items;
 };
 
 } // namespace xCanBus

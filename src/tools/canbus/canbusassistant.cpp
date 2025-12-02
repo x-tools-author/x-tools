@@ -381,7 +381,7 @@ void CanBusAssistant::onFrameReceived()
 
 void CanBusAssistant::onFrameWritten(qint64 framesCount)
 {
-    qInfo() << framesCount;
+    Q_UNUSED(framesCount);
 }
 
 void CanBusAssistant::setOptions(QComboBox* cb, bool usingUnspecified)
