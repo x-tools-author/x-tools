@@ -7,7 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #pragma once
-
+#if 0
 #include <QWidget>
 
 namespace Ui {
@@ -26,3 +26,4 @@ private:
     Ui::xFtp* ui;
 };
 } // namespace xFtp
+#endif

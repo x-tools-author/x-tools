@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "xftp.h"
 #include "ui_xftp.h"
-
+#if 0
 namespace xFtp {
 
 xFtp::xFtp(QWidget* parent)
@@ -23,3 +23,4 @@ xFtp::~xFtp()
     delete ui;
 }
 } // namespace xFtp
+#endif
