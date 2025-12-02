@@ -1342,6 +1342,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Data View</source>
         <translation>데이터 보기</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
+        <source>Clear all data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Audo scrolling to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1406,82 +1416,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>새로운 Modbus 장치</translation>
+        <translation type="vanished">새로운 Modbus 장치</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>연결 매개변수</translation>
+        <translation type="vanished">연결 매개변수</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>둥가</translation>
+        <translation type="vanished">둥가</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>전송 속도</translation>
+        <translation type="vanished">전송 속도</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>정지 비트</translation>
+        <translation type="vanished">정지 비트</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>새로 고치다</translation>
+        <translation type="vanished">새로 고치다</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>데이터 비트</translation>
+        <translation type="vanished">데이터 비트</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>이름</translation>
+        <translation type="vanished">이름</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP 주소</translation>
+        <translation type="vanished">IP 주소</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>포트</translation>
+        <translation type="vanished">포트</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>장치 유형</translation>
+        <translation type="vanished">장치 유형</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>시간 초과(ms)</translation>
+        <translation type="vanished">시간 초과(ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>재시도 횟수</translation>
+        <translation type="vanished">재시도 횟수</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>주소</translation>
+        <translation type="vanished">주소</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>듣기 전용 모드</translation>
+        <translation type="vanished">듣기 전용 모드</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>장치 매개변수</translation>
+        <translation type="vanished">장치 매개변수</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>장치 이름</translation>
+        <translation type="vanished">장치 이름</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>같은: 지멘스 S7-300</translation>
+        <translation type="vanished">같은: 지멘스 S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>찾다</translation>
+        <translation type="vanished">찾다</translation>
     </message>
 </context>
 <context>
@@ -2099,7 +2109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>노드 편집기</translation>
+        <translation type="vanished">노드 편집기</translation>
     </message>
 </context>
 <context>
@@ -2323,7 +2333,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>일반적인</translation>
+        <translation type="vanished">일반적인</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2336,228 +2346,228 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="356"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="359"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="358"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="363"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
         <translation>애플리케이션 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="377"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="380"/>
+        <location filename="../../src/mainwindow.cpp" line="379"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
         <translation>옵션(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="427"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
         <translation>시스템 프록시 사용</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="437"/>
+        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
         <translation>시스템 트레이로 종료</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="457"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
         <translation>애플리케이션 스타일</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="467"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
         <translation>설정 지우기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="473"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
         <translation>설정 디렉터리 열기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
         <translation>HDPI 정책</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>색 구성표</translation>
+        <translation type="vanished">색 구성표</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>어두운</translation>
+        <translation type="vanished">어두운</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>빛</translation>
+        <translation type="vanished">빛</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>체계</translation>
+        <translation type="vanished">체계</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
         <translation>언어(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
         <translation>항상 위에</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="580"/>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
         <translation>Qt 정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="581"/>
-        <location filename="../../src/mainwindow.cpp" line="795"/>
+        <location filename="../../src/mainwindow.cpp" line="578"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
         <translation>스크린샷</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
         <translation>스토어에서 구매</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
-        <location filename="../../src/mainwindow.cpp" line="644"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
         <translation>QQ 그룹 참여</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
         <translation>온라인 매뉴얼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
         <translation>Github에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="610"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
         <translation>Gitee에서 소스 받기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="664"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>재시작 필요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>작업을 적용하려면 재시작이 필요합니다. 지금 애플리케이션을 재시작하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="698"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="741"/>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="794"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -3254,6 +3264,164 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
+        <source>Server address</source>
+        <translation type="unfinished">서버 주소</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
+        <source>Server port</source>
+        <translation type="unfinished">서버 포트</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
+        <source>Qos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
+        <source>Keep alive(S)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
+        <source>Publish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
+        <source>Timer sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
+        <source>Publish topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
+        <source>Wrap text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
+        <source>Topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
+        <source>Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
+        <source>Subscribe topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
+        <source>Log</source>
+        <translation type="unfinished">통나무</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
+        <source>Message</source>
+        <translation type="unfinished">메시지</translation>
+    </message>
+</context>
+<context>
+    <name>MqttDataView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
+        <source>Clear all message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
+        <source>Show ping-pong message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
+        <source>Scrolling to bottom automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
+        <source>Format</source>
+        <translation type="unfinished">체재</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
+        <source>Payload data format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MqttLogView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
+        <source>Clear log</source>
+        <translation type="unfinished">로그 지우기</translation>
+    </message>
+</context>
+<context>
+    <name>MqttServerUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
+        <source>Log</source>
+        <translation type="unfinished">통나무</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
+        <source>Server address</source>
+        <translation type="unfinished">서버 주소</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
+        <source>Server port</source>
+        <translation type="unfinished">서버 포트</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
+        <source>Clients</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NumberAssistant</name>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
@@ -3938,7 +4106,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>단방향</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="61"/>
+        <location filename="../../src/main.cpp" line="43"/>
         <source>Application is booting...</source>
         <translation>애플리케이션 부팅 중...</translation>
     </message>
@@ -4066,31 +4234,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -4156,6 +4324,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
         <source>Plugins</source>
         <translation>플러그인</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
+        <source>Malformed MQTT frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
+        <source>Unsupported MQTT version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
+        <source>At most once (0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
+        <source>At least once (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
+        <source>Exactly once (2)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4817,7 +5010,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>내보내다</translation>
+        <translation type="vanished">내보내다</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -4826,15 +5019,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>삭제</translation>
+        <translation type="vanished">삭제</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>위로</translation>
+        <translation type="vanished">위로</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>추가하다</translation>
+        <translation type="vanished">추가하다</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -4843,11 +5036,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>수입</translation>
+        <translation type="vanished">수입</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>아래에</translation>
+        <translation type="vanished">아래에</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5162,17 +5355,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
         <source>Interfce Name</source>
         <translation>인터페이스 이름</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
         <source>CAN Plugin</source>
         <translation>CAN 플러그인</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
         <translation>비트레이트</translation>
     </message>
@@ -5182,39 +5375,222 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>비트레이트 스위치</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <source>Input format</source>
+        <translation type="unfinished">입력 형식</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <source>Device selecting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <source>Specify configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <source>Sending settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">연결 끊기</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <source>Connect</source>
+        <translation type="unfinished">연결하다</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <source>Frame ID</source>
+        <translation type="unfinished">프레임 ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <source>CAN FD</source>
+        <translation type="unfinished">캔 FD</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <source>Timed sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <source>Frame type</source>
+        <translation type="unfinished">프레임 유형</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
         <source>Extended format</source>
         <translation>확장 형식</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <source>Data View</source>
+        <translation type="unfinished">데이터 보기</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
         <source>Data bitrate</source>
         <translation>데이터 비트레이트</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Flexible data rate</source>
         <translation>유연한 데이터 속도</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
         <source>Error filter</source>
         <translation>오류 필터</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
         <source>Loopback</source>
         <translation>루프백</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
         <source>Custom configuration</source>
-        <translation>맞춤 구성</translation>
+        <translation type="vanished">맞춤 구성</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
         <source>Receive own</source>
         <translation>자신의 것을 받다</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::CanBusDevice</name>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
+        <source>Failed to create CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
+        <source>Failed to connect to CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
+        <source>CAN bus device error:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataModel</name>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
+        <source>Time</source>
+        <translation type="unfinished">시간</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
+        <source>Type</source>
+        <translation type="unfinished">유형</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
+        <source>Flags</source>
+        <translation type="unfinished">플래그</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
+        <source>DLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
+        <source>Payload</source>
+        <translation type="unfinished">유효 탑재량</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataView</name>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Are you sure to clear all data?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Warning</source>
+        <translation type="unfinished">경고</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <source>The CAN bus device is not connected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <source>Invalid frame ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Payload is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <source>unspecified</source>
+        <translation type="unfinished">지정되지 않음</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
+        <source>false</source>
+        <translation type="unfinished">거짓</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
+        <source>true</source>
+        <translation type="unfinished">참</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <source>Data Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <source>Remote Request Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <source>Error Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <source>Disabled</source>
+        <translation type="unfinished">비활성화</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <source>Unspecified</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5542,14 +5918,81 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xMQTT::MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
+        <source>Clear Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
+        <source>Are you sure you want to clear all subscribed topics?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>Warning</source>
+        <translation type="unfinished">경고</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <source>The MQTT client is not opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>The topic is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xMQTT::MqttDataModel</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>Rx</source>
+        <translation type="unfinished">수신</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>TX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
+        <source>Type</source>
+        <translation type="unfinished">유형</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
+        <source>Client</source>
+        <translation type="unfinished">클라이언트</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
+        <source>Data</source>
+        <translation type="unfinished">데이터</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Modbus 도구 모음</translation>
+        <translation type="vanished">Modbus 도구 모음</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>예시 작업</translation>
+        <translation type="vanished">예시 작업</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -5561,27 +6004,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>새로운 RTU 장치</translation>
+        <translation type="vanished">새로운 RTU 장치</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>새 TCP 장치</translation>
+        <translation type="vanished">새 TCP 장치</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>새로운 코일</translation>
+        <translation type="vanished">새로운 코일</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>새로운 개별 입력</translation>
+        <translation type="vanished">새로운 개별 입력</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>새로운 보유 등록부</translation>
+        <translation type="vanished">새로운 보유 등록부</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>새로운 입력 레지스터</translation>
+        <translation type="vanished">새로운 입력 레지스터</translation>
     </message>
 </context>
 <context>
@@ -5626,19 +6069,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>코일</translation>
+        <translation type="vanished">코일</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>개별 입력</translation>
+        <translation type="vanished">개별 입력</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>보유 레지스터</translation>
+        <translation type="vanished">보유 레지스터</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>입력 레지스터</translation>
+        <translation type="vanished">입력 레지스터</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -5922,6 +6365,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>예시 작업</translation>
+    </message>
+</context>
+<context>
+    <name>xMqtt</name>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
+        <source>MQTT Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
+        <source>MQTT Server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

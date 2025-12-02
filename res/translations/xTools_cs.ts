@@ -1342,6 +1342,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Data View</source>
         <translation>Zobrazení dat</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
+        <source>Clear all data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Audo scrolling to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1406,82 +1416,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Nové zařízení Modbus</translation>
+        <translation type="vanished">Nové zařízení Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Parametry připojení</translation>
+        <translation type="vanished">Parametry připojení</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Parita</translation>
+        <translation type="vanished">Parita</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Přenosová rychlost</translation>
+        <translation type="vanished">Přenosová rychlost</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bity</translation>
+        <translation type="vanished">Stop bity</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Obnovit</translation>
+        <translation type="vanished">Obnovit</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Datové bity</translation>
+        <translation type="vanished">Datové bity</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Jména</translation>
+        <translation type="vanished">Jména</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP adresa</translation>
+        <translation type="vanished">IP adresa</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Přístav</translation>
+        <translation type="vanished">Přístav</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Typ zařízení</translation>
+        <translation type="vanished">Typ zařízení</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Časový limit (ms)</translation>
+        <translation type="vanished">Časový limit (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Počet opakování</translation>
+        <translation type="vanished">Počet opakování</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adresa</translation>
+        <translation type="vanished">Adresa</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Režim pouze pro poslech</translation>
+        <translation type="vanished">Režim pouze pro poslech</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Parametry zařízení</translation>
+        <translation type="vanished">Parametry zařízení</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Název zařízení</translation>
+        <translation type="vanished">Název zařízení</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Jako například: Siemens S7-300</translation>
+        <translation type="vanished">Jako například: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Vyhledávání</translation>
+        <translation type="vanished">Vyhledávání</translation>
     </message>
 </context>
 <context>
@@ -2099,7 +2109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Editor uzlů</translation>
+        <translation type="vanished">Editor uzlů</translation>
     </message>
 </context>
 <context>
@@ -2323,7 +2333,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Generál</translation>
+        <translation type="vanished">Generál</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2336,228 +2346,228 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nové okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="356"/>
         <source>Save Parameters</source>
         <translation>Uložit parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="359"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="358"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>Načíst parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="363"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>Exportovat parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
         <translation>Ukončit aplikaci</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="377"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Tools</source>
         <translation>&amp;Nástroje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="380"/>
+        <location filename="../../src/mainwindow.cpp" line="379"/>
         <source>New</source>
         <translation>Nový</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
         <translation>&amp;Možnosti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="427"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
         <translation>Použít systémový proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="437"/>
+        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
         <translation>Minimálně do systémové lišty</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="457"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
         <translation>Styl aplikace</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="467"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
         <translation>Vymazat nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="473"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
         <translation>Otevřít adresář nastavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
         <translation>HDPI politika</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>Barevné schéma</translation>
+        <translation type="vanished">Barevné schéma</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Tmavý</translation>
+        <translation type="vanished">Tmavý</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Světlo</translation>
+        <translation type="vanished">Světlo</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>Systém</translation>
+        <translation type="vanished">Systém</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
         <translation>&amp;Jazyky</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>&amp;View</source>
         <translation>&amp;Zobrazit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
         <translation>Zůstat nahoře</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="580"/>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="581"/>
-        <location filename="../../src/mainwindow.cpp" line="795"/>
+        <location filename="../../src/mainwindow.cpp" line="578"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>O aplikaci</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
         <translation>Screenshot</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
         <translation>Koupit v obchodě</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
-        <location filename="../../src/mainwindow.cpp" line="644"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>Historie verzí</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
         <translation>Připojit se ke skupině QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
         <translation>Online příručka</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
         <translation>Získat zdrojové kódy z Githubu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="610"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
         <translation>Získat zdrojové kódy z Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
         <source>Third Party Open Source</source>
         <translation>Třetí strana Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="664"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>QR kód</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>Uživatelská skupina QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>Je třeba restartovat</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operace vyžaduje restartování, chcete nyní restartovat aplikaci?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="698"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Prosím, restartujte svou aplikaci ručně.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="741"/>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json soubory (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>Neznámý</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>Hash potvrzení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>Čas potvrzení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>Datum sestavení</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>Autorská práva</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="794"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>Všechna práva vyhrazena.</translation>
     </message>
@@ -3254,6 +3264,164 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
+        <source>Server address</source>
+        <translation type="unfinished">Adresa serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
+        <source>Server port</source>
+        <translation type="unfinished">Port serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
+        <source>Qos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
+        <source>Keep alive(S)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
+        <source>Publish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
+        <source>Timer sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
+        <source>Publish topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
+        <source>Wrap text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
+        <source>Topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
+        <source>Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
+        <source>Subscribe topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
+        <source>Log</source>
+        <translation type="unfinished">Log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
+        <source>Message</source>
+        <translation type="unfinished">Zpráva</translation>
+    </message>
+</context>
+<context>
+    <name>MqttDataView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
+        <source>Clear all message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
+        <source>Show ping-pong message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
+        <source>Scrolling to bottom automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
+        <source>Format</source>
+        <translation type="unfinished">Formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
+        <source>Payload data format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MqttLogView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
+        <source>Clear log</source>
+        <translation type="unfinished">Vymazat protokol</translation>
+    </message>
+</context>
+<context>
+    <name>MqttServerUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
+        <source>Log</source>
+        <translation type="unfinished">Log</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
+        <source>Server address</source>
+        <translation type="unfinished">Adresa serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
+        <source>Server port</source>
+        <translation type="unfinished">Port serveru</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
+        <source>Clients</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NumberAssistant</name>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
@@ -3938,7 +4106,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Jednosměrné</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="61"/>
+        <location filename="../../src/main.cpp" line="43"/>
         <source>Application is booting...</source>
         <translation>Aplikace se spouští...</translation>
     </message>
@@ -4066,31 +4234,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -4156,6 +4324,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
         <source>Plugins</source>
         <translation>Pluginy</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
+        <source>Malformed MQTT frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
+        <source>Unsupported MQTT version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
+        <source>At most once (0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
+        <source>At least once (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
+        <source>Exactly once (2)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4817,7 +5010,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>Vývozní</translation>
+        <translation type="vanished">Vývozní</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -4826,15 +5019,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>Vymazat</translation>
+        <translation type="vanished">Vymazat</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Nahoru</translation>
+        <translation type="vanished">Nahoru</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Přidat</translation>
+        <translation type="vanished">Přidat</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -4843,11 +5036,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>Importovat</translation>
+        <translation type="vanished">Importovat</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Dolů</translation>
+        <translation type="vanished">Dolů</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5162,17 +5355,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
         <source>Interfce Name</source>
         <translation>Název rozhraní</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
         <source>CAN Plugin</source>
         <translation>Plugin CAN</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
         <translation>Bitová rychlost</translation>
     </message>
@@ -5182,39 +5375,222 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Přepínač bitrate</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <source>Input format</source>
+        <translation type="unfinished">Vstupní formát</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <source>Device selecting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <source>Specify configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <source>Sending settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">Odpojit</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <source>Connect</source>
+        <translation type="unfinished">Připojit</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <source>Frame ID</source>
+        <translation type="unfinished">ID snímku</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <source>CAN FD</source>
+        <translation type="unfinished">CAN FD</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <source>Timed sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <source>Frame type</source>
+        <translation type="unfinished">Typ rámu</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
         <source>Extended format</source>
         <translation>Rozšířený formát</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <source>Data View</source>
+        <translation type="unfinished">Zobrazení dat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
         <source>Data bitrate</source>
         <translation>Datový tok</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Flexible data rate</source>
         <translation>Flexibilní rychlost přenosu dat</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
         <source>Error filter</source>
         <translation>Chybový filtr</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
         <source>Custom configuration</source>
-        <translation>Vlastní konfigurace</translation>
+        <translation type="vanished">Vlastní konfigurace</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
         <source>Receive own</source>
         <translation>Přijmout vlastní</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::CanBusDevice</name>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
+        <source>Failed to create CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
+        <source>Failed to connect to CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
+        <source>CAN bus device error:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataModel</name>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
+        <source>Time</source>
+        <translation type="unfinished">Čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
+        <source>Type</source>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
+        <source>Flags</source>
+        <translation type="unfinished">Vlajky</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
+        <source>DLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
+        <source>Payload</source>
+        <translation type="unfinished">Užitečné zatížení</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataView</name>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Are you sure to clear all data?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <source>The CAN bus device is not connected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <source>Invalid frame ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Payload is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <source>unspecified</source>
+        <translation type="unfinished">neurčeno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
+        <source>false</source>
+        <translation type="unfinished">ne</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
+        <source>true</source>
+        <translation type="unfinished">ano</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <source>Data Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <source>Remote Request Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <source>Error Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <source>Disabled</source>
+        <translation type="unfinished">Zakázáno</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <source>Unspecified</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5542,14 +5918,81 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xMQTT::MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
+        <source>Clear Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
+        <source>Are you sure you want to clear all subscribed topics?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <source>The MQTT client is not opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>The topic is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xMQTT::MqttDataModel</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>Rx</source>
+        <translation type="unfinished">Rx</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>TX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
+        <source>Type</source>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
+        <source>Client</source>
+        <translation type="unfinished">Klient</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
+        <source>Data</source>
+        <translation type="unfinished">Data</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Panel nástrojů Modbus</translation>
+        <translation type="vanished">Panel nástrojů Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>Příklad akce</translation>
+        <translation type="vanished">Příklad akce</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -5561,27 +6004,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Nové zařízení RTU</translation>
+        <translation type="vanished">Nové zařízení RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Nové TCP zařízení</translation>
+        <translation type="vanished">Nové TCP zařízení</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Nové cívky</translation>
+        <translation type="vanished">Nové cívky</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Nové diskrétní vstupy</translation>
+        <translation type="vanished">Nové diskrétní vstupy</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Nové holdingové rejstříky</translation>
+        <translation type="vanished">Nové holdingové rejstříky</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Nové vstupní registry</translation>
+        <translation type="vanished">Nové vstupní registry</translation>
     </message>
 </context>
 <context>
@@ -5626,19 +6069,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Cívky</translation>
+        <translation type="vanished">Cívky</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Diskrétní vstupy</translation>
+        <translation type="vanished">Diskrétní vstupy</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Vedení rejstříků</translation>
+        <translation type="vanished">Vedení rejstříků</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Vstupní registry</translation>
+        <translation type="vanished">Vstupní registry</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -5922,6 +6365,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Příklad akce</translation>
+    </message>
+</context>
+<context>
+    <name>xMqtt</name>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
+        <source>MQTT Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
+        <source>MQTT Server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

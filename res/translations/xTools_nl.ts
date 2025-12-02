@@ -1342,6 +1342,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Data View</source>
         <translation>Gegevensweergave</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
+        <source>Clear all data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Audo scrolling to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1406,82 +1416,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Nieuw Modbus-apparaat</translation>
+        <translation type="vanished">Nieuw Modbus-apparaat</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Verbindingsparameters</translation>
+        <translation type="vanished">Verbindingsparameters</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Pariteit</translation>
+        <translation type="vanished">Pariteit</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Baudsnelheid</translation>
+        <translation type="vanished">Baudsnelheid</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop stukjes</translation>
+        <translation type="vanished">Stop stukjes</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Vernieuwen</translation>
+        <translation type="vanished">Vernieuwen</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Databits</translation>
+        <translation type="vanished">Databits</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Namen</translation>
+        <translation type="vanished">Namen</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP-adres</translation>
+        <translation type="vanished">IP-adres</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Haven</translation>
+        <translation type="vanished">Haven</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Apparaattype</translation>
+        <translation type="vanished">Apparaattype</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Time-out (ms)</translation>
+        <translation type="vanished">Time-out (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Aantal nieuwe pogingen</translation>
+        <translation type="vanished">Aantal nieuwe pogingen</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adres</translation>
+        <translation type="vanished">Adres</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Alleen luisteren-modus</translation>
+        <translation type="vanished">Alleen luisteren-modus</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Apparaatparameters</translation>
+        <translation type="vanished">Apparaatparameters</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Apparaatnaam</translation>
+        <translation type="vanished">Apparaatnaam</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Zoals: Siemens S7-300</translation>
+        <translation type="vanished">Zoals: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Zoekopdracht</translation>
+        <translation type="vanished">Zoekopdracht</translation>
     </message>
 </context>
 <context>
@@ -2099,7 +2109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Knooppunt-editor</translation>
+        <translation type="vanished">Knooppunt-editor</translation>
     </message>
 </context>
 <context>
@@ -2323,7 +2333,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Algemeen</translation>
+        <translation type="vanished">Algemeen</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2336,228 +2346,228 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nieuw venster</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="356"/>
         <source>Save Parameters</source>
         <translation>Parameters opslaan</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="359"/>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="358"/>
+        <location filename="../../src/mainwindow.cpp" line="737"/>
         <source>Import Parameters</source>
         <translation>Parameters importeren</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="363"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="750"/>
         <source>Export Parameters</source>
         <translation>Parameters exporteren</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
         <translation>Toepassing afsluiten</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="377"/>
+        <location filename="../../src/mainwindow.cpp" line="376"/>
         <source>&amp;Tools</source>
         <translation>&amp;Hulpmiddelen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="380"/>
+        <location filename="../../src/mainwindow.cpp" line="379"/>
         <source>New</source>
         <translation>Nieuw</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
         <translation>&amp;Opties</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="427"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
         <translation>Systeemproxy gebruiken</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="437"/>
+        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
         <translation>Afsluiten naar systeemvak</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="457"/>
+        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
         <translation>Toepassingsstijl</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
+        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="467"/>
+        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
         <translation>Instellingen wissen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="473"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
         <translation>Instellingenmap openen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
         <translation>HDPI-beleid</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>Kleurenschema</translation>
+        <translation type="vanished">Kleurenschema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Donker</translation>
+        <translation type="vanished">Donker</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Licht</translation>
+        <translation type="vanished">Licht</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>Systeem</translation>
+        <translation type="vanished">Systeem</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
         <translation>&amp;Talen</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>&amp;View</source>
         <translation>&amp;Weergave</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
         <translation>Blijf bovenaan</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="579"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="580"/>
+        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
         <translation>Over Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="581"/>
-        <location filename="../../src/mainwindow.cpp" line="795"/>
+        <location filename="../../src/mainwindow.cpp" line="578"/>
+        <location filename="../../src/mainwindow.cpp" line="793"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="585"/>
+        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
         <translation>Screenshot</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="594"/>
+        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
         <translation>Kopen in de winkel</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
-        <location filename="../../src/mainwindow.cpp" line="644"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Release History</source>
         <translation>Releasegeschiedenis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
         <translation>Deelnemen aan QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
+        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
         <translation>Online handleiding</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
+        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
         <translation>Bronnen ophalen van Github</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="610"/>
+        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
         <translation>Bronnen ophalen van Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
         <source>Third Party Open Source</source>
         <translation>Derde partij Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="664"/>
+        <location filename="../../src/mainwindow.cpp" line="662"/>
         <source>QR Code</source>
         <translation>QR-code</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>User QQ Group</source>
         <translation>Gebruiker QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-groep</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Need to Reboot</source>
         <translation>Herstart vereist</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>De bewerking moet opnieuw worden opgestart om effect te hebben, de toepassing nu opnieuw opstarten?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="698"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Herstart uw toepassing handmatig.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="741"/>
-        <location filename="../../src/mainwindow.cpp" line="754"/>
+        <location filename="../../src/mainwindow.cpp" line="739"/>
+        <location filename="../../src/mainwindow.cpp" line="752"/>
         <source>Json Files (*.json)</source>
         <translation>Json-bestanden (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="783"/>
+        <location filename="../../src/mainwindow.cpp" line="781"/>
         <source>Unknown</source>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="787"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="789"/>
         <source>Commit time</source>
         <translation>Commit-tijd</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="790"/>
         <source>Build Date</source>
         <translation>Bouwdatum</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="791"/>
         <source>Copyright</source>
         <translation>Auteursrecht</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="794"/>
+        <location filename="../../src/mainwindow.cpp" line="792"/>
         <source>All rights reserved.</source>
         <translation>Alle rechten voorbehouden.</translation>
     </message>
@@ -3254,6 +3264,164 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
+        <source>Server address</source>
+        <translation type="unfinished">Serveradres</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
+        <source>Server port</source>
+        <translation type="unfinished">Serverpoort</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
+        <source>Qos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
+        <source>Keep alive(S)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
+        <source>Publish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
+        <source>Timer sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
+        <source>Publish topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
+        <source>Wrap text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
+        <source>Topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
+        <source>Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
+        <source>Subscribe topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
+        <source>Log</source>
+        <translation type="unfinished">Logboek</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
+        <source>Message</source>
+        <translation type="unfinished">Bericht</translation>
+    </message>
+</context>
+<context>
+    <name>MqttDataView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
+        <source>Clear all message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
+        <source>Show ping-pong message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
+        <source>Scrolling to bottom automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
+        <source>Format</source>
+        <translation type="unfinished">Formaat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
+        <source>Payload data format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MqttLogView</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
+        <source>Clear log</source>
+        <translation type="unfinished">Logboek wissen</translation>
+    </message>
+</context>
+<context>
+    <name>MqttServerUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
+        <source>Log</source>
+        <translation type="unfinished">Logboek</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
+        <source>Server address</source>
+        <translation type="unfinished">Serveradres</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
+        <source>Server port</source>
+        <translation type="unfinished">Serverpoort</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
+        <source>Clients</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NumberAssistant</name>
     <message>
         <location filename="../../src/tools/number/numberassistant.ui" line="32"/>
@@ -3938,7 +4106,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Unidirectioneel</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="61"/>
+        <location filename="../../src/main.cpp" line="43"/>
         <source>Application is booting...</source>
         <translation>Toepassing wordt opgestart...</translation>
     </message>
@@ -4066,31 +4234,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -4156,6 +4324,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
         <source>Plugins</source>
         <translation>Plug-ins</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
+        <source>Malformed MQTT frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
+        <source>Unsupported MQTT version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
+        <source>At most once (0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
+        <source>At least once (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
+        <source>Exactly once (2)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4817,7 +5010,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -4826,15 +5019,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>Verwijderen</translation>
+        <translation type="vanished">Verwijderen</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Omhoog</translation>
+        <translation type="vanished">Omhoog</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Toevoegen</translation>
+        <translation type="vanished">Toevoegen</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -4843,11 +5036,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>Importeren</translation>
+        <translation type="vanished">Importeren</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Omlaag</translation>
+        <translation type="vanished">Omlaag</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5162,17 +5355,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="20"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
         <source>Interfce Name</source>
         <translation>Interfce-naam</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="43"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
         <source>CAN Plugin</source>
         <translation>CAN-plug-in</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="50"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
         <translation>Bitsnelheid</translation>
     </message>
@@ -5182,39 +5375,222 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Bitrate-schakelaar</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <source>Input format</source>
+        <translation type="unfinished">Invoerformaat</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <source>Device selecting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <source>Specify configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <source>Sending settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">Verbreek de verbinding</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <source>Connect</source>
+        <translation type="unfinished">Verbinden</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <source>Frame ID</source>
+        <translation type="unfinished">Frame-ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <source>CAN FD</source>
+        <translation type="unfinished">KAN FD</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <source>Timed sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <source>Frame type</source>
+        <translation type="unfinished">Frametype</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
         <source>Extended format</source>
         <translation>Uitgebreid formaat</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="123"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <source>Data View</source>
+        <translation type="unfinished">Gegevensweergave</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
         <source>Data bitrate</source>
         <translation>Gegevensbitsnelheid</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="143"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Flexible data rate</source>
         <translation>Flexibele datasnelheid</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="150"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
         <source>Error filter</source>
         <translation>Foutfilter</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="164"/>
         <source>Custom configuration</source>
-        <translation>Aangepaste configuratie</translation>
+        <translation type="vanished">Aangepaste configuratie</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="190"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
         <source>Receive own</source>
         <translation>Ontvang eigen</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::CanBusDevice</name>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
+        <source>Failed to create CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
+        <source>Failed to connect to CAN bus device:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
+        <source>CAN bus device error:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataModel</name>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
+        <source>Time</source>
+        <translation type="unfinished">Tijd</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
+        <source>Flags</source>
+        <translation type="unfinished">Vlaggen</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
+        <source>DLC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
+        <source>Payload</source>
+        <translation type="unfinished">Laadvermogen</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::DataView</name>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <source>Are you sure to clear all data?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::xCanBus</name>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <source>The CAN bus device is not connected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <source>Invalid frame ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <source>Payload is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <source>unspecified</source>
+        <translation type="unfinished">niet gespecificeerd</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
+        <source>false</source>
+        <translation type="unfinished">onwaar</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
+        <source>true</source>
+        <translation type="unfinished">waar</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <source>Data Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <source>Remote Request Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <source>Error Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <source>Disabled</source>
+        <translation type="unfinished">Uitgeschakeld</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <source>Unspecified</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5542,14 +5918,81 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xMQTT::MqttClientUi</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
+        <source>Clear Topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
+        <source>Are you sure you want to clear all subscribed topics?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
+        <source>The MQTT client is not opened.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
+        <source>The topic is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xMQTT::MqttDataModel</name>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>Rx</source>
+        <translation type="unfinished">Rx</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <source>TX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
+        <source>Client</source>
+        <translation type="unfinished">Cliënt</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
+        <source>Data</source>
+        <translation type="unfinished">Gegevens</translation>
+    </message>
+</context>
+<context>
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Modbus-werkbalk</translation>
+        <translation type="vanished">Modbus-werkbalk</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>Voorbeeldactie</translation>
+        <translation type="vanished">Voorbeeldactie</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -5561,27 +6004,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Nieuw RTU-apparaat</translation>
+        <translation type="vanished">Nieuw RTU-apparaat</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Nieuw TCP-apparaat</translation>
+        <translation type="vanished">Nieuw TCP-apparaat</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Nieuwe spoelen</translation>
+        <translation type="vanished">Nieuwe spoelen</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Nieuwe discrete ingangen</translation>
+        <translation type="vanished">Nieuwe discrete ingangen</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Nieuwe holdingregisters</translation>
+        <translation type="vanished">Nieuwe holdingregisters</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Nieuwe invoerregisters</translation>
+        <translation type="vanished">Nieuwe invoerregisters</translation>
     </message>
 </context>
 <context>
@@ -5626,19 +6069,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Spoelen</translation>
+        <translation type="vanished">Spoelen</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Discrete ingangen</translation>
+        <translation type="vanished">Discrete ingangen</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Registers bijhouden</translation>
+        <translation type="vanished">Registers bijhouden</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Invoerregisters</translation>
+        <translation type="vanished">Invoerregisters</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -5922,6 +6365,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
         <translation>Voorbeeldactie</translation>
+    </message>
+</context>
+<context>
+    <name>xMqtt</name>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
+        <source>MQTT Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
+        <source>MQTT Server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
