@@ -1345,12 +1345,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation type="unfinished"></translation>
+        <translation>Počisti vse podatke</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Auto scrolling to bottom</source>
+        <translation>Samodejno premikanje na dno</translation>
+    </message>
+    <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Avdo se pomika na dno</translation>
     </message>
 </context>
 <context>
@@ -3268,83 +3272,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
         <source>Server address</source>
-        <translation type="unfinished">Naslov strežnika</translation>
+        <translation>Naslov strežnika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
         <source>Server port</source>
-        <translation type="unfinished">Vrata strežnika</translation>
+        <translation>Vrata strežnika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
         <source>Qos</source>
-        <translation type="unfinished"></translation>
+        <translation>Qos</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Različica</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
         <source>Keep alive(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohrani pri življenju (S)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
         <source>Close</source>
-        <translation type="unfinished">Zapri</translation>
+        <translation>Zapri</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
         <source>Open</source>
-        <translation type="unfinished">Odpri</translation>
+        <translation>Odpri</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>Objavi</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
         <source>Timer sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Pošiljanje časovnika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
         <source>Publish topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Objavi temo</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
         <source>Wrap text</source>
-        <translation type="unfinished"></translation>
+        <translation>Prelomi besedilo</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
         <source>Topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>Teme</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
         <source>Subscribe topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Naročite se na temo</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
         <source>Log</source>
-        <translation type="unfinished">Dnevnik</translation>
+        <translation>Dnevnik</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
         <source>Message</source>
-        <translation type="unfinished">Sporočilo</translation>
+        <translation>Sporočilo</translation>
     </message>
 </context>
 <context>
@@ -3352,27 +3356,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
         <source>Clear all message</source>
-        <translation type="unfinished"></translation>
+        <translation>Počisti vsa sporočila</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
         <source>Show ping-pong message</source>
-        <translation type="unfinished"></translation>
+        <translation>Prikaži ping-pong sporočilo</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
         <source>Scrolling to bottom automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Samodejno pomikanje na dno</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
         <source>Format</source>
-        <translation type="unfinished">Oblika</translation>
+        <translation>Oblika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
         <source>Payload data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Oblika podatkov o koristnem tovoru</translation>
     </message>
 </context>
 <context>
@@ -3380,7 +3384,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
         <source>Clear log</source>
-        <translation type="unfinished">Počisti dnevnik</translation>
+        <translation>Počisti dnevnik</translation>
     </message>
 </context>
 <context>
@@ -3388,37 +3392,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
         <source>Log</source>
-        <translation type="unfinished">Dnevnik</translation>
+        <translation>Dnevnik</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Sporočila</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
         <source>Server address</source>
-        <translation type="unfinished">Naslov strežnika</translation>
+        <translation>Naslov strežnika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
         <source>Server port</source>
-        <translation type="unfinished">Vrata strežnika</translation>
+        <translation>Vrata strežnika</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
         <source>Close</source>
-        <translation type="unfinished">Zapri</translation>
+        <translation>Zapri</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
         <source>Open</source>
-        <translation type="unfinished">Odpri</translation>
+        <translation>Odpri</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
         <source>Clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Stranke</translation>
     </message>
 </context>
 <context>
@@ -4328,27 +4332,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
         <source>Malformed MQTT frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Napačen okvir MQTT</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
         <source>Unsupported MQTT version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodprta različica MQTT %1</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
         <source>At most once (0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Največ enkrat (0)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
         <source>At least once (1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vsaj enkrat (1)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
         <source>Exactly once (2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Točno enkrat (2)</translation>
     </message>
 </context>
 <context>
@@ -5355,102 +5359,106 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
         <source>Interfce Name</source>
         <translation>Ime vmesnika</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
         <source>CAN Plugin</source>
         <translation>Vtičnik CAN</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
-        <translation>Bitna hitrost</translation>
+        <translation type="vanished">Bitna hitrost</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
         <source>Bitrate switch</source>
         <translation>Stikalo bitne hitrosti</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
         <source>Input format</source>
-        <translation type="unfinished">Vnosni format</translation>
+        <translation>Vnosni format</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
         <source>Device selecting</source>
-        <translation type="unfinished"></translation>
+        <translation>Izbira naprave</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
         <source>Specify configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Določite konfiguracijo</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
         <source>Sending settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve pošiljanja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
         <source>Disconnect</source>
-        <translation type="unfinished">Prekini povezavo</translation>
+        <translation>Prekini povezavo</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
         <source>Connect</source>
-        <translation type="unfinished">Povežite se</translation>
+        <translation>Povežite se</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
         <source>Frame ID</source>
-        <translation type="unfinished">ID okvirja</translation>
+        <translation>ID okvirja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
+        <source>Nominal bitrate</source>
+        <translation>Nominalna bitna hitrost</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
-        <translation type="unfinished">LAHKO FD</translation>
+        <translation>LAHKO FD</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
         <source>Timed sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Časovno oddano pošiljanje</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Frame type</source>
-        <translation type="unfinished">Vrsta okvirja</translation>
+        <translation>Vrsta okvirja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
         <source>Extended format</source>
         <translation>Razširjena oblika</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
         <source>Data View</source>
-        <translation type="unfinished">Pogled podatkov</translation>
+        <translation>Pogled podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
         <source>Data bitrate</source>
         <translation>Bitna hitrost podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
         <source>Flexible data rate</source>
         <translation>Prilagodljiva hitrost prenosa podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
         <source>Error filter</source>
         <translation>Filter napak</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
         <source>Loopback</source>
         <translation>Povratna zanka</translation>
     </message>
@@ -5459,7 +5467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Konfiguracija po meri</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Receive own</source>
         <translation>Prejmi lastno</translation>
     </message>
@@ -5469,17 +5477,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
         <source>Failed to create CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Naprave vodila CAN ni bilo mogoče ustvariti:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
         <source>Failed to connect to CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Povezava z napravo vodila CAN ni uspela:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
         <source>CAN bus device error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Napaka naprave vodila CAN:</translation>
     </message>
 </context>
 <context>
@@ -5487,32 +5495,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
         <source>Time</source>
-        <translation type="unfinished">Čas</translation>
+        <translation>Čas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrsta</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Flags</source>
-        <translation type="unfinished">Zastave</translation>
+        <translation>Zastave</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>DLC</source>
-        <translation type="unfinished"></translation>
+        <translation>DLC</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>Payload</source>
-        <translation type="unfinished">Tovor</translation>
+        <translation>Tovor</translation>
     </message>
 </context>
 <context>
@@ -5520,12 +5528,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>vprašanje</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Are you sure to clear all data?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ali ste prepričani, da želite izbrisati vse podatke?</translation>
     </message>
 </context>
 <context>
@@ -5535,62 +5543,60 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Warning</source>
-        <translation type="unfinished">Opozorilo</translation>
+        <translation>Opozorilo</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
         <source>The CAN bus device is not connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Naprava vodila CAN ni priključena.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <source>Invalid frame ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neveljaven ID okvirja.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Payload is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tovor je prazen.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
         <source>unspecified</source>
-        <translation type="unfinished">nespecificirano</translation>
+        <translation>nedoločeno</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
         <source>false</source>
-        <translation type="unfinished">ne</translation>
+        <translation type="vanished">lažno</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
         <source>true</source>
-        <translation type="unfinished">da</translation>
+        <translation type="vanished">res</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
         <source>Data Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Podatkovni okvir</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Oddaljeni okvir zahteve</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
         <source>Error Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Okvir napake</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
         <source>Disabled</source>
-        <translation type="unfinished">Onemogočeno</translation>
+        <translation>Onemogočen</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
         <source>Unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>Neopredeljeno</translation>
     </message>
 </context>
 <context>
@@ -5922,28 +5928,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
         <source>Clear Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>Počisti teme</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
         <source>Are you sure you want to clear all subscribed topics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ali ste prepričani, da želite počistiti vse naročene teme?</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>Warning</source>
-        <translation type="unfinished">Opozorilo</translation>
+        <translation>Opozorilo</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <source>The MQTT client is not opened.</source>
-        <translation type="unfinished"></translation>
+        <translation>Odjemalec MQTT ni odprt.</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>The topic is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema je prazna.</translation>
     </message>
 </context>
 <context>
@@ -5951,37 +5957,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>Rx</source>
-        <translation type="unfinished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>TX</source>
-        <translation type="unfinished"></translation>
+        <translation>TX</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrsta</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukaz</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
         <source>Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Strežnik</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Client</source>
-        <translation type="unfinished">Odjemalec</translation>
+        <translation>Stranka</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>podatki</translation>
     </message>
 </context>
 <context>
@@ -6372,12 +6378,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
         <source>MQTT Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Odjemalec MQTT</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT strežnik</translation>
     </message>
 </context>
 </TS>

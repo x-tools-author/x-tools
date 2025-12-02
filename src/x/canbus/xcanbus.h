@@ -66,6 +66,7 @@ private:
     void updateErrorFilterBtn();
     void updateInputValidator();
     void sendFrame();
+    void updateUiState(bool isConnected);
 };
 
 } // namespace xCanBus

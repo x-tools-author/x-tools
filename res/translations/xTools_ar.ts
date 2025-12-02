@@ -1345,12 +1345,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation type="unfinished"></translation>
+        <translation>مسح كافة البيانات</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Auto scrolling to bottom</source>
+        <translation>التمرير التلقائي إلى الأسفل</translation>
+    </message>
+    <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">التمرير الصوتي إلى الأسفل</translation>
     </message>
 </context>
 <context>
@@ -3268,83 +3272,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
         <source>Server address</source>
-        <translation type="unfinished">عنوان الخادم</translation>
+        <translation>عنوان الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
         <source>Server port</source>
-        <translation type="unfinished">منفذ الخادم</translation>
+        <translation>منفذ الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
         <source>Qos</source>
-        <translation type="unfinished"></translation>
+        <translation>جودة</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>إصدار</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
         <source>Keep alive(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>البقاء على قيد الحياة (س)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>يغلق</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>يفتح</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>نشر</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
         <source>Timer sending</source>
-        <translation type="unfinished"></translation>
+        <translation>إرسال الموقت</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
         <source>Publish topic</source>
-        <translation type="unfinished"></translation>
+        <translation>نشر الموضوع</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
         <source>Wrap text</source>
-        <translation type="unfinished"></translation>
+        <translation>التفاف النص</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
         <source>Topic</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>المواضيع</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
         <source>Subscribe topic</source>
-        <translation type="unfinished"></translation>
+        <translation>موضوع الاشتراك</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
         <source>Log</source>
-        <translation type="unfinished">سجل</translation>
+        <translation>سجل</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
         <source>Message</source>
-        <translation type="unfinished">رسالة</translation>
+        <translation>رسالة</translation>
     </message>
 </context>
 <context>
@@ -3352,27 +3356,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
         <source>Clear all message</source>
-        <translation type="unfinished"></translation>
+        <translation>مسح كافة الرسالة</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
         <source>Show ping-pong message</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض رسالة بينج بونج</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
         <source>Scrolling to bottom automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>التمرير إلى الأسفل تلقائيًا</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
         <source>Format</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
         <source>Payload data format</source>
-        <translation type="unfinished"></translation>
+        <translation>تنسيق بيانات الحمولة</translation>
     </message>
 </context>
 <context>
@@ -3380,7 +3384,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
         <source>Clear log</source>
-        <translation type="unfinished">مسح السجل</translation>
+        <translation>مسح السجل</translation>
     </message>
 </context>
 <context>
@@ -3388,37 +3392,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
         <source>Log</source>
-        <translation type="unfinished">سجل</translation>
+        <translation>سجل</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>رسائل</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
         <source>Server address</source>
-        <translation type="unfinished">عنوان الخادم</translation>
+        <translation>عنوان الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
         <source>Server port</source>
-        <translation type="unfinished">منفذ الخادم</translation>
+        <translation>منفذ الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>يغلق</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>يفتح</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
         <source>Clients</source>
-        <translation type="unfinished"></translation>
+        <translation>العملاء</translation>
     </message>
 </context>
 <context>
@@ -4328,27 +4332,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
         <source>Malformed MQTT frame</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار MQTT مشوه</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
         <source>Unsupported MQTT version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>إصدار MQTT %1 غير معتمد</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
         <source>At most once (0)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرة واحدة على الأكثر (0)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
         <source>At least once (1)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرة واحدة على الأقل (1)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
         <source>Exactly once (2)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرة واحدة بالضبط (2)</translation>
     </message>
 </context>
 <context>
@@ -5355,102 +5359,106 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
         <source>Interfce Name</source>
         <translation>اسم الواجهة</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
         <source>CAN Plugin</source>
         <translation>يمكن البرنامج المساعد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
-        <translation>معدل البت</translation>
+        <translation type="vanished">معدل البت</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
         <source>Bitrate switch</source>
         <translation>تبديل معدل البت</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
         <source>Input format</source>
-        <translation type="unfinished">تنسيق الإدخال</translation>
+        <translation>تنسيق الإدخال</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
         <source>Device selecting</source>
-        <translation type="unfinished"></translation>
+        <translation>اختيار الجهاز</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
         <source>Specify configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد التكوين</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
         <source>Sending settings</source>
-        <translation type="unfinished"></translation>
+        <translation>إعدادات الإرسال</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
         <source>Disconnect</source>
-        <translation type="unfinished">قطع الاتصال</translation>
+        <translation>قطع الاتصال</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
         <source>Connect</source>
-        <translation type="unfinished">يتصل</translation>
+        <translation>يتصل</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
         <source>Frame ID</source>
-        <translation type="unfinished">معرف الإطار</translation>
+        <translation>معرف الإطار</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
+        <source>Nominal bitrate</source>
+        <translation>معدل البت الاسمي</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
-        <translation type="unfinished">يمكن فد</translation>
+        <translation>يمكن فد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
         <source>Timed sending</source>
-        <translation type="unfinished"></translation>
+        <translation>توقيت الإرسال</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Frame type</source>
-        <translation type="unfinished">نوع الإطار</translation>
+        <translation>نوع الإطار</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
         <source>Extended format</source>
         <translation>تنسيق موسع</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
         <source>Data View</source>
-        <translation type="unfinished">عرض البيانات</translation>
+        <translation>عرض البيانات</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
         <source>Data bitrate</source>
         <translation>معدل البت للبيانات</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
         <source>Flexible data rate</source>
         <translation>معدل بيانات مرن</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
         <source>Error filter</source>
         <translation>مرشح الخطأ</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
         <source>Loopback</source>
         <translation>الاسترجاع</translation>
     </message>
@@ -5459,7 +5467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">التكوين المخصص</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Receive own</source>
         <translation>تلقي الخاصة</translation>
     </message>
@@ -5469,17 +5477,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
         <source>Failed to create CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>فشل في إنشاء جهاز ناقل CAN:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
         <source>Failed to connect to CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>فشل الاتصال بجهاز ناقل CAN:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
         <source>CAN bus device error:</source>
-        <translation type="unfinished"></translation>
+        <translation>خطأ في جهاز ناقل CAN:</translation>
     </message>
 </context>
 <context>
@@ -5487,32 +5495,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
         <source>Time</source>
-        <translation type="unfinished">وقت</translation>
+        <translation>وقت</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>يكتب</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Flags</source>
-        <translation type="unfinished">أعلام</translation>
+        <translation>أعلام</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>بطاقة تعريف</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>DLC</source>
-        <translation type="unfinished"></translation>
+        <translation>محتوى قابل للتنزيل</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>Payload</source>
-        <translation type="unfinished">الحمولة</translation>
+        <translation>الحمولة</translation>
     </message>
 </context>
 <context>
@@ -5520,12 +5528,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>سؤال</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Are you sure to clear all data?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل أنت متأكد من مسح كافة البيانات؟</translation>
     </message>
 </context>
 <context>
@@ -5535,62 +5543,60 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Warning</source>
-        <translation type="unfinished">تحذير</translation>
+        <translation>تحذير</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
         <source>The CAN bus device is not connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>جهاز ناقل CAN غير متصل.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <source>Invalid frame ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>معرف الإطار غير صالح.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Payload is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>الحمولة فارغة.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
         <source>unspecified</source>
-        <translation type="unfinished">غير محدد</translation>
+        <translation>غير محدد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
         <source>false</source>
-        <translation type="unfinished">خطأ</translation>
+        <translation type="vanished">خطأ شنيع</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
         <source>true</source>
-        <translation type="unfinished">صحيح</translation>
+        <translation type="vanished">حقيقي</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
         <source>Data Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار البيانات</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار الطلب عن بعد</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
         <source>Error Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار الخطأ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
         <source>Disabled</source>
-        <translation type="unfinished">معطل</translation>
+        <translation>عاجز</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
         <source>Unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>غير محدد</translation>
     </message>
 </context>
 <context>
@@ -5922,28 +5928,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
         <source>Clear Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>مسح المواضيع</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
         <source>Are you sure you want to clear all subscribed topics?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل أنت متأكد أنك تريد مسح كافة المواضيع المشتركة؟</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>Warning</source>
-        <translation type="unfinished">تحذير</translation>
+        <translation>تحذير</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <source>The MQTT client is not opened.</source>
-        <translation type="unfinished"></translation>
+        <translation>لم يتم فتح عميل MQTT.</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>The topic is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>الموضوع فارغ.</translation>
     </message>
 </context>
 <context>
@@ -5951,37 +5957,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>Rx</source>
-        <translation type="unfinished">آر إكس</translation>
+        <translation>آر إكس</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>TX</source>
-        <translation type="unfinished"></translation>
+        <translation>تكساس</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>يكتب</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>يأمر</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
         <source>Server</source>
-        <translation type="unfinished"></translation>
+        <translation>الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Client</source>
-        <translation type="unfinished">عميل</translation>
+        <translation>عميل</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>بيانات</translation>
     </message>
 </context>
 <context>
@@ -6372,12 +6378,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
         <source>MQTT Client</source>
-        <translation type="unfinished"></translation>
+        <translation>عميل MQTT</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
-        <translation type="unfinished"></translation>
+        <translation>خادم إم كيو تي تي</translation>
     </message>
 </context>
 </TS>

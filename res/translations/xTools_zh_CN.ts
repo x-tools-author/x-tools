@@ -1380,12 +1380,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation type="unfinished"></translation>
+        <translation>清除所有数据</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="47"/>
-        <source>Audo scrolling to bottom</source>
-        <translation type="unfinished"></translation>
+        <source>Auto scrolling to bottom</source>
+        <translation>自动滚动到底部</translation>
     </message>
 </context>
 <context>
@@ -2696,7 +2696,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Office Web Site</source>
-        <translation type="vanished">办公室网站</translation>
+        <translation type="vanished">办公网站</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="662"/>
@@ -3462,83 +3462,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
         <source>Server address</source>
-        <translation type="unfinished">服务器地址</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
         <source>Server port</source>
-        <translation type="unfinished">服务器端口</translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
         <source>Qos</source>
-        <translation type="unfinished"></translation>
+        <translation>服务质量</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>版本</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
         <source>Keep alive(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>保持活力(S)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>发布</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
         <source>Timer sending</source>
-        <translation type="unfinished"></translation>
+        <translation>定时发送</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
         <source>Publish topic</source>
-        <translation type="unfinished"></translation>
+        <translation>发布主题</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
         <source>Wrap text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字换行</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
         <source>Topic</source>
-        <translation type="unfinished"></translation>
+        <translation>话题</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>主题</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
         <source>Subscribe topic</source>
-        <translation type="unfinished"></translation>
+        <translation>订阅主题</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>日志</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
         <source>Message</source>
-        <translation type="unfinished">信息</translation>
+        <translation>信息</translation>
     </message>
 </context>
 <context>
@@ -3546,27 +3546,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
         <source>Clear all message</source>
-        <translation type="unfinished"></translation>
+        <translation>清除所有消息</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
         <source>Show ping-pong message</source>
-        <translation type="unfinished"></translation>
+        <translation>显示乒乓消息</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
         <source>Scrolling to bottom automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>自动滚动到底部</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>格式</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
         <source>Payload data format</source>
-        <translation type="unfinished"></translation>
+        <translation>负载数据格式</translation>
     </message>
 </context>
 <context>
@@ -3574,7 +3574,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
         <source>Clear log</source>
-        <translation type="unfinished">清空日志</translation>
+        <translation>清除日志</translation>
     </message>
 </context>
 <context>
@@ -3582,37 +3582,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>日志</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>留言</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
         <source>Server address</source>
-        <translation type="unfinished">服务器地址</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
         <source>Server port</source>
-        <translation type="unfinished">服务器端口</translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
         <source>Clients</source>
-        <translation type="unfinished"></translation>
+        <translation>客户</translation>
     </message>
 </context>
 <context>
@@ -4598,27 +4598,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
         <source>Malformed MQTT frame</source>
-        <translation type="unfinished"></translation>
+        <translation>格式错误的 MQTT 帧</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
         <source>Unsupported MQTT version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不受支持的 MQTT 版本 %1</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
         <source>At most once (0)</source>
-        <translation type="unfinished"></translation>
+        <translation>最多一次 (0)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
         <source>At least once (1)</source>
-        <translation type="unfinished"></translation>
+        <translation>至少一次 (1)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
         <source>Exactly once (2)</source>
-        <translation type="unfinished"></translation>
+        <translation>恰好一次 (2)</translation>
     </message>
 </context>
 <context>
@@ -5752,111 +5752,115 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
         <source>Interfce Name</source>
         <translation>接口名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
         <source>CAN Plugin</source>
         <translation>CAN插件</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
-        <translation>比特率</translation>
+        <translation type="vanished">比特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
         <source>Bitrate switch</source>
         <translation>码率切换</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
         <source>Input format</source>
-        <translation type="unfinished">输入格式</translation>
+        <translation>输入格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
         <source>Device selecting</source>
-        <translation type="unfinished"></translation>
+        <translation>设备选择</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
         <source>Specify configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>指定配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
         <source>Sending settings</source>
-        <translation type="unfinished"></translation>
+        <translation>发送设置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
         <source>Disconnect</source>
-        <translation type="unfinished">断开连接</translation>
+        <translation>断开</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
         <source>Connect</source>
-        <translation type="unfinished">连接设备</translation>
+        <translation>连接</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
         <source>Frame ID</source>
-        <translation type="unfinished">帧ID</translation>
+        <translation>帧ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
+        <source>Nominal bitrate</source>
+        <translation>仲裁波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
-        <translation type="unfinished">CAN FD</translation>
+        <translation>CANFD</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
         <source>Timed sending</source>
-        <translation type="unfinished"></translation>
+        <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Frame type</source>
-        <translation type="unfinished">帧类型</translation>
+        <translation>帧类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
         <source>Extended format</source>
         <translation>扩展格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
         <source>Data View</source>
-        <translation type="unfinished"></translation>
+        <translation>数据视图</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
         <source>Data bitrate</source>
-        <translation>负载比特率</translation>
+        <translation>负载波特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
         <source>Flexible data rate</source>
-        <translation>灵活的数据速率</translation>
+        <translation>可变波特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
         <source>Error filter</source>
         <translation>错误过滤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
         <source>Loopback</source>
-        <translation>环回</translation>
+        <translation>环回模式</translation>
     </message>
     <message>
         <source>Custom configuration</source>
         <translation type="vanished">自定义配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Receive own</source>
         <translation>接收自己</translation>
     </message>
@@ -5866,17 +5870,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
         <source>Failed to create CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>创建 CAN 总线设备失败：</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
         <source>Failed to connect to CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN总线设备连接失败：</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
         <source>CAN bus device error:</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN总线设备错误：</translation>
     </message>
 </context>
 <context>
@@ -5884,32 +5888,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
         <source>Time</source>
-        <translation type="unfinished">时间</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>类型</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Flags</source>
-        <translation type="unfinished">标志</translation>
+        <translation>标识</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>DLC</source>
-        <translation type="unfinished"></translation>
+        <translation>DLC</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>Payload</source>
-        <translation type="unfinished">数据负载</translation>
+        <translation>载荷</translation>
     </message>
 </context>
 <context>
@@ -5917,12 +5921,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>问题</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Are you sure to clear all data?</source>
-        <translation type="unfinished"></translation>
+        <translation>您确定清除所有数据吗？</translation>
     </message>
 </context>
 <context>
@@ -5932,62 +5936,60 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
         <source>The CAN bus device is not connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN 总线设备未连接。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <source>Invalid frame ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>帧 ID 无效。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Payload is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>有效负载为空。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
         <source>unspecified</source>
-        <translation type="unfinished">未指定</translation>
+        <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
         <source>false</source>
-        <translation type="unfinished">fasle</translation>
+        <translation type="vanished">错误的</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
         <source>true</source>
-        <translation type="unfinished">true</translation>
+        <translation type="vanished">真的</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
         <source>Data Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>数据帧</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>远程请求帧</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
         <source>Error Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>错误帧</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
         <source>Disabled</source>
-        <translation type="unfinished">禁止</translation>
+        <translation>禁止</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
         <source>Unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>未指定</translation>
     </message>
 </context>
 <context>
@@ -6319,28 +6321,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
         <source>Clear Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>明确主题</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
         <source>Are you sure you want to clear all subscribed topics?</source>
-        <translation type="unfinished"></translation>
+        <translation>您确定要清除所有订阅的主题吗？</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <source>The MQTT client is not opened.</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT客户端未打开。</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>The topic is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>主题是空的。</translation>
     </message>
 </context>
 <context>
@@ -6348,37 +6350,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>Rx</source>
-        <translation type="unfinished">接收</translation>
+        <translation>接收</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>TX</source>
-        <translation type="unfinished"></translation>
+        <translation>TX</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>类型</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>命令</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
         <source>Server</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Client</source>
-        <translation type="unfinished">客户端</translation>
+        <translation>客户</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Data</source>
-        <translation type="unfinished">数据</translation>
+        <translation>数据</translation>
     </message>
 </context>
 <context>
@@ -6733,12 +6735,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
         <source>MQTT Client</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT服务器</translation>
     </message>
 </context>
 </TS>

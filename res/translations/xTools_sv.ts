@@ -1345,12 +1345,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa all data</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <source>Auto scrolling to bottom</source>
+        <translation>Automatisk rullning till botten</translation>
+    </message>
+    <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Audo rullar till botten</translation>
     </message>
 </context>
 <context>
@@ -3268,83 +3272,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
         <source>Server address</source>
-        <translation type="unfinished">Serveradress</translation>
+        <translation>Serveradress</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
         <source>Server port</source>
-        <translation type="unfinished">Serverport</translation>
+        <translation>Serverport</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
         <source>Qos</source>
-        <translation type="unfinished"></translation>
+        <translation>Qos</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
         <source>Keep alive(S)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hålla vid liv(S)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Nära</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
         <source>Open</source>
-        <translation type="unfinished">Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
         <source>Publish</source>
-        <translation type="unfinished"></translation>
+        <translation>Publicera</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
         <source>Timer sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Timersändning</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
         <source>Publish topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Publicera ämne</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
         <source>Wrap text</source>
-        <translation type="unfinished"></translation>
+        <translation>Radbryt text</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
         <source>Topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Ämne</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>Ämnen</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
         <source>Subscribe topic</source>
-        <translation type="unfinished"></translation>
+        <translation>Prenumerera ämne</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
         <source>Log</source>
-        <translation type="unfinished">Logga</translation>
+        <translation>Logga</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
         <source>Message</source>
-        <translation type="unfinished">Meddelande</translation>
+        <translation>Meddelande</translation>
     </message>
 </context>
 <context>
@@ -3352,27 +3356,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
         <source>Clear all message</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa alla meddelanden</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
         <source>Show ping-pong message</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa pingismeddelande</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
         <source>Scrolling to bottom automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Rulla automatiskt till botten</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
         <source>Format</source>
-        <translation type="unfinished">Formatera</translation>
+        <translation>Formatera</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
         <source>Payload data format</source>
-        <translation type="unfinished"></translation>
+        <translation>Dataformat för nyttolast</translation>
     </message>
 </context>
 <context>
@@ -3380,7 +3384,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
         <source>Clear log</source>
-        <translation type="unfinished">Rensa logg</translation>
+        <translation>Rensa logg</translation>
     </message>
 </context>
 <context>
@@ -3388,37 +3392,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
         <source>Log</source>
-        <translation type="unfinished">Logga</translation>
+        <translation>Logga</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelanden</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
         <source>Server address</source>
-        <translation type="unfinished">Serveradress</translation>
+        <translation>Serveradress</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
         <source>Server port</source>
-        <translation type="unfinished">Serverport</translation>
+        <translation>Serverport</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Nära</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
         <source>Open</source>
-        <translation type="unfinished">Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
         <source>Clients</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunder</translation>
     </message>
 </context>
 <context>
@@ -4328,27 +4332,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
         <source>Malformed MQTT frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Felaktig MQTT-ram</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
         <source>Unsupported MQTT version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT-version %1 stöds inte</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
         <source>At most once (0)</source>
-        <translation type="unfinished"></translation>
+        <translation>Högst en gång (0)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
         <source>At least once (1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Minst en gång (1)</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
         <source>Exactly once (2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Exakt en gång (2)</translation>
     </message>
 </context>
 <context>
@@ -5355,102 +5359,106 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="239"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
         <source>Interfce Name</source>
         <translation>Gränsarnamn</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="252"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
         <source>CAN Plugin</source>
         <translation>CAN-plugin</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Bitrate</source>
-        <translation>Bithastighet</translation>
+        <translation type="vanished">Bithastighet</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="70"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
         <source>Bitrate switch</source>
         <translation>Bitrate switch</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
         <source>Input format</source>
-        <translation type="unfinished">Inmatningsformat</translation>
+        <translation>Inmatningsformat</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
         <source>Device selecting</source>
-        <translation type="unfinished"></translation>
+        <translation>Val av enhet</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="101"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
         <source>Specify configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange konfiguration</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="119"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
         <source>Sending settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka inställningar</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="135"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
         <source>Disconnect</source>
-        <translation type="unfinished">Koppla från</translation>
+        <translation>Koppla från</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="142"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
         <source>Connect</source>
-        <translation type="unfinished">Ansluta</translation>
+        <translation>Ansluta</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="191"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
         <source>Frame ID</source>
-        <translation type="unfinished">Ram-ID</translation>
+        <translation>Ram-ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
+        <source>Nominal bitrate</source>
+        <translation>Nominell bithastighet</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
-        <translation type="unfinished">KAN FD</translation>
+        <translation>KAN FD</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="218"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
         <source>Timed sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidsinställd sändning</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="232"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Frame type</source>
-        <translation type="unfinished">Ramtyp</translation>
+        <translation>Ramtyp</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="289"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
         <source>Extended format</source>
         <translation>Utökat format</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="321"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
         <source>Data View</source>
-        <translation type="unfinished">Datavy</translation>
+        <translation>Datavy</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
         <source>Data bitrate</source>
         <translation>Databithastighet</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
         <source>Flexible data rate</source>
         <translation>Flexibel datahastighet</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="126"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
         <source>Error filter</source>
         <translation>Felfilter</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="282"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
     </message>
@@ -5459,7 +5467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Anpassad konfiguration</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="225"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Receive own</source>
         <translation>Ta emot egna</translation>
     </message>
@@ -5469,17 +5477,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
         <source>Failed to create CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Det gick inte att skapa CAN-bussenhet:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
         <source>Failed to connect to CAN bus device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Det gick inte att ansluta till CAN-bussenheten:</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
         <source>CAN bus device error:</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN bus enhetsfel:</translation>
     </message>
 </context>
 <context>
@@ -5487,32 +5495,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
         <source>Time</source>
-        <translation type="unfinished">Tid</translation>
+        <translation>Tid</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Flags</source>
-        <translation type="unfinished">Flaggor</translation>
+        <translation>Flaggor</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>DLC</source>
-        <translation type="unfinished"></translation>
+        <translation>DLC</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>Payload</source>
-        <translation type="unfinished">Nyttolast</translation>
+        <translation>Nyttolast</translation>
     </message>
 </context>
 <context>
@@ -5520,12 +5528,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Fråga</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
         <source>Are you sure to clear all data?</source>
-        <translation type="unfinished"></translation>
+        <translation>Är du säker på att rensa all data?</translation>
     </message>
 </context>
 <context>
@@ -5535,62 +5543,60 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Warning</source>
-        <translation type="unfinished">Varning</translation>
+        <translation>Varning</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
         <source>The CAN bus device is not connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>CAN-bussenheten är inte ansluten.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
         <source>Invalid frame ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogiltigt ram-ID.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
         <source>Payload is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyttolasten är tom.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
         <source>unspecified</source>
-        <translation type="unfinished">ospecificerad</translation>
+        <translation>ospecificerad</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="340"/>
         <source>false</source>
-        <translation type="unfinished">falsk</translation>
+        <translation type="vanished">falsk</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="341"/>
         <source>true</source>
-        <translation type="unfinished">äkta</translation>
+        <translation type="vanished">sann</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
         <source>Data Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Dataram</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Remote Request Frame</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
         <source>Error Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Felram</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
         <source>Disabled</source>
-        <translation type="unfinished">Avaktiverad</translation>
+        <translation>Inaktiverad</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
         <source>Unspecified</source>
-        <translation type="unfinished"></translation>
+        <translation>Ospecificerad</translation>
     </message>
 </context>
 <context>
@@ -5922,28 +5928,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
         <source>Clear Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa ämnen</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
         <source>Are you sure you want to clear all subscribed topics?</source>
-        <translation type="unfinished"></translation>
+        <translation>Är du säker på att du vill rensa alla prenumererade ämnen?</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>Warning</source>
-        <translation type="unfinished">Varning</translation>
+        <translation>Varning</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <source>The MQTT client is not opened.</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT-klienten är inte öppen.</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>The topic is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ämnet är tomt.</translation>
     </message>
 </context>
 <context>
@@ -5951,37 +5957,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>Rx</source>
-        <translation type="unfinished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>TX</source>
-        <translation type="unfinished"></translation>
+        <translation>TX</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommando</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
         <source>Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Client</source>
-        <translation type="unfinished">Klient</translation>
+        <translation>Klient</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Data</source>
-        <translation type="unfinished">Data</translation>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -6372,12 +6378,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
         <source>MQTT Client</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT-klient</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
-        <translation type="unfinished"></translation>
+        <translation>MQTT-server</translation>
     </message>
 </context>
 </TS>

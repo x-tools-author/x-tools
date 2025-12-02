@@ -12,6 +12,7 @@
 #include <QMessageBox>
 
 #include "utilities/iconengine.h"
+#include "utilities/x.h"
 
 #include "datafilter.h"
 #include "datamodel.h"
@@ -36,7 +37,9 @@ DataView::DataView(QWidget *parent)
     ui->tableView->setModel(m_filter);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    ui->tableView->setAlternatingRowColors(true);
     ui->tableView->horizontalHeader()->setMinimumSectionSize(60);
+    xSetNoneBorder(ui->tableView);
 
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &DataView::onClearBtnClicked);
     connect(m_model, &DataModel::rowsInserted, this, &DataView::onRowInserted);

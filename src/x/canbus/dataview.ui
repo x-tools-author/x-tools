@@ -44,7 +44,7 @@
      <item>
       <widget class="QToolButton" name="toolButtonScrolling">
        <property name="toolTip">
-        <string>Audo scrolling to bottom</string>
+        <string>Auto scrolling to bottom</string>
        </property>
        <property name="text">
         <string notr="true"/>

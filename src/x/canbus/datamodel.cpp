@@ -73,7 +73,7 @@ QVariant DataModel::data(const QModelIndex &index, int role) const
     QCanBusFrame frame = item.frame;
     if (role == Qt::DisplayRole) {
         if (column == X_CAN_BUS_COLUMN_TIME) {
-            return QString::fromLatin1("%1.%2  ")
+            return QString::fromLatin1("%1.%2")
                 .arg(frame.timeStamp().seconds(), 10, 10, ' ')
                 .arg(frame.timeStamp().microSeconds() / 100, 4, 10, '0');
         } else if (column == X_CAN_BUS_COLUMN_TYPE) {

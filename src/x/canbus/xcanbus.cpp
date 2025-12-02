@@ -238,12 +238,14 @@ void xCanBus::onDeviceOpened()
 {
     ui->pushButtonConnect->setEnabled(false);
     ui->pushButtonDisconnect->setEnabled(true);
+    updateUiState(true);
 }
 
 void xCanBus::onDeviceClosed()
 {
     ui->pushButtonConnect->setEnabled(true);
     ui->pushButtonDisconnect->setEnabled(false);
+    updateUiState(false);
 }
 
 void xCanBus::onPluginChanged(const QString& pluginName)
@@ -337,8 +339,8 @@ void xCanBus::setupOptions(QComboBox* cb, bool usingUnspecified)
         if (usingUnspecified) {
             cb->addItem(tr("unspecified"), QVariant());
         }
-        cb->addItem(tr("false"), QVariant(false));
-        cb->addItem(tr("true"), QVariant(true));
+        cb->addItem(QString("false"), QVariant(false));
+        cb->addItem(QString("true"), QVariant(true));
     }
 }
 
@@ -457,6 +459,17 @@ void xCanBus::sendFrame()
     const int frameType = ui->comboBoxFrameType->currentData().toInt();
     frame.setFrameType(static_cast<QCanBusFrame::FrameType>(frameType));
     m_device->writeFrame(frame);
+}
+
+void xCanBus::updateUiState(bool isConnected)
+{
+    ui->comboBoxPlugins->setEnabled(!isConnected);
+    ui->comboBoxName->setEnabled(!isConnected);
+    ui->comboBoxBitrate->setEnabled(!isConnected);
+    ui->comboBoxDataBitrate->setEnabled(!isConnected);
+    ui->comboBoxLoopback->setEnabled(!isConnected);
+    ui->comboBoxReceiveOwn->setEnabled(!isConnected);
+    ui->comboBoxCanFd->setEnabled(!isConnected);
 }
 
 } // namespace xCanBus
