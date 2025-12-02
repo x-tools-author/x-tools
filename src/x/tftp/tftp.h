@@ -20,6 +20,8 @@
 #include <QTimer>
 #include <QUdpSocket>
 
+#if 0
+
 enum Block {
     _RRQ = 1,   // read request
     _WRQ = 2,   // write request
@@ -94,3 +96,4 @@ signals:
     void tftpProcessSignal(QString path, int value);
     void tftpErrorSignal(QString errorMsg);
 };
+#endif

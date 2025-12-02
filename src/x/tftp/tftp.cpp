@@ -24,6 +24,8 @@
 #include <QThread>
 #include <QtEndian>
 
+#if 0
+
 Tftp::Tftp(QObject *parent)
     : QThread{parent}
 {
@@ -566,3 +568,5 @@ const QString Tftp::fileMd5(QFile &sourceFile)
 
     return QString();
 }
+
+#endif
