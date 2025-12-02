@@ -120,6 +120,7 @@ private:
     void onNodeCreated();
     void onNodeDeleted();
     void onNodeUpdated();
+    void onNodePositionUpdated();
 
     QJsonObject cookedGraphicsViewStyle(const QJsonObject &style);
     QJsonObject cookedNodeStyle(const QJsonObject &style);
