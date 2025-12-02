@@ -61,11 +61,6 @@ void NavigatorDockWidgetContent::paintEvent(QPaintEvent *event)
     if (m_widgetRect.isValid()) {
         QWidget *w = m_scrollArea->widget();
         QGraphicsView *view = qobject_cast<QGraphicsView *>(w);
-#if 0
-        auto tmp = view->grab();
-        painter.drawPixmap(m_widgetRect, tmp, tmp.rect());
-#endif
-
         if (view && view->scene()) {
             QGraphicsScene *scene = view->scene();
             QPixmap image(w->size());
