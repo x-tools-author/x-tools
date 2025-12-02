@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="vanished">Garso slinkimas į apačią</translation>
+        <translation>Garso slinkimas į apačią</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Naujas Modbus įrenginys</translation>
+        <translation>Naujas Modbus įrenginys</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Ryšio parametrai</translation>
+        <translation>Ryšio parametrai</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Paritetas</translation>
+        <translation>Paritetas</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Perdavimo greitis</translation>
+        <translation>Perdavimo greitis</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitai</translation>
+        <translation>Stop bitai</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Atnaujinti</translation>
+        <translation>Atnaujinti</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Duomenų bitai</translation>
+        <translation>Duomenų bitai</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Vardai</translation>
+        <translation>Vardai</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP adresas</translation>
+        <translation>IP adresas</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Uostas</translation>
+        <translation>Uostas</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Įrenginio tipas</translation>
+        <translation>Įrenginio tipas</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Skirtasis laikas (ms)</translation>
+        <translation>Skirtasis laikas (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Pakartotinių bandymų skaičius</translation>
+        <translation>Pakartotinių bandymų skaičius</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Adresas</translation>
+        <translation>Adresas</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Tik klausymo režimas</translation>
+        <translation>Tik klausymo režimas</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Įrenginio parametrai</translation>
+        <translation>Įrenginio parametrai</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Įrenginio pavadinimas</translation>
+        <translation>Įrenginio pavadinimas</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Tokie kaip: Siemens S7-300</translation>
+        <translation>Tokie kaip: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Ieškoti</translation>
+        <translation>Ieškoti</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Mazgo redaktorius</translation>
+        <translation>Mazgo redaktorius</translation>
     </message>
 </context>
 <context>
@@ -2337,7 +2337,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Generolas</translation>
+        <translation>Generolas</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2423,19 +2423,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation type="vanished">Spalvų schema</translation>
+        <translation>Spalvų schema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="vanished">Tamsus</translation>
+        <translation>Tamsus</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="vanished">Šviesa</translation>
+        <translation>Šviesa</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="vanished">Sistema</translation>
+        <translation>Sistema</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="497"/>
@@ -4238,31 +4238,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +5014,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Eksportuoti</translation>
+        <translation>Eksportuoti</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5023,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Ištrinti</translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Aukštyn</translation>
+        <translation>Aukštyn</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Pridėti</translation>
+        <translation>Pridėti</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5040,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Importuoti</translation>
+        <translation>Importuoti</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Žemyn</translation>
+        <translation>Žemyn</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bitų sparta</translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5464,7 +5464,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation type="vanished">Pasirinktinė konfigūracija</translation>
+        <translation>Pasirinktinė konfigūracija</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5567,11 +5567,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation type="vanished">klaidinga</translation>
+        <translation>klaidinga</translation>
     </message>
     <message>
         <source>true</source>
-        <translation type="vanished">tiesa</translation>
+        <translation>tiesa</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
@@ -5994,11 +5994,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus įrankių juosta</translation>
+        <translation>Modbus įrankių juosta</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation type="vanished">Veiksmo pavyzdys</translation>
+        <translation>Veiksmo pavyzdys</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6010,27 +6010,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Naujas RTU įrenginys</translation>
+        <translation>Naujas RTU įrenginys</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Naujas TCP įrenginys</translation>
+        <translation>Naujas TCP įrenginys</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Naujos ritės</translation>
+        <translation>Naujos ritės</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Nauji diskretiniai įėjimai</translation>
+        <translation>Nauji diskretiniai įėjimai</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Nauji valdų registrai</translation>
+        <translation>Nauji valdų registrai</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Nauji įvesties registrai</translation>
+        <translation>Nauji įvesties registrai</translation>
     </message>
 </context>
 <context>
@@ -6075,19 +6075,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Ritės</translation>
+        <translation>Ritės</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskretūs įėjimai</translation>
+        <translation>Diskretūs įėjimai</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Valdų registrai</translation>
+        <translation>Valdų registrai</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Įvesties registrai</translation>
+        <translation>Įvesties registrai</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>

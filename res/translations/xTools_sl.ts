@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="vanished">Avdo se pomika na dno</translation>
+        <translation>Avdo se pomika na dno</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">Nova naprava Modbus</translation>
+        <translation>Nova naprava Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">Parametri povezave</translation>
+        <translation>Parametri povezave</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">Pariteta</translation>
+        <translation>Pariteta</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">Hitrost prenosa</translation>
+        <translation>Hitrost prenosa</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">Stop bitovi</translation>
+        <translation>Stop bitovi</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">Osveži</translation>
+        <translation>Osveži</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">Podatkovni biti</translation>
+        <translation>Podatkovni biti</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">Imena</translation>
+        <translation>Imena</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">IP naslov</translation>
+        <translation>IP naslov</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">Pristanišče</translation>
+        <translation>Pristanišče</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">Vrsta naprave</translation>
+        <translation>Vrsta naprave</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">Časovna omejitev (ms)</translation>
+        <translation>Časovna omejitev (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">Število ponovnih poskusov</translation>
+        <translation>Število ponovnih poskusov</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">Naslov</translation>
+        <translation>Naslov</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">Način samo poslušanje</translation>
+        <translation>Način samo poslušanje</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">Parametri naprave</translation>
+        <translation>Parametri naprave</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">Ime naprave</translation>
+        <translation>Ime naprave</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Kot na primer: Siemens S7-300</translation>
+        <translation>Kot na primer: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">Iskanje</translation>
+        <translation>Iskanje</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">Urejevalnik vozlišč</translation>
+        <translation>Urejevalnik vozlišč</translation>
     </message>
 </context>
 <context>
@@ -2337,7 +2337,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">Splošno</translation>
+        <translation>Splošno</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2423,19 +2423,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation type="vanished">Barvna shema</translation>
+        <translation>Barvna shema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="vanished">Temno</translation>
+        <translation>Temno</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="vanished">Svetloba</translation>
+        <translation>Svetloba</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="vanished">Sistem</translation>
+        <translation>Sistem</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="497"/>
@@ -4238,31 +4238,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +5014,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Izvozi</translation>
+        <translation>Izvozi</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5023,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">Izbriši</translation>
+        <translation>Izbriši</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Gor</translation>
+        <translation>Gor</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Dodaj</translation>
+        <translation>Dodaj</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5040,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">Uvozi</translation>
+        <translation>Uvozi</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Dol</translation>
+        <translation>Dol</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">Bitna hitrost</translation>
+        <translation>Bitna hitrost</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5464,7 +5464,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation type="vanished">Konfiguracija po meri</translation>
+        <translation>Konfiguracija po meri</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5567,11 +5567,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation type="vanished">lažno</translation>
+        <translation>lažno</translation>
     </message>
     <message>
         <source>true</source>
-        <translation type="vanished">res</translation>
+        <translation>res</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
@@ -5994,11 +5994,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation type="vanished">Orodna vrstica Modbus</translation>
+        <translation>Orodna vrstica Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation type="vanished">Primer dejanja</translation>
+        <translation>Primer dejanja</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6010,27 +6010,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">Nova naprava RTU</translation>
+        <translation>Nova naprava RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">Nova naprava TCP</translation>
+        <translation>Nova naprava TCP</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">Nove tuljave</translation>
+        <translation>Nove tuljave</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">Novi diskretni vhodi</translation>
+        <translation>Novi diskretni vhodi</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">Novi registri gospodarstev</translation>
+        <translation>Novi registri gospodarstev</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">Novi vhodni registri</translation>
+        <translation>Novi vhodni registri</translation>
     </message>
 </context>
 <context>
@@ -6075,19 +6075,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">Tuljave</translation>
+        <translation>Tuljave</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">Diskretni vhodi</translation>
+        <translation>Diskretni vhodi</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">Registri gospodarstev</translation>
+        <translation>Registri gospodarstev</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">Vhodni registri</translation>
+        <translation>Vhodni registri</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>

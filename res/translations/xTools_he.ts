@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation type="vanished">אודו גלילה למטה</translation>
+        <translation>אודו גלילה למטה</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation type="vanished">מכשיר Modbus חדש</translation>
+        <translation>מכשיר Modbus חדש</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation type="vanished">פרמטרים של חיבור</translation>
+        <translation>פרמטרים של חיבור</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation type="vanished">שִׁוּוּי</translation>
+        <translation>שִׁוּוּי</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation type="vanished">שיעור באוד</translation>
+        <translation>שיעור באוד</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation type="vanished">עצור ביטים</translation>
+        <translation>עצור ביטים</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">לְרַעֲנֵן</translation>
+        <translation>לְרַעֲנֵן</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation type="vanished">סיביות נתונים</translation>
+        <translation>סיביות נתונים</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation type="vanished">שמות</translation>
+        <translation>שמות</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="vanished">כתובת IP</translation>
+        <translation>כתובת IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="vanished">נָמָל</translation>
+        <translation>נָמָל</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation type="vanished">סוג מכשיר</translation>
+        <translation>סוג מכשיר</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation type="vanished">זמן קצוב (ms)</translation>
+        <translation>זמן קצוב (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation type="vanished">מספר ניסיונות חוזרים</translation>
+        <translation>מספר ניסיונות חוזרים</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="vanished">כְּתוֹבֶת</translation>
+        <translation>כְּתוֹבֶת</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation type="vanished">מצב האזנה בלבד</translation>
+        <translation>מצב האזנה בלבד</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation type="vanished">פרמטרים של מכשיר</translation>
+        <translation>פרמטרים של מכשיר</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation type="vanished">שם המכשיר</translation>
+        <translation>שם המכשיר</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">כגון: סימנס S7-300</translation>
+        <translation>כגון: סימנס S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation type="vanished">לְחַפֵּשׂ</translation>
+        <translation>לְחַפֵּשׂ</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation type="vanished">עורך צומת</translation>
+        <translation>עורך צומת</translation>
     </message>
 </context>
 <context>
@@ -2337,7 +2337,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation type="vanished">כְּלָלִי</translation>
+        <translation>כְּלָלִי</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="346"/>
@@ -2423,19 +2423,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation type="vanished">ערכת צבעים</translation>
+        <translation>ערכת צבעים</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="vanished">כֵּהֶה</translation>
+        <translation>כֵּהֶה</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="vanished">אוֹר</translation>
+        <translation>אוֹר</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="vanished">מַעֲרֶכֶת</translation>
+        <translation>מַעֲרֶכֶת</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="497"/>
@@ -4238,31 +4238,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation type="vanished">5</translation>
+        <translation>5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="vanished">6</translation>
+        <translation>6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="vanished">7</translation>
+        <translation>7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="vanished">8</translation>
+        <translation>8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="vanished">1</translation>
+        <translation>1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation type="vanished">1.5</translation>
+        <translation>1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +5014,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">יְצוּא</translation>
+        <translation>יְצוּא</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5023,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">לִמְחוֹק</translation>
+        <translation>לִמְחוֹק</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">לְמַעלָה</translation>
+        <translation>לְמַעלָה</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">לְהוֹסִיף</translation>
+        <translation>לְהוֹסִיף</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5040,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation type="vanished">יְבוּא</translation>
+        <translation>יְבוּא</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">לְמַטָה</translation>
+        <translation>לְמַטָה</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation type="vanished">קצב סיביות</translation>
+        <translation>קצב סיביות</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5464,7 +5464,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation type="vanished">תצורה מותאמת אישית</translation>
+        <translation>תצורה מותאמת אישית</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5567,11 +5567,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation type="vanished">שֶׁקֶר</translation>
+        <translation>שֶׁקֶר</translation>
     </message>
     <message>
         <source>true</source>
-        <translation type="vanished">נָכוֹן</translation>
+        <translation>נָכוֹן</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
@@ -5994,11 +5994,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation type="vanished">סרגל הכלים של Modbus</translation>
+        <translation>סרגל הכלים של Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation type="vanished">פעולה לדוגמה</translation>
+        <translation>פעולה לדוגמה</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6010,27 +6010,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation type="vanished">מכשיר RTU חדש</translation>
+        <translation>מכשיר RTU חדש</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation type="vanished">מכשיר TCP חדש</translation>
+        <translation>מכשיר TCP חדש</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation type="vanished">סלילים חדשים</translation>
+        <translation>סלילים חדשים</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation type="vanished">כניסות דיסקרטיות חדשות</translation>
+        <translation>כניסות דיסקרטיות חדשות</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation type="vanished">רישומי אחזקות חדשים</translation>
+        <translation>רישומי אחזקות חדשים</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation type="vanished">רישומי קלט חדשים</translation>
+        <translation>רישומי קלט חדשים</translation>
     </message>
 </context>
 <context>
@@ -6075,19 +6075,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation type="vanished">סלילים</translation>
+        <translation>סלילים</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation type="vanished">כניסות דיסקרטיות</translation>
+        <translation>כניסות דיסקרטיות</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation type="vanished">החזקת רישומים</translation>
+        <translation>החזקת רישומים</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation type="vanished">רישומי קלט</translation>
+        <translation>רישומי קלט</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
