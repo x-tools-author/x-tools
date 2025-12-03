@@ -35,6 +35,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argTemplate} ${argTarget}.xml
 
 set(zip_file ${argRoot}/${argTarget}.zip)
 set(xml_file ${argRoot}/${argTarget}.xml)
+set(appx_manifest_file ${argRoot}/AppxManifest.xml)
 set(msix_file
     ${argRoot}/50263Qsaker2018.${argPacketName}_${argPacketVersion}.0_x64__83fbcck3baqe6.msix)
 
@@ -96,3 +97,7 @@ execute_process(
   OUTPUT_VARIABLE tmp
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 execute_process(COMMAND ${CMAKE_COMMAND} -E echo "Packing finished: ${tmp}")
+
+# * TODO
+# * Replace AppxManifest.xml
+# * https://learn.microsoft.com/zh-cn/windows/msix/package/create-app-package-with-makeappx-tool

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap uap10 rescap" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <!--Package created by MSIX Packaging Tool version: -->
+  <Identity Name="50263Qsaker2018.QSAK" Publisher="CN=3B7E23EE-B74C-4297-A4B2-75F51D685120" Version="7.5.1.0" ProcessorArchitecture="x64" />
+  <Properties>
+    <DisplayName>xTools Pro</DisplayName>
+    <PublisherDisplayName>x-tools-author</PublisherDisplayName>
+    <Description>xTools Pro</Description>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <uap10:PackageIntegrity>
+      <uap10:Content Enforcement="on" />
+    </uap10:PackageIntegrity>
+  </Properties>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22000.1" />
+  </Dependencies>
+  <Applications>
+    <Application Id="XTOOLS" Executable="VFS\xTools\xTools.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements BackgroundColor="transparent" DisplayName="xTools" Square150x150Logo="Assets\XTOOLS-Square150x150Logo.png" Square44x44Logo="Assets\XTOOLS-Square44x44Logo.png" Description="xTools">
+        <uap:DefaultTile Wide310x150Logo="Assets\XTOOLS-Wide310x150Logo.png" Square310x310Logo="Assets\XTOOLS-Square310x310Logo.png" Square71x71Logo="Assets\XTOOLS-Square71x71Logo.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+  <mp:PhoneIdentity PhoneProductId="96e30836-dcd2-4be5-8f68-acd164280c96" PhonePublisherId="c92215ee-73ac-44fd-acfd-7cb0727d432f" />
+</Package>
