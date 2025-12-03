@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <memory>
+
 #include <QJsonObject>
 #include <QStandardItemModel>
 #include <QWidget>
