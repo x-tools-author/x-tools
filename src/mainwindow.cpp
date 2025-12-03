@@ -66,7 +66,13 @@
 
 struct MainWindowParameterKeys
 {
-    QString showMax{"MainWindow/showMax"};
+    const QString showMax{"showMax"};
+
+    const QString page00{"page00"};
+    const QString page01{"page01"};
+    const QString page10{"page10"};
+    const QString page11{"page11"};
+    const QString layoutManager{"layoutManager"};
 };
 
 MainWindow::MainWindow(QWidget* parent)
@@ -175,15 +181,15 @@ void MainWindow::load(const QString& fileName)
     QByteArray data = file.readAll();
     file.close();
 
+    MainWindowParameterKeys keys;
     QJsonDocument doc = QJsonDocument::fromJson(data);
     QJsonObject obj = doc.object();
-    m_ioPage00->load(obj.value("page00").toObject().toVariantMap());
-    m_ioPage01->load(obj.value("page01").toObject().toVariantMap());
-    m_ioPage10->load(obj.value("page10").toObject().toVariantMap());
-    m_ioPage11->load(obj.value("page11").toObject().toVariantMap());
-    m_layoutManager->load(obj.value("layoutManager").toObject());
+    m_ioPage00->load(obj.value(keys.page00).toObject().toVariantMap());
+    m_ioPage01->load(obj.value(keys.page01).toObject().toVariantMap());
+    m_ioPage10->load(obj.value(keys.page10).toObject().toVariantMap());
+    m_ioPage11->load(obj.value(keys.page11).toObject().toVariantMap());
+    m_layoutManager->load(obj.value(keys.layoutManager).toObject());
 
-    MainWindowParameterKeys keys;
     bool showMax = obj.value(keys.showMax).toBool(false);
     if (showMax) {
         showMaximized();
@@ -194,13 +200,12 @@ void MainWindow::load(const QString& fileName)
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
-    obj.insert("page00", QJsonObject::fromVariantMap(m_ioPage00->save()));
-    obj.insert("page01", QJsonObject::fromVariantMap(m_ioPage01->save()));
-    obj.insert("page10", QJsonObject::fromVariantMap(m_ioPage10->save()));
-    obj.insert("page11", QJsonObject::fromVariantMap(m_ioPage11->save()));
-    obj.insert("layoutManager", m_layoutManager->save());
-
     MainWindowParameterKeys keys;
+    obj.insert(keys.page00, QJsonObject::fromVariantMap(m_ioPage00->save()));
+    obj.insert(keys.page01, QJsonObject::fromVariantMap(m_ioPage01->save()));
+    obj.insert(keys.page10, QJsonObject::fromVariantMap(m_ioPage10->save()));
+    obj.insert(keys.page11, QJsonObject::fromVariantMap(m_ioPage11->save()));
+    obj.insert(keys.layoutManager, m_layoutManager->save());
     obj.insert(keys.showMax, isMaximized());
 
     QJsonDocument doc;
