@@ -17,9 +17,13 @@
 
 namespace xTools {
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 bool NativeEventFilter::nativeEventFilter(const QByteArray &eventType,
                                           void *message,
                                           qintptr *result)
+#else
+bool NativeEventFilter::nativeEventFilter(const QByteArray &eventType, void *message, long *result)
+#endif
 {
 #ifdef Q_OS_WIN
     MSG *msg = (MSG *) message;

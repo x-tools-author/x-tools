@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "x.h"
 
+#include <QLocale>
 #include <QMetaObject>
 
 namespace xTools {

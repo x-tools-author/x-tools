@@ -12,6 +12,7 @@
 
 #include <QActionGroup>
 #include <QApplication>
+#include <QDebug>
 #include <QMenu>
 #include <QSettings>
 
