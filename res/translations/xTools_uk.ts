@@ -5418,7 +5418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Номінальний бітрейт</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
         <translation>МОЖЕ ФД</translation>
     </message>
@@ -5526,12 +5525,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
         <translation>Питання</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
         <translation>Ви впевнені, що хочете очистити всі дані?</translation>
     </message>
@@ -5539,29 +5538,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <source>No error has occurred</source>
+        <translation>Жодної помилки не сталося</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <source>The transmission has timed out</source>
+        <translation>Передача закінчилася</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <source>The frame could not be sent due to lost arbitration on the bus</source>
+        <translation>Не вдалося надіслати кадр через втрачений арбітраж на автобусі</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <source>The controller encountered an error</source>
+        <translation>У контролері сталася помилка</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <source>A protocol violation has occurred</source>
+        <translation>Сталося порушення протоколу</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <source>A transceiver error occurred</source>
+        <translation>Сталася помилка трансивера</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <source>The transmission received no acknowledgment</source>
+        <translation>Передача не отримала підтвердження</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <source>The CAN bus is offline</source>
+        <translation>Шина CAN не працює</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <source>A CAN bus error occurred</source>
+        <translation>Сталася помилка шини CAN</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <source>The controller restarted</source>
+        <translation>Контролер перезапустився</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <source>An unknown error has occurred</source>
+        <translation>Сталася невідома помилка</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <source>Matches every other error type</source>
+        <translation>Відповідає будь-якому іншому типу помилки</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
         <translation>УВАГА</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
         <translation>Пристрій шини CAN не підключено.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
         <translation>Недійсний ідентифікатор кадру.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
         <translation>Корисне навантаження порожнє.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
         <translation>невизначений</translation>
     </message>
@@ -5574,27 +5633,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>правда</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
         <translation>Кадр даних</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
         <translation>Кадр віддаленого запиту</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
         <translation>Рамка помилки</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
         <translation>Вимкнено</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
         <translation>Невизначений</translation>
     </message>

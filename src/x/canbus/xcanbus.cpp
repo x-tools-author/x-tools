@@ -71,13 +71,33 @@ xCanBus::xCanBus(QWidget* parent)
         this->m_leftWidth = ui->splitter->sizes().first();
     });
 
+    struct FrameErrorItem
+    {
+        int type;
+        QString name;
+    };
+    // clang-format off
+    QList<FrameErrorItem> errorItems = {
+        {QCanBusFrame::NoError, tr("No error has occurred")},
+        {QCanBusFrame::TransmissionTimeoutError, tr("The transmission has timed out")},
+        {QCanBusFrame::LostArbitrationError, tr("The frame could not be sent due to lost arbitration on the bus")},
+        {QCanBusFrame::ControllerError, tr("The controller encountered an error")},
+        {QCanBusFrame::ProtocolViolationError, tr("A protocol violation has occurred")},
+        {QCanBusFrame::TransceiverError, tr("A transceiver error occurred")},
+        {QCanBusFrame::MissingAcknowledgmentError, tr("The transmission received no acknowledgment")},
+        {QCanBusFrame::BusOffError, tr("The CAN bus is offline")},
+        {QCanBusFrame::BusError, tr("A CAN bus error occurred")},
+        {QCanBusFrame::ControllerRestartError, tr("The controller restarted")},
+        {QCanBusFrame::UnknownError, tr("An unknown error has occurred")},
+        {QCanBusFrame::AnyError, tr("Matches every other error type")},
+    };
+    // clang-format on
     m_menu = new xTools::KeepOpenedMenu(this);
-    QMetaEnum metaEnum = QMetaEnum::fromType<QCanBusFrame::FrameError>();
-    for (int i = 0; i < metaEnum.keyCount(); ++i) {
-        QString key = QString::fromUtf8(metaEnum.key(i));
-        QAction* a = m_menu->addAction(key, this, &xCanBus::updateErrorFilterBtn);
+    for (int i = 0; i < errorItems.count(); ++i) {
+        FrameErrorItem item = errorItems.at(i);
+        QAction* a = m_menu->addAction(item.name, this, &xCanBus::updateErrorFilterBtn);
         a->setCheckable(true);
-        a->setData(QVariant(metaEnum.value(i)));
+        a->setData(QVariant(item.type));
     }
     ui->pushButtonErrorFilter->setMenu(m_menu);
     updateErrorFilterBtn();

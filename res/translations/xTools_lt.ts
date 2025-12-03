@@ -5370,7 +5370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Bitrate</translation>
+        <translation>Bitų sparta</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5418,7 +5418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nominalus bitų dažnis</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
         <translation>GALI FD</translation>
     </message>
@@ -5526,12 +5525,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
         <translation>Klausimas</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
         <translation>Ar tikrai išvalysite visus duomenis?</translation>
     </message>
@@ -5539,29 +5538,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <source>No error has occurred</source>
+        <translation>Jokia klaida neįvyko</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <source>The transmission has timed out</source>
+        <translation>Baigėsi perdavimo laikas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <source>The frame could not be sent due to lost arbitration on the bus</source>
+        <translation>Kadras negalėjo būti išsiųstas dėl prarasto arbitražo autobuse</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <source>The controller encountered an error</source>
+        <translation>Valdiklis susidūrė su klaida</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <source>A protocol violation has occurred</source>
+        <translation>Įvyko protokolo pažeidimas</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <source>A transceiver error occurred</source>
+        <translation>Įvyko siųstuvo-imtuvo klaida</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <source>The transmission received no acknowledgment</source>
+        <translation>Perdavimas negavo patvirtinimo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <source>The CAN bus is offline</source>
+        <translation>CAN magistralė neprisijungusi</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <source>A CAN bus error occurred</source>
+        <translation>Įvyko CAN magistralės klaida</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <source>The controller restarted</source>
+        <translation>Valdiklis paleistas iš naujo</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <source>An unknown error has occurred</source>
+        <translation>Įvyko nežinoma klaida</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <source>Matches every other error type</source>
+        <translation>Atitinka visus kitus klaidų tipus</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
         <translation>Įspėjimas</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
         <translation>CAN magistralės įrenginys neprijungtas.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
         <translation>Neteisingas rėmelio ID.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
         <translation>Naudinga apkrova tuščia.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
         <translation>nepatikslinta</translation>
     </message>
@@ -5574,27 +5633,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>tiesa</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
         <translation>Duomenų rėmelis</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
         <translation>Nuotolinio užklausų rėmelis</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
         <translation>Klaidos rėmelis</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
         <translation>Išjungta</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
         <translation>Nenurodyta</translation>
     </message>

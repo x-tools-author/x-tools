@@ -5418,7 +5418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>公称ビットレート</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
         <translation>CANFD</translation>
     </message>
@@ -5526,12 +5525,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
         <translation>質問</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
         <translation>すべてのデータを消去してもよろしいですか?</translation>
     </message>
@@ -5539,29 +5538,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <source>No error has occurred</source>
+        <translation>エラーは発生していません</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <source>The transmission has timed out</source>
+        <translation>送信がタイムアウトしました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <source>The frame could not be sent due to lost arbitration on the bus</source>
+        <translation>バス上の調停が失われたため、フレームを送信できませんでした</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <source>The controller encountered an error</source>
+        <translation>コントローラーでエラーが発生しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <source>A protocol violation has occurred</source>
+        <translation>プロトコル違反が発生しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <source>A transceiver error occurred</source>
+        <translation>トランシーバーエラーが発生しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <source>The transmission received no acknowledgment</source>
+        <translation>送信は確認応答を受信しませんでした</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <source>The CAN bus is offline</source>
+        <translation>CANバスはオフラインです</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <source>A CAN bus error occurred</source>
+        <translation>CANバスエラーが発生しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <source>The controller restarted</source>
+        <translation>コントローラーが再起動しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <source>An unknown error has occurred</source>
+        <translation>不明なエラーが発生しました</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <source>Matches every other error type</source>
+        <translation>他のすべてのエラー タイプに一致します</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
         <translation>CANバスデバイスが接続されていません。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
         <translation>フレームIDが無効です。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
         <translation>ペイロードが空です。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
         <translation>不特定</translation>
     </message>
@@ -5574,27 +5633,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>真実</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
         <translation>データフレーム</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
         <translation>リモートリクエストフレーム</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
         <translation>エラーフレーム</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
         <translation>無効</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
         <translation>不特定</translation>
     </message>

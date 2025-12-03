@@ -5418,7 +5418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>קצב סיביות נומינלי</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
         <translation>CAN FD</translation>
     </message>
@@ -5526,12 +5525,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
         <translation>שְׁאֵלָה</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
         <translation>האם אתה בטוח לנקות את כל הנתונים?</translation>
     </message>
@@ -5539,29 +5538,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <source>No error has occurred</source>
+        <translation>לא התרחשה שגיאה</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <source>The transmission has timed out</source>
+        <translation>תם הזמן הקצוב לשידור</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <source>The frame could not be sent due to lost arbitration on the bus</source>
+        <translation>לא ניתן היה לשלוח את המסגרת עקב אבדן בוררות באוטובוס</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <source>The controller encountered an error</source>
+        <translation>הבקר נתקל בשגיאה</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <source>A protocol violation has occurred</source>
+        <translation>התרחשה הפרת פרוטוקול</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <source>A transceiver error occurred</source>
+        <translation>אירעה שגיאת מקלט משדר</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <source>The transmission received no acknowledgment</source>
+        <translation>השידור לא קיבל שום אישור</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <source>The CAN bus is offline</source>
+        <translation>אוטובוס ה-CAN אינו מקוון</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <source>A CAN bus error occurred</source>
+        <translation>אירעה שגיאת אוטובוס CAN</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <source>The controller restarted</source>
+        <translation>הבקר הופעל מחדש</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <source>An unknown error has occurred</source>
+        <translation>אירעה שגיאה לא ידועה</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <source>Matches every other error type</source>
+        <translation>מתאים לכל סוג שגיאה אחר</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
         <translation>אַזהָרָה</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
         <translation>התקן CAN bus אינו מחובר.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
         <translation>מזהה מסגרת לא חוקי.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
         <translation>המטען ריק.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
         <translation>לא מוגדר</translation>
     </message>
@@ -5574,27 +5633,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>נָכוֹן</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
         <translation>מסגרת נתונים</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
         <translation>מסגרת בקשה מרחוק</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
         <translation>מסגרת שגיאה</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
         <translation>נָכֶה</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
         <translation>לא מצוין</translation>
     </message>

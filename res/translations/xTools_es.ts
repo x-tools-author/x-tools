@@ -5418,7 +5418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>tasa de bits nominal</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>CAN FD</source>
         <translation>puede FD</translation>
     </message>
@@ -5526,12 +5525,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
         <translation>Pregunta</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="71"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
         <translation>¿Estás seguro de borrar todos los datos?</translation>
     </message>
@@ -5539,29 +5538,89 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <source>No error has occurred</source>
+        <translation>No ha ocurrido ningún error</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <source>The transmission has timed out</source>
+        <translation>La transmisión ha expirado</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <source>The frame could not be sent due to lost arbitration on the bus</source>
+        <translation>La trama no se pudo enviar por pérdida del arbitraje en el autobús.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <source>The controller encountered an error</source>
+        <translation>El controlador encontró un error.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <source>A protocol violation has occurred</source>
+        <translation>Se ha producido una violación del protocolo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <source>A transceiver error occurred</source>
+        <translation>Se produjo un error en el transceptor</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <source>The transmission received no acknowledgment</source>
+        <translation>La transmisión no recibió acuse de recibo.</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <source>The CAN bus is offline</source>
+        <translation>El bus CAN está fuera de línea</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <source>A CAN bus error occurred</source>
+        <translation>Se produjo un error en el bus CAN</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <source>The controller restarted</source>
+        <translation>El controlador se reinició</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <source>An unknown error has occurred</source>
+        <translation>Se ha producido un error desconocido</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <source>Matches every other error type</source>
+        <translation>Coincide con todos los demás tipos de error</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
         <translation>Advertencia</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="261"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
         <translation>El dispositivo de bus CAN no está conectado.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="270"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
         <translation>ID de marco no válido.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="277"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
         <translation>La carga útil está vacía.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="338"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
         <translation>no especificado</translation>
     </message>
@@ -5574,27 +5633,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>verdadero</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="373"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
         <translation>Marco de datos</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="374"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
         <translation>Marco de solicitud remota</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="375"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
         <translation>Marco de error</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="385"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
         <translation>Desactivado</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="421"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
         <translation>No especificado</translation>
     </message>
