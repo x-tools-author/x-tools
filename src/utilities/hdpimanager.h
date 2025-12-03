@@ -21,9 +21,12 @@ class HdpiManager : public QObject
 {
     Q_OBJECT
     Q_DECLARE_PRIVATE(HdpiManager)
-    Q_DISABLE_COPY_MOVE(HdpiManager)
 
     HdpiManager(QObject* parent = nullptr);
+    HdpiManager(const HdpiManager&) = delete;
+    HdpiManager& operator=(const HdpiManager&) = delete;
+    HdpiManager(HdpiManager&&) = delete;
+    HdpiManager& operator=(HdpiManager&&) = delete;
 
 public:
     ~HdpiManager() override;

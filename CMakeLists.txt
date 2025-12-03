@@ -132,6 +132,11 @@ endif()
 # Check Qt version
 if(QT_VERSION VERSION_LESS "5.9.0")
   message(FATAL_ERROR "Qt 5.9.0 or later is required")
+elseif(QT_VERSION VERSION_LESS "5.12.0")
+  include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION})
+  include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION}/QtCore)
+  include_directories(${QT_DIR}/../../../include/QtGui/${QT_VERSION})
+  include_directories(${QT_DIR}/../../../include/QtGui/${QT_VERSION}/QtGui)
 endif()
 
 # Qt 6.8.0 or later is recommended, or output a warning message
