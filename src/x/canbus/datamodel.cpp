@@ -74,8 +74,8 @@ QVariant DataModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole) {
         if (column == X_CAN_BUS_COLUMN_TIME) {
             return QString::fromLatin1("%1.%2")
-                .arg(frame.timeStamp().seconds(), 10, 10, ' ')
-                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, '0');
+                .arg(frame.timeStamp().seconds(), 10, 10, QChar(' '))
+                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QChar('0'));
         } else if (column == X_CAN_BUS_COLUMN_TYPE) {
             return item.isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
         } else if (column == X_CAN_BUS_COLUMN_FLAGS) {
