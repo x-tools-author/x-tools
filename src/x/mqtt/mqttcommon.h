@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #pragma once
 
+#include <memory>
+
 #include <QComboBox>
 #include <QMetaType>
 #include <QSpinBox>
