@@ -622,6 +622,7 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("mongoose"), QString("https://github.com/cesanta/mongoose")));
     ctxs.append(qMakePair(QString(""), QString("")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
+    ctxs.append(qMakePair(QString("nodeeditor"), QString("https://github.com/paceholder/nodeeditor")));
     ctxs.append(qMakePair(QString("QCustomPlot"), QString("https://www.qcustomplot.com/")));
     // clang-format on
 

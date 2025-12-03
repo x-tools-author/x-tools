@@ -26,28 +26,9 @@ Arch Linux can install x-tools via the [AUR](https://aur.archlinux.org/packages/
 yay -Syu x-tools
 ```
 
-## Dark theme
+## xTools Preview
 
-![xToolsDark.png](res/images/dark.png)
-
-## Light theme
-
-![xToolsLight.png](res/images/light.png)
-
-<details>
-
-<summary>🖼️More Screenshots</summary>
-
-<!-- https://github.com/ikatyang/emoji-cheat-sheet/blob/github-actions-auto-update/README.md -->
-
-![xTools.gif](res/images/gif.gif)
-![xTools.gif](res/images/xtools.gif)
-![charts.gif](res/images/charts.gif)
-![search.gif](res/images/search.png)
-![lua.png](docs/assets/images/lua.png)
-![js.png](docs/assets/images/js.png)
-
-</details>
+![xTools Video](res/xTools.gif)
 
 ## Other
 

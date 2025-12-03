@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.resize(1280, 720);
+    window.resize(1366, 768);
     window.show();
     window.moveToCenter();
     window.load();

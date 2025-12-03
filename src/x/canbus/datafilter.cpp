@@ -16,4 +16,9 @@ DataFilter::DataFilter(QObject *parent)
 
 DataFilter::~DataFilter() {}
 
+bool DataFilter::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+{
+    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+}
+
 } // namespace xCanBus

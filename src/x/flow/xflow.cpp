@@ -89,6 +89,7 @@ xFlow::xFlow(QWidget *parent)
     connect(view, &NodeEditorView::nodeCreated, this, &xFlow::onNodeCreated);
     connect(view, &NodeEditorView::nodeDeleted, this, &xFlow::onNodeDeleted);
     connect(view, &NodeEditorView::nodeUpdated, this, &xFlow::onNodeUpdated);
+    connect(view, &NodeEditorView::nodePositionUpdated, this, &xFlow::onNodePositionUpdated);
 
     connect(ui->splitterLeftRight, &QSplitter::splitterMoved, this, [=](int pos, int index) {
         this->m_leftPanelWidth = ui->splitterLeftRight->sizes().at(0);
@@ -143,6 +144,7 @@ void xFlow::load(const QJsonObject &obj)
     }
 
     updateScaleLineEdit();
+    m_navigator->update();
 }
 
 void xFlow::outputBytes(const QString &txt, int channel)
@@ -422,6 +424,11 @@ void xFlow::onNodeDeleted()
 }
 
 void xFlow::onNodeUpdated()
+{
+    m_navigator->update();
+}
+
+void xFlow::onNodePositionUpdated()
 {
     m_navigator->update();
 }

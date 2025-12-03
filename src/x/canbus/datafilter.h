@@ -18,6 +18,9 @@ class DataFilter : public QSortFilterProxyModel
 public:
     explicit DataFilter(QObject *parent = nullptr);
     ~DataFilter() override;
+
+protected:
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 };
 
 } // namespace xCanBus
