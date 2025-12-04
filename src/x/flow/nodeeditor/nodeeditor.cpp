@@ -33,6 +33,7 @@ NodeEditor::NodeEditor(QWidget *parent)
     m_view->setScaleRange(1.0, 1.0);
     setContentsMargins(0, 0, 0, 0);
     setWidget(m_view);
+    setScale(1.0);
 }
 
 NodeEditor::~NodeEditor() {}
@@ -84,9 +85,6 @@ QJsonObject NodeEditor::save()
 void NodeEditor::load(const QJsonObject &parameters)
 {
     NodeEditorParameterKeys keys;
-    m_scale = parameters.value(keys.scale).toDouble(1.0);
-    setScale(m_scale);
-
     int hValue = parameters.value(keys.hScrollBarValue).toInt(0);
     int vValue = parameters.value(keys.vScrollBarValue).toInt(0);
     horizontalScrollBar()->setValue(hValue);
@@ -99,6 +97,9 @@ void NodeEditor::load(const QJsonObject &parameters)
         auto scene = m_view->cookedScene();
         scene->nodeGeometry().recomputeSize(nodeId);
     }
+
+    m_scale = parameters.value(keys.scale).toDouble(1.0);
+    setScale(m_scale);
 }
 
 void NodeEditor::zoomIn()

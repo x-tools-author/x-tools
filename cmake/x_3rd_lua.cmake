@@ -7,12 +7,16 @@ message(STATUS "[xTools-lua] Compiler dir: ${COMPILER_DIR}")
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip)
   message(STATUS "[xTools-lua] Downloading lua")
   set(lua_url "https://github.com/lua/lua/archive/refs/tags/v${lua_version}.zip")
+  set(file_path ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip)
   file(
-    DOWNLOAD ${lua_url} ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip
+    DOWNLOAD ${lua_url} ${file_path}
     SHOW_PROGRESS
     STATUS lua_download_status)
   if(NOT lua_download_status EQUAL 0)
     message(WARNING "[xTools-lua] Failed to download lua, lua functionality will be disabled")
+    # Remove lua zip file
+    file(REMOVE ${file_path})
+    # Remove lua related source files from X_SOURCES
     file(GLOB LUA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/common/luarunner*")
     foreach(file ${LUA_FILES})
       list(REMOVE_ITEM X_SOURCES ${file})

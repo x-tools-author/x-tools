@@ -167,7 +167,11 @@ bool xFlow::event(QEvent *event)
     if (event->type() == QEvent::Resize) {
         ui->splitterLeftRight->setSizes({m_leftPanelWidth, width() - m_leftPanelWidth});
         ui->splitterTopBottom->setSizes({height() - m_bottomPanelHeight, m_bottomPanelHeight});
+    } else if (event->type() == QEvent::Show) {
+        qreal tmpScale = ui->widgetNodeEditor->scale();
+        ui->widgetNodeEditor->setScale(tmpScale);
     }
+
     return ret;
 }
 

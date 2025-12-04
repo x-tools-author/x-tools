@@ -137,7 +137,6 @@ MainWindow::MainWindow(QWidget* parent)
     qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
 
     xApp->showSplashScreenMessage(QString("Create menu bar of main window..."));
-    initMenuBar();
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
     setObjectName("MainWindow");
@@ -156,6 +155,8 @@ MainWindow::MainWindow(QWidget* parent)
     connect(&xHdpiMgr.singleton(), &xTools::HdpiManager::hdpiChanged, this, [=]() {
         tryToReboot();
     });
+
+    initMenuBar();
 }
 
 MainWindow::~MainWindow() {}
@@ -350,15 +351,22 @@ void MainWindow::initFileMenu()
 {
     auto fileMenu = menuBar()->addMenu(tr("&File"));
 #if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MAC)
-    QAction* action = fileMenu->addAction(tr("New Window"), this, []() {
+    QMenu* newMenu = fileMenu->addMenu(tr("New Window"));
+    fileMenu->addMenu(newMenu);
+    newMenu->addAction(QString("xTools"), this, []() {
         auto* w = new Page(Page::Left, xApp->settings());
         w->setWindowTitle("xTools");
         w->show();
     });
-    action->setShortcut(QKeySequence::New);
+    QList<QAction*> actions = m_layoutManager->newWindowActions();
+    for (QAction* action : actions) {
+        newMenu->addAction(action);
+    }
     fileMenu->addSeparator();
 #endif
-    action = fileMenu->addAction(tr("Save Parameters"), this, &MainWindow::onSaveActionTriggered);
+    QAction* action = fileMenu->addAction(tr("Save Parameters"),
+                                          this,
+                                          &MainWindow::onSaveActionTriggered);
     action->setShortcut(QKeySequence::Save);
     action = fileMenu->addAction(tr("Import Parameters"),
                                  this,

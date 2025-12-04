@@ -208,3 +208,41 @@ void LayoutManager::clearOutput(int channel)
     }
 #endif
 }
+
+template<typename T>
+QAction* createNewWindowAction(LayoutManager* manager, const QString& name)
+{
+    QAction* action = new QAction(name, manager);
+    QObject::connect(action, &QAction::triggered, manager, [=]() {
+        QWidget* w = new T();
+        w->setAttribute(Qt::WA_DeleteOnClose);
+        w->setWindowTitle(name);
+        w->show();
+    });
+    return action;
+}
+
+QList<QAction*> LayoutManager::newWindowActions()
+{
+    if (m_newWindowActions.isEmpty()) {
+        QAction* a = nullptr;
+#if X_ENABLE_X_MODBUS
+        a = createNewWindowAction<xModbus::xModbus>(this, QString("xModbus"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_X_CANBUS
+        a = createNewWindowAction<xCanBus::xCanBus>(this, QString("xCANBus"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_X_MQTT
+        a = createNewWindowAction<xMqtt::xMqtt>(this, QString("xMQTT"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_X_FLOW
+        a = createNewWindowAction<xFlow::xFlow>(this, QString("xFlow"));
+        m_newWindowActions.append(a);
+#endif
+    }
+
+    return m_newWindowActions;
+}

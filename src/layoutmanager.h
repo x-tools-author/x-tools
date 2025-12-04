@@ -12,6 +12,7 @@
 #include <QHBoxLayout>
 #include <QJsonObject>
 #include <QLabel>
+#include <QList>
 #include <QMenuBar>
 #include <QObject>
 #include <QStackedLayout>
@@ -56,6 +57,7 @@ public:
 
     void outputBytes(const QString& txt, int channel);
     void clearOutput(int channel);
+    QList<QAction*> newWindowActions();
 
 private:
     QStackedLayout* m_layout{nullptr};
@@ -66,6 +68,7 @@ private:
     QLabel* m_rightLabel{nullptr};
     QMenuBar* m_mainMenuBar{nullptr};
     QHash<QWidget*, QToolButton*> m_pageButtons;
+    QList<QAction*> m_newWindowActions;
 
 private:
 #if X_ENABLE_X_FLOW
