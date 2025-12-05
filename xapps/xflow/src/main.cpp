@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     window.show();
     window.resize(1366, 768);
     window.moveToCenter();
+    window.load();
 
     int ret = app.exec();
 #if X_ENABLE_HID

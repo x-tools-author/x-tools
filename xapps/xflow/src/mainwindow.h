@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "x/xui.h"
+#include <x/xui.h>
 
 namespace xFlow {
 class xFlow;
@@ -18,7 +18,14 @@ class MainWindow : public xUi
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+    void load();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     xFlow::xFlow *m_flow{nullptr};
+
+private:
+    void save();
 };
