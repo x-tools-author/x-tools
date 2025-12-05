@@ -52,6 +52,8 @@ void xUi::initMenuBar()
 {
     m_optionMenu = menuBar()->addMenu(tr("Option"));
     m_viewMenu = menuBar()->addMenu(tr("View"));
+    QAction *languageAction = menuBar()->addMenu(xI18n.languageMenu());
+    languageAction->setText(tr("Language"));
     m_helpMenu = menuBar()->addMenu(tr("Help"));
 
     initMenuBarOption();
@@ -61,18 +63,8 @@ void xUi::initMenuBar()
 
 void xUi::initMenuBarOption()
 {
-    initMenuBarOptionLanguage();
     m_optionMenu->addSeparator();
     initMenuBarOptionSetting();
-}
-
-void xUi::initMenuBarOptionLanguage()
-{
-    QMenu *lanuageMenu = xI18n.languageMenu();
-    if (lanuageMenu) {
-        lanuageMenu->setTitle(tr("Language"));
-        m_optionMenu->addMenu(lanuageMenu);
-    }
 }
 
 void xUi::initMenuBarOptionSetting()

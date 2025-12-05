@@ -30,7 +30,9 @@
 
 xApp::xApp(int &argc, char **argv)
     : QApplication(argc, argv)
-{}
+{
+    xI18n.setupSettings(settings());
+}
 
 xApp::~xApp() {}
 
