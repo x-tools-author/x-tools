@@ -33,7 +33,7 @@ public:
     explicit xApp(int &argc, char **argv);
     ~xApp() override;
 
-    QSettings *settings();
+    static QSettings *settings();
     QString settingsPath();
     QVariant value(QAnyStringView key, const QVariant &defaultValue = QVariant());
     void setValue(QAnyStringView key, const QVariant &value);
@@ -45,7 +45,11 @@ public:
     void execMs(int ms);
     void tryToReboot();
 
-    void setupHdpi();
+    static void setupHdpi();
     void setupLanguage();
     void setupTheme();
+    void setupAppStyle();
+
+    static void installLog(const char *argv0);
+    static void uninstallLog();
 };

@@ -11,7 +11,6 @@
 
 #include <QSettings>
 
-#include "application.h"
 #include "logdockwidgetcontentmodel.h"
 #include "logdockwidgetcontentmodelfilter.h"
 
@@ -35,6 +34,7 @@ LogDockWidgetContent::LogDockWidgetContent(QWidget *parent)
     ui->comboBoxLogLevel->addItem(tr("Warning"), QtWarningMsg);
     ui->comboBoxLogLevel->addItem(tr("Critical"), QtCriticalMsg);
     ui->comboBoxLogLevel->addItem(tr("Fatal"), QtFatalMsg);
+#if 0
     connect(ui->comboBoxLogLevel, &QComboBox::currentIndexChanged, [=]() {
         QtMsgType level = static_cast<QtMsgType>(ui->comboBoxLogLevel->currentData().toInt());
         filterModel->setMessagesLevel(level);
@@ -50,6 +50,7 @@ LogDockWidgetContent::LogDockWidgetContent(QWidget *parent)
     int level = settings->value("Log/level", QtDebugMsg).toInt();
     int index = ui->comboBoxLogLevel->findData(level);
     ui->comboBoxLogLevel->setCurrentIndex(index < 0 ? 0 : index);
+#endif
 }
 
 LogDockWidgetContent::~LogDockWidgetContent()

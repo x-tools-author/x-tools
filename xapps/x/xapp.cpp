@@ -160,3 +160,9 @@ void xApp::setupTheme()
     xThemeMgr.setupSettings(settings());
     xThemeMgr.updateApplicationColor();
 }
+
+void xApp::setupAppStyle() {}
+
+void xApp::installLog(const char *argv0) {}
+
+void xApp::uninstallLog() {}
