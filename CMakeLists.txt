@@ -135,6 +135,7 @@ endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
 
+# --------------------------------------------------------------------------------------------------
 # Set macOS deployment target (minimum macOS version)
 if(APPLE AND NOT IOS)
   # Set minimum macOS version - you can adjust this as needed Common options: 12.0 (Monterey), 13.0
