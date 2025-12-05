@@ -13,8 +13,6 @@
 #include <hidapi.h>
 #endif
 
-#include "common/nativeeventfilter.h"
-
 int main(int argc, char *argv[])
 {
     Application::setOrganizationName("xFlow");
@@ -27,10 +25,6 @@ int main(int argc, char *argv[])
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();
     app.setupColorScheme();
-
-#ifdef Q_OS_WIN
-    app.installNativeEventFilter(new xTools::NativeEventFilter());
-#endif
 
 #if X_ENABLE_HID
     hid_init();

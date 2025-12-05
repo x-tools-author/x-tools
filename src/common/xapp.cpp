@@ -27,6 +27,7 @@
 #include <QTimer>
 #include <QTranslator>
 
+#include "nativeeventfilter.h"
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
@@ -66,6 +67,10 @@ xApp::xApp(int &argc, char **argv)
             qInfo() << "The data.json is removed.";
         }
     }
+
+#ifdef Q_OS_WIN
+    installNativeEventFilter(new xTools::NativeEventFilter());
+#endif
 }
 
 xApp::~xApp() {}

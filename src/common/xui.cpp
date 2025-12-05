@@ -201,7 +201,7 @@ void xUi::initMenuBarHelpGrab()
 void xUi::showAboutInfo()
 {
     QString info;
-    info += qApp->applicationName() + " v" + qApp->applicationVersion() + "\n\n";
+    info += qApp->applicationName() + " " + qApp->applicationVersion() + "\n\n";
 
 #if defined(X_GIT_COMMIT_TIME)
     QString commitTime = QString(X_GIT_COMMIT_TIME);
