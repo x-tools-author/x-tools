@@ -11,13 +11,9 @@
 #include <atomic>
 
 #include <QJsonObject>
-#include <QMap>
 #include <QModbusClient>
-#include <QModbusDataUnit>
-#include <QModbusServer>
 #include <QMutex>
 #include <QThread>
-#include <QTimer>
 
 #include "modbuscommon.h"
 #include "modbusregister.h"

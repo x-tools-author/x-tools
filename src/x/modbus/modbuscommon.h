@@ -11,9 +11,6 @@
 #include <QComboBox>
 #include <QJsonObject>
 #include <QModbusDataUnit>
-#include <QModelIndex>
-#include <QSerialPort>
-#include <QWidget>
 
 #define xMainWindow xModbus::topLevelMainWindow()
 
