@@ -93,12 +93,10 @@ bool NodeEditorRuler::eventFilter(QObject* watched, QEvent* event)
         updateRuler();
     } else if (watched == m_editor && event->type() == QEvent::Resize) {
         updateRuler();
-    } else if (watched == m_view && event->type() == QEvent::MouseMove) {
-        update();
-    } else if (watched == m_editor && event->type() == QEvent::MouseMove) {
-        update();
-    } else if (watched == m_view->viewport() && event->type() == QEvent::MouseMove) {
-        update();
+    } else if (event->type() == QEvent::MouseMove) {
+        if (watched == m_view || watched == m_editor || watched == m_view->viewport()) {
+            update();
+        }
     }
 
     return QWidget::eventFilter(watched, event);

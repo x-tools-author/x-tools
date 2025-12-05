@@ -9,8 +9,9 @@
 #include <QDebug>
 #include <QMessageBox>
 
-#include "application.h"
 #include "common/nativeeventfilter.h"
+
+#include "application.h"
 #include "mainwindow.h"
 
 #if X_ENABLE_HID
