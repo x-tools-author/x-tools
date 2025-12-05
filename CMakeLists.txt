@@ -5,23 +5,23 @@ set(QT_NO_PRIVATE_MODULE_WARNING CACHE BOOL "Suppress Qt private module warnings
 # cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
-# cmake-format: off
-# Using vcpkg, you must set the environment variable VCPKG_ROOT first
+# * Using vcpkg, you must set the environment variable VCPKG_ROOT first
+# * You can set VCPKG_TARGET_TRIPLET value to specify the vcpkg triplet, such as x64-windows,
+#   x64-windows-static, etc.
 option(X_USING_VCPKG "Using vcpkg" OFF)
 if(X_USING_VCPKG)
-  set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "vcpkg target triplet")
-  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Please specify your own vcpkg file")
-  if(${VCPKG_TARGET_TRIPLET} STREQUAL "x64-windows-static")
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-  endif()
+  set(CMAKE_TOOLCHAIN_FILE
+      "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      CACHE STRING "Please specify your own vcpkg.cmake file")
 endif()
-# cmake-format: on
 
 # --------------------------------------------------------------------------------------------------
-# cmake-format: off
 # Project settings
-project(xTools VERSION 7.0 LANGUAGES C CXX DESCRIPTION "xTools - All in one toolbox for developers and engineers.")
-# cmake-format: on
+project(
+  xTools
+  VERSION 7.0
+  LANGUAGES C CXX
+  DESCRIPTION "xTools - All in one debugging and development tools")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -43,6 +43,13 @@ include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
 x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
 x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
 x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
+if(NOT DEFINED X_LATEST_GIT_TAG)
+  set(X_LATEST_GIT_TAG "9.9.9")
+endif()
+if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  # Remove "v" prefix if exists
+  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Target platform
@@ -60,7 +67,9 @@ message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
 # --------------------------------------------------------------------------------------------------
-# Qt module
+# Qt6 is preferred, but Qt5 is also supported
+find_package(QT NAMES Qt5 Qt6 REQUIRED)
+# Qt modules
 list(APPEND X_QT_COMPONENTS Gui)
 list(APPEND X_QT_COMPONENTS Svg)
 list(APPEND X_QT_COMPONENTS Qml)
@@ -68,68 +77,23 @@ list(APPEND X_QT_COMPONENTS Core)
 list(APPEND X_QT_COMPONENTS Widgets)
 list(APPEND X_QT_COMPONENTS Network)
 list(APPEND X_QT_COMPONENTS LinguistTools)
-
-# Qt6 is preferred, but Qt5 is also supported
-find_package(QT NAMES Qt5 Qt6 REQUIRED)
 if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
   list(APPEND X_QT_COMPONENTS CorePrivate)
   list(APPEND X_QT_COMPONENTS GuiPrivate)
 endif()
-
+# Find Qt modules
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${X_QT_COMPONENTS})
 set(X_LIBS Qt${QT_VERSION_MAJOR}::Core)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Gui)
-if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
-  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
-  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
-endif()
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Svg)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Qml)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
-
-# --------------------------------------------------------------------------------------------------
-# Global settings
-set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
-set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
-set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
-message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
-message(STATUS "------------------------------------------------------------")
-
-# Do not change X_MAGIC option unless you know what you are doing
-option(X_MAGIC "The magic option..." OFF)
-if(X_MAGIC)
-  add_compile_definitions(X_MAGIC)
+if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::CorePrivate)
+  list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
 endif()
 
-# Do not change X_LATEST_GIT_TAG unless you know what you are doing
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
-if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
-  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
-endif()
-string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
-
-# Set macOS deployment target (minimum macOS version)
-if(APPLE AND NOT IOS)
-  # Set minimum macOS version - you can adjust this as needed Common options: 12.0 (Monterey), 13.0
-  # (Ventura), 14.0 (Sonoma), 15.0 (Sequoia), 26.0 (Tahoe)
-  if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
-    # cmake-format: off
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING "Minimum macOS deployment version")
-    # cmake-format: on
-  endif()
-
-  if(QT_VERSION VERSION_LESS "6.0.0")
-    set(CMAKE_OSX_ARCHITECTURES "x86_64")
-  else()
-    set(CMAKE_OSX_ARCHITECTURES "arm64")
-  endif()
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# Check Qt version
 if(QT_VERSION VERSION_LESS "5.9.0")
   message(FATAL_ERROR "Qt 5.9.0 or later is required")
 elseif(QT_VERSION VERSION_LESS "5.12.0")
@@ -154,13 +118,54 @@ if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# * Don't change X_STATIC_VC_RUNTIME_LIBRARY option unless you know what you are doing.
-# * QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
+# Global settings
+set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
+set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
+set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
+message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
+message(STATUS "------------------------------------------------------------")
+
+# Do not change X_MAGIC option unless you know what you are doing
+option(X_MAGIC "The magic option..." OFF)
+if(X_MAGIC)
+  add_compile_definitions(X_MAGIC)
+endif()
+
+# Do not change X_LATEST_GIT_TAG unless you know what you are doing
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+if(${QT_VERSION} VERSION_LESS "6.0.0" AND WIN32)
+  set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
+endif()
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
+
+# Set macOS deployment target (minimum macOS version)
+if(APPLE AND NOT IOS)
+  # Set minimum macOS version - you can adjust this as needed Common options: 12.0 (Monterey), 13.0
+  # (Ventura), 14.0 (Sonoma), 15.0 (Sequoia), 26.0 (Tahoe)
+  if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+    # cmake-format: off
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING "Minimum macOS deployment version")
+    # cmake-format: on
+  endif()
+
+  if(QT_VERSION VERSION_LESS "6.0.0")
+    set(CMAKE_OSX_ARCHITECTURES "x86_64")
+  else()
+    set(CMAKE_OSX_ARCHITECTURES "arm64")
+  endif()
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# QT_TARGET_TYPE is SHARED_LIBRARY or STATIC_LIBRARY
 get_target_property(QT_TARGET_TYPE Qt${QT_VERSION_MAJOR}::Core TYPE)
-option(X_STATIC_VC_RUNTIME_LIBRARY "Using static vc runtime library" OFF)
 if(WIN32 AND MSVC)
-  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY" AND X_STATIC_VC_RUNTIME_LIBRARY)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  if(QT_TARGET_TYPE STREQUAL "STATIC_LIBRARY")
+    option(X_STATIC_VC_LIBS "Do not change the option unless you know what you are doing" OFF)
+    if(X_STATIC_VC_LIBS)
+      set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    endif()
   endif()
 endif()
 
@@ -172,16 +177,7 @@ file(GLOB_RECURSE X_SOURCES_CPP "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE X_SOURCES_UI "${CMAKE_CURRENT_SOURCE_DIR}/src/*.ui")
 set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP} ${X_SOURCES_UI})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
-
-# --------------------------------------------------------------------------------------------------
-# if X_LATEST_GIT_TAG contain "v", remove it...
-if(NOT DEFINED X_LATEST_GIT_TAG)
-  set(X_LATEST_GIT_TAG "9.9.9")
-endif()
-# Remove "v" prefix if exists
-if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
-  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
-endif()
+list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
@@ -191,6 +187,7 @@ if(NOT ${X_APP} STREQUAL "xTools")
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Setup 3rd party libraries and Qt modules
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 
@@ -198,29 +195,11 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 # xTools application
 set(bin ${X_BINS_DIR}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-
-# Apple platforms settings
-if(APPLE)
-  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
-  set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
-  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
-  list(APPEND X_SOURCES ${xTools_ICON})
-endif()
-
-if(WIN32)
-  list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
-endif()
-
-# Inner xApps
-include(${CMAKE_SOURCE_DIR}/cmake/x_apps.cmake)
-
-# xTools
 x_add_executable(xTools ${X_SOURCES})
 x_output_env(xTools)
 x_deploy_qt(xTools)
 x_deploy_resources(xTools)
 x_generate_translations(xTools)
-
 target_link_libraries(xTools PRIVATE ${X_LIBS})
 get_target_property(X_LIBS_LINKED_LIBS xTools LINK_LIBRARIES)
 message(STATUS "[xTools] xTools linked libs: ${X_LIBS_LINKED_LIBS}")
@@ -245,8 +224,10 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Android
 if(ANDROID)
-  set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
-  set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
+  if(NOT QT_VERSION VERSION_LESS "6.8.0")
+    set(x_android_source ${CMAKE_SOURCE_DIR}/res/android/6.8)
+    set_target_properties(xTools PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR ${x_android_source})
+  endif()
 endif()
 
 # --------------------------------------------------------------------------------------------------
@@ -260,6 +241,12 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Apple (macOS, iOS...)
 if(APPLE)
+  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+  set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
+  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  target_sources(xTools PRIVATE ${xTools_ICON})
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
+
   set_target_properties(
     xTools
     PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
@@ -287,14 +274,8 @@ if(APPLE)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# otiose
-option(X_ENABLE_OTIOSE "Build otiose module" OFF)
+# Otiose(Just for test)
+option(X_ENABLE_OTIOSE "Do not change the option unless you know what you are doing" OFF)
 if(X_ENABLE_OTIOSE)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
-endif()
-
-# --------------------------------------------------------------------------------------------------
-# ???(I don't know why)
-if(QT_VERSION_MAJOR EQUAL 6)
-  qt_finalize_target(xTools)
 endif()

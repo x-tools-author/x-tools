@@ -1,10 +1,10 @@
-file(GLOB x_files "${CMAKE_SOURCE_DIR}/xapps/x/*.*")
-file(GLOB x_utilities "${CMAKE_SOURCE_DIR}/src/utilities/*.*")
-set(X_COMMON_FILES ${x_files} ${x_utilities})
-
 if(QT_VERSION VERSION_LESS "6.8.0")
   return()
 endif()
+
+file(GLOB x_files "${CMAKE_SOURCE_DIR}/xapps/x/*.*")
+file(GLOB x_utilities "${CMAKE_SOURCE_DIR}/src/utilities/*.*")
+set(X_COMMON_FILES ${x_files} ${x_utilities})
 
 set(X_APPS "xTools")
 list(APPEND X_APPS "xSvg")
