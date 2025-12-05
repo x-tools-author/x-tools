@@ -28,7 +28,7 @@ CanBusAssistant::CanBusAssistant(QWidget* parent)
 {
     ui->setupUi(this);
     if (!m_settings) {
-        m_settings = xApp->settings();
+        m_settings = xAPP->settings();
     }
 
     initUi();

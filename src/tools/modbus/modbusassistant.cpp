@@ -125,7 +125,7 @@ ModbusAssistant::ModbusAssistant(QWidget *parent)
     , m_keyCtx(new ModbusSettingKeys)
     , m_textFormat(static_cast<int>(TextFormat::Dec))
 {
-    m_settings = xApp->settings();
+    m_settings = xAPP->settings();
 
     ui->setupUi(this);
 

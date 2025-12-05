@@ -33,14 +33,6 @@
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
 
-struct xAppParameterKeys
-{
-    const QString hdpi{"Application/hdpi"};
-    const QString language{"Application/language"};
-    const QString theme{"Application/theme"};
-    const QString clearSettings{"Application/clearSettings"};
-};
-
 xApp::xApp(int &argc, char **argv)
     : QApplication(argc, argv)
 {
@@ -55,7 +47,7 @@ xApp::xApp(int &argc, char **argv)
     QApplication::setApplicationVersion("0.0.0");
 #endif
 
-    const xAppParameterKeys keys;
+    const ParameterKeys keys;
     bool clearSettings = xAPP->settings()->value(keys.clearSettings, false).toBool();
     if (clearSettings) {
         xAPP->settings()->clear();

@@ -103,16 +103,16 @@ MainWindow::MainWindow(QWidget* parent)
 
     winId();
     QSettings* settings = Application::settings();
-    xApp->showSplashScreenMessage(QString("Create page 1..."));
+    xAPP->showSplashScreenMessage(QString("Create page 1..."));
     m_ioPage00 = new Page(Page::Left, settings, this);
-    xApp->showSplashScreenMessage(QString("Create page 2..."));
+    xAPP->showSplashScreenMessage(QString("Create page 2..."));
     m_ioPage01 = new Page(Page::Right, settings, this);
-    xApp->showSplashScreenMessage(QString("Create page 3..."));
+    xAPP->showSplashScreenMessage(QString("Create page 3..."));
     m_ioPage10 = new Page(Page::Left, settings, this);
-    xApp->showSplashScreenMessage(QString("Create page 4..."));
+    xAPP->showSplashScreenMessage(QString("Create page 4..."));
     m_ioPage11 = new Page(Page::Right, settings, this);
 
-    xApp->showSplashScreenMessage(QString("Create main window..."));
+    xAPP->showSplashScreenMessage(QString("Create main window..."));
     QWidget* ioLayoutWidget = new QWidget();
     auto* layout = new QGridLayout(ioLayoutWidget);
     layout->setSpacing(0);
@@ -136,7 +136,7 @@ MainWindow::MainWindow(QWidget* parent)
     updateGrid(m_windowGrid);
     qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
 
-    xApp->showSplashScreenMessage(QString("Create menu bar of main window..."));
+    xAPP->showSplashScreenMessage(QString("Create menu bar of main window..."));
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
     setObjectName("MainWindow");
@@ -165,7 +165,7 @@ void MainWindow::load(const QString& fileName)
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xApp->settingsPath();
+        const QString path = xAPP->settingsPath();
         filePath = path + "/data.json";
     }
 
@@ -214,7 +214,7 @@ void MainWindow::save(const QString& fileName) const
 
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xApp->settingsPath();
+        const QString path = xAPP->settingsPath();
         filePath = path + "/data.json";
     }
 
@@ -254,7 +254,7 @@ void MainWindow::updateGrid(WindowGrid grid)
     }
 
     m_windowGrid = grid;
-    xApp->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
+    xAPP->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
 void MainWindow::moveToCenter()
@@ -310,7 +310,7 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
     save();
 
-    QSettings* settings = xApp->settings();
+    QSettings* settings = xAPP->settings();
     settings->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
 
 #ifdef Q_OS_WIN
@@ -331,19 +331,19 @@ QUrl MainWindow::storeUrl() const
 
 void MainWindow::initMenuBar()
 {
-    xApp->showSplashScreenMessage(QString("Create file menu..."));
+    xAPP->showSplashScreenMessage(QString("Create file menu..."));
     initFileMenu();
 #if !defined(Q_OS_ANDROID)
-    xApp->showSplashScreenMessage(QString("Create tools menu..."));
+    xAPP->showSplashScreenMessage(QString("Create tools menu..."));
     initToolMenu();
 #endif
-    xApp->showSplashScreenMessage(QString("Create option menu..."));
+    xAPP->showSplashScreenMessage(QString("Create option menu..."));
     initOptionMenu();
-    xApp->showSplashScreenMessage(QString("Create view menu..."));
+    xAPP->showSplashScreenMessage(QString("Create view menu..."));
     initViewMenu();
-    xApp->showSplashScreenMessage(QString("Create language menu..."));
+    xAPP->showSplashScreenMessage(QString("Create language menu..."));
     initMenuLanguage();
-    xApp->showSplashScreenMessage(QString("Create help menu..."));
+    xAPP->showSplashScreenMessage(QString("Create help menu..."));
     initHelpMenu();
 }
 
@@ -354,7 +354,7 @@ void MainWindow::initFileMenu()
     QMenu* newMenu = fileMenu->addMenu(tr("New Window"));
     fileMenu->addMenu(newMenu);
     newMenu->addAction(QString("xTools"), this, []() {
-        auto* w = new Page(Page::Left, xApp->settings());
+        auto* w = new Page(Page::Left, xAPP->settings());
         w->setWindowTitle("xTools");
         w->show();
     });
@@ -436,19 +436,19 @@ void MainWindow::initOptionMenu()
 
     auto* proxy = optionMenu->addAction(tr("Use System Proxy"));
     proxy->setCheckable(true);
-    bool useSystemProxy = xApp->settings()->value(m_settingsKey.useSystemProxy).toBool();
+    bool useSystemProxy = xAPP->settings()->value(m_settingsKey.useSystemProxy).toBool();
     proxy->setChecked(useSystemProxy);
     QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
     connect(proxy, &QAction::triggered, this, [=]() {
         QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
-        xApp->settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
+        xAPP->settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
     });
 
     auto* trayAction = new QAction(tr("Exit to System Tray"), this);
     trayAction->setCheckable(true);
     optionMenu->addAction(trayAction);
 
-    QVariant v = xApp->settings()->value(m_settingsKey.exitToSystemTray);
+    QVariant v = xAPP->settings()->value(m_settingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         trayAction->setChecked(isExitToSystemTray);
@@ -456,7 +456,7 @@ void MainWindow::initOptionMenu()
 
     connect(trayAction, &QAction::triggered, this, [=]() {
         bool keep = trayAction->isChecked();
-        xApp->settings()->setValue(m_settingsKey.exitToSystemTray, keep);
+        xAPP->settings()->setValue(m_settingsKey.exitToSystemTray, keep);
     });
 }
 
@@ -476,13 +476,13 @@ void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
 
     auto clearAction = settingsMenu->addAction(tr("Clear Settings"));
     connect(clearAction, &QAction::triggered, this, [=]() {
-        xApp->settings()->setValue(Application::SettingsKey().clearSettings, true);
+        xAPP->settings()->setValue(Application::ParameterKeys().clearSettings, true);
         tryToReboot(true);
     });
 
     auto openAction = settingsMenu->addAction(tr("Open Settings Directory"));
     connect(openAction, &QAction::triggered, this, [=]() {
-        QDesktopServices::openUrl(xApp->settingsPath());
+        QDesktopServices::openUrl(xAPP->settingsPath());
     });
 }
 
@@ -550,7 +550,7 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
     group->addAction(a2x2);
 
     int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    int windowGrid = xApp->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
+    int windowGrid = xAPP->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
     m_windowGrid = static_cast<WindowGrid>(windowGrid);
     updateGrid(m_windowGrid);
     if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
@@ -574,12 +574,12 @@ void MainWindow::initViewMenuStayOnTop(QMenu* viewMenu)
             setWindowFlag(Qt::WindowStaysOnTopHint, false);
         }
 
-        xApp->settings()->setValue(m_settingsKey.staysOnTop, action->isChecked());
+        xAPP->settings()->setValue(m_settingsKey.staysOnTop, action->isChecked());
         show();
     });
     action->setCheckable(true);
 #if 0
-    bool staysOnTop = xApp->settings()->value(m_settingsKey.staysOnTop, false).toBool();
+    bool staysOnTop = xAPP->settings()->value(m_settingsKey.staysOnTop, false).toBool();
     action->setChecked(staysOnTop);
 #endif
 }
@@ -716,7 +716,7 @@ void MainWindow::tryToReboot(bool doNotReboot)
             QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
         }
 
-        xApp->execMs(100);
+        xAPP->execMs(100);
         qApp->closeAllWindows();
     }
 }

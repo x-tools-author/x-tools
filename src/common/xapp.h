@@ -19,6 +19,15 @@ class xApp : public QApplication
 {
     Q_OBJECT
 public:
+    struct ParameterKeys
+    {
+        const QString hdpi{"Application/hdpi"};
+        const QString language{"Application/language"};
+        const QString theme{"Application/theme"};
+        const QString clearSettings{"Application/clearSettings"};
+    };
+
+public:
     explicit xApp(int &argc, char **argv);
     ~xApp() override;
 

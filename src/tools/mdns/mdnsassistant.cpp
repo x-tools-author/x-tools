@@ -132,7 +132,7 @@ void MdnsAssistant::setUiState(bool isRunning)
 
 void MdnsAssistant::loadSettings()
 {
-    QSettings *settings = xApp->settings();
+    QSettings *settings = xAPP->settings();
 
     auto hexString = settings->value(m_settingKeys.serviceTypes).toString().toLatin1();
     QByteArray json = QByteArray::fromHex(hexString);
@@ -154,7 +154,7 @@ void MdnsAssistant::loadSettings()
 
 void MdnsAssistant::saveSettings()
 {
-    QSettings *settings = xApp->settings();
+    QSettings *settings = xAPP->settings();
 
     QVariantList list;
     for (int i = 0; i < ui->comboBox->count(); i++) {
