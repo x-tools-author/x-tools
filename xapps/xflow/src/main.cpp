@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     app.setupLanguage();
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();
-    app.setupTheme();
+    app.setupColorScheme();
 
 #ifdef Q_OS_WIN
     app.installNativeEventFilter(new xTools::NativeEventFilter());

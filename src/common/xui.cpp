@@ -50,19 +50,21 @@ void xUi::moveToCenter()
 
 void xUi::initMenuBar()
 {
-    m_optionMenu = menuBar()->addMenu(tr("Option"));
-    m_viewMenu = menuBar()->addMenu(tr("View"));
-    QAction *languageAction = menuBar()->addMenu(xI18n.languageMenu());
-    languageAction->setText(tr("Language"));
-    m_helpMenu = menuBar()->addMenu(tr("Help"));
-
+    initMenuBarFile();
     initMenuBarOption();
     initMenuBarView();
+    initMenuBarLanguage();
     initMenuBarHelp();
+}
+
+void xUi::initMenuBarFile()
+{
+    m_fileMenu = menuBar()->addMenu(tr("File"));
 }
 
 void xUi::initMenuBarOption()
 {
+    m_optionMenu = menuBar()->addMenu(tr("Option"));
     m_optionMenu->addSeparator();
     initMenuBarOptionSetting();
 }
@@ -82,6 +84,7 @@ void xUi::initMenuBarOptionSetting()
 
 void xUi::initMenuBarView()
 {
+    m_viewMenu = menuBar()->addMenu(tr("View"));
     initMenuBarViewHdpi();
     initMenuBarViewTheme();
     m_viewMenu->addSeparator();
@@ -121,8 +124,16 @@ void xUi::initializeMenuBarViewStaysOnTop()
     });
 }
 
+void xUi::initMenuBarLanguage()
+{
+    m_languageMenu = xI18n.languageMenu();
+    menuBar()->addMenu(m_languageMenu);
+    m_languageMenu->setTitle(tr("Language"));
+}
+
 void xUi::initMenuBarHelp()
 {
+    m_helpMenu = menuBar()->addMenu(tr("Help"));
     QAction *aboutQtAction = m_helpMenu->addAction(tr("About Qt"));
     connect(aboutQtAction, &QAction::triggered, this, []() { QApplication::aboutQt(); });
 

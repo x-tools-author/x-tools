@@ -8,41 +8,16 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QApplication>
+#include "common/xapp.h"
+
 #include <QSettings>
 #include <QSplashScreen>
 
-#define xApp (static_cast<Application *>(QCoreApplication::instance()))
-
-class ApplicationPrivate;
-class Application : public QApplication
+class Application : public xApp
 {
     Q_OBJECT
 public:
-    struct SettingsKey
-    {
-        const QString clearSettings{"Application/clearSettings"};
-    };
-
-signals:
-    void languageChanged();
-
-public:
     explicit Application(int &argc, char **argv);
-
-    static void installLog(char *argv0);
-    static void uninstallLog();
-    static void setupHdpi();
-    static QSettings *settings();
-    static QString settingsPath();
-
-    void setupAppStyle();
-    void execMs(int ms);
-    void setupLanguage();
-    void setupColorScheme();
-
-    QSplashScreen *splashScreen();
-    Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
 
     QString left2rightTips() const;
     QString right2leftTips() const;

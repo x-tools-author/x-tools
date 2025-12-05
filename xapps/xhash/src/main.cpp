@@ -8,9 +8,9 @@
  **************************************************************************************************/
 #include <QDateTime>
 
+#include "common/xapp.h"
+#include "common/xui.h"
 #include "tools/filecheck/filecheckassistant.h"
-#include "x/xapp.h"
-#include "x/xui.h"
 
 int main(int argc, char *argv[])
 {

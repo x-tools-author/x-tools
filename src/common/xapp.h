@@ -19,37 +19,23 @@ class xApp : public QApplication
 {
     Q_OBJECT
 public:
-    struct SettingKeys
-    {
-        const QString hdpi{"Application/hdpi"};
-        const QString language{"Application/language"};
-        const QString theme{"Application/theme"};
-    };
-
-signals:
-    void languageChanged();
-
-public:
     explicit xApp(int &argc, char **argv);
     ~xApp() override;
 
+    static void installLog(char *argv0);
+    static void uninstallLog();
+    static void setupHdpi();
     static QSettings *settings();
-    QString settingsPath();
-    QVariant value(QAnyStringView key, const QVariant &defaultValue = QVariant());
-    void setValue(QAnyStringView key, const QVariant &value);
-    QString appLanguageFlag();
+    static QString settingsPath();
+
+    void setupAppStyle();
+    void setupLanguage();
+    void setupColorScheme();
+    void execMs(int ms);
 
     QSplashScreen *splashScreen();
-    void showSplashScreenMessage(const QString &msg);
+    Q_INVOKABLE void showSplashScreenMessage(const QString &msg);
 
-    void execMs(int ms);
-    void tryToReboot();
-
-    static void setupHdpi();
-    void setupLanguage();
-    void setupTheme();
-    void setupAppStyle();
-
-    static void installLog(const char *argv0);
-    static void uninstallLog();
+signals:
+    void languageChanged();
 };
