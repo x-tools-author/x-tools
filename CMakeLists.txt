@@ -94,6 +94,11 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
 endif()
 
+# Do something for Qt5(vc++)
+if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
+  add_compile_options(/execution-charset:utf-8)
+endif()
+
 if(QT_VERSION VERSION_LESS "5.9.0")
   message(FATAL_ERROR "Qt 5.9.0 or later is required")
 elseif(QT_VERSION VERSION_LESS "5.12.0")
@@ -103,18 +108,8 @@ elseif(QT_VERSION VERSION_LESS "5.12.0")
   include_directories(${QT_DIR}/../../../include/QtGui/${QT_VERSION}/QtGui)
 endif()
 
-# Qt 6.8.0 or later is recommended, or output a warning message
 if(QT_VERSION VERSION_LESS "6.8.0")
-  if(ANDROID)
-    message(FATAL_ERROR "Qt 6.8.0 or later is required for Android platform")
-  else()
-    message(WARNING "Qt 6.8.0 or later is recommended")
-  endif()
-endif()
-
-# Do something for Qt5(vc++)
-if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
-  add_compile_options(/execution-charset:utf-8)
+  message(WARNING "Qt 6.8.0 or later is recommended or some functions will be disabled")
 endif()
 
 # --------------------------------------------------------------------------------------------------
