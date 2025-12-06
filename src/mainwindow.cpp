@@ -41,11 +41,9 @@
 #include <QWidgetAction>
 
 #include "application.h"
-#include "common/xtools.h"
 #include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
-#include "utilities/compatibility.h"
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
@@ -358,9 +356,9 @@ void MainWindow::initFileMenu()
         w->setWindowTitle("xTools");
         w->show();
     });
-    QList<QAction*> actions = m_layoutManager->newWindowActions();
-    for (QAction* action : actions) {
-        newMenu->addAction(action);
+    const QList<QAction*> actions = m_layoutManager->newWindowActions();
+    for (int i = 0; i < actions.count(); i++) {
+        newMenu->addAction(actions.at(i));
     }
     fileMenu->addSeparator();
 #endif
