@@ -53,10 +53,10 @@ LuaPanel::LuaPanel(QWidget *parent)
     onTestFormatChanged();
     onResultFormatChanged();
 
-    auto ret = new xTools::SyntaxHighlighterLua(ui->plainTextEditScriptTable->document());
-    Q_UNUSED(ret);
-    ret = new xTools::SyntaxHighlighterLua(ui->plainTextEditScriptString->document());
-    Q_UNUSED(ret);
+    m_syntaxHighlighterTable = new xTools::SyntaxHighlighterLua(
+        ui->plainTextEditScriptTable->document());
+    m_syntaxHighlighterString = new xTools::SyntaxHighlighterLua(
+        ui->plainTextEditScriptString->document());
 }
 
 LuaPanel::~LuaPanel()

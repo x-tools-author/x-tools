@@ -12,6 +12,10 @@ namespace Ui {
 class LuaPanel;
 }
 
+namespace xTools {
+class SyntaxHighlighterLua;
+}
+
 class LuaRunner;
 class LuaPanel : public Panel
 {
@@ -32,6 +36,8 @@ private:
     LuaRunner *m_luaRunner;
     const QByteArray m_testData{"Hello, Lua!"};
     QByteArray m_resultData;
+    xTools::SyntaxHighlighterLua *m_syntaxHighlighterTable;
+    xTools::SyntaxHighlighterLua *m_syntaxHighlighterString;
 
 private:
     void onDefaultLuaScriptTriggered();
