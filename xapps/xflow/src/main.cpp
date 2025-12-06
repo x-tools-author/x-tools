@@ -15,7 +15,7 @@
 
 int main(int argc, char *argv[])
 {
-    Application::setOrganizationName("xFlow");
+    Application::setOrganizationName("xTools");
     Application::setApplicationName("xFlow");
     Application::installLog(argv[0]);
     Application::setupHdpi();

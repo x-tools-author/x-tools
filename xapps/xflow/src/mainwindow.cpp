@@ -40,10 +40,12 @@ void MainWindow::load()
     QString filePath = dataJsonFilePath();
     QFile file(filePath);
     if (!file.exists()) {
+        m_flow->load(QJsonObject());
         return;
     }
 
     if (!file.open(QIODevice::ReadOnly)) {
+        m_flow->load(QJsonObject());
         return;
     }
 
