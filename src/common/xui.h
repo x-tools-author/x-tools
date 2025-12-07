@@ -20,12 +20,6 @@ public:
 
     void moveToCenter();
 
-public:
-    struct SettingKeys
-    {
-        const QString language{"Application/language"};
-    };
-
 protected:
     QMenu *m_fileMenu{nullptr};
     QMenu *m_optionMenu{nullptr};

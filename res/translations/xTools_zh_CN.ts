@@ -6910,7 +6910,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="241"/>
         <source>Copyright</source>
-        <translation>版权</translation>
+        <translation>版权声明</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="242"/>
