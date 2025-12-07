@@ -36,11 +36,6 @@ xModbus::xModbus(QWidget* parent)
     m_cornerToolButtonMenu = new QMenu(this);
     m_cornerToolButton->setMenu(m_cornerToolButtonMenu);
     m_cornerToolButton->setPopupMode(QToolButton::InstantPopup);
-#if 0
-    m_toolBar = new QToolBar(this);
-    m_toolBar->setWindowTitle(tr("Modbus Tool Bar"));
-    m_toolBar->addAction(tr("Example Action"));
-#endif
 
     connect(ui->widgetDeviceListView,
             &ModbusDeviceListView::invokeShowRegisterView,
