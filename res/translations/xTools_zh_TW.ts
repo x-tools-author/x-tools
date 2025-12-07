@@ -55,12 +55,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="251"/>
+        <location filename="../../src/application.cpp" line="17"/>
         <source>Transfer rx bytes with right page</source>
         <translation>與右頁面傳輸接收位元組</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="256"/>
+        <location filename="../../src/application.cpp" line="22"/>
         <source>Transfer rx bytes with left page</source>
         <translation>與左頁面傳輸接收位元組</translation>
     </message>
@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation>音頻滾動到底部</translation>
+        <translation type="vanished">音頻滾動到底部</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>新的 Modbus 設備</translation>
+        <translation type="vanished">新的 Modbus 設備</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>連接參數</translation>
+        <translation type="vanished">連接參數</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>平價</translation>
+        <translation type="vanished">平價</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>波特率</translation>
+        <translation type="vanished">波特率</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>停止位</translation>
+        <translation type="vanished">停止位</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>重新整理</translation>
+        <translation type="vanished">重新整理</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>數據位</translation>
+        <translation type="vanished">數據位</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>名稱</translation>
+        <translation type="vanished">名稱</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP地址</translation>
+        <translation type="vanished">IP地址</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>港口</translation>
+        <translation type="vanished">港口</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>設備類型</translation>
+        <translation type="vanished">設備類型</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>超時（毫秒）</translation>
+        <translation type="vanished">超時（毫秒）</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>重試次數</translation>
+        <translation type="vanished">重試次數</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation type="vanished">地址</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>只聽模式</translation>
+        <translation type="vanished">只聽模式</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>設備參數</translation>
+        <translation type="vanished">設備參數</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>設備名稱</translation>
+        <translation type="vanished">設備名稱</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>如：西門子S7-300</translation>
+        <translation type="vanished">如：西門子S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>搜尋</translation>
+        <translation type="vanished">搜尋</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>節點編輯器</translation>
+        <translation type="vanished">節點編輯器</translation>
     </message>
 </context>
 <context>
@@ -2337,241 +2337,219 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>一般的</translation>
+        <translation type="vanished">一般的</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
-        <translation>&amp;文件</translation>
+        <translation type="vanished">&amp;文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="356"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>保存參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Import Parameters</source>
         <translation>導入參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Export Parameters</source>
         <translation>導出參數</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
-        <translation>退出應用程序</translation>
+        <translation type="vanished">退出申請</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>&amp;Tools</source>
         <translation>&amp;工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>New</source>
         <translation>新建</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
-        <translation>&amp;選項</translation>
+        <translation type="vanished">&amp;選項</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
-        <translation>使用系統代理</translation>
+        <translation type="vanished">使用系統代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
-        <translation>退出到系統托盤</translation>
+        <translation type="vanished">退出到系統托盤</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
-        <translation>應用程序風格</translation>
+        <translation type="vanished">應用風格</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
-        <translation>設置</translation>
+        <translation type="vanished">設定</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
-        <translation>清除設置</translation>
+        <translation type="vanished">清除設置</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
-        <translation>打開設置目錄</translation>
+        <translation type="vanished">打開設置目錄</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
-        <translation>HDPI 策略</translation>
+        <translation type="vanished">HDPI政策</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>配色方案</translation>
+        <translation type="vanished">配色方案</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>黑暗的</translation>
+        <translation type="vanished">黑暗的</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>光</translation>
+        <translation type="vanished">光</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>系統</translation>
+        <translation type="vanished">系統</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
-        <translation>&amp;語言</translation>
+        <translation type="vanished">&amp;語言</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;View</source>
         <translation>&amp;視圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
-        <translation>始終在最上層</translation>
+        <translation type="vanished">保持領先</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
-        <translation>&amp;幫助</translation>
+        <translation type="vanished">&amp;幫助</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
-        <translation>關於 Qt</translation>
+        <translation type="vanished">關於Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="578"/>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="654"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
-        <translation>截圖</translation>
+        <translation type="vanished">螢幕截圖</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
-        <translation>從商店購買</translation>
+        <translation type="vanished">從商店購買</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
         <source>Release History</source>
         <translation>版本歷史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
-        <translation>加入 QQ 群組</translation>
+        <translation type="vanished">加入QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
-        <translation>在線手冊</translation>
+        <translation type="vanished">在線手冊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
-        <translation>從 Github 獲取源代碼</translation>
+        <translation type="vanished">從 Github 獲取源代碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
-        <translation>從 Gitee 獲取源代碼</translation>
+        <translation type="vanished">從 Gitee 獲取源碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Third Party Open Source</source>
         <translation>第三方開源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>QR Code</source>
         <translation>二維碼</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>User QQ Group</source>
         <translation>用戶 QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="533"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 群組</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="554"/>
         <source>Need to Reboot</source>
         <translation>需要重啟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>該操作需要重啟才能生效，現在重啟應用程序嗎？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="557"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(請手動重啟您的應用程序。)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="613"/>
         <source>Json Files (*.json)</source>
         <translation>Json 文件（*.json）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="787"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
         <source>Commit hash</source>
         <translation>提交哈希</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>Commit time</source>
         <translation>提交時間</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Build Date</source>
         <translation>構建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="652"/>
         <source>Copyright</source>
         <translation>版權</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="653"/>
         <source>All rights reserved.</source>
         <translation>版權所有。</translation>
     </message>
@@ -4110,7 +4088,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>單向</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="43"/>
+        <location filename="../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
         <translation>應用程序正在啟動...</translation>
     </message>
@@ -4130,33 +4108,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>光</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>系統</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>對於 .5 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>始終向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>始終向下取整</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>對於 .75 及以上的數字進行向上取整</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>不進行取整</translation>
     </message>
@@ -4238,31 +4216,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +4992,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>出口</translation>
+        <translation type="vanished">出口</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5001,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>刪除</translation>
+        <translation type="vanished">刪除</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>向上</translation>
+        <translation type="vanished">向上</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="vanished">添加</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5018,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>進口</translation>
+        <translation type="vanished">進口</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>向下</translation>
+        <translation type="vanished">向下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5348,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>比特率</translation>
+        <translation type="vanished">比特率</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5419,7 +5397,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CANFD</translation>
+        <translation type="vanished">CANFD</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
@@ -5463,7 +5441,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation>自定義配置</translation>
+        <translation type="vanished">自定義配置</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5626,11 +5604,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation>錯誤的</translation>
+        <translation type="vanished">錯誤的</translation>
     </message>
     <message>
         <source>true</source>
-        <translation>真的</translation>
+        <translation type="vanished">真的</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
@@ -5669,27 +5647,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="32"/>
         <source>Debug</source>
         <translation>偵錯</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Information</source>
         <translation>資訊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
         <source>Critical</source>
         <translation>批判的</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
         <source>Fatal</source>
         <translation>致命的</translation>
     </message>
@@ -5858,126 +5836,126 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>紀錄</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="195"/>
         <source>Toggle Left Panel</source>
         <translation>切換左側面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="196"/>
         <source>Toggle Bottom Panel</source>
         <translation>切換底部面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
         <source>Show Ruler</source>
         <translation>顯示標尺</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
         <source>New Project</source>
         <translation>新項目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
         <source>Open Project</source>
         <translation>開放項目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Save Project</source>
         <translation>保存項目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="269"/>
         <source>Save Project As...</source>
         <translation>將項目另存為...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Fit Screen</source>
         <translation>適合屏幕</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Zoom In</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Zoom Out</source>
         <translation>縮小</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Reset Zoom</source>
         <translation>重置縮放</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>Align Left</source>
         <translation>左對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Align Right</source>
         <translation>右對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Align Top</source>
         <translation>頂部對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
         <source>Align Bottom</source>
         <translation>底部對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
         <source>Align Vertical Center</source>
         <translation>垂直居中對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Align Horizontal Center</source>
         <translation>水平居中對齊</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Select All</source>
         <translation>選擇全部</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="228"/>
         <source>Delete Selected</source>
         <translation>刪除所選內容</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="229"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="351"/>
         <source>Clear All Nodes</source>
         <translation>清除所有節點</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
         <source>Undo</source>
         <translation>撤消</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Redo</source>
         <translation>重做</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="271"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow 項目文件 (*.xflow);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="352"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>您確定清除所有節點嗎？</translation>
     </message>
@@ -6053,11 +6031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Modbus 工具欄</translation>
+        <translation type="vanished">Modbus 工具欄</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>示例操作</translation>
+        <translation type="vanished">示例操作</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6069,27 +6047,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>新的RTU設備</translation>
+        <translation type="vanished">新的RTU設備</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>新的 TCP 設備</translation>
+        <translation type="vanished">新的 TCP 設備</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>新線圈</translation>
+        <translation type="vanished">新線圈</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>新的離散輸入</translation>
+        <translation type="vanished">新的離散輸入</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>新持有登記冊</translation>
+        <translation type="vanished">新持有登記冊</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>新輸入寄存器</translation>
+        <translation type="vanished">新輸入寄存器</translation>
     </message>
 </context>
 <context>
@@ -6134,19 +6112,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>線圈</translation>
+        <translation type="vanished">線圈</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>離散輸入</translation>
+        <translation type="vanished">離散輸入</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>持有寄存器</translation>
+        <translation type="vanished">持有寄存器</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>輸入寄存器</translation>
+        <translation type="vanished">輸入寄存器</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -6443,6 +6421,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
         <translation>MQTT服務器</translation>
+    </message>
+</context>
+<context>
+    <name>xUi</name>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished">&amp;文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>退出申請</translation>
+    </message>
+    <message>
+        <source>Option</source>
+        <translation type="vanished">選項</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="87"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>高 DPI 縮放策略</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>應用風格</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="105"/>
+        <source>Theme</source>
+        <translation>主題</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="113"/>
+        <source>Open Settings Directory</source>
+        <translation>打開設置目錄</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="118"/>
+        <source>Clear Settings File</source>
+        <translation>清除設置文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="127"/>
+        <source>Stays on Top</source>
+        <translation>保持領先</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished">&amp;幫助</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="151"/>
+        <source>About Qt</source>
+        <translation>關於Qt</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="154"/>
+        <location filename="../../src/common/xui.cpp" line="243"/>
+        <source>About</source>
+        <translation>關於</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="167"/>
+        <source>Get Source from Gitee</source>
+        <translation>從 Gitee 獲取源碼</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="168"/>
+        <source>Get Source from Github</source>
+        <translation>從 Github 獲取源代碼</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="169"/>
+        <source>Visit Author Home Page</source>
+        <translation>訪問作者主頁</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="170"/>
+        <source>Visit App Store</source>
+        <translation>訪問應用商店</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="180"/>
+        <source>User Feedback</source>
+        <translation>用戶反饋</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="194"/>
+        <source>Grab and Save</source>
+        <translation>抓取並保存</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="198"/>
+        <source>Save Grabbed Image</source>
+        <translation>保存抓取的圖像</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="209"/>
+        <source>Grab and Copy</source>
+        <translation>抓取並複制</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="223"/>
+        <source>Commit time</source>
+        <translation>提交時間</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="230"/>
+        <source>Commit</source>
+        <translation>犯罪</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="240"/>
+        <source>Build Date</source>
+        <translation>構建日期</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="241"/>
+        <source>Copyright</source>
+        <translation>版權</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="242"/>
+        <source>All rights reserved.</source>
+        <translation>版權所有。</translation>
     </message>
 </context>
 </TS>

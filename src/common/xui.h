@@ -30,18 +30,17 @@ protected:
     QMenu *m_fileMenu{nullptr};
     QMenu *m_optionMenu{nullptr};
     QMenu *m_languageMenu{nullptr};
-    QMenu *m_viewMenu{nullptr};
     QMenu *m_helpMenu{nullptr};
 
 private:
     void initMenuBar();
     void initMenuBarFile();
     void initMenuBarOption();
+    void initMenuBarOptionHdpi();
+    void initMenuBarOptionStyle();
+    void initMenuBarOptionTheme();
     void initMenuBarOptionSetting();
-    void initMenuBarView();
-    void initMenuBarViewHdpi();
-    void initMenuBarViewTheme();
-    void initializeMenuBarViewStaysOnTop();
+    void initMenuBarOptionStaysOnTop();
     void initMenuBarLanguage();
     void initMenuBarHelp();
     void initMenuBarHelpGrab();

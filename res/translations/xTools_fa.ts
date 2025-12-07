@@ -55,12 +55,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="251"/>
+        <location filename="../../src/application.cpp" line="17"/>
         <source>Transfer rx bytes with right page</source>
         <translation>انتقال بایت‌های دریافتی با صفحه راست</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="256"/>
+        <location filename="../../src/application.cpp" line="22"/>
         <source>Transfer rx bytes with left page</source>
         <translation>انتقال بایت‌های دریافتی با صفحه چپ</translation>
     </message>
@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation>پیمایش صوتی به پایین</translation>
+        <translation type="vanished">پیمایش صوتی به پایین</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>دستگاه جدید مدباس</translation>
+        <translation type="vanished">دستگاه مدباس جدید</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>پارامترهای اتصال</translation>
+        <translation type="vanished">پارامترهای اتصال</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>برابری</translation>
+        <translation type="vanished">برابری</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>نرخ باود</translation>
+        <translation type="vanished">نرخ باود</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>بیت ها را متوقف کنید</translation>
+        <translation type="vanished">بیت ها را متوقف کنید</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>تازه کردن</translation>
+        <translation type="vanished">تازه کردن</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>بیت های داده</translation>
+        <translation type="vanished">بیت های داده</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>نام ها</translation>
+        <translation type="vanished">نام ها</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>آدرس IP</translation>
+        <translation type="vanished">آدرس IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>بندر</translation>
+        <translation type="vanished">بندر</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>نوع دستگاه</translation>
+        <translation type="vanished">نوع دستگاه</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>مهلت زمانی (میلی‌ثانیه)</translation>
+        <translation type="vanished">مهلت زمانی (میلی‌ثانیه)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>تعداد تلاش های مجدد</translation>
+        <translation type="vanished">تعداد تلاش های مجدد</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>آدرس</translation>
+        <translation type="vanished">آدرس</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>حالت فقط گوش دادن</translation>
+        <translation type="vanished">حالت فقط گوش دادن</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>پارامترهای دستگاه</translation>
+        <translation type="vanished">پارامترهای دستگاه</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>نام دستگاه</translation>
+        <translation type="vanished">نام دستگاه</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>مانند: زیمنس S7-300</translation>
+        <translation type="vanished">مانند: زیمنس S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>جستجو کنید</translation>
+        <translation type="vanished">جستجو کنید</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>ویرایشگر گره</translation>
+        <translation type="vanished">ویرایشگر گره</translation>
     </message>
 </context>
 <context>
@@ -2337,241 +2337,219 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>ژنرال</translation>
+        <translation type="vanished">ژنرال</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
-        <translation>&amp;فایل</translation>
+        <translation type="vanished">&amp;فایل</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
         <source>New Window</source>
         <translation>پنجره جدید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="356"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>ذخیره پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Import Parameters</source>
         <translation>وارد کردن پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Export Parameters</source>
         <translation>خروجی پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
-        <translation>خروج از برنامه</translation>
+        <translation type="vanished">خروج از برنامه</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>&amp;Tools</source>
         <translation>&amp;ابزارها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>New</source>
         <translation>جدید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
-        <translation>&amp;گزینه‌ها</translation>
+        <translation type="vanished">&amp;گزینه‌ها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
-        <translation>استفاده از پروکسی سیستم</translation>
+        <translation type="vanished">از System Proxy استفاده کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
-        <translation>خروج به سینی سیستم</translation>
+        <translation type="vanished">به System Tray خارج شوید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
-        <translation>سبک برنامه</translation>
+        <translation type="vanished">سبک برنامه</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
-        <translation>تنظیمات</translation>
+        <translation type="vanished">تنظیمات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
-        <translation>پاک کردن تنظیمات</translation>
+        <translation type="vanished">تنظیمات را پاک کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
-        <translation>باز کردن دایرکتوری تنظیمات</translation>
+        <translation type="vanished">دایرکتوری تنظیمات را باز کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
-        <translation>سیاست HDPI</translation>
+        <translation type="vanished">سیاست HDPI</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>طرح رنگ</translation>
+        <translation type="vanished">طرح رنگ</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>تاریک</translation>
+        <translation type="vanished">تاریک</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>نور</translation>
+        <translation type="vanished">نور</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>سیستم</translation>
+        <translation type="vanished">سیستم</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
-        <translation>&amp;زبان‌ها</translation>
+        <translation type="vanished">&amp;زبان‌ها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;View</source>
         <translation>&amp;نمایش</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
-        <translation>در بالا بماند</translation>
+        <translation type="vanished">در بالا می ماند</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
-        <translation>&amp;راهنما</translation>
+        <translation type="vanished">&amp;راهنما</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
-        <translation>درباره Qt</translation>
+        <translation type="vanished">درباره Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="578"/>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="654"/>
         <source>About</source>
         <translation>درباره</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
-        <translation>عکس‌برداری از صفحه</translation>
+        <translation type="vanished">اسکرین شات</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
-        <translation>خرید از فروشگاه</translation>
+        <translation type="vanished">از فروشگاه خرید کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
         <source>Release History</source>
         <translation>تاریخچه نسخه‌ها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
-        <translation>پیوستن به گروه QQ</translation>
+        <translation type="vanished">به گروه QQ بپیوندید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
-        <translation>راهنمای آنلاین</translation>
+        <translation type="vanished">کتابچه راهنمای آنلاین</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
-        <translation>دریافت منابع از Github</translation>
+        <translation type="vanished">منابع را از Github دریافت کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
-        <translation>دریافت منابع از Gitee</translation>
+        <translation type="vanished">منابع را از Gitee دریافت کنید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Third Party Open Source</source>
         <translation>منبع باز شخص ثالث</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>QR Code</source>
         <translation>کد QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>User QQ Group</source>
         <translation>گروه QQ کاربر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="533"/>
         <source>Qt QQ Group</source>
         <translation>گروه QQ Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="554"/>
         <source>Need to Reboot</source>
         <translation>نیاز به راه‌اندازی مجدد</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>این عملیات نیاز به راه‌اندازی مجدد دارد تا مؤثر باشد، آیا اکنون برنامه را راه‌اندازی مجدد کنیم؟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="557"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(لطفاً برنامه خود را به صورت دستی راه‌اندازی مجدد کنید.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="613"/>
         <source>Json Files (*.json)</source>
         <translation>فایل‌های Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Unknown</source>
         <translation>نامشخص</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="787"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
         <source>Commit hash</source>
         <translation>هش کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>Commit time</source>
         <translation>زمان کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Build Date</source>
         <translation>تاریخ ساخت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="652"/>
         <source>Copyright</source>
         <translation>حق کپی‌رایت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="653"/>
         <source>All rights reserved.</source>
         <translation>تمامی حقوق محفوظ است.</translation>
     </message>
@@ -4110,7 +4088,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>یک‌طرفه</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="43"/>
+        <location filename="../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
         <translation>برنامه در حال راه‌اندازی است...</translation>
     </message>
@@ -4130,33 +4108,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>نور</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>سیستم</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>گرد کردن به بالا برای ۰.۵ و بالاتر</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>همیشه گرد کردن به بالا</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>همیشه گرد کردن به پایین</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>گرد کردن به بالا برای ۰.۷۵ و بالاتر</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>گرد نکنید</translation>
     </message>
@@ -4238,31 +4216,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +4992,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>صادرات</translation>
+        <translation type="vanished">صادرات</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5001,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>حذف کنید</translation>
+        <translation type="vanished">حذف کنید</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>بالا</translation>
+        <translation type="vanished">بالا</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>اضافه کنید</translation>
+        <translation type="vanished">اضافه کنید</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5018,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>واردات</translation>
+        <translation type="vanished">واردات</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>پایین</translation>
+        <translation type="vanished">پایین</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5348,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>میزان بیت</translation>
+        <translation type="vanished">میزان بیت</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5419,7 +5397,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CAN FD</translation>
+        <translation type="vanished">CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
@@ -5463,7 +5441,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation>پیکربندی سفارشی</translation>
+        <translation type="vanished">پیکربندی سفارشی</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5626,11 +5604,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation>نادرست</translation>
+        <translation type="vanished">نادرست</translation>
     </message>
     <message>
         <source>true</source>
-        <translation>درست است</translation>
+        <translation type="vanished">درست است</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
@@ -5669,27 +5647,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="32"/>
         <source>Debug</source>
         <translation>اشکال زدایی</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Information</source>
         <translation>اطلاعات</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
         <source>Warning</source>
         <translation>هشدار</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
         <source>Critical</source>
         <translation>انتقادی</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
         <source>Fatal</source>
         <translation>کشنده</translation>
     </message>
@@ -5858,126 +5836,126 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>ورود به سیستم</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="195"/>
         <source>Toggle Left Panel</source>
         <translation>پانل سمت چپ را تغییر دهید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="196"/>
         <source>Toggle Bottom Panel</source>
         <translation>پانل پایین را تغییر دهید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
         <source>Show Ruler</source>
         <translation>نمایش خط کش</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
         <source>New Project</source>
         <translation>پروژه جدید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
         <source>Open Project</source>
         <translation>پروژه را باز کنید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Save Project</source>
         <translation>ذخیره پروژه</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="269"/>
         <source>Save Project As...</source>
         <translation>ذخیره پروژه به عنوان...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Fit Screen</source>
         <translation>Fit Screen</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Zoom In</source>
         <translation>بزرگنمایی</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Zoom Out</source>
         <translation>بزرگنمایی</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Reset Zoom</source>
         <translation>بزرگنمایی را بازنشانی کنید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>Align Left</source>
         <translation>تراز چپ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Align Right</source>
         <translation>تراز کردن به راست</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Align Top</source>
         <translation>تراز بالا</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
         <source>Align Bottom</source>
         <translation>تراز کردن پایین</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
         <source>Align Vertical Center</source>
         <translation>مرکز عمودی را تراز کنید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Align Horizontal Center</source>
         <translation>مرکز افقی را تراز کنید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Select All</source>
         <translation>همه را انتخاب کنید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="228"/>
         <source>Delete Selected</source>
         <translation>حذف انتخاب شده</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="229"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="351"/>
         <source>Clear All Nodes</source>
         <translation>پاک کردن همه گره ها</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
         <source>Undo</source>
         <translation>واگرد</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Redo</source>
         <translation>دوباره انجام دهید</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="271"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>فایل های پروژه xFlow (*.xflow);;همه فایل ها (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="352"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>آیا مطمئن هستید که همه گره ها را پاک می کنید؟</translation>
     </message>
@@ -6053,11 +6031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>نوار ابزار Modbus</translation>
+        <translation type="vanished">نوار ابزار Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>نمونه اقدام</translation>
+        <translation type="vanished">نمونه اقدام</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6069,27 +6047,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>دستگاه RTU جدید</translation>
+        <translation type="vanished">دستگاه RTU جدید</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>دستگاه TCP جدید</translation>
+        <translation type="vanished">دستگاه TCP جدید</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>کویل های جدید</translation>
+        <translation type="vanished">کویل های جدید</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>ورودی های گسسته جدید</translation>
+        <translation type="vanished">ورودی های گسسته جدید</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>ثبت های جدید هلدینگ</translation>
+        <translation type="vanished">ثبت های جدید هلدینگ</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>ثبت های ورودی جدید</translation>
+        <translation type="vanished">ثبت های ورودی جدید</translation>
     </message>
 </context>
 <context>
@@ -6134,19 +6112,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>کویل</translation>
+        <translation type="vanished">کویل</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>ورودی های گسسته</translation>
+        <translation type="vanished">ورودی های گسسته</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>برگزاری ثبت ها</translation>
+        <translation type="vanished">برگزاری ثبت ها</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>ثبت های ورودی</translation>
+        <translation type="vanished">ثبت های ورودی</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -6443,6 +6421,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
         <translation>سرور MQTT</translation>
+    </message>
+</context>
+<context>
+    <name>xUi</name>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished">&amp;فایل</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>خروج از برنامه</translation>
+    </message>
+    <message>
+        <source>Option</source>
+        <translation type="vanished">گزینه</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="87"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>خط مشی مقیاس گذاری DPI بالا</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>سبک برنامه</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="105"/>
+        <source>Theme</source>
+        <translation>تم</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="113"/>
+        <source>Open Settings Directory</source>
+        <translation>دایرکتوری تنظیمات را باز کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="118"/>
+        <source>Clear Settings File</source>
+        <translation>پاک کردن فایل تنظیمات</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="127"/>
+        <source>Stays on Top</source>
+        <translation>در بالا می ماند</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished">&amp;راهنما</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="151"/>
+        <source>About Qt</source>
+        <translation>درباره Qt</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="154"/>
+        <location filename="../../src/common/xui.cpp" line="243"/>
+        <source>About</source>
+        <translation>درباره</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="167"/>
+        <source>Get Source from Gitee</source>
+        <translation>منبع را از Gitee دریافت کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="168"/>
+        <source>Get Source from Github</source>
+        <translation>منبع را از Github دریافت کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="169"/>
+        <source>Visit Author Home Page</source>
+        <translation>از صفحه اصلی نویسنده بازدید کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="170"/>
+        <source>Visit App Store</source>
+        <translation>به فروشگاه App مراجعه کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="180"/>
+        <source>User Feedback</source>
+        <translation>بازخورد کاربر</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="194"/>
+        <source>Grab and Save</source>
+        <translation>گرفتن و ذخیره</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="198"/>
+        <source>Save Grabbed Image</source>
+        <translation>ذخیره تصویر گرفته شده</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="209"/>
+        <source>Grab and Copy</source>
+        <translation>بگیر و کپی کن</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="223"/>
+        <source>Commit time</source>
+        <translation>زمان تعهد کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="230"/>
+        <source>Commit</source>
+        <translation>متعهد شوید</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="240"/>
+        <source>Build Date</source>
+        <translation>تاریخ ساخت</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="241"/>
+        <source>Copyright</source>
+        <translation>حق چاپ</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="242"/>
+        <source>All rights reserved.</source>
+        <translation>تمامی حقوق محفوظ است.</translation>
     </message>
 </context>
 </TS>

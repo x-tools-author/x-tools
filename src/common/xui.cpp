@@ -23,6 +23,7 @@
 
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
+#include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
 #include "utilities/x.h"
 
@@ -52,25 +53,63 @@ void xUi::initMenuBar()
 {
     initMenuBarFile();
     initMenuBarOption();
-    initMenuBarView();
     initMenuBarLanguage();
     initMenuBarHelp();
 }
 
 void xUi::initMenuBarFile()
 {
-    m_fileMenu = menuBar()->addMenu(tr("File"));
+    m_fileMenu = new QMenu(tr("&File"), this);
+    menuBar()->addMenu(m_fileMenu);
+
+    QAction *action = m_fileMenu->addAction(tr("Exit Application"), this, []() {
+        QApplication::closeAllWindows();
+        QApplication::quit();
+    });
+    action->setShortcut(QKeySequence::Quit);
 }
 
 void xUi::initMenuBarOption()
 {
-    m_optionMenu = menuBar()->addMenu(tr("Option"));
-    m_optionMenu->addSeparator();
+    m_optionMenu = new QMenu(tr("&Option"), this);
+    menuBar()->addMenu(m_optionMenu);
+    initMenuBarOptionHdpi();
+    initMenuBarOptionStyle();
+    initMenuBarOptionTheme();
     initMenuBarOptionSetting();
+    initMenuBarOptionStaysOnTop();
+}
+
+void xUi::initMenuBarOptionHdpi()
+{
+    QMenu *hdpiMenu = xHdpiMgr.hdpiMenu();
+    if (hdpiMenu) {
+        hdpiMenu->setTitle(tr("High DPI Scaling Policy"));
+        m_optionMenu->addMenu(hdpiMenu);
+    }
+}
+
+void xUi::initMenuBarOptionStyle()
+{
+    QMenu *styleMenu = xStyleMgr.styleMenu();
+    if (styleMenu) {
+        styleMenu->setTitle(tr("Application Style"));
+        m_optionMenu->addMenu(styleMenu);
+    }
+}
+
+void xUi::initMenuBarOptionTheme()
+{
+    QMenu *themeMenu = xThemeMgr.themeMenu();
+    if (themeMenu) {
+        themeMenu->setTitle(tr("Theme"));
+        m_optionMenu->addMenu(themeMenu);
+    }
 }
 
 void xUi::initMenuBarOptionSetting()
 {
+    m_optionMenu->addSeparator();
     m_optionMenu->addAction(tr("Open Settings Directory"), this, []() {
         QString path = xAPP->settingsPath();
         QDesktopServices::openUrl(QUrl(path));
@@ -82,36 +121,10 @@ void xUi::initMenuBarOptionSetting()
     });
 }
 
-void xUi::initMenuBarView()
+void xUi::initMenuBarOptionStaysOnTop()
 {
-    m_viewMenu = menuBar()->addMenu(tr("View"));
-    initMenuBarViewHdpi();
-    initMenuBarViewTheme();
-    m_viewMenu->addSeparator();
-    initializeMenuBarViewStaysOnTop();
-}
-
-void xUi::initMenuBarViewHdpi()
-{
-    QMenu *hdpiMenu = xHdpiMgr.hdpiMenu();
-    if (hdpiMenu) {
-        hdpiMenu->setTitle(tr("High DPI Scaling Policy"));
-        m_viewMenu->addMenu(hdpiMenu);
-    }
-}
-
-void xUi::initMenuBarViewTheme()
-{
-    QMenu *themeMenu = xThemeMgr.themeMenu();
-    if (themeMenu) {
-        themeMenu->setTitle(tr("Theme"));
-        m_viewMenu->addMenu(themeMenu);
-    }
-}
-
-void xUi::initializeMenuBarViewStaysOnTop()
-{
-    QAction *action = m_viewMenu->addAction(tr("Stays on Top"));
+    m_optionMenu->addSeparator();
+    QAction *action = m_optionMenu->addAction(tr("Stays on Top"));
     action->setCheckable(true);
     connect(action, &QAction::triggered, this, [=]() {
         bool staysOnTop = action->isChecked();
@@ -128,12 +141,13 @@ void xUi::initMenuBarLanguage()
 {
     m_languageMenu = xI18n.languageMenu();
     menuBar()->addMenu(m_languageMenu);
-    m_languageMenu->setTitle(tr("Language"));
+    m_languageMenu->setTitle(tr("&Language"));
 }
 
 void xUi::initMenuBarHelp()
 {
-    m_helpMenu = menuBar()->addMenu(tr("Help"));
+    m_helpMenu = new QMenu(tr("&Help"), this);
+    menuBar()->addMenu(m_helpMenu);
     QAction *aboutQtAction = m_helpMenu->addAction(tr("About Qt"));
     connect(aboutQtAction, &QAction::triggered, this, []() { QApplication::aboutQt(); });
 

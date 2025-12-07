@@ -13,9 +13,11 @@
 #include <QMenu>
 #include <QUrl>
 
+#include "common/xui.h"
+
 class Page;
 class LayoutManager;
-class MainWindow : public QMainWindow
+class MainWindow : public xUi
 {
     Q_OBJECT
 public:
@@ -64,15 +66,8 @@ private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
-    void initOptionMenu();
-    void initOptionMenuAppStyleMenu(QMenu* optionMenu);
-    void initOptionMenuSettingsMenu(QMenu* optionMenu);
-    void initOptionMenuHdpiPolicy(QMenu* optionMenu);
-    void initOptionMenuColorScheme(QMenu* optionMenu);
-    void initMenuLanguage();
     void initViewMenu();
     void initViewMenuGrid(QMenu* viewMenu);
-    void initViewMenuStayOnTop(QMenu* viewMenu);
     void initHelpMenu();
 
     void showHistory();

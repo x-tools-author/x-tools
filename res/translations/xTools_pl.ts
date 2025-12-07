@@ -55,12 +55,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="251"/>
+        <location filename="../../src/application.cpp" line="17"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Przenieś bajty rx z prawą stroną</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="256"/>
+        <location filename="../../src/application.cpp" line="22"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Przenieś bajty rx z lewą stroną</translation>
     </message>
@@ -1361,7 +1361,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation>Przewijanie dźwięku w dół</translation>
+        <translation type="vanished">Przewijanie dźwięku w dół</translation>
     </message>
 </context>
 <context>
@@ -1427,82 +1427,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Nowe urządzenie Modbus</translation>
+        <translation type="vanished">Nowe urządzenie Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Parametry połączenia</translation>
+        <translation type="vanished">Parametry połączenia</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Parytet</translation>
+        <translation type="vanished">Parytet</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Szybkość transmisji</translation>
+        <translation type="vanished">Szybkość transmisji</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Zatrzymaj bity</translation>
+        <translation type="vanished">Zatrzymaj bity</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Odświeżać</translation>
+        <translation type="vanished">Odświeżać</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Bity danych</translation>
+        <translation type="vanished">Bity danych</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Imiona</translation>
+        <translation type="vanished">Imiona</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>Adres IP</translation>
+        <translation type="vanished">Adres IP</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Port</translation>
+        <translation type="vanished">Port</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Typ urządzenia</translation>
+        <translation type="vanished">Typ urządzenia</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Limit czasu (ms)</translation>
+        <translation type="vanished">Limit czasu (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Liczba ponownych prób</translation>
+        <translation type="vanished">Liczba ponownych prób</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Adres</translation>
+        <translation type="vanished">Adres</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Tryb tylko słuchania</translation>
+        <translation type="vanished">Tryb tylko słuchania</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Parametry urządzenia</translation>
+        <translation type="vanished">Parametry urządzenia</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Nazwa urządzenia</translation>
+        <translation type="vanished">Nazwa urządzenia</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Takich jak: Siemens S7-300</translation>
+        <translation type="vanished">Takich jak: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Szukaj</translation>
+        <translation type="vanished">Szukaj</translation>
     </message>
 </context>
 <context>
@@ -2120,7 +2120,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Edytor węzłów</translation>
+        <translation type="vanished">Edytor węzłów</translation>
     </message>
 </context>
 <context>
@@ -2344,241 +2344,219 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Ogólny</translation>
+        <translation type="vanished">Ogólny</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
-        <translation>&amp;Plik</translation>
+        <translation type="vanished">&amp;Plik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
         <source>New Window</source>
         <translation>Nowe okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="356"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>Zapisz parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Import Parameters</source>
         <translation>Importuj parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Export Parameters</source>
         <translation>Eksportuj parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
-        <translation>Wyjdź z aplikacji</translation>
+        <translation type="vanished">Wyjdź z aplikacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>&amp;Tools</source>
         <translation>&amp;Narzędzia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>New</source>
         <translation>Nowy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
-        <translation>&amp;Opcje</translation>
+        <translation type="vanished">&amp;Opcje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
-        <translation>Użyj proxy systemowego</translation>
+        <translation type="vanished">Użyj systemowego serwera proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
-        <translation>Wyjdź do zasobnika systemowego</translation>
+        <translation type="vanished">Wyjdź do zasobnika systemowego</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
-        <translation>Styl aplikacji</translation>
+        <translation type="vanished">Styl aplikacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
-        <translation>Ustawienia</translation>
+        <translation type="vanished">Ustawienia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
-        <translation>Wyczyść ustawienia</translation>
+        <translation type="vanished">Wyczyść ustawienia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
-        <translation>Otwórz katalog ustawień</translation>
+        <translation type="vanished">Otwórz katalog ustawień</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
-        <translation>Polityka HDPI</translation>
+        <translation type="vanished">Polityka HDPI</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>Schemat kolorów</translation>
+        <translation type="vanished">Schemat kolorów</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Ciemny</translation>
+        <translation type="vanished">Ciemny</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Światło</translation>
+        <translation type="vanished">Światło</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>System</translation>
+        <translation type="vanished">System</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
-        <translation>&amp;Języki</translation>
+        <translation type="vanished">&amp;Języki</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;View</source>
         <translation>&amp;Widok</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
-        <translation>Zawsze na wierzchu</translation>
+        <translation type="vanished">Pozostaje na szczycie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
-        <translation>&amp;Pomoc</translation>
+        <translation type="vanished">&amp;Pomoc</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
-        <translation>O Qt</translation>
+        <translation type="vanished">O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="578"/>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="654"/>
         <source>About</source>
         <translation>O programie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
-        <translation>Zrzut ekranu</translation>
+        <translation type="vanished">Zrzut ekranu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
-        <translation>Kup w sklepie</translation>
+        <translation type="vanished">Kup w sklepie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
         <source>Release History</source>
         <translation>Historia wydań</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
-        <translation>Dołącz do grupy QQ</translation>
+        <translation type="vanished">Dołącz do grupy QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
-        <translation>Podręcznik online</translation>
+        <translation type="vanished">Podręcznik internetowy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
-        <translation>Pobierz źródła z Githuba</translation>
+        <translation type="vanished">Pobierz źródła z Githuba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
-        <translation>Pobierz źródła z Gitee</translation>
+        <translation type="vanished">Pobierz źródła z Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Third Party Open Source</source>
         <translation>Otwarte oprogramowanie innych firm</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>QR Code</source>
         <translation>Kod QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>User QQ Group</source>
         <translation>Grupa użytkowników QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="533"/>
         <source>Qt QQ Group</source>
         <translation>Grupa Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="554"/>
         <source>Need to Reboot</source>
         <translation>Wymagana ponowna instalacja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacja wymaga ponownego uruchomienia, czy chcesz teraz ponownie uruchomić aplikację?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="557"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Proszę ręcznie ponownie uruchomić aplikację.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="613"/>
         <source>Json Files (*.json)</source>
         <translation>Pliki Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="787"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
         <source>Commit hash</source>
         <translation>Hash zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>Commit time</source>
         <translation>Czas zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Build Date</source>
         <translation>Data kompilacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="652"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="653"/>
         <source>All rights reserved.</source>
         <translation>Wszelkie prawa zastrzeżone.</translation>
     </message>
@@ -4117,7 +4095,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Jednokierunkowy</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="43"/>
+        <location filename="../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
         <translation>Aplikacja uruchamia się...</translation>
     </message>
@@ -4137,33 +4115,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Światło</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>Zaokrąglaj w górę dla .5 i wyżej</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>Zawsze zaokrąglaj w górę</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>Zawsze zaokrąglaj w dół</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>Zaokrąglaj w górę dla .75 i wyżej</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>Nie zaokrąglaj</translation>
     </message>
@@ -4245,31 +4223,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1,5</translation>
+        <translation type="vanished">1,5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5021,7 +4999,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>Eksport</translation>
+        <translation type="vanished">Eksport</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5030,15 +5008,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>Usuwać</translation>
+        <translation type="vanished">Usuwać</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>W górę</translation>
+        <translation type="vanished">W górę</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Dodać</translation>
+        <translation type="vanished">Dodać</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5047,11 +5025,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>Import</translation>
+        <translation type="vanished">Import</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>W dół</translation>
+        <translation type="vanished">W dół</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5377,7 +5355,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Szybkość transmisji</translation>
+        <translation type="vanished">Szybkość transmisji</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5426,7 +5404,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>CAN FD</translation>
+        <translation type="vanished">CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
@@ -5470,7 +5448,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation>Konfiguracja niestandardowa</translation>
+        <translation type="vanished">Konfiguracja niestandardowa</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5633,11 +5611,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation>FAŁSZ</translation>
+        <translation type="vanished">FAŁSZ</translation>
     </message>
     <message>
         <source>true</source>
-        <translation>PRAWDA</translation>
+        <translation type="vanished">PRAWDA</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
@@ -5676,27 +5654,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="32"/>
         <source>Debug</source>
         <translation>Odpluskwić</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Information</source>
         <translation>Informacja</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
         <source>Critical</source>
         <translation>Krytyczny</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
         <source>Fatal</source>
         <translation>Śmiertelny</translation>
     </message>
@@ -5865,126 +5843,126 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Dziennik</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="195"/>
         <source>Toggle Left Panel</source>
         <translation>Przełącz lewy panel</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="196"/>
         <source>Toggle Bottom Panel</source>
         <translation>Przełącz panel dolny</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
         <source>Show Ruler</source>
         <translation>Pokaż linijkę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
         <source>New Project</source>
         <translation>Nowy projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
         <source>Open Project</source>
         <translation>Otwórz projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Save Project</source>
         <translation>Zapisz projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="269"/>
         <source>Save Project As...</source>
         <translation>Zapisz projekt jako...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Fit Screen</source>
         <translation>Dopasuj ekran</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Zoom In</source>
         <translation>Powiększ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Zoom Out</source>
         <translation>Pomniejsz</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Reset Zoom</source>
         <translation>Zresetuj Zoom</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>Align Left</source>
         <translation>Wyrównaj do lewej</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Align Right</source>
         <translation>Wyrównaj w prawo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Align Top</source>
         <translation>Wyrównaj górę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
         <source>Align Bottom</source>
         <translation>Wyrównaj dół</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
         <source>Align Vertical Center</source>
         <translation>Wyrównaj w pionie do środka</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Align Horizontal Center</source>
         <translation>Wyrównaj poziomo do środka</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Select All</source>
         <translation>Wybierz wszystko</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="228"/>
         <source>Delete Selected</source>
         <translation>Usuń wybrane</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="229"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="351"/>
         <source>Clear All Nodes</source>
         <translation>Wyczyść wszystkie węzły</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
         <source>Undo</source>
         <translation>Anulować</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Redo</source>
         <translation>Przerobić</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="271"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>Pliki projektu xFlow (*.xflow);;Wszystkie pliki (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="352"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>Czy na pewno wyczyścić wszystkie węzły?</translation>
     </message>
@@ -6060,11 +6038,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Pasek narzędzi Modbus</translation>
+        <translation type="vanished">Pasek narzędzi Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>Przykładowa akcja</translation>
+        <translation type="vanished">Przykładowa akcja</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6076,27 +6054,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Nowe urządzenie RTU</translation>
+        <translation type="vanished">Nowe urządzenie RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Nowe urządzenie TCP</translation>
+        <translation type="vanished">Nowe urządzenie TCP</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Nowe cewki</translation>
+        <translation type="vanished">Nowe cewki</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Nowe wejścia dyskretne</translation>
+        <translation type="vanished">Nowe wejścia dyskretne</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Nowe rejestry holdingowe</translation>
+        <translation type="vanished">Nowe rejestry holdingowe</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Nowe rejestry wejściowe</translation>
+        <translation type="vanished">Nowe rejestry wejściowe</translation>
     </message>
 </context>
 <context>
@@ -6141,19 +6119,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Cewki</translation>
+        <translation type="vanished">Cewki</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Wejścia dyskretne</translation>
+        <translation type="vanished">Wejścia dyskretne</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Prowadzenie rejestrów</translation>
+        <translation type="vanished">Prowadzenie rejestrów</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Rejestry wejściowe</translation>
+        <translation type="vanished">Rejestry wejściowe</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -6450,6 +6428,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
         <translation>Serwer MQTT</translation>
+    </message>
+</context>
+<context>
+    <name>xUi</name>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished">&amp;Plik</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>Wyjdź z aplikacji</translation>
+    </message>
+    <message>
+        <source>Option</source>
+        <translation type="vanished">Opcja</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="87"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>Polityka skalowania wysokiej rozdzielczości DPI</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>Styl aplikacji</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="105"/>
+        <source>Theme</source>
+        <translation>Temat</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="113"/>
+        <source>Open Settings Directory</source>
+        <translation>Otwórz katalog ustawień</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="118"/>
+        <source>Clear Settings File</source>
+        <translation>Wyczyść plik ustawień</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="127"/>
+        <source>Stays on Top</source>
+        <translation>Pozostaje na szczycie</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished">&amp;Pomoc</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="151"/>
+        <source>About Qt</source>
+        <translation>O Qt</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="154"/>
+        <location filename="../../src/common/xui.cpp" line="243"/>
+        <source>About</source>
+        <translation>O</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="167"/>
+        <source>Get Source from Gitee</source>
+        <translation>Pobierz źródło z Gitee</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="168"/>
+        <source>Get Source from Github</source>
+        <translation>Pobierz źródło z Githuba</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="169"/>
+        <source>Visit Author Home Page</source>
+        <translation>Odwiedź stronę główną autora</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="170"/>
+        <source>Visit App Store</source>
+        <translation>Odwiedź App Store</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="180"/>
+        <source>User Feedback</source>
+        <translation>Opinia użytkownika</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="194"/>
+        <source>Grab and Save</source>
+        <translation>Chwyć i zapisz</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="198"/>
+        <source>Save Grabbed Image</source>
+        <translation>Zapisz pobrany obraz</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="209"/>
+        <source>Grab and Copy</source>
+        <translation>Chwyć i skopiuj</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="223"/>
+        <source>Commit time</source>
+        <translation>Zaangażuj czas</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="230"/>
+        <source>Commit</source>
+        <translation>Popełniać</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="240"/>
+        <source>Build Date</source>
+        <translation>Data kompilacji</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="241"/>
+        <source>Copyright</source>
+        <translation>Prawo autorskie</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="242"/>
+        <source>All rights reserved.</source>
+        <translation>Wszelkie prawa zastrzeżone.</translation>
     </message>
 </context>
 </TS>

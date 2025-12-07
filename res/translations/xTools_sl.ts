@@ -55,12 +55,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../../src/application.cpp" line="251"/>
+        <location filename="../../src/application.cpp" line="17"/>
         <source>Transfer rx bytes with right page</source>
         <translation>Prenesi rx bajte z desno stran</translation>
     </message>
     <message>
-        <location filename="../../src/application.cpp" line="256"/>
+        <location filename="../../src/application.cpp" line="22"/>
         <source>Transfer rx bytes with left page</source>
         <translation>Prenesi rx bajte z levo stran</translation>
     </message>
@@ -1354,7 +1354,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Audo scrolling to bottom</source>
-        <translation>Avdo se pomika na dno</translation>
+        <translation type="vanished">Avdo se pomika na dno</translation>
     </message>
 </context>
 <context>
@@ -1420,82 +1420,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>DeviceConnectionParameterEditor</name>
     <message>
         <source>New Modbus Device</source>
-        <translation>Nova naprava Modbus</translation>
+        <translation type="vanished">Nova naprava Modbus</translation>
     </message>
     <message>
         <source>Connection parameters</source>
-        <translation>Parametri povezave</translation>
+        <translation type="vanished">Parametri povezave</translation>
     </message>
     <message>
         <source>Parity</source>
-        <translation>Pariteta</translation>
+        <translation type="vanished">Pariteta</translation>
     </message>
     <message>
         <source>Baud rate</source>
-        <translation>Hitrost prenosa</translation>
+        <translation type="vanished">Hitrost prenosa</translation>
     </message>
     <message>
         <source>Stop bits</source>
-        <translation>Stop bitovi</translation>
+        <translation type="vanished">Stop bits</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Osveži</translation>
+        <translation type="vanished">Osveži</translation>
     </message>
     <message>
         <source>Data bits</source>
-        <translation>Podatkovni biti</translation>
+        <translation type="vanished">Podatkovni biti</translation>
     </message>
     <message>
         <source>Names</source>
-        <translation>Imena</translation>
+        <translation type="vanished">Imena</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation>IP naslov</translation>
+        <translation type="vanished">IP naslov</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation>Pristanišče</translation>
+        <translation type="vanished">Pristanišče</translation>
     </message>
     <message>
         <source>Device type</source>
-        <translation>Vrsta naprave</translation>
+        <translation type="vanished">Vrsta naprave</translation>
     </message>
     <message>
         <source>Timeout(ms)</source>
-        <translation>Časovna omejitev (ms)</translation>
+        <translation type="vanished">Časovna omejitev (ms)</translation>
     </message>
     <message>
         <source>Number of retries</source>
-        <translation>Število ponovnih poskusov</translation>
+        <translation type="vanished">Število ponovnih poskusov</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>Naslov</translation>
+        <translation type="vanished">Naslov</translation>
     </message>
     <message>
         <source>Listen only mode</source>
-        <translation>Način samo poslušanje</translation>
+        <translation type="vanished">Način samo poslušanje</translation>
     </message>
     <message>
         <source>Device parameters</source>
-        <translation>Parametri naprave</translation>
+        <translation type="vanished">Parametri naprave</translation>
     </message>
     <message>
         <source>Device Name</source>
-        <translation>Ime naprave</translation>
+        <translation type="vanished">Ime naprave</translation>
     </message>
     <message>
         <source>Such as: Siemens S7-300</source>
-        <translation>Kot na primer: Siemens S7-300</translation>
+        <translation type="vanished">Kot na primer: Siemens S7-300</translation>
     </message>
 </context>
 <context>
     <name>DeviceListView</name>
     <message>
         <source>Search</source>
-        <translation>Iskanje</translation>
+        <translation type="vanished">Iskanje</translation>
     </message>
 </context>
 <context>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>LayoutManager</name>
     <message>
         <source>Node Editor</source>
-        <translation>Urejevalnik vozlišč</translation>
+        <translation type="vanished">Urejevalnik vozlišč</translation>
     </message>
 </context>
 <context>
@@ -2337,241 +2337,219 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>MainWindow</name>
     <message>
         <source>General</source>
-        <translation>Splošno</translation>
+        <translation type="vanished">Splošno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
         <source>&amp;File</source>
-        <translation>&amp;Datoteka</translation>
+        <translation type="vanished">&amp;Datoteka</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="348"/>
+        <location filename="../../src/mainwindow.cpp" line="344"/>
         <source>New Window</source>
         <translation>Nova okna</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="356"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>Save Parameters</source>
         <translation>Shrani nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
-        <location filename="../../src/mainwindow.cpp" line="737"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Import Parameters</source>
         <translation>Uvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
-        <location filename="../../src/mainwindow.cpp" line="750"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Export Parameters</source>
         <translation>Izvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="367"/>
         <source>Exit Application</source>
-        <translation>Zapri aplikacijo</translation>
+        <translation type="vanished">Izhod iz aplikacije</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="376"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
         <source>&amp;Tools</source>
         <translation>&amp;Orodja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>New</source>
         <translation>Nov</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>&amp;Options</source>
-        <translation>&amp;Možnosti</translation>
+        <translation type="vanished">&amp;Možnosti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Use System Proxy</source>
-        <translation>Uporabi sistemski proxy</translation>
+        <translation type="vanished">Uporabi System Proxy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="434"/>
         <source>Exit to System Tray</source>
-        <translation>Izstopi v sistemsko pladenj</translation>
+        <translation type="vanished">Izhod v sistemsko vrstico</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="454"/>
         <source>Application Style</source>
-        <translation>Slika aplikacije</translation>
+        <translation type="vanished">Slog aplikacije</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="461"/>
         <source>Settings</source>
-        <translation>Nastavitve</translation>
+        <translation type="vanished">nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="464"/>
         <source>Clear Settings</source>
-        <translation>Počisti nastavitve</translation>
+        <translation type="vanished">Počisti nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
         <source>Open Settings Directory</source>
-        <translation>Odpri mapo z nastavitvami</translation>
+        <translation type="vanished">Odprite imenik nastavitev</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="480"/>
         <source>HDPI Policy</source>
-        <translation>HDPI politika</translation>
+        <translation type="vanished">Politika HDPI</translation>
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation>Barvna shema</translation>
+        <translation type="vanished">Barvna shema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Temno</translation>
+        <translation type="vanished">Temno</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation>Svetloba</translation>
+        <translation type="vanished">Svetloba</translation>
     </message>
     <message>
         <source>System</source>
-        <translation>Sistem</translation>
+        <translation type="vanished">Sistem</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>&amp;Languages</source>
-        <translation>&amp;Jeziki</translation>
+        <translation type="vanished">&amp;Jeziki</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="418"/>
         <source>&amp;View</source>
         <translation>&amp;Pogled</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="556"/>
         <source>Stays on Top</source>
-        <translation>Ostani na vrhu</translation>
+        <translation type="vanished">Ostaja na vrhu</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>&amp;Help</source>
-        <translation>&amp;Pomoč</translation>
+        <translation type="vanished">&amp;Pomoč</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="577"/>
         <source>About Qt</source>
-        <translation>O Qt</translation>
+        <translation type="vanished">O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="578"/>
-        <location filename="../../src/mainwindow.cpp" line="793"/>
+        <location filename="../../src/mainwindow.cpp" line="654"/>
         <source>About</source>
         <translation>O aplikaciji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="582"/>
         <source>Screenshot</source>
-        <translation>Posnetek zaslona</translation>
+        <translation type="vanished">Posnetek zaslona</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
         <source>Buy from Store</source>
-        <translation>Kupi v trgovini</translation>
+        <translation type="vanished">Nakup v trgovini</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
         <source>Release History</source>
         <translation>Zgodovina različic</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>Join in QQ Group</source>
-        <translation>Pridruži se QQ skupini</translation>
+        <translation type="vanished">Pridružite se skupini QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="601"/>
         <source>Online Manual</source>
-        <translation>Online priročnik</translation>
+        <translation type="vanished">Spletni priročnik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="604"/>
         <source>Get Sources from Github</source>
-        <translation>Pridobi vire iz Githuba</translation>
+        <translation type="vanished">Pridobite vire iz Githuba</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="607"/>
         <source>Get Sources from Gitee</source>
-        <translation>Pridobi vire iz Giteea</translation>
+        <translation type="vanished">Pridobite vire pri Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="489"/>
         <source>Third Party Open Source</source>
         <translation>Tretje osebe odprtokodni viri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="662"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>QR Code</source>
         <translation>QR koda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>User QQ Group</source>
         <translation>Uporabniška QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="533"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="554"/>
         <source>Need to Reboot</source>
         <translation>Potrebno je ponovno zagnati</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="555"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacijo je treba ponovno zagnati, da začne veljati, želite zdaj znova zagnati aplikacijo?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="557"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Prosimo, da ročno znova zaženete aplikacijo.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="739"/>
-        <location filename="../../src/mainwindow.cpp" line="752"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
+        <location filename="../../src/mainwindow.cpp" line="613"/>
         <source>Json Files (*.json)</source>
         <translation>Json datoteke (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="781"/>
+        <location filename="../../src/mainwindow.cpp" line="642"/>
         <source>Unknown</source>
         <translation>Neznano</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="787"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
         <source>Commit hash</source>
         <translation>Hash spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="789"/>
+        <location filename="../../src/mainwindow.cpp" line="650"/>
         <source>Commit time</source>
         <translation>Čas spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="790"/>
+        <location filename="../../src/mainwindow.cpp" line="651"/>
         <source>Build Date</source>
         <translation>Datum gradnje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="791"/>
+        <location filename="../../src/mainwindow.cpp" line="652"/>
         <source>Copyright</source>
         <translation>Avtorske pravice</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="792"/>
+        <location filename="../../src/mainwindow.cpp" line="653"/>
         <source>All rights reserved.</source>
         <translation>Vse pravice pridržane.</translation>
     </message>
@@ -4110,7 +4088,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Samoosmerno</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="43"/>
+        <location filename="../../src/main.cpp" line="39"/>
         <source>Application is booting...</source>
         <translation>Aplikacija se zažene...</translation>
     </message>
@@ -4130,33 +4108,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Svetloba</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>Sistem</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>Zaokroži navzgor za .5 in več</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>Vedno zaokroži navzgor</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>Vedno zaokroži navzdol</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>Zaokroži navzgor za .75 in več</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>Ne zaokroži</translation>
     </message>
@@ -4238,31 +4216,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>5</source>
-        <translation>5</translation>
+        <translation type="vanished">5</translation>
     </message>
     <message>
         <source>6</source>
-        <translation>6</translation>
+        <translation type="vanished">6</translation>
     </message>
     <message>
         <source>7</source>
-        <translation>7</translation>
+        <translation type="vanished">7</translation>
     </message>
     <message>
         <source>8</source>
-        <translation>8</translation>
+        <translation type="vanished">8</translation>
     </message>
     <message>
         <source>1</source>
-        <translation>1</translation>
+        <translation type="vanished">1</translation>
     </message>
     <message>
         <source>1.5</source>
-        <translation>1.5</translation>
+        <translation type="vanished">1.5</translation>
     </message>
     <message>
         <source>2</source>
-        <translation>2</translation>
+        <translation type="vanished">2</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
@@ -5014,7 +4992,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Export</source>
-        <translation>Izvozi</translation>
+        <translation type="vanished">Izvozi</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5023,15 +5001,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Delete</source>
-        <translation>Izbriši</translation>
+        <translation type="vanished">Izbriši</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation>Gor</translation>
+        <translation type="vanished">Gor</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Dodaj</translation>
+        <translation type="vanished">Dodaj</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
@@ -5040,11 +5018,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Import</source>
-        <translation>Uvozi</translation>
+        <translation type="vanished">Uvozi</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation>Dol</translation>
+        <translation type="vanished">Dol</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5370,7 +5348,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate</source>
-        <translation>Bitna hitrost</translation>
+        <translation type="vanished">Bitna hitrost</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
@@ -5419,7 +5397,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>CAN FD</source>
-        <translation>LAHKO FD</translation>
+        <translation type="vanished">LAHKO FD</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
@@ -5463,7 +5441,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Custom configuration</source>
-        <translation>Konfiguracija po meri</translation>
+        <translation type="vanished">Konfiguracija po meri</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -5626,11 +5604,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>false</source>
-        <translation>lažno</translation>
+        <translation type="vanished">lažno</translation>
     </message>
     <message>
         <source>true</source>
-        <translation>res</translation>
+        <translation type="vanished">res</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
@@ -5669,27 +5647,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="32"/>
         <source>Debug</source>
         <translation>Odpravljanje napak</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Information</source>
         <translation>Informacije</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
         <source>Critical</source>
         <translation>Kritično</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="37"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
         <source>Fatal</source>
         <translation>Usodno</translation>
     </message>
@@ -5858,126 +5836,126 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Dnevnik</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="189"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="195"/>
         <source>Toggle Left Panel</source>
         <translation>Preklop levega podokna</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="190"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="196"/>
         <source>Toggle Bottom Panel</source>
         <translation>Preklopi spodnjo ploščo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="191"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
         <source>Show Ruler</source>
         <translation>Prikaži ravnilo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="199"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
         <source>New Project</source>
         <translation>Nov projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="200"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
         <source>Open Project</source>
         <translation>Odpri projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="201"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Save Project</source>
         <translation>Shrani projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="202"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="263"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="269"/>
         <source>Save Project As...</source>
         <translation>Shrani projekt kot ...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="204"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Fit Screen</source>
         <translation>Prilagodi zaslon</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Zoom In</source>
         <translation>Povečaj</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="211"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Zoom Out</source>
         <translation>Pomanjšaj</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Reset Zoom</source>
         <translation>Ponastavi povečavo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="214"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>Align Left</source>
         <translation>Poravnaj levo</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="215"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Align Right</source>
         <translation>Poravnaj desno</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="216"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Align Top</source>
         <translation>Poravnaj zgoraj</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
         <source>Align Bottom</source>
         <translation>Poravnaj dno</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
         <source>Align Vertical Center</source>
         <translation>Poravnajte navpično sredino</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Align Horizontal Center</source>
         <translation>Poravnaj vodoravno sredino</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Select All</source>
         <translation>Izberite Vse</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="228"/>
         <source>Delete Selected</source>
         <translation>Izbriši izbrano</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="345"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="229"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="351"/>
         <source>Clear All Nodes</source>
         <translation>Počisti vsa vozlišča</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
         <source>Undo</source>
         <translation>Razveljavi</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Redo</source>
         <translation>Ponovi</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="265"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="271"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>Projektne datoteke xFlow (*.xflow);;Vse datoteke (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="346"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="352"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>Ali ste prepričani, da želite počistiti vsa vozlišča?</translation>
     </message>
@@ -6053,11 +6031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus</name>
     <message>
         <source>Modbus Tool Bar</source>
-        <translation>Orodna vrstica Modbus</translation>
+        <translation type="vanished">Orodna vrstica Modbus</translation>
     </message>
     <message>
         <source>Example Action</source>
-        <translation>Primer dejanja</translation>
+        <translation type="vanished">Primer dejanja</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
@@ -6069,27 +6047,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::DeviceListView</name>
     <message>
         <source>New RTU Device</source>
-        <translation>Nova naprava RTU</translation>
+        <translation type="vanished">Nova naprava RTU</translation>
     </message>
     <message>
         <source>New TCP Device</source>
-        <translation>Nova naprava TCP</translation>
+        <translation type="vanished">Nova naprava TCP</translation>
     </message>
     <message>
         <source>New Coils</source>
-        <translation>Nove tuljave</translation>
+        <translation type="vanished">Nove tuljave</translation>
     </message>
     <message>
         <source>New Discrete Inputs</source>
-        <translation>Novi diskretni vhodi</translation>
+        <translation type="vanished">Novi diskretni vhodi</translation>
     </message>
     <message>
         <source>New Holding Registers</source>
-        <translation>Novi registri gospodarstev</translation>
+        <translation type="vanished">Novi registri gospodarstev</translation>
     </message>
     <message>
         <source>New Input Registers</source>
-        <translation>Novi vhodni registri</translation>
+        <translation type="vanished">Novi vhodni registri</translation>
     </message>
 </context>
 <context>
@@ -6134,19 +6112,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xModbus::ModbusDeviceListView</name>
     <message>
         <source>Coils</source>
-        <translation>Tuljave</translation>
+        <translation type="vanished">Tuljave</translation>
     </message>
     <message>
         <source>Discrete Inputs</source>
-        <translation>Diskretni vhodi</translation>
+        <translation type="vanished">Diskretni vhodi</translation>
     </message>
     <message>
         <source>Holding Registers</source>
-        <translation>Registri gospodarstev</translation>
+        <translation type="vanished">Registri gospodarstev</translation>
     </message>
     <message>
         <source>Input Registers</source>
-        <translation>Vhodni registri</translation>
+        <translation type="vanished">Vhodni registri</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
@@ -6443,6 +6421,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
         <translation>MQTT strežnik</translation>
+    </message>
+</context>
+<context>
+    <name>xUi</name>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished">&amp;Datoteka</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>Izhod iz aplikacije</translation>
+    </message>
+    <message>
+        <source>Option</source>
+        <translation type="vanished">Možnost</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="87"/>
+        <source>High DPI Scaling Policy</source>
+        <translation>Politika skaliranja visoke DPI</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>Slog aplikacije</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="105"/>
+        <source>Theme</source>
+        <translation>Tema</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="113"/>
+        <source>Open Settings Directory</source>
+        <translation>Odprite imenik nastavitev</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="118"/>
+        <source>Clear Settings File</source>
+        <translation>Počisti datoteko z nastavitvami</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="127"/>
+        <source>Stays on Top</source>
+        <translation>Ostaja na vrhu</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished">&amp;Pomoč</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="151"/>
+        <source>About Qt</source>
+        <translation>O Qt</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="154"/>
+        <location filename="../../src/common/xui.cpp" line="243"/>
+        <source>About</source>
+        <translation>O tem</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="167"/>
+        <source>Get Source from Gitee</source>
+        <translation>Pridobite vir od Gitee</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="168"/>
+        <source>Get Source from Github</source>
+        <translation>Pridobite vir iz Githuba</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="169"/>
+        <source>Visit Author Home Page</source>
+        <translation>Obiščite avtorjevo domačo stran</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="170"/>
+        <source>Visit App Store</source>
+        <translation>Obiščite App Store</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="180"/>
+        <source>User Feedback</source>
+        <translation>Povratne informacije uporabnikov</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="194"/>
+        <source>Grab and Save</source>
+        <translation>Zgrabi in shrani</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="198"/>
+        <source>Save Grabbed Image</source>
+        <translation>Shrani zajeto sliko</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="209"/>
+        <source>Grab and Copy</source>
+        <translation>Zgrabi in kopiraj</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="223"/>
+        <source>Commit time</source>
+        <translation>Določite čas</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="230"/>
+        <source>Commit</source>
+        <translation>Zaveži se</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="240"/>
+        <source>Build Date</source>
+        <translation>Datum gradnje</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="241"/>
+        <source>Copyright</source>
+        <translation>Avtorske pravice</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="242"/>
+        <source>All rights reserved.</source>
+        <translation>Vse pravice pridržane.</translation>
     </message>
 </context>
 </TS>

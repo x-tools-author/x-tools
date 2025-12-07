@@ -47,7 +47,6 @@
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
-#include "utilities/thememanager.h"
 #include "utilities/x.h"
 
 #ifdef Q_OS_WIN
@@ -74,7 +73,7 @@ struct MainWindowParameterKeys
 };
 
 MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent)
+    : xUi(parent)
     , m_ioPage00(Q_NULLPTR)
     , m_ioPage01(Q_NULLPTR)
     , m_ioPage10(Q_NULLPTR)
@@ -329,28 +328,21 @@ QUrl MainWindow::storeUrl() const
 
 void MainWindow::initMenuBar()
 {
-    xAPP->showSplashScreenMessage(QString("Create file menu..."));
+    xAPP->showSplashScreenMessage(QString("Create menus..."));
     initFileMenu();
 #if !defined(Q_OS_ANDROID)
-    xAPP->showSplashScreenMessage(QString("Create tools menu..."));
     initToolMenu();
 #endif
-    xAPP->showSplashScreenMessage(QString("Create option menu..."));
-    initOptionMenu();
-    xAPP->showSplashScreenMessage(QString("Create view menu..."));
     initViewMenu();
-    xAPP->showSplashScreenMessage(QString("Create language menu..."));
-    initMenuLanguage();
-    xAPP->showSplashScreenMessage(QString("Create help menu..."));
     initHelpMenu();
 }
 
 void MainWindow::initFileMenu()
 {
-    auto fileMenu = menuBar()->addMenu(tr("&File"));
+    QList<QAction*> existingActions = m_fileMenu->actions();
 #if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MAC)
-    QMenu* newMenu = fileMenu->addMenu(tr("New Window"));
-    fileMenu->addMenu(newMenu);
+    QMenu* newMenu = m_fileMenu->addMenu(tr("New Window"));
+    m_fileMenu->addMenu(newMenu);
     newMenu->addAction(QString("xTools"), this, []() {
         auto* w = new Page(Page::Left, xAPP->settings());
         w->setWindowTitle("xTools");
@@ -360,31 +352,31 @@ void MainWindow::initFileMenu()
     for (int i = 0; i < actions.count(); i++) {
         newMenu->addAction(actions.at(i));
     }
-    fileMenu->addSeparator();
+    m_fileMenu->addSeparator();
 #endif
-    QAction* action = fileMenu->addAction(tr("Save Parameters"),
-                                          this,
-                                          &MainWindow::onSaveActionTriggered);
+    QAction* action = m_fileMenu->addAction(tr("Save Parameters"),
+                                            this,
+                                            &MainWindow::onSaveActionTriggered);
     action->setShortcut(QKeySequence::Save);
-    action = fileMenu->addAction(tr("Import Parameters"),
-                                 this,
-                                 &MainWindow::onImportActionTriggered);
+    action = m_fileMenu->addAction(tr("Import Parameters"),
+                                   this,
+                                   &MainWindow::onImportActionTriggered);
     action->setShortcut(QKeySequence::Open);
-    action = fileMenu->addAction(tr("Export Parameters"),
-                                 this,
-                                 &MainWindow::onExportActionTriggered);
+    action = m_fileMenu->addAction(tr("Export Parameters"),
+                                   this,
+                                   &MainWindow::onExportActionTriggered);
     action->setShortcut(QKeySequence::SaveAs);
-    fileMenu->addSeparator();
-    action = fileMenu->addAction(tr("Exit Application"), this, []() {
-        QApplication::closeAllWindows();
-        QApplication::quit();
-    });
-    action->setShortcut(QKeySequence::Quit);
+    // Add back existing actions
+    for (int i = 0; i < existingActions.count(); i++) {
+        m_fileMenu->addAction(existingActions.at(i));
+    }
 }
 
 void MainWindow::initToolMenu()
 {
-    auto toolMenu = menuBar()->addMenu(tr("&Tools"));
+    QMenuBar* mb = menuBar();
+    auto toolMenu = new QMenu(tr("&Tools"));
+    mb->insertMenu(m_optionMenu->menuAction(), toolMenu);
 
     QList<int> supportedAssistants = AssistantFactory::instance()->supportedAssistants();
     QMenu* newMenu = toolMenu->addMenu(tr("New"));
@@ -421,103 +413,14 @@ void MainWindow::initToolMenu()
     }
 }
 
-void MainWindow::initOptionMenu()
-{
-    auto optionMenu = menuBar()->addMenu(tr("&Options"));
-
-    initOptionMenuHdpiPolicy(optionMenu);
-    initOptionMenuAppStyleMenu(optionMenu);
-    initOptionMenuColorScheme(optionMenu);
-    optionMenu->addSeparator();
-    initOptionMenuSettingsMenu(optionMenu);
-    optionMenu->addSeparator();
-
-    auto* proxy = optionMenu->addAction(tr("Use System Proxy"));
-    proxy->setCheckable(true);
-    bool useSystemProxy = xAPP->settings()->value(m_settingsKey.useSystemProxy).toBool();
-    proxy->setChecked(useSystemProxy);
-    QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
-    connect(proxy, &QAction::triggered, this, [=]() {
-        QNetworkProxyFactory::setUseSystemConfiguration(proxy->isChecked());
-        xAPP->settings()->setValue(m_settingsKey.useSystemProxy, proxy->isChecked());
-    });
-
-    auto* trayAction = new QAction(tr("Exit to System Tray"), this);
-    trayAction->setCheckable(true);
-    optionMenu->addAction(trayAction);
-
-    QVariant v = xAPP->settings()->value(m_settingsKey.exitToSystemTray);
-    if (!v.isNull()) {
-        bool isExitToSystemTray = v.toBool();
-        trayAction->setChecked(isExitToSystemTray);
-    }
-
-    connect(trayAction, &QAction::triggered, this, [=]() {
-        bool keep = trayAction->isChecked();
-        xAPP->settings()->setValue(m_settingsKey.exitToSystemTray, keep);
-    });
-}
-
-void MainWindow::initOptionMenuAppStyleMenu(QMenu* optionMenu)
-{
-    QMenu* appStyleMenu = xStyleMgr.styleMenu();
-    if (appStyleMenu) {
-        appStyleMenu->setTitle(tr("Application Style"));
-        optionMenu->addMenu(appStyleMenu);
-    }
-}
-
-void MainWindow::initOptionMenuSettingsMenu(QMenu* optionMenu)
-{
-    QMenu* settingsMenu = new QMenu(tr("Settings"), this);
-    optionMenu->addMenu(settingsMenu);
-
-    auto clearAction = settingsMenu->addAction(tr("Clear Settings"));
-    connect(clearAction, &QAction::triggered, this, [=]() {
-        xAPP->settings()->setValue(Application::ParameterKeys().clearSettings, true);
-        tryToReboot(true);
-    });
-
-    auto openAction = settingsMenu->addAction(tr("Open Settings Directory"));
-    connect(openAction, &QAction::triggered, this, [=]() {
-        QDesktopServices::openUrl(xAPP->settingsPath());
-    });
-}
-
-void MainWindow::initOptionMenuHdpiPolicy(QMenu* optionMenu)
-{
-    QMenu* menu = xHdpiMgr.hdpiMenu();
-    if (menu) {
-        menu->setTitle(tr("HDPI Policy"));
-        optionMenu->addMenu(menu);
-    }
-}
-
-void MainWindow::initOptionMenuColorScheme(QMenu* optionMenu)
-{
-    QMenu* colorSchemeMenu = xThemeMgr.themeMenu();
-    if (colorSchemeMenu) {
-        optionMenu->addMenu(colorSchemeMenu);
-    }
-}
-
-void MainWindow::initMenuLanguage()
-{
-    QMenu* languageMenu = xI18n.languageMenu();
-    if (languageMenu) {
-        languageMenu->setTitle(tr("&Languages"));
-        menuBar()->addMenu(xI18n.languageMenu());
-    }
-}
-
 void MainWindow::initViewMenu()
 {
-    QMenu* viewMenu = menuBar()->addMenu(tr("&View"));
+    QMenu* viewMenu = new QMenu(tr("&View"), this);
+    menuBar()->insertMenu(m_languageMenu->menuAction(), viewMenu);
     viewMenu->setObjectName("ViewMenu");
     initViewMenuGrid(viewMenu);
     QAction* action = viewMenu->addSeparator();
     action->setObjectName("PageViewAction");
-    initViewMenuStayOnTop(viewMenu);
 }
 
 void MainWindow::initViewMenuGrid(QMenu* viewMenu)
@@ -562,64 +465,9 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
     }
 }
 
-void MainWindow::initViewMenuStayOnTop(QMenu* viewMenu)
-{
-    QAction* action = viewMenu->addAction(tr("Stays on Top"));
-    connect(action, &QAction::triggered, this, [=]() {
-        if (action->isChecked()) {
-            setWindowFlag(Qt::WindowStaysOnTopHint, true);
-        } else {
-            setWindowFlag(Qt::WindowStaysOnTopHint, false);
-        }
-
-        xAPP->settings()->setValue(m_settingsKey.staysOnTop, action->isChecked());
-        show();
-    });
-    action->setCheckable(true);
-#if 0
-    bool staysOnTop = xAPP->settings()->value(m_settingsKey.staysOnTop, false).toBool();
-    action->setChecked(staysOnTop);
-#endif
-}
 
 void MainWindow::initHelpMenu()
 {
-    auto helpMenu = menuBar()->addMenu(tr("&Help"));
-    helpMenu->addAction(tr("About Qt"), qApp, &QApplication::aboutQt);
-    auto aboutAction = helpMenu->addAction(tr("About") + " " + QApplication::applicationName());
-    connect(aboutAction, &QAction::triggered, this, &MainWindow::onAboutActionTriggered);
-
-#if 1
-    helpMenu->addAction(tr("Screenshot"), this, [=]() {
-        QPixmap pix = this->grab();
-        // copy to clipboard
-        QApplication::clipboard()->setPixmap(pix);
-    });
-#endif
-
-#if defined(Q_OS_WIN)
-    helpMenu->addSeparator();
-    helpMenu->addAction(QIcon(":/res/icons/buy.svg"), tr("Buy from Store"), this, [=]() {
-        QDesktopServices::openUrl(storeUrl());
-    });
-#endif
-
-    helpMenu->addSeparator();
-    m_historyAction = helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
-    helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
-    helpMenu->addSeparator();
-
-    helpMenu->addAction(tr("Online Manual"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools"));
-    });
-    helpMenu->addAction(tr("Get Sources from Github"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://github.com/x-tools-author/x-tools"));
-    });
-    helpMenu->addAction(tr("Get Sources from Gitee"), this, []() {
-        QDesktopServices::openUrl(QUrl("https://gitee.com/x-tools-author/x-tools"));
-    });
-    helpMenu->addSeparator();
-
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
     ctxs.append(qMakePair(QString("lua"), QString("https://github.com/lua/lua")));
@@ -637,7 +485,8 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("QCustomPlot"), QString("https://www.qcustomplot.com/")));
     // clang-format on
 
-    QMenu* menu = helpMenu->addMenu(tr("Third Party Open Source"));
+    m_helpMenu->addSeparator();
+    QMenu* menu = m_helpMenu->addMenu(tr("Third Party Open Source"));
     for (auto& ctx : ctxs) {
         if (ctx.first.isEmpty() && ctx.second.isEmpty()) {
             menu->addSeparator();
