@@ -8,14 +8,9 @@
  **************************************************************************************************/
 #pragma once
 
-extern "C" {
-#include "lauxlib.h"
-#include "lua.h"
-#include "lualib.h"
-}
-
 #include <QThread>
 
+struct lua_State;
 class LuaRunner : public QThread
 {
     Q_OBJECT

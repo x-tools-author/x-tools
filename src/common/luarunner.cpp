@@ -11,6 +11,12 @@
 #include <QDebug>
 #include <QEventLoop>
 
+extern "C" {
+#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+}
+
 LuaRunner::LuaRunner(QObject *parent)
     : QThread(parent)
 {}
