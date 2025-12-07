@@ -8,10 +8,16 @@
  **************************************************************************************************/
 #include "xapp.h"
 
+#ifdef Q_OS_WIN
+#include <qt_windows.h>
+#include <QWidget>
+#endif
+
 #if !defined(X_DISABLE_LOG)
 #include <glog/logging.h>
 #endif
 
+#include <QAbstractNativeEventFilter>
 #include <QDebug>
 #include <QDir>
 #include <QEventLoop>
@@ -27,11 +33,42 @@
 #include <QTimer>
 #include <QTranslator>
 
-#include "nativeeventfilter.h"
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
+
+class NativeEventFilter : public QAbstractNativeEventFilter
+{
+public:
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override
+#else
+    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result) override
+#endif
+    {
+#ifdef Q_OS_WIN
+        MSG *msg = (MSG *) message;
+        if (msg->message == WM_GETOBJECT) {
+            // QTBUG-77974: https://blog.csdn.net/omg_orange/article/details/116779492
+            return true;
+        }
+
+        if (eventType == "windows_generic_MSG") {
+            MSG *msg = static_cast<MSG *>(message);
+            if (msg->message == WM_ACTIVATE) {
+                HWND hwnd = msg->hwnd;
+                QWidget *w = QWidget::find((WId) hwnd);
+                if (w) {
+                    xThemeMgr.updateWindowCaptionColor(w);
+                }
+            }
+        }
+#endif
+
+        return false;
+    }
+};
 
 xApp::xApp(int &argc, char **argv)
     : QApplication(argc, argv)
@@ -61,7 +98,7 @@ xApp::xApp(int &argc, char **argv)
     }
 
 #ifdef Q_OS_WIN
-    installNativeEventFilter(new xTools::NativeEventFilter());
+    installNativeEventFilter(new NativeEventFilter());
 #endif
 }
 

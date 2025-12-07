@@ -11,8 +11,8 @@
 
 #include <QFile>
 
-#include "common/luarunner.h"
 #include "common/xtools.h"
+#include "luarunner.h"
 #include "utilities/compatibility.h"
 #include "utilities/syntaxhighlighterlua.h"
 

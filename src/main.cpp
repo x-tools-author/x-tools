@@ -9,8 +9,6 @@
 #include <QDebug>
 #include <QMessageBox>
 
-#include "common/nativeeventfilter.h"
-
 #include "application.h"
 #include "mainwindow.h"
 
@@ -29,9 +27,6 @@ int main(int argc, char *argv[])
     Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
-#ifdef Q_OS_WIN
-    app.installNativeEventFilter(new xTools::NativeEventFilter());
-#endif
 
 #if X_ENABLE_SINGLE_APPLICATION
     SingleApplication sApp(argc, argv);
