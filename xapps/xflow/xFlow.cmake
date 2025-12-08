@@ -20,8 +20,6 @@ endforeach()
 
 include(cmake/x_qt.cmake)
 include(cmake/x_3rd.cmake)
-include(cmake/x_3rd_qtaes.cmake)
-include(cmake/x_3rd_nodeeditor.cmake)
 
 # --------------------------------------------------------------------------------------------------
 include_directories(${CMAKE_SOURCE_DIR}/xapps)
