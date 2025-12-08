@@ -25,10 +25,10 @@ UserInputUi::UserInputUi(BaseNode *node, QWidget *parent)
     ui->setupUi(w);
     setEmbeddedWidget(w);
 
-    setupTextFormat(ui->comboBoxFormat);
-    setupAddition(ui->comboBoxPrefix);
-    setupAddition(ui->comboBoxSuffix);
-    setupEscapeCharacter(ui->comboBoxEscape);
+    xSetupTextFormat(ui->comboBoxFormat);
+    xSetupAddition(ui->comboBoxPrefix);
+    xSetupAddition(ui->comboBoxSuffix);
+    xSetupEscapeCharacter(ui->comboBoxEscape);
 
     ui->lineEditInput->installEventFilter(this);
     ui->comboBoxTiming->addItem(tr("Disable"), -1);
@@ -121,7 +121,7 @@ void UserInputUi::output()
 
     UserInput::Data data = getUserInputData(ui);
     if (data.text.isEmpty()) {
-        data.text = bytes2string(QByteArray("(null)"), data.format);
+        data.text = xBytes2string(QByteArray("(null)"), data.format);
     }
 
     QByteArray bytes = UserInput::data2Bytes(data);
@@ -133,7 +133,7 @@ void UserInputUi::updateFormat()
 {
     int format = ui->comboBoxFormat->currentData().toInt();
     ui->lineEditInput->clear();
-    setupTextFormatValidator(ui->lineEditInput, format);
+    xSetupTextFormatValidator(ui->lineEditInput, format);
 }
 
 void UserInputUi::updateCycleTimer()

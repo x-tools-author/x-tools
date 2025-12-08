@@ -19,11 +19,11 @@ TextItemEditor::TextItemEditor(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setupAddition(ui->comboBoxPrefix);
-    setupAddition(ui->comboBoxSuffix);
-    setupEscapeCharacter(ui->comboBoxEscapeCharacter);
+    xSetupAddition(ui->comboBoxPrefix);
+    xSetupAddition(ui->comboBoxSuffix);
+    xSetupEscapeCharacter(ui->comboBoxEscapeCharacter);
     xTools::CRC::setupAlgorithm(ui->comboBoxAlgorithm);
-    setupTextFormat(ui->comboBoxFormat);
+    xSetupTextFormat(ui->comboBoxFormat);
 
     connect(ui->comboBoxFormat, xComboBoxActivated, this, &TextItemEditor::onTextFormatChanged);
     onTextFormatChanged();
@@ -101,7 +101,7 @@ void TextItemEditor::load(const QJsonObject &parameters)
     int escapeCharacterIndex = ui->comboBoxEscapeCharacter->findData(escapeCharacter);
     int crcAlgorithmIndex = ui->comboBoxAlgorithm->findData(crcAlgorithm);
 
-    const QString placeholderText = bytes2string(QByteArray("(null)"), format);
+    const QString placeholderText = xBytes2string(QByteArray("(null)"), format);
     ui->lineEditInput->setPlaceholderText(placeholderText);
     ui->plainTextEditInput->setPlaceholderText(placeholderText);
 
@@ -125,7 +125,7 @@ void TextItemEditor::onTextFormatChanged()
     ui->plainTextEditInput->clear();
 
     int format = ui->comboBoxFormat->currentData().toInt();
-    setupTextFormatValidator(ui->lineEditInput, format);
+    xSetupTextFormatValidator(ui->lineEditInput, format);
 
     bool isSingleLine = (format == static_cast<int>(TextFormat::Bin)
                          || format == static_cast<int>(TextFormat::Oct)
@@ -136,7 +136,7 @@ void TextItemEditor::onTextFormatChanged()
     ui->lineEditInput->setEnabled(isSingleLine);
     ui->plainTextEditInput->setEnabled(!isSingleLine);
 
-    const QString placeholderText = bytes2string(QByteArray("(null)"), format);
+    const QString placeholderText = xBytes2string(QByteArray("(null)"), format);
     ui->lineEditInput->setPlaceholderText(placeholderText);
     ui->plainTextEditInput->setPlaceholderText(placeholderText);
 }

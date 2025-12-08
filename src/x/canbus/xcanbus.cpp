@@ -110,8 +110,8 @@ xCanBus::xCanBus(QWidget* parent)
     setupOptions(ui->comboBoxCanFd, false);
     setupFrameTypes(ui->comboBoxFrameType);
     setupTimedSending(ui->comboBoxTimedSending);
-    setupTextFormat(ui->comboBoxInputFormat);
-    setupTextFormatValidator(ui->lineEditFrameId, static_cast<int>(TextFormat::HexWithoutSpace), 8);
+    xSetupTextFormat(ui->comboBoxInputFormat);
+    xSetupTextFormatValidator(ui->lineEditFrameId, static_cast<int>(TextFormat::HexWithoutSpace), 8);
 
     m_device = new CanBusDevice(this);
     connect(m_device, &CanBusDevice::opened, this, &xCanBus::onDeviceOpened);
@@ -460,7 +460,7 @@ void xCanBus::updateInputValidator()
     }
 
     int format = static_cast<int>(TextFormat::HexWithoutSpace);
-    setupTextFormatValidator(ui->lineEditPayload, format);
+    xSetupTextFormatValidator(ui->lineEditPayload, format);
 }
 
 void xCanBus::sendFrame()
@@ -470,7 +470,7 @@ void xCanBus::sendFrame()
     }
 
     const QString txt = ui->lineEditPayload->text();
-    const QByteArray payload = string2bytes(txt, ui->comboBoxInputFormat->currentData().toInt());
+    const QByteArray payload = xString2bytes(txt, ui->comboBoxInputFormat->currentData().toInt());
     const uint frameId = static_cast<uint>(ui->lineEditFrameId->text().toUInt(nullptr, 16));
     QCanBusFrame frame = QCanBusFrame(frameId, payload);
     frame.setExtendedFrameFormat(ui->checkBoxExtendedFormat->isChecked());

@@ -35,7 +35,7 @@ DeviceSettings::DeviceSettings(QWidget *parent)
     , ui(new Ui::DeviceSettings)
 {
     ui->setupUi(this);
-    setupTextFormat(ui->comboBoxSaveTextFormat);
+    xSetupTextFormat(ui->comboBoxSaveTextFormat);
     ui->comboBoxMaxBytes->addItem("16K", 16);
     ui->comboBoxMaxBytes->addItem("32K", 32);
     ui->comboBoxMaxBytes->addItem("64K", 64);

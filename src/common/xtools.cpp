@@ -58,7 +58,7 @@
 #include <iconv.h>
 #endif
 
-QList<int> supportedTextFormats()
+QList<int> xSupportedTextFormats()
 {
     static QList<int> textFormats;
     if (textFormats.isEmpty()) {
@@ -80,7 +80,7 @@ QList<int> supportedTextFormats()
     return textFormats;
 }
 
-QString textFormatName(TextFormat format)
+QString xTextFormatName(TextFormat format)
 {
     switch (format) {
     case TextFormat::Bin:
@@ -111,16 +111,16 @@ QString textFormatName(TextFormat format)
     }
 }
 
-void setupTextFormat(QComboBox *comboBox)
+void xSetupTextFormat(QComboBox *comboBox)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> textFormats = supportedTextFormats();
+    QList<int> textFormats = xSupportedTextFormats();
     for (int &format : textFormats) {
-        comboBox->addItem(textFormatName(static_cast<TextFormat>(format)), format);
+        comboBox->addItem(xTextFormatName(static_cast<TextFormat>(format)), format);
     }
 
     comboBox->setCurrentIndex(comboBox->findData(static_cast<int>(TextFormat::Hex)));
@@ -161,7 +161,7 @@ QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, con
 #endif
 }
 
-QString bytes2string(const QByteArray &bytes, int format)
+QString xBytes2string(const QByteArray &bytes, int format)
 {
     auto cookedArray = [](const QByteArray &array, int base, int len) -> QString {
         QString str, numStr;
@@ -194,19 +194,19 @@ QString bytes2string(const QByteArray &bytes, int format)
     }
 #if defined(X_ENABLE_ICONV)
     else if (static_cast<int>(TextFormat::GB2312) == format) {
-        QString name = textFormatName(TextFormat::GB2312);
+        QString name = xTextFormatName(TextFormat::GB2312);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
         return QString::fromUtf8(utf8);
     } else if (static_cast<int>(TextFormat::CSGB2312) == format) {
-        QString name = textFormatName(TextFormat::CSGB2312);
+        QString name = xTextFormatName(TextFormat::CSGB2312);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
         return QString::fromUtf8(utf8);
     } else if (static_cast<int>(TextFormat::GBK) == format) {
-        QString name = textFormatName(TextFormat::GBK);
+        QString name = xTextFormatName(TextFormat::GBK);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
         return QString::fromUtf8(utf8);
     } else if (static_cast<int>(TextFormat::GB18030) == format) {
-        QString name = textFormatName(TextFormat::GB18030);
+        QString name = xTextFormatName(TextFormat::GB18030);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
         return QString::fromUtf8(utf8);
     }
@@ -216,7 +216,7 @@ QString bytes2string(const QByteArray &bytes, int format)
     }
 }
 
-QByteArray string2bytes(const QString &text, int format)
+QByteArray xString2bytes(const QString &text, int format)
 {
     auto cookString = [](const QString &str, const int base) -> QByteArray {
         QByteArray data;
@@ -250,16 +250,16 @@ QByteArray string2bytes(const QString &text, int format)
     }
 #if defined(X_ENABLE_ICONV)
     else if (format == static_cast<int>(TextFormat::GB2312)) {
-        QString name = textFormatName(TextFormat::GB2312);
+        QString name = xTextFormatName(TextFormat::GB2312);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     } else if (format == static_cast<int>(TextFormat::CSGB2312)) {
-        QString name = textFormatName(TextFormat::CSGB2312);
+        QString name = xTextFormatName(TextFormat::CSGB2312);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     } else if (format == static_cast<int>(TextFormat::GBK)) {
-        QString name = textFormatName(TextFormat::GBK);
+        QString name = xTextFormatName(TextFormat::GBK);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     } else if (format == static_cast<int>(TextFormat::GB18030)) {
-        QString name = textFormatName(TextFormat::GB18030);
+        QString name = xTextFormatName(TextFormat::GB18030);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     }
 #endif
@@ -270,12 +270,12 @@ QByteArray string2bytes(const QString &text, int format)
     return data;
 }
 
-QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2)
+QByteArray xArrayAppendArray(const QByteArray &a1, const QByteArray &a2)
 {
     return a1 + a2;
 }
 
-void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
+void xSetupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen)
 {
     if (!lineEdit) {
         return;
@@ -327,7 +327,7 @@ int print_encoding(unsigned int namescount, const char *const *names, void *data
     return 0;
 }
 
-void printSupportedIconvEncodings()
+void xPrintSupportedIconvEncodings()
 {
 #ifdef X_ENABLE_ICONV
     iconvlist(print_encoding, nullptr);
@@ -336,7 +336,7 @@ void printSupportedIconvEncodings()
 #endif
 }
 
-QList<int> supportedAffixes()
+QList<int> xSupportedAffixes()
 {
     QList<int> additions;
     additions << static_cast<int>(Affixes::None);
@@ -347,7 +347,7 @@ QList<int> supportedAffixes()
     return additions;
 }
 
-QString additionName(int affixes)
+QString xAdditionName(int affixes)
 {
     switch (affixes) {
     case static_cast<int>(Affixes::R):
@@ -363,20 +363,20 @@ QString additionName(int affixes)
     }
 }
 
-void setupAddition(QComboBox *comboBox)
+void xSetupAddition(QComboBox *comboBox)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> additions = supportedAffixes();
+    QList<int> additions = xSupportedAffixes();
     for (int &addition : additions) {
-        comboBox->addItem(additionName(addition), addition);
+        comboBox->addItem(xAdditionName(addition), addition);
     }
 }
 
-QByteArray cookedAffixes(int affixes)
+QByteArray xCookedAffixes(int affixes)
 {
     switch (affixes) {
     case static_cast<int>(Affixes::R):
@@ -392,7 +392,7 @@ QByteArray cookedAffixes(int affixes)
     }
 }
 
-QList<int> supportedEscapeCharacters()
+QList<int> xSupportedEscapeCharacters()
 {
     QList<int> escapeCharacters;
     escapeCharacters << static_cast<int>(EscapeCharacter::None);
@@ -405,7 +405,7 @@ QList<int> supportedEscapeCharacters()
     return escapeCharacters;
 }
 
-QString escapeCharacterName(int escapeCharacter)
+QString xEscapeCharacterName(int escapeCharacter)
 {
     switch (escapeCharacter) {
     case static_cast<int>(EscapeCharacter::R):
@@ -425,20 +425,20 @@ QString escapeCharacterName(int escapeCharacter)
     }
 }
 
-void setupEscapeCharacter(QComboBox *comboBox)
+void xSetupEscapeCharacter(QComboBox *comboBox)
 {
     if (!comboBox) {
         return;
     }
 
     comboBox->clear();
-    QList<int> escapeCharacters = supportedEscapeCharacters();
+    QList<int> escapeCharacters = xSupportedEscapeCharacters();
     for (int &esc : escapeCharacters) {
-        comboBox->addItem(escapeCharacterName(esc), esc);
+        comboBox->addItem(xEscapeCharacterName(esc), esc);
     }
 }
 
-QString cookedEscapeCharacter(const QString &text, int escapeCharacter)
+QString xCookedEscapeCharacter(const QString &text, int escapeCharacter)
 {
     QString newStr = text;
     if (escapeCharacter == static_cast<int>(EscapeCharacter::R)) {
@@ -459,7 +459,7 @@ QString cookedEscapeCharacter(const QString &text, int escapeCharacter)
     return newStr;
 }
 
-QString webSocketDataChannelName(WebSocketDataChannel channel)
+QString xWebSocketDataChannelName(WebSocketDataChannel channel)
 {
     if (channel == WebSocketDataChannel::Text) {
         return QObject::tr("Text");
@@ -470,18 +470,18 @@ QString webSocketDataChannelName(WebSocketDataChannel channel)
     return "Unknown";
 }
 
-void setupWebSocketDataChannel(QComboBox *comboBox)
+void xSetupWebSocketDataChannel(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
         auto text = WebSocketDataChannel::Text;
         auto binary = WebSocketDataChannel::Binary;
-        comboBox->addItem(webSocketDataChannelName(text), static_cast<int>(text));
-        comboBox->addItem(webSocketDataChannelName(binary), static_cast<int>(binary));
+        comboBox->addItem(xWebSocketDataChannelName(text), static_cast<int>(text));
+        comboBox->addItem(xWebSocketDataChannelName(binary), static_cast<int>(binary));
     }
 }
 
-QList<int> supportedResponseOptions()
+QList<int> xSupportedResponseOptions()
 {
     static QList<int> list;
     if (list.isEmpty()) {
@@ -495,7 +495,7 @@ QList<int> supportedResponseOptions()
     return list;
 }
 
-QString responseOptionName(ResponseOption option)
+QString xResponseOptionName(ResponseOption option)
 {
     static QMap<ResponseOption, QString> map;
     if (map.isEmpty()) {
@@ -514,18 +514,18 @@ QString responseOptionName(ResponseOption option)
     }
 }
 
-void setupResponseOption(QComboBox *comboBox)
+void xSetupResponseOption(QComboBox *comboBox)
 {
     if (comboBox) {
         comboBox->clear();
-        QList<int> options = supportedResponseOptions();
+        QList<int> options = xSupportedResponseOptions();
         for (int &option : options) {
-            comboBox->addItem(responseOptionName(static_cast<ResponseOption>(option)), option);
+            comboBox->addItem(xResponseOptionName(static_cast<ResponseOption>(option)), option);
         }
     }
 }
 
-QByteArray responseData(const QByteArray &data, int option, const QByteArray &reference)
+QByteArray xResponseData(const QByteArray &data, int option, const QByteArray &reference)
 {
     if (data.isEmpty()) {
         return QByteArray{};
@@ -558,7 +558,7 @@ QByteArray responseData(const QByteArray &data, int option, const QByteArray &re
     }
 }
 
-TextItem defaultTextItem()
+TextItem xDefaultTextItem()
 {
     TextItem context;
     context.textFormat = TextFormat::Utf8;
@@ -575,13 +575,14 @@ TextItem defaultTextItem()
     return context;
 }
 
-QString textItem2string(const TextItem &context)
+QString xTextItem2string(const TextItem &context)
 {
-    QString prefix = additionName(static_cast<int>(context.prefix));
-    QString payload = cookedEscapeCharacter(context.text, static_cast<int>(context.escapeCharacter));
+    QString prefix = xAdditionName(static_cast<int>(context.prefix));
+    QString payload = xCookedEscapeCharacter(context.text,
+                                             static_cast<int>(context.escapeCharacter));
     QString crc;
     if (context.crc.enable) {
-        QByteArray data = string2bytes(context.text, static_cast<int>(context.textFormat));
+        QByteArray data = xString2bytes(context.text, static_cast<int>(context.textFormat));
 
         xTools::CRC::Context ctx;
         ctx.algorithm = static_cast<xTools::CRC::Algorithm>(context.crc.algorithm);
@@ -595,16 +596,16 @@ QString textItem2string(const TextItem &context)
         crc = crc.toUpper();
     }
 
-    QString suffix = additionName(static_cast<int>(context.suffix));
+    QString suffix = xAdditionName(static_cast<int>(context.suffix));
     return QString("[%1][%2][%3][%4]").arg(prefix, payload, crc, suffix);
 }
 
-QByteArray textItem2array(const TextItem &context)
+QByteArray xTextItem2array(const TextItem &context)
 {
-    QByteArray prefix = cookedAffixes(static_cast<int>(context.prefix));
+    QByteArray prefix = xCookedAffixes(static_cast<int>(context.prefix));
     int esc = static_cast<int>(context.escapeCharacter);
-    QString text = cookedEscapeCharacter(context.text, esc);
-    QByteArray payload = string2bytes(text, static_cast<int>(context.textFormat));
+    QString text = xCookedEscapeCharacter(context.text, esc);
+    QByteArray payload = xString2bytes(text, static_cast<int>(context.textFormat));
 
     xTools::CRC::Context ctx;
     ctx.algorithm = static_cast<xTools::CRC::Algorithm>(context.crc.algorithm);
@@ -614,7 +615,7 @@ QByteArray textItem2array(const TextItem &context)
     ctx.data = payload;
 
     QByteArray crc = xTools::CRC::calculate(ctx);
-    QByteArray suffix = cookedAffixes(static_cast<int>(context.suffix));
+    QByteArray suffix = xCookedAffixes(static_cast<int>(context.suffix));
 
     if (context.crc.enable) {
         return (prefix + payload + crc + suffix);
@@ -623,7 +624,7 @@ QByteArray textItem2array(const TextItem &context)
     }
 }
 
-TextItem loadTextItem(const QJsonObject &obj)
+TextItem xLoadTextItem(const QJsonObject &obj)
 {
     TextItem ctx;
     const TextItemKeys keys;
@@ -640,7 +641,7 @@ TextItem loadTextItem(const QJsonObject &obj)
     return ctx;
 }
 
-QJsonObject saveTextItem(const TextItem &context)
+QJsonObject xSaveTextItem(const TextItem &context)
 {
     QJsonObject obj;
     const TextItemKeys keys;
@@ -657,7 +658,7 @@ QJsonObject saveTextItem(const TextItem &context)
     return obj;
 }
 
-SerialPortItem defaultSerialPortItem()
+SerialPortItem xDefaultSerialPortItem()
 {
     SerialPortItem context;
     context.portName = "";
@@ -674,7 +675,7 @@ SerialPortItem defaultSerialPortItem()
     return context;
 }
 
-QJsonObject saveSerialPortItem(const SerialPortItem &context)
+QJsonObject xSaveSerialPortItem(const SerialPortItem &context)
 {
     QJsonObject obj;
     const SerialPortItemKeys keys;
@@ -690,7 +691,7 @@ QJsonObject saveSerialPortItem(const SerialPortItem &context)
     return obj;
 }
 
-SerialPortItem loadSerialPortItem(const QJsonObject &obj)
+SerialPortItem xLoadSerialPortItem(const QJsonObject &obj)
 {
     SerialPortItem ctx;
     const SerialPortItemKeys keys;
@@ -707,7 +708,7 @@ SerialPortItem loadSerialPortItem(const QJsonObject &obj)
 }
 
 #if X_ENABLE_SERIALPORT
-void setupPortName(QComboBox *comboBox)
+void xSetupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
     for (auto &info : infos) {
@@ -715,7 +716,7 @@ void setupPortName(QComboBox *comboBox)
     }
 }
 
-void setupBaudRate(QComboBox *comboBox)
+void xSetupBaudRate(QComboBox *comboBox)
 {
     QList<int> baudRates = QSerialPortInfo::standardBaudRates();
     for (auto &baudRate : baudRates) {
@@ -725,7 +726,7 @@ void setupBaudRate(QComboBox *comboBox)
     comboBox->setMaxVisibleItems(comboBox->count() + 1);
 }
 
-void setupDataBits(QComboBox *comboBox)
+void xSetupDataBits(QComboBox *comboBox)
 {
     comboBox->addItem("8", QSerialPort::Data8);
     comboBox->addItem("7", QSerialPort::Data7);
@@ -733,7 +734,7 @@ void setupDataBits(QComboBox *comboBox)
     comboBox->addItem("5", QSerialPort::Data5);
 }
 
-void setupParity(QComboBox *comboBox)
+void xSetupParity(QComboBox *comboBox)
 {
     comboBox->addItem(QObject::tr("None"), QSerialPort::NoParity);
     comboBox->addItem(QObject::tr("Even"), QSerialPort::EvenParity);
@@ -742,7 +743,7 @@ void setupParity(QComboBox *comboBox)
     comboBox->addItem(QObject::tr("Mark"), QSerialPort::MarkParity);
 }
 
-void setupStopBits(QComboBox *comboBox)
+void xSetupStopBits(QComboBox *comboBox)
 {
     comboBox->addItem("1", QSerialPort::OneStop);
 #ifdef Q_OS_WIN
@@ -751,7 +752,7 @@ void setupStopBits(QComboBox *comboBox)
     comboBox->addItem("2", QSerialPort::TwoStop);
 }
 
-void setupFlowControl(QComboBox *comboBox)
+void xSetupFlowControl(QComboBox *comboBox)
 {
     comboBox->addItem(QObject::tr("None"), QSerialPort::NoFlowControl);
 #if 0
@@ -764,7 +765,7 @@ void setupFlowControl(QComboBox *comboBox)
 }
 #endif
 
-SocketItem defaultSocketItem()
+SocketItem xDefaultSocketItem()
 {
     SocketItem item;
     item.serverAddress = "127.0.0.1";
@@ -781,7 +782,7 @@ SocketItem defaultSocketItem()
     return item;
 }
 
-QVariantMap saveSocketItem(const SocketItem &context)
+QVariantMap xSaveSocketItem(const SocketItem &context)
 {
     QVariantMap obj;
     const SocketItemKeys keys;
@@ -800,7 +801,7 @@ QVariantMap saveSocketItem(const SocketItem &context)
     return obj;
 }
 
-SocketItem loadSocketItem(const QVariantMap &obj)
+SocketItem xLoadSocketItem(const QVariantMap &obj)
 {
     SocketItem ctx;
     const SocketItemKeys keys;
@@ -819,7 +820,7 @@ SocketItem loadSocketItem(const QVariantMap &obj)
     return ctx;
 }
 
-void setupSocketAddress(QComboBox *cb)
+void xSetupSocketAddress(QComboBox *cb)
 {
     if (!cb) {
         return;
@@ -844,7 +845,7 @@ void setupSocketAddress(QComboBox *cb)
 #endif
 }
 
-void setupSocketPort(QSpinBox *spinBox)
+void xSetupSocketPort(QSpinBox *spinBox)
 {
     spinBox->setRange(0, 65535);
 }

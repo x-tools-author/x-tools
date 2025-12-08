@@ -27,7 +27,7 @@ DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
 #if 0
     setMinimumWidth(520);
 #endif
-    setupTextFormat(ui->comboBoxFormat);
+    xSetupTextFormat(ui->comboBoxFormat);
 
     QStandardItemModel *model = new QStandardItemModel(0, 2, this);
     model->setHorizontalHeaderLabels(QStringList() << tr("Time") << tr("Data"));
@@ -50,7 +50,7 @@ DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
         for (int i = 0; i < model->rowCount(); ++i) {
             QByteArray data = model->data(model->index(i, 1), Qt::UserRole + 1).toByteArray();
             int format = ui->comboBoxFormat->currentData().toInt();
-            QString txt = bytes2string(data, format);
+            QString txt = xBytes2string(data, format);
             model->setData(model->index(i, 1), txt, Qt::DisplayRole);
         }
         ui->tableView->update();
@@ -95,7 +95,7 @@ void DataViewUi::onDataUpdated(const QtNodes::PortIndex portIndex)
     model->setData(model->index(0, 1), bytes, Qt::UserRole + 1);
 
     int format = ui->comboBoxFormat->currentData().toInt();
-    QString txt = bytes2string(bytes, format);
+    QString txt = xBytes2string(bytes, format);
     model->setData(model->index(0, 1), txt, Qt::DisplayRole);
 
     static const int maxRow = 1024;

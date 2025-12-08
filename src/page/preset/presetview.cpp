@@ -103,8 +103,8 @@ void PresetView::onActionTriggered(int row)
 
     QModelIndex index = m_tableModel->index(row, 1);
     QJsonObject rawItem = m_tableModel->data(index, Qt::EditRole).toJsonObject();
-    TextItem textItem = loadTextItem(rawItem);
-    QByteArray bytes = textItem2array(textItem);
+    TextItem textItem = xLoadTextItem(rawItem);
+    QByteArray bytes = xTextItem2array(textItem);
     emit outputBytes(bytes);
 }
 

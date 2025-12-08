@@ -50,7 +50,7 @@ MqttClientUi::MqttClientUi(QWidget *parent)
 #endif
     xSetNoneBorder(ui->listViewSubscribe);
     xSetNoneBorder(ui->widgetLog);
-    setupSocketAddress(ui->comboBoxServerAddress);
+    xSetupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
     setupQosComboBox(ui->comboBoxQos);
     setupVersionComboBox(ui->comboBoxVersions);

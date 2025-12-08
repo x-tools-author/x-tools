@@ -65,12 +65,12 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
                 cb->setCurrentIndex(index);
             }
         } else if (column == SOCKET_ROW_ADDRESS) {
-            setupSocketAddress(cb);
+            xSetupSocketAddress(cb);
             cb->setEditable(true);
             QString text = index.data(Qt::EditRole).toString();
             cb->setCurrentText(text);
         } else if (column == SOCKET_ROW_CHANNEL) {
-            setupWebSocketDataChannel(cb);
+            xSetupWebSocketDataChannel(cb);
             int dataChannel = index.data(Qt::EditRole).toInt();
             int index = cb->findData(dataChannel);
             if (index == -1) {
@@ -81,7 +81,7 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
         }
     } else if (column == SOCKET_ROW_PORT) {
         auto sb = qobject_cast<QSpinBox *>(editor);
-        setupSocketPort(sb);
+        xSetupSocketPort(sb);
         sb->setValue(index.data(Qt::EditRole).toInt());
     } else if (column == SOCKET_ROW_USERNAME || column == SOCKET_ROW_PASSWORD
                || column == SOCKET_ROW_DESCRIPTION) {

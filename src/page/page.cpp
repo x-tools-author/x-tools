@@ -418,7 +418,7 @@ void Page::initUiDeviceControl()
 
 void Page::initUiOutputControl()
 {
-    setupTextFormat(ui->comboBoxOutputFormat);
+    xSetupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
@@ -448,7 +448,7 @@ void Page::initUiInputControl()
     connect(ui->comboBoxInputInterval, xComboBoxActivated, this, &Page::onCycleIntervalChanged);
     connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &Page::writeBytes);
 
-    setupTextFormat(ui->comboBoxInputFormat);
+    xSetupTextFormat(ui->comboBoxInputFormat);
     ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
     for (int i = 10; i <= 50; i += 10) {
         ui->comboBoxInputInterval->addItem(QString::number(i), i);
@@ -532,8 +532,8 @@ void Page::onCycleIntervalChanged()
 void Page::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString placeholderText = bytes2string(QByteArray("(null)"), format);
-    setupTextFormatValidator(ui->lineEditInput, format);
+    QString placeholderText = xBytes2string(QByteArray("(null)"), format);
+    xSetupTextFormatValidator(ui->lineEditInput, format);
     ui->lineEditInput->clear();
     ui->lineEditInput->setPlaceholderText(placeholderText);
     ui->plainTextEditInput->setPlaceholderText(placeholderText);
@@ -759,10 +759,10 @@ void Page::writeBytes()
     }
 
     auto parameters = m_inputSettings->parameters();
-    QByteArray prefix = cookedAffixes(parameters.prefix);
+    QByteArray prefix = xCookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = cookedAffixes(parameters.suffix);
+    QByteArray suffix = xCookedAffixes(parameters.suffix);
 
     QByteArray bytes;
     if (parameters.appendCrc) {
@@ -800,10 +800,10 @@ void Page::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
-    QByteArray prefix = cookedAffixes(parameters.prefix);
+    QByteArray prefix = xCookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
-    QByteArray suffix = cookedAffixes(parameters.suffix);
+    QByteArray suffix = xCookedAffixes(parameters.suffix);
 
     QString prefixString = QString::fromLatin1(prefix.toHex()).toUpper();
     QString payloadString = QString::fromLatin1(payload.toHex()).toUpper();
@@ -901,7 +901,7 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
             return;
         }
 
-        QString text = bytes2string(bytes, format);
+        QString text = xBytes2string(bytes, format);
         ui->textBrowserOutput->moveCursor(QTextCursor::MoveOperation::End);
         ui->textBrowserOutput->insertPlainText(text);
         return;
@@ -916,7 +916,7 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     }
 
     QString dateTimeString = ::dateTimeString(showDate, showTime, showMs);
-    QString text = bytes2string(bytes, format);
+    QString text = xBytes2string(bytes, format);
     QString rxTx = isRx ? QStringLiteral("Rx") : QStringLiteral("Tx");
     rxTx = QString("<font color=%1>%2</font>").arg(isRx ? "blue" : "green", rxTx);
 
@@ -994,8 +994,8 @@ QByteArray Page::payload() const
     }
 
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    text = cookedEscapeCharacter(text, parameters.escapeCharacter);
-    QByteArray payload = string2bytes(text, format);
+    text = xCookedEscapeCharacter(text, parameters.escapeCharacter);
+    QByteArray payload = xString2bytes(text, format);
     return payload;
 }
 

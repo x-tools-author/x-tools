@@ -108,13 +108,13 @@ QVariant ResponderModel::data(const QModelIndex &index, int role) const
         } else if (column == 1) {
             return item.description;
         } else if (column == 2) {
-            return responseOptionName(item.option);
+            return xResponseOptionName(item.option);
         } else if (column == 3) {
             return item.delay;
         } else if (column == 4) {
-            return textItem2string(item.referenceTextContext);
+            return xTextItem2string(item.referenceTextContext);
         } else if (column == 5) {
-            return textItem2string(item.responseTextContext);
+            return xTextItem2string(item.responseTextContext);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -126,9 +126,9 @@ QVariant ResponderModel::data(const QModelIndex &index, int role) const
         } else if (column == 3) {
             return item.delay;
         } else if (column == 4) {
-            return saveTextItem(item.referenceTextContext);
+            return xSaveTextItem(item.referenceTextContext);
         } else if (column == 5) {
-            return saveTextItem(item.responseTextContext);
+            return xSaveTextItem(item.responseTextContext);
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (column == 0 || column == 1 || column == 2 || column == 3) {
@@ -161,9 +161,9 @@ bool ResponderModel::setData(const QModelIndex &index, const QVariant &value, in
             item.delay = value.toInt();
             item.delay = qMax(0, item.delay);
         } else if (column == 4) {
-            item.referenceTextContext = loadTextItem(value.toJsonObject());
+            item.referenceTextContext = xLoadTextItem(value.toJsonObject());
         } else if (column == 5) {
-            item.responseTextContext = loadTextItem(value.toJsonObject());
+            item.responseTextContext = xLoadTextItem(value.toJsonObject());
         } else {
             result = false;
         }
@@ -177,8 +177,8 @@ bool ResponderModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
-    TextItem referenceTextContext = defaultTextItem();
-    TextItem responseTextContext = defaultTextItem();
+    TextItem referenceTextContext = xDefaultTextItem();
+    TextItem responseTextContext = xDefaultTextItem();
     auto option = ResponseOption::InputEqualReference;
     for (int i = 0; i < count; i++) {
         Item item{true,

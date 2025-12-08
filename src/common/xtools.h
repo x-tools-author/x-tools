@@ -29,33 +29,33 @@ enum class TextFormat {
     GB18030,
     HexWithoutSpace
 };
-QList<int> supportedTextFormats();
-QString textFormatName(TextFormat format);
-void setupTextFormat(QComboBox *comboBox);
-QString bytes2string(const QByteArray &bytes, int format);
-QByteArray string2bytes(const QString &text, int format);
-QByteArray arrayAppendArray(const QByteArray &a1, const QByteArray &a2);
-void setupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
-void printSupportedIconvEncodings();
+QList<int> xSupportedTextFormats();
+QString xTextFormatName(TextFormat format);
+void xSetupTextFormat(QComboBox *comboBox);
+QString xBytes2string(const QByteArray &bytes, int format);
+QByteArray xString2bytes(const QString &text, int format);
+QByteArray xArrayAppendArray(const QByteArray &a1, const QByteArray &a2);
+void xSetupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
+void xPrintSupportedIconvEncodings();
 
 /**************************************************************************************************/
 enum class Affixes { None, R, N, RN, NR };
-QList<int> supportedAffixes();
-QString additionName(int affixes);
-void setupAddition(QComboBox *comboBox);
-QByteArray cookedAffixes(int affixes);
+QList<int> xSupportedAffixes();
+QString xAdditionName(int affixes);
+void xSetupAddition(QComboBox *comboBox);
+QByteArray xCookedAffixes(int affixes);
 
 /**************************************************************************************************/
 enum class EscapeCharacter { None, R, N, RN, NR, R_N, C };
-QList<int> supportedEscapeCharacters();
-QString escapeCharacterName(int character);
-void setupEscapeCharacter(QComboBox *comboBox);
-QString cookedEscapeCharacter(const QString &text, int escapeCharacter);
+QList<int> xSupportedEscapeCharacters();
+QString xEscapeCharacterName(int character);
+void xSetupEscapeCharacter(QComboBox *comboBox);
+QString xCookedEscapeCharacter(const QString &text, int escapeCharacter);
 
 /**************************************************************************************************/
 enum class WebSocketDataChannel { Text, Binary };
-QString webSocketDataChannelName(WebSocketDataChannel channel);
-void setupWebSocketDataChannel(QComboBox *comboBox);
+QString xWebSocketDataChannelName(WebSocketDataChannel channel);
+void xSetupWebSocketDataChannel(QComboBox *comboBox);
 
 /**************************************************************************************************/
 enum class ResponseOption {
@@ -65,10 +65,10 @@ enum class ResponseOption {
     InputContainReference,
     InputDoesNotContainReference
 };
-QList<int> supportedResponseOptions();
-QString responseOptionName(ResponseOption option);
-void setupResponseOption(QComboBox *comboBox);
-QByteArray responseData(const QByteArray &data, int option, const QByteArray &reference);
+QList<int> xSupportedResponseOptions();
+QString xResponseOptionName(ResponseOption option);
+void xSetupResponseOption(QComboBox *comboBox);
+QByteArray xResponseData(const QByteArray &data, int option, const QByteArray &reference);
 
 /**************************************************************************************************/
 struct TextItem
@@ -100,11 +100,11 @@ struct TextItemKeys
     const QString crcStartIndex{"crcStartIndex"};
     const QString crcEndIndex{"crcEndIndex"};
 };
-TextItem defaultTextItem();
-QString textItem2string(const TextItem &context);
-QByteArray textItem2array(const TextItem &context);
-TextItem loadTextItem(const QJsonObject &obj);
-QJsonObject saveTextItem(const TextItem &context);
+TextItem xDefaultTextItem();
+QString xTextItem2string(const TextItem &context);
+QByteArray xTextItem2array(const TextItem &context);
+TextItem xLoadTextItem(const QJsonObject &obj);
+QJsonObject xSaveTextItem(const TextItem &context);
 
 /**************************************************************************************************/
 struct SerialPortItem
@@ -131,16 +131,16 @@ struct SerialPortItemKeys
     const QString optimizedFrame{"optimizedFrame"};
     const QString interFrameDelayMilliseconds{"interFrameDelayMilliseconds"};
 };
-SerialPortItem defaultSerialPortItem();
-QJsonObject saveSerialPortItem(const SerialPortItem &context);
-SerialPortItem loadSerialPortItem(const QJsonObject &obj);
+SerialPortItem xDefaultSerialPortItem();
+QJsonObject xSaveSerialPortItem(const SerialPortItem &context);
+SerialPortItem xLoadSerialPortItem(const QJsonObject &obj);
 #if X_ENABLE_SERIALPORT
-void setupPortName(QComboBox *comboBox);
-void setupBaudRate(QComboBox *comboBox);
-void setupDataBits(QComboBox *comboBox);
-void setupParity(QComboBox *comboBox);
-void setupStopBits(QComboBox *comboBox);
-void setupFlowControl(QComboBox *comboBox);
+void xSetupPortName(QComboBox *comboBox);
+void xSetupBaudRate(QComboBox *comboBox);
+void xSetupDataBits(QComboBox *comboBox);
+void xSetupParity(QComboBox *comboBox);
+void xSetupStopBits(QComboBox *comboBox);
+void xSetupFlowControl(QComboBox *comboBox);
 #endif
 
 /**************************************************************************************************/
@@ -174,11 +174,11 @@ struct SocketItemKeys
     const QString path{"path"};             // For WebSocket
     const QString secureMode{"secureMode"}; // For WebSocket
 };
-SocketItem defaultSocketItem();
-QVariantMap saveSocketItem(const SocketItem &context);
-SocketItem loadSocketItem(const QVariantMap &obj);
-void setupSocketAddress(QComboBox *cb);
-void setupSocketPort(QSpinBox *spinBox);
+SocketItem xDefaultSocketItem();
+QVariantMap xSaveSocketItem(const SocketItem &context);
+SocketItem xLoadSocketItem(const QVariantMap &obj);
+void xSetupSocketAddress(QComboBox *cb);
+void xSetupSocketPort(QSpinBox *spinBox);
 
 /**************************************************************************************************/
 enum class TransferType { Disabled, Bidirectional, Unidirectional };

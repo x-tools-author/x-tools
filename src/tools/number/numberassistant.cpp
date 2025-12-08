@@ -20,8 +20,8 @@ NumberAssistant::NumberAssistant(QWidget *parent)
 
     int hexFormat = static_cast<int>(TextFormat::Hex);
     int decFormat = static_cast<int>(TextFormat::Dec);
-    setupTextFormatValidator(ui->lineEditRawData, hexFormat);
-    setupTextFormatValidator(ui->lineEditCookedDec, decFormat);
+    xSetupTextFormatValidator(ui->lineEditRawData, hexFormat);
+    xSetupTextFormatValidator(ui->lineEditCookedDec, decFormat);
 
     ui->comboBoxCookedDataType->addItem("int8_t", CookedDataTypeInt8);
     ui->comboBoxCookedDataType->addItem("uint8_t", CookedDataTypeUint8);
@@ -67,9 +67,9 @@ void NumberAssistant::updateCookedData()
     QByteArray tmpBa = ba;
     std::reverse(tmpBa.begin(), tmpBa.end());
     int binFormat = static_cast<int>(TextFormat::Bin);
-    QString binStr = bytes2string(tmpBa, binFormat);
+    QString binStr = xBytes2string(tmpBa, binFormat);
     int hexFormat = static_cast<int>(TextFormat::Hex);
-    QString hexStr = bytes2string(tmpBa, hexFormat);
+    QString hexStr = xBytes2string(tmpBa, hexFormat);
     ui->lineEditCookedBin->setText(binStr);
     ui->lineEditCookedHex->setText(hexStr);
 

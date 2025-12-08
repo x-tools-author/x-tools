@@ -24,7 +24,7 @@ DataPersistenceUi::DataPersistenceUi(BaseNode *node, QWidget *parent)
     ui->setupUi(w);
     setEmbeddedWidget(w);
 
-    setupTextFormat(ui->comboBoxFormat);
+    xSetupTextFormat(ui->comboBoxFormat);
 
     connect(ui->pushButtonBrowser, &QPushButton::clicked, this, [&]() {
         QString defaultName = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");

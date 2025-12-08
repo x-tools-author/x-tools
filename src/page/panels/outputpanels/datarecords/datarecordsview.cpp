@@ -36,7 +36,7 @@ DataRecordsView::DataRecordsView(QWidget *parent)
     ui->comboBoxTypes->addItem(QString("Rx"), DataRecordsModel::DataRecordsModelItemTypeRx);
     ui->comboBoxTypes->addItem(QString("Tx"), DataRecordsModel::DataRecordsModelItemTypeTx);
     ui->comboBoxFlags->addItem(tr("All"), QString());
-    setupTextFormat(ui->comboBoxFormats);
+    xSetupTextFormat(ui->comboBoxFormats);
     ui->comboBoxRecords->addItem(tr("No Limit"), -1);
     ui->comboBoxRecords->addItem(QString("100"), 100);
     ui->comboBoxRecords->addItem(QString("1000"), 1000);

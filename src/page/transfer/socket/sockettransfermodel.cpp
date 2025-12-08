@@ -35,7 +35,7 @@ QVariantMap SocketTransferModel::saveRow(const int row)
     item.username = data(index(row, SOCKET_ROW_USERNAME), Qt::EditRole).toString();
     item.password = data(index(row, SOCKET_ROW_PASSWORD), Qt::EditRole).toString();
 
-    QVariantMap map = saveSocketItem(item);
+    QVariantMap map = xSaveSocketItem(item);
     map.insert("option", data(index(row, SOCKET_ROW_OPTION), Qt::EditRole).toBool());
     map.insert("description", data(index(row, SOCKET_ROW_DESCRIPTION), Qt::EditRole).toString());
 
@@ -48,7 +48,7 @@ void SocketTransferModel::loadRow(const int row, const QVariantMap &item)
         return;
     }
 
-    SocketItem socketItem = loadSocketItem(item);
+    SocketItem socketItem = xLoadSocketItem(item);
     setData(index(row, SOCKET_ROW_OPTION), item.value("option").toBool(), Qt::EditRole);
     setData(index(row, SOCKET_ROW_ADDRESS), socketItem.serverAddress, Qt::EditRole);
     setData(index(row, SOCKET_ROW_PORT), socketItem.serverPort, Qt::EditRole);
@@ -81,7 +81,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
     }
 
     QVariantMap parameters = socket->save();
-    SocketItem socketItem = loadSocketItem(parameters);
+    SocketItem socketItem = xLoadSocketItem(parameters);
 
     int column = index.column();
     if (role == Qt::DisplayRole) {
@@ -93,7 +93,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
             return QString::number(socketItem.serverPort);
         } else if (column == SOCKET_ROW_CHANNEL) {
             auto dataChannel = socketItem.dataChannel;
-            return webSocketDataChannelName(dataChannel);
+            return xWebSocketDataChannelName(dataChannel);
         } else if (column == SOCKET_ROW_AUTHENTICATION) {
             return socketItem.authentication ? tr("Enable") : tr("Disable");
         } else if (column == SOCKET_ROW_USERNAME) {
@@ -155,7 +155,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
     } else {
         auto socket = qobject_cast<Socket *>(item.transfer);
         QVariantMap parameters = socket->save();
-        SocketItem socketItem = loadSocketItem(parameters);
+        SocketItem socketItem = xLoadSocketItem(parameters);
 
         if (column == SOCKET_ROW_ADDRESS) {
             socketItem.serverAddress = value.toString();
@@ -171,7 +171,7 @@ bool SocketTransferModel::setData(const QModelIndex &index, const QVariant &valu
             socketItem.password = value.toString();
         }
 
-        parameters = saveSocketItem(socketItem);
+        parameters = xSaveSocketItem(socketItem);
         socket->load(parameters);
     }
 
@@ -223,8 +223,8 @@ Device *SocketTransferModel::createTransfer()
 {
     auto socket = createSocket();
     if (socket) {
-        auto item = defaultSocketItem();
-        auto cookedItem = saveSocketItem(item);
+        auto item = xDefaultSocketItem();
+        auto cookedItem = xSaveSocketItem(item);
         socket->load(cookedItem);
     }
 

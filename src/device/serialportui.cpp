@@ -38,11 +38,11 @@ SerialPortUi::SerialPortUi(QWidget *parent)
         m_scanner->setIsBusyDevicesIgnored(checked);
     });
 
-    setupBaudRate(ui->comboBoxBaudRate);
-    setupDataBits(ui->comboBoxDataBits);
-    setupParity(ui->comboBoxParity);
-    setupStopBits(ui->comboBoxStopBits);
-    setupFlowControl(ui->comboBoxFlowControl);
+    xSetupBaudRate(ui->comboBoxBaudRate);
+    xSetupDataBits(ui->comboBoxDataBits);
+    xSetupParity(ui->comboBoxParity);
+    xSetupStopBits(ui->comboBoxStopBits);
+    xSetupFlowControl(ui->comboBoxFlowControl);
 
     onDeviceIndexChanged(0);
 }
@@ -110,7 +110,7 @@ Device *SerialPortUi::newDevice()
 
 void SerialPortUi::refresh()
 {
-    setupPortName(ui->comboBoxPortName);
+    xSetupPortName(ui->comboBoxPortName);
 }
 
 void SerialPortUi::onPortNameChanged(const QStringList &portName)

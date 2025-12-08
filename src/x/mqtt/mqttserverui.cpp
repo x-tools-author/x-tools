@@ -38,7 +38,7 @@ MqttServerUi::MqttServerUi(QWidget *parent)
     ui->splitter->setSizes(QList<int>({width() - m_rightWidth, m_rightWidth}));
     ui->pushButtonClose->setEnabled(false);
     ui->treeViewClients->header()->hide();
-    setupSocketAddress(ui->comboBoxServerAddress);
+    xSetupSocketAddress(ui->comboBoxServerAddress);
     setupPortSpinBox(ui->spinBoxServerPort);
     xSetNoneBorder(ui->treeViewClients);
     connect(ui->pushButtonOpen, &QPushButton::clicked, this, &MqttServerUi::onOpenBtnClicked);

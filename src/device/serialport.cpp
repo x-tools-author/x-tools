@@ -24,7 +24,7 @@ SerialPort::~SerialPort() {}
 QObject *SerialPort::initDevice()
 {
     QVariantMap tmp = save();
-    SerialPortItem item = loadSerialPortItem(QJsonObject::fromVariantMap(tmp));
+    SerialPortItem item = xLoadSerialPortItem(QJsonObject::fromVariantMap(tmp));
     m_serialPort = new QSerialPort();
     m_serialPort->setPortName(item.portName);
     m_serialPort->setBaudRate(item.baudRate);

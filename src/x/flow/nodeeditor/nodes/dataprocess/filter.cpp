@@ -71,9 +71,9 @@ void Filter::handleData(std::shared_ptr<BaseNodeData> nodeData, QtNodes::PortInd
     int escape = parameters.value(keys.escape).toInt();
     QString reference = parameters.value(keys.reference).toString();
 
-    reference = cookedEscapeCharacter(reference, escape);
-    QByteArray referenceBytes = string2bytes(reference, format);
-    QByteArray ret = responseData(bytes, option, referenceBytes);
+    reference = xCookedEscapeCharacter(reference, escape);
+    QByteArray referenceBytes = xString2bytes(reference, format);
+    QByteArray ret = xResponseData(bytes, option, referenceBytes);
     if (ret.isEmpty()) {
         return;
     }

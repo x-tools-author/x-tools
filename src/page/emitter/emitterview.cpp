@@ -66,8 +66,8 @@ void EmitterView::try2Output()
 
         QVariant var = m_tableModel->data(m_tableModel->index(i, 3), Qt::EditRole);
         QJsonObject json = var.toJsonObject();
-        TextItem textItem = loadTextItem(json);
-        QByteArray bytes = textItem2array(textItem);
+        TextItem textItem = xLoadTextItem(json);
+        QByteArray bytes = xTextItem2array(textItem);
 
         if (!isDisableAll()) {
             emit outputBytes(bytes);

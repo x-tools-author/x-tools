@@ -148,9 +148,9 @@ ModbusAssistant::~ModbusAssistant()
 void ModbusAssistant::initComponents()
 {
     int dec = static_cast<int>(TextFormat::Dec);
-    ui->comboBoxFormat->addItem(textFormatName(TextFormat::Dec), dec);
+    ui->comboBoxFormat->addItem(xTextFormatName(TextFormat::Dec), dec);
     int hex = static_cast<int>(TextFormat::Hex);
-    ui->comboBoxFormat->addItem(textFormatName(TextFormat::Hex), hex);
+    ui->comboBoxFormat->addItem(xTextFormatName(TextFormat::Hex), hex);
 
     initComponentDevices();
     initComponentAddress();

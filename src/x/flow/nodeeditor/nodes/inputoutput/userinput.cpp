@@ -89,10 +89,10 @@ UserInput::Data UserInput::loadData(const QJsonObject &data)
 
 QByteArray UserInput::data2Bytes(const Data &data)
 {
-    QString text = cookedEscapeCharacter(data.text, data.escape);
-    QByteArray bytes = string2bytes(text, data.format);
-    QByteArray prefixBytes = cookedAffixes(data.prefix);
-    QByteArray suffixBytes = cookedAffixes(data.suffix);
+    QString text = xCookedEscapeCharacter(data.text, data.escape);
+    QByteArray bytes = xString2bytes(text, data.format);
+    QByteArray prefixBytes = xCookedAffixes(data.prefix);
+    QByteArray suffixBytes = xCookedAffixes(data.suffix);
 
     bytes = prefixBytes + bytes + suffixBytes;
     return bytes;

@@ -22,18 +22,18 @@ FilterUi::FilterUi(BaseNode *node, QWidget *parent)
 
     connect(ui->comboBoxFormat, &QComboBox::currentIndexChanged, this, [=]() {
         int format = ui->comboBoxFormat->currentData().toInt();
-        setupTextFormatValidator(ui->lineEditReference, format);
+        xSetupTextFormatValidator(ui->lineEditReference, format);
     });
 
     ResponseOption option = ResponseOption::InputEqualReference;
-    ui->comboBoxOption->addItem(responseOptionName(option), static_cast<int>(option));
+    ui->comboBoxOption->addItem(xResponseOptionName(option), static_cast<int>(option));
     option = ResponseOption::InputContainReference;
-    ui->comboBoxOption->addItem(responseOptionName(option), static_cast<int>(option));
+    ui->comboBoxOption->addItem(xResponseOptionName(option), static_cast<int>(option));
     option = ResponseOption::InputDoesNotContainReference;
-    ui->comboBoxOption->addItem(responseOptionName(option), static_cast<int>(option));
+    ui->comboBoxOption->addItem(xResponseOptionName(option), static_cast<int>(option));
 
-    setupTextFormat(ui->comboBoxFormat);
-    setupEscapeCharacter(ui->comboBoxEscape);
+    xSetupTextFormat(ui->comboBoxFormat);
+    xSetupEscapeCharacter(ui->comboBoxEscape);
 }
 
 FilterUi::~FilterUi()

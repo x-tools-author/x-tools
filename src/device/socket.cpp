@@ -14,14 +14,14 @@
 Socket::Socket(QObject *parent)
     : Device(parent)
 {
-    Socket::load(saveSocketItem(defaultSocketItem()));
+    Socket::load(xSaveSocketItem(xDefaultSocketItem()));
 }
 
 void Socket::load(const QVariantMap &parameters)
 {
     Device::load(parameters);
 
-    SocketItem item = loadSocketItem(parameters);
+    SocketItem item = xLoadSocketItem(parameters);
     m_serverPort = item.serverPort;
     m_serverAddress = item.serverAddress;
     m_channel = static_cast<int>(item.dataChannel);

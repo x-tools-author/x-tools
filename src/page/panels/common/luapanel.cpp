@@ -48,8 +48,8 @@ LuaPanel::LuaPanel(QWidget *parent)
     connect(ui->pushButtonTest, &QPushButton::clicked, this, &LuaPanel::onTestButtonClicked);
     connect(ui->comboBoxTestFormat, xComboBoxActivated, this, &LuaPanel::onTestFormatChanged);
     connect(ui->comboBoxResultFormat, xComboBoxActivated, this, &LuaPanel::onResultFormatChanged);
-    setupTextFormat(ui->comboBoxTestFormat);
-    setupTextFormat(ui->comboBoxResultFormat);
+    xSetupTextFormat(ui->comboBoxTestFormat);
+    xSetupTextFormat(ui->comboBoxResultFormat);
     onTestFormatChanged();
     onResultFormatChanged();
 
@@ -84,7 +84,7 @@ void LuaPanel::load(const QVariantMap &parameters)
     Panel::load(parameters);
 
     int defaultTestFormat = static_cast<int>(TextFormat::Hex);
-    QString defaultTestData = bytes2string(m_testData, defaultTestFormat);
+    QString defaultTestData = xBytes2string(m_testData, defaultTestFormat);
     LuaPanelDataKeys keys;
 
     int type = parameters.value(keys.type, 0).toInt();
@@ -103,12 +103,12 @@ void LuaPanel::load(const QVariantMap &parameters)
     int testFormat = parameters.value(keys.testFormat, defaultTestFormat).toInt();
     int index = ui->comboBoxTestFormat->findData(testFormat);
     ui->comboBoxTestFormat->setCurrentIndex(index);
-    setupTextFormatValidator(ui->lineEditTestData, testFormat);
+    xSetupTextFormatValidator(ui->lineEditTestData, testFormat);
 
     int resultFormat = parameters.value(keys.resultFormat, testFormat).toInt();
     index = ui->comboBoxResultFormat->findData(resultFormat);
     ui->comboBoxResultFormat->setCurrentIndex(index);
-    setupTextFormatValidator(ui->lineEditResultData, resultFormat);
+    xSetupTextFormatValidator(ui->lineEditResultData, resultFormat);
 
 #if 0
     bool bypass = parameters.value(keys.bypass, true).toBool();
@@ -182,15 +182,15 @@ void LuaPanel::onDefaultLuaScriptStringTriggered()
 void LuaPanel::onTestFormatChanged()
 {
     int format = ui->comboBoxTestFormat->currentData().toInt();
-    setupTextFormatValidator(ui->lineEditTestData, format);
-    ui->lineEditTestData->setText(bytes2string(m_testData, format));
+    xSetupTextFormatValidator(ui->lineEditTestData, format);
+    ui->lineEditTestData->setText(xBytes2string(m_testData, format));
 }
 
 void LuaPanel::onResultFormatChanged()
 {
     int format = ui->comboBoxResultFormat->currentData().toInt();
-    setupTextFormatValidator(ui->lineEditResultData, format);
-    ui->lineEditResultData->setText(bytes2string(m_resultData, format));
+    xSetupTextFormatValidator(ui->lineEditResultData, format);
+    ui->lineEditResultData->setText(xBytes2string(m_resultData, format));
 }
 
 void LuaPanel::onTestButtonClicked()
@@ -206,11 +206,11 @@ void LuaPanel::onTestButtonClicked()
     }
 
     int testFormat = ui->comboBoxTestFormat->currentData().toInt();
-    QByteArray data = string2bytes(ui->lineEditTestData->text(), testFormat);
+    QByteArray data = xString2bytes(ui->lineEditTestData->text(), testFormat);
     int resultFormat = ui->comboBoxResultFormat->currentData().toInt();
 
     m_resultData = m_luaRunner->execute(script, data, type);
-    QString str = bytes2string(m_resultData, resultFormat);
+    QString str = xBytes2string(m_resultData, resultFormat);
     ui->lineEditResultData->setText(str);
 
     if (m_resultData.isEmpty()) {

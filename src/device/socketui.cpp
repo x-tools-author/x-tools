@@ -19,8 +19,8 @@ SocketUi::SocketUi(QWidget *parent)
 {
     ui->setupUi(this);
     ui->spinBoxServerPort->setValue(34455);
-    setupSocketAddress(ui->comboBoxServerIp);
-    setupWebSocketDataChannel(ui->comboBoxChannel);
+    xSetupSocketAddress(ui->comboBoxServerIp);
+    xSetupWebSocketDataChannel(ui->comboBoxChannel);
 
     setupClients(QStringList());
     connect(ui->comboBoxWriteTo, xComboBoxActivated, this, [this]() {
@@ -61,7 +61,7 @@ QVariantMap SocketUi::save() const
 #endif
     item.secureMode = ui->checkBoxSecureMode->isChecked();
 
-    return saveSocketItem(item);
+    return xSaveSocketItem(item);
 }
 
 void SocketUi::load(const QVariantMap &parameters)
@@ -71,7 +71,7 @@ void SocketUi::load(const QVariantMap &parameters)
     }
 
     SocketItemKeys keys;
-    SocketItem item = loadSocketItem(parameters);
+    SocketItem item = xLoadSocketItem(parameters);
     ui->spinBoxServerPort->setValue(item.serverPort);
     ui->comboBoxServerIp->setCurrentText(item.serverAddress);
     ui->comboBoxChannel->setCurrentIndex(static_cast<int>(item.dataChannel));

@@ -66,14 +66,14 @@ QVariant PresetModel::data(const QModelIndex &index, int role) const
     }
 
     TextItem textContext = m_items.at(index.row()).textContext;
-    QJsonObject json = saveTextItem(textContext);
+    QJsonObject json = xSaveTextItem(textContext);
 
     int column = index.column();
     if (role == Qt::DisplayRole) {
         if (column == 0) {
             return m_items.at(index.row()).description;
         } else if (column == 1) {
-            return textItem2string(textContext);
+            return xTextItem2string(textContext);
         }
     } else if (role == Qt::EditRole) {
         if (column == 0) {
@@ -98,7 +98,7 @@ bool PresetModel::setData(const QModelIndex &index, const QVariant &value, int r
     if (index.column() == 0 && role == Qt::EditRole) {
         m_items[index.row()].description = value.toString();
     } else if (index.column() == 1 && role == Qt::EditRole) {
-        auto textContext = loadTextItem(value.toJsonObject());
+        auto textContext = xLoadTextItem(value.toJsonObject());
         m_items[index.row()].textContext = textContext;
     } else {
         return false;
@@ -112,7 +112,7 @@ bool PresetModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
 
-    TextItem textContext = defaultTextItem();
+    TextItem textContext = xDefaultTextItem();
     for (int i = 0; i < count; i++) {
         Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
         m_items.insert(row, item);

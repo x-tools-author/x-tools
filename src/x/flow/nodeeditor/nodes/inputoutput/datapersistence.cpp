@@ -88,7 +88,7 @@ protected:
                 dateTimeString = dateTimeString.trimmed();
                 QTextStream stream(&file);
                 for (const auto &bytes : bytesList) {
-                    QString text = bytes2string(bytes, data.format);
+                    QString text = xBytes2string(bytes, data.format);
                     if (dateTimeString.isEmpty()) {
                         stream << text << Qt::endl;
                     } else {

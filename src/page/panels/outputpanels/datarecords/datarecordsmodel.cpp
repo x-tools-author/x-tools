@@ -78,7 +78,7 @@ DataRecordsModel::Item DataRecordsModel::itemAt(int row) const
 
 QString DataRecordsModel::dataText(const Item &item) const
 {
-    return bytes2string(item.bytes, m_format);
+    return xBytes2string(item.bytes, m_format);
 }
 
 int DataRecordsModel::rowCount(const QModelIndex &parent) const
@@ -123,7 +123,7 @@ QVariant DataRecordsModel::data(const QModelIndex &index, int role) const
         case DATARECORDS_COLUMN_COLUMN_FLAG:
             return item.flag;
         case DATARECORDS_COLUMN_COLUMN_DATA:
-            return bytes2string(item.bytes, m_format);
+            return xBytes2string(item.bytes, m_format);
         default:
             return QVariant();
         }

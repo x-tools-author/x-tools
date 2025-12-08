@@ -51,22 +51,22 @@ void SerialPortTransferDelegate::setEditorData(QWidget *editor, const QModelInde
             xSetupTransferType(cb);
         } else if (column == 1) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupPortName(cb);
+            xSetupPortName(cb);
         } else if (column == 2) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupBaudRate(cb);
+            xSetupBaudRate(cb);
         } else if (column == 3) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupDataBits(cb);
+            xSetupDataBits(cb);
         } else if (column == 4) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupStopBits(cb);
+            xSetupStopBits(cb);
         } else if (column == 5) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupParity(cb);
+            xSetupParity(cb);
         } else if (column == 6) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupFlowControl(cb);
+            xSetupFlowControl(cb);
         }
 
         QVariant value = index.data(Qt::EditRole);

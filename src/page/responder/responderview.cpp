@@ -54,10 +54,10 @@ public:
             return;
         }
 
-        auto options = supportedResponseOptions();
+        auto options = xSupportedResponseOptions();
         for (auto &option : options) {
             auto data = static_cast<ResponseOption>(option);
-            auto text = responseOptionName(data);
+            auto text = xResponseOptionName(data);
             comboBox->addItem(text, option);
         }
 
@@ -122,11 +122,11 @@ void ResponderView::inputBytes(const QByteArray &bytes)
         QJsonObject res = m_tableModel->data(m_tableModel->index(i, 5), Qt::EditRole).toJsonObject();
 
         auto cookedOption = static_cast<ResponseOption>(option);
-        TextItem cookedRef = loadTextItem(ref);
-        TextItem cookedRes = loadTextItem(res);
+        TextItem cookedRef = xLoadTextItem(ref);
+        TextItem cookedRes = xLoadTextItem(res);
 
-        QByteArray refBytes = textItem2array(cookedRef);
-        QByteArray resBytes = textItem2array(cookedRes);
+        QByteArray refBytes = xTextItem2array(cookedRef);
+        QByteArray resBytes = xTextItem2array(cookedRes);
 
         if (cookedOption == ResponseOption::Echo) {
             QTimer::singleShot(delay, this, [=] { emit outputBytes(bytes); });

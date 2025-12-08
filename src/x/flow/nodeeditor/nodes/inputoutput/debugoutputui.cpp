@@ -29,7 +29,7 @@ DebugOutputUi::DebugOutputUi(BaseNode *node, QWidget *parent)
     ui->setupUi(w);
     setEmbeddedWidget(w);
 
-    setupTextFormat(ui->comboBoxFormat);
+    xSetupTextFormat(ui->comboBoxFormat);
     for (int i = 0; i < 8; ++i) {
         ui->comboBoxChannel->addItem(QString("O[%1]").arg(QString::number(i + 1)), i);
     }
@@ -113,7 +113,7 @@ void DebugOutputUi::onDataUpdated(QtNodes::PortIndex const portIndex)
             }
         }
 
-        QString txt = bytes2string(bytes, format);
+        QString txt = xBytes2string(bytes, format);
         if (!header.isEmpty()) {
             txt = QString("%1%2").arg(header, txt);
         }
