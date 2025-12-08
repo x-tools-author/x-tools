@@ -8,10 +8,6 @@
  **************************************************************************************************/
 #include "modbuslogmodelfilter.h"
 
-#include <QApplication>
-#include <QMainWindow>
-#include <QMenu>
-
 #include "modbuslogmodel.h"
 
 namespace xModbus {

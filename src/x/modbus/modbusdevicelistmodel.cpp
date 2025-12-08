@@ -8,9 +8,7 @@
  **************************************************************************************************/
 #include "modbusdevicelistmodel.h"
 
-#include <QApplication>
 #include <QMainWindow>
-#include <QMenu>
 
 #include "modbuscommon.h"
 #include "modbusdevice.h"

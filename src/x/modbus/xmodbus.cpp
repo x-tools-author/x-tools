@@ -9,9 +9,6 @@
 #include "xmodbus.h"
 #include "ui_xmodbus.h"
 
-#include <QElapsedTimer>
-#include <QJsonArray>
-
 #include "modbusdevicelistview.h"
 #include "modbusregistertableview.h"
 #include "utilities/iconengine.h"

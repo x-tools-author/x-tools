@@ -11,10 +11,7 @@
 
 #include <QFileDialog>
 #include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <QMessageBox>
-#include <QTextStream>
 
 #include "utilities/iconengine.h"
 #include "utilities/keepopenedmenu.h"

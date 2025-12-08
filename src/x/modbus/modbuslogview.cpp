@@ -9,15 +9,9 @@
 #include "modbuslogview.h"
 #include "ui_modbuslogview.h"
 
-#include <QApplication>
 #include <QFileDialog>
 #include <QJsonArray>
-#include <QJsonDocument>
-#include <QMainWindow>
-#include <QMenu>
 #include <QMessageBox>
-#include <QTextStream>
-#include <QToolButton>
 
 #include "modbuslogmodel.h"
 #include "modbuslogmodelfilter.h"

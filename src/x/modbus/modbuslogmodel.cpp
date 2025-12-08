@@ -9,10 +9,6 @@
 #include "modbuslogmodel.h"
 
 #include <QApplication>
-#include <QMainWindow>
-#include <QMenu>
-#include <QMessageBox>
-
 
 namespace xModbus {
 
