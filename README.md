@@ -40,7 +40,7 @@ yay -Syu x-tools
 
 ![xFlow](docs/assets/images/xFlow.png)
 
-## Other
+## About the Project
 
 <!--https://sdpro.top/blog/html/article/1016.html-->
 [![stars](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)
