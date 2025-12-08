@@ -84,7 +84,7 @@ QVariant SerialPortTransferModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole) {
         if (column == 0) {
             int option = m_transfers.at(row).option;
-            return transferTypeName(option);
+            return xTransferTypeName(option);
         } else if (column == 1) {
             return serialPortItem.portName;
         } else if (column == 2) {

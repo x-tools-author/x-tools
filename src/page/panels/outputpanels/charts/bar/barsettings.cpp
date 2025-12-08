@@ -35,7 +35,7 @@ BarSettings::BarSettings(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setupChartsDataFormat(ui->comboBoxDataFormat);
+    xSetupChartsDataFormat(ui->comboBoxDataFormat);
     connect(ui->comboBoxDataFormat, xComboBoxActivated, this, [=]() {
         emit dataFormatChanged(ui->comboBoxDataFormat->currentData().toInt());
     });

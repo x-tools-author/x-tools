@@ -86,7 +86,7 @@ QVariant SocketTransferModel::data(const QModelIndex &index, int role) const
     int column = index.column();
     if (role == Qt::DisplayRole) {
         if (column == SOCKET_ROW_OPTION) {
-            return transferTypeName(item.option);
+            return xTransferTypeName(item.option);
         } else if (column == SOCKET_ROW_ADDRESS) {
             return socketItem.serverAddress;
         } else if (column == SOCKET_ROW_PORT) {

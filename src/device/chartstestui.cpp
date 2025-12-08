@@ -18,7 +18,7 @@ ChartsTestUi::ChartsTestUi(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setupChartsDataFormat(ui->comboBoxFormat);
+    xSetupChartsDataFormat(ui->comboBoxFormat);
 }
 
 Device *ChartsTestUi::newDevice()

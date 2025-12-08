@@ -56,7 +56,7 @@ void SocketTransferDelegate::setEditorData(QWidget *editor, const QModelIndex &i
                || column == SOCKET_ROW_CHANNEL) {
         auto cb = qobject_cast<QComboBox *>(editor);
         if (column == SOCKET_ROW_OPTION) {
-            setupTransferType(cb);
+            xSetupTransferType(cb);
             int transferType = index.data(Qt::EditRole).toInt();
             int index = cb->findData(transferType);
             if (index == -1) {

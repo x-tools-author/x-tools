@@ -182,22 +182,22 @@ void setupSocketPort(QSpinBox *spinBox);
 
 /**************************************************************************************************/
 enum class TransferType { Disabled, Bidirectional, Unidirectional };
-QList<int> supportedTransferTypes();
-QString transferTypeName(int type);
-void setupTransferType(QComboBox *comboBox);
+QList<int> xSupportedTransferTypes();
+QString xTransferTypeName(int type);
+void xSetupTransferType(QComboBox *comboBox);
 
 /**************************************************************************************************/
 enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
-QList<int> supportedChartsDataFormats();
-QString chartsDataFormatName(int format);
-void setupChartsDataFormat(QComboBox *comboBox);
+QList<int> xSupportedChartsDataFormats();
+QString xChartsDataFormatName(int format);
+void xSetupChartsDataFormat(QComboBox *comboBox);
 
 // -------------------------------------------------------------------------------------------------
-QString systemDateFormat();
-QString systemTimeFormat();
-QString dateTimeString(const QString &format);
-QDateTime buildDateTime();
-QString buildDateTimeString(const QString &format);
+QString xSystemDateFormat();
+QString xSystemTimeFormat();
+QString xDateTimeString(const QString &format);
+QDateTime xBuildDateTime();
+QString xBuildDateTimeString(const QString &format);
 
 // -------------------------------------------------------------------------------------------------
 void xSetNoneBorder(QWidget *widget);

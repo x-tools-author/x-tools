@@ -35,7 +35,7 @@ LineSettings::LineSettings(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setupChartsDataFormat(ui->comboBoxDataType);
+    xSetupChartsDataFormat(ui->comboBoxDataType);
     ui->checkBoxLegend->setChecked(true);
     connect(ui->comboBoxDataType, xComboBoxActivated, this, [=]() {
         emit this->dataFormatChanged(ui->comboBoxDataType->currentData().toInt());

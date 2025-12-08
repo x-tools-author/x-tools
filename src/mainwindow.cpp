@@ -620,11 +620,11 @@ void MainWindow::onExportActionTriggered()
 
 void MainWindow::onAboutActionTriggered()
 {
-    QString buildDateTimeFormat = systemDateFormat();
+    QString buildDateTimeFormat = xSystemDateFormat();
     buildDateTimeFormat += " ";
-    buildDateTimeFormat += systemTimeFormat();
-    QString dtString = buildDateTimeString(buildDateTimeFormat);
-    QString year = buildDateTimeString("yyyy");
+    buildDateTimeFormat += xSystemTimeFormat();
+    QString dtString = xBuildDateTimeString(buildDateTimeFormat);
+    QString year = xBuildDateTimeString("yyyy");
 
     // X_GIT_COMMIT_TIME(Tue Mar 4 11:33:30 2025 +0800) to QDateTime
     // X_GIT_COMMIT_TIME is defined in CMakeLists.txt

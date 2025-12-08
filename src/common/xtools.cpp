@@ -849,7 +849,7 @@ void setupSocketPort(QSpinBox *spinBox)
     spinBox->setRange(0, 65535);
 }
 
-QList<int> supportedTransferTypes()
+QList<int> xSupportedTransferTypes()
 {
     static QList<int> types = {
         static_cast<int>(TransferType::Disabled),
@@ -860,7 +860,7 @@ QList<int> supportedTransferTypes()
     return types;
 }
 
-QString transferTypeName(int type)
+QString xTransferTypeName(int type)
 {
     if (type == static_cast<int>(TransferType::Disabled)) {
         return QObject::tr("Disabled");
@@ -873,17 +873,17 @@ QString transferTypeName(int type)
     }
 }
 
-void setupTransferType(QComboBox *comboBox)
+void xSetupTransferType(QComboBox *comboBox)
 {
     comboBox->clear();
 
-    auto types = supportedTransferTypes();
+    auto types = xSupportedTransferTypes();
     for (auto &type : types) {
-        comboBox->addItem(transferTypeName(type), type);
+        comboBox->addItem(xTransferTypeName(type), type);
     }
 }
 
-QList<int> supportedChartsDataFormats()
+QList<int> xSupportedChartsDataFormats()
 {
     static QList<int> formats = {
         static_cast<int>(ChartsDataFormat::BinaryY),
@@ -895,7 +895,7 @@ QList<int> supportedChartsDataFormats()
     return formats;
 }
 
-QString chartsDataFormatName(int format)
+QString xChartsDataFormatName(int format)
 {
     if (format == static_cast<int>(ChartsDataFormat::BinaryY)) {
         return QObject::tr("Binary"); // + "-Y";
@@ -910,32 +910,32 @@ QString chartsDataFormatName(int format)
     }
 }
 
-void setupChartsDataFormat(QComboBox *comboBox)
+void xSetupChartsDataFormat(QComboBox *comboBox)
 {
     comboBox->clear();
 
-    auto formats = supportedChartsDataFormats();
+    auto formats = xSupportedChartsDataFormats();
     for (auto &format : formats) {
-        comboBox->addItem(chartsDataFormatName(format), format);
+        comboBox->addItem(xChartsDataFormatName(format), format);
     }
 }
 
-QString systemDateFormat()
+QString xSystemDateFormat()
 {
     return QLocale::system().dateFormat();
 }
 
-QString systemTimeFormat()
+QString xSystemTimeFormat()
 {
     return QLocale::system().timeFormat();
 }
 
-QString dateTimeString(const QString &format)
+QString xDateTimeString(const QString &format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-QDateTime buildDateTime()
+QDateTime xBuildDateTime()
 {
     QString dateString = QString(__DATE__);
     QString timeString = QString(__TIME__);
@@ -945,9 +945,9 @@ QDateTime buildDateTime()
     return dateTime;
 }
 
-QString buildDateTimeString(const QString &format)
+QString xBuildDateTimeString(const QString &format)
 {
-    return buildDateTime().toString(format);
+    return xBuildDateTime().toString(format);
 }
 
 void xSetNoneBorder(QWidget *widget)

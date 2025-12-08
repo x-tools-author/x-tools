@@ -48,7 +48,7 @@ void SerialPortTransferDelegate::setEditorData(QWidget *editor, const QModelInde
         QComboBox *cb = nullptr;
         if (column == 0) {
             cb = qobject_cast<QComboBox *>(editor);
-            setupTransferType(cb);
+            xSetupTransferType(cb);
         } else if (column == 1) {
             cb = qobject_cast<QComboBox *>(editor);
             setupPortName(cb);

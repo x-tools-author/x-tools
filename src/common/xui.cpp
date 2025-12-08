@@ -235,8 +235,8 @@ void xUi::showAboutInfo()
     QString buildDateTimeFormat = locale.dateFormat();
     buildDateTimeFormat += " ";
     buildDateTimeFormat += locale.timeFormat();
-    QString dtString = buildDateTimeString(buildDateTimeFormat);
-    QString year = buildDateTimeString("yyyy");
+    QString dtString = xBuildDateTimeString(buildDateTimeFormat);
+    QString year = xBuildDateTimeString("yyyy");
     info += tr("Build Date") + ": " + dtString + "\n\n";
     info += tr("Copyright") + QString(" 2025-%1 x-tools-author(x-tools@outlook.com).").arg(year);
     info += tr("All rights reserved.");

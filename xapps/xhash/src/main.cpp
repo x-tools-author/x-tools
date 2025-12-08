@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     settings->setValue("Application/boost", QDateTime::currentDateTime().toString(Qt::ISODate));
 
     app.setupHdpi();
-    app.setupTheme();
+    app.setupColorScheme();
     app.setupLanguage();
 
     xUi window;
