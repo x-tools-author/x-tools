@@ -15,6 +15,9 @@
 #include <QSpinBox>
 #include <QString>
 
+#include "xapp.h"
+#include "xui.h"
+
 // -------------------------------------------------------------------------------------------------
 enum class TextFormat {
     Bin,
@@ -201,6 +204,35 @@ QString xBuildDateTimeString(const QString &format);
 
 // -------------------------------------------------------------------------------------------------
 void xSetNoneBorder(QWidget *widget);
+
+#if 0
+template<typename App, typename Ui>
+int xExec(const QString &appName, int &argc, char *argv[])
+{
+    QApplication::setOrganizationName("xTools");
+    QApplication::setApplicationName(appName);
+    xApp::installLog(argv[0]);
+    xApp::setupHdpi();
+    App app(argc, argv);
+    app.setApplicationVersion(X_LATEST_GIT_TAG);
+    app.setupLanguage();
+    app.showSplashScreenMessage(QObject::tr("Application is booting..."));
+    app.setupAppStyle();
+    app.setupColorScheme();
+
+    Ui window;
+    QSplashScreen *splash = app.splashScreen();
+    splash->finish(&window);
+    window.show();
+    window.resize(1366, 768);
+    window.moveToCenter();
+    window.load();
+
+    int ret = app.exec();
+    xApp::uninstallLog();
+    return ret;
+}
+#endif
 
 // -------------------------------------------------------------------------------------------------
 #define X_DECLARE_PRIVATE(Class) \

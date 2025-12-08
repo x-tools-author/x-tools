@@ -15,6 +15,10 @@
 
 int main(int argc, char *argv[])
 {
+#if X_ENABLE_HID
+    hid_init();
+#endif
+
     Application::setOrganizationName("xTools");
     Application::setApplicationName("xFlow");
     Application::installLog(argv[0]);
@@ -26,10 +30,6 @@ int main(int argc, char *argv[])
     app.setupAppStyle();
     app.setupColorScheme();
 
-#if X_ENABLE_HID
-    hid_init();
-#endif
-
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
@@ -39,9 +39,9 @@ int main(int argc, char *argv[])
     window.load();
 
     int ret = app.exec();
+    Application::uninstallLog();
 #if X_ENABLE_HID
     hid_exit();
 #endif
-    Application::uninstallLog();
     return ret;
 }
