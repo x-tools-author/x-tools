@@ -29,7 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(m_flow);
 
     QList<QAction *> actions = m_fileMenu->actions();
-    QAction *a = m_fileMenu->addAction(tr("Save Project"), this, &MainWindow::onExport);
+    QAction *a = m_fileMenu->addAction(tr("New Project"), this, &MainWindow::onNew);
+    a->setShortcut(QKeySequence::New);
+    a = m_fileMenu->addAction(tr("Save Project"), this, &MainWindow::onExport);
     a->setShortcut(QKeySequence::Save);
     a = m_fileMenu->addAction(tr("Load Project"), this, &MainWindow::onImport);
     a->setShortcut(QKeySequence::Open);
@@ -96,6 +98,11 @@ void MainWindow::save(const QString &fileName)
         file.write(doc.toJson());
         file.close();
     }
+}
+
+void MainWindow::onNew()
+{
+    m_flow->load(QJsonObject());
 }
 
 void MainWindow::onImport()

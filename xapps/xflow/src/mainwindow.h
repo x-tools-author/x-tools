@@ -29,6 +29,7 @@ private:
 private:
     void save(const QString &fileName = QString());
 
+    void onNew();
     void onImport();
     void onExport();
 };
