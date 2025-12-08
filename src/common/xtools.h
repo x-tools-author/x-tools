@@ -15,7 +15,7 @@
 #include <QSpinBox>
 #include <QString>
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class TextFormat {
     Bin,
     Oct,
@@ -38,26 +38,26 @@ QByteArray xArrayAppendArray(const QByteArray &a1, const QByteArray &a2);
 void xSetupTextFormatValidator(QLineEdit *lineEdit, int format, int maxLen = 32767);
 void xPrintSupportedIconvEncodings();
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class Affixes { None, R, N, RN, NR };
 QList<int> xSupportedAffixes();
 QString xAdditionName(int affixes);
 void xSetupAddition(QComboBox *comboBox);
 QByteArray xCookedAffixes(int affixes);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class EscapeCharacter { None, R, N, RN, NR, R_N, C };
 QList<int> xSupportedEscapeCharacters();
 QString xEscapeCharacterName(int character);
 void xSetupEscapeCharacter(QComboBox *comboBox);
 QString xCookedEscapeCharacter(const QString &text, int escapeCharacter);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class WebSocketDataChannel { Text, Binary };
 QString xWebSocketDataChannelName(WebSocketDataChannel channel);
 void xSetupWebSocketDataChannel(QComboBox *comboBox);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class ResponseOption {
     Echo,   // Response data is the data received.
     Always, // Response automatically when data received.
@@ -70,7 +70,7 @@ QString xResponseOptionName(ResponseOption option);
 void xSetupResponseOption(QComboBox *comboBox);
 QByteArray xResponseData(const QByteArray &data, int option, const QByteArray &reference);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 struct TextItem
 {
     TextFormat textFormat;
@@ -106,7 +106,7 @@ QByteArray xTextItem2array(const TextItem &context);
 TextItem xLoadTextItem(const QJsonObject &obj);
 QJsonObject xSaveTextItem(const TextItem &context);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 struct SerialPortItem
 {
     QString portName;
@@ -143,7 +143,7 @@ void xSetupStopBits(QComboBox *comboBox);
 void xSetupFlowControl(QComboBox *comboBox);
 #endif
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 struct SocketItem
 {
     QString serverAddress;
@@ -180,13 +180,13 @@ SocketItem xLoadSocketItem(const QVariantMap &obj);
 void xSetupSocketAddress(QComboBox *cb);
 void xSetupSocketPort(QSpinBox *spinBox);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class TransferType { Disabled, Bidirectional, Unidirectional };
 QList<int> xSupportedTransferTypes();
 QString xTransferTypeName(int type);
 void xSetupTransferType(QComboBox *comboBox);
 
-/**************************************************************************************************/
+// -------------------------------------------------------------------------------------------------
 enum class ChartsDataFormat { BinaryY, BinaryXY, TextY, TextXY };
 QList<int> xSupportedChartsDataFormats();
 QString xChartsDataFormatName(int format);
