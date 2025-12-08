@@ -19,7 +19,9 @@ namespace xMQTT {
 
 enum class QoS { AtMostOnce = 0, AtLeastOnce = 1, ExactlyOnce = 2 };
 void setupQosComboBox(QComboBox *comboBox);
+#if 0
 void setupSocketAddress(QComboBox *cb);
+#endif
 void setupPortSpinBox(QSpinBox *spinBox, quint16 defaultPort = 1883);
 enum class MqttVersion { V3_1_1 = 4, V5_0 = 5 };
 void setupVersionComboBox(QComboBox *comboBox);

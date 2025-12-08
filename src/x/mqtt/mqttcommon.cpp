@@ -25,7 +25,7 @@ void setupQosComboBox(QComboBox *comboBox)
     comboBox->addItem(QObject::tr("Exactly once (2)"), static_cast<int>(QoS::ExactlyOnce));
     comboBox->setCurrentIndex(2);
 }
-
+#if 0
 void setupSocketAddress(QComboBox *cb)
 {
     if (!cb) {
@@ -50,7 +50,7 @@ void setupSocketAddress(QComboBox *cb)
         cb->addItems(ipv6List);
 #endif
 }
-
+#endif
 void setupPortSpinBox(QSpinBox *spinBox, quint16 defaultPort)
 {
     if (!spinBox) {

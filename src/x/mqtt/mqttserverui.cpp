@@ -11,10 +11,10 @@
 
 #include <QApplication>
 
+#include "common/xtools.h"
 #include "mqttcommon.h"
 #include "mqttdatamodel.h"
 #include "mqttserver.h"
-#include "utilities/x.h"
 
 namespace xMQTT {
 

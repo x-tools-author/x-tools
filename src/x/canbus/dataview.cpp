@@ -11,8 +11,8 @@
 
 #include <QMessageBox>
 
+#include "common/xtools.h"
 #include "utilities/iconengine.h"
-#include "utilities/x.h"
 
 #include "datafilter.h"
 #include "datamodel.h"

@@ -25,9 +25,9 @@
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
-#include "utilities/x.h"
 
 #include "xapp.h"
+#include "xtools.h"
 
 xUi::xUi(QWidget *parent)
     : QMainWindow(parent)
@@ -235,8 +235,8 @@ void xUi::showAboutInfo()
     QString buildDateTimeFormat = locale.dateFormat();
     buildDateTimeFormat += " ";
     buildDateTimeFormat += locale.timeFormat();
-    QString dtString = xTools::buildDateTimeString(buildDateTimeFormat);
-    QString year = xTools::buildDateTimeString("yyyy");
+    QString dtString = buildDateTimeString(buildDateTimeFormat);
+    QString year = buildDateTimeString("yyyy");
     info += tr("Build Date") + ": " + dtString + "\n\n";
     info += tr("Copyright") + QString(" 2025-%1 x-tools-author(x-tools@outlook.com).").arg(year);
     info += tr("All rights reserved.");

@@ -41,13 +41,13 @@
 #include <QWidgetAction>
 
 #include "application.h"
+#include "common/xtools.h"
 #include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
-#include "utilities/x.h"
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
@@ -465,7 +465,6 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
     }
 }
 
-
 void MainWindow::initHelpMenu()
 {
     // clang-format off
@@ -621,11 +620,11 @@ void MainWindow::onExportActionTriggered()
 
 void MainWindow::onAboutActionTriggered()
 {
-    QString buildDateTimeFormat = xTools::systemDateFormat();
+    QString buildDateTimeFormat = systemDateFormat();
     buildDateTimeFormat += " ";
-    buildDateTimeFormat += xTools::systemTimeFormat();
-    QString dtString = xTools::buildDateTimeString(buildDateTimeFormat);
-    QString year = xTools::buildDateTimeString("yyyy");
+    buildDateTimeFormat += systemTimeFormat();
+    QString dtString = buildDateTimeString(buildDateTimeFormat);
+    QString year = buildDateTimeString("yyyy");
 
     // X_GIT_COMMIT_TIME(Tue Mar 4 11:33:30 2025 +0800) to QDateTime
     // X_GIT_COMMIT_TIME is defined in CMakeLists.txt
