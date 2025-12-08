@@ -20,6 +20,7 @@ class xFlow;
 
 namespace xFlow {
 
+class NodeEditor;
 class LogDockWidgetContent;
 class NodesDockWidgetContent;
 class OutputDockWidgetContext;
@@ -33,6 +34,7 @@ public:
 
     QJsonObject save();
     void load(const QJsonObject &obj);
+    NodeEditor *nodeEditor() const;
 
     Q_INVOKABLE void outputBytes(const QString &txt, int channel);
     Q_INVOKABLE void clearOutput(int channel);

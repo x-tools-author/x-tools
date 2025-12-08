@@ -36,6 +36,7 @@ public:
     void setScale(qreal scale);
     static qreal minScale();
     static qreal maxScale();
+    NodeEditorView *view();
 
 signals:
     void scaleChanged(qreal scale);

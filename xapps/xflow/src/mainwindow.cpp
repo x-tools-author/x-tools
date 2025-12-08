@@ -15,6 +15,8 @@
 #include <QJsonDocument>
 
 #include "./application.h"
+#include "x/flow/nodeeditor/nodeeditor.h"
+#include "x/flow/nodeeditor/nodeeditorview.h"
 #include "x/flow/xflow.h"
 
 struct MainWindowParameterKeys
@@ -102,7 +104,9 @@ void MainWindow::save(const QString &fileName)
 
 void MainWindow::onNew()
 {
-    m_flow->load(QJsonObject());
+    xFlow::NodeEditor *editor = m_flow->nodeEditor();
+    xFlow::NodeEditorView *view = editor->view();
+    view->clearAllNodes();
 }
 
 void MainWindow::onImport()

@@ -162,4 +162,9 @@ qreal NodeEditor::maxScale()
     return 2.0;
 }
 
+NodeEditorView *NodeEditor::view()
+{
+    return m_view;
+}
+
 } // namespace xFlow

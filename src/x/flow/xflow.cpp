@@ -147,6 +147,11 @@ void xFlow::load(const QJsonObject &obj)
     m_navigator->update();
 }
 
+NodeEditor *xFlow::nodeEditor() const
+{
+    return ui->widgetNodeEditor;
+}
+
 void xFlow::outputBytes(const QString &txt, int channel)
 {
     m_output->outputBytes(txt, channel);
