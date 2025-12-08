@@ -27,7 +27,6 @@ void HdpiManager::setupSettings(QSettings* settings)
 {
     Q_D(HdpiManager);
     d->settings = settings;
-    d->initHdpiMenu();
 }
 
 void HdpiManager::setupHdpi()

@@ -22,8 +22,10 @@ Pipe::Pipe(Page *leftPage, Page *rightPage, QObject *parent)
     m_rightButton = new QToolButton();
     m_leftButton->setCheckable(true);
     m_rightButton->setCheckable(true);
-    m_leftButton->setToolTip(xApp->left2rightTips());
-    m_rightButton->setToolTip(xApp->right2leftTips());
+
+    Application *application = qobject_cast<Application *>(qApp);
+    m_leftButton->setToolTip(application->left2rightTips());
+    m_rightButton->setToolTip(application->right2leftTips());
     leftPage->appendOutputControl(m_leftButton);
     rightPage->prependOutputControl(m_rightButton);
 
@@ -33,7 +35,7 @@ Pipe::Pipe(Page *leftPage, Page *rightPage, QObject *parent)
     connect(leftPage, &Page::bytesRead, this, &Pipe::onLeftPageBytesRead);
     connect(rightPage, &Page::bytesRead, this, &Pipe::onRightPageBytesRead);
 
-    QSettings *settings = xApp->settings();
+    QSettings *settings = application->settings();
     bool left2right = settings->value(m_keys.left2right, false).toBool();
     bool right2left = settings->value(m_keys.right2left, false).toBool();
     m_leftButton->setChecked(left2right);
@@ -53,7 +55,8 @@ void Pipe::onLeftButtonClicked()
         m_leftButton->setIcon(QIcon(":/res/icons/right_blue.svg"));
     }
 
-    xApp->settings()->setValue(m_keys.left2right, m_leftButton->isChecked());
+    Application *application = qobject_cast<Application *>(qApp);
+    application->settings()->setValue(m_keys.left2right, m_leftButton->isChecked());
 }
 
 void Pipe::onRightButtonClicked()
@@ -64,7 +67,8 @@ void Pipe::onRightButtonClicked()
         m_rightButton->setIcon(QIcon(":/res/icons/left_blue.svg"));
     }
 
-    xApp->settings()->setValue(m_keys.right2left, m_rightButton->isChecked());
+    Application *application = qobject_cast<Application *>(qApp);
+    application->settings()->setValue(m_keys.right2left, m_rightButton->isChecked());
 }
 
 void Pipe::onLeftPageBytesRead(const QByteArray &bytes, const QString &from)

@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "xui.h"
+#include "common/xui.h"
 
 class BarCodeAssistant;
 class xCode : public xUi
