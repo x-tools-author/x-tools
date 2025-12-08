@@ -21,6 +21,10 @@
 
 int main(int argc, char *argv[])
 {
+#if X_ENABLE_HID
+    hid_init();
+#endif
+
     Application::setOrganizationName("xTools");
     Application::setApplicationName("xTools");
     Application::installLog(argv[0]);
@@ -38,10 +42,6 @@ int main(int argc, char *argv[])
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();
     app.setupColorScheme();
-
-#if X_ENABLE_HID
-    hid_init();
-#endif
 
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
@@ -61,12 +61,10 @@ int main(int argc, char *argv[])
 #endif
 
     const int ret = Application::exec();
-
+    Application::uninstallLog();
 #if X_ENABLE_HID
     hid_exit();
 #endif
-
-    Application::uninstallLog();
     qInfo() << "Application exited with code:" << ret;
     return ret;
 }

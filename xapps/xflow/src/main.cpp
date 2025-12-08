@@ -9,6 +9,8 @@
 #include "xflow/src/application.h"
 #include "xflow/src/mainwindow.h"
 
+#include <QSplashScreen>
+
 #if X_ENABLE_HID
 #include <hidapi.h>
 #endif
