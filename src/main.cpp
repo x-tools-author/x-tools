@@ -7,7 +7,6 @@
  * code directory.
  **************************************************************************************************/
 #include <QDebug>
-#include <QMessageBox>
 
 #include "application.h"
 #include "mainwindow.h"
