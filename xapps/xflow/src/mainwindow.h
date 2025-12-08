@@ -18,7 +18,7 @@ class MainWindow : public xUi
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
-    void load();
+    void load(const QString &fileName = QString());
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -27,5 +27,8 @@ private:
     xFlow::xFlow *m_flow{nullptr};
 
 private:
-    void save();
+    void save(const QString &fileName = QString());
+
+    void onImport();
+    void onExport();
 };
