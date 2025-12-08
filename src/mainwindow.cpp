@@ -139,7 +139,6 @@ MainWindow::MainWindow(QWidget* parent)
     setObjectName("MainWindow");
 
     // Initialize layout manager
-    menuBar()->addSeparator();
     m_layoutManager = new LayoutManager(sl, menuBar(), this);
     QToolButton* button = m_layoutManager->addLayoutPage(QString("xTools"), ioLayoutWidget);
     m_layoutManager->setupPages();
@@ -153,8 +152,8 @@ MainWindow::MainWindow(QWidget* parent)
         tryToReboot();
     });
 
+    // ---------------------------------------------------------------------------------------------
     initMenuBar();
-
     connect(sl, &QStackedLayout::currentChanged, this, [=](int index) {
         this->m_viewMenu->menuAction()->setEnabled(index == 0);
     });
