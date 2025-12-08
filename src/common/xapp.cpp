@@ -74,6 +74,10 @@ xApp::xApp(int &argc, char **argv)
     : QApplication(argc, argv)
 {
     xI18n.setupSettings(settings());
+    xStyleMgr.setupSettings(settings());
+    xThemeMgr.setupSettings(settings());
+    xHdpiMgr.setupSettings(settings());
+
 #ifdef X_LATEST_GIT_TAG
     QString tmp(X_LATEST_GIT_TAG);
     if (tmp.contains("v")) {

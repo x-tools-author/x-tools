@@ -27,6 +27,9 @@ public:
 
     void initHdpiMenu()
     {
+        if (hdpiMenu) {
+            return;
+        }
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         Q_Q(HdpiManager);
         hdpiMenu = new QMenu();
