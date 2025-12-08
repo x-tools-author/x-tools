@@ -154,6 +154,10 @@ MainWindow::MainWindow(QWidget* parent)
     });
 
     initMenuBar();
+
+    connect(sl, &QStackedLayout::currentChanged, this, [=](int index) {
+        this->m_viewMenu->menuAction()->setEnabled(index == 0);
+    });
 }
 
 MainWindow::~MainWindow() {}
@@ -193,6 +197,9 @@ void MainWindow::load(const QString& fileName)
         showMaximized();
         move(QPoint(0, 0));
     }
+
+    int index = m_layoutManager->currentIndex();
+    m_viewMenu->menuAction()->setEnabled(index == 0);
 }
 
 void MainWindow::save(const QString& fileName) const
@@ -415,11 +422,11 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initViewMenu()
 {
-    QMenu* viewMenu = new QMenu(tr("&View"), this);
-    menuBar()->insertMenu(m_languageMenu->menuAction(), viewMenu);
-    viewMenu->setObjectName("ViewMenu");
-    initViewMenuGrid(viewMenu);
-    QAction* action = viewMenu->addSeparator();
+    m_viewMenu = new QMenu(tr("&View"), this);
+    menuBar()->insertMenu(m_languageMenu->menuAction(), m_viewMenu);
+    m_viewMenu->setObjectName("ViewMenu");
+    initViewMenuGrid(m_viewMenu);
+    QAction* action = m_viewMenu->addSeparator();
     action->setObjectName("PageViewAction");
 }
 

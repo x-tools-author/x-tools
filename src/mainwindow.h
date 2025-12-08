@@ -49,6 +49,7 @@ protected:
     Page* m_ioPage11;
     QAction* m_historyAction{nullptr};
     LayoutManager* m_layoutManager{nullptr};
+    QMenu* m_viewMenu{nullptr};
 
 private:
     struct SettingsKeys
