@@ -124,6 +124,9 @@
         <translation>Grafieken testen</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="470"/>
+        <location filename="../../../../src/common/xtools.cpp" line="907"/>
+        <location filename="../../../../src/common/xtools.cpp" line="909"/>
         <source>Binary</source>
         <translation>Binair</translation>
     </message>
@@ -140,113 +143,163 @@
         <translation>Hexadecimaal</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="90"/>
+        <source>Bin</source>
+        <translation>Bak</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="92"/>
+        <source>Oct</source>
+        <translation>okt</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="94"/>
+        <source>Dec</source>
+        <translation>dec</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="96"/>
+        <source>Hex</source>
+        <translation>Hex</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="98"/>
+        <source>Hex(No Space)</source>
+        <translation>Hexuitdraai (geen spatie)</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="100"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="102"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="365"/>
+        <location filename="../../../../src/common/xtools.cpp" line="427"/>
+        <location filename="../../../../src/common/xtools.cpp" line="742"/>
+        <location filename="../../../../src/common/xtools.cpp" line="760"/>
         <source>None</source>
         <translation>Geen</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="468"/>
+        <location filename="../../../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../../../src/common/xtools.cpp" line="913"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="505"/>
         <source>Echo</source>
         <translation>Echo</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="506"/>
         <source>Always</source>
         <translation>Altijd</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="507"/>
         <source>Input Equal Reference</source>
         <translation>Voer gelijke referentie in</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="508"/>
         <source>Input Contain Reference</source>
         <translation>Invoer bevat referentie</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="510"/>
         <source>Input Does not Contain Reference</source>
         <translation>Invoer bevat geen referentie</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="743"/>
         <source>Even</source>
         <translation>Zelfs</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="744"/>
         <source>Odd</source>
         <translation>Vreemd</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="745"/>
         <source>Space</source>
         <translation>Ruimte</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="746"/>
         <source>Mark</source>
         <translation>Markering</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="762"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="763"/>
         <source>X-ON/X-OFF</source>
         <translation>X-AAN/X-UIT</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="765"/>
         <source>Hardware</source>
         <translation>Hardware</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="766"/>
         <source>Software</source>
         <translation>Software</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="872"/>
         <source>Disabled</source>
         <translation>Gehandicapt</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="874"/>
         <source>Bidirectional</source>
         <translation>Bidirectioneel</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="876"/>
         <source>Unidirectional</source>
         <translation>Unidirectioneel</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>Systeem</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>Rond naar boven af ​​voor 0,5 en hoger</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>Altijd naar boven afronden</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>Rond altijd naar beneden af</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>Rond naar boven af ​​voor .75 en hoger</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>Maffiabaas</translation>
     </message>
@@ -269,45 +322,39 @@
 <context>
     <name>xApp</name>
     <message>
-        <location filename="../../../x/xapp.cpp" line="136"/>
         <source>Need to Reboot</source>
-        <translation>Herstart vereist</translation>
+        <translation>Moet opnieuw opstarten</translation>
     </message>
     <message>
-        <location filename="../../../x/xapp.cpp" line="137"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>De bewerking vereist een herstart om effect te hebben, applicatie nu herstarten?</translation>
+        <translation>De bewerking moet opnieuw worden opgestart om de toepassing nu opnieuw op te starten?</translation>
     </message>
 </context>
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="53"/>
         <source>Option</source>
         <translation>Optie</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="54"/>
         <source>View</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="55"/>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation>Hulp</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="73"/>
         <source>Language</source>
         <translation>Taal</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="80"/>
+        <location filename="../../../../src/common/xui.cpp" line="113"/>
         <source>Open Settings Directory</source>
         <translation>Open instellingenmap</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="85"/>
+        <location filename="../../../../src/common/xui.cpp" line="118"/>
         <source>Clear Settings File</source>
         <translation>Wis instellingenbestand</translation>
     </message>
@@ -352,93 +399,123 @@
         <translation>Toepassingsthema</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="103"/>
+        <location filename="../../../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>Sluit de applicatie af</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="87"/>
         <source>High DPI Scaling Policy</source>
         <translation>Beleid voor hoge DPI-schaal</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="112"/>
+        <location filename="../../../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>Toepassingsstijl</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="105"/>
         <source>Theme</source>
         <translation>Thema</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="119"/>
+        <location filename="../../../../src/common/xui.cpp" line="127"/>
         <source>Stays on Top</source>
         <translation>Altijd op de voorgrond</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="134"/>
+        <location filename="../../../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="151"/>
         <source>About Qt</source>
         <translation>Over Qt</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="137"/>
-        <location filename="../../../x/xui.cpp" line="226"/>
+        <location filename="../../../../src/common/xui.cpp" line="154"/>
+        <location filename="../../../../src/common/xui.cpp" line="243"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="150"/>
+        <location filename="../../../../src/common/xui.cpp" line="167"/>
         <source>Get Source from Gitee</source>
         <translation>Broncode ophalen van Gitee</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="151"/>
+        <location filename="../../../../src/common/xui.cpp" line="168"/>
         <source>Get Source from Github</source>
         <translation>Broncode ophalen van GitHub</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="152"/>
+        <location filename="../../../../src/common/xui.cpp" line="169"/>
         <source>Visit Author Home Page</source>
         <translation>Bezoek auteurspagina</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="153"/>
+        <location filename="../../../../src/common/xui.cpp" line="170"/>
         <source>Visit App Store</source>
         <translation>Bezoek App Store</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="163"/>
+        <location filename="../../../../src/common/xui.cpp" line="180"/>
         <source>User Feedback</source>
         <translation>Gebruikersfeedback</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="177"/>
+        <location filename="../../../../src/common/xui.cpp" line="194"/>
         <source>Grab and Save</source>
         <translation>Vastleggen en opslaan</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="181"/>
+        <location filename="../../../../src/common/xui.cpp" line="198"/>
         <source>Save Grabbed Image</source>
         <translation>Vastgelegde afbeelding opslaan</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="192"/>
+        <location filename="../../../../src/common/xui.cpp" line="209"/>
         <source>Grab and Copy</source>
         <translation>Vastleggen en kopiëren</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="206"/>
+        <location filename="../../../../src/common/xui.cpp" line="223"/>
         <source>Commit time</source>
         <translation>Commit tijd</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="213"/>
+        <location filename="../../../../src/common/xui.cpp" line="230"/>
         <source>Commit</source>
         <translation>Commit</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="223"/>
+        <location filename="../../../../src/common/xui.cpp" line="240"/>
         <source>Build Date</source>
         <translation>Bouwdatum</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="224"/>
+        <location filename="../../../../src/common/xui.cpp" line="241"/>
         <source>Copyright</source>
         <translation>Auteursrecht</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="225"/>
+        <location filename="../../../../src/common/xui.cpp" line="242"/>
         <source>All rights reserved.</source>
         <translation>Alle rechten voorbehouden.</translation>
     </message>

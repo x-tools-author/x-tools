@@ -124,6 +124,9 @@
         <translation>اختبار الرسوم البيانية</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="470"/>
+        <location filename="../../../../src/common/xtools.cpp" line="907"/>
+        <location filename="../../../../src/common/xtools.cpp" line="909"/>
         <source>Binary</source>
         <translation>ثنائي</translation>
     </message>
@@ -140,113 +143,163 @@
         <translation>سداسي عشري</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="90"/>
+        <source>Bin</source>
+        <translation>بن</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="92"/>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="94"/>
+        <source>Dec</source>
+        <translation>ديسمبر</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="96"/>
+        <source>Hex</source>
+        <translation>عرافة</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="98"/>
+        <source>Hex(No Space)</source>
+        <translation>سداسي عشري (بدون مسافة)</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xtools.cpp" line="100"/>
         <source>ASCII</source>
         <translation>أسكي</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="102"/>
         <source>UTF-8</source>
         <translation>ترميز UTF-8</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="365"/>
+        <location filename="../../../../src/common/xtools.cpp" line="427"/>
+        <location filename="../../../../src/common/xtools.cpp" line="742"/>
+        <location filename="../../../../src/common/xtools.cpp" line="760"/>
         <source>None</source>
         <translation>لا أحد</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="468"/>
+        <location filename="../../../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../../../src/common/xtools.cpp" line="913"/>
         <source>Text</source>
         <translation>نص</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="505"/>
         <source>Echo</source>
         <translation>صدى</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="506"/>
         <source>Always</source>
         <translation>دائماً</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="507"/>
         <source>Input Equal Reference</source>
         <translation>إدخال مرجع متساوي</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="508"/>
         <source>Input Contain Reference</source>
         <translation>يحتوي الإدخال على مرجع</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="510"/>
         <source>Input Does not Contain Reference</source>
         <translation>الإدخال لا يحتوي على مرجع</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="743"/>
         <source>Even</source>
         <translation>حتى</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="744"/>
         <source>Odd</source>
         <translation>غريب</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="745"/>
         <source>Space</source>
         <translation>فضاء</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="746"/>
         <source>Mark</source>
         <translation>علامة</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="762"/>
         <source>RTS/CTS</source>
         <translation>آر تي إس/CTS</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="763"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="765"/>
         <source>Hardware</source>
         <translation>الأجهزة</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="766"/>
         <source>Software</source>
         <translation>برمجة</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="872"/>
         <source>Disabled</source>
         <translation>عاجز</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="874"/>
         <source>Bidirectional</source>
         <translation>ثنائي الاتجاه</translation>
     </message>
     <message>
+        <location filename="../../../../src/common/xtools.cpp" line="876"/>
         <source>Unidirectional</source>
         <translation>أحادي الاتجاه</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="35"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
         <location filename="../../../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>نظام</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="36"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
         <source>Round up for .5 and above</source>
         <translation>قم بالتقريب لـ .5 وما فوق</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
         <source>Always round up</source>
         <translation>دائما تقريب</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
         <source>Always round down</source>
         <translation>قم دائمًا بالتقريب للأسفل</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .75 and above</source>
         <translation>قم بالتقريب لـ .75 وما فوق</translation>
     </message>
     <message>
-        <location filename="../../../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Don&apos;t round</source>
         <translation>اِتَّشَح</translation>
     </message>
@@ -269,45 +322,39 @@
 <context>
     <name>xApp</name>
     <message>
-        <location filename="../../../x/xapp.cpp" line="136"/>
         <source>Need to Reboot</source>
-        <translation>يحتاج إعادة تشغيل</translation>
+        <translation>بحاجة إلى إعادة التشغيل</translation>
     </message>
     <message>
-        <location filename="../../../x/xapp.cpp" line="137"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>العملية تحتاج إعادة تشغيل لتصبح سارية المفعول، هل تريد إعادة تشغيل التطبيق الآن؟</translation>
+        <translation>العملية بحاجة إلى إعادة التشغيل حتى يتم تنفيذها، إعادة تشغيل التطبيق الآن؟</translation>
     </message>
 </context>
 <context>
     <name>xUi</name>
     <message>
-        <location filename="../../../x/xui.cpp" line="53"/>
         <source>Option</source>
         <translation>خيار</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="54"/>
         <source>View</source>
-        <translation>عرض</translation>
+        <translation>منظر</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="55"/>
         <source>Help</source>
-        <translation>مساعدة</translation>
+        <translation>يساعد</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="73"/>
         <source>Language</source>
-        <translation>اللغة</translation>
+        <translation>لغة</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="80"/>
+        <location filename="../../../../src/common/xui.cpp" line="113"/>
         <source>Open Settings Directory</source>
         <translation>فتح دليل الإعدادات</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="85"/>
+        <location filename="../../../../src/common/xui.cpp" line="118"/>
         <source>Clear Settings File</source>
         <translation>مسح ملف الإعدادات</translation>
     </message>
@@ -352,93 +399,123 @@
         <translation>موضوع التطبيق</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="103"/>
+        <location filename="../../../../src/common/xui.cpp" line="62"/>
+        <source>&amp;File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="65"/>
+        <source>Exit Application</source>
+        <translation>الخروج من التطبيق</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="74"/>
+        <source>&amp;Option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="87"/>
         <source>High DPI Scaling Policy</source>
         <translation>سياسة تحجيم DPI العالية</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="112"/>
+        <location filename="../../../../src/common/xui.cpp" line="96"/>
+        <source>Application Style</source>
+        <translation>نمط التطبيق</translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="105"/>
         <source>Theme</source>
         <translation>سمة</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="119"/>
+        <location filename="../../../../src/common/xui.cpp" line="127"/>
         <source>Stays on Top</source>
         <translation>البقاء في المقدمة</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="134"/>
+        <location filename="../../../../src/common/xui.cpp" line="144"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="149"/>
+        <source>&amp;Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../src/common/xui.cpp" line="151"/>
         <source>About Qt</source>
         <translation>حول Qt</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="137"/>
-        <location filename="../../../x/xui.cpp" line="226"/>
+        <location filename="../../../../src/common/xui.cpp" line="154"/>
+        <location filename="../../../../src/common/xui.cpp" line="243"/>
         <source>About</source>
         <translation>حول</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="150"/>
+        <location filename="../../../../src/common/xui.cpp" line="167"/>
         <source>Get Source from Gitee</source>
         <translation>الحصول على المصدر من Gitee</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="151"/>
+        <location filename="../../../../src/common/xui.cpp" line="168"/>
         <source>Get Source from Github</source>
         <translation>الحصول على المصدر من Github</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="152"/>
+        <location filename="../../../../src/common/xui.cpp" line="169"/>
         <source>Visit Author Home Page</source>
         <translation>زيارة صفحة المؤلف الرئيسية</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="153"/>
+        <location filename="../../../../src/common/xui.cpp" line="170"/>
         <source>Visit App Store</source>
         <translation>زيارة متجر التطبيقات</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="163"/>
+        <location filename="../../../../src/common/xui.cpp" line="180"/>
         <source>User Feedback</source>
         <translation>ملاحظات المستخدم</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="177"/>
+        <location filename="../../../../src/common/xui.cpp" line="194"/>
         <source>Grab and Save</source>
         <translation>التقاط وحفظ</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="181"/>
+        <location filename="../../../../src/common/xui.cpp" line="198"/>
         <source>Save Grabbed Image</source>
         <translation>حفظ الصورة الملتقطة</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="192"/>
+        <location filename="../../../../src/common/xui.cpp" line="209"/>
         <source>Grab and Copy</source>
         <translation>التقاط ونسخ</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="206"/>
+        <location filename="../../../../src/common/xui.cpp" line="223"/>
         <source>Commit time</source>
         <translation>وقت الإيداع</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="213"/>
+        <location filename="../../../../src/common/xui.cpp" line="230"/>
         <source>Commit</source>
         <translation>إيداع</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="223"/>
+        <location filename="../../../../src/common/xui.cpp" line="240"/>
         <source>Build Date</source>
         <translation>تاريخ البناء</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="224"/>
+        <location filename="../../../../src/common/xui.cpp" line="241"/>
         <source>Copyright</source>
         <translation>حقوق الطبع والنشر</translation>
     </message>
     <message>
-        <location filename="../../../x/xui.cpp" line="225"/>
+        <location filename="../../../../src/common/xui.cpp" line="242"/>
         <source>All rights reserved.</source>
         <translation>جميع الحقوق محفوظة.</translation>
     </message>
