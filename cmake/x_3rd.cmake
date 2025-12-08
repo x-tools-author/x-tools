@@ -19,13 +19,16 @@ function(x_auto_import_package_dir package_dir_name package_name)
     add_subdirectory(${X_3RD_DIR}/${package_dir_name})
 
     if(NOT ANDROID AND NOT IOS)
-      add_custom_target(
-        ${package_dir_name}_auto_install ALL
-        COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_dir_name}
-        COMMENT "Installing ${package_dir_name} to ${package_dst_dir}")
-      if(TARGET ${package_name})
-        add_dependencies(${package_dir_name}_auto_install ${package_name} ${ARGN})
+      set(target_name "${package_dir_name}_auto_install")
+      if(TARGET ${target_name})
+        add_custom_target(
+          ${target_name} ALL
+          COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
+          WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_dir_name}
+          COMMENT "Installing ${package_dir_name} to ${package_dst_dir}")
+      endif()
+      if(TARGET ${target_name})
+        add_dependencies(${target_name} ${package_name} ${ARGN})
       endif()
       set_property(TARGET ${package_dir_name}_auto_install PROPERTY FOLDER "3rd")
     endif()
