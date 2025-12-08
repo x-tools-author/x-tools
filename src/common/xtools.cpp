@@ -28,7 +28,6 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
-#include <QNetworkInterface>
 #include <QObject>
 #include <QPainter>
 #include <QProcess>
@@ -48,6 +47,10 @@
 #if X_ENABLE_SERIALPORT
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#endif
+
+#ifndef X_NO_NETWORK
+#include <QNetworkInterface>
 #endif
 
 #include "utilities/compatibility.h"
@@ -826,6 +829,7 @@ void xSetupSocketAddress(QComboBox *cb)
         return;
     }
 
+#ifndef X_NO_NETWORK
     QStringList ipv4List, ipv6List;
     auto addresses = QNetworkInterface::allAddresses();
     for (auto &address : addresses) {
@@ -841,7 +845,8 @@ void xSetupSocketAddress(QComboBox *cb)
     cb->clear();
     cb->addItems(ipv4List);
 #if 0
-        cb->addItems(ipv6List);
+    cb->addItems(ipv6List);
+#endif
 #endif
 }
 

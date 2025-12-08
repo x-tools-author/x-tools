@@ -8,14 +8,16 @@ list(APPEND PRO_FILES ${X_HASH_FILES})
 
 include(cmake/x_qt_deploy.cmake)
 include(cmake/x_qt_linguist.cmake)
+include(cmake/x_3rd_glog.cmake)
 
 # --------------------------------------------------------------------------------------------------
 include_directories(${CMAKE_SOURCE_DIR}/xapps)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/xHash)
+add_compile_definitions(X_NO_NETWORK)
 qt_add_executable(xHash ${PRO_FILES})
 x_deploy_qt(xHash)
 x_generate_translations(xHash)
-target_link_libraries(xHash PRIVATE Qt6::CorePrivate Qt6::Svg Qt6::Widgets)
+target_link_libraries(xHash PRIVATE Qt::CorePrivate Qt::Svg Qt::Widgets glog::glog)
 if(X_USING_VS_CODE)
   set_target_properties(xHash PROPERTIES MACOSX_BUNDLE TRUE)
 else()
