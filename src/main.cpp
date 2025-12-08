@@ -8,12 +8,12 @@
  **************************************************************************************************/
 #include <QDebug>
 
-#include "application.h"
-#include "mainwindow.h"
-
 #if X_ENABLE_HID
 #include <hidapi.h>
 #endif
+
+#include "application.h"
+#include "mainwindow.h"
 
 #if X_ENABLE_SINGLE_APPLICATION
 #include "singleapplication.h"
