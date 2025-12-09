@@ -280,3 +280,12 @@ option(X_ENABLE_OTIOSE "Do not change the option unless you know what you are do
 if(X_ENABLE_OTIOSE)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/otiose)
 endif()
+
+# --------------------------------------------------------------------------------------------------
+# Do something after configuration
+option(X_COPY_COMPILE_COMMANDS "Copy compile_commands.json to source directory" OFF)
+if(X_COPY_COMPILE_COMMANDS)
+  execute_process(
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/compile_commands.json
+            ${CMAKE_SOURCE_DIR}/compile_commands.json)
+endif()
