@@ -4331,7 +4331,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="95"/>
         <source>Hex(No Space)</source>
-        <translation>16禁止(无空格)</translation>
+        <translation>16进制(无空格)</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="97"/>
