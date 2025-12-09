@@ -11,6 +11,7 @@
 
 #include <QFileDialog>
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QMessageBox>
 
 #include "utilities/iconengine.h"

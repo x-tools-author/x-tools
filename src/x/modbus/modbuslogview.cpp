@@ -11,6 +11,8 @@
 
 #include <QFileDialog>
 #include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonParseError>
 #include <QMessageBox>
 
 #include "modbuslogmodel.h"

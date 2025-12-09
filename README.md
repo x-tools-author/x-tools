@@ -26,11 +26,21 @@ Arch Linux can install x-tools via the [AUR](https://aur.archlinux.org/packages/
 yay -Syu x-tools
 ```
 
-## xTools Preview
+## xTools Screenshot
 
-![xTools Video](res/xTools.gif)
+![xTools Gif](res/xTools.gif)
 
-## Other
+![xTools](docs/assets/images/xTools.png)
+
+![xModbus](docs/assets/images/xModbus.png)
+
+![xCANBus](docs/assets/images/xCANBus.png)
+
+![xMQTT](docs/assets/images/xMQTT.png)
+
+![xFlow](docs/assets/images/xFlow.png)
+
+## About the Project
 
 <!--https://sdpro.top/blog/html/article/1016.html-->
 [![stars](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)](https://img.shields.io/github/stars/x-tools-author/x-tools?style=social)
