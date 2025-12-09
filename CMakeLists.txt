@@ -66,6 +66,21 @@ message(STATUS "[xTools] CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCES
 message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
+if(CMAKE_CXX_COMPILER_VERSION AND MSVC)
+  set(compiler_version ${CMAKE_CXX_COMPILER_VERSION})
+  if(compiler_version VERSION_GREATER_EQUAL "19.50")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2026")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.30")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2022")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.20")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2019")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.10")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2017")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.00")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2015")
+  endif()
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED)
