@@ -46,7 +46,8 @@ public:
         SctpClient,
         SctpServer,
         //----------------------------------------------------------------------------------------------
-        ChartsTest = 0x00300000
+        ChartsTest = 0x00300000,
+        GpsTest
     };
     Q_ENUM(DeviceType);
 

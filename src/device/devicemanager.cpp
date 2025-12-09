@@ -11,6 +11,7 @@
 #include <QComboBox>
 #include <QMetaEnum>
 
+#include "gpstestui.h"
 #include "localserverui.h"
 #include "localsocketui.h"
 #include "tcpclientui.h"
@@ -19,6 +20,7 @@
 #include "udpclientui.h"
 #include "udpmulticastui.h"
 #include "udpserverui.h"
+
 #include "utilities/iconengine.h"
 
 #if X_ENABLE_SERIALPORT
@@ -81,6 +83,9 @@ QList<int> DeviceManager::supportedDeviceTypes()
 #ifdef X_ENABLE_CHARTS
         deviceTypes << static_cast<int>(DeviceType::ChartsTest);
 #endif
+#if X_ENABLE_GPS
+        deviceTypes << static_cast<int>(DeviceType::GpsTest);
+#endif
     }
 
     return deviceTypes;
@@ -119,6 +124,8 @@ QString DeviceManager::deviceName(int type)
         return tr("Local Server");
     case static_cast<int>(DeviceType::ChartsTest):
         return tr("Charts Test");
+    case static_cast<int>(DeviceType::GpsTest):
+        return tr("GPS Test");
     default:
         return "Unknown";
     }
@@ -210,6 +217,8 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
     case static_cast<int>(DeviceManager::ChartsTest):
         return new ChartsTestUi();
 #endif
+    case static_cast<int>(DeviceManager::GpsTest):
+        return new GpsTestUi();
     default:
         return nullptr;
     }
@@ -225,21 +234,19 @@ QString DeviceManager::deviceIconPath(int type)
     case static_cast<int>(DeviceManager::Hid):
 #endif
         return QString(":/res/icons/cable.svg");
-
 #if X_ENABLE_BLUETOOTH
     case static_cast<int>(DeviceManager::BleCentral):
         return QString(":/res/icons/bluetooth_searching.svg");
 #endif
-
     case static_cast<int>(DeviceManager::LocalSocket):
     case static_cast<int>(DeviceManager::LocalServer):
         return QString(":/res/icons/bring_your_own_ip.svg");
-
 #ifdef X_ENABLE_CHARTS
     case static_cast<int>(DeviceManager::ChartsTest):
         return QString(":/res/icons/finance_mode.svg");
 #endif
-
+    case static_cast<int>(DeviceManager::GpsTest):
+        return QString(":/res/icons/bds.svg");
     default:
         return QString(":/res/icons/globe.svg");
     }

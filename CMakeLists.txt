@@ -135,6 +135,13 @@ endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
 
+option(X_ENABLE_GPS "Enable GPS Test device" OFF)
+if(X_ENABLE_GPS)
+  add_compile_definitions(X_ENABLE_GPS=1)
+else()
+  add_compile_definitions(X_ENABLE_GPS=0)
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Set macOS deployment target (minimum macOS version)
 if(APPLE AND NOT IOS)
