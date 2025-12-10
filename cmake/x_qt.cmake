@@ -25,7 +25,3 @@ macro(x_add_qt_module module_name)
     COMMENT "Installing ${module_name} to ${dst_dir}")
   set_property(TARGET ${module_name}_deploy PROPERTY FOLDER "QtModules")
 endmacro()
-
-# * Qt official modules but not included in Qt installer
-return()
-include(${CMAKE_SOURCE_DIR}/cmake/x_qt_coap.cmake)
