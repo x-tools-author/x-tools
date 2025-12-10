@@ -1,17 +1,15 @@
 ﻿V7.8.0 202x年xx月xx日（planing）
     新特性：
     01. 通用协议解析器
-    02. BlePeripheral调试功能
-    03. 终端（https://gitee.com/laterlove/q-terminal）
-    05. ftp, sftp, JT808, http, profibus, XMODEM, YMODEM, ZMODEM, sslsocket
+    02. 终端（https://gitee.com/laterlove/q-terminal）
+    03. ftp, sftp, JT808, http, profibus, XMODEM, YMODEM, ZMODEM, sslsocket
 
 V7.7.0 2026年xx月xx日（ing）
     新特性：
-    01. SCTP调试功能(不支持Windows平台)
-    02. coap调试功能
-    03. opcua调试功能
-    04. GPS数据解析器
-    05. 重构蓝牙调试功能，添加蓝牙外围设备调试功能
+    01. coap调试功能
+    02. opcua调试功能
+    03. GPS数据解析器
+    04. 重构蓝牙调试功能，添加蓝牙外围设备（Peripheral）调试功能
 
 V7.6.0 2025年12月08日
     新特性：
