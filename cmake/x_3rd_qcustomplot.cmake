@@ -5,6 +5,10 @@ set(package_url "https://www.qcustomplot.com/release/${QCustomPlot_VERSION}/QCus
 set(package_name "QCustomPlot-source-${QCustomPlot_VERSION}")
 # cmake-format: on
 
+if(APPLE)
+  return()
+endif()
+
 macro(x_remove_all_plot_files)
 
 endmacro()

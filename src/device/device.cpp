@@ -32,11 +32,9 @@ void Device::openDevice()
 
 void Device::closeDevice()
 {
-    qInfo() << "Closing device...";
     requestInterruption();
     exit();
     wait();
-    qInfo() << "Device closed";
 }
 
 void Device::writeBytes(const QByteArray &bytes)
