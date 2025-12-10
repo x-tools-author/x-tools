@@ -39,7 +39,7 @@ namespace xCoap {
 class xCoap;
 }
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
 namespace xOpcUa {
 class xOpcUa;
 }
@@ -93,7 +93,7 @@ private:
 #if X_ENABLE_X_COAP
     xCoap::xCoap* m_coap{nullptr};
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
     xOpcUa::xOpcUa* m_opcua{nullptr};
 #endif
 #if X_ENABLE_X_FLOW

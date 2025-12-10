@@ -22,7 +22,7 @@
 #if X_ENABLE_X_COAP
 #include "x/coap/xcoap.h"
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
 #include "x/opcua/xopcua.h"
 #endif
 #if X_ENABLE_X_FLOW
@@ -111,7 +111,7 @@ void LayoutManager::setupPages()
     m_coap = new xCoap::xCoap(m_layout->parentWidget());
     addLayoutPage(QString("xCoAP"), m_coap);
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
     m_opcua = new xOpcUa::xOpcUa(m_layout->parentWidget());
     addLayoutPage(QString("xOpcUa"), m_opcua);
 #endif
@@ -172,7 +172,7 @@ QJsonObject LayoutManager::save()
 #if X_ENABLE_X_COAP
     obj[keys.xCoap] = m_coap ? m_coap->save() : QJsonObject();
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
     obj[keys.xOpcUa] = m_opcua ? m_opcua->save() : QJsonObject();
 #endif
 #if X_ENABLE_X_FLOW
@@ -212,7 +212,7 @@ void LayoutManager::load(const QJsonObject& obj)
         m_coap->load(coapObj);
     }
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
     if (m_opcua) {
         QJsonObject opcuaObj = obj.value(keys.xOpcUa).toObject(QJsonObject());
         m_opcua->load(opcuaObj);
@@ -277,7 +277,7 @@ QList<QAction*> LayoutManager::newWindowActions()
         a = createNewWindowAction<xCoap::xCoap>(this, QString("xCoAP"));
         m_newWindowActions.append(a);
 #endif
-#if X_ENABLE_OPC_UA
+#if X_ENABLE_X_OPCUA
         a = createNewWindowAction<xOpcUa::xOpcUa>(this, QString("xOpcUa"));
         m_newWindowActions.append(a);
 #endif

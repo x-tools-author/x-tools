@@ -66,13 +66,22 @@ if(NOT EXISTS ${X_3RD_DIR}/${package_name}/include/coap_config.h)
       ${X_3RD_DIR}/${package_name}/include/coap_config.h)
 endif()
 
-add_compile_definitions(X_ENABLE_X_COAP=1)
-file(GLOB_RECURSE coap_files ${X_3RD_DIR}/${package_name}/src/*.c)
-# Remove coap_io_lwip.c, coap_io_contiki.c, coap_io_riot.c
-list(FILTER coap_files EXCLUDE REGEX ".*coap_io_lwip\\.c$")
-list(FILTER coap_files EXCLUDE REGEX ".*coap_io_contiki\\.c$")
-list(FILTER coap_files EXCLUDE REGEX ".*coap_io_riot\\.c$")
-
+set(out_dir "${X_LIBS_DIR}/${package_name}")
 include_directories(${X_3RD_DIR}/${package_name}/include)
-add_library(libcoap STATIC ${coap_files})
-target_link_libraries(libcoap ws2_32)
+add_compile_definitions(X_ENABLE_X_COAP=1)
+
+if(EXISTS ${out_dir}/libcoap.lib OR EXISTS ${out_dir}/libcoap.a)
+  link_directories(${out_dir})
+  list(APPEND X_LIBS libcoap)
+else()
+  file(GLOB_RECURSE coap_files ${X_3RD_DIR}/${package_name}/src/*.c)
+  # Remove coap_io_lwip.c, coap_io_contiki.c, coap_io_riot.c
+  list(FILTER coap_files EXCLUDE REGEX ".*coap_io_lwip\\.c$")
+  list(FILTER coap_files EXCLUDE REGEX ".*coap_io_contiki\\.c$")
+  list(FILTER coap_files EXCLUDE REGEX ".*coap_io_riot\\.c$")
+
+  add_library(libcoap STATIC ${coap_files})
+  set_target_properties(libcoap PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${out_dir})
+  set_target_properties(libcoap PROPERTIES FOLDER "3rd")
+  list(APPEND X_LIBS libcoap)
+endif()
