@@ -1,19 +1,17 @@
-﻿敬请期待：
-    添加http调试功能
-    添加ble外围设备调试功能（非windows平台）
-    添加sctp客户端与服务器调试功能（非windows平台）
-    重构蓝牙调试功能
-    ftp, sftp, JT808, http, profibus, XMODEM, YMODEM, ZMODEM, sslsocket
-    终端（https://gitee.com/laterlove/q-terminal）
-
-V7.8.0 202x年xx月xx日
-
-V7.7.0 2026年xx月xx日
+﻿V7.8.0 202x年xx月xx日（planing）
     新特性：
-    01. 通用协议解析器（ing）
-    02. opcua调试功能（ing）
-    03. coap调试功能（ing）
-    04. GPS数据解析器，北斗（DBS）数据解析器(ing)
+    01. 通用协议解析器
+    02. BlePeripheral调试功能
+    03. 终端（https://gitee.com/laterlove/q-terminal）
+    04. 重构蓝牙调试功能
+    05. ftp, sftp, JT808, http, profibus, XMODEM, YMODEM, ZMODEM, sslsocket
+
+V7.7.0 2026年xx月xx日（ing）
+    新特性：
+    01. sftp调试功能
+    02. opcua调试功能
+    03. coap调试功能
+    04. GPS数据解析器，北斗（DBS）数据解析器
 
 V7.6.0 2025年12月08日
     新特性：
