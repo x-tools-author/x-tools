@@ -20,7 +20,7 @@ function(x_auto_import_package_dir package_dir_name package_name)
 
     if(NOT ANDROID AND NOT IOS)
       set(target_name "${package_dir_name}_auto_install")
-      if(TARGET ${target_name})
+      if(NOT TARGET ${target_name})
         add_custom_target(
           ${target_name} ALL
           COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
