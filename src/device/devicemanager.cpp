@@ -23,6 +23,11 @@
 
 #include "utilities/iconengine.h"
 
+#if X_ENABLE_SCTP
+#include "sctpclientui.h"
+#include "sctpserverui.h"
+#endif
+
 #if X_ENABLE_SERIALPORT
 #include "serialportui.h"
 #endif
@@ -78,6 +83,10 @@ QList<int> DeviceManager::supportedDeviceTypes()
         deviceTypes << static_cast<int>(DeviceType::WebSocketClient);
         deviceTypes << static_cast<int>(DeviceType::WebSocketServer);
 #endif
+#if X_ENABLE_SCTP
+        deviceTypes << static_cast<int>(DeviceType::SctpClient);
+        deviceTypes << static_cast<int>(DeviceType::SctpServer);
+#endif
         deviceTypes << static_cast<int>(DeviceType::LocalSocket);
         deviceTypes << static_cast<int>(DeviceType::LocalServer);
 #ifdef X_ENABLE_CHARTS
@@ -122,6 +131,10 @@ QString DeviceManager::deviceName(int type)
         return tr("Local Socket");
     case static_cast<int>(DeviceType::LocalServer):
         return tr("Local Server");
+    case static_cast<int>(DeviceType::SctpClient):
+        return tr("SCTP Client");
+    case static_cast<int>(DeviceType::SctpServer):
+        return tr("SCTP Server");
     case static_cast<int>(DeviceType::ChartsTest):
         return tr("Charts Test");
     case static_cast<int>(DeviceType::GpsTest):
@@ -213,6 +226,12 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
         return new LocalSocketUi();
     case static_cast<int>(DeviceManager::LocalServer):
         return new LocalServerUi();
+#if X_ENABLE_SCTP
+    case static_cast<int>(DeviceManager::SctpClient):
+        return new SctpClientUi();
+    case static_cast<int>(DeviceManager::SctpServer):
+        return new SctpServerUi();
+#endif
 #ifdef X_ENABLE_CHARTS
     case static_cast<int>(DeviceManager::ChartsTest):
         return new ChartsTestUi();

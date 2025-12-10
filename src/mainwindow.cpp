@@ -484,6 +484,9 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
     ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
     ctxs.append(qMakePair(QString("mongoose"), QString("https://github.com/cesanta/mongoose")));
+#if X_ENABLE_SCTP && defined(Q_OS_WIN)
+    ctxs.append(qMakePair(QString("usrsctp"), QString("https://github.com/sctplab/usrsctp")));
+#endif
     ctxs.append(qMakePair(QString(""), QString("")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("nodeeditor"), QString("https://github.com/paceholder/nodeeditor")));
