@@ -27,7 +27,9 @@
 #include "sctpclientui.h"
 #include "sctpserverui.h"
 #endif
-
+#if X_ENABLE_BLE_PERIPHERAL
+#include "bleperipheralui.h"
+#endif
 #if X_ENABLE_SERIALPORT
 #include "serialportui.h"
 #endif
@@ -70,7 +72,7 @@ QList<int> DeviceManager::supportedDeviceTypes()
 #if X_ENABLE_BLUETOOTH
         deviceTypes << static_cast<int>(DeviceType::BleCentral);
 #endif
-#if 0
+#if X_ENABLE_BLE_PERIPHERAL
         deviceTypes << static_cast<int>(DeviceType::BlePeripheral);
 #endif
         deviceTypes << static_cast<int>(DeviceType::UdpClient);
@@ -204,6 +206,10 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
     case static_cast<int>(DeviceManager::BleCentral):
         return new BleCentralUi();
 #endif
+#if X_ENABLE_BLE_PERIPHERAL
+    case static_cast<int>(DeviceManager::BlePeripheral):
+        return new BlePeripheralUi();
+#endif
     case static_cast<int>(DeviceManager::UdpClient):
         return new UdpClientUi();
     case static_cast<int>(DeviceManager::UdpServer):
@@ -255,6 +261,10 @@ QString DeviceManager::deviceIconPath(int type)
         return QString(":/res/icons/cable.svg");
 #if X_ENABLE_BLUETOOTH
     case static_cast<int>(DeviceManager::BleCentral):
+        return QString(":/res/icons/bluetooth_searching.svg");
+#endif
+#if X_ENABLE_BLE_PERIPHERAL
+    case static_cast<int>(DeviceManager::BlePeripheral):
         return QString(":/res/icons/bluetooth_searching.svg");
 #endif
     case static_cast<int>(DeviceManager::LocalSocket):

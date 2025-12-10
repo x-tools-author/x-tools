@@ -1544,12 +1544,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="97"/>
         <source>BLE Central</source>
-        <translation>蓝牙助手</translation>
+        <translation>蓝牙助手(中心)</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="99"/>
         <source>BLE Peripheral</source>
-        <translation>蓝牙助手</translation>
+        <translation>蓝牙助手(外设)</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="101"/>
