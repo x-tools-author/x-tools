@@ -8,8 +8,12 @@
  **************************************************************************************************/
 #include "sctpclient.h"
 
+#include <usrsctp.h>
+
 SctpClient::SctpClient(QObject *parent)
     : Socket(parent)
 {}
 
 SctpClient::~SctpClient() {}
+
+void SctpClient::run() {}

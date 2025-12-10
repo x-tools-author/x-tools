@@ -16,4 +16,7 @@ class SctpServer : public Socket
 public:
     explicit SctpServer(QObject *parent = nullptr);
     ~SctpServer() override;
+
+protected:
+    void run() override;
 };

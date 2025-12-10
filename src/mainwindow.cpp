@@ -473,6 +473,10 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
 
 void MainWindow::initHelpMenu()
 {
+    m_helpMenu->addSeparator();
+    m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
+    m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
+
     // clang-format off
     QList<QPair<QString, QString>> ctxs;
     ctxs.append(qMakePair(QString("lua"), QString("https://github.com/lua/lua")));
@@ -484,9 +488,10 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("SingleApplication"), QString("https://github.com/itay-grudev/SingleApplication")));
     ctxs.append(qMakePair(QString("hidapi"), QString("https://github.com/libusb/hidapi")));
     ctxs.append(qMakePair(QString("mongoose"), QString("https://github.com/cesanta/mongoose")));
-#if X_ENABLE_SCTP && defined(Q_OS_WIN)
     ctxs.append(qMakePair(QString("usrsctp"), QString("https://github.com/sctplab/usrsctp")));
-#endif
+    ctxs.append(qMakePair(QString("simpleble"), QString("https://github.com/simpleble/simpleble")));
+    ctxs.append(qMakePair(QString("libcoap"), QString("https://github.com/obgm/libcoap")));
+    ctxs.append(qMakePair(QString("open62541"), QString("https://github.com/open62541/open62541")));
     ctxs.append(qMakePair(QString(""), QString("")));
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("nodeeditor"), QString("https://github.com/paceholder/nodeeditor")));
