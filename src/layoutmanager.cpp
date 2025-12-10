@@ -10,9 +10,6 @@
 
 #include <QAction>
 
-#if X_ENABLE_X_FLOW
-#include "x/flow/xflow.h"
-#endif
 #if X_ENABLE_X_MODBUS
 #include "x/modbus/xmodbus.h"
 #endif
@@ -22,6 +19,15 @@
 #if X_ENABLE_X_MQTT
 #include "x/mqtt/xmqtt.h"
 #endif
+#if X_ENABLE_X_COAP
+#include "x/coap/xcoap.h"
+#endif
+#if X_ENABLE_OPC_UA
+#include "x/opcua/xopcua.h"
+#endif
+#if X_ENABLE_X_FLOW
+#include "x/flow/xflow.h"
+#endif
 
 struct LayoutManagerKeys
 {
@@ -30,6 +36,9 @@ struct LayoutManagerKeys
     const QString xModbus{"xModbus"};
     const QString xCanbus{"xCanbus"};
     const QString xMqtt{"xMqtt"};
+    const QString xCoap{"xCoap"};
+    const QString xOpcUa{"xOpcUa"};
+
     const QString xFlow{"xFlow"};
 };
 
@@ -98,6 +107,14 @@ void LayoutManager::setupPages()
     m_mqtt = new xMqtt::xMqtt(m_layout->parentWidget());
     addLayoutPage(QString("xMQTT"), m_mqtt);
 #endif
+#if X_ENABLE_X_COAP
+    m_coap = new xCoap::xCoap(m_layout->parentWidget());
+    addLayoutPage(QString("xCoAP"), m_coap);
+#endif
+#if X_ENABLE_OPC_UA
+    m_opcua = new xOpcUa::xOpcUa(m_layout->parentWidget());
+    addLayoutPage(QString("xOpcUa"), m_opcua);
+#endif
 #if X_ENABLE_X_FLOW
     m_flow = new xFlow::xFlow(m_layout->parentWidget());
     addLayoutPage(QString("xFlow"), m_flow);
@@ -149,11 +166,17 @@ QJsonObject LayoutManager::save()
 #if X_ENABLE_X_CANBUS
     obj[keys.xCanbus] = m_canbus ? m_canbus->save() : QJsonObject();
 #endif
-#if X_ENABLE_X_FLOW
-    obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
-#endif
 #if X_ENABLE_X_MQTT
     obj[keys.xMqtt] = m_mqtt ? m_mqtt->save() : QJsonObject();
+#endif
+#if X_ENABLE_X_COAP
+    obj[keys.xCoap] = m_coap ? m_coap->save() : QJsonObject();
+#endif
+#if X_ENABLE_OPC_UA
+    obj[keys.xOpcUa] = m_opcua ? m_opcua->save() : QJsonObject();
+#endif
+#if X_ENABLE_X_FLOW
+    obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
 #endif
 
     return obj;
@@ -181,6 +204,18 @@ void LayoutManager::load(const QJsonObject& obj)
     if (m_mqtt) {
         QJsonObject mqttObj = obj.value(keys.xMqtt).toObject(QJsonObject());
         m_mqtt->load(mqttObj);
+    }
+#endif
+#if X_ENABLE_X_COAP
+    if (m_coap) {
+        QJsonObject coapObj = obj.value(keys.xCoap).toObject(QJsonObject());
+        m_coap->load(coapObj);
+    }
+#endif
+#if X_ENABLE_OPC_UA
+    if (m_opcua) {
+        QJsonObject opcuaObj = obj.value(keys.xOpcUa).toObject(QJsonObject());
+        m_opcua->load(opcuaObj);
     }
 #endif
 #if X_ENABLE_X_FLOW
@@ -236,6 +271,14 @@ QList<QAction*> LayoutManager::newWindowActions()
 #endif
 #if X_ENABLE_X_MQTT
         a = createNewWindowAction<xMqtt::xMqtt>(this, QString("xMQTT"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_X_COAP
+        a = createNewWindowAction<xCoap::xCoap>(this, QString("xCoAP"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_OPC_UA
+        a = createNewWindowAction<xOpcUa::xOpcUa>(this, QString("xOpcUa"));
         m_newWindowActions.append(a);
 #endif
 #if X_ENABLE_X_FLOW

@@ -22,4 +22,16 @@ xOpcUa::~xOpcUa()
 {
     delete ui;
 }
+
+QJsonObject xOpcUa::save()
+{
+    QJsonObject obj;
+    return obj;
+}
+
+void xOpcUa::load(const QJsonObject& obj)
+{
+    Q_UNUSED(obj);
+}
+
 } // namespace xOpcUa

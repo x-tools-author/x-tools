@@ -8,21 +8,29 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
+
+#include "utilities/serializable.h"
 
 namespace Ui {
 class xCoap;
 }
 
 namespace xCoap {
-class xCoap : public QWidget
+
+class xCoap : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit xCoap(QWidget* parent = nullptr);
     ~xCoap();
 
+    QJsonObject save() override;
+    void load(const QJsonObject& obj) override;
+
 private:
     Ui::xCoap* ui;
 };
+
 } // namespace xCoap

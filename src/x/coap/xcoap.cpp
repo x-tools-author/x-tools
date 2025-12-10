@@ -22,4 +22,13 @@ xCoap::~xCoap()
 {
     delete ui;
 }
+
+QJsonObject xCoap::save()
+{
+    QJsonObject obj;
+    return obj;
+}
+
+void xCoap::load(const QJsonObject& obj) {}
+
 } // namespace xCoap

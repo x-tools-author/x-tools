@@ -8,21 +8,29 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
+
+#include "utilities/serializable.h"
 
 namespace Ui {
 class xOpcUa;
 }
 
 namespace xOpcUa {
-class xOpcUa : public QWidget
+
+class xOpcUa : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit xOpcUa(QWidget* parent = nullptr);
     ~xOpcUa();
 
+    QJsonObject save() override;
+    void load(const QJsonObject& obj) override;
+
 private:
     Ui::xOpcUa* ui;
 };
+
 } // namespace xOpcUa

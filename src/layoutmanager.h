@@ -19,9 +19,9 @@
 #include <QToolButton>
 #include <QWidget>
 
-#if X_ENABLE_X_MQTT
-namespace xMqtt {
-class xMqtt;
+#if X_ENABLE_X_MODBUS
+namespace xModbus {
+class xModbus;
 }
 #endif
 #if X_ENABLE_X_CANBUS
@@ -29,9 +29,19 @@ namespace xCanBus {
 class xCanBus;
 }
 #endif
-#if X_ENABLE_X_MODBUS
-namespace xModbus {
-class xModbus;
+#if X_ENABLE_X_MQTT
+namespace xMqtt {
+class xMqtt;
+}
+#endif
+#if X_ENABLE_X_COAP
+namespace xCoap {
+class xCoap;
+}
+#endif
+#if X_ENABLE_OPC_UA
+namespace xOpcUa {
+class xOpcUa;
 }
 #endif
 #if X_ENABLE_X_FLOW
@@ -71,9 +81,6 @@ private:
     QList<QAction*> m_newWindowActions;
 
 private:
-#if X_ENABLE_X_FLOW
-    xFlow::xFlow* m_flow{nullptr};
-#endif
 #if X_ENABLE_X_MODBUS
     xModbus::xModbus* m_modbus{nullptr};
 #endif
@@ -82,5 +89,14 @@ private:
 #endif
 #if X_ENABLE_X_MQTT
     xMqtt::xMqtt* m_mqtt{nullptr};
+#endif
+#if X_ENABLE_X_COAP
+    xCoap::xCoap* m_coap{nullptr};
+#endif
+#if X_ENABLE_OPC_UA
+    xOpcUa::xOpcUa* m_opcua{nullptr};
+#endif
+#if X_ENABLE_X_FLOW
+    xFlow::xFlow* m_flow{nullptr};
 #endif
 };
