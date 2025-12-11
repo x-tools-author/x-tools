@@ -20,8 +20,6 @@
 #include <QTimer>
 #include <QUdpSocket>
 
-#if 0
-
 enum Block {
     _RRQ = 1,   // read request
     _WRQ = 2,   // write request
@@ -53,12 +51,19 @@ public:
     Tftp(QObject *parent = nullptr);
     ~Tftp();
 
+    // 客户端功能相关方法
+    void setClientMode(bool clientMode);
+    void setDestinationAddress(const QHostAddress &address, quint16 port);
+    void startDownload(const QString &remoteFileName, const QString &localFileName = "");
+    void startUpload(const QString &localFileName, const QString &remoteFileName = "");
+
 protected:
     void run() override;
 
 private:
     bool initFlag = false;
     bool dataAvalivabe = false;
+    bool isClientMode = false; // 客户端模式标志
     char file_path[256] = {0};
     char *ptr_filePath = file_path;
     QString curFilePath;
@@ -88,12 +93,19 @@ private:
     void printProcess(int maxValue, int curValue);
     const QString fileMd5(QFile &sourceFile);
     const QString fileMd5(const QString &path);
+
+    // 客户端功能相关方法
+    void sendRRQ(const QString &fileName);
+    void sendWRQ(const QString &fileName);
+    void processClientDatagram();
+
 public slots:
     void readPendingDatagramsSlots();
     void setWorkPathSlots(QString path);
     void setPortSlots(int port);
+
 signals:
-    void tftpProcessSignal(QString path, int value);
+    void transferProgressSignal(QString filePath, qint64 cur, qint64 total, int speed);
     void tftpErrorSignal(QString errorMsg);
+    void transferCompletedSignal(QString fileName);
 };
-#endif
