@@ -4,52 +4,43 @@
 <context>
     <name>AesCipher</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipher.cpp" line="113"/>
         <source>AES Cipher</source>
-        <translation>AES密码器</translation>
+        <translation type="vanished">AES密码器</translation>
     </message>
 </context>
 <context>
     <name>AesCipherUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="33"/>
         <source>Padding</source>
-        <translation>填充</translation>
+        <translation type="vanished">填充</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
         <source>IV</source>
-        <translation>向量</translation>
+        <translation type="vanished">向量</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
         <source>Mode</source>
-        <translation>模式</translation>
+        <translation type="vanished">模式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="57"/>
         <source>Level</source>
-        <translation>等级</translation>
+        <translation type="vanished">等级</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="67"/>
         <source>Key</source>
-        <translation>钥匙</translation>
+        <translation type="vanished">钥匙</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="77"/>
         <source>Way</source>
-        <translation>方式</translation>
+        <translation type="vanished">方式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="24"/>
         <source>Encrypt</source>
-        <translation>加密</translation>
+        <translation type="vanished">加密</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="25"/>
         <source>Decrypt</source>
-        <translation>解密</translation>
+        <translation type="vanished">解密</translation>
     </message>
 </context>
 <context>
@@ -515,24 +506,20 @@
 <context>
     <name>BaseNodeUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="35"/>
         <source>Show/hide settings panel...</source>
-        <translation>显示/隐藏设置面板...</translation>
+        <translation type="vanished">显示/隐藏设置面板...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="36"/>
         <source>Output the data immediately...</source>
-        <translation>立即输出数据...</translation>
+        <translation type="vanished">立即输出数据...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
         <source>Ignore the input data and no data output...</source>
-        <translation>忽略输入数据并且没有数据输出...</translation>
+        <translation type="vanished">忽略输入数据并且没有数据输出...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="38"/>
         <source>No message...</source>
-        <translation>没有消息...</translation>
+        <translation type="vanished">没有消息...</translation>
     </message>
 </context>
 <context>
@@ -968,65 +955,54 @@
 <context>
     <name>CommandLine</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandline.cpp" line="35"/>
         <source>Command Line</source>
-        <translation>命令行</translation>
+        <translation type="vanished">命令行</translation>
     </message>
 </context>
 <context>
     <name>CommandLineUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="14"/>
         <source>Form</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="42"/>
         <source>Execute</source>
-        <translation>执行</translation>
+        <translation type="vanished">执行</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="49"/>
         <source>Browse</source>
-        <translation>浏览</translation>
+        <translation type="vanished">浏览</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="62"/>
         <source>Program</source>
-        <translation>程序</translation>
+        <translation type="vanished">程序</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="72"/>
         <source>Arguments</source>
-        <translation>论点</translation>
+        <translation type="vanished">论点</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
         <source>Input data is hex string</source>
-        <translation>输入数据是十六进制字符串</translation>
+        <translation type="vanished">输入数据是十六进制字符串</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="88"/>
         <source>Input data is utf8 string</source>
-        <translation>输入数据为utf8字符串</translation>
+        <translation type="vanished">输入数据为utf8字符串</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="69"/>
         <source>Open File</source>
-        <translation>打开文件</translation>
+        <translation type="vanished">打开文件</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.cpp" line="71"/>
         <source>Executable Files (*.exe)</source>
-        <translation>可执行文件（*.exe）</translation>
+        <translation type="vanished">可执行文件（*.exe）</translation>
     </message>
 </context>
 <context>
     <name>Communication</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/communication/communication.cpp" line="141"/>
         <source>Device is working normally.</source>
-        <translation>设备工作正常。</translation>
+        <translation type="vanished">设备工作正常。</translation>
     </message>
 </context>
 <context>
@@ -1148,144 +1124,119 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>CrcCalculator</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculator.cpp" line="23"/>
         <source>CRC Calculator</source>
-        <translation>CRC计算器</translation>
+        <translation type="vanished">CRC计算器</translation>
     </message>
 </context>
 <context>
     <name>CrcCalculatorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="57"/>
         <source>Start byte index is start from left</source>
-        <translation>起始字节索引从左开始</translation>
+        <translation type="vanished">起始字节索引从左开始</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="40"/>
         <source>End byte index</source>
-        <translation>结束字节索引</translation>
+        <translation type="vanished">结束字节索引</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="30"/>
         <source>Start byte index</source>
-        <translation>起始字节索引</translation>
+        <translation type="vanished">起始字节索引</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="50"/>
         <source>Big Endian</source>
-        <translation>大端字节序</translation>
+        <translation type="vanished">大端字节序</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="64"/>
         <source>End byte index is start from right</source>
-        <translation>结束字节索引从右开始</translation>
+        <translation type="vanished">结束字节索引从右开始</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccalculatorui.ui" line="20"/>
         <source>Arithmetic</source>
-        <translation>CRC算法</translation>
+        <translation type="vanished">CRC算法</translation>
     </message>
 </context>
 <context>
     <name>CrcChecker</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="23"/>
         <source>CRC Checker</source>
-        <translation>CRC校验器</translation>
+        <translation type="vanished">CRC校验器</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="82"/>
         <source>CRC check failed, expected: %1, got: %2</source>
-        <translation>CRC 检查失败，预期：%1，得到：%2</translation>
+        <translation type="vanished">CRC 检查失败，预期：%1，得到：%2</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crcchecker.cpp" line="92"/>
         <source>CRC checking passed.</source>
-        <translation>CRC 校验通过。</translation>
+        <translation type="vanished">CRC 校验通过。</translation>
     </message>
 </context>
 <context>
     <name>CrcCheckerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="40"/>
         <source>End byte index</source>
-        <translation>结束字节索引</translation>
+        <translation type="vanished">结束字节索引</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="30"/>
         <source>Start byte index</source>
-        <translation>起始字节索引</translation>
+        <translation type="vanished">起始字节索引</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="20"/>
         <source>Arithmetic</source>
-        <translation>算术</translation>
+        <translation type="vanished">算术</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="50"/>
         <source>Big Endian</source>
-        <translation>大尾数法</translation>
+        <translation type="vanished">大尾数法</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="57"/>
         <source>Start byte index is start from left</source>
-        <translation>起始字节索引从左开始</translation>
+        <translation type="vanished">起始字节索引从左开始</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/crccheckerui.ui" line="64"/>
         <source>End byte index is start from right</source>
-        <translation>结束字节索引从右开始</translation>
+        <translation type="vanished">结束字节索引从右开始</translation>
     </message>
 </context>
 <context>
     <name>DataPersistence</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
         <source>Data Persistence</source>
-        <translation>数据持久化</translation>
+        <translation type="vanished">数据持久化</translation>
     </message>
 </context>
 <context>
     <name>DataPersistenceUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="38"/>
         <source>File path</source>
-        <translation>文件路径</translation>
+        <translation type="vanished">文件路径</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="51"/>
         <source>Text format</source>
-        <translation>文本格式</translation>
+        <translation type="vanished">文本格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="61"/>
         <source>Browser</source>
-        <translation>浏览器</translation>
+        <translation type="vanished">浏览器</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="77"/>
         <source>Save date</source>
-        <translation>保存日期</translation>
+        <translation type="vanished">保存日期</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="84"/>
         <source>Svae time</source>
-        <translation>保存时间</translation>
+        <translation type="vanished">保存时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="91"/>
         <source>Save ms</source>
-        <translation>保存毫秒</translation>
+        <translation type="vanished">保存毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.ui" line="98"/>
         <source>Binary</source>
-        <translation>二进制</translation>
+        <translation type="vanished">二进制</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistenceui.cpp" line="35"/>
         <source>txt(*.txt);;bin(*.bin);;All files(*.*)</source>
-        <translation>txt(*.txt);;bin(*.bin);;所有文件(*.*)</translation>
+        <translation type="vanished">txt(*.txt);;bin(*.bin);;所有文件(*.*)</translation>
     </message>
 </context>
 <context>
@@ -1373,78 +1324,65 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DataView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataview.cpp" line="21"/>
         <source>Data View</source>
-        <translation>数据视图</translation>
+        <translation type="vanished">数据视图</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation>清除所有数据</translation>
+        <translation type="vanished">清除所有数据</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
         <source>Auto scrolling to bottom</source>
-        <translation>自动滚动到底部</translation>
+        <translation type="vanished">自动滚动到底部</translation>
     </message>
 </context>
 <context>
     <name>DataViewUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="41"/>
         <source>Text format</source>
-        <translation>文本格式</translation>
+        <translation type="vanished">文本格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.ui" line="51"/>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation type="vanished">清除</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
         <source>Time</source>
-        <translation>时间</translation>
+        <translation type="vanished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
         <source>Data</source>
-        <translation>数据</translation>
+        <translation type="vanished">数据</translation>
     </message>
 </context>
 <context>
     <name>DebugOutput</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutput.cpp" line="20"/>
         <source>Debug Output</source>
-        <translation>调试输出</translation>
+        <translation type="vanished">调试输出</translation>
     </message>
 </context>
 <context>
     <name>DebugOutputUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="20"/>
         <source>Output flag</source>
-        <translation>输出标志</translation>
+        <translation type="vanished">输出标志</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="27"/>
         <source>Output format</source>
-        <translation>输出格式</translation>
+        <translation type="vanished">输出格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="34"/>
         <source>Output channel</source>
-        <translation>输出通道</translation>
+        <translation type="vanished">输出通道</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="50"/>
         <source>Show time</source>
-        <translation>显示时间</translation>
+        <translation type="vanished">显示时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation type="vanished">清除</translation>
     </message>
 </context>
 <context>
@@ -1532,79 +1470,94 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DeviceManager</name>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="93"/>
+        <location filename="../../src/device/devicemanager.cpp" line="109"/>
         <source>Serial Port</source>
         <translation>串口助手</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="95"/>
+        <location filename="../../src/device/devicemanager.cpp" line="111"/>
         <source>HID Device</source>
         <translation>HID助手</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="97"/>
+        <location filename="../../src/device/devicemanager.cpp" line="113"/>
         <source>BLE Central</source>
         <translation>蓝牙助手(中心)</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="99"/>
+        <location filename="../../src/device/devicemanager.cpp" line="115"/>
         <source>BLE Peripheral</source>
         <translation>蓝牙助手(外设)</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="101"/>
+        <location filename="../../src/device/devicemanager.cpp" line="117"/>
         <source>UDP Client</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="103"/>
+        <location filename="../../src/device/devicemanager.cpp" line="119"/>
         <source>UDP Server</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="105"/>
+        <location filename="../../src/device/devicemanager.cpp" line="121"/>
         <source>UDP Multicast</source>
         <translation>UDP组播</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="107"/>
+        <location filename="../../src/device/devicemanager.cpp" line="123"/>
         <source>UDP Broadcast</source>
         <translation>UDP广播</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="109"/>
+        <location filename="../../src/device/devicemanager.cpp" line="125"/>
         <source>TCP Client</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="111"/>
+        <location filename="../../src/device/devicemanager.cpp" line="127"/>
         <source>TCP Server</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="113"/>
+        <location filename="../../src/device/devicemanager.cpp" line="129"/>
         <source>WebSocket Client</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="115"/>
+        <location filename="../../src/device/devicemanager.cpp" line="131"/>
         <source>WebSocket Server</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="117"/>
+        <location filename="../../src/device/devicemanager.cpp" line="133"/>
         <source>Local Socket</source>
         <translation>本地客户端</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="119"/>
+        <location filename="../../src/device/devicemanager.cpp" line="135"/>
         <source>Local Server</source>
         <translation>本地服务器</translation>
     </message>
     <message>
-        <location filename="../../src/device/devicemanager.cpp" line="121"/>
+        <location filename="../../src/device/devicemanager.cpp" line="137"/>
+        <source>SCTP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/devicemanager.cpp" line="139"/>
+        <source>SCTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/devicemanager.cpp" line="141"/>
         <source>Charts Test</source>
         <translation>图表测试</translation>
+    </message>
+    <message>
+        <location filename="../../src/device/devicemanager.cpp" line="143"/>
+        <source>GPS Test</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1842,81 +1795,106 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Filter</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filter.cpp" line="33"/>
         <source>Filter</source>
-        <translation>过滤器</translation>
+        <translation type="vanished">过滤器</translation>
     </message>
 </context>
 <context>
     <name>FilterUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="20"/>
         <source>Reference</source>
-        <translation>参考</translation>
+        <translation type="vanished">参考</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="27"/>
         <source>Option</source>
-        <translation>选项</translation>
+        <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="40"/>
         <source>Escape</source>
-        <translation>逃脱</translation>
+        <translation type="vanished">逃脱</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/filterui.ui" line="47"/>
         <source>Format</source>
-        <translation>格式</translation>
+        <translation type="vanished">格式</translation>
     </message>
 </context>
 <context>
     <name>Flowmeter</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/instruments/flowmeter.cpp" line="22"/>
         <source>Flowmeter</source>
-        <translation>流量计</translation>
+        <translation type="vanished">流量计</translation>
     </message>
 </context>
 <context>
     <name>FrameAnalyzer</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzer.cpp" line="73"/>
         <source>Frame Analyzer</source>
-        <translation>帧分析器</translation>
+        <translation type="vanished">帧分析器</translation>
     </message>
 </context>
 <context>
     <name>FrameAnalyzerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="32"/>
         <source>Fixed frame length</source>
-        <translation>固定帧长度</translation>
+        <translation type="vanished">固定帧长度</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="39"/>
         <source>(Hex format)</source>
-        <translation>（十六进制格式）</translation>
+        <translation type="vanished">（十六进制格式）</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="46"/>
         <source>Split flag</source>
-        <translation>分割标志</translation>
+        <translation type="vanished">分割标志</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="63"/>
         <source>Length</source>
-        <translation>固定长度</translation>
+        <translation type="vanished">固定长度</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="80"/>
         <source>Cache Bytes</source>
-        <translation>缓存字节</translation>
+        <translation type="vanished">缓存字节</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/frameanalyzerui.ui" line="100"/>
         <source>Clear Cache</source>
-        <translation>清除缓存</translation>
+        <translation type="vanished">清除缓存</translation>
+    </message>
+</context>
+<context>
+    <name>GpsTestUi</name>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="32"/>
+        <source>Local format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="52"/>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="69"/>
+        <source>ddmm.mmmm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="76"/>
+        <source>Altitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="89"/>
+        <source>GNSS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="96"/>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/device/gpstestui.ui" line="113"/>
+        <source>Altitude unit</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2011,9 +1989,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Hub</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/hub/hub.cpp" line="22"/>
         <source>%1In%2Out</source>
-        <translation>%1输入%2输出</translation>
+        <translation type="vanished">%1输入%2输出</translation>
     </message>
 </context>
 <context>
@@ -2121,39 +2098,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>JavaScript</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
         <source>Java Script</source>
-        <translation>Java脚本</translation>
+        <translation type="vanished">Java脚本</translation>
     </message>
 </context>
 <context>
     <name>JavaScriptThread</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptthread.cpp" line="76"/>
         <source>The script is invalid.</source>
-        <translation>该脚本无效。</translation>
+        <translation type="vanished">该脚本无效。</translation>
     </message>
 </context>
 <context>
     <name>JavaScriptUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="14"/>
         <source>Form</source>
-        <translation>形式</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="32"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(bytes) {&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation type="vanished">形式</translation>
     </message>
 </context>
 <context>
@@ -2350,19 +2310,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="14"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation type="vanished">日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="35"/>
         <source>Log level</source>
-        <translation>日志级别</translation>
+        <translation type="vanished">日志级别</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.ui" line="42"/>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation type="vanished">清除</translation>
     </message>
 </context>
 <context>
@@ -2421,49 +2378,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LuaScript</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascript.cpp" line="37"/>
         <source>Lua Script</source>
-        <translation>Lua脚本</translation>
-    </message>
-</context>
-<context>
-    <name>LuaScriptUi</name>
-    <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/script/luascriptui.ui" line="38"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &amp;quot;input string is: &amp;quot; .. input&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation type="vanished">Lua脚本</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="344"/>
+        <location filename="../../src/mainwindow.cpp" line="350"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="363"/>
         <source>Save Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="361"/>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="367"/>
+        <location filename="../../src/mainwindow.cpp" line="611"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
-        <location filename="../../src/mainwindow.cpp" line="611"/>
+        <location filename="../../src/mainwindow.cpp" line="371"/>
+        <location filename="../../src/mainwindow.cpp" line="624"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
@@ -2472,12 +2411,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">退出申请</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="378"/>
+        <location filename="../../src/mainwindow.cpp" line="384"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="382"/>
+        <location filename="../../src/mainwindow.cpp" line="388"/>
         <source>New</source>
         <translation>新建工具</translation>
     </message>
@@ -2542,37 +2481,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">从商店购买</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="557"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
         <source>(Please reboot your application manually.)</source>
         <translation>（请手动重启软件。）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="642"/>
+        <location filename="../../src/mainwindow.cpp" line="655"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="648"/>
+        <location filename="../../src/mainwindow.cpp" line="661"/>
         <source>Commit hash</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="650"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="651"/>
+        <location filename="../../src/mainwindow.cpp" line="664"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="652"/>
+        <location filename="../../src/mainwindow.cpp" line="665"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="653"/>
+        <location filename="../../src/mainwindow.cpp" line="666"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
@@ -2589,7 +2528,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="418"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
@@ -2602,7 +2541,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">关于Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="654"/>
+        <location filename="../../src/mainwindow.cpp" line="667"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
@@ -2615,7 +2554,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">来自商店的错误</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="489"/>
+        <location filename="../../src/mainwindow.cpp" line="502"/>
         <source>Third Party Open Source</source>
         <translation>第三方开源</translation>
     </message>
@@ -2640,13 +2579,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">购买终极版</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../src/mainwindow.cpp" line="477"/>
+        <location filename="../../src/mainwindow.cpp" line="516"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
+        <location filename="../../src/mainwindow.cpp" line="478"/>
         <source>Join in QQ Group</source>
-        <translation type="vanished">加入QQ群</translation>
+        <translation>加入QQ群</translation>
     </message>
     <message>
         <source>Links</source>
@@ -2677,33 +2618,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">办公室网站</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
+        <location filename="../../src/mainwindow.cpp" line="536"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="532"/>
+        <location filename="../../src/mainwindow.cpp" line="545"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="533"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="554"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>Need to Reboot</source>
         <translation>需要重启</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="555"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
         <location filename="../../src/mainwindow.cpp" line="613"/>
+        <location filename="../../src/mainwindow.cpp" line="626"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -2711,22 +2652,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Masker</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/masker.cpp" line="20"/>
         <source>Masker</source>
-        <translation>掩码器</translation>
+        <translation type="vanished">掩码器</translation>
     </message>
 </context>
 <context>
     <name>MaskerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="14"/>
         <source>Form</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/maskerui.ui" line="38"/>
         <source>Mask</source>
-        <translation>面具</translation>
+        <translation type="vanished">面具</translation>
     </message>
 </context>
 <context>
@@ -3127,127 +3065,103 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusDeviceEditor</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="20"/>
         <source>New Modbus Device</source>
-        <translation>新的 Modbus 设备</translation>
+        <translation type="vanished">新的 Modbus 设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="29"/>
         <source>Listen only mode</source>
-        <translation>只听模式</translation>
+        <translation type="vanished">只听模式</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="42"/>
         <source>IP Address</source>
-        <translation>IP地址</translation>
+        <translation type="vanished">IP地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="68"/>
         <source>Timeout(ms)</source>
-        <translation>超时（毫秒）</translation>
+        <translation type="vanished">超时（毫秒）</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="81"/>
         <source>Baud rate</source>
-        <translation>波特率</translation>
+        <translation type="vanished">波特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="94"/>
         <source>Stop bits</source>
-        <translation>停止位</translation>
+        <translation type="vanished">停止位</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="107"/>
         <source>Device type</source>
-        <translation>设备类型</translation>
+        <translation type="vanished">设备类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="120"/>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation type="vanished">地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="143"/>
         <source>Port</source>
-        <translation>港口</translation>
+        <translation type="vanished">港口</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="156"/>
         <source>Parity</source>
-        <translation>平价</translation>
+        <translation type="vanished">平价</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="163"/>
         <source>Device Name</source>
-        <translation>设备名称</translation>
+        <translation type="vanished">设备名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="204"/>
         <source>Such as: Siemens S7-300</source>
-        <translation>如：西门子S7-300</translation>
+        <translation type="vanished">如：西门子S7-300</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="246"/>
         <source>Data bits</source>
-        <translation>数据位</translation>
+        <translation type="vanished">数据位</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="272"/>
         <source>Refresh</source>
-        <translation>刷新</translation>
+        <translation type="vanished">刷新</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="287"/>
         <source>Names</source>
-        <translation>名称</translation>
+        <translation type="vanished">名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="303"/>
         <source>Retries</source>
-        <translation>重试</translation>
+        <translation type="vanished">重试</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdeviceeditor.ui" line="310"/>
         <source>Register tables</source>
-        <translation>寄存器表</translation>
+        <translation type="vanished">寄存器表</translation>
     </message>
 </context>
 <context>
     <name>ModbusDeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="34"/>
         <source>New device/group/register</source>
-        <translation>新设备/组/注册</translation>
+        <translation type="vanished">新设备/组/注册</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="44"/>
         <source>Delete device/group/register</source>
-        <translation>删除设备/组/注册</translation>
+        <translation type="vanished">删除设备/组/注册</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="61"/>
         <source>Close all devices</source>
-        <translation>关闭所有设备</translation>
+        <translation type="vanished">关闭所有设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="71"/>
         <source>Open all devices</source>
-        <translation>打开所有设备</translation>
+        <translation type="vanished">打开所有设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="88"/>
         <source>Expand all items</source>
-        <translation>展开所有项目</translation>
+        <translation type="vanished">展开所有项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="98"/>
         <source>Collapse all items</source>
-        <translation>折叠所有项目</translation>
+        <translation type="vanished">折叠所有项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.ui" line="116"/>
         <source>Search</source>
-        <translation>搜索</translation>
+        <translation type="vanished">搜索</translation>
     </message>
 </context>
 <context>
@@ -3276,321 +3190,257 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="34"/>
         <source>Log type</source>
-        <translation>日志类型</translation>
+        <translation type="vanished">日志类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="47"/>
         <source>Search...</source>
-        <translation>搜索...</translation>
+        <translation type="vanished">搜索...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="57"/>
         <source>Clear all log items</source>
-        <translation>清除所有日志项</translation>
+        <translation type="vanished">清除所有日志项</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="60"/>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="73"/>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="86"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
         <source>Open a log file</source>
-        <translation>打开日志文件</translation>
+        <translation type="vanished">打开日志文件</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
         <source>Save log as...</source>
-        <translation>将日志另存为...</translation>
+        <translation type="vanished">将日志另存为...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
         <source>Ignore data log</source>
-        <translation>忽略数据</translation>
+        <translation type="vanished">忽略数据</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="106"/>
         <source>Using color</source>
-        <translation>使用颜色</translation>
+        <translation type="vanished">使用颜色</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.ui" line="113"/>
         <source>Audo scrolling</source>
-        <translation>自动滚动</translation>
+        <translation type="vanished">自动滚动</translation>
     </message>
 </context>
 <context>
     <name>ModbusRegisterEditor</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="14"/>
         <source>New Registers</source>
-        <translation>新建寄存器</translation>
+        <translation type="vanished">新建寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="50"/>
         <source>Start address</source>
-        <translation>起始地址</translation>
+        <translation type="vanished">起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="57"/>
         <source>Register type</source>
-        <translation>寄存器类型</translation>
+        <translation type="vanished">寄存器类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="64"/>
         <source>Quantity</source>
-        <translation>寄存器数量</translation>
+        <translation type="vanished">寄存器数量</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistereditor.ui" line="81"/>
         <source>Server address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
 </context>
 <context>
     <name>ModbusRegisterGroupEditor</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="14"/>
         <source>New Register Group</source>
-        <translation>新建寄存器分组</translation>
+        <translation type="vanished">新建寄存器分组</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="34"/>
         <source>Quantity</source>
-        <translation>寄存器数量</translation>
+        <translation type="vanished">寄存器数量</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="68"/>
         <source>Register type</source>
-        <translation>寄存器类型</translation>
+        <translation type="vanished">寄存器类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="85"/>
         <source>Server address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="20"/>
         <source>Start address</source>
-        <translation>起始地址</translation>
+        <translation type="vanished">起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="41"/>
         <source>Register group name</source>
-        <translation>寄存器分组名称</translation>
+        <translation type="vanished">寄存器分组名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistergroupeditor.ui" line="27"/>
         <source>Untitled</source>
-        <translation>未命名</translation>
+        <translation type="vanished">未命名</translation>
     </message>
 </context>
 <context>
     <name>ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
         <source>Columns visible</source>
-        <translation>列可见</translation>
+        <translation type="vanished">列可见</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
         <source>Search...</source>
-        <translation>搜索...</translation>
+        <translation type="vanished">搜索...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
         <source>Add register item</source>
-        <translation>添加一行</translation>
+        <translation type="vanished">添加一行</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="76"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
         <source>Remove current register item</source>
-        <translation>删除选中</translation>
+        <translation type="vanished">删除选中</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
         <source>Clear register table</source>
-        <translation>清除寄存器表</translation>
+        <translation type="vanished">清除寄存器表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>Save register table</source>
-        <translation>导出寄存器表</translation>
+        <translation type="vanished">导出寄存器表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation>导入寄存器表</translation>
+        <translation type="vanished">导入寄存器表</translation>
     </message>
 </context>
 <context>
     <name>MqttClientUi</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="57"/>
         <source>Server address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="71"/>
         <source>Server port</source>
-        <translation>服务器端口</translation>
+        <translation type="vanished">服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="81"/>
         <source>Qos</source>
-        <translation>服务质量</translation>
+        <translation type="vanished">服务质量</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="91"/>
         <source>Version</source>
-        <translation>版本</translation>
+        <translation type="vanished">版本</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="101"/>
         <source>Keep alive(S)</source>
-        <translation>保持活力(S)</translation>
+        <translation type="vanished">保持活力(S)</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="117"/>
         <source>Close</source>
-        <translation>关闭</translation>
+        <translation type="vanished">关闭</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="124"/>
         <source>Open</source>
-        <translation>打开</translation>
+        <translation type="vanished">打开</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="140"/>
         <source>Publish</source>
-        <translation>发布</translation>
+        <translation type="vanished">发布</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="163"/>
         <source>Timer sending</source>
-        <translation>定时发送</translation>
+        <translation type="vanished">定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="173"/>
         <source>Publish topic</source>
-        <translation>发布主题</translation>
+        <translation type="vanished">发布主题</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="183"/>
         <source>Wrap text</source>
-        <translation>文字换行</translation>
+        <translation type="vanished">文字换行</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="225"/>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="271"/>
         <source>Topic</source>
-        <translation>话题</translation>
+        <translation type="vanished">话题</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="238"/>
         <source>Topics</source>
-        <translation>主题</translation>
+        <translation type="vanished">主题</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="278"/>
         <source>Subscribe topic</source>
-        <translation>订阅主题</translation>
+        <translation type="vanished">订阅主题</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="306"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation type="vanished">日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.ui" line="331"/>
         <source>Message</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
 </context>
 <context>
     <name>MqttDataView</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttdataview.ui" line="37"/>
         <source>Clear all message</source>
-        <translation>清除所有消息</translation>
+        <translation type="vanished">清除所有消息</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdataview.ui" line="47"/>
         <source>Show ping-pong message</source>
-        <translation>显示乒乓消息</translation>
+        <translation type="vanished">显示乒乓消息</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdataview.ui" line="57"/>
         <source>Scrolling to bottom automatically</source>
-        <translation>自动滚动到底部</translation>
+        <translation type="vanished">自动滚动到底部</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdataview.ui" line="80"/>
         <source>Format</source>
-        <translation>格式</translation>
+        <translation type="vanished">格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdataview.ui" line="87"/>
         <source>Payload data format</source>
-        <translation>负载数据格式</translation>
+        <translation type="vanished">负载数据格式</translation>
     </message>
 </context>
 <context>
     <name>MqttLogView</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttlogview.ui" line="43"/>
         <source>Clear log</source>
-        <translation>清除日志</translation>
+        <translation type="vanished">清除日志</translation>
     </message>
 </context>
 <context>
     <name>MqttServerUi</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="43"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation type="vanished">日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="68"/>
         <source>Messages</source>
-        <translation>留言</translation>
+        <translation type="vanished">留言</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="112"/>
         <source>Server address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="122"/>
         <source>Server port</source>
-        <translation>服务器端口</translation>
+        <translation type="vanished">服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="134"/>
         <source>Close</source>
-        <translation>关闭</translation>
+        <translation type="vanished">关闭</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="141"/>
         <source>Open</source>
-        <translation>打开</translation>
+        <translation type="vanished">打开</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserverui.ui" line="157"/>
         <source>Clients</source>
-        <translation>客户</translation>
+        <translation type="vanished">客户</translation>
     </message>
 </context>
 <context>
@@ -3634,32 +3484,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputPanelsManager</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Data Records</source>
         <translation>数据记录</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="28"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="28"/>
         <source>Lua Script</source>
         <translation>Lua 脚本</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="31"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>Line Chart</source>
         <translation>折线</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="32"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="31"/>
         <source>Bar Chart</source>
         <translation>条状图</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="35"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="34"/>
         <source>XY-Modem Receiver</source>
         <translation></translation>
     </message>
@@ -3695,111 +3545,111 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="177"/>
+        <location filename="../../src/page/page.ui" line="216"/>
         <source>Output control</source>
         <translation>输出控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="260"/>
-        <location filename="../../src/page/page.ui" line="267"/>
+        <location filename="../../src/page/page.ui" line="204"/>
+        <location filename="../../src/page/page.ui" line="253"/>
         <source>Text format</source>
         <translation>文本格式</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="63"/>
-        <location filename="../../src/page/page.ui" line="74"/>
-        <location filename="../../src/page/page.ui" line="244"/>
+        <location filename="../../src/page/page.ui" line="52"/>
+        <location filename="../../src/page/page.ui" line="80"/>
+        <location filename="../../src/page/page.ui" line="112"/>
         <source>Settings</source>
         <translation>更多设置</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="56"/>
+        <location filename="../../src/page/page.ui" line="105"/>
         <location filename="../../src/page/page.cpp" line="618"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="47"/>
+        <location filename="../../src/page/page.ui" line="68"/>
         <source>Cycle interval</source>
         <translation>循环发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="199"/>
+        <location filename="../../src/page/page.ui" line="246"/>
         <source>Input control</source>
         <translation>输入控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="251"/>
+        <location filename="../../src/page/page.ui" line="87"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="235"/>
+        <location filename="../../src/page/page.ui" line="197"/>
         <source>Communication control</source>
         <translation>设备控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="122"/>
+        <location filename="../../src/page/page.ui" line="139"/>
         <source>Rx</source>
         <translation>接收</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="129"/>
+        <location filename="../../src/page/page.ui" line="146"/>
         <source>Tx</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="136"/>
+        <location filename="../../src/page/page.ui" line="153"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="143"/>
+        <location filename="../../src/page/page.ui" line="160"/>
         <source>Flag</source>
         <translation>标志</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="150"/>
+        <location filename="../../src/page/page.ui" line="167"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="157"/>
+        <location filename="../../src/page/page.ui" line="174"/>
         <source>Ms</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="521"/>
+        <location filename="../../src/page/page.ui" line="500"/>
         <source>Preset data list</source>
         <translation>预设数据列表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="583"/>
+        <location filename="../../src/page/page.ui" line="562"/>
         <source>Protocol Factory</source>
         <translation>协议工厂</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="81"/>
+        <location filename="../../src/page/page.ui" line="59"/>
         <source>Clear</source>
         <translation>清空输出</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="208"/>
+        <location filename="../../src/page/page.ui" line="225"/>
         <source>Wrap</source>
         <translation>自动换行</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="215"/>
+        <location filename="../../src/page/page.ui" line="232"/>
         <source>Terminal</source>
         <translation>终端模式</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="288"/>
+        <location filename="../../src/page/page.ui" line="267"/>
         <source>IO</source>
         <translation>输入输出</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="341"/>
+        <location filename="../../src/page/page.ui" line="320"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
@@ -3808,27 +3658,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">高级搜索</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="514"/>
+        <location filename="../../src/page/page.ui" line="493"/>
         <source>Input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="563"/>
+        <location filename="../../src/page/page.ui" line="542"/>
         <source>Presets</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="568"/>
+        <location filename="../../src/page/page.ui" line="547"/>
         <source>Emitter</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="573"/>
+        <location filename="../../src/page/page.ui" line="552"/>
         <source>Responder</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="578"/>
+        <location filename="../../src/page/page.ui" line="557"/>
         <source>Transfers</source>
         <translation>数据转发</translation>
     </message>
@@ -4182,80 +4032,60 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="25"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
         <source>No item selected. Please select an item first.</source>
-        <translation>未选择任何项目。</translation>
+        <translation type="vanished">未选择任何项目。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="43"/>
         <source>An unknown error occurred.</source>
-        <translation>出现未知错误。</translation>
+        <translation type="vanished">出现未知错误。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="51"/>
         <source>Are you sure to clear all data in the view?</source>
-        <translation>您确定清除视图中的所有数据吗？</translation>
+        <translation type="vanished">您确定清除视图中的所有数据吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="60"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="152"/>
         <source>Discrete Inputs</source>
-        <translation>离散输入</translation>
+        <translation type="vanished">离散输入</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="62"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="151"/>
         <source>Coils</source>
-        <translation>线圈</translation>
+        <translation type="vanished">线圈</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="64"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="153"/>
         <source>Input Registers</source>
-        <translation>输入寄存器</translation>
+        <translation type="vanished">输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="66"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="154"/>
         <source>Holding Registers</source>
-        <translation>保持寄存器</translation>
+        <translation type="vanished">保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="68"/>
         <source>Invalid</source>
-        <translation>无效的</translation>
+        <translation type="vanished">无效的</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="76"/>
         <source>RTU Master</source>
-        <translation>RTU主机</translation>
+        <translation type="vanished">RTU主机</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="78"/>
         <source>RTU Slave</source>
-        <translation>RTU从机</translation>
+        <translation type="vanished">RTU从机</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="80"/>
         <source>TCP Client</source>
-        <translation>TCP客户端</translation>
+        <translation type="vanished">TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="82"/>
         <source>TCP Server</source>
-        <translation>TCP服务器</translation>
+        <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="197"/>
         <source>Untitled</source>
-        <translation>无题</translation>
+        <translation type="vanished">无题</translation>
     </message>
     <message>
         <source>1</source>
@@ -4290,9 +4120,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">图表测试</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="467"/>
-        <location filename="../../src/common/xtools.cpp" line="901"/>
-        <location filename="../../src/common/xtools.cpp" line="903"/>
+        <location filename="../../src/common/xtools.cpp" line="470"/>
+        <location filename="../../src/common/xtools.cpp" line="907"/>
+        <location filename="../../src/common/xtools.cpp" line="909"/>
         <source>Binary</source>
         <translation>二进制</translation>
     </message>
@@ -4309,183 +4139,178 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">十六进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="87"/>
+        <location filename="../../src/common/xtools.cpp" line="90"/>
         <source>Bin</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="89"/>
+        <location filename="../../src/common/xtools.cpp" line="92"/>
         <source>Oct</source>
         <translation>八进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="91"/>
+        <location filename="../../src/common/xtools.cpp" line="94"/>
         <source>Dec</source>
         <translation>十进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="93"/>
+        <location filename="../../src/common/xtools.cpp" line="96"/>
         <source>Hex</source>
         <translation>16进制</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="95"/>
+        <location filename="../../src/common/xtools.cpp" line="98"/>
         <source>Hex(No Space)</source>
         <translation>16进制(无空格)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="97"/>
+        <location filename="../../src/common/xtools.cpp" line="100"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="99"/>
+        <location filename="../../src/common/xtools.cpp" line="102"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="362"/>
-        <location filename="../../src/common/xtools.cpp" line="424"/>
-        <location filename="../../src/common/xtools.cpp" line="738"/>
-        <location filename="../../src/common/xtools.cpp" line="756"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
+        <location filename="../../src/common/xtools.cpp" line="365"/>
+        <location filename="../../src/common/xtools.cpp" line="427"/>
+        <location filename="../../src/common/xtools.cpp" line="742"/>
+        <location filename="../../src/common/xtools.cpp" line="760"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="465"/>
-        <location filename="../../src/common/xtools.cpp" line="905"/>
-        <location filename="../../src/common/xtools.cpp" line="907"/>
+        <location filename="../../src/common/xtools.cpp" line="468"/>
+        <location filename="../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../src/common/xtools.cpp" line="913"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="502"/>
+        <location filename="../../src/common/xtools.cpp" line="505"/>
         <source>Echo</source>
         <translation>回显</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="503"/>
+        <location filename="../../src/common/xtools.cpp" line="506"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="504"/>
+        <location filename="../../src/common/xtools.cpp" line="507"/>
         <source>Input Equal Reference</source>
         <translation>输入数据等于参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="505"/>
+        <location filename="../../src/common/xtools.cpp" line="508"/>
         <source>Input Contain Reference</source>
         <translation>输入数据包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="507"/>
+        <location filename="../../src/common/xtools.cpp" line="510"/>
         <source>Input Does not Contain Reference</source>
         <translation>输入数据不包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="739"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
+        <location filename="../../src/common/xtools.cpp" line="743"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="740"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
+        <location filename="../../src/common/xtools.cpp" line="744"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="741"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
+        <location filename="../../src/common/xtools.cpp" line="745"/>
         <source>Space</source>
         <translation>0校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="742"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
+        <location filename="../../src/common/xtools.cpp" line="746"/>
         <source>Mark</source>
         <translation>1校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="758"/>
+        <location filename="../../src/common/xtools.cpp" line="762"/>
         <source>RTS/CTS</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="759"/>
+        <location filename="../../src/common/xtools.cpp" line="763"/>
         <source>X-ON/X-OFF</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="761"/>
+        <location filename="../../src/common/xtools.cpp" line="765"/>
         <source>Hardware</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="762"/>
+        <location filename="../../src/common/xtools.cpp" line="766"/>
         <source>Software</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="866"/>
+        <location filename="../../src/common/xtools.cpp" line="872"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="868"/>
+        <location filename="../../src/common/xtools.cpp" line="874"/>
         <source>Bidirectional</source>
         <translation>双向</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="870"/>
+        <location filename="../../src/common/xtools.cpp" line="876"/>
         <source>Unidirectional</source>
         <translation>单向</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
         <source>Color Scheme</source>
         <translation>主题颜色</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Dark</source>
         <translation>暗黑主题</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
         <source>Light</source>
         <translation>明亮主题</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="36"/>
-        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>System</source>
         <translation>跟随系统</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="37"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
         <source>Round up for .5 and above</source>
         <translation>缩放至x.5倍</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="38"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
         <source>Always round up</source>
         <translation>总是放大</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="42"/>
         <source>Always round down</source>
         <translation>总是缩小</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="40"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="43"/>
         <source>Round up for .75 and above</source>
         <translation>缩放至x.75倍</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/hdpimanager_p.h" line="41"/>
+        <location filename="../../src/utilities/hdpimanager_p.h" line="44"/>
         <source>Don&apos;t round</source>
         <translation>不缩放</translation>
     </message>
@@ -4499,104 +4324,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/utilities/crc.cpp" line="92"/>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="39"/>
+        <location filename="../../src/main.cpp" line="42"/>
         <source>Application is booting...</source>
         <translation>软件正在启动...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
         <source>Message</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="27"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="vanished">错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="29"/>
         <source>Request</source>
-        <translation>要求</translation>
+        <translation type="vanished">要求</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="31"/>
         <source>Response</source>
-        <translation>回复</translation>
+        <translation type="vanished">回复</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="63"/>
         <source>All</source>
-        <translation>全部</translation>
+        <translation type="vanished">全部</translation>
     </message>
     <message>
         <source>&amp;Languages</source>
         <translation type="vanished">语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
         <source>Communication</source>
-        <translation>通信模块</translation>
+        <translation type="vanished">通信模块</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="115"/>
         <source>Input/Output</source>
-        <translation>输入/输出</translation>
+        <translation type="vanished">输入/输出</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="126"/>
         <source>Data Process</source>
-        <translation>数据处理</translation>
+        <translation type="vanished">数据处理</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="141"/>
         <source>Instruments</source>
-        <translation>仪器仪表</translation>
+        <translation type="vanished">仪器仪表</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="149"/>
         <source>Scripts</source>
-        <translation>脚本模块</translation>
+        <translation type="vanished">脚本模块</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="159"/>
         <source>Hub</source>
-        <translation>集线器/分线器</translation>
+        <translation type="vanished">集线器/分线器</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="189"/>
         <source>Plugins</source>
-        <translation>插件模块</translation>
+        <translation type="vanished">插件模块</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserver_p.h" line="105"/>
         <source>Malformed MQTT frame</source>
-        <translation>格式错误的 MQTT 帧</translation>
+        <translation type="vanished">格式错误的 MQTT 帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttserver_p.h" line="108"/>
         <source>Unsupported MQTT version %1</source>
-        <translation>不受支持的 MQTT 版本 %1</translation>
+        <translation type="vanished">不受支持的 MQTT 版本 %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="23"/>
         <source>At most once (0)</source>
-        <translation>最多一次 (0)</translation>
+        <translation type="vanished">最多一次 (0)</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="24"/>
         <source>At least once (1)</source>
-        <translation>至少一次 (1)</translation>
+        <translation type="vanished">至少一次 (1)</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttcommon.cpp" line="25"/>
         <source>Exactly once (2)</source>
-        <translation>恰好一次 (2)</translation>
+        <translation type="vanished">恰好一次 (2)</translation>
     </message>
 </context>
 <context>
@@ -4730,52 +4536,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>RandomGenerator</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgenerator.cpp" line="22"/>
         <source>Random Generator</source>
-        <translation>随机发生器</translation>
+        <translation type="vanished">随机发生器</translation>
     </message>
 </context>
 <context>
     <name>RandomGeneratorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="38"/>
         <source>Output format</source>
-        <translation>输出格式</translation>
+        <translation type="vanished">输出格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="51"/>
         <source>Data type</source>
-        <translation>数据类型</translation>
+        <translation type="vanished">数据类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="67"/>
         <source>Auto(ms)</source>
-        <translation>自动（毫秒）</translation>
+        <translation type="vanished">自动（毫秒）</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="80"/>
         <source>Generate</source>
-        <translation>生成</translation>
+        <translation type="vanished">生成</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.ui" line="87"/>
         <source>Big endian</source>
-        <translation>大端序</translation>
+        <translation type="vanished">大端序</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
         <source>Binary</source>
-        <translation>二进制</translation>
+        <translation type="vanished">二进制</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
         <source>Text</source>
-        <translation>文本</translation>
+        <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="33"/>
         <source>Disable</source>
-        <translation>禁用</translation>
+        <translation type="vanished">禁用</translation>
     </message>
 </context>
 <context>
@@ -5074,37 +4871,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortUi</name>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="57"/>
+        <location filename="../../src/device/serialportui.ui" line="101"/>
         <source>Parity</source>
         <translation>奇偶位</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="155"/>
+        <location filename="../../src/device/serialportui.ui" line="131"/>
         <source>Port name</source>
         <translation>端口名</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="193"/>
+        <location filename="../../src/device/serialportui.ui" line="63"/>
         <source>Enable frame interval</source>
         <translation>优化帧将间隔</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="41"/>
+        <location filename="../../src/device/serialportui.ui" line="147"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="120"/>
+        <location filename="../../src/device/serialportui.ui" line="78"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="64"/>
+        <location filename="../../src/device/serialportui.ui" line="85"/>
         <source>Ignored busy device</source>
         <translation>忽略已占用设备</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="87"/>
+        <location filename="../../src/device/serialportui.ui" line="160"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
@@ -5113,7 +4910,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">优化框架</translation>
     </message>
     <message>
-        <location filename="../../src/device/serialportui.ui" line="107"/>
+        <location filename="../../src/device/serialportui.ui" line="176"/>
         <source>Flow control</source>
         <translation>流控位</translation>
     </message>
@@ -5309,53 +5106,45 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SumCalculator</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculator.cpp" line="20"/>
         <source>Sum Calculator</source>
-        <translation>和计算器</translation>
+        <translation type="vanished">和计算器</translation>
     </message>
 </context>
 <context>
     <name>SumCalculatorUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="14"/>
         <source>Form</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="38"/>
         <source>Result bytes</source>
-        <translation>结果字节</translation>
+        <translation type="vanished">结果字节</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcalculatorui.ui" line="48"/>
         <source>Big Endian</source>
-        <translation>大尾数法</translation>
+        <translation type="vanished">大尾数法</translation>
     </message>
 </context>
 <context>
     <name>SumChecker</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumchecker.cpp" line="20"/>
         <source>Sum Checker</source>
-        <translation>和检查器</translation>
+        <translation type="vanished">和检查器</translation>
     </message>
 </context>
 <context>
     <name>SumCheckerUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="14"/>
         <source>Form</source>
-        <translation>形式</translation>
+        <translation type="vanished">形式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="41"/>
         <source>Result bytes</source>
-        <translation>结果字节</translation>
+        <translation type="vanished">结果字节</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/sumcheckerui.ui" line="48"/>
         <source>Big Endian</source>
-        <translation>大尾数法</translation>
+        <translation type="vanished">大尾数法</translation>
     </message>
 </context>
 <context>
@@ -5679,321 +5468,262 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>UserInput</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinput.cpp" line="25"/>
         <source>User Input</source>
-        <translation>用户输入</translation>
+        <translation type="vanished">用户输入</translation>
     </message>
 </context>
 <context>
     <name>UserInputUi</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="26"/>
         <source>Format</source>
-        <translation>输入格式</translation>
+        <translation type="vanished">输入格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="42"/>
         <source>Prefix</source>
-        <translation>追加前缀</translation>
+        <translation type="vanished">追加前缀</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="58"/>
         <source>Escape</source>
-        <translation>转义字符</translation>
+        <translation type="vanished">转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="74"/>
         <source>Suffix</source>
-        <translation>追加后缀</translation>
+        <translation type="vanished">追加后缀</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="90"/>
         <source>Cycle(ms)</source>
-        <translation>周期（毫秒）</translation>
+        <translation type="vanished">周期（毫秒）</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="100"/>
         <source>Send</source>
-        <translation>发送</translation>
+        <translation type="vanished">发送</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.ui" line="107"/>
         <source>Please &quot;Enter&quot; to send...</source>
-        <translation>请按“回车”发送...</translation>
+        <translation type="vanished">请按“回车”发送...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
         <source>Disable</source>
-        <translation>禁用</translation>
+        <translation type="vanished">禁用</translation>
     </message>
 </context>
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
         <source>Interfce Name</source>
-        <translation>接口名称</translation>
+        <translation type="vanished">接口名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
         <source>CAN Plugin</source>
-        <translation>CAN插件</translation>
+        <translation type="vanished">CAN插件</translation>
     </message>
     <message>
         <source>Bitrate</source>
         <translation type="vanished">比特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
         <source>Bitrate switch</source>
-        <translation>码率切换</translation>
+        <translation type="vanished">码率切换</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
         <source>Input format</source>
-        <translation>输入格式</translation>
+        <translation type="vanished">输入格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
         <source>Device selecting</source>
-        <translation>设备选择</translation>
+        <translation type="vanished">设备选择</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
         <source>Specify configuration</source>
-        <translation>指定配置</translation>
+        <translation type="vanished">指定配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
         <source>Sending settings</source>
-        <translation>发送设置</translation>
+        <translation type="vanished">发送设置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
         <source>Disconnect</source>
-        <translation>断开</translation>
+        <translation type="vanished">断开</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
         <source>Connect</source>
-        <translation>连接</translation>
+        <translation type="vanished">连接</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
         <source>Frame ID</source>
-        <translation>帧ID</translation>
+        <translation type="vanished">帧ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
         <source>Nominal bitrate</source>
-        <translation>仲裁波特率</translation>
+        <translation type="vanished">仲裁波特率</translation>
     </message>
     <message>
         <source>CAN FD</source>
         <translation type="vanished">CANFD</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
         <source>Timed sending</source>
-        <translation>定时发送</translation>
+        <translation type="vanished">定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Frame type</source>
-        <translation>帧类型</translation>
+        <translation type="vanished">帧类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
         <source>Extended format</source>
-        <translation>扩展格式</translation>
+        <translation type="vanished">扩展格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
         <source>Data View</source>
-        <translation>数据视图</translation>
+        <translation type="vanished">数据视图</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
         <source>Data bitrate</source>
-        <translation>负载波特率</translation>
+        <translation type="vanished">负载波特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
         <source>Flexible data rate</source>
-        <translation>可变波特率</translation>
+        <translation type="vanished">可变波特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
         <source>Error filter</source>
-        <translation>错误过滤</translation>
+        <translation type="vanished">错误过滤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
         <source>Loopback</source>
-        <translation>环回模式</translation>
+        <translation type="vanished">环回模式</translation>
     </message>
     <message>
         <source>Custom configuration</source>
         <translation type="vanished">自定义配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Receive own</source>
-        <translation>接收自己</translation>
+        <translation type="vanished">接收自己</translation>
     </message>
 </context>
 <context>
     <name>xCanBus::CanBusDevice</name>
     <message>
-        <location filename="../../src/x/canbus/canbusdevice.cpp" line="55"/>
         <source>Failed to create CAN bus device:</source>
-        <translation>创建 CAN 总线设备失败：</translation>
+        <translation type="vanished">创建 CAN 总线设备失败：</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/canbusdevice.cpp" line="65"/>
         <source>Failed to connect to CAN bus device:</source>
-        <translation>CAN总线设备连接失败：</translation>
+        <translation type="vanished">CAN总线设备连接失败：</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/canbusdevice.cpp" line="72"/>
         <source>CAN bus device error:</source>
-        <translation>CAN总线设备错误：</translation>
+        <translation type="vanished">CAN总线设备错误：</translation>
     </message>
 </context>
 <context>
     <name>xCanBus::DataModel</name>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
         <source>Time</source>
-        <translation>时间</translation>
+        <translation type="vanished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Flags</source>
-        <translation>标识</translation>
+        <translation type="vanished">标识</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>ID</source>
-        <translation>ID</translation>
+        <translation type="vanished">ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>DLC</source>
-        <translation>DLC</translation>
+        <translation type="vanished">DLC</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>Payload</source>
-        <translation>载荷</translation>
+        <translation type="vanished">载荷</translation>
     </message>
 </context>
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Question</source>
-        <translation>问题</translation>
+        <translation type="vanished">问题</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
         <source>Are you sure to clear all data?</source>
-        <translation>您确定清除所有数据吗？</translation>
+        <translation type="vanished">您确定清除所有数据吗？</translation>
     </message>
 </context>
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
         <source>No error has occurred</source>
-        <translation>没有发生错误</translation>
+        <translation type="vanished">没有发生错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
         <source>The transmission has timed out</source>
-        <translation>传输超时</translation>
+        <translation type="vanished">传输超时</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
-        <translation>由于总线仲裁失败，无法发送帧</translation>
+        <translation type="vanished">由于总线仲裁失败，无法发送帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>The controller encountered an error</source>
-        <translation>控制器遇到错误</translation>
+        <translation type="vanished">控制器遇到错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>A protocol violation has occurred</source>
-        <translation>发生了协议违规</translation>
+        <translation type="vanished">发生了协议违规</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>A transceiver error occurred</source>
-        <translation>发生收发器错误</translation>
+        <translation type="vanished">发生收发器错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>The transmission received no acknowledgment</source>
-        <translation>传输未收到确认</translation>
+        <translation type="vanished">传输未收到确认</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>The CAN bus is offline</source>
-        <translation>CAN总线离线</translation>
+        <translation type="vanished">CAN总线离线</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>A CAN bus error occurred</source>
-        <translation>发生 CAN 总线错误</translation>
+        <translation type="vanished">发生 CAN 总线错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>The controller restarted</source>
-        <translation>控制器重新启动</translation>
+        <translation type="vanished">控制器重新启动</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>An unknown error has occurred</source>
-        <translation>发生未知错误</translation>
+        <translation type="vanished">发生未知错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>Matches every other error type</source>
-        <translation>匹配所有其他错误类型</translation>
+        <translation type="vanished">匹配所有其他错误类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
         <source>The CAN bus device is not connected.</source>
-        <translation>CAN 总线设备未连接。</translation>
+        <translation type="vanished">CAN 总线设备未连接。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
         <source>Invalid frame ID.</source>
-        <translation>帧 ID 无效。</translation>
+        <translation type="vanished">帧 ID 无效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
         <source>Payload is empty.</source>
-        <translation>有效负载为空。</translation>
+        <translation type="vanished">有效负载为空。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
         <source>unspecified</source>
-        <translation>未指定</translation>
+        <translation type="vanished">未指定</translation>
     </message>
     <message>
         <source>false</source>
@@ -6004,428 +5734,347 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">真的</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
         <source>Data Frame</source>
-        <translation>数据帧</translation>
+        <translation type="vanished">数据帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
         <source>Remote Request Frame</source>
-        <translation>远程请求帧</translation>
+        <translation type="vanished">远程请求帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
         <source>Error Frame</source>
-        <translation>错误帧</translation>
+        <translation type="vanished">错误帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
         <source>Disabled</source>
-        <translation>禁止</translation>
+        <translation type="vanished">禁止</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
         <source>Unspecified</source>
-        <translation>未指定</translation>
+        <translation type="vanished">未指定</translation>
     </message>
 </context>
 <context>
     <name>xFlow::LogDockWidget</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidget.cpp" line="18"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation type="vanished">日志</translation>
     </message>
 </context>
 <context>
     <name>xFlow::LogDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="32"/>
         <source>Debug</source>
-        <translation>调试</translation>
+        <translation type="vanished">调试</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="33"/>
         <source>Information</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="34"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="35"/>
         <source>Critical</source>
-        <translation>批判的</translation>
+        <translation type="vanished">批判的</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontent.cpp" line="36"/>
         <source>Fatal</source>
-        <translation>致命的</translation>
+        <translation type="vanished">致命的</translation>
     </message>
 </context>
 <context>
     <name>xFlow::LogDockWidgetContentModel</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
         <source>The is a debug message.</source>
-        <translation>这是一条调试消息。</translation>
+        <translation type="vanished">这是一条调试消息。</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
         <source>The is a information message.</source>
-        <translation>这是一条信息消息。</translation>
+        <translation type="vanished">这是一条信息消息。</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
         <source>The is a warning message.</source>
-        <translation>这是一条警告消息。</translation>
+        <translation type="vanished">这是一条警告消息。</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
         <source>The is a critical message.</source>
-        <translation>这是一条关键信息。</translation>
+        <translation type="vanished">这是一条关键信息。</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
         <source>The is a fatal message.</source>
-        <translation>这是一条致命的消息。</translation>
+        <translation type="vanished">这是一条致命的消息。</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="141"/>
         <source>Time</source>
-        <translation>时间</translation>
+        <translation type="vanished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="143"/>
         <source>Message</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
 </context>
 <context>
     <name>xFlow::NavigatorDockWidget</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/navigator/navigatordockwidget.cpp" line="23"/>
         <source>Navigator</source>
-        <translation>航海家</translation>
+        <translation type="vanished">航海家</translation>
     </message>
 </context>
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="241"/>
         <source>Delete connection</source>
-        <translation>删除连接</translation>
+        <translation type="vanished">删除连接</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="276"/>
         <source>Save Image as...</source>
-        <translation>将图像另存为...</translation>
+        <translation type="vanished">将图像另存为...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="283"/>
         <source>Save Image</source>
-        <translation>保存图像</translation>
+        <translation type="vanished">保存图像</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
         <source>Images (*.png)</source>
-        <translation>图片 (*.png)</translation>
+        <translation type="vanished">图片 (*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="297"/>
         <source>Save Image to Clipboard</source>
-        <translation>将图像保存到剪贴板</translation>
+        <translation type="vanished">将图像保存到剪贴板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="300"/>
         <source>Delete</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
 </context>
 <context>
     <name>xFlow::NodesDockWidget</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidget.cpp" line="27"/>
         <source>Nodes</source>
-        <translation>节点</translation>
+        <translation type="vanished">节点</translation>
     </message>
 </context>
 <context>
     <name>xFlow::NodesDockWidgetContent</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/nodes/nodesdockwidgetcontent.cpp" line="34"/>
         <source>Nodes</source>
-        <translation>节点</translation>
+        <translation type="vanished">节点</translation>
     </message>
 </context>
 <context>
     <name>xFlow::OutputDockWidget</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidget.cpp" line="25"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
 </context>
 <context>
     <name>xFlow::OutputDockWidgetContextTextBrowser</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="34"/>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation type="vanished">清除</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="35"/>
         <source>Save Current</source>
-        <translation>保存当前</translation>
+        <translation type="vanished">保存当前</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="39"/>
         <source>Save</source>
-        <translation>节省</translation>
+        <translation type="vanished">节省</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="41"/>
         <source>Text (*.txt)</source>
-        <translation>文本（*.txt）</translation>
+        <translation type="vanished">文本（*.txt）</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/output/outputdockwidgetcontenttextbroswer.cpp" line="48"/>
         <source>Failed to save file!</source>
-        <translation>保存文件失败！</translation>
+        <translation type="vanished">保存文件失败！</translation>
     </message>
 </context>
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="62"/>
         <source>Navigator Window</source>
-        <translation>导航窗口</translation>
+        <translation type="vanished">导航窗口</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="66"/>
         <source>Nodes List</source>
-        <translation>节点列表</translation>
+        <translation type="vanished">节点列表</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="81"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation type="vanished">日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="195"/>
         <source>Toggle Left Panel</source>
-        <translation>切换左侧面板</translation>
+        <translation type="vanished">切换左侧面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="196"/>
         <source>Toggle Bottom Panel</source>
-        <translation>切换底部面板</translation>
+        <translation type="vanished">切换底部面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="197"/>
         <source>Show Ruler</source>
-        <translation>显示标尺</translation>
+        <translation type="vanished">显示标尺</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="205"/>
         <source>New Project</source>
-        <translation>新项目</translation>
+        <translation type="vanished">新项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
         <source>Open Project</source>
-        <translation>开放项目</translation>
+        <translation type="vanished">开放项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Save Project</source>
-        <translation>保存项目</translation>
+        <translation type="vanished">保存项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="269"/>
         <source>Save Project As...</source>
-        <translation>将项目另存为...</translation>
+        <translation type="vanished">将项目另存为...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Fit Screen</source>
-        <translation>适合屏幕</translation>
+        <translation type="vanished">适合屏幕</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="212"/>
         <source>Zoom In</source>
-        <translation>放大</translation>
+        <translation type="vanished">放大</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="217"/>
         <source>Zoom Out</source>
-        <translation>缩小</translation>
+        <translation type="vanished">缩小</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="218"/>
         <source>Reset Zoom</source>
-        <translation>重置缩放</translation>
+        <translation type="vanished">重置缩放</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>Align Left</source>
-        <translation>左对齐</translation>
+        <translation type="vanished">左对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
         <source>Align Right</source>
-        <translation>右对齐</translation>
+        <translation type="vanished">右对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Align Top</source>
-        <translation>顶部对齐</translation>
+        <translation type="vanished">顶部对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
         <source>Align Bottom</source>
-        <translation>底部对齐</translation>
+        <translation type="vanished">底部对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
         <source>Align Vertical Center</source>
-        <translation>垂直居中对齐</translation>
+        <translation type="vanished">垂直居中对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Align Horizontal Center</source>
-        <translation>水平居中对齐</translation>
+        <translation type="vanished">水平居中对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Select All</source>
-        <translation>选择全部</translation>
+        <translation type="vanished">选择全部</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="228"/>
         <source>Delete Selected</source>
-        <translation>删除所选内容</translation>
+        <translation type="vanished">删除所选内容</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="229"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="351"/>
         <source>Clear All Nodes</source>
-        <translation>清除所有节点</translation>
+        <translation type="vanished">清除所有节点</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
         <source>Undo</source>
-        <translation>撤消</translation>
+        <translation type="vanished">撤消</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Redo</source>
-        <translation>重做</translation>
+        <translation type="vanished">重做</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="271"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
-        <translation>xFlow 项目文件 (*.xflow);;所有文件 (*)</translation>
+        <translation type="vanished">xFlow 项目文件 (*.xflow);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="352"/>
         <source>Are you sure to clear all nodes?</source>
-        <translation>您确定清除所有节点吗？</translation>
+        <translation type="vanished">您确定清除所有节点吗？</translation>
     </message>
 </context>
 <context>
     <name>xMQTT::MqttClientUi</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="273"/>
         <source>Clear Topics</source>
-        <translation>明确主题</translation>
+        <translation type="vanished">明确主题</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="274"/>
         <source>Are you sure you want to clear all subscribed topics?</source>
-        <translation>您确定要清除所有订阅的主题吗？</translation>
+        <translation type="vanished">您确定要清除所有订阅的主题吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="360"/>
         <source>The MQTT client is not opened.</source>
-        <translation>MQTT客户端未打开。</translation>
+        <translation type="vanished">MQTT客户端未打开。</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttclientui.cpp" line="365"/>
         <source>The topic is empty.</source>
-        <translation>主题是空的。</translation>
+        <translation type="vanished">主题是空的。</translation>
     </message>
 </context>
 <context>
     <name>xMQTT::MqttDataModel</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>Rx</source>
-        <translation>接收</translation>
+        <translation type="vanished">接收</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
         <source>TX</source>
-        <translation>TX</translation>
+        <translation type="vanished">TX</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
         <source>Command</source>
-        <translation>命令</translation>
+        <translation type="vanished">命令</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
         <source>Server</source>
-        <translation>服务器</translation>
+        <translation type="vanished">服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Client</source>
-        <translation>客户</translation>
+        <translation type="vanished">客户</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Data</source>
-        <translation>数据</translation>
+        <translation type="vanished">数据</translation>
     </message>
 </context>
 <context>
     <name>xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
-        <translation>日志视图</translation>
+        <translation type="vanished">日志视图</translation>
     </message>
     <message>
         <source>Modbus Tool Bar</source>
@@ -6446,338 +6095,269 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDevice</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="122"/>
         <source>Modbus device connected.</source>
-        <translation>Modbus 设备已连接。</translation>
+        <translation type="vanished">Modbus 设备已连接。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
         <source>Modbus device disconnected.</source>
-        <translation>Modbus 设备已断开连接。</translation>
+        <translation type="vanished">Modbus 设备已断开连接。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
         <source>Modbus device error: %1</source>
-        <translation>Modbus 设备错误：%1</translation>
+        <translation type="vanished">Modbus 设备错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="166"/>
         <source>Failed to connect Modbus device: %1</source>
-        <translation>无法连接 Modbus 设备：%1</translation>
+        <translation type="vanished">无法连接 Modbus 设备：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="400"/>
         <source>Failed to send read request: %1</source>
-        <translation>无法发送读取请求：%1</translation>
+        <translation type="vanished">无法发送读取请求：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="426"/>
         <source>Read error: %1</source>
-        <translation>读取错误：%1</translation>
+        <translation type="vanished">读取错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
-        <translation>读取 %1 响应：服务器地址=%2，起始地址=%3，数量=%4</translation>
+        <translation type="vanished">读取 %1 响应：服务器地址=%2，起始地址=%3，数量=%4</translation>
     </message>
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>New Modbus Device</source>
-        <translation>新的 Modbus 设备</translation>
+        <translation type="vanished">新的 Modbus 设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
         <source>New Register Group</source>
-        <translation>新建寄存器分组</translation>
+        <translation type="vanished">新建寄存器分组</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>New Registers</source>
-        <translation>新建寄存器</translation>
+        <translation type="vanished">新建寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="78"/>
         <source>Remove the Selected Item</source>
-        <translation>删除所选项目</translation>
+        <translation type="vanished">删除所选项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="267"/>
         <source>Invalid Selection</source>
-        <translation>未选择项目</translation>
+        <translation type="vanished">未选择项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="268"/>
         <source>Please select a register table to add new registers.</source>
-        <translation>请选择一个寄存器分组以添加寄存器。</translation>
+        <translation type="vanished">请选择一个寄存器分组以添加寄存器。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="313"/>
         <source>Remove Item</source>
-        <translation>删除项目</translation>
+        <translation type="vanished">删除项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="314"/>
         <source>Are you sure to remove the selected item?</source>
-        <translation>您确定要移除所选的项目吗？</translation>
+        <translation type="vanished">您确定要移除所选的项目吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="332"/>
         <source>Remove Device</source>
-        <translation>删除设备</translation>
+        <translation type="vanished">删除设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="333"/>
         <source>The device is running. Do you want to stop and remove it?</source>
-        <translation>设备正在运行。您想要移除设备吗？</translation>
+        <translation type="vanished">设备正在运行。您想要移除设备吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="379"/>
         <source>Rename Register Table</source>
-        <translation>重命名寄存器表</translation>
+        <translation type="vanished">重命名寄存器表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="380"/>
         <source>Please input the new name for the register table:</source>
-        <translation>请输入寄存器表的新名称：</translation>
+        <translation type="vanished">请输入寄存器表的新名称：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="392"/>
         <source>Rename Register Item</source>
-        <translation>重命名注册项目</translation>
+        <translation type="vanished">重命名注册项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="393"/>
         <source>Please input the new name for the register item:</source>
-        <translation>请输入注册项的新名称：</translation>
+        <translation type="vanished">请输入注册项的新名称：</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="405"/>
         <source>Edit Modbus Device</source>
-        <translation>编辑 Modbus 设备</translation>
+        <translation type="vanished">编辑 Modbus 设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="438"/>
         <source>Change Device parameters</source>
-        <translation>更改设备参数</translation>
+        <translation type="vanished">更改设备参数</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="439"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
-        <translation>设备正在运行。重启设备以使得新参数生效？</translation>
+        <translation type="vanished">设备正在运行。重启设备以使得新参数生效？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="680"/>
         <source>TCP Client Device</source>
-        <translation>TCP客户端设备</translation>
+        <translation type="vanished">TCP客户端设备</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="686"/>
         <source>TCP Server Device</source>
-        <translation>TCP 服务器设备</translation>
+        <translation type="vanished">TCP 服务器设备</translation>
     </message>
 </context>
 <context>
     <name>xModbus::ModbusLogModel</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="167"/>
         <source>Time</source>
-        <translation>时间</translation>
+        <translation type="vanished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="169"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="171"/>
         <source>Message</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
 </context>
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="132"/>
         <source>Clear Log</source>
-        <translation>清除日志</translation>
+        <translation type="vanished">清除日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="133"/>
         <source>Are you sure you want to clear the log?</source>
-        <translation>您确定要清除日志吗？</translation>
+        <translation type="vanished">您确定要清除日志吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="145"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
         <source>Save Log</source>
-        <translation>保存日志</translation>
+        <translation type="vanished">保存日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
         <source>Log Files (*.json)</source>
-        <translation>日志文件 (*.json)</translation>
+        <translation type="vanished">日志文件 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="156"/>
         <source>Failed to open file for writing: %1</source>
-        <translation>无法打开文件进行写入：%1</translation>
+        <translation type="vanished">无法打开文件进行写入：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="179"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="189"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="201"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="210"/>
         <source>Open Log</source>
-        <translation>打开日志</translation>
+        <translation type="vanished">打开日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="190"/>
         <source>Failed to open file for reading: %1</source>
-        <translation>无法打开文件进行读取：%1</translation>
+        <translation type="vanished">无法打开文件进行读取：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="202"/>
         <source>Failed to parse log file: %1 at offset %2</source>
-        <translation>无法解析日志文件：%1（偏移量 %2）</translation>
+        <translation type="vanished">无法解析日志文件：%1（偏移量 %2）</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
         <source>Invalid log file format: root element is not an array.</source>
-        <translation>日志文件格式无效：根元素不是数组。</translation>
+        <translation type="vanished">日志文件格式无效：根元素不是数组。</translation>
     </message>
 </context>
 <context>
     <name>xModbus::ModbusRegisterTable</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="200"/>
         <source>Register Address</source>
-        <translation>寄存器地址</translation>
+        <translation type="vanished">寄存器地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
         <source>Name</source>
-        <translation>名称</translation>
+        <translation type="vanished">名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
         <source>Server Address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
         <source>Type</source>
-        <translation>寄存器类型</translation>
+        <translation type="vanished">寄存器类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
         <source>Unit</source>
-        <translation>单位</translation>
+        <translation type="vanished">单位</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation type="vanished">描述</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
         <source>Min</source>
-        <translation>最小值</translation>
+        <translation type="vanished">最小值</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
         <source>Max</source>
-        <translation>最大值</translation>
+        <translation type="vanished">最大值</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
         <source>Decimals</source>
-        <translation>小数位</translation>
+        <translation type="vanished">小数位</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
         <source>Value</source>
-        <translation>取值</translation>
+        <translation type="vanished">取值</translation>
     </message>
 </context>
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
         <source>Save Registers</source>
-        <translation>保存寄存器</translation>
+        <translation type="vanished">保存寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="181"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="205"/>
         <source>json (*.json)</source>
-        <translation>json (*.json)</translation>
+        <translation type="vanished">json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation type="vanished">错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="189"/>
         <source>Failed to open file for saving.</source>
-        <translation>无法打开文件进行保存。</translation>
+        <translation type="vanished">无法打开文件进行保存。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
         <source>Load Registers</source>
-        <translation>加载寄存器</translation>
+        <translation type="vanished">加载寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="213"/>
         <source>Failed to open file for loading.</source>
-        <translation>无法打开文件进行加载。</translation>
+        <translation type="vanished">无法打开文件进行加载。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Invalid JSON format in the file.</source>
-        <translation>文件中的 JSON 格式无效。</translation>
+        <translation type="vanished">文件中的 JSON 格式无效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="230"/>
         <source>Import Registers</source>
-        <translation>导入寄存器</translation>
+        <translation type="vanished">导入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="231"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
-        <translation>寄存器表不为空。您想要合并数据吗？</translation>
+        <translation type="vanished">寄存器表不为空。您想要合并数据吗？</translation>
     </message>
 </context>
 <context>
     <name>xModbus::xModbus</name>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="41"/>
         <source>Modbus Tool Bar</source>
-        <translation>Modbus 工具栏</translation>
+        <translation type="vanished">Modbus 工具栏</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/xmodbus.cpp" line="42"/>
         <source>Example Action</source>
-        <translation>示例操作</translation>
+        <translation type="vanished">示例操作</translation>
     </message>
 </context>
 <context>
     <name>xMqtt</name>
     <message>
-        <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
         <source>MQTT Client</source>
-        <translation>MQTT客户端</translation>
+        <translation type="vanished">MQTT客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/xmqtt.ui" line="80"/>
         <source>MQTT Server</source>
-        <translation>MQTT服务器</translation>
+        <translation type="vanished">MQTT服务器</translation>
     </message>
 </context>
 <context>

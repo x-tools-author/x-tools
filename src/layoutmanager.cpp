@@ -59,6 +59,7 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
 
     m_controller = new QWidget();
     m_controllerLayout = new QHBoxLayout(m_controller);
+    m_controllerLayout->setContentsMargins(2, 2, 2, 2);
     m_controller->setLayout(m_controllerLayout);
     m_leftLabel = new QLabel(m_controller);
     m_rightLabel = new QLabel(m_controller);
@@ -66,6 +67,9 @@ LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject*
     m_controllerLayout->addWidget(m_rightLabel);
 
     m_group = new QButtonGroup(this);
+#if defined(Q_OS_MACOS)
+    menuBar->setNativeMenuBar(false);
+#endif
     menuBar->setCornerWidget(m_controller, Qt::TopRightCorner);
 }
 

@@ -257,12 +257,14 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Apple (macOS, iOS...)
 if(APPLE)
-  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
-  set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
-  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
-  target_sources(xTools PRIVATE ${xTools_ICON})
-  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
+  if(NOT IOS)
+    set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+    set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
+    set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+    target_sources(xTools PRIVATE ${xTools_ICON})
+  endif()
 
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
   set_target_properties(
     xTools
     PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"

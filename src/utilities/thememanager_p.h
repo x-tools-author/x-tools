@@ -8,26 +8,24 @@
  **************************************************************************************************/
 #include <private/qobject_p.h>
 
+#include <QActionGroup>
 #include <QApplication>
 #include <QMenu>
 #include <QSettings>
+#include <QStyleHints>
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
-#if defined(_MSC_VER)
 #define xEnableColorScheme 1
 #else
 #define xEnableColorScheme 0
 #endif
-#endif
 
-#if xEnableColorScheme
+#if defined(_MSC_VER)
 #include <dwmapi.h>
 
 #include <QAction>
-#include <QActionGroup>
 #include <QColor>
 #include <QPalette>
-#include <QStyleHints>
 #include <QSysInfo>
 #include <QWidget>
 #include <QWindow>

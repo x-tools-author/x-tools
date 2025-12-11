@@ -31,12 +31,6 @@ if(NOT X_ENABLE_X_FLOW)
   return()
 endif()
 
-# Just for windows yet
-if(NOT WIN32)
-  remove_all_files_of_flow()
-  return()
-endif()
-
 # Download the packet if it doesn't exist
 if(NOT EXISTS "${X_3RD_DIR}/${packet_name}.zip")
   file(
