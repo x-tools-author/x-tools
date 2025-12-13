@@ -269,38 +269,74 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Apple (macOS, iOS...)
 if(APPLE)
-  if(NOT IOS)
-    set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
-    set(xTools_ICON ${CMAKE_SOURCE_DIR}/xTools.icns)
-    set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
-    target_sources(xTools PRIVATE ${xTools_ICON})
-  endif()
+  # Set the icon file for the macOS bundle
+  set(MACOSX_BUNDLE_ICON_FILE xTools.icns)
+  set(xTools_ICON xTools.icns)
+  set_source_files_properties(${xTools_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  target_sources(xTools PRIVATE ${xTools_ICON})
+
+  # Set the resource files for the macOS bundle
+  set(tmp "Resources/Assets.xcassets")
+  set(RESOURCE_FILES "${CMAKE_SOURCE_DIR}/res/apple/macos/Assets.xcassets")
+  set_source_files_properties(${RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION ${tmp})
+  target_sources(xTools PRIVATE ${RESOURCE_FILES})
+
+  # Configure the Info.plist file for the macOS bundle
+  string(TIMESTAMP X_CURRENT_YEAR "%Y")
+  message(STATUS "Current year: ${X_CURRENT_YEAR}")
+  string(TIMESTAMP X_BUNDLE_VERSION "%Y%m%d%H%M")
+  message(STATUS "[xTools] X_BUNDLE_VERSION: ${X_BUNDLE_VERSION}")
+  set(X_PLIST "${CMAKE_BINARY_DIR}/xTools.plist")
+  set(X_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/res/apple/macos/xTools.entitlements")
+  configure_file(res/apple/macos/xTools.plist.in ${X_PLIST})
 
   set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
-  set_target_properties(
-    xTools
-    PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "xTools"
-               MACOSX_BUNDLE_BUNDLE_VERSION "${X_LATEST_GIT_TAG}"
-               MACOSX_BUNDLE_SHORT_VERSION_STRING "${X_LATEST_GIT_TAG}"
-               MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools"
-               XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconFile "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleIconName "AppIcon"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleDisplayName "xTools"
-               XCODE_ATTRIBUTE_INFOPLIST_KEY_CFBundleName "xTools"
-               XCODE_ATTRIBUTE_PRODUCT_NAME "xTools")
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${X_PLIST})
+  if(DEFINED BUNDLE_ID_OPTION)
+    set_target_properties(wxTools PROPERTIES ${BUNDLE_ID_OPTION})
+  endif()
 
+  # cmake-format: off
+  if(CMAKE_GENERATOR STREQUAL "Xcode")
+    # set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "<Your Team ID>")
+    set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic")
+    set(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${XTOOLS_APP_ID}")
+    set(CMAKE_XCODE_ATTRIBUTE_INSTALL_PATH "/Applications")
+    # * set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT
+    # * set(CMAKE_XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS
+    # * set(CMAKE_XCODE_ATTRIBUTE_LD_ENTRY_POINT
+    # * set(CMAKE_XCODE_ATTRIBUTE_MARKETING_VERSION
+    # * set(CMAKE_XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION
+    set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
+  else()
+    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
+    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_INSTALL_PATH "/Applications")
+    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic")
+    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
+  endif()
+  # cmake-format: on
+
+  # Create dmg
   include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
   x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
 
-  include(${CMAKE_SOURCE_DIR}/cmake/pkg/pkg.cmake)
-  set(XTOOLS_DEV_ID_APPLICATION
-      "Developer ID Application: Your Name \(XXXXXXXXXX\)"
-      CACHE STRING "Developer ID Application")
-  set(XTOOLS_DEV_ID_INSTALLER
-      "Developer ID Installer: Your Name \(XXXXXXXXXX\)"
-      CACHE STRING "Developer ID Installer")
-  x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${XTOOLS_DEV_ID_APPLICATION} ${XTOOLS_DEV_ID_INSTALLER})
+  # You can set X_TOOLS_DEV_ID_APP and X_TOOLS_DEV_ID_INSTALLER in private.cmake to avoid exposing
+  # your Apple Developer ID in a public repository.
+  if(EXISTS "${CMAKE_SOURCE_DIR}/private.cmake")
+    include(${CMAKE_SOURCE_DIR}/private.cmake)
+    message(STATUS "[xTools-apple] X_TOOLS_DEV_ID_APP: ${X_TOOLS_DEV_ID_APP}")
+    message(STATUS "[xTools-apple] X_TOOLS_DEV_ID_INSTALLER: ${X_TOOLS_DEV_ID_INSTALLER}")
+  endif()
+
+  if(NOT DEFINED X_TOOLS_DEV_ID_APP OR NOT DEFINED X_TOOLS_DEV_ID_INSTALLER)
+    # cmake-format: off
+      set(X_TOOLS_DEV_ID_APP "xxx_id_developer" CACHE STRING "The app's developer ID")
+      set(X_TOOLS_DEV_ID_INSTALLER "xxx_id_installer" CACHE STRING "The installer's developer ID")
+      # cmake-format: on
+  endif()
+
+  include(cmake/pkg/pkg.cmake)
+  x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${X_TOOLS_DEV_ID_APP} ${X_TOOLS_DEV_ID_INSTALLER})
 endif()
 
 # --------------------------------------------------------------------------------------------------
