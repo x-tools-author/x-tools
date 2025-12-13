@@ -7,23 +7,23 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>wxTools</string>
+	<string>xTools</string>
 	<key>CFBundleGetInfoString</key>
 	<string>A set of tools developed with wxWidgets</string>
 	<key>CFBundleIconFile</key>
-	<string>wxTools.icns</string>
+	<string>xTools.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.xtools.wxtools</string>
+	<string>com.xtools.xtools</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
-	<string>${WXT_VERSION}</string>
+	<string>${X_VERSION}</string>
 	<key>CFBundleName</key>
-	<string>wxTools</string>
+	<string>xTools</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>${WXT_VERSION}</string>
+	<string>${X_VERSION}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -31,7 +31,7 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>${WXT_BUNDLE_VERSION}</string>
+	<string>${X_BUNDLE_VERSION}</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>DTCompiler</key>
@@ -55,6 +55,6 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright (C) 2024-${WXT_CURRENT_YEAR} x-tools@outlook.com. All rights reserved.</string>
+	<string>Copyright (C) 2024-${T_CURRENT_YEAR} x-tools@outlook.com. All rights reserved.</string>
 </dict>
 </plist>
