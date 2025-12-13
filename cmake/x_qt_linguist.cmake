@@ -90,7 +90,11 @@ function(x_generate_translations target)
     # cmake-format: on
 
     # set(out_dir "$<TARGET_FILE_DIR:${target}>/translations")
-    set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+    if(APPLE)
+      set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${target}.app/Contents/MacOS/translations")
+    else()
+      set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+    endif()
     set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
     if(NOT QT_VERSION VERSION_LESS "6.7.0")
       qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
