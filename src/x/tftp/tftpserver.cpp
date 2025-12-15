@@ -7,8 +7,8 @@
  * code directory.
  **************************************************************************************************/
 #include "tftpserver.h"
-#include <QDir>
 #include <QDebug>
+#include <QDir>
 
 TftpServer::TftpServer(QObject *parent)
     : QObject(parent)
@@ -17,7 +17,7 @@ TftpServer::TftpServer(QObject *parent)
     , m_port(0)
     , m_rootPath(QDir::currentPath())
 {
-    connect(m_tftp, &Tftp::tftpProcessSignal, this, &TftpServer::onTftpProgress);
+    //connect(m_tftp, &Tftp::tftpProcessSignal, this, &TftpServer::onTftpProgress);
     connect(m_tftp, &Tftp::tftpErrorSignal, this, &TftpServer::onTftpError);
 }
 
@@ -38,7 +38,7 @@ bool TftpServer::start(quint16 port)
     m_tftp->setWorkPathSlots(m_rootPath);
     m_tftp->setPortSlots(port);
     m_tftp->start();
-    
+
     m_isRunning = true;
     return true;
 }
@@ -48,7 +48,7 @@ void TftpServer::stop()
     if (m_isRunning) {
         m_tftp->quit();
         m_tftp->wait();
-        m_tftp->clearStatus();
+        //m_tftp->clearStatus();
         m_isRunning = false;
         m_port = 0;
     }
@@ -77,12 +77,12 @@ void TftpServer::onTftpProgress(const QString &path, int value)
     // 从路径中提取文件名
     QFileInfo fileInfo(path);
     QString fileName = fileInfo.fileName();
-    
+
     // 注意：当前Tftp类没有提供客户端地址信息，这里使用默认地址
     QHostAddress clientAddress = QHostAddress::LocalHost;
-    
+
     emit transferProgress(fileName, clientAddress, value);
-    
+
     if (value >= 100) {
         // 假设是下载（服务器发送文件给客户端）
         emit transferCompleted(fileName, clientAddress, false);

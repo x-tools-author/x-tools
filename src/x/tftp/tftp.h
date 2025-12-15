@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <type_traits>
 #include <QFile>
 #include <QFileInfo>
 #include <QHostAddress>
@@ -57,6 +58,11 @@ public:
     void startDownload(const QString &remoteFileName, const QString &localFileName = "");
     void startUpload(const QString &localFileName, const QString &remoteFileName = "");
 
+signals:
+    void transferProgressSignal(QString filePath, qint64 cur, qint64 total, int speed);
+    void tftpErrorSignal(QString errorMsg);
+    void transferCompletedSignal(QString fileName);
+
 protected:
     void run() override;
 
@@ -64,8 +70,7 @@ private:
     bool initFlag = false;
     bool dataAvalivabe = false;
     bool isClientMode = false; // 客户端模式标志
-    char file_path[256] = {0};
-    char *ptr_filePath = file_path;
+    bool isRunningFlag = true; // 线程运行标志
     QString curFilePath;
     QString pre_filePath;
     int transportType = 0;
@@ -76,7 +81,7 @@ private:
     int endtftp = 0;
     int timeout = 0;
     int retryCount = 2;
-    QTimer *timerout;
+    QTimer *timeoutTimer;
     char *sendBuf;
     char *sptr;
     QByteArray readBuf;
@@ -103,9 +108,4 @@ public slots:
     void readPendingDatagramsSlots();
     void setWorkPathSlots(QString path);
     void setPortSlots(int port);
-
-signals:
-    void transferProgressSignal(QString filePath, qint64 cur, qint64 total, int speed);
-    void tftpErrorSignal(QString errorMsg);
-    void transferCompletedSignal(QString fileName);
 };

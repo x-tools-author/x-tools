@@ -27,16 +27,27 @@
 Tftp::Tftp(QObject *parent)
     : QThread{parent}
 {
-    timerout = new QTimer();
-    timerout->setInterval(1000);
-    timerout->setSingleShot(true);
+    timeoutTimer = new QTimer();
+    timeoutTimer->setInterval(1000);
+    timeoutTimer->setSingleShot(true);
     readBuf.clear();
-    connect(timerout, &QTimer::timeout, this, [&]() {
-        if (retryCount-- <= 0) {
+    connect(timeoutTimer, &QTimer::timeout, this, [&]() {
+        if (--retryCount <= 0) {
             ////print << "\ntimeout\n";
             clearStatus();
             sendErrorCode(EBADOP);
             retryCount = 3;
+        } else {
+            // 重新发送上一个数据包
+            if (sendBuf) {
+                int size = (int) (sptr - sendBuf);
+                QByteArray data(sendBuf, size);
+                udpSocket->writeDatagram(data, destAddress, destPort);
+            }
+            // 重新启动定时器
+            if (timeoutTimer) {
+                timeoutTimer->start();
+            }
         }
     });
 
@@ -55,6 +66,7 @@ Tftp::Tftp(QObject *parent)
 
 Tftp::~Tftp()
 {
+    isRunningFlag = false;
     if (this->isRunning()) {
         this->exit(0);
     }
@@ -72,10 +84,10 @@ Tftp::~Tftp()
         file->deleteLater();
         file = nullptr;
     }
-    if (timerout) {
-        timerout->stop();
-        timerout->deleteLater();
-        timerout = nullptr;
+    if (timeoutTimer) {
+        timeoutTimer->stop();
+        timeoutTimer->deleteLater();
+        timeoutTimer = nullptr;
     }
     if (sendBuf) {
         delete[] sendBuf;
@@ -90,11 +102,10 @@ void Tftp::run()
 
 void Tftp::setWorkPathSlots(QString path)
 {
-    strncpy_s(file_path, sizeof(file_path), path.toLatin1().data(), path.length());
-    if (file_path[strlen(file_path) - 1] != '/') {
-        file_path[strlen(file_path)] = '/';
+    curFilePath = path;
+    if (!curFilePath.endsWith('/')) {
+        curFilePath += '/';
     }
-    curFilePath = QString(QByteArray(file_path, (int) strlen(file_path)));
 }
 
 void Tftp::readPendingDatagramsSlots()
@@ -110,7 +121,7 @@ void Tftp::printProcess(int maxValue, int curValue)
     int progress = (((float) curValue / (float) maxValue)) * 100;
     if (progress != progress_bak) {
         progress_bak = progress;
-        emit tftpProcessSignal(curFilePath + pre_filePath, progress);
+        emit transferProgressSignal(curFilePath + pre_filePath, curValue, maxValue, 0);
         ////print << __FUNCTION__ << progress;
     }
 }
@@ -131,7 +142,7 @@ void Tftp::setPortSlots(int port)
 
 void Tftp::on_recvfrom()
 {
-    while (1) {
+    while (isRunningFlag) {
         if (isClientMode) {
             processClientDatagram();
         } else {
@@ -253,7 +264,7 @@ void Tftp::on_recvfrom()
                             char tt[256] = {0};
                             pos += sprintf(tt, "%d", timeout) + 1;
                             //print << QString::asprintf("timeout:%d\n", timeout);
-                            timerout->setInterval(timeout * 1000);
+                            timeoutTimer->setInterval(timeout * 1000);
                         } else if (tmp == "blksize") {
                             pos += (int) strlen("blksize") + 1;
                             tmp = "";
@@ -277,8 +288,8 @@ void Tftp::on_recvfrom()
                             return;
                         }
                     }
-                    if (!timerout) {
-                        timerout->start();
+                    if (timeoutTimer) {
+                        timeoutTimer->start();
                     }
 
                     cmd = qToBigEndian((uint16_t) _OACK);
@@ -323,7 +334,7 @@ void Tftp::on_recvfrom()
                 case _DATA:
                     //print << "_DATA\n";
                     if (!file) {
-                        timerout->stop();
+                        timeoutTimer->stop();
                         sendErrorCode(ENOTFOUND);
                         clearStatus();
                         break;
@@ -367,7 +378,7 @@ void Tftp::on_recvfrom()
                             // if(file_size<=0)
                             {
                                 file->close();
-                                timerout->stop();
+                                timeoutTimer->stop();
                                 endtftp = 1;
                             }
                         }
@@ -380,7 +391,7 @@ void Tftp::on_recvfrom()
                         udpSocket->writeDatagram(data.data(), data.count(), destAddress, destPort);
                     }
                     if (endtftp) {
-                        timerout->stop();
+                        timeoutTimer->stop();
 
                         printProcess(totalSize, totalSize);
                         //print << "\ntftp done\n";
@@ -389,7 +400,7 @@ void Tftp::on_recvfrom()
                     break; // data packet
                 case _ACK:
                     if (endtftp) {
-                        timerout->stop();
+                        timeoutTimer->stop();
 
                         printProcess(totalSize, totalSize);
                         //print << "\ntftp done\n";
@@ -434,7 +445,7 @@ void Tftp::on_recvfrom()
 
                     break; // acknowledgement
                 case _ERROR:
-                    timerout->stop();
+                    timeoutTimer->stop();
 
                     //print << ("_ERROR\n");
                     clearStatus();
@@ -577,7 +588,7 @@ void Tftp::sendRRQ(const QString &fileName)
     udpSocket->writeDatagram(data, destAddress, destPort);
 
     // 启动超时定时器
-    timerout->start();
+    timeoutTimer->start();
 }
 
 void Tftp::sendWRQ(const QString &fileName)
@@ -615,7 +626,7 @@ void Tftp::sendWRQ(const QString &fileName)
     udpSocket->writeDatagram(data, destAddress, destPort);
 
     // 启动超时定时器
-    timerout->start();
+    timeoutTimer->start();
 }
 
 void Tftp::processClientDatagram()
@@ -625,6 +636,12 @@ void Tftp::processClientDatagram()
         if (!datagram.isValid()) {
             continue;
         }
+
+        // 重置定时器和重试计数
+        if (timeoutTimer) {
+            timeoutTimer->stop();
+        }
+        retryCount = 3;
 
         // 更新目标地址和端口（用于后续通信）
         destAddress = datagram.senderAddress();
@@ -665,7 +682,7 @@ void Tftp::processClientDatagram()
                 } else if (option == "timeout") {
                     QString value = &ptr[pos];
                     timeout = value.toInt();
-                    timerout->setInterval(timeout * 1000);
+                    timeoutTimer->setInterval(timeout * 1000);
                     pos += value.length() + 1;
                 } else {
                     // 未知选项，跳过
@@ -846,13 +863,13 @@ void Tftp::processClientDatagram()
             }
             break;
 
-        case _ERROR:
-            // 处理错误响应
-            pos += 2; // 跳过错误码
-            QString errorMsg = &ptr[pos];
-            emit tftpErrorSignal(QString("TFTP Error: %1").arg(errorMsg));
-            clearStatus();
-            break;
+            // case _ERROR:
+            //     // 处理错误响应
+            //     pos += 2; // 跳过错误码
+            //     QString errorMsg = &ptr[pos];
+            //     emit tftpErrorSignal(QString("TFTP Error: %1").arg(errorMsg));
+            //     clearStatus();
+            //     break;
 
         default:
             // 未知数据包类型
@@ -872,7 +889,6 @@ int Tftp::getFileSize(QString path)
 
 void Tftp::sendErrorCode(enum TftpError code)
 {
-    char buf[128] = {0};
     const char *errorCodeMsg[] = {
         "Undefined error code",
         "File not found",
@@ -884,18 +900,17 @@ void Tftp::sendErrorCode(enum TftpError code)
         "No such user",
     };
     const char *msg = errorCodeMsg[code];
-    //print << curFilePath + pre_filePath << msg;
-    buf[0] = 0x00;
-    buf[1] = 0x05;
-    buf[2] = 0x00;
-    buf[3] = (char) code;
-    memcpy(&buf[4], msg, strlen(msg) + 1);
+    // 使用QByteArray避免缓冲区溢出
+    QByteArray buf;
+    buf.append((char) 0x00);
+    buf.append((char) 0x05);
+    buf.append((char) 0x00);
+    buf.append((char) code);
+    buf.append(msg);
+    buf.append((char) 0x00);
+
     {
-        QByteArray data = QByteArray(buf, (int) strlen(msg) + 5);
-        //print << __LINE__ << data;
-        ;
-        //print << __LINE__ << destAddress << destPort;
-        udpSocket->writeDatagram(data.data(), data.count(), destAddress, destPort);
+        udpSocket->writeDatagram(buf, destAddress, destPort);
     }
     emit tftpErrorSignal(curFilePath + pre_filePath + "\n" + msg);
 }

@@ -18,9 +18,9 @@ TftpClient::TftpClient(QObject *parent)
     , m_localWorkPath(QDir::currentPath())
     , m_isTransferring(false)
 {
-    connect(m_tftp, &Tftp::tftpProcessSignal, this, &TftpClient::onTftpProgress);
-    connect(m_tftp, &Tftp::tftpErrorSignal, this, &TftpClient::onTftpError);
-    connect(m_tftp, &Tftp::transferCompletedSignal, this, &TftpClient::onTransferCompleted);
+    // connect(m_tftp, &Tftp::tftpProcessSignal, this, &TftpClient::onTftpProgress);
+    // connect(m_tftp, &Tftp::tftpErrorSignal, this, &TftpClient::onTftpError);
+    // connect(m_tftp, &Tftp::transferCompletedSignal, this, &TftpClient::onTransferCompleted);
 }
 
 TftpClient::~TftpClient()
@@ -114,7 +114,7 @@ bool TftpClient::uploadFile(const QString &localFileName, const QString &remoteF
 void TftpClient::stop()
 {
     if (m_isTransferring) {
-        m_tftp->stop();
+        //m_tftp->stop();
         m_isTransferring = false;
         emit errorOccurred("Transfer stopped by user");
     }
@@ -133,6 +133,6 @@ void TftpClient::onTftpProgress(const QString &path, int value)
 void TftpClient::onTransferCompleted(const QString &fileName)
 {
     Q_UNUSED(fileName)
-    m_isTransferring = false;
-    emit transferCompleted(m_currentFileName);
+    // m_isTransferring = false;
+    // emit transferCompleted(m_currentFileName);
 }
