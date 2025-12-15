@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <type_traits>
 #include <QFile>
 #include <QFileInfo>
 #include <QHostAddress>
@@ -20,6 +19,8 @@
 #include <QThread>
 #include <QTimer>
 #include <QUdpSocket>
+
+#include "common/xdq.h"
 
 enum Block {
     _RRQ = 1,   // read request
@@ -48,6 +49,7 @@ enum TftpError {
 class Tftp : public QThread
 {
     Q_OBJECT
+    X_DECLARE_PRIVATE(Tftp)
 public:
     Tftp(QObject *parent = nullptr);
     ~Tftp();

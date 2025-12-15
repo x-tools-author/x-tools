@@ -7,3 +7,16 @@
  * code directory.
  **************************************************************************************************/
 #pragma once
+
+#include "tftp.h"
+
+class TftpPrivate
+{
+public:
+    TftpPrivate(Tftp *q_ptr)
+        : q(q_ptr)
+    {}
+
+private:
+    Tftp *q{nullptr};
+};

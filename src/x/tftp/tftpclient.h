@@ -45,7 +45,7 @@ signals:
     // 传输完成信号
     void transferCompleted(const QString &fileName);
 
-private slots:
+private:
     // 处理TFTP进度
     void onTftpProgress(const QString &path, int value);
 

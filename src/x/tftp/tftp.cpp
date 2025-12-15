@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include "tftp.h"
+#include "tftp_p.h"
 
 #include <fcntl.h>
 #include <string.h>
@@ -27,6 +28,8 @@
 Tftp::Tftp(QObject *parent)
     : QThread{parent}
 {
+    x_d_ptr = new TftpPrivate(this);
+
     timeoutTimer = new QTimer();
     timeoutTimer->setInterval(1000);
     timeoutTimer->setSingleShot(true);
