@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -8,9 +8,9 @@
  **************************************************************************************************/
 #include "tftpserverui.h"
 #include "ui_tftpserverui.h"
+#include <QDateTime>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QDateTime>
 
 TftpServerUi::TftpServerUi(QWidget *parent)
     : QWidget(parent)
@@ -19,17 +19,26 @@ TftpServerUi::TftpServerUi(QWidget *parent)
 {
     ui->setupUi(this);
     initUI();
-    
+
     // 连接信号和槽
     connect(m_tftpServer, &TftpServer::clientConnected, this, &TftpServerUi::handleClientConnected);
-    connect(m_tftpServer, &TftpServer::clientDisconnected, this, &TftpServerUi::handleClientDisconnected);
-    connect(m_tftpServer, &TftpServer::transferProgress, this, &TftpServerUi::handleTransferProgress);
+    connect(m_tftpServer,
+            &TftpServer::clientDisconnected,
+            this,
+            &TftpServerUi::handleClientDisconnected);
+    connect(m_tftpServer,
+            &TftpServer::transferProgress,
+            this,
+            &TftpServerUi::handleTransferProgress);
     connect(m_tftpServer, &TftpServer::errorOccurred, this, &TftpServerUi::handleError);
-    connect(m_tftpServer, &TftpServer::transferCompleted, this, &TftpServerUi::handleTransferCompleted);
-    
+    connect(m_tftpServer,
+            &TftpServer::transferCompleted,
+            this,
+            &TftpServerUi::handleTransferCompleted);
+
     // 默认根路径设置为当前目录
     ui->lineEditRootPath->setText(QDir::currentPath());
-    
+
     log("TFTP Server initialized");
 }
 
@@ -40,7 +49,9 @@ TftpServerUi::~TftpServerUi()
 
 void TftpServerUi::on_pushButtonBrowseRoot_clicked()
 {
-    QString path = QFileDialog::getExistingDirectory(this, "Select Root Directory", ui->lineEditRootPath->text());
+    QString path = QFileDialog::getExistingDirectory(this,
+                                                     "Select Root Directory",
+                                                     ui->lineEditRootPath->text());
     if (!path.isEmpty()) {
         ui->lineEditRootPath->setText(path);
     }
@@ -51,13 +62,13 @@ void TftpServerUi::on_pushButtonStart_clicked()
     if (!validateInput()) {
         return;
     }
-    
+
     quint16 port = ui->lineEditPort->text().toUInt();
     QString rootPath = ui->lineEditRootPath->text();
-    
+
     // 设置服务器参数
     m_tftpServer->setRootPath(rootPath);
-    
+
     // 开始服务器
     if (m_tftpServer->start(port)) {
         log(QString("TFTP Server started on port %1").arg(port));
@@ -87,7 +98,9 @@ void TftpServerUi::handleClientDisconnected(const QHostAddress &clientAddress, q
     log(QString("Client disconnected: %1:%2").arg(clientAddr).arg(clientPort));
 }
 
-void TftpServerUi::handleTransferProgress(const QString &fileName, const QHostAddress &clientAddress, int progress)
+void TftpServerUi::handleTransferProgress(const QString &fileName,
+                                          const QHostAddress &clientAddress,
+                                          int progress)
 {
     QString clientAddr = clientAddress.toString();
     log(QString("Transfer progress from %1: %2 - %3%%").arg(clientAddr).arg(fileName).arg(progress));
@@ -99,7 +112,9 @@ void TftpServerUi::handleError(const QString &errorMessage)
     QMessageBox::warning(this, "Server Error", errorMessage);
 }
 
-void TftpServerUi::handleTransferCompleted(const QString &fileName, const QHostAddress &clientAddress, bool isUpload)
+void TftpServerUi::handleTransferCompleted(const QString &fileName,
+                                           const QHostAddress &clientAddress,
+                                           bool isUpload)
 {
     QString clientAddr = clientAddress.toString();
     QString action = isUpload ? "uploaded" : "downloaded";
@@ -115,7 +130,7 @@ void TftpServerUi::log(const QString &message)
 {
     QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
     ui->textEditLog->append(QString("[%1] %2").arg(timestamp).arg(message));
-    
+
     // 自动滚动到底部
     QTextCursor cursor = ui->textEditLog->textCursor();
     cursor.movePosition(QTextCursor::End);
@@ -148,14 +163,18 @@ bool TftpServerUi::validateInput() const
     bool portOk = false;
     quint16 port = ui->lineEditPort->text().toUInt(&portOk);
     if (!portOk || port == 0) {
-        QMessageBox::warning(const_cast<TftpServerUi*>(this), "Input Error", "Please enter valid port");
+        QMessageBox::warning(const_cast<TftpServerUi *>(this),
+                             "Input Error",
+                             "Please enter valid port");
         return false;
     }
-    
+
     if (ui->lineEditRootPath->text().isEmpty()) {
-        QMessageBox::warning(const_cast<TftpServerUi*>(this), "Input Error", "Please select root path");
+        QMessageBox::warning(const_cast<TftpServerUi *>(this),
+                             "Input Error",
+                             "Please select root path");
         return false;
     }
-    
+
     return true;
 }
