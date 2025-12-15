@@ -29,3 +29,5 @@ xapps/xprivate
 ./xprivate
 .VSCodeCounter
 .qmlls.ini
+private.cmake
+private.txt

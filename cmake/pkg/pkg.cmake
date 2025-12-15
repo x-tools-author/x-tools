@@ -1,20 +1,13 @@
-function(x_generate_pkg target version developer_id_application developer_id_installer)
-  # Just for Qt 6.5 or later
-  if(QT_VERSION VERSION_LESS "6.5.0")
-    return()
-  endif()
-
+# https://developer.apple.com/documentation/xcode/packaging-mac-software-for-distribution
+function(x_generate_pkg target dev_id_app dev_id_installer)
   # cmake-format: off
-  set(pkg_root "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${target}_pkg")
-  execute_process(WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${pkg_root})
-  add_custom_target(${target}_pkg VERBATIM COMMENT "Making pkg..." WORKING_DIRECTORY ${pkg_root}
-    COMMAND ${CMAKE_COMMAND} -E remove_directory "${target}.app" "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different "../${target}.app" "${target}.app" "||" ${CMAKE_COMMAND} -E true
-    COMMAND ${CMAKE_COMMAND} -E echo "${MACDEPLOYQT_EXECUTABLE} ${target}.app"
-    COMMAND ${MACDEPLOYQT_EXECUTABLE} ${target}.app
-    COMMAND ${CMAKE_COMMAND} -E echo "codesign --deep --force --verbose --sign '${developer_id_application}' '${target}.app'"
-    COMMAND codesign --deep --force --verbose --sign "${developer_id_application}" "${target}.app")
-  add_dependencies(${target}_pkg ${target})
+  add_custom_target(${target}_pkg VERBATIM
+    COMMENT "Making pkg..."
+    WORKING_DIRECTORY ${X_BINS_DIR}/${target}
+    COMMAND ${CMAKE_COMMAND} -E echo "Developer ID Application: ${dev_id_app}"
+    COMMAND ${CMAKE_COMMAND} -E echo "Developer ID Installer: ${dev_id_installer}"
+    COMMAND codesign -f -o runtime -s "${dev_id_app}" -v --deep --entitlements ${X_ENTITLEMENTS} ${target}.app
+    COMMAND productbuild --sign "${dev_id_installer}" --product ${target}.app/Contents/Info.plist --component ${target}.app /Applications ${target}-${X_VERSION}-${X_BUNDLE_VERSION}.pkg
+  )
   # cmake-format: on
 endfunction()

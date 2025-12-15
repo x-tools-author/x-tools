@@ -284,6 +284,7 @@ if(APPLE)
   # Configure the Info.plist file for the macOS bundle
   string(TIMESTAMP X_CURRENT_YEAR "%Y")
   message(STATUS "Current year: ${X_CURRENT_YEAR}")
+  string(TIMESTAMP X_VERSION "${X_LATEST_GIT_TAG}")
   string(TIMESTAMP X_BUNDLE_VERSION "%Y%m%d%H%M")
   message(STATUS "[xTools] X_BUNDLE_VERSION: ${X_BUNDLE_VERSION}")
   set(X_PLIST "${CMAKE_BINARY_DIR}/xTools.plist")
@@ -336,7 +337,7 @@ if(APPLE)
   endif()
 
   include(cmake/pkg/pkg.cmake)
-  x_generate_pkg(xTools ${X_LATEST_GIT_TAG} ${X_TOOLS_DEV_ID_APP} ${X_TOOLS_DEV_ID_INSTALLER})
+  x_generate_pkg(xTools ${X_TOOLS_DEV_ID_APP} ${X_TOOLS_DEV_ID_INSTALLER})
 endif()
 
 # --------------------------------------------------------------------------------------------------
