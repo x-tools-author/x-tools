@@ -55,6 +55,6 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright (C) 2024-${T_CURRENT_YEAR} x-tools@outlook.com. All rights reserved.</string>
+	<string>Copyright (C) 2024-${X_CURRENT_YEAR} x-tools@outlook.com. All rights reserved.</string>
 </dict>
 </plist>
