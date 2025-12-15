@@ -9,8 +9,6 @@
 #include "tftp.h"
 #include "tftp_p.h"
 
-#include <fcntl.h>
-#include <string.h>
 #include <QCollator>
 #include <QCoreApplication>
 #include <QCryptographicHash>
