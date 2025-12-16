@@ -13,16 +13,9 @@ if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/lua-${lua_version}.zip)
     SHOW_PROGRESS
     STATUS lua_download_status)
   if(NOT lua_download_status EQUAL 0)
-    message(WARNING "[xTools.Lua] Failed to download lua, lua functionality will be disabled")
     # Remove lua zip file
     file(REMOVE ${file_path})
-    # Remove lua related source files from X_SOURCES
-    file(GLOB LUA_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/common/luarunner*")
-    foreach(file ${LUA_FILES})
-      list(REMOVE_ITEM X_SOURCES ${file})
-      message(STATUS "[xTools.Lua]Remove file: ${file}")
-    endforeach()
-    return()
+    message(FATAL_ERROR "[xTools.Lua] Failed to download lua")
   endif()
 endif()
 
@@ -49,6 +42,8 @@ else()
 endif()
 
 # --------------------------------------------------------------------------------------------------
+add_compile_definitions(X_ENABLE_LUA)
+list(APPEND X_LIBS ${lua_target})
 if(MSVC)
   set(lua_lib_file ${X_LIBS_DIR}/lua-${lua_version}/liblua.lib)
 elseif(APPLE)
@@ -64,9 +59,6 @@ else()
   set_target_properties(${lua_target} PROPERTIES FOLDER "3rd")
   set_target_properties(${lua_target} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${lua_lib_dir})
 endif()
-
-add_compile_definitions(X_ENABLE_LUA)
-list(APPEND X_LIBS ${lua_target})
 
 # --------------------------------------------------------------------------------------------------
 # Optional
