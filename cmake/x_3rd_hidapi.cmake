@@ -96,7 +96,6 @@ elseif(LINUX AND NOT APPLE)
 
   if(EXISTS ${dst_file1} AND EXISTS ${dst_file2})
     link_directories(${X_LIBS_DIR}/${package_name}/lib)
-    include(FindPkgConfig)
     pkg_check_modules(libusb REQUIRED IMPORTED_TARGET libusb-1.0>=1.0.9)
     list(APPEND X_LIBS udev hidapi_libusb PkgConfig::libusb)
   else()

@@ -218,6 +218,7 @@ endif()
 # Setup 3rd party libraries and Qt modules
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
+include(FindPkgConfig)
 
 # --------------------------------------------------------------------------------------------------
 # xTools application
