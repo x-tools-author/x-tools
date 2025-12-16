@@ -21,7 +21,7 @@
 #include "ping/pingassistant.h"
 #include "string/stringassistant.h"
 
-#if defined(X_ENABLE_ZINT)
+#if X_ENABLE_ZINT
 #include "barcode/barcodeassistant.h"
 #endif
 
@@ -56,7 +56,7 @@ AssistantFactory::AssistantFactory(QObject* parent)
 #if !defined(X_DISABLE_QR_CODE)
     addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
 #endif
-#if defined(X_ENABLE_ZINT)
+#if X_ENABLE_ZINT
     addAssistant<BarCodeAssistant>(AssistantTypeBarcode, tr("Barcode Assistant"));
 #endif
 #ifdef X_ENABLE_SERIALBUS
