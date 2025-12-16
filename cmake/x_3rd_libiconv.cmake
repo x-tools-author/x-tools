@@ -2,49 +2,27 @@
 # https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/v1.17-p1.zip devenv libiconv.sln
 # /Build
 
+# --------------------------------------------------------------------------------------------------
 if(MINGW)
   message(STATUS "[xTools-iconv] Using MinGW, skipping libiconv download and extraction")
+  add_compile_definitions(X_ENABLE_ICONV=0)
   return()
 endif()
 
-if(APPLE)
-  return()
-endif()
-
-if(MSVC)
-  if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
-    set(X_VS "VS2022")
-  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.20")
-    set(X_VS "VS2019")
-  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.10")
-    set(X_VS "VS2017")
-  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.00")
-    set(X_VS "VS2015")
-  else()
-    set(X_VS "VS2013")
-  endif()
-endif()
-
-if(ANDROID
-   OR IOS
-   OR MACOS)
-  message(
-    STATUS "[xTools-iconv] Using Android or iOS, macOS, skipping libiconv download and extraction")
-  return()
-endif()
-
+# --------------------------------------------------------------------------------------------------
 if(WIN32)
   set(iconv_version "1.18")
   set(file_name "v${iconv_version}")
   set(file_suffix "zip")
-  set(file_url
-      "https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/${file_name}.${file_suffix}")
+  set(file_url "https://github.com/kiyolee/libiconv-win-build/archive/refs/tags")
+  set(file_url "${file_url}/${file_name}.${file_suffix}")
 else()
   set(file_name "libiconv-1.18")
   set(file_suffix "tar.gz")
   set(file_url "https://ftp.gnu.org/pub/gnu/libiconv/${file_name}.${file_suffix}")
 endif()
 
+# --------------------------------------------------------------------------------------------------
 # Download libiconv if it does not exist
 if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name}.${file_suffix})
   message(STATUS "[xTools-iconv] Downloading ${file_name} from ${file_url}")
@@ -53,10 +31,14 @@ if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name}.${file_suffix})
     STATUS download_status
     SHOW_PROGRESS)
   if(NOT download_status EQUAL 0)
-    message(FATAL_ERROR "[xTools-iconv] Failed to download ${file_name}: ${download_status}")
+    # Remove libiconv zip file
+    file(REMOVE ${CMAKE_SOURCE_DIR}/3rd/${file_name}.${file_suffix})
+    add_compile_definitions(X_ENABLE_ICONV=0)
+    return()
   endif()
 endif()
 
+# --------------------------------------------------------------------------------------------------
 # Extract libiconv if it does not exist
 if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name})
   message(STATUS "Extracting ${file_name}.${file_suffix}")
@@ -69,8 +51,20 @@ if(NOT EXISTS ${CMAKE_SOURCE_DIR}/3rd/${file_name})
   endif()
 endif()
 
+# --------------------------------------------------------------------------------------------------
 # Build libiconv if it does not exist
 if(WIN32)
+  if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
+    set(X_VS "VS2022")
+  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.20")
+    set(X_VS "VS2019")
+  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.10")
+    set(X_VS "VS2017")
+  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.00")
+    set(X_VS "VS2015")
+  else()
+    set(X_VS "VS2013")
+  endif()
   set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-${X_VS})
   message(STATUS "[xTools-iconv] Working directory: ${working_dir}")
 
@@ -85,27 +79,17 @@ if(WIN32)
                     WORKING_DIRECTORY ${working_dir})
   endif()
 
-  add_compile_definitions(X_ENABLE_ICONV)
-  include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name}/include)
-  link_directories(${lib_dir})
-  list(APPEND X_LIBS "libiconv-static")
-  set(X_ICONV_LIBS "libiconv-static")
+  if(EXISTS ${lib_dir}/libiconv.lib)
+    include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name}/include)
+    link_directories(${lib_dir})
+    list(APPEND X_LIBS libiconv-static)
+    add_compile_definitions(X_ENABLE_ICONV=1)
+  else()
+    add_compile_definitions(X_ENABLE_ICONV=0)
+  endif()
 elseif(APPLE)
-  set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name})
-  if(NOT EXISTS ${working_dir}/out/lib/libiconv.la)
-    execute_process(COMMAND ./configure --prefix=${working_dir}/out
-                    WORKING_DIRECTORY ${working_dir})
-    execute_process(COMMAND make WORKING_DIRECTORY ${working_dir})
-    execute_process(COMMAND make install WORKING_DIRECTORY ${working_dir})
-  endif()
-
-  execute_process(COMMAND ls -l WORKING_DIRECTORY ${working_dir}/out/lib)
-  if(EXISTS ${working_dir}/out/lib/libiconv.a)
-    add_compile_definitions(X_ENABLE_ICONV)
-    include_directories(${working_dir}/out/include)
-    link_directories(${working_dir}/out/lib)
-    list(APPEND X_LIBS ${working_dir}/out/lib/libiconv.a)
-  endif()
+  list(APPEND X_LIBS iconv)
+  add_compile_definitions(X_ENABLE_ICONV=1)
 else()
   set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name})
   if(NOT EXISTS ${working_dir}/out/lib/libiconv.so)
@@ -116,9 +100,11 @@ else()
   endif()
 
   if(EXISTS ${working_dir}/out/lib/libiconv.so)
-    add_compile_definitions(X_ENABLE_ICONV)
     include_directories(${working_dir}/out/include)
     link_directories(${working_dir}/out/lib)
-    list(APPEND X_LIBS "iconv")
+    list(APPEND X_LIBS iconv)
+    add_compile_definitions(X_ENABLE_ICONV=1)
+  else()
+    add_compile_definitions(X_ENABLE_ICONV=0)
   endif()
 endif()

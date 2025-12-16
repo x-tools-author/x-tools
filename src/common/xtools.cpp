@@ -57,7 +57,7 @@
 #include "utilities/crc.h"
 #include "utilities/escape.h"
 
-#ifdef X_ENABLE_ICONV
+#if X_ENABLE_ICONV
 #include <iconv.h>
 #endif
 
@@ -72,7 +72,7 @@ QList<int> xSupportedTextFormats()
         textFormats << static_cast<int>(TextFormat::HexWithoutSpace);
         textFormats << static_cast<int>(TextFormat::Ascii);
         textFormats << static_cast<int>(TextFormat::Utf8);
-#if defined(X_ENABLE_ICONV)
+#if X_ENABLE_ICONV
         textFormats << static_cast<int>(TextFormat::GB2312);
         textFormats << static_cast<int>(TextFormat::CSGB2312);
         textFormats << static_cast<int>(TextFormat::GBK);
@@ -132,7 +132,7 @@ void xSetupTextFormat(QComboBox *comboBox)
 
 QByteArray convertEncoding(const QByteArray &input, const char *fromCharset, const char *toCharset)
 {
-#if defined(X_ENABLE_ICONV)
+#if X_ENABLE_ICONV
     iconv_t cd = iconv_open(toCharset, fromCharset);
     if (cd == (iconv_t) -1) {
         return QByteArray();
@@ -195,7 +195,7 @@ QString xBytes2string(const QByteArray &bytes, int format)
     } else if (static_cast<int>(TextFormat::Utf8) == format) {
         return QString::fromUtf8(bytes);
     }
-#if defined(X_ENABLE_ICONV)
+#if X_ENABLE_ICONV
     else if (static_cast<int>(TextFormat::GB2312) == format) {
         QString name = xTextFormatName(TextFormat::GB2312);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
@@ -251,7 +251,7 @@ QByteArray xString2bytes(const QString &text, int format)
     } else if (format == static_cast<int>(TextFormat::Ascii)) {
         data = text.toLatin1();
     }
-#if defined(X_ENABLE_ICONV)
+#if X_ENABLE_ICONV
     else if (format == static_cast<int>(TextFormat::GB2312)) {
         QString name = xTextFormatName(TextFormat::GB2312);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
@@ -332,7 +332,7 @@ int print_encoding(unsigned int namescount, const char *const *names, void *data
 
 void xPrintSupportedIconvEncodings()
 {
-#ifdef X_ENABLE_ICONV
+#if X_ENABLE_ICONV
     iconvlist(print_encoding, nullptr);
 #else
     qWarning() << "Iconv is not enabled in this build.";
