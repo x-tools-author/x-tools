@@ -87,7 +87,7 @@ if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
 
   set(src_file ${X_LIBS_DIR}/${file_name}/lib/libzint.a)
   set(dst_file ${X_LIBS_DIR}/${file_name}/lib/libzint-static.a)
-  if(EXISTS ${X_LIBS_DIR}/${file_name}/lib/libzint.a)
+  if(EXISTS ${src_file})
     if(NOT EXISTS ${dst_file})
       execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src_file} ${dst_file})
     endif()
