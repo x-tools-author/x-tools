@@ -26,6 +26,7 @@ macro(x_remove_zint_files)
   endforeach()
 endmacro()
 
+# --------------------------------------------------------------------------------------------------
 if(ANDROID OR IOS)
   x_remove_zint_files()
   return()
@@ -48,6 +49,7 @@ if(MINGW)
   return()
 endif()
 
+# --------------------------------------------------------------------------------------------------
 # Download and unzip the Zint repository if it does not exist
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/${file_name}.zip")
   message(STATUS "[zint] Downloading Zint repository from ${file_url}...")
@@ -82,9 +84,9 @@ if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h" AND (WIN32 OR APPLE))
   if(WIN32)
     set(X_ZINT_LIBS zint::zint-static)
   elseif(APPLE)
-    execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different 
-                    ${X_LIBS_DIR}/${file_name}/lib/libzint.a 
-                    ${X_LIBS_DIR}/${file_name}/lib/libzint-static.a)
+    execute_process(
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${X_LIBS_DIR}/${file_name}/lib/libzint.a
+              ${X_LIBS_DIR}/${file_name}/lib/libzint-static.a)
     set(X_ZINT_LIBS zint)
   endif()
 else()
