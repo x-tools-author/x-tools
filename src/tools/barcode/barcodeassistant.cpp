@@ -9,7 +9,7 @@
 #include "barcodeassistant.h"
 #include "ui_barcodeassistant.h"
 
-#if defined(X_ZINT_USING_SRC)
+#if defined(X_USING_ZINT_SRC)
 #include <backend_qt/qzint.h>
 #else
 #include <qzint.h>
