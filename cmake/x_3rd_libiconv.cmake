@@ -9,6 +9,11 @@ if(MINGW)
   return()
 endif()
 
+if(LINUX OR ANDROID)
+  add_compile_definitions(X_ENABLE_ICONV=0)
+  return()
+endif()
+
 # --------------------------------------------------------------------------------------------------
 if(WIN32)
   set(iconv_version "1.18")
