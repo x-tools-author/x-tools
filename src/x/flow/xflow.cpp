@@ -40,6 +40,7 @@ struct xFlowParameterKeys
     const QString leftPanelVisible{"xFlow/leftPanelVisible"};
     const QString bottomPanelVisible{"xFlow/bottomPanelVisible"};
     const QString rulerVisible{"xFlow/rulerVisible"};
+    const QString gridVisible{"xFlow/gridVisible"};
 };
 
 xFlow::xFlow(QWidget *parent)
@@ -116,6 +117,7 @@ QJsonObject xFlow::save()
     obj.insert(keys.leftPanelVisible, m_actions.leftPanel->isChecked());
     obj.insert(keys.bottomPanelVisible, m_actions.bottomPanel->isChecked());
     obj.insert(keys.rulerVisible, m_actions.ruler->isChecked());
+    obj.insert(keys.gridVisible, m_actions.grid->isChecked());
     return obj;
 }
 
@@ -138,6 +140,10 @@ void xFlow::load(const QJsonObject &obj)
     ui->widgetNodeEditor->setRulerVisible(m_actions.ruler->isChecked());
 
     auto *view = ui->widgetNodeEditor->view();
+    bool gridVisible = obj.value(keys.gridVisible).toBool(true);
+    view->setGridVisible(gridVisible);
+    m_actions.grid->setChecked(gridVisible);
+
     auto *scene = view->cookedScene();
     if (scene->undoStack().canUndo()) {
         scene->undoStack().clear();
@@ -200,12 +206,15 @@ void xFlow::initToolBar()
     m_actions.leftPanel = m_toolBar->addAction(xIcon(":/res/icons/dock_to_right.svg"), tr("Toggle Left Panel"), this, &xFlow::onLeftPanel);
     m_actions.bottomPanel = m_toolBar->addAction(xIcon(":/res/icons/dock_to_bottom.svg"), tr("Toggle Bottom Panel"), this, &xFlow::onBottomPanel);
     m_actions.ruler = m_toolBar->addAction(xIcon(":/res/icons/design_services.svg"), tr("Show Ruler"), this, &xFlow::onRuler);
+    m_actions.grid = m_toolBar->addAction(xIcon(":/res/icons/grid_on.svg"), tr("Show Grid"), this, &xFlow::onGrid);
     m_actions.leftPanel->setCheckable(true);
     m_actions.leftPanel->setChecked(true);
     m_actions.bottomPanel->setCheckable(true);
     m_actions.bottomPanel->setChecked(true);
     m_actions.ruler->setCheckable(true);
     m_actions.ruler->setChecked(true);
+    m_actions.grid->setCheckable(true);
+    m_actions.grid->setChecked(true);
     m_toolBar->addSeparator();
     m_actions.newProject = m_toolBar->addAction(xIcon(":/res/icons/note_add.svg"), tr("New Project"), this, &xFlow::onNewProject);
     m_actions.openProject = m_toolBar->addAction(xIcon(":/res/icons/file_open.svg"), tr("Open Project"), this, &xFlow::onOpenProject);
@@ -380,6 +389,15 @@ void xFlow::onRuler()
     bool visible = m_actions.ruler->isChecked();
     ui->widgetHRuler->setVisible(visible);
     ui->widgetVRuler->setVisible(visible);
+}
+
+void xFlow::onGrid()
+{
+    bool visible = m_actions.grid->isChecked();
+    NodeEditorView *view = ui->widgetNodeEditor->view();
+    view->setGridVisible(visible);
+    view->hide();
+    view->show();
 }
 
 void xFlow::onUndo()

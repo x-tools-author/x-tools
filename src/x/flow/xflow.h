@@ -57,6 +57,7 @@ private:
         QAction *leftPanel{nullptr};
         QAction *bottomPanel{nullptr};
         QAction *ruler{nullptr};
+        QAction *grid{nullptr};
 
         QAction *newProject{nullptr};
         QAction *openProject{nullptr};
@@ -113,6 +114,7 @@ private:
     void onLeftPanel();
     void onBottomPanel();
     void onRuler();
+    void onGrid();
 
     void onUndo();
     void onRedo();
