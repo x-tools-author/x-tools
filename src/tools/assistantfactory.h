@@ -31,6 +31,7 @@ private:
         AssistantTypeFileMerge,
         AssistantTypeQRCode,
         AssistantTypeBarcode,
+        AssistantTypeTFTP,
         AssistantTypeCANBus = 100,
         AssistantTypeModbus
     };

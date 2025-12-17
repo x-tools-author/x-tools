@@ -9,7 +9,6 @@
 #include "tftp.h"
 #include "tftp_p.h"
 
-#include <QCollator>
 #include <QCoreApplication>
 #include <QCryptographicHash>
 #include <QDataStream>
@@ -17,978 +16,1305 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QMessageBox>
-#include <QMetaType>
-#include <QMutex>
-#include <QThread>
+#include <QRandomGenerator>
+#include <QStringList>
 #include <QtEndian>
 
-Tftp::Tftp(QObject *parent)
-    : QThread{parent}
+// TftpBasePrivate实现
+TftpBasePrivate::TftpBasePrivate(TftpBase *q_ptr)
+    : q_ptr(q_ptr)
 {
-    x_d_ptr = new TftpPrivate(this);
-
-    timeoutTimer = new QTimer();
-    timeoutTimer->setInterval(1000);
-    timeoutTimer->setSingleShot(true);
-    readBuf.clear();
-    connect(timeoutTimer, &QTimer::timeout, this, [&]() {
-        if (--retryCount <= 0) {
-            ////print << "\ntimeout\n";
-            clearStatus();
-            sendErrorCode(EBADOP);
-            retryCount = 3;
-        } else {
-            // 重新发送上一个数据包
-            if (sendBuf) {
-                int size = (int) (sptr - sendBuf);
-                QByteArray data(sendBuf, size);
-                udpSocket->writeDatagram(data, destAddress, destPort);
-            }
-            // 重新启动定时器
-            if (timeoutTimer) {
-                timeoutTimer->start();
-            }
-        }
-    });
-
-    sendBuf = new char[BUFFER_SIZE];
-    memset(sendBuf, 0, BUFFER_SIZE);
-    sptr = sendBuf;
-    setWorkPathSlots(QDir::currentPath());
-
-    if (!udpSocket) {
-        udpSocket = new QUdpSocket;
-        udpSocket->setSocketOption(QAbstractSocket::ReceiveBufferSizeSocketOption, 65536);
-
-        connect(udpSocket, &QUdpSocket::readyRead, this, &Tftp::readPendingDatagramsSlots);
-    }
+    init();
 }
 
-Tftp::~Tftp()
+TftpBasePrivate::~TftpBasePrivate()
 {
-    isRunningFlag = false;
-    if (this->isRunning()) {
-        this->exit(0);
-    }
-    clearStatus();
     if (udpSocket) {
-        QObject::disconnect(udpSocket,
-                            &QUdpSocket::readyRead,
-                            this,
-                            &Tftp::readPendingDatagramsSlots);
-        udpSocket->deleteLater();
+        udpSocket->close();
+        delete udpSocket;
         udpSocket = nullptr;
     }
-    if (file) {
-        file->close();
-        file->deleteLater();
-        file = nullptr;
-    }
+
     if (timeoutTimer) {
         timeoutTimer->stop();
-        timeoutTimer->deleteLater();
+        delete timeoutTimer;
         timeoutTimer = nullptr;
     }
-    if (sendBuf) {
-        delete[] sendBuf;
-        sendBuf = nullptr;
-    }
 }
 
-void Tftp::run()
+void TftpBasePrivate::init()
 {
-    on_recvfrom();
+    udpSocket = new QUdpSocket;
+    udpSocket->setSocketOption(QAbstractSocket::ReceiveBufferSizeSocketOption, MAX_BUFFER_SIZE);
+
+    timeoutTimer = new QTimer;
+    timeoutTimer->setInterval(TIMEOUT_INTERVAL);
+    timeoutTimer->setSingleShot(true);
+
+    retryCount = MAX_RETRY_COUNT;
 }
 
-void Tftp::setWorkPathSlots(QString path)
+// TftpBase实现
+TftpBase::TftpBase(QObject *parent)
+    : QObject(parent)
+    , d_ptr(new TftpBasePrivate(this))
 {
-    curFilePath = path;
-    if (!curFilePath.endsWith('/')) {
-        curFilePath += '/';
-    }
+    X_D(TftpBase);
+
+    connect(d->timeoutTimer, &QTimer::timeout, this, &TftpBase::handleTimeout);
+    connect(d->udpSocket, &QUdpSocket::readyRead, this, &TftpBase::processPendingDatagrams);
 }
 
-void Tftp::readPendingDatagramsSlots()
+TftpBase::~TftpBase()
 {
-    if (!this->isRunning())
-        this->start();
-    this->dataAvalivabe = true;
-}
-void Tftp::printProcess(int maxValue, int curValue)
-{
-    if (curValue <= 0 || maxValue <= 0)
-        return;
-    int progress = (((float) curValue / (float) maxValue)) * 100;
-    if (progress != progress_bak) {
-        progress_bak = progress;
-        emit transferProgressSignal(curFilePath + pre_filePath, curValue, maxValue, 0);
-        ////print << __FUNCTION__ << progress;
-    }
+    X_D(TftpBase);
+    delete d;
 }
 
-void Tftp::setPortSlots(int port)
+QUdpSocket *TftpBase::udpSocket() const
 {
-    this->port = port;
-    udpSocket->disconnectFromHost();
-    if (udpSocket->bind(QHostAddress::Any, this->port) == false) {
-        QString msg = "bind port 69 failed";
-        ////print << msg;
-        emit tftpErrorSignal(msg);
-    } else {
-        ////print << "bind port 69 success";
-        initFlag = true;
-    }
+    X_D(const TftpBase);
+    return d->udpSocket;
 }
 
-void Tftp::on_recvfrom()
+void TftpBase::sendDatagram(const QByteArray &data, const QHostAddress &address, quint16 port)
 {
-    while (isRunningFlag) {
-        if (isClientMode) {
-            processClientDatagram();
-        } else {
-            if (!initFlag) {
-                if (udpSocket->bind(QHostAddress::Any, this->port) == false) {
-                    //print << "bind port 69 failed";
-                    QString msg = "bind port 69 failed";
-                    //print << msg;
-                    emit tftpErrorSignal(msg);
-                    break;
-                } else {
-                    //print << "bind port 69 success";
-                    initFlag = true;
-                }
-            }
-            //         if(this->dataAvalivabe==false)
-            //             continue;
-            uint16_t code, cmd = 0;
-            char *ptr;
+    X_D(TftpBase);
 
-            int readLen = 0, pos = 0;
-            uint16_t index = 0;
-            bool ok = false;
-            retryCount = 3;
-            uint32_t readbytes = 0;
-            uint16_t block_current_index = 0;
-            while (udpSocket->hasPendingDatagrams()) {
-                datagram = udpSocket->receiveDatagram();
-                if (!datagram.isValid()) {
-                    //print << __LINE__;
-                    continue;
-                }
-                destAddress = datagram.senderAddress();
-                destPort = datagram.senderPort();
-                //print << __LINE__ << destAddress << destPort;
-                readBuf.clear();
-                readBuf = datagram.data();
-                datagram.clear();
-                ptr = readBuf.data();
-                code = ((ptr[0] >> 8) & 0xff) | (ptr[1] & 0xff);
-                pos += 2;
-                //print << __LINE__ << code;
+    // 保存最后发送的数据和地址
+    d->lastSentData = data;
+    d->lastSentAddress = address;
+    d->lastSentPort = port;
 
-                switch (code) {
-                case _RRQ:
-                case _WRQ:
-                    pre_filePath = &ptr[pos];
-                    //print << "file name is " + curFilePath + pre_filePath;
-                    pos += pre_filePath.length() + 1;
-                    if (code == _WRQ) {
-                        QFileInfo info(curFilePath + pre_filePath);
-
-                        if (info.isDir()) {
-                            sendErrorCode(EACCESS);
-                            clearStatus();
-                            break;
-                        }
-                        file = new QFile(curFilePath + pre_filePath);
-                        file->open(QIODevice::WriteOnly | QIODevice::Truncate);
-                        if (!file) {
-                            sendErrorCode(ENOTFOUND);
-                            clearStatus();
-                            break;
-                        }
-                    } else {
-                        /*获取文件信息，把信息放到s_buf中*/
-                        QFileInfo info(curFilePath + pre_filePath);
-
-                        if (info.isDir()) {
-                            sendErrorCode(ENOTFOUND);
-                            clearStatus();
-                            break;
-                        }
-                        file = new QFile(curFilePath + pre_filePath);
-                        file->open(QIODevice::ReadOnly);
-                        if (!file) {
-                            sendErrorCode(ENOTFOUND);
-                            clearStatus();
-                            break;
-                        }
-                    }
-
-                    while (1) {
-                        if (pos >= readBuf.count())
-                            break;
-                        QString tmp = "";
-                        tmp = &ptr[pos];
-                        if (tmp == "octet") {
-                            transportType = OCTET;
-                            pos += tmp.length() + 1;
-                        } else if (tmp == "tsize") {
-                            pos += (int) strlen("tsize") + 1;
-                            tmp = "";
-                            tmp = &ptr[pos];
-                            file_size = tmp.toUInt(&ok, 10);
-                            if (!ok) {
-                                sendErrorCode(EUNDEF);
-                                if (file)
-                                    file->close();
-                                clearStatus();
-                                return;
-                            }
-                            totalSize = file_size;
-                            char tt[256] = {0};
-                            pos += sprintf(tt, "%d", file_size) + 1;
-                            //print << __LINE__ << file_size;
-                        } else if (tmp == "timeout") {
-                            pos += (int) strlen("timeout") + 1;
-                            tmp = "";
-                            tmp = &ptr[pos];
-                            timeout = tmp.toUInt(&ok, 10);
-                            if (!ok) {
-                                sendErrorCode(EUNDEF);
-                                if (file)
-                                    file->close();
-                                clearStatus();
-                                return;
-                            }
-                            char tt[256] = {0};
-                            pos += sprintf(tt, "%d", timeout) + 1;
-                            //print << QString::asprintf("timeout:%d\n", timeout);
-                            timeoutTimer->setInterval(timeout * 1000);
-                        } else if (tmp == "blksize") {
-                            pos += (int) strlen("blksize") + 1;
-                            tmp = "";
-                            tmp = &ptr[pos];
-                            blockSize = tmp.toUInt(&ok, 10);
-                            if (!ok) {
-                                sendErrorCode(EUNDEF);
-                                if (file)
-                                    file->close();
-                                clearStatus();
-                                return;
-                            }
-                            char tt[256] = {0};
-                            ptr += sprintf(tt, "%d", blockSize) + 1;
-                            //print << __LINE__ << blockSize;
-                        } else {
-                            sendErrorCode(EUNDEF);
-                            if (file)
-                                file->close();
-                            clearStatus();
-                            return;
-                        }
-                    }
-                    if (timeoutTimer) {
-                        timeoutTimer->start();
-                    }
-
-                    cmd = qToBigEndian((uint16_t) _OACK);
-                    memset(sendBuf, 0, BUFFER_SIZE);
-                    sptr = sendBuf;
-                    memcpy(sptr, &cmd, 2);
-                    sptr += 2;
-                    memcpy(sptr, "tsize", strlen("tsize"));
-                    sptr += strlen("tsize") + 1;
-                    if (code == _RRQ) {
-                        file_size = getFileSize(curFilePath + pre_filePath);
-                        //print << __LINE__ << file_size;
-                        totalSize = file_size;
-                    } else {
-                    }
-                    sptr += sprintf(sptr, "%d", file_size);
-                    sptr++;
-                    if (timeout) {
-                        memcpy(sptr, "timeout", strlen("timeout"));
-                        sptr += strlen("timeout") + 1;
-                        sptr += sprintf(sptr, "%d", timeout);
-                        sptr++;
-                        //print << QString::asprintf("111timeout:%d\n", timeout);
-                    }
-                    if (blockSize) {
-                        memcpy(sptr, "blksize", strlen("blksize"));
-                        sptr += strlen("blksize") + 1;
-                        sptr += sprintf(sptr, "%d", blockSize);
-                        sptr++;
-                        //print << __LINE__ << blockSize;
-                    } else {
-                        blockSize = BLOCK_SIZE;
-                        //print << __LINE__ << blockSize;
-                    }
-                    {
-                        QByteArray data = QByteArray(sendBuf, (uint32_t) (sptr - sendBuf));
-                        //print << __LINE__ << data;
-
-                        udpSocket->writeDatagram(data.data(), data.count(), destAddress, destPort);
-                    }
-                    break; // read request
-                case _DATA:
-                    //print << "_DATA\n";
-                    if (!file) {
-                        timeoutTimer->stop();
-                        sendErrorCode(ENOTFOUND);
-                        clearStatus();
-                        break;
-                    }
-                    readbytes = readBuf.count() - 4;
-                    pos += 2;
-
-                    memset(sendBuf, 0, BUFFER_SIZE);
-                    sptr = sendBuf;
-                    printProcess(totalSize, totalSize - file_size);
-                    code = qToBigEndian((uint16_t) _ACK);
-                    memcpy(sptr, &code, 2);
-                    sptr += 2;
-                    memcpy(&block_current_index, &ptr[pos - 2], 2);
-                    memcpy(sptr, &block_current_index, 2);
-
-                    sptr += 2;
-                    if (qToBigEndian(block_current_index) == blockIndex) {
-                        //print << __LINE__ << qToBigEndian(block_current_index) << blockIndex;
-
-                        blockIndex++;
-                        if (readbytes >= blockSize) {
-                            readLen = file->write(&ptr[pos], blockSize);
-                            if (readLen < 0) {
-                                sendErrorCode(ENOTFOUND);
-                                clearStatus();
-                                break;
-                            }
-                            file_size -= readLen;
-
-                            //print << "writing" << __LINE__ << file_size << readLen << readbytes;
-                        } else {
-                            readLen = file->write(&ptr[pos], readbytes);
-                            if (readLen < 0) {
-                                sendErrorCode(ENOTFOUND);
-                                clearStatus();
-                                break;
-                            }
-                            file_size -= readLen;
-                            //print << "write finished" << __LINE__ << file_size << readLen;
-                            // if(file_size<=0)
-                            {
-                                file->close();
-                                timeoutTimer->stop();
-                                endtftp = 1;
-                            }
-                        }
-                    }
-
-                    {
-                        QByteArray data = QByteArray(sendBuf, (uint32_t) (sptr - sendBuf));
-                        //print << __LINE__;
-                        //print << __LINE__ << destAddress << destPort;
-                        udpSocket->writeDatagram(data.data(), data.count(), destAddress, destPort);
-                    }
-                    if (endtftp) {
-                        timeoutTimer->stop();
-
-                        printProcess(totalSize, totalSize);
-                        //print << "\ntftp done\n";
-                        clearStatus();
-                    }
-                    break; // data packet
-                case _ACK:
-                    if (endtftp) {
-                        timeoutTimer->stop();
-
-                        printProcess(totalSize, totalSize);
-                        //print << "\ntftp done\n";
-                        clearStatus();
-                        break;
-                    }
-                    if (!file) {
-                        sendErrorCode(ENOTFOUND);
-                        break;
-                    }
-                    memset(sendBuf, 0, BUFFER_SIZE);
-                    sptr = sendBuf;
-                    if (file_size < blockSize) {
-                        readLen = file->read(sptr + 4, file_size);
-                        readLen = file_size;
-                        endtftp = 1;
-                        file->close();
-                    } else {
-                        readLen = file->read(sptr + 4, blockSize);
-                        //readLen = blockSize*readLen;
-                    }
-                    //timerout->start();
-                    file_size -= readLen;
-                    //print << __LINE__ << _DATA << "blocksize" << blockSize << readLen;
-                    code = qToBigEndian((uint16_t) _DATA);
-                    //print << __LINE__ << code;
-                    memcpy(sptr, &code, 2);
-                    sptr += 2;
-                    index = qToBigEndian((uint16_t) blockIndex);
-                    //print << __LINE__ << index;
-                    memcpy(sptr, &index, 2);
-                    sptr += 2;
-                    blockIndex++;
-                    sptr += readLen;
-                    {
-                        QByteArray data = QByteArray(sendBuf, (uint32_t) (sptr - sendBuf));
-                        //print << __LINE__ << (uint32_t) (sptr - sendBuf);
-                        //print << __LINE__ << destAddress << destPort;
-                        udpSocket->writeDatagram(data.data(), data.count(), destAddress, destPort);
-                    }
-                    printProcess(totalSize, totalSize - file_size);
-
-                    break; // acknowledgement
-                case _ERROR:
-                    timeoutTimer->stop();
-
-                    //print << ("_ERROR\n");
-                    clearStatus();
-                    //print << "error!\r\n";
-                    break; // error code
-                case _OACK:
-                    // if(timer)
-                    // 	htimer_del(timer);
-                    //print << ("_OACK\n");
-                    break;
-                default:
-                    // if(timer)
-                    // 	htimer_del(timer);
-                    //print << ("default\n");
-                    break;
-                }
-            }
-        }
-    }
-}
-
-// 客户端功能实现
-void Tftp::setClientMode(bool clientMode)
-{
-    isClientMode = clientMode;
-    if (isClientMode) {
-        // 在客户端模式下，我们不绑定到特定端口，让系统自动分配
-        if (udpSocket->state() == QAbstractSocket::BoundState) {
-            udpSocket->close();
-        }
-        initFlag = true; // 客户端模式下不需要绑定初始化
-    }
-}
-
-void Tftp::setDestinationAddress(const QHostAddress &address, quint16 port)
-{
-    destAddress = address;
-    destPort = port;
-}
-
-void Tftp::startDownload(const QString &remoteFileName, const QString &localFileName)
-{
-    if (!isClientMode) {
-        emit tftpErrorSignal("Must be in client mode to start download");
-        return;
-    }
-
-    clearStatus();
-    isClientMode = true;
-
-    // 设置本地文件名
-    QString localPath = localFileName.isEmpty() ? remoteFileName : localFileName;
-    pre_filePath = localPath;
-
-    // 打开本地文件用于写入
-    file = new QFile(curFilePath + localPath);
-    if (!file->open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        emit tftpErrorSignal(
-            QString("Failed to open local file for writing: %1").arg(curFilePath + localPath));
-        delete file;
-        file = nullptr;
-        return;
-    }
-
-    // 发送RRQ请求
-    sendRRQ(remoteFileName);
-}
-
-void Tftp::startUpload(const QString &localFileName, const QString &remoteFileName)
-{
-    if (!isClientMode) {
-        emit tftpErrorSignal("Must be in client mode to start upload");
-        return;
-    }
-
-    clearStatus();
-    isClientMode = true;
-
-    // 检查本地文件是否存在
-    QFileInfo fileInfo(curFilePath + localFileName);
-    if (!fileInfo.exists() || fileInfo.isDir()) {
-        emit tftpErrorSignal(QString("Local file not found: %1").arg(curFilePath + localFileName));
-        return;
-    }
-
-    // 设置文件名
-    QString remotePath = remoteFileName.isEmpty() ? localFileName : remoteFileName;
-    pre_filePath = remotePath;
-
-    // 打开本地文件用于读取
-    file = new QFile(curFilePath + localFileName);
-    if (!file->open(QIODevice::ReadOnly)) {
-        emit tftpErrorSignal(
-            QString("Failed to open local file for reading: %1").arg(curFilePath + localFileName));
-        delete file;
-        file = nullptr;
-        return;
-    }
-
-    // 获取文件大小
-    file_size = file->size();
-    totalSize = file_size;
-
-    // 发送WRQ请求
-    sendWRQ(remotePath);
-}
-
-void Tftp::sendRRQ(const QString &fileName)
-{
-    uint16_t cmd = qToBigEndian((uint16_t) _RRQ);
-    memset(sendBuf, 0, BUFFER_SIZE);
-    sptr = sendBuf;
-
-    // 写入命令
-    memcpy(sptr, &cmd, 2);
-    sptr += 2;
-
-    // 写入文件名
-    memcpy(sptr, fileName.toLatin1().constData(), fileName.length());
-    sptr += fileName.length() + 1;
-
-    // 写入模式
-    memcpy(sptr, "octet", 5);
-    sptr += 6;
-
-    // 写入tsize选项
-    memcpy(sptr, "tsize", 5);
-    sptr += 6;
-    sptr += sprintf(sptr, "0");
-    sptr++;
-
-    // 写入blksize选项
-    memcpy(sptr, "blksize", 7);
-    sptr += 8;
-    sptr += sprintf(sptr, "512");
-    sptr++;
-
-    // 发送数据包
-    QByteArray data(sendBuf, (int) (sptr - sendBuf));
-    udpSocket->writeDatagram(data, destAddress, destPort);
+    // 发送数据
+    d->udpSocket->writeDatagram(data, address, port);
 
     // 启动超时定时器
-    timeoutTimer->start();
+    d->retryCount = MAX_RETRY_COUNT;
+    d->timeoutTimer->start();
 }
 
-void Tftp::sendWRQ(const QString &fileName)
+void TftpBase::sendErrorCode(TftpErrorCode code,
+                             const QString &message,
+                             const QHostAddress &address,
+                             quint16 port)
 {
-    uint16_t cmd = qToBigEndian((uint16_t) _WRQ);
-    memset(sendBuf, 0, BUFFER_SIZE);
-    sptr = sendBuf;
+    QByteArray data;
+    QDataStream stream(&data, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::BigEndian);
 
-    // 写入命令
-    memcpy(sptr, &cmd, 2);
-    sptr += 2;
+    // 写入操作码
+    quint16 opcode = ERROR;
+    stream << opcode;
+
+    // 写入错误码
+    quint16 errorCode = static_cast<quint16>(code);
+    stream << errorCode;
+
+    // 写入错误消息
+    data.append(message.toUtf8());
+    data.append('\0');
+
+    // 发送错误消息
+    sendDatagram(data, address, port);
+}
+
+QMap<QString, QString> TftpBase::parseTftpOptions(const char *data, quint32 dataLength)
+{
+    QMap<QString, QString> options;
+
+    const char *ptr = data;
+    const char *end = data + dataLength;
+
+    // 跳过文件名和模式
+    while (ptr < end && *ptr != '\0') {
+        ptr++;
+    }
+    if (ptr < end) {
+        ptr++;
+    }
+
+    while (ptr < end && *ptr != '\0') {
+        ptr++;
+    }
+    if (ptr < end) {
+        ptr++;
+    }
+
+    // 解析选项
+    while (ptr < end) {
+        const char *keyStart = ptr;
+        while (ptr < end && *ptr != '\0') {
+            ptr++;
+        }
+        if (ptr >= end) {
+            break;
+        }
+        QString key(keyStart, ptr - keyStart);
+        ptr++;
+
+        const char *valueStart = ptr;
+        while (ptr < end && *ptr != '\0') {
+            ptr++;
+        }
+        if (ptr >= end) {
+            break;
+        }
+        QString value(valueStart, ptr - valueStart);
+        ptr++;
+
+        options.insert(key, value);
+    }
+
+    return options;
+}
+
+QByteArray TftpBase::createTftpOptions(const QMap<QString, QString> &options)
+{
+    QByteArray result;
+
+    for (auto it = options.constBegin(); it != options.constEnd(); ++it) {
+        result.append(it.key().toUtf8());
+        result.append('\0');
+        result.append(it.value().toUtf8());
+        result.append('\0');
+    }
+
+    return result;
+}
+
+QString TftpBase::calculateFileMd5(const QString &filePath)
+{
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return QString();
+    }
+
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    if (!hash.addData(&file)) {
+        return QString();
+    }
+
+    return hash.result().toHex();
+}
+
+QString TftpBase::generateSessionId()
+{
+    QDateTime now = QDateTime::currentDateTime();
+    qint64 timestamp = now.toMSecsSinceEpoch();
+    quint32 random = QRandomGenerator::global()->generate();
+
+    QString sessionId = QString("%1-%2").arg(timestamp).arg(random, 8, 16, QChar('0'));
+    return sessionId;
+}
+
+// TftpClientPrivate实现
+TftpClientPrivate::TftpClientPrivate(TftpClient *q_ptr)
+    : q_ptr(q_ptr)
+{
+    init();
+}
+
+TftpClientPrivate::~TftpClientPrivate()
+{
+    resetTransferState();
+}
+
+void TftpClientPrivate::init()
+{
+    serverPort = DEFAULT_TFTP_PORT;
+    localWorkPath = QDir::currentPath();
+    resetTransferState();
+}
+
+void TftpClientPrivate::resetTransferState()
+{
+    if (file) {
+        file->close();
+        delete file;
+        file = nullptr;
+    }
+
+    currentFileName.clear();
+    fileSize = 0;
+    transferredBytes = 0;
+    blockIndex = 1;
+    blockSize = DEFAULT_BLOCK_SIZE;
+    sessionState = TftpSessionState::Idle;
+    isTransferring = false;
+}
+
+// TftpClient实现
+TftpClient::TftpClient(QObject *parent)
+    : TftpBase(parent)
+    , d_ptr(new TftpClientPrivate(this))
+{}
+
+TftpClient::~TftpClient()
+{
+    X_D(TftpClient);
+    delete d;
+}
+
+void TftpClient::setServerAddress(const QHostAddress &address, quint16 port)
+{
+    X_D(TftpClient);
+    d->serverAddress = address;
+    d->serverPort = port;
+}
+
+void TftpClient::setLocalWorkPath(const QString &path)
+{
+    X_D(TftpClient);
+    d->localWorkPath = path;
+}
+
+bool TftpClient::downloadFile(const QString &remoteFileName, const QString &localFileName)
+{
+    X_D(TftpClient);
+
+    if (d->isTransferring) {
+        emit errorOccurred(tr("Another transfer is already in progress"));
+        return false;
+    }
+
+    // 重置传输状态
+    d->resetTransferState();
+
+    // 确定本地文件名
+    QString localFile = localFileName;
+    if (localFile.isEmpty()) {
+        QFileInfo info(remoteFileName);
+        localFile = info.fileName();
+    }
+
+    // 构建完整的本地文件路径
+    QString filePath = QDir(d->localWorkPath).filePath(localFile);
+
+    // 检查文件是否已存在
+    if (QFile::exists(filePath)) {
+        emit errorOccurred(tr("File already exists: %1").arg(filePath));
+        return false;
+    }
+
+    // 创建文件
+    d->file = new QFile(filePath);
+    if (!d->file->open(QIODevice::WriteOnly)) {
+        emit errorOccurred(tr("Failed to open file for writing: %1").arg(filePath));
+        delete d->file;
+        d->file = nullptr;
+        return false;
+    }
+
+    // 设置传输状态
+    d->currentFileName = localFile;
+    d->sessionState = TftpSessionState::ReadRequestSent;
+    d->isTransferring = true;
+    d->transferStartTime = QDateTime::currentDateTime();
+
+    // 创建RRQ请求
+    QByteArray request;
+    QDataStream stream(&request, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::BigEndian);
+
+    // 写入操作码
+    quint16 opcode = RRQ;
+    stream << opcode;
 
     // 写入文件名
-    memcpy(sptr, fileName.toLatin1().constData(), fileName.length());
-    sptr += fileName.length() + 1;
+    request.append(remoteFileName.toUtf8());
+    request.append('\0');
 
     // 写入模式
-    memcpy(sptr, "octet", 5);
-    sptr += 6;
+    request.append(TFTP_MODE_OCTET);
+    request.append('\0');
 
-    // 写入tsize选项
-    memcpy(sptr, "tsize", 5);
-    sptr += 6;
-    sptr += sprintf(sptr, "%d", file_size);
-    sptr++;
+    // 写入选项
+    QMap<QString, QString> options;
+    options.insert(TFTP_OPTION_BLOCK_SIZE, QString::number(DEFAULT_BLOCK_SIZE));
+    options.insert(TFTP_OPTION_TIMEOUT, QString::number(TIMEOUT_INTERVAL / 1000));
+    request.append(createTftpOptions(options));
 
-    // 写入blksize选项
-    memcpy(sptr, "blksize", 7);
-    sptr += 8;
-    sptr += sprintf(sptr, "512");
-    sptr++;
+    // 发送请求
+    sendDatagram(request, d->serverAddress, d->serverPort);
 
-    // 发送数据包
-    QByteArray data(sendBuf, (int) (sptr - sendBuf));
-    udpSocket->writeDatagram(data, destAddress, destPort);
-
-    // 启动超时定时器
-    timeoutTimer->start();
+    return true;
 }
 
-void Tftp::processClientDatagram()
+bool TftpClient::uploadFile(const QString &localFileName, const QString &remoteFileName)
 {
-    while (udpSocket->hasPendingDatagrams()) {
-        datagram = udpSocket->receiveDatagram();
-        if (!datagram.isValid()) {
+    X_D(TftpClient);
+
+    if (d->isTransferring) {
+        emit errorOccurred(tr("Another transfer is already in progress"));
+        return false;
+    }
+
+    // 重置传输状态
+    d->resetTransferState();
+
+    // 构建完整的本地文件路径
+    QString filePath = QDir(d->localWorkPath).filePath(localFileName);
+
+    // 检查文件是否存在
+    if (!QFile::exists(filePath)) {
+        emit errorOccurred(tr("File not found: %1").arg(filePath));
+        return false;
+    }
+
+    // 打开文件
+    d->file = new QFile(filePath);
+    if (!d->file->open(QIODevice::ReadOnly)) {
+        emit errorOccurred(tr("Failed to open file for reading: %1").arg(filePath));
+        delete d->file;
+        d->file = nullptr;
+        return false;
+    }
+
+    // 设置传输状态
+    d->fileSize = d->file->size();
+    d->currentFileName = remoteFileName.isEmpty() ? QFileInfo(filePath).fileName() : remoteFileName;
+    d->sessionState = TftpSessionState::WriteRequestSent;
+    d->isTransferring = true;
+    d->transferStartTime = QDateTime::currentDateTime();
+
+    // 创建WRQ请求
+    QByteArray request;
+    QDataStream stream(&request, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::BigEndian);
+
+    // 写入操作码
+    quint16 opcode = WRQ;
+    stream << opcode;
+
+    // 写入文件名
+    request.append(d->currentFileName.toUtf8());
+    request.append('\0');
+
+    // 写入模式
+    request.append(TFTP_MODE_OCTET);
+    request.append('\0');
+
+    // 写入选项
+    QMap<QString, QString> options;
+    options.insert(TFTP_OPTION_BLOCK_SIZE, QString::number(DEFAULT_BLOCK_SIZE));
+    options.insert(TFTP_OPTION_TIMEOUT, QString::number(TIMEOUT_INTERVAL / 1000));
+    options.insert(TFTP_OPTION_TRANSFER_SIZE, QString::number(d->fileSize));
+    request.append(createTftpOptions(options));
+
+    // 发送请求
+    sendDatagram(request, d->serverAddress, d->serverPort);
+
+    return true;
+}
+
+void TftpClient::stop()
+{
+    X_D(TftpClient);
+
+    if (!d->isTransferring) {
+        return;
+    }
+
+    // 重置传输状态
+    d->resetTransferState();
+}
+
+bool TftpClient::isTransferring() const
+{
+    X_D(const TftpClient);
+    return d->isTransferring;
+}
+
+void TftpClient::processPendingDatagrams()
+{
+    X_D(TftpClient);
+
+    while (udpSocket()->hasPendingDatagrams()) {
+        QByteArray datagram;
+        QHostAddress senderAddress;
+        quint16 senderPort;
+
+        datagram.resize(udpSocket()->pendingDatagramSize());
+        udpSocket()->readDatagram(datagram.data(), datagram.size(), &senderAddress, &senderPort);
+
+        // 检查是否是来自服务器的数据包
+        if (senderAddress != d->serverAddress) {
             continue;
         }
 
-        // 重置定时器和重试计数
-        if (timeoutTimer) {
-            timeoutTimer->stop();
+        // 解析数据包
+        QDataStream stream(&datagram, QIODevice::ReadOnly);
+        stream.setByteOrder(QDataStream::BigEndian);
+
+        quint16 opcode;
+        stream >> opcode;
+
+        switch (opcode) {
+        case DATA: {
+            // 处理DATA数据包
+            if (d->sessionState != TftpSessionState::Transferring) {
+                d->sessionState = TftpSessionState::Transferring;
+            }
+
+            quint16 blockNumber;
+            stream >> blockNumber;
+
+            // 检查块号是否正确
+            if (blockNumber != d->blockIndex) {
+                // 块号不正确，忽略此数据包
+                continue;
+            }
+
+            // 读取数据
+            QByteArray data = datagram.mid(4);
+            qint64 bytesWritten = d->file->write(data);
+
+            if (bytesWritten != data.size()) {
+                emit errorOccurred(tr("Failed to write data to file"));
+                stop();
+                return;
+            }
+
+            // 更新传输状态
+            d->transferredBytes += bytesWritten;
+            d->blockIndex++;
+
+            // 发送ACK
+            QByteArray ackData;
+            QDataStream ackStream(&ackData, QIODevice::WriteOnly);
+            ackStream.setByteOrder(QDataStream::BigEndian);
+            ackStream << static_cast<quint16>(ACK);
+            ackStream << blockNumber;
+
+            sendDatagram(ackData, senderAddress, senderPort);
+
+            // 计算进度
+            int speed = 0;
+            if (!d->transferStartTime.isNull()) {
+                qint64 elapsed = d->transferStartTime.msecsTo(QDateTime::currentDateTime());
+                if (elapsed > 0) {
+                    speed = static_cast<int>((d->transferredBytes * 1000.0) / elapsed);
+                }
+            }
+
+            // 发送进度信号
+            emit progressChanged(d->currentFileName, d->transferredBytes, d->fileSize, speed);
+
+            // 检查是否传输完成
+            if (data.size() < d->blockSize) {
+                // 传输完成
+                d->file->close();
+                delete d->file;
+                d->file = nullptr;
+
+                d->sessionState = TftpSessionState::Completed;
+                d->isTransferring = false;
+
+                emit transferCompleted(d->currentFileName);
+            }
+
+            break;
         }
-        retryCount = 3;
+        case ACK: {
+            // 处理ACK数据包
+            quint16 blockNumber;
+            stream >> blockNumber;
 
-        // 更新目标地址和端口（用于后续通信）
-        destAddress = datagram.senderAddress();
-        destPort = datagram.senderPort();
+            // 检查是否是对写入请求的ACK
+            if (d->sessionState == TftpSessionState::WriteRequestSent) {
+                d->sessionState = TftpSessionState::Transferring;
+            }
 
-        readBuf = datagram.data();
-        datagram.clear();
+            // 检查块号
+            if (blockNumber != d->blockIndex - 1) {
+                // 块号不正确，忽略此数据包
+                continue;
+            }
 
-        uint16_t code = 0;
-        char *ptr = readBuf.data();
-        memcpy(&code, ptr, 2);
-        code = qFromBigEndian(code);
+            // 读取下一个数据块
+            QByteArray data = d->file->read(d->blockSize);
 
-        int pos = 2;
-        uint16_t block_current_index = 0;
-        int readLen = 0;
-        uint32_t readbytes = 0;
+            if (data.isEmpty()) {
+                // 文件读取完成
+                if (d->file->atEnd()) {
+                    // 发送最后一个数据包
+                    if (blockNumber == 0) {
+                        // 如果文件为空，发送一个空的数据块
+                        QByteArray emptyData;
+                        QDataStream emptyStream(&emptyData, QIODevice::WriteOnly);
+                        emptyStream.setByteOrder(QDataStream::BigEndian);
+                        emptyStream << static_cast<quint16>(DATA);
+                        emptyStream << static_cast<quint16>(d->blockIndex);
 
-        switch (code) {
-        case _OACK:
-            // 处理OACK响应
-            while (pos < readBuf.count()) {
-                QString option = &ptr[pos];
-                pos += option.length() + 1;
+                        sendDatagram(emptyData, senderAddress, senderPort);
+                    } else {
+                        // 传输完成
+                        d->file->close();
+                        delete d->file;
+                        d->file = nullptr;
 
-                if (option == "tsize") {
-                    QString value = &ptr[pos];
-                    file_size = value.toUInt();
-                    totalSize = file_size;
-                    pos += value.length() + 1;
-                } else if (option == "blksize") {
-                    QString value = &ptr[pos];
-                    blockSize = value.toUInt();
-                    if (blockSize == 0) {
-                        blockSize = BLOCK_SIZE;
+                        d->sessionState = TftpSessionState::Completed;
+                        d->isTransferring = false;
+
+                        emit transferCompleted(d->currentFileName);
                     }
-                    pos += value.length() + 1;
-                } else if (option == "timeout") {
-                    QString value = &ptr[pos];
-                    timeout = value.toInt();
-                    timeoutTimer->setInterval(timeout * 1000);
-                    pos += value.length() + 1;
                 } else {
-                    // 未知选项，跳过
-                    pos += strlen(&ptr[pos]) + 1;
+                    // 读取错误
+                    emit errorOccurred(tr("Failed to read data from file"));
+                    stop();
+                }
+                return;
+            }
+
+            // 创建DATA数据包
+            QByteArray dataPacket;
+            QDataStream dataStream(&dataPacket, QIODevice::WriteOnly);
+            dataStream.setByteOrder(QDataStream::BigEndian);
+            dataStream << static_cast<quint16>(DATA);
+            dataStream << static_cast<quint16>(d->blockIndex);
+            dataStream.writeRawData(data.data(), data.size());
+
+            // 发送DATA数据包
+            sendDatagram(dataPacket, senderAddress, senderPort);
+
+            // 更新传输状态
+            d->transferredBytes += data.size();
+            d->blockIndex++;
+
+            // 计算进度
+            int speed = 0;
+            if (!d->transferStartTime.isNull()) {
+                qint64 elapsed = d->transferStartTime.msecsTo(QDateTime::currentDateTime());
+                if (elapsed > 0) {
+                    speed = static_cast<int>((d->transferredBytes * 1000.0) / elapsed);
                 }
             }
 
-            // 如果是上传，发送第一个数据包
-            if (file && file->openMode() == QIODevice::ReadOnly) {
-                // 发送第一个数据包
-                memset(sendBuf, 0, BUFFER_SIZE);
-                sptr = sendBuf;
+            // 发送进度信号
+            emit progressChanged(d->currentFileName, d->transferredBytes, d->fileSize, speed);
 
-                uint16_t dataCmd = qToBigEndian((uint16_t) _DATA);
-                memcpy(sptr, &dataCmd, 2);
-                sptr += 2;
+            break;
+        }
+        case OACK: {
+            // 处理OACK数据包
+            QMap<QString, QString> options = parseTftpOptions(datagram.constData(), datagram.size());
 
-                uint16_t blockNum = qToBigEndian((uint16_t) 1);
-                memcpy(sptr, &blockNum, 2);
-                sptr += 2;
+            // 解析块大小选项
+            if (options.contains(TFTP_OPTION_BLOCK_SIZE)) {
+                bool ok;
+                quint16 blksize = options.value(TFTP_OPTION_BLOCK_SIZE).toUShort(&ok);
+                if (ok && blksize > 0 && blksize <= 65464) {
+                    d->blockSize = blksize;
+                }
+            }
 
-                int bytesRead = file->read(sptr, blockSize);
-                if (bytesRead < 0) {
-                    emit tftpErrorSignal("Failed to read from local file");
-                    clearStatus();
+            // 解析文件大小选项（仅用于下载）
+            if (options.contains(TFTP_OPTION_TRANSFER_SIZE)) {
+                bool ok;
+                qint64 tsize = options.value(TFTP_OPTION_TRANSFER_SIZE).toLongLong(&ok);
+                if (ok) {
+                    d->fileSize = tsize;
+                }
+            }
+
+            // 根据当前状态处理
+            if (d->sessionState == TftpSessionState::ReadRequestSent) {
+                // 下载请求，发送第一个ACK
+                QByteArray ackData;
+                QDataStream ackStream(&ackData, QIODevice::WriteOnly);
+                ackStream.setByteOrder(QDataStream::BigEndian);
+                ackStream << static_cast<quint16>(ACK);
+                ackStream << static_cast<quint16>(0);
+
+                sendDatagram(ackData, senderAddress, senderPort);
+
+                d->sessionState = TftpSessionState::Transferring;
+            } else if (d->sessionState == TftpSessionState::WriteRequestSent) {
+                // 上传请求，开始发送数据
+                d->sessionState = TftpSessionState::Transferring;
+
+                // 发送第一个数据块
+                QByteArray data = d->file->read(d->blockSize);
+
+                if (data.isEmpty() && !d->file->atEnd()) {
+                    // 读取错误
+                    emit errorOccurred(tr("Failed to read data from file"));
+                    stop();
                     return;
                 }
 
-                sptr += bytesRead;
-                file_size -= bytesRead;
+                QByteArray dataPacket;
+                QDataStream dataStream(&dataPacket, QIODevice::WriteOnly);
+                dataStream.setByteOrder(QDataStream::BigEndian);
+                dataStream << static_cast<quint16>(DATA);
+                dataStream << static_cast<quint16>(d->blockIndex);
+                dataStream.writeRawData(data.data(), data.size());
 
-                QByteArray data(sendBuf, (int) (sptr - sendBuf));
-                udpSocket->writeDatagram(data, destAddress, destPort);
+                sendDatagram(dataPacket, senderAddress, senderPort);
 
-                blockIndex = 2;
-                if (bytesRead < blockSize) {
-                    endtftp = 1;
-                }
-            } else if (file && file->openMode() == QIODevice::WriteOnly) {
-                // 下载模式，等待DATA数据包
-                // 发送ACK 0确认OACK
-                memset(sendBuf, 0, BUFFER_SIZE);
-                sptr = sendBuf;
-
-                uint16_t ackCmd = qToBigEndian((uint16_t) _ACK);
-                memcpy(sptr, &ackCmd, 2);
-                sptr += 2;
-
-                uint16_t blockNum = qToBigEndian((uint16_t) 0);
-                memcpy(sptr, &blockNum, 2);
-                sptr += 2;
-
-                QByteArray data(sendBuf, (int) (sptr - sendBuf));
-                udpSocket->writeDatagram(data, destAddress, destPort);
-
-                blockIndex = 1;
+                d->transferredBytes += data.size();
+                d->blockIndex++;
             }
+
             break;
+        }
+        case ERROR: {
+            // 处理ERROR数据包
+            quint16 errorCode;
+            stream >> errorCode;
 
-        case _DATA:
-            // 处理DATA数据包（下载）
-            if (!file || file->openMode() != QIODevice::WriteOnly) {
-                sendErrorCode(ENOTFOUND);
-                clearStatus();
-                break;
-            }
+            // 读取错误消息
+            QString errorMessage = datagram.mid(4);
+            errorMessage.chop(1); // 移除末尾的\0
 
-            pos += 2; // 跳过块号
-            readbytes = readBuf.count() - 4;
+            emit errorOccurred(errorMessage);
+            stop();
 
-            // 读取块号
-            memcpy(&block_current_index, &ptr[2], 2);
-            block_current_index = qFromBigEndian(block_current_index);
-
-            if (block_current_index == blockIndex) {
-                // 写入数据到文件
-                readLen = file->write(&ptr[pos], readbytes);
-                if (readLen < 0) {
-                    sendErrorCode(EACCESS);
-                    clearStatus();
-                    break;
-                }
-
-                file_size -= readLen;
-                printProcess(totalSize, totalSize - file_size);
-
-                // 发送ACK
-                memset(sendBuf, 0, BUFFER_SIZE);
-                sptr = sendBuf;
-
-                uint16_t ackCmd = qToBigEndian((uint16_t) _ACK);
-                memcpy(sptr, &ackCmd, 2);
-                sptr += 2;
-
-                memcpy(sptr, &ptr[2], 2); // 发送接收到的块号
-                sptr += 2;
-
-                QByteArray data(sendBuf, (int) (sptr - sendBuf));
-                udpSocket->writeDatagram(data, destAddress, destPort);
-
-                blockIndex++;
-
-                // 检查是否完成
-                if (readbytes < blockSize) {
-                    file->close();
-                    endtftp = 1;
-                    printProcess(totalSize, totalSize);
-                    emit transferCompletedSignal(pre_filePath);
-                    clearStatus();
-                }
-            } else {
-                // 接收到重复的块，重新发送ACK
-                memset(sendBuf, 0, BUFFER_SIZE);
-                sptr = sendBuf;
-
-                uint16_t ackCmd = qToBigEndian((uint16_t) _ACK);
-                memcpy(sptr, &ackCmd, 2);
-                sptr += 2;
-
-                uint16_t prevBlock = qToBigEndian((uint16_t) (blockIndex - 1));
-                memcpy(sptr, &prevBlock, 2);
-                sptr += 2;
-
-                QByteArray data(sendBuf, (int) (sptr - sendBuf));
-                udpSocket->writeDatagram(data, destAddress, destPort);
-            }
             break;
-
-        case _ACK:
-            // 处理ACK数据包（上传）
-            if (!file || file->openMode() != QIODevice::ReadOnly) {
-                sendErrorCode(ENOTFOUND);
-                clearStatus();
-                break;
-            }
-
-            memcpy(&block_current_index, &ptr[2], 2);
-            block_current_index = qFromBigEndian(block_current_index);
-
-            if (block_current_index == blockIndex - 1) {
-                // 发送下一个数据包
-                memset(sendBuf, 0, BUFFER_SIZE);
-                sptr = sendBuf;
-
-                uint16_t dataCmd = qToBigEndian((uint16_t) _DATA);
-                memcpy(sptr, &dataCmd, 2);
-                sptr += 2;
-
-                uint16_t blockNum = qToBigEndian((uint16_t) blockIndex);
-                memcpy(sptr, &blockNum, 2);
-                sptr += 2;
-
-                int bytesRead = file->read(sptr, blockSize);
-                if (bytesRead < 0) {
-                    emit tftpErrorSignal("Failed to read from local file");
-                    sendErrorCode(EACCESS);
-                    clearStatus();
-                    return;
-                }
-
-                sptr += bytesRead;
-                file_size -= bytesRead;
-
-                QByteArray data(sendBuf, (int) (sptr - sendBuf));
-                udpSocket->writeDatagram(data, destAddress, destPort);
-
-                printProcess(totalSize, totalSize - file_size);
-
-                blockIndex++;
-
-                if (bytesRead < blockSize) {
-                    endtftp = 1;
-                    file->close();
-                    printProcess(totalSize, totalSize);
-                    emit transferCompletedSignal(pre_filePath);
-                    clearStatus();
-                }
-            }
-            break;
-
-            // case _ERROR:
-            //     // 处理错误响应
-            //     pos += 2; // 跳过错误码
-            //     QString errorMsg = &ptr[pos];
-            //     emit tftpErrorSignal(QString("TFTP Error: %1").arg(errorMsg));
-            //     clearStatus();
-            //     break;
-
+        }
         default:
-            // 未知数据包类型
-            sendErrorCode(EBADOP);
+            // 未知操作码
+            emit errorOccurred(tr("Unknown TFTP opcode received"));
+            stop();
             break;
         }
     }
 }
 
-int Tftp::getFileSize(QString path)
+void TftpClient::handleTimeout()
 {
-    QFileInfo info(path);
-    if (info.exists())
-        return info.size();
-    return 0;
-}
+    X_D(TftpClient);
 
-void Tftp::sendErrorCode(enum TftpError code)
-{
-    const char *errorCodeMsg[] = {
-        "Undefined error code",
-        "File not found",
-        "Access violation",
-        "Disk full or allocation exceeded",
-        "Illegal TFTP operation",
-        "Unknown transfer ID",
-        "File already exists",
-        "No such user",
-    };
-    const char *msg = errorCodeMsg[code];
-    // 使用QByteArray避免缓冲区溢出
-    QByteArray buf;
-    buf.append((char) 0x00);
-    buf.append((char) 0x05);
-    buf.append((char) 0x00);
-    buf.append((char) code);
-    buf.append(msg);
-    buf.append((char) 0x00);
-
-    {
-        udpSocket->writeDatagram(buf, destAddress, destPort);
+    if (d->retryCount <= 0) {
+        // 重试次数已用完
+        emit errorOccurred(tr("Connection timeout"));
+        stop();
+        return;
     }
-    emit tftpErrorSignal(curFilePath + pre_filePath + "\n" + msg);
+
+    // 重新发送最后一个数据包
+    d->retryCount--;
+    sendDatagram(d->lastSentData, d->lastSentAddress, d->lastSentPort);
 }
 
-void Tftp::clearStatus()
+// TftpSessionPrivate实现
+TftpSessionPrivate::TftpSessionPrivate(TftpSession *q_ptr,
+                                       const QHostAddress &clientAddress,
+                                       quint16 clientPort)
+    : q_ptr(q_ptr)
+    , clientAddress(clientAddress)
+    , clientPort(clientPort)
 {
-    transportType = 0;
-    file_size = 0;
-    blockSize = 0;
-    blockIndex = 1;
+    init();
+}
+
+TftpSessionPrivate::~TftpSessionPrivate()
+{
+    resetSessionState();
+}
+
+void TftpSessionPrivate::init()
+{
+    sessionId = generateSessionId();
+    rootPath = QDir::currentPath();
+    resetSessionState();
+}
+
+void TftpSessionPrivate::resetSessionState()
+{
     if (file) {
-        //print << fileMd5(*file);
         file->close();
-        file->deleteLater();
+        delete file;
+        file = nullptr;
     }
-    file = nullptr;
-    endtftp = 0;
-    totalSize = 0;
-    retryCount = 3;
-    progress_bak = 0;
-    //    if(udpSocket)
-    //    {
-    //        QObject::disconnect(udpSocket, &QUdpSocket::readyRead, this, &Tftp::readPendingDatagramsSlots);
-    //        udpSocket->deleteLater();
-    //        udpSocket=nullptr;
-    //    }
-    this->dataAvalivabe = false;
+
+    fileName.clear();
+    fileSize = 0;
+    transferredBytes = 0;
+    blockIndex = 1;
+    blockSize = DEFAULT_BLOCK_SIZE;
+    isUpload = false;
+    sessionState = TftpSessionState::Idle;
+    lastActivityTime = QDateTime::currentDateTime();
 }
 
-const QString Tftp::fileMd5(const QString &path)
+// TftpSession实现
+TftpSession::TftpSession(const QHostAddress &clientAddress, quint16 clientPort, QObject *parent)
+    : TftpBase(parent)
+    , d_ptr(new TftpSessionPrivate(this, clientAddress, clientPort))
+{}
+
+TftpSession::~TftpSession()
 {
-    QFile sourceFile(path);
-    qint64 fileSize = sourceFile.size();
-    const qint64 bufferSize = 10240;
-
-    if (sourceFile.open(QIODevice::ReadOnly)) {
-        char buffer[bufferSize];
-        int bytesRead;
-        int readSize = qMin(fileSize, bufferSize);
-
-        QCryptographicHash hash(QCryptographicHash::Md5);
-
-        while (readSize > 0 && (bytesRead = sourceFile.read(buffer, readSize)) > 0) {
-            fileSize -= bytesRead;
-            hash.addData(buffer, bytesRead);
-            readSize = qMin(fileSize, bufferSize);
-        }
-
-        sourceFile.close();
-        return QString(hash.result().toHex());
-    }
-
-    return QString();
+    X_D(TftpSession);
+    delete d;
 }
-const QString Tftp::fileMd5(QFile &sourceFile)
+
+QHostAddress TftpSession::clientAddress() const
 {
-    qint64 fileSize = sourceFile.size();
-    const qint64 bufferSize = 10240;
-    if (sourceFile.isOpen()) {
-        sourceFile.close();
-    }
-    if (sourceFile.open(QIODevice::ReadOnly)) {
-        char buffer[bufferSize];
-        int bytesRead;
-        int readSize = qMin(fileSize, bufferSize);
+    X_D(const TftpSession);
+    return d->clientAddress;
+}
 
-        QCryptographicHash hash(QCryptographicHash::Md5);
+quint16 TftpSession::clientPort() const
+{
+    X_D(const TftpSession);
+    return d->clientPort;
+}
 
-        while (readSize > 0 && (bytesRead = sourceFile.read(buffer, readSize)) > 0) {
-            fileSize -= bytesRead;
-            hash.addData(buffer, bytesRead);
-            readSize = qMin(fileSize, bufferSize);
+QString TftpSession::sessionId() const
+{
+    X_D(const TftpSession);
+    return d->sessionId;
+}
+
+void TftpSession::handleRequest(const QByteArray &data)
+{
+    X_D(TftpSession);
+
+    d->lastActivityTime = QDateTime::currentDateTime();
+
+    QDataStream stream(&data, QIODevice::ReadOnly);
+    stream.setByteOrder(QDataStream::BigEndian);
+
+    quint16 opcode;
+    stream >> opcode;
+
+    switch (opcode) {
+    case RRQ: {
+        // 处理读取请求
+        d->resetSessionState();
+        d->isUpload = false;
+
+        // 解析文件名
+        const char *nameStart = data.constData() + 2;
+        const char *nameEnd = qstrnlen(nameStart, data.size() - 2) + nameStart;
+        d->fileName = QString::fromUtf8(nameStart, nameEnd - nameStart);
+
+        // 构建完整的文件路径
+        QString filePath = QDir(d->rootPath).filePath(d->fileName);
+
+        // 检查文件是否存在
+        if (!QFile::exists(filePath)) {
+            sendErrorCode(FILE_NOT_FOUND, tr("File not found"), d->clientAddress, d->clientPort);
+            return;
         }
 
-        sourceFile.close();
-        return QString(hash.result().toHex());
+        // 打开文件
+        d->file = new QFile(filePath);
+        if (!d->file->open(QIODevice::ReadOnly)) {
+            sendErrorCode(ACCESS_VIOLATION, tr("Access violation"), d->clientAddress, d->clientPort);
+            return;
+        }
+
+        // 获取文件大小
+        d->fileSize = d->file->size();
+
+        // 解析选项
+        QMap<QString, QString> options = parseTftpOptions(data.constData(), data.size());
+
+        // 处理块大小选项
+        if (options.contains(TFTP_OPTION_BLOCK_SIZE)) {
+            bool ok;
+            quint16 blksize = options.value(TFTP_OPTION_BLOCK_SIZE).toUShort(&ok);
+            if (ok && blksize > 0 && blksize <= 65464) {
+                d->blockSize = blksize;
+            }
+        }
+
+        // 发送OACK
+        QMap<QString, QString> oackOptions;
+        oackOptions.insert(TFTP_OPTION_BLOCK_SIZE, QString::number(d->blockSize));
+        oackOptions.insert(TFTP_OPTION_TRANSFER_SIZE, QString::number(d->fileSize));
+
+        QByteArray oackData;
+        QDataStream oackStream(&oackData, QIODevice::WriteOnly);
+        oackStream.setByteOrder(QDataStream::BigEndian);
+        oackStream << static_cast<quint16>(OACK);
+        oackData.append(createTftpOptions(oackOptions));
+
+        sendDatagram(oackData, d->clientAddress, d->clientPort);
+
+        d->sessionState = TftpSessionState::Transferring;
+
+        break;
+    }
+    case WRQ: {
+        // 处理写入请求
+        d->resetSessionState();
+        d->isUpload = true;
+
+        // 解析文件名
+        const char *nameStart = data.constData() + 2;
+        const char *nameEnd = qstrnlen(nameStart, data.size() - 2) + nameStart;
+        d->fileName = QString::fromUtf8(nameStart, nameEnd - nameStart);
+
+        // 构建完整的文件路径
+        QString filePath = QDir(d->rootPath).filePath(d->fileName);
+
+        // 检查文件是否已存在
+        if (QFile::exists(filePath)) {
+            sendErrorCode(FILE_ALREADY_EXISTS,
+                          tr("File already exists"),
+                          d->clientAddress,
+                          d->clientPort);
+            return;
+        }
+
+        // 打开文件
+        d->file = new QFile(filePath);
+        if (!d->file->open(QIODevice::WriteOnly)) {
+            sendErrorCode(ACCESS_VIOLATION, tr("Access violation"), d->clientAddress, d->clientPort);
+            return;
+        }
+
+        // 解析选项
+        QMap<QString, QString> options = parseTftpOptions(data.constData(), data.size());
+
+        // 处理块大小选项
+        if (options.contains(TFTP_OPTION_BLOCK_SIZE)) {
+            bool ok;
+            quint16 blksize = options.value(TFTP_OPTION_BLOCK_SIZE).toUShort(&ok);
+            if (ok && blksize > 0 && blksize <= 65464) {
+                d->blockSize = blksize;
+            }
+        }
+
+        // 处理文件大小选项
+        if (options.contains(TFTP_OPTION_TRANSFER_SIZE)) {
+            bool ok;
+            qint64 tsize = options.value(TFTP_OPTION_TRANSFER_SIZE).toLongLong(&ok);
+            if (ok) {
+                d->fileSize = tsize;
+            }
+        }
+
+        // 发送OACK
+        QMap<QString, QString> oackOptions;
+        oackOptions.insert(TFTP_OPTION_BLOCK_SIZE, QString::number(d->blockSize));
+
+        QByteArray oackData;
+        QDataStream oackStream(&oackData, QIODevice::WriteOnly);
+        oackStream.setByteOrder(QDataStream::BigEndian);
+        oackStream << static_cast<quint16>(OACK);
+        oackData.append(createTftpOptions(oackOptions));
+
+        sendDatagram(oackData, d->clientAddress, d->clientPort);
+
+        d->sessionState = TftpSessionState::Transferring;
+
+        break;
+    }
+    default:
+        // 未知操作码
+        sendErrorCode(ILLEGAL_OPERATION,
+                      tr("Illegal TFTP operation"),
+                      d->clientAddress,
+                      d->clientPort);
+        break;
+    }
+}
+
+bool TftpSession::isActive() const
+{
+    X_D(const TftpSession);
+    return d->sessionState != TftpSessionState::Idle
+           && d->sessionState != TftpSessionState::Completed
+           && d->sessionState != TftpSessionState::Error;
+}
+
+void TftpSession::setRootPath(const QString &path)
+{
+    X_D(TftpSession);
+    d->rootPath = path;
+}
+
+void TftpSession::processPendingDatagrams()
+{
+    X_D(TftpSession);
+
+    while (udpSocket()->hasPendingDatagrams()) {
+        QByteArray datagram;
+        QHostAddress senderAddress;
+        quint16 senderPort;
+
+        datagram.resize(udpSocket()->pendingDatagramSize());
+        udpSocket()->readDatagram(datagram.data(), datagram.size(), &senderAddress, &senderPort);
+
+        // 检查是否是来自正确客户端的数据包
+        if (senderAddress != d->clientAddress || senderPort != d->clientPort) {
+            continue;
+        }
+
+        d->lastActivityTime = QDateTime::currentDateTime();
+
+        QDataStream stream(&datagram, QIODevice::ReadOnly);
+        stream.setByteOrder(QDataStream::BigEndian);
+
+        quint16 opcode;
+        stream >> opcode;
+
+        switch (opcode) {
+        case ACK: {
+            // 处理ACK数据包（仅用于下载）
+            if (d->isUpload) {
+                // 上传时不应该收到ACK
+                sendErrorCode(ILLEGAL_OPERATION,
+                              tr("Illegal TFTP operation"),
+                              senderAddress,
+                              senderPort);
+                return;
+            }
+
+            quint16 blockNumber;
+            stream >> blockNumber;
+
+            // 检查块号是否正确
+            if (blockNumber + 1 != d->blockIndex) {
+                // 块号不正确，忽略此数据包
+                continue;
+            }
+
+            // 读取下一个数据块
+            QByteArray data = d->file->read(d->blockSize);
+
+            if (data.isEmpty() && !d->file->atEnd()) {
+                // 读取错误
+                sendErrorCode(ACCESS_VIOLATION, tr("Access violation"), senderAddress, senderPort);
+                return;
+            }
+
+            // 发送DATA数据包
+            QByteArray dataPacket;
+            QDataStream dataStream(&dataPacket, QIODevice::WriteOnly);
+            dataStream.setByteOrder(QDataStream::BigEndian);
+            dataStream << static_cast<quint16>(DATA);
+            dataStream << static_cast<quint16>(d->blockIndex);
+            dataStream.writeRawData(data.data(), data.size());
+
+            sendDatagram(dataPacket, senderAddress, senderPort);
+
+            // 更新传输状态
+            d->transferredBytes += data.size();
+            d->blockIndex++;
+
+            // 发送进度信号
+            emit progressChanged(d->fileName, d->transferredBytes, d->fileSize);
+
+            // 检查是否传输完成
+            if (data.size() < d->blockSize) {
+                // 传输完成
+                d->file->close();
+                delete d->file;
+                d->file = nullptr;
+
+                d->sessionState = TftpSessionState::Completed;
+
+                emit transferCompleted(d->fileName, false);
+                emit sessionFinished(d->sessionId);
+            }
+
+            break;
+        }
+        case DATA: {
+            // 处理DATA数据包（仅用于上传）
+            if (!d->isUpload) {
+                // 下载时不应该收到DATA
+                sendErrorCode(ILLEGAL_OPERATION,
+                              tr("Illegal TFTP operation"),
+                              senderAddress,
+                              senderPort);
+                return;
+            }
+
+            quint16 blockNumber;
+            stream >> blockNumber;
+
+            // 检查块号是否正确
+            if (blockNumber != d->blockIndex) {
+                // 块号不正确，忽略此数据包
+                continue;
+            }
+
+            // 读取数据
+            QByteArray data = datagram.mid(4);
+            qint64 bytesWritten = d->file->write(data);
+
+            if (bytesWritten != data.size()) {
+                sendErrorCode(DISK_FULL,
+                              tr("Disk full or allocation exceeded"),
+                              senderAddress,
+                              senderPort);
+                return;
+            }
+
+            // 发送ACK
+            QByteArray ackData;
+            QDataStream ackStream(&ackData, QIODevice::WriteOnly);
+            ackStream.setByteOrder(QDataStream::BigEndian);
+            ackStream << static_cast<quint16>(ACK);
+            ackStream << blockNumber;
+
+            sendDatagram(ackData, senderAddress, senderPort);
+
+            // 更新传输状态
+            d->transferredBytes += bytesWritten;
+            d->blockIndex++;
+
+            // 发送进度信号
+            emit progressChanged(d->fileName, d->transferredBytes, d->fileSize);
+
+            // 检查是否传输完成
+            if (data.size() < d->blockSize) {
+                // 传输完成
+                d->file->close();
+                delete d->file;
+                d->file = nullptr;
+
+                d->sessionState = TftpSessionState::Completed;
+
+                emit transferCompleted(d->fileName, true);
+                emit sessionFinished(d->sessionId);
+            }
+
+            break;
+        }
+        case ERROR: {
+            // 处理错误数据包
+            d->sessionState = TftpSessionState::Error;
+
+            // 发送会话结束信号
+            emit sessionFinished(d->sessionId);
+
+            break;
+        }
+        default:
+            // 未知操作码
+            sendErrorCode(ILLEGAL_OPERATION,
+                          tr("Illegal TFTP operation"),
+                          senderAddress,
+                          senderPort);
+            break;
+        }
+    }
+}
+
+void TftpSession::handleTimeout()
+{
+    X_D(TftpSession);
+
+    if (d->retryCount <= 0) {
+        // 重试次数已用完
+        d->sessionState = TftpSessionState::Error;
+        emit errorOccurred(tr("Connection timeout"));
+        emit sessionFinished(d->sessionId);
+        return;
     }
 
-    return QString();
+    // 重新发送最后一个数据包
+    d->retryCount--;
+    sendDatagram(d->lastSentData, d->lastSentAddress, d->lastSentPort);
+}
+
+// TftpServerPrivate实现
+TftpServerPrivate::TftpServerPrivate(TftpServer *q_ptr)
+    : q_ptr(q_ptr)
+{
+    init();
+}
+
+TftpServerPrivate::~TftpServerPrivate()
+{
+    // 清理所有会话
+    qDeleteAll(sessions);
+    sessions.clear();
+}
+
+void TftpServerPrivate::init()
+{
+    port = DEFAULT_TFTP_PORT;
+    rootPath = QDir::currentPath();
+    isRunning = false;
+}
+
+// TftpServer实现
+TftpServer::TftpServer(QObject *parent)
+    : TftpBase(parent)
+    , d_ptr(new TftpServerPrivate(this))
+{}
+
+TftpServer::~TftpServer()
+{
+    X_D(TftpServer);
+    delete d;
+}
+
+bool TftpServer::start(quint16 port)
+{
+    X_D(TftpServer);
+
+    if (d->isRunning) {
+        // 服务器已经在运行
+        return false;
+    }
+
+    // 绑定UDP端口
+    if (!udpSocket()->bind(QHostAddress::Any, port)) {
+        emit errorOccurred(tr("Failed to bind to port %1").arg(port));
+        return false;
+    }
+
+    d->port = port;
+    d->isRunning = true;
+
+    return true;
+}
+
+void TftpServer::stop()
+{
+    X_D(TftpServer);
+
+    if (!d->isRunning) {
+        return;
+    }
+
+    // 关闭UDP socket
+    udpSocket()->close();
+
+    // 清理所有会话
+    qDeleteAll(d->sessions);
+    d->sessions.clear();
+
+    d->isRunning = false;
+}
+
+bool TftpServer::isRunning() const
+{
+    X_D(const TftpServer);
+    return d->isRunning;
+}
+
+void TftpServer::setRootPath(const QString &path)
+{
+    X_D(TftpServer);
+    d->rootPath = path;
+
+    // 更新所有现有会话的根路径
+    for (TftpSession *session : d->sessions) {
+        session->setRootPath(path);
+    }
+}
+
+quint16 TftpServer::port() const
+{
+    X_D(const TftpServer);
+    return d->port;
+}
+
+void TftpServer::processPendingDatagrams()
+{
+    X_D(TftpServer);
+
+    while (udpSocket()->hasPendingDatagrams()) {
+        QByteArray datagram;
+        QHostAddress senderAddress;
+        quint16 senderPort;
+
+        datagram.resize(udpSocket()->pendingDatagramSize());
+        udpSocket()->readDatagram(datagram.data(), datagram.size(), &senderAddress, &senderPort);
+
+        QDataStream stream(&datagram, QIODevice::ReadOnly);
+        stream.setByteOrder(QDataStream::BigEndian);
+
+        quint16 opcode;
+        stream >> opcode;
+
+        // 检查是否是RRQ或WRQ请求
+        if (opcode == RRQ || opcode == WRQ) {
+            // 查找是否已有该客户端的会话
+            QString key = QString("%1:%2").arg(senderAddress.toString()).arg(senderPort);
+            TftpSession *session = d->sessions.value(key);
+
+            if (!session) {
+                // 创建新会话
+                session = new TftpSession(senderAddress, senderPort, this);
+                session->setRootPath(d->rootPath);
+
+                // 连接会话信号
+                connect(session,
+                        &TftpSession::progressChanged,
+                        this,
+                        [this,
+                         senderAddress](const QString &fileName, qint64 transferred, qint64 total) {
+                            emit transferProgress(fileName, senderAddress, transferred, total);
+                        });
+
+                connect(session,
+                        &TftpSession::transferCompleted,
+                        this,
+                        [this](const QString &fileName,
+                               const QHostAddress &clientAddress,
+                               bool isUpload) {
+                            emit transferCompleted(fileName, clientAddress, isUpload);
+                        });
+
+                connect(session,
+                        &TftpSession::sessionFinished,
+                        this,
+                        &TftpServer::onSessionFinished);
+
+                connect(session, &TftpSession::errorOccurred, this, &TftpServer::errorOccurred);
+
+                d->sessions.insert(key, session);
+
+                // 发送客户端连接信号
+                emit clientConnected(senderAddress, senderPort);
+            }
+
+            // 处理请求
+            session->handleRequest(datagram);
+        } else {
+            // 其他数据包，查找对应的会话
+            QString key = QString("%1:%2").arg(senderAddress.toString()).arg(senderPort);
+            TftpSession *session = d->sessions.value(key);
+
+            if (session) {
+                // 将会话的socket替换为服务器的socket
+                // 注意：这是一个简化的实现，实际应该使用会话自己的socket
+                // 这里为了简化，直接让会话处理数据包
+                QMetaObject::invokeMethod(session, "processPendingDatagrams");
+            } else {
+                // 没有找到对应的会话
+                sendErrorCode(UNKNOWN_TRANSFER_ID,
+                              tr("Unknown transfer ID"),
+                              senderAddress,
+                              senderPort);
+            }
+        }
+    }
+}
+
+void TftpServer::handleTimeout()
+{
+    // 服务器不需要处理超时，超时由各个会话处理
+}
+
+void TftpServer::onSessionFinished(const QString &sessionId)
+{
+    X_D(TftpServer);
+
+    // 查找并移除会话
+    for (auto it = d->sessions.begin(); it != d->sessions.end(); ++it) {
+        TftpSession *session = it.value();
+        if (session->sessionId() == sessionId) {
+            // 发送客户端断开连接信号
+            emit clientDisconnected(session->clientAddress(), session->clientPort());
+
+            // 移除会话
+            delete session;
+            d->sessions.erase(it);
+            break;
+        }
+    }
 }

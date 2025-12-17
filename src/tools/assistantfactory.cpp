@@ -33,6 +33,10 @@
 #include "qrcode/qrcodeassistant.h"
 #endif
 
+#if X_ENABLE_TFTP
+#include "tftp/tftpassistant.h"
+#endif
+
 #ifdef X_ENABLE_SERIALBUS
 #include "canbus/canbusassistant.h"
 #include "modbus/modbusassistant.h"
@@ -58,6 +62,9 @@ AssistantFactory::AssistantFactory(QObject* parent)
 #endif
 #if X_ENABLE_ZINT
     addAssistant<BarCodeAssistant>(AssistantTypeBarcode, tr("Barcode Assistant"));
+#endif
+#if X_ENABLE_TFTP
+    addAssistant<TftpAssistant>(AssistantTypeTFTP, tr("TFTP Assistant"));
 #endif
 #ifdef X_ENABLE_SERIALBUS
     addAssistant<CanBusAssistant>(AssistantTypeCANBus, tr("CAN Bus Assistant"));
