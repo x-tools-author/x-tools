@@ -295,6 +295,7 @@ if(APPLE)
 
   set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
   set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${X_PLIST})
+  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
   if(DEFINED BUNDLE_ID_OPTION)
     set_target_properties(wxTools PROPERTIES ${BUNDLE_ID_OPTION})
   endif()
