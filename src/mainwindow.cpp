@@ -287,9 +287,9 @@ void MainWindow::showLiteMode()
     m_ioPage10->showLiteMode();
     m_ioPage11->showLiteMode();
 
-    QWidget* connerwidget = menuBar()->cornerWidget(Qt::TopRightCorner);
-    if (connerwidget) {
-        connerwidget->hide();
+    QWidget* cornerWidget = menuBar()->cornerWidget(Qt::TopRightCorner);
+    if (cornerWidget) {
+        cornerWidget->hide();
     }
     m_layoutManager->setCurrentIndex(0);
 }
