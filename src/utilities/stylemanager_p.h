@@ -59,8 +59,8 @@ public:
             auto* action = new QAction(key, styleMenu);
             action->setCheckable(true);
             appStyleActionGroup->addAction(action);
-
-            if (key.toUpper() == xDefaultStyleName.toUpper()) {
+            QString style = settings->value(keyStyle, xDefaultStyleName).toString();
+            if (key.toUpper() == style.toUpper()) {
                 action->setChecked(true);
             }
 
