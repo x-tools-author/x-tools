@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>120</width>
-    <height>221</height>
+    <width>194</width>
+    <height>273</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,40 @@
    </property>
    <item row="7" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="1" column="0">
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string notr="true">(ms)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBoxOptimizedFrame">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Enable frame interval</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="0" colspan="4">
       <widget class="QSpinBox" name="spinBoxFrameInterval">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -47,20 +80,6 @@
        </property>
        <property name="value">
         <number>20</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string notr="true">ms</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" colspan="2">
-      <widget class="QCheckBox" name="checkBoxOptimizedFrame">
-       <property name="text">
-        <string>Enable frame interval</string>
        </property>
       </widget>
      </item>
