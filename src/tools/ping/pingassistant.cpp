@@ -36,7 +36,7 @@ static const QString fileName()
     return ret;
 }
 
-class PingTask : public QRunnable
+class PingTask : public QThread
 {
 public:
     PingTask(PingAssistant *mainWindow, const QString &ip, int timeout)
@@ -86,12 +86,6 @@ PingAssistant::PingAssistant(QWidget *parent)
 
     m_buildDate = QString(__DATE__);
     m_buildTime = QString(__TIME__);
-
-    m_playTimer = new QTimer(this);
-    m_playTimer->setInterval(100);
-    m_playTimer->setSingleShot(true);
-    connect(m_playTimer, &QTimer::timeout, this, &PingAssistant::onPlayTimerTimeout);
-
     m_settings = new QSettings(::fileName(), QSettings::IniFormat, this);
 
     connect(this,
@@ -182,9 +176,12 @@ void PingAssistant::initToolBar()
 
 void PingAssistant::initRunToolBar()
 {
+    // Ensure actions show text so they remain visible even if icons fail to load.
+    m_toolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
     QIcon icon = xIcon(":/res/icons/play_arrow.svg");
-    m_playAction = m_toolBar->addAction(icon, "", this, [=]() { this->play(); });
-    m_playAction->setToolTip(tr("Start scan"));
+    m_playAction = m_toolBar->addAction(icon, tr("Start scan"), this, [=]() { this->play(); });
+    m_playAction->setToolTip(m_playAction->text());
     connect(m_playAction, &QAction::hovered, this, [=]() {
         m_statusBar->showMessage(m_playAction->toolTip(), 3 * 1000);
     });
@@ -193,6 +190,7 @@ void PingAssistant::initRunToolBar()
     m_pauseAction = m_toolBar->addAction(icon, "", this, [=]() { this->pause(); });
     m_pauseAction->setEnabled(false);
     m_pauseAction->setToolTip(tr("Pause scan"));
+    m_pauseAction->setVisible(false);
     connect(m_pauseAction, &QAction::hovered, this, [=]() {
         m_statusBar->showMessage(m_pauseAction->toolTip(), 3 * 1000);
     });
@@ -201,6 +199,7 @@ void PingAssistant::initRunToolBar()
     m_stopAction = m_toolBar->addAction(icon, "", this, [=]() { this->stop(); });
     m_stopAction->setEnabled(false);
     m_stopAction->setToolTip(tr("Stop scan"));
+    m_stopAction->setVisible(false);
     connect(m_stopAction, &QAction::hovered, this, [=]() {
         m_statusBar->showMessage(m_stopAction->toolTip(), 3 * 1000);
     });
@@ -352,7 +351,13 @@ void PingAssistant::play()
 
     updateRowVisible();
     m_currentRow = 0;
-    m_playTimer->start();
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++) {
+        const QString ip = this->ip(i);
+        PingTask *pingTask = new PingTask(this, ip, m_timeout);
+        connect(pingTask, &PingTask::finished, pingTask, &PingTask::deleteLater);
+        pingTask->start();
+    }
 }
 
 void PingAssistant::pause()
@@ -377,7 +382,6 @@ void PingAssistant::stop()
     m_progressBar->hide();
 
     m_pausing = false;
-    m_playTimer->stop();
     m_progressBar->hide();
 }
 
@@ -451,8 +455,8 @@ void PingAssistant::updateRowVisible()
 void PingAssistant::updateProgressStatus()
 {
     int all = ui->tableWidget->rowCount();
-    int active = QThreadPool::globalInstance()->activeThreadCount();
     int finished = m_finishedCount;
+    int active = all - finished;
     int remain = all - m_finishedCount - active;
     remain = remain > 0 ? remain : remain;
 
@@ -482,32 +486,6 @@ QString PingAssistant::ip(int row)
     }
 
     return "";
-}
-
-void PingAssistant::onPlayTimerTimeout()
-{
-    if (m_pausing) {
-        return;
-    }
-
-    int activeCount = QThreadPool::globalInstance()->activeThreadCount();
-    int maxCount = QThreadPool::globalInstance()->maxThreadCount();
-    if (activeCount < maxCount) {
-        const QString ip = this->ip(m_currentRow);
-        Q_ASSERT_X(!ip.isEmpty(), __FUNCTION__, "The ip is empty!");
-
-        PingTask *pingTask = new PingTask(this, ip, m_timeout);
-        QThreadPool::globalInstance()->start(pingTask);
-
-        m_currentRow += 1;
-    }
-
-    if (m_currentRow == ui->tableWidget->rowCount()) {
-    } else {
-        m_playTimer->start();
-    }
-
-    updateProgressStatus();
 }
 
 void PingAssistant::onPingStarted(const QString &ip)
@@ -560,6 +538,8 @@ void PingAssistant::onPingFinished(const QString &ip, bool isOnline, const QStri
 
     m_finishedCount += 1;
     m_progressBar->setValue(m_finishedCount);
+    updateRowVisible();
+    updateProgressStatus();
     if (m_finishedCount == ui->tableWidget->rowCount()) {
         QMessageBox::information(
             this,
@@ -575,7 +555,4 @@ void PingAssistant::onPingFinished(const QString &ip, bool isOnline, const QStri
         m_timeoutSpinBox->setEnabled(true);
         m_progressBar->hide();
     }
-
-    updateRowVisible();
-    updateProgressStatus();
 }

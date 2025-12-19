@@ -53,7 +53,6 @@ private:
 private:
     Ui::PingAssistant *ui;
 
-    QTimer *m_playTimer;
     QString m_beginIp;
     QString m_endIp;
     int m_currentRow;
@@ -98,7 +97,6 @@ private:
     void updateRowVisible();
     void updateProgressStatus();
 
-    void onPlayTimerTimeout();
     void onPingStarted(const QString &ip);
     void onPingFinished(const QString &ip, bool is_online, const QString &description);
 };
