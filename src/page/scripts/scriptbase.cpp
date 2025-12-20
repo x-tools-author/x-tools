@@ -112,6 +112,9 @@ void ScriptBase::loadScriptsApp()
 QString ScriptBase::applicationScriptDir()
 {
     QString appDir = QApplication::applicationDirPath();
+#if defined(Q_OS_MAC)
+    appDir += QString("/../Resources");
+#endif
     QString dir = appDir + QString("/scripts/") + scriptDir();
     return dir;
 }

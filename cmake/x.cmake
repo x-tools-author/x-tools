@@ -157,9 +157,10 @@ endfunction()
 # --------------------------------------------------------------------------------------------------
 # Copy resources to app output directory
 function(x_deploy_resources TARGET)
-  set(dst_dir $<TARGET_FILE_DIR:${TARGET}>/scripts)
   if(APPLE)
-    set(dst_dir ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${TARGET}.app/Contents/MacOS/scripts)
+    set(dst_dir $<TARGET_BUNDLE_DIR:${TARGET}>/Contents/Resources/scripts)
+  else()
+    set(dst_dir $<TARGET_FILE_DIR:${TARGET}>/scripts)
   endif()
   make_directory(${dst_dir})
   add_custom_command(
