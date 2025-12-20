@@ -91,15 +91,25 @@ function(x_generate_translations target)
 
     # set(out_dir "$<TARGET_FILE_DIR:${target}>/translations")
     if(APPLE)
-      set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${target}.app/Contents/MacOS/translations")
+      #set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${target}.app/Contents/MacOS/translations")
     else()
-      set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
+      #set(out_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations")
     endif()
+    set(out_dir "${CMAKE_BINARY_DIR}/x_tmp/${target}/translations")
     set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
     if(NOT QT_VERSION VERSION_LESS "6.7.0")
       qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
     else()
       qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
+    endif()
+    if(APPLE)
+      add_custom_command(TARGET ${target} POST_BUILD 
+        COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${out_dir} "$<TARGET_BUNDLE_DIR:${target}>/Contents/Resources/translations/"
+        COMMENT "Generate translations for ${target}...")
+    else()
+      add_custom_command(TARGET ${target} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${out_dir} "$<TARGET_FILE_DIR:${target}>/translations/"
+        COMMENT "Generate translations for ${target}...")
     endif()
   else()
     # cmake-format: off

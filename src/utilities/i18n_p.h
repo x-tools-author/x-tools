@@ -37,9 +37,7 @@ public:
 
         QString defaultLanguage = QLocale::system().name();
         QString language = settings->value(keyLanguage, defaultLanguage).toString();
-
-        const QString appPath = QCoreApplication::applicationDirPath();
-        const QString qmFilesPath = appPath + "/translations";
+        const QString qmFilesPath = translationsPath();
 
         qInfo() << "The qm files path is:" << qmFilesPath;
 
@@ -53,8 +51,7 @@ public:
     void initLanguageMenu()
     {
         Q_Q(I18n);
-        QString path = QCoreApplication::applicationDirPath();
-        path += "/translations/";
+        QString path = translationsPath();
         QDir dir(path);
         QFileInfoList fileInfoList = dir.entryInfoList(QStringList("*.qm"),
                                                        QDir::Files | QDir::NoDotAndDotDot);
@@ -155,6 +152,17 @@ private:
         }
 
         qInfo() << qPrintable(QString("The qm file(%1) is installed.").arg(tmp));
+    }
+
+    QString translationsPath() const
+    {
+        QString path = QCoreApplication::applicationDirPath();
+#if defined(Q_OS_MAC)
+        path += "/../Resources";
+#endif
+        path += "/translations/";
+        return path;
+        ;
     }
 };
 
