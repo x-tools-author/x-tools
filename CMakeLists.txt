@@ -282,65 +282,41 @@ if(APPLE)
   set(RESOURCE_FILES "${CMAKE_SOURCE_DIR}/res/apple/macos/Assets.xcassets")
   set_source_files_properties(${RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION ${tmp})
   target_sources(xTools PRIVATE ${RESOURCE_FILES})
-
-  # Configure the Info.plist file for the macOS bundle
-  string(TIMESTAMP X_CURRENT_YEAR "%Y")
-  message(STATUS "Current year: ${X_CURRENT_YEAR}")
-  string(TIMESTAMP X_VERSION "${X_LATEST_GIT_TAG}")
-  string(TIMESTAMP X_BUNDLE_VERSION "%Y%m%d%H%M")
-  message(STATUS "[xTools] X_BUNDLE_VERSION: ${X_BUNDLE_VERSION}")
-  set(X_PLIST "${CMAKE_BINARY_DIR}/xTools.plist")
-  set(X_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/res/apple/macos/xTools.entitlements")
-  configure_file(res/apple/macos/xTools.plist.in ${X_PLIST})
-
   set_target_properties(xTools PROPERTIES MACOSX_BUNDLE TRUE)
-  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${X_PLIST})
-  set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
-  if(DEFINED BUNDLE_ID_OPTION)
-    set_target_properties(wxTools PROPERTIES ${BUNDLE_ID_OPTION})
-  endif()
 
-  # cmake-format: off
+  # Create dmg
+  include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
+  x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
+
   if(CMAKE_GENERATOR STREQUAL "Xcode")
-    # set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "<Your Team ID>")
+    # Configure the Info.plist file for the macOS bundle
+    string(TIMESTAMP X_CURRENT_YEAR "%Y")
+    message(STATUS "Current year: ${X_CURRENT_YEAR}")
+    string(TIMESTAMP X_VERSION "${X_LATEST_GIT_TAG}")
+    string(TIMESTAMP X_BUNDLE_VERSION "%Y%m%d%H%M")
+    message(STATUS "[xTools] X_BUNDLE_VERSION: ${X_BUNDLE_VERSION}")
+    set(X_PLIST "${CMAKE_BINARY_DIR}/xTools.plist")
+    set(X_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/res/apple/macos/xTools.entitlements")
+    configure_file(res/apple/macos/xTools.plist.in ${X_PLIST})
+
+    
+    set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${X_PLIST})
+    set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
+    if(DEFINED BUNDLE_ID_OPTION)
+      set_target_properties(xTools PROPERTIES ${BUNDLE_ID_OPTION})
+    endif()
+
+    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "8U23DJG99F")
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic")
-    set(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${XTOOLS_APP_ID}")
     set(CMAKE_XCODE_ATTRIBUTE_INSTALL_PATH "/Applications")
+    # * set(CMAKE_XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${XTOOLS_APP_ID}")
     # * set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT
     # * set(CMAKE_XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS
     # * set(CMAKE_XCODE_ATTRIBUTE_LD_ENTRY_POINT
     # * set(CMAKE_XCODE_ATTRIBUTE_MARKETING_VERSION
     # * set(CMAKE_XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
-  else()
-    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
-    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_INSTALL_PATH "/Applications")
-    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic")
-    set_target_properties(xTools PROPERTIES XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
   endif()
-  # cmake-format: on
-
-  # Create dmg
-  include(${CMAKE_SOURCE_DIR}/cmake/dmg/dmg.cmake)
-  x_generate_dmg(xTools ${X_LATEST_GIT_TAG})
-
-  # You can set X_TOOLS_DEV_ID_APP and X_TOOLS_DEV_ID_INSTALLER in private.cmake to avoid exposing
-  # your Apple Developer ID in a public repository.
-  if(EXISTS "${CMAKE_SOURCE_DIR}/private.cmake")
-    include(${CMAKE_SOURCE_DIR}/private.cmake)
-    message(STATUS "[xTools-apple] X_TOOLS_DEV_ID_APP: ${X_TOOLS_DEV_ID_APP}")
-    message(STATUS "[xTools-apple] X_TOOLS_DEV_ID_INSTALLER: ${X_TOOLS_DEV_ID_INSTALLER}")
-  endif()
-
-  if(NOT DEFINED X_TOOLS_DEV_ID_APP OR NOT DEFINED X_TOOLS_DEV_ID_INSTALLER)
-    # cmake-format: off
-      set(X_TOOLS_DEV_ID_APP "xxx_id_developer" CACHE STRING "The app's developer ID")
-      set(X_TOOLS_DEV_ID_INSTALLER "xxx_id_installer" CACHE STRING "The installer's developer ID")
-      # cmake-format: on
-  endif()
-
-  include(cmake/pkg/pkg.cmake)
-  x_generate_pkg(xTools ${X_TOOLS_DEV_ID_APP} ${X_TOOLS_DEV_ID_INSTALLER})
 endif()
 
 # --------------------------------------------------------------------------------------------------
