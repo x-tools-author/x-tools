@@ -7,7 +7,11 @@
 # * argIcon:          图标文件
 # * argAssetName:     安装包名称
 
-execute_process(COMMAND ${CMAKE_COMMAND} -E rm -rf ${argRootDir} "||" ${CMAKE_COMMAND} -E true)
+set(argRootDir "${argRootDir}/${argTarget}")
+if(EXISTS ${argRootDir})
+  message(STATUS "Remove existing directory: ${argRootDir}")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E rm -rf ${argRootDir})
+endif()
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${argRootDir})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${argTemperateDir} ./ COMMAND_ECHO STDOUT
                 WORKING_DIRECTORY ${argRootDir})
@@ -123,5 +127,7 @@ endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"
                 WORKING_DIRECTORY ${argRootDir}/packages)
-execute_process(COMMAND ${argBinarycreator} -c config/config.xml -p packages ${output_file}
-                        COMMAND_ECHO STDOUT WORKING_DIRECTORY ${argRootDir})
+set(c_files "${argTarget}/config/config.xml")
+set(p_dir "${argTarget}/packages")
+execute_process(COMMAND ${argBinarycreator} -c ${c_files} -p ${p_dir} ${output_file} COMMAND_ECHO
+                        STDOUT WORKING_DIRECTORY ${argRootDir}/../)
