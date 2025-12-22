@@ -127,6 +127,8 @@ endif()
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename "all" "${argTarget}"
                 WORKING_DIRECTORY ${argRootDir}/packages)
+execute_process(COMMAND ${CMAKE_COMMAND} -E rm -r "${argTarget}.pdb"
+                WORKING_DIRECTORY ${argRootDir}/packages/${argTarget}/data)
 set(c_files "${argTarget}/config/config.xml")
 set(p_dir "${argTarget}/packages")
 execute_process(COMMAND ${argBinarycreator} -c ${c_files} -p ${p_dir} ${output_file} COMMAND_ECHO
