@@ -19,6 +19,7 @@ jobs:
       matrix:
         os: [macos-14]
         version: [6.2.4, 6.5.3, 6.8.3, 6.9.3]
+        arch: [clang_64]
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -29,7 +30,7 @@ jobs:
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: 'desktop'
-          arch: 'clang_64'
+          arch: ${{ matrix.arch }}
           host: 'mac'
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: build all
