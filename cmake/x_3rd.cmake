@@ -9,29 +9,32 @@ function(x_auto_import_package package_zip_name package_name)
 endfunction()
 
 function(x_auto_import_package_dir package_dir_name package_name)
-  # Add module...
   set(package_dst_dir ${X_LIBS_DIR}/${package_dir_name})
+  # Using pre-installed package
   if(EXISTS ${package_dst_dir}/include)
     set(CMAKE_PREFIX_PATH ${package_dst_dir} ${CMAKE_PREFIX_PATH})
     find_package(${package_name} REQUIRED)
     message(STATUS "[PUMA]Found ${package_dir_name}: ${package_dst_dir}")
-  else()
-    add_subdirectory(${X_3RD_DIR}/${package_dir_name})
+    return()
+  endif()
 
-    if(NOT ANDROID AND NOT IOS)
-      set(target_name "${package_dir_name}_auto_install")
-      if(NOT TARGET ${target_name})
-        add_custom_target(
-          ${target_name} ALL
-          COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
-          WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_dir_name}
-          COMMENT "Installing ${package_dir_name} to ${package_dst_dir}")
-      endif()
-      if(TARGET ${target_name})
-        add_dependencies(${target_name} ${package_name} ${ARGN})
-        set_property(TARGET ${target_name} PROPERTY FOLDER "3rd")
-      endif()
-    endif()
+  # Build from source
+  add_subdirectory(${X_3RD_DIR}/${package_dir_name})
+  if(ANDROID OR IOS)
+    return()
+  endif()
+
+  set(target_name "${package_dir_name}_auto_install")
+  if(NOT TARGET ${target_name})
+    add_custom_target(
+      ${target_name} ALL
+      COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_dir_name}
+      COMMENT "Installing ${package_dir_name} to ${package_dst_dir}")
+  endif()
+  if(TARGET ${target_name})
+    add_dependencies(${target_name} ${package_name} ${ARGN})
+    set_property(TARGET ${target_name} PROPERTY FOLDER "3rd")
   endif()
 endfunction()
 
