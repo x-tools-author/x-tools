@@ -86,13 +86,21 @@ function(x_deploy_qt_for_linux target)
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
+# Deploy Qt for unix
+function(x_deploy_qt_for_unix target)
+  # Do nothing...
+endfunction()
+
+# --------------------------------------------------------------------------------------------------
 # Deploy Qt
 function(x_deploy_qt target)
   if(WIN32)
     x_deploy_qt_for_windows(${target})
   elseif(APPLE)
     x_deploy_qt_for_mac(${target})
-  elseif(UNIX)
+  elseif(LINUX)
     x_deploy_qt_for_linux(${target})
+  elseif(UNIX)
+    x_deploy_qt_for_unix(${target})
   endif()
 endfunction()
