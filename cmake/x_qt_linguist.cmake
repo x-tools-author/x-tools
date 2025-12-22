@@ -80,8 +80,10 @@ function(x_generate_translations target)
     add_custom_command(
       TARGET ${target}
       POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${out_dir}
-              "$<TARGET_BUNDLE_DIR:${target}>/Contents/Resources/translations/"
+      COMMAND
+        ${CMAKE_COMMAND} -E copy_directory_if_different ${out_dir}
+        "$<TARGET_BUNDLE_DIR:${target}>/Contents/Resources/translations/" "||" ${CMAKE_COMMAND} -E
+        true
       COMMENT "Generate translations for ${target}...")
   else()
     add_custom_command(
