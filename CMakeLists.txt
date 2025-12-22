@@ -317,7 +317,7 @@ if(APPLE)
     # * set(CMAKE_XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
   endif()
-endif()
+endif() 
 
 # --------------------------------------------------------------------------------------------------
 # Otiose(Just for test)
