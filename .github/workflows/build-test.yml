@@ -2,36 +2,26 @@ name: build-test
 on:
   workflow_dispatch: # Enables manually
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  QT_VERSION: 6.8.3
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+
 jobs:
-  build-macos:
-    name: Build with Qt5(macos)
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-14]
-        version: [5.15.2]
+  release-for-linux:
+    runs-on: ubuntu-22.04
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: install qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: 'clang_64'
-          host: 'mac'
-          modules: 'qtcharts'
-      - name: build-clang
-        run: |
-          # brew uninstall --force node
-          # brew unlink unixodbc
-          # brew install libiodbc
-          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/clang_64' -DCMAKE_BUILD_TYPE=Release ../
-          cmake --build . --target all
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build for Linux
+      run: |
+        git fetch --tags
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+    - name: Upload Release Asset for Linux
+      run: |
+        dir bin/Linux/Release
+        find bin/Linux/Release/xTools-linux -name "*.deb" -exec echo {} \;
+        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec echo {} \;
+
