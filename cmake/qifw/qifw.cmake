@@ -30,7 +30,7 @@ function(x_generate_installer target version icon)
   endif()
 
   set(args "-DargTarget=${target}")
-  list(APPEND args "-DargRootDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-installer")
+  list(APPEND args "-DargRootDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}-qifw")
   list(APPEND args "-DargVersion=${version}")
   list(APPEND args "-DargDataDir=$<TARGET_FILE_DIR:${target}>")
   list(APPEND args "-DargTemperateDir=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/installer")
@@ -46,7 +46,7 @@ function(x_generate_installer target version icon)
   list(APPEND QIFW_SOURCE ${RESOURCES_DIR}/installer/packages/all/meta/installscript.js)
 
   add_custom_target(
-    ${target}_installer
+    ${target}_qifw
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/qifwscript.cmake
     SOURCES ${QIFW_SOURCE}
     COMMENT "Start making installer packet for ${target}")

@@ -7,4 +7,5 @@
     <StartMenuDir>xTools/argConfigStartMenuDir</StartMenuDir>
     <TargetDir>@HomeDir@/AppData/Roaming/xTools/argConfigTargetDir</TargetDir>
     <WizardDefaultHeight>420</WizardDefaultHeight>
+    <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
 </Installer>
