@@ -169,3 +169,47 @@ function(x_deploy_resources TARGET)
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res/scripts ${dst_dir}
     COMMENT "Copy lua scripts to output dir")
 endfunction()
+
+# --------------------------------------------------------------------------------------------------
+# Include 3rd party libraries
+function(x_auto_import_package package_zip_name package_name)
+  # Extract the package name from the path
+  if(NOT EXISTS ${X_3RD_DIR}/${package_zip_name})
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${package_zip_name}.zip
+                    WORKING_DIRECTORY ${X_3RD_DIR})
+  endif()
+
+  x_auto_import_package_dir(${package_zip_name} ${package_name} ${ARGN})
+endfunction()
+
+function(x_auto_import_package_dir package_dir_name package_name)
+  set(package_dst_dir ${X_LIBS_DIR}/${package_dir_name})
+  # Using pre-installed package
+  if(EXISTS ${package_dst_dir}/include)
+    set(CMAKE_PREFIX_PATH ${package_dst_dir} ${CMAKE_PREFIX_PATH})
+    find_package(${package_name} REQUIRED)
+    message(STATUS "[PUMA]Found ${package_dir_name}: ${package_dst_dir}")
+    return()
+  endif()
+
+  # Build from source
+  add_subdirectory(${X_3RD_DIR}/${package_dir_name})
+  if(ANDROID OR IOS)
+    return()
+  endif()
+
+  set(target_name "${package_dir_name}_auto_install")
+  if(NOT TARGET ${target_name})
+    add_custom_target(
+      ${target_name} ALL
+      COMMAND ${CMAKE_COMMAND} --install . --prefix ${package_dst_dir}
+      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_dir_name}
+      COMMENT "Installing ${package_dir_name} to ${package_dst_dir}")
+  endif()
+  if(TARGET ${target_name})
+    add_dependencies(${target_name} ${package_name} ${ARGN})
+    set_property(TARGET ${target_name} PROPERTY FOLDER "3rd")
+  endif()
+endfunction()
+
+include(FetchContent)

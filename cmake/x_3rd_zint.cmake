@@ -95,6 +95,7 @@ if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
 
   add_compile_definitions(X_ENABLE_ZINT=1)
   list(APPEND X_LIBS zint::zint-static QZint)
+  set(X_ZINT_LIBS zint::zint-static QZint)
 else()
   # Add the Zint subdirectory to the project
   include_directories(${CMAKE_SOURCE_DIR}/3rd/${file_name})
@@ -124,4 +125,5 @@ else()
   add_compile_definitions(X_USING_ZINT_SRC)
   add_compile_definitions(X_ENABLE_ZINT=1)
   list(APPEND X_LIBS zint-static QZint)
+  set(X_ZINT_LIBS zint-static QZint)
 endif()
