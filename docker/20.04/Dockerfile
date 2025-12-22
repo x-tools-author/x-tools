@@ -1,6 +1,7 @@
 ﻿FROM ubuntu:20.04
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get install -y \
+    locales \
     libxcb-xinerama0 \
     libxcb-cursor-dev \
     libudev-dev \
@@ -33,6 +34,16 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     libtirpc-dev \
     pkg-config \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Configure system locale to UTF-8 (Chinese + English)
+RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen zh_CN.UTF-8 en_US.UTF-8 && \
+    update-locale LANG=zh_CN.UTF-8 LC_ALL=zh_CN.UTF-8 LANGUAGE=zh_CN:zh
+
+ENV LANG=zh_CN.UTF-8
+ENV LC_ALL=zh_CN.UTF-8
+ENV LANGUAGE=zh_CN:zh
 
 # CMake
 RUN wget https://cmake.org/files/v3.30/cmake-3.30.8-linux-x86_64.sh
