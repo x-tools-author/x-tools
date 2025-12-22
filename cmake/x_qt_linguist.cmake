@@ -90,7 +90,7 @@ function(x_generate_translations target)
       TARGET ${target}
       POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${out_dir}
-              "$<TARGET_FILE_DIR:${target}>/translations/"
+              "$<TARGET_FILE_DIR:${target}>/translations/" "||" ${CMAKE_COMMAND} -E true
       COMMENT "Generate translations for ${target}...")
   endif()
 endfunction()
