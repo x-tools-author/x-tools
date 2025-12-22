@@ -3,5 +3,6 @@
 mkdir build
 cd build
 cmake -DCMAKE_PREFIX_PATH='/opt/qt/6.8.3/gcc_64' -DCMAKE_BUILD_TYPE:STRING=Release -G "Ninja" ../
+ls -l
 cmake --build . --target all
 cmake --build . --target xTools_linux
