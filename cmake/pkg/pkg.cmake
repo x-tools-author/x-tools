@@ -1,4 +1,6 @@
-# https://developer.apple.com/documentation/xcode/packaging-mac-software-for-distribution
+# * https://developer.apple.com/documentation/xcode/packaging-mac-software-for-distribution
+# * 需要在xCode中配置好签名证书和描述文件（xCode->Settings->Accounts->Manage Certificates -> + Developer ID Application）
+# * 需要在xCode中配置好签名证书和描述文件（xCode->Settings->Accounts->Manage Certificates -> + Developer ID Installer）
 function(x_generate_pkg target dev_id_app dev_id_installer)
   # cmake-format: off
   add_custom_target(${target}_pkg VERBATIM
