@@ -2,7 +2,7 @@
 set(package_version v0.10.3)
 
 macro(x_remove_all_ble_files)
-  file(GLOB_RECURSE BLE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/ble/*.*")
+  file(GLOB_RECURSE BLE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/x/ble/*.*")
   foreach(file ${BLE_FILES})
     list(REMOVE_ITEM X_SOURCES ${file})
     message(STATUS "[xTools.BLE] Remove simpleble file: ${file}")
