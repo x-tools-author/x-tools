@@ -19,6 +19,12 @@
 #include <QToolButton>
 #include <QWidget>
 
+#if X_ENABLE_X_BLE
+namespace xBle {
+class xBle;
+}
+#endif
+
 #if X_ENABLE_X_MODBUS
 namespace xModbus {
 class xModbus;
@@ -81,6 +87,9 @@ private:
     QList<QAction*> m_newWindowActions;
 
 private:
+#if X_ENABLE_X_BLE
+    xBle::xBle* m_ble{nullptr};
+#endif
 #if X_ENABLE_X_MODBUS
     xModbus::xModbus* m_modbus{nullptr};
 #endif

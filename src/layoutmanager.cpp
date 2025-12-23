@@ -10,6 +10,9 @@
 
 #include <QAction>
 
+#if X_ENABLE_X_BLE
+#include "x/ble/xble.h"
+#endif
 #if X_ENABLE_X_MODBUS
 #include "x/modbus/xmodbus.h"
 #endif
@@ -33,6 +36,7 @@ struct LayoutManagerKeys
 {
     const QString xIndex{"xIndex"};
 
+    const QString xBle{"xBle"};
     const QString xModbus{"xModbus"};
     const QString xCanbus{"xCanbus"};
     const QString xMqtt{"xMqtt"};
@@ -99,6 +103,10 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
+#if X_ENABLE_X_BLE
+    m_ble = new xBle::xBle(m_layout->parentWidget());
+    addLayoutPage(QString("xBLE"), m_ble);
+#endif
 #if X_ENABLE_X_MODBUS
     m_modbus = new xModbus::xModbus(m_layout->parentWidget());
     addLayoutPage(QString("xModbus"), m_modbus);
