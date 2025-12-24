@@ -400,7 +400,11 @@ void NodeEditorView::paintEvent(QPaintEvent *event)
 
     QPalette palette = qApp->palette();
     QPainter painter(viewport());
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     painter.setPen(QPen(palette.color(QPalette::ColorRole::Accent), 2));
+#else
+    painter.setPen(QPen(palette.color(QPalette::ColorRole::Highlight), 2));
+#endif
     painter.setBrush(backgroundBrush());
     painter.setOpacity(0.6);
     painter.drawRect(m_rubberBandRect);

@@ -8,9 +8,11 @@
  **************************************************************************************************/
 #include "navigatordockwidgetcontent.h"
 
+#include <QApplication>
 #include <QEvent>
 #include <QGraphicsScene>
 #include <QMouseEvent>
+#include <QPalette>
 #include <QScrollBar>
 
 namespace xFlow {
@@ -76,7 +78,11 @@ void NavigatorDockWidgetContent::paintEvent(QPaintEvent *event)
     }
 
     if (m_viewPortRect.isValid()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
         painter.setPen(palette.color(QPalette::ColorRole::Accent));
+#else
+        painter.setPen(palette.color(QPalette::ColorRole::Highlight));
+#endif
         painter.drawRect(m_viewPortRect);
     }
 }

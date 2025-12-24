@@ -20,7 +20,7 @@ if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND)
   add_compile_definitions(X_ENABLE_SERIALBUS)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::SerialBus)
 
-  if(QT_VERSION VERSION_LESS "6.8.0")
+  if(QT_VERSION VERSION_LESS "6.5.0")
     add_compile_definitions(X_ENABLE_X_MODBUS=0)
     remove_all_x_modbus_files()
 

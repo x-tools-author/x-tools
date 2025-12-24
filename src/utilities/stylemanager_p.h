@@ -41,6 +41,10 @@ public:
 
         QString defaultStyle = xDefaultStyleName;
         QString style = settings->value(keyStyle, defaultStyle).toString();
+        if (QStyleFactory::keys().contains(style, Qt::CaseInsensitive) == false) {
+            style = defaultStyle;
+        }
+
         for (QString& key : QStyleFactory::keys()) {
             if (key.toLower() == style.toLower()) {
                 QApplication::setStyle(QStyleFactory::create(style));

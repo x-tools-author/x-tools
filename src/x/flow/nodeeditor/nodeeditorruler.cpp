@@ -22,7 +22,11 @@ NodeEditorRuler::NodeEditorRuler(QWidget* parent)
     : QWidget(parent)
     , m_editor(nullptr)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     m_vernierColor = palette().color(QPalette::ColorRole::Accent);
+#else
+    m_vernierColor = palette().color(QPalette::ColorRole::Highlight);
+#endif
 }
 
 void NodeEditorRuler::setColor(QColor const& color)

@@ -19,8 +19,8 @@ if(ANDROID OR IOS)
   return()
 endif()
 
-# Not supported on Qt versions less than 6.8.0
-if(QT_VERSION VERSION_LESS "6.8.0")
+# Not supported on Qt versions less than 6.5.0
+if(QT_VERSION VERSION_LESS "6.5.0")
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
 else()
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" ON)

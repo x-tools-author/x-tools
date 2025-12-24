@@ -421,8 +421,13 @@ void xFlow::onRedo()
 void xFlow::onThemeChanged()
 {
     QPalette palette = qApp->palette();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     ui->widgetHRuler->setVernierColor(palette.color(QPalette::ColorRole::Accent));
     ui->widgetVRuler->setVernierColor(palette.color(QPalette::ColorRole::Accent));
+#else
+    ui->widgetHRuler->setVernierColor(palette.color(QPalette::ColorRole::Highlight));
+    ui->widgetVRuler->setVernierColor(palette.color(QPalette::ColorRole::Highlight));
+#endif
 
     QFile file(":/res/x/flow/nodeeditorstyle.json");
     if (!file.open(QFile::ReadOnly)) {
@@ -547,7 +552,11 @@ QJsonObject xFlow::cookedConnectionStyle(const QJsonObject &style)
 {
     QJsonObject connectionStyle = style;
     QPalette palette = qApp->palette();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     QColor normalColor = palette.color(QPalette::ColorRole::Accent);
+#else
+    QColor normalColor = palette.color(QPalette::ColorRole::Highlight);
+#endif
     QJsonArray rgb;
     rgb.append(normalColor.red());
     rgb.append(normalColor.green());
@@ -555,7 +564,11 @@ QJsonObject xFlow::cookedConnectionStyle(const QJsonObject &style)
     connectionStyle["NormalColor"] = rgb;
     connectionStyle["ConstructionColor"] = rgb;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     QColor selectedColor = palette.color(QPalette::ColorRole::Accent);
+#else
+    QColor selectedColor = palette.color(QPalette::ColorRole::Highlight);
+#endif
     rgb[0] = selectedColor.red();
     rgb[1] = selectedColor.green();
     rgb[2] = selectedColor.blue();
