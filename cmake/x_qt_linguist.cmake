@@ -55,7 +55,7 @@ function(x_generate_translations target)
 
     # ts -> qm
     qt5_add_translation(QM_FILES ${APP_TS_FILES})
-    add_custom_target(${target}_lrelease DEPENDS ${QM_FILES})
+    add_custom_target(${target}_lrelease DEPENDS ${QM_FILES} SOURCE ${CMAKE_CURRENT_LIST_FILE})
     add_dependencies(${target} ${target}_lrelease)
     add_custom_command(
       TARGET ${target}
@@ -63,6 +63,21 @@ function(x_generate_translations target)
       COMMAND ${CMAKE_COMMAND} -E make_directory ${out_dir}
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${QM_FILES} ${out_dir}
       COMMENT "Collect Qt5 translation QMs for ${target}...")
+    set(LUPDATE_EXECUTABLE "${QT_DIR}/../../../bin/lupdate.exe")
+    if(EXISTS ${LUPDATE_EXECUTABLE})
+      list(APPEND args -DargTarget=${target})
+      list(APPEND args -DargLupdate=${LUPDATE_EXECUTABLE})
+      list(APPEND args -DargSrcDir=${CMAKE_SOURCE_DIR}/src)
+      list(APPEND args -DargOutDir=${CMAKE_SOURCE_DIR}/res/translations)
+      set(cmake_script ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/x_qt_linguist_script.cmake)
+      add_custom_target(
+        ${target}_lupdate
+        COMMAND ${CMAKE_COMMAND} ${args} -P ${cmake_script}
+        SOURCES ${CMAKE_CURRENT_LIST_FILE}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        USES_TERMINAL
+        COMMENT "Start update ts files for ${target}, the args are: ${args}")
+    endif()
   else()
     set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
     if(NOT QT_VERSION VERSION_LESS "6.7.0")

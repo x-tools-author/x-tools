@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
@@ -67,14 +67,13 @@ AbstractPlugin *PluginManager::newPlugin(const QString &libFile)
         if (LuaPlugin::testLib(libFile)) {
             return new LuaPlugin(libFile);
         }
-    }
+    } else if (libFile.endsWith(".py")) {
 #if 0
-     else if (libFile.endsWith(".py")) {
         if (PyPlugin::testLib(libFile)) {
             return new PyPlugin(libFile);
         }
 #endif
-    else {
+    } else {
         qWarning() << "Unsupported plugin type:" << libFile;
     }
 

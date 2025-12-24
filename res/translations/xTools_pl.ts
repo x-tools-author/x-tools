@@ -1382,12 +1382,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Jasne</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="34"/>
         <source>Time</source>
         <translation>Czas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/dataviewui.cpp" line="34"/>
         <source>Data</source>
         <translation>Dane</translation>
     </message>
@@ -2409,24 +2409,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">&amp;Plik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="351"/>
+        <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>Nowe okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="371"/>
         <source>Save Parameters</source>
         <translation>Zapisz parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="375"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Import Parameters</source>
         <translation>Importuj parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="372"/>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="379"/>
+        <location filename="../../src/mainwindow.cpp" line="652"/>
         <source>Export Parameters</source>
         <translation>Eksportuj parametry</translation>
     </message>
@@ -2435,12 +2435,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Wyjdź z aplikacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;Narzędzia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="389"/>
+        <location filename="../../src/mainwindow.cpp" line="396"/>
         <source>New</source>
         <translation>Nowy</translation>
     </message>
@@ -2497,7 +2497,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">&amp;Języki</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;Widok</translation>
     </message>
@@ -2514,7 +2514,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">O Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="688"/>
+        <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>O programie</translation>
     </message>
@@ -2527,13 +2527,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Kup w sklepie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
-        <location filename="../../src/mainwindow.cpp" line="537"/>
+        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../src/mainwindow.cpp" line="544"/>
         <source>Release History</source>
         <translation>Historia wydań</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>Dołącz do grupy QQ</translation>
     </message>
@@ -2550,78 +2550,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Pobierz źródła z Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="425"/>
+        <location filename="../../src/mainwindow.cpp" line="432"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
+        <location filename="../../src/mainwindow.cpp" line="530"/>
         <source>Third Party Open Source</source>
         <translation>Otwarte oprogramowanie innych firm</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="557"/>
+        <location filename="../../src/mainwindow.cpp" line="564"/>
         <source>QR Code</source>
         <translation>Kod QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
+        <location filename="../../src/mainwindow.cpp" line="573"/>
         <source>User QQ Group</source>
         <translation>Grupa użytkowników QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="567"/>
+        <location filename="../../src/mainwindow.cpp" line="574"/>
         <source>Qt QQ Group</source>
         <translation>Grupa Qt QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="588"/>
+        <location filename="../../src/mainwindow.cpp" line="595"/>
         <source>Need to Reboot</source>
         <translation>Wymagana ponowna instalacja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="589"/>
+        <location filename="../../src/mainwindow.cpp" line="596"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operacja wymaga ponownego uruchomienia, czy chcesz teraz ponownie uruchomić aplikację?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="591"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Proszę ręcznie ponownie uruchomić aplikację.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
-        <location filename="../../src/mainwindow.cpp" line="647"/>
+        <location filename="../../src/mainwindow.cpp" line="641"/>
+        <location filename="../../src/mainwindow.cpp" line="654"/>
         <source>Json Files (*.json)</source>
         <translation>Pliki Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="689"/>
         <source>Commit hash</source>
         <translation>Hash zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="691"/>
         <source>Commit time</source>
         <translation>Czas zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../src/mainwindow.cpp" line="692"/>
         <source>Build Date</source>
         <translation>Data kompilacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="693"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="687"/>
+        <location filename="../../src/mainwindow.cpp" line="694"/>
         <source>All rights reserved.</source>
         <translation>Wszelkie prawa zastrzeżone.</translation>
     </message>
@@ -3600,57 +3600,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Jasne</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="139"/>
+        <location filename="../../src/page/page.ui" line="126"/>
         <source>Rx</source>
         <translation>Odbiór</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="146"/>
+        <location filename="../../src/page/page.ui" line="133"/>
         <source>Tx</source>
         <translation>Przesyłka</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="153"/>
+        <location filename="../../src/page/page.ui" line="140"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="160"/>
+        <location filename="../../src/page/page.ui" line="147"/>
         <source>Flag</source>
         <translation>Flaga</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="167"/>
+        <location filename="../../src/page/page.ui" line="154"/>
         <source>Time</source>
         <translation>Czas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="174"/>
+        <location filename="../../src/page/page.ui" line="161"/>
         <source>Ms</source>
         <translation>SM</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="216"/>
+        <location filename="../../src/page/page.ui" line="203"/>
         <source>Output control</source>
         <translation>Kontrola wyjścia</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="246"/>
+        <location filename="../../src/page/page.ui" line="233"/>
         <source>Input control</source>
         <translation>Kontrola wejścia</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="225"/>
+        <location filename="../../src/page/page.ui" line="212"/>
         <source>Wrap</source>
         <translation>Zawinąć</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="232"/>
+        <location filename="../../src/page/page.ui" line="219"/>
         <source>Terminal</source>
         <translation>Terminal</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="197"/>
+        <location filename="../../src/page/page.ui" line="184"/>
         <source>Communication control</source>
         <translation>Kontrola komunikacji</translation>
     </message>
@@ -3660,8 +3660,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Wysłać</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="204"/>
-        <location filename="../../src/page/page.ui" line="253"/>
+        <location filename="../../src/page/page.ui" line="191"/>
+        <location filename="../../src/page/page.ui" line="240"/>
         <source>Text format</source>
         <translation>Format tekstowy</translation>
     </message>
@@ -4213,7 +4213,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="21"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
@@ -4315,28 +4315,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">2</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="19"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>Wiadomość</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="42"/>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="23"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="24"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="25"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
         <source>Request</source>
         <translation>Wniosek</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="27"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
         <source>Response</source>
         <translation>Odpowiedź</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="59"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>Wszystko</translation>
     </message>
@@ -4474,17 +4474,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Wielki endian</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="29"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
         <source>Binary</source>
         <translation>Dwójkowy</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="30"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="31"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="33"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/randomgeneratorui.cpp" line="34"/>
         <source>Disable</source>
         <translation>Wyłączyć</translation>
     </message>
@@ -4576,22 +4576,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Scenariusz</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="155"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="163"/>
         <source>New Script</source>
         <translation>Nowy skrypt</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="156"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="164"/>
         <source>Please input the script name:</source>
         <translation>Wprowadź nazwę skryptu:</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="259"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="267"/>
         <source>Stop the script</source>
         <translation>Zatrzymaj skrypt</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="274"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="282"/>
         <source>Run the script</source>
         <translation>Uruchom skrypt</translation>
     </message>
@@ -5238,6 +5238,226 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>TftpAssistant</name>
+    <message>
+        <location filename="../../src/tools/tftp/tftpassistant.cpp" line="24"/>
+        <source>Server</source>
+        <translation type="unfinished">Serwer</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/tftpassistant.cpp" line="27"/>
+        <source>Client</source>
+        <translation type="unfinished">Klient</translation>
+    </message>
+</context>
+<context>
+    <name>TftpClient</name>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="277"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="349"/>
+        <source>Another transfer is already in progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="296"/>
+        <source>File already exists: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="303"/>
+        <source>Failed to open file for writing: %1</source>
+        <translation type="unfinished">Nie udało się otworzyć pliku do zapisu: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="361"/>
+        <source>File not found: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="368"/>
+        <source>Failed to open file for reading: %1</source>
+        <translation type="unfinished">Nie udało się otworzyć pliku do odczytu: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="474"/>
+        <source>Failed to write data to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="564"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="642"/>
+        <source>Failed to read data from file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="678"/>
+        <source>Unknown TFTP opcode received</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="691"/>
+        <source>Connection timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpClientUi</name>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="14"/>
+        <source>TFTP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="22"/>
+        <source>Server Address:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="29"/>
+        <source>127.0.0.1</source>
+        <translation type="unfinished">127.0.0.1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="36"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="43"/>
+        <source>69</source>
+        <translation type="unfinished">69</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="56"/>
+        <source>Local Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="66"/>
+        <source>Browse</source>
+        <translation type="unfinished">Przeglądać</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="73"/>
+        <source>Remote File:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="87"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="94"/>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="101"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpServer</name>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1164"/>
+        <source>Failed to bind to port %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1290"/>
+        <source>Unknown transfer ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpServerUi</name>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="14"/>
+        <source>TFTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="22"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="29"/>
+        <source>69</source>
+        <translation type="unfinished">69</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="42"/>
+        <source>Status:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="49"/>
+        <source>Not Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="59"/>
+        <source>Root Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="69"/>
+        <source>Browse</source>
+        <translation type="unfinished">Przeglądać</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="80"/>
+        <source>Start</source>
+        <translation type="unfinished">Rozpocznij</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="90"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpSession</name>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="800"/>
+        <source>File not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="807"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="868"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="984"/>
+        <source>Access violation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="859"/>
+        <source>File already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="912"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="964"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1025"/>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1095"/>
+        <source>Illegal TFTP operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1046"/>
+        <source>Disk full or allocation exceeded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1110"/>
+        <source>Connection timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TransferModel</name>
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
@@ -5401,7 +5621,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Proszę</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="34"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/userinputui.cpp" line="35"/>
         <source>Disable</source>
         <translation>Wyłączyć</translation>
     </message>
@@ -5409,12 +5629,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="139"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="114"/>
         <source>Interfce Name</source>
         <translation>Nazwa interfejsu</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="152"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="127"/>
         <source>CAN Plugin</source>
         <translation>Wtyczka CAN</translation>
     </message>
@@ -5423,47 +5643,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Szybkość transmisji</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="208"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>Przełącznik szybkości transmisji</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="79"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="226"/>
         <source>Input format</source>
         <translation>Format wejściowy</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
         <source>Device selecting</source>
         <translation>Wybór urządzenia</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="103"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="98"/>
         <source>Specify configuration</source>
         <translation>Określ konfigurację</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="72"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="83"/>
         <source>Sending settings</source>
         <translation>Ustawienia wysyłania</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="179"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="169"/>
         <source>Disconnect</source>
         <translation>Odłączyć</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="186"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="176"/>
         <source>Connect</source>
         <translation>Łączyć</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="222"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="71"/>
         <source>Frame ID</source>
         <translation>Identyfikator ramki</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="313"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="293"/>
         <source>Nominal bitrate</source>
         <translation>Nominalna przepływność</translation>
     </message>
@@ -5472,17 +5692,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">CAN FD</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="120"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>Wysyłanie w określonym czasie</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="185"/>
         <source>Frame type</source>
         <translation>Typ ramy</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="110"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="64"/>
         <source>Extended format</source>
         <translation>Rozszerzony format</translation>
     </message>
@@ -5492,22 +5712,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Widok danych</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="326"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="306"/>
         <source>Data bitrate</source>
         <translation>Szybkość transmisji danych</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="215"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Flexible data rate</source>
         <translation>Elastyczna szybkość transmisji danych</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="271"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="251"/>
         <source>Error filter</source>
         <translation>Filtr błędów</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="300"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>Pętla zwrotna</translation>
     </message>
@@ -5516,7 +5736,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Konfiguracja niestandardowa</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
         <source>Receive own</source>
         <translation>Odbierz własne</translation>
     </message>
@@ -5648,29 +5868,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Pasuje do każdego innego typu błędu</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
         <source>The CAN bus device is not connected.</source>
         <translation>Urządzenie magistrali CAN nie jest podłączone.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="292"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
         <source>Invalid frame ID.</source>
         <translation>Nieprawidłowy identyfikator ramki.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="299"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
         <source>Payload is empty.</source>
         <translation>Ładunek jest pusty.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="360"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>nieokreślony</translation>
     </message>
@@ -5683,27 +5903,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">PRAWDA</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="395"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
         <source>Data Frame</source>
         <translation>Ramka danych</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="396"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Remote Request Frame</source>
         <translation>Zdalna ramka żądania</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="397"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Error Frame</source>
         <translation>Ramka błędu</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="407"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="411"/>
         <source>Disabled</source>
         <translation>Wyłączony</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="443"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="447"/>
         <source>Unspecified</source>
         <translation>Nieokreślony</translation>
     </message>
@@ -5747,42 +5967,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::LogDockWidgetContentModel</name>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="19"/>
         <source>The is a debug message.</source>
         <translation>To jest komunikat debugowania.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="20"/>
         <source>The is a information message.</source>
         <translation>To jest wiadomość informacyjna.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="21"/>
         <source>The is a warning message.</source>
         <translation>Jest to komunikat ostrzegawczy.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="22"/>
         <source>The is a critical message.</source>
         <translation>Jest to wiadomość krytyczna.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="24"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="23"/>
         <source>The is a fatal message.</source>
         <translation>To fatalna wiadomość.</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="139"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="138"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="141"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="140"/>
         <source>Time</source>
         <translation>Czas</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="143"/>
+        <location filename="../../src/x/flow/dockwidgets/log/logdockwidgetcontentmodel.cpp" line="142"/>
         <source>Message</source>
         <translation>Wiadomość</translation>
     </message>
@@ -5798,32 +6018,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="241"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="243"/>
         <source>Delete connection</source>
         <translation>Usuń połączenie</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="276"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="278"/>
         <source>Save Image as...</source>
         <translation>Zapisz obraz jako...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="283"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
         <source>Save Image</source>
         <translation>Zapisz obraz</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="287"/>
         <source>Images (*.png)</source>
         <translation>Obrazy (*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="297"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="299"/>
         <source>Save Image to Clipboard</source>
         <translation>Zapisz obraz w schowku</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="300"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="302"/>
         <source>Delete</source>
         <translation>Usuwać</translation>
     </message>
@@ -6150,37 +6370,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDevice</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="122"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
         <source>Modbus device connected.</source>
         <translation>Podłączone urządzenie Modbus.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
         <source>Modbus device disconnected.</source>
         <translation>Urządzenie Modbus odłączone.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="143"/>
         <source>Modbus device error: %1</source>
         <translation>Błąd urządzenia Modbus: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="166"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="173"/>
         <source>Failed to connect Modbus device: %1</source>
         <translation>Nie udało się podłączyć urządzenia Modbus: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="400"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="407"/>
         <source>Failed to send read request: %1</source>
         <translation>Nie udało się wysłać żądania odczytu: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="426"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
         <source>Read error: %1</source>
         <translation>Błąd odczytu: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="440"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
         <translation>Przeczytaj odpowiedź %1: adres serwera=%2, adres początkowy=%3, liczba wartości=%4</translation>
     </message>
@@ -6302,17 +6522,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogModel</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="163"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="164"/>
         <source>Time</source>
         <translation>Czas</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="165"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="166"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="167"/>
+        <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="168"/>
         <source>Message</source>
         <translation>Wiadomość</translation>
     </message>
@@ -6320,52 +6540,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="128"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="134"/>
         <source>Clear Log</source>
         <translation>Wyczyść dziennik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="129"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
         <source>Are you sure you want to clear the log?</source>
         <translation>Czy na pewno chcesz wyczyścić dziennik?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="141"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="151"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="157"/>
         <source>Save Log</source>
         <translation>Zapisz dziennik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="143"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="177"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="149"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="183"/>
         <source>Log Files (*.json)</source>
         <translation>Pliki dziennika (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="152"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
         <source>Failed to open file for writing: %1</source>
         <translation>Nie udało się otworzyć pliku do zapisu: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="175"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="185"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="197"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="191"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="203"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="212"/>
         <source>Open Log</source>
         <translation>Otwórz dziennik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
         <source>Failed to open file for reading: %1</source>
         <translation>Nie udało się otworzyć pliku do odczytu: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="198"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
         <source>Failed to parse log file: %1 at offset %2</source>
         <translation>Nie udało się przeanalizować pliku dziennika: %1 na przesunięciu %2</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="207"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
         <source>Invalid log file format: root element is not an array.</source>
         <translation>Nieprawidłowy format pliku dziennika: element główny nie jest tablicą.</translation>
     </message>
@@ -6373,52 +6593,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTable</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="200"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
         <source>Register Address</source>
         <translation>Zarejestruj adres</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="202"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
         <source>Name</source>
         <translation>Nazwa</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="204"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
         <source>Server Address</source>
         <translation>Adres serwera</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="206"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
         <source>Unit</source>
         <translation>Jednostka</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="212"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
         <source>Min</source>
         <translation>Min</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="214"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="220"/>
         <source>Max</source>
         <translation>Maks</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="216"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="222"/>
         <source>Decimals</source>
         <translation>Dziesiętne</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertable.cpp" line="224"/>
         <source>Value</source>
         <translation>Wartość</translation>
     </message>
@@ -6426,50 +6646,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="177"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="183"/>
         <source>Save Registers</source>
         <translation>Zapisz rejestry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="179"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="203"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="185"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="209"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="187"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="211"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="220"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="187"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
         <source>Failed to open file for saving.</source>
         <translation>Nie udało się otworzyć pliku do zapisania.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="201"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="207"/>
         <source>Load Registers</source>
         <translation>Załaduj rejestry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="211"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
         <source>Failed to open file for loading.</source>
         <translation>Nie udało się otworzyć pliku do załadowania.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="220"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Nieprawidłowy format JSON w pliku.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="228"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="234"/>
         <source>Import Registers</source>
         <translation>Importuj rejestry</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="229"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Tabela rejestrów nie jest pusta. </translation>
     </message>
