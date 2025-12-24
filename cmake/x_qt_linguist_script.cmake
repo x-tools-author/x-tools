@@ -37,7 +37,7 @@ message(STATUS "[xTools.lupdate] argTarget: ${argTarget}")
 foreach(lan ${X_LANGUAGES})
   set(ts_file ${argOutDir}/${argTarget}_${lan}.ts)
   execute_process(
-    COMMAND ${argLupdate} ${argSrcDir} -ts ${ts_file} -no-obsolete
+    COMMAND ${argLupdate} ${argSrcDir} -ts ${ts_file}
     WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
     RESULT_VARIABLE result_var
     OUTPUT_VARIABLE output_var)

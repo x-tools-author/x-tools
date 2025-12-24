@@ -64,6 +64,7 @@ function(x_generate_translations target)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${QM_FILES} ${out_dir}
       COMMENT "Collect Qt5 translation QMs for ${target}...")
     set(LUPDATE_EXECUTABLE "${QT_DIR}/../../../bin/lupdate.exe")
+    # lupdate ts files(just for qt5)
     if(EXISTS ${LUPDATE_EXECUTABLE})
       list(APPEND args -DargTarget=${target})
       list(APPEND args -DargLupdate=${LUPDATE_EXECUTABLE})
