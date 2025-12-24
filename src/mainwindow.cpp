@@ -197,7 +197,6 @@ void MainWindow::load(const QString& fileName)
     m_ioPage10->load(obj.value(keys.page10).toObject().toVariantMap());
     m_ioPage11->load(obj.value(keys.page11).toObject().toVariantMap());
     m_layoutManager->load(obj.value(keys.layoutManager).toObject());
-    qInfo() << obj;
 
     bool showMax = obj.value(keys.showMax).toBool(false);
     if (showMax) {

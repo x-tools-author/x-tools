@@ -55,7 +55,10 @@ function(x_generate_translations target)
 
     # ts -> qm
     qt5_add_translation(QM_FILES ${APP_TS_FILES})
-    add_custom_target(${target}_lrelease DEPENDS ${QM_FILES} SOURCE ${CMAKE_CURRENT_LIST_FILE})
+    add_custom_target(
+      ${target}_lrelease
+      DEPENDS ${QM_FILES}
+      SOURCES ${CMAKE_CURRENT_LIST_FILE})
     add_dependencies(${target} ${target}_lrelease)
     add_custom_command(
       TARGET ${target}
