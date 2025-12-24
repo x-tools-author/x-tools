@@ -110,18 +110,16 @@ else()
   set_property(TARGET zint-qt PROPERTY FOLDER "3rd")
   set_property(TARGET zint-static PROPERTY FOLDER "3rd")
 
-  if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
-    # Auto install Zint
-    add_custom_command(
-      OUTPUT ${X_LIBS_DIR}/${file_name}/install.stamp
-      COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${file_name}
-      COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS_DIR}/${file_name}/install.stamp
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${file_name}
-      COMMENT "[zint] Installing Zint to ${X_LIBS_DIR}/${file_name}")
-    add_custom_target(QZint_auto_install ALL DEPENDS ${X_LIBS_DIR}/${file_name}/install.stamp)
-    add_dependencies(QZint_auto_install QZint zint-qt zint-static)
-    set_property(TARGET QZint_auto_install PROPERTY FOLDER "3rd")
-  endif()
+  # Auto install Zint
+  add_custom_command(
+    OUTPUT ${X_LIBS_DIR}/${file_name}/install.stamp
+    COMMAND ${CMAKE_COMMAND} --install . --prefix ${X_LIBS_DIR}/${file_name}
+    COMMAND ${CMAKE_COMMAND} -E touch ${X_LIBS_DIR}/${file_name}/install.stamp
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${file_name}
+    COMMENT "[zint] Installing Zint to ${X_LIBS_DIR}/${file_name}")
+  add_custom_target(QZint_auto_install ALL DEPENDS ${X_LIBS_DIR}/${file_name}/install.stamp)
+  add_dependencies(QZint_auto_install QZint zint-qt zint-static)
+  set_property(TARGET QZint_auto_install PROPERTY FOLDER "3rd")
   add_compile_definitions(X_USING_ZINT_SRC)
   add_compile_definitions(X_ENABLE_ZINT=1)
   list(APPEND X_LIBS zint-static QZint)

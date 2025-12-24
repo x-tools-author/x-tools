@@ -87,15 +87,16 @@ public:
     void updateWindowCaption()
     {
         QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
-        for (QWidget *widget : topLevelWidgets) {
+        for (QWidget *widget : std::as_const(topLevelWidgets)) {
             updateWindowCaption(widget);
         }
     }
 
     void updateWindowCaption(QWidget *widget)
     {
-#if xEnableColorScheme
-#if defined(_MSC_VER)
+#if !defined(_MSC_VER)
+        Q_UNUSED(widget);
+#else
         bool isWindows11 = QSysInfo::productVersion().contains("11");
         bool isWindows10 = QSysInfo::productVersion().contains("10");
         if (!isWindows10 && !isWindows11) {
@@ -114,17 +115,6 @@ public:
                               DWMWA_CAPTION_COLOR,
                               &colorref,
                               sizeof(colorref));
-#if 0
-        c = palette.color(QPalette::Accent);
-        colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-        DwmSetWindowAttribute((HWND) window->winId(),
-                              DWMWA_BORDER_COLOR,
-                              &colorref,
-                              sizeof(colorref));
-#endif
-#endif
-#else
-        Q_UNUSED(widget);
 #endif
     }
 

@@ -36,46 +36,49 @@ endfunction()
 
 # Generate translations files for application
 function(x_generate_translations target)
-  set(APP_TS_FILES "")
-  foreach(lang IN LISTS X_LANGUAGES)
-    set(ts_file ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_${lang}.ts)
-    list(APPEND APP_TS_FILES ${ts_file})
-  endforeach()
-
-  # Qt5
-  if(${QT_VERSION} VERSION_LESS "6.0.0")
-    qt5_add_translation(QM_FILES ${APP_TS_FILES})
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${APP_TS_FILES})
-    return()
-  endif()
-
-  if(QT_VERSION VERSION_LESS "6.2.0")
-    message(STATUS "[Linguist] Generating translations is ignored, because Qt version tool low")
-    return()
-  endif()
-
   # Do not generate translations for mobile platforms
   if(IOS OR ANDROID)
     return()
   endif()
 
+  set(APP_TS_FILES "")
+  foreach(lang IN LISTS X_LANGUAGES)
+    set(ts_file ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_${lang}.ts)
+    list(APPEND APP_TS_FILES ${ts_file})
+  endforeach()
   set(out_dir "${CMAKE_BINARY_DIR}/x_tmp/${target}/translations")
-  set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
-  if(NOT QT_VERSION VERSION_LESS "6.7.0")
-    qt_add_lupdate(
-      SOURCE_TARGETS
-      ${target}
-      TS_FILES
-      ${APP_TS_FILES}
-      LUPDATE_TARGET
-      ${target}_lupdate
-      NO_GLOBAL_TARGET)
-    qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
+
+  # Qt5
+  if(${QT_VERSION} VERSION_LESS "6.0.0")
+    # ts -> qm
+    qt5_add_translation(QM_FILES ${APP_TS_FILES})
+    add_custom_target(${target}_lrelease DEPENDS ${QM_FILES})
+    add_dependencies(${target} ${target}_lrelease)
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${out_dir}
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${QM_FILES} ${out_dir}
+      COMMENT "Collect Qt5 translation QMs for ${target}...")
   else()
-    qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
-    qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
+    set_source_files_properties(${APP_TS_FILES} PROPERTIES OUTPUT_LOCATION ${out_dir})
+    if(NOT QT_VERSION VERSION_LESS "6.7.0")
+      qt_add_lupdate(
+        SOURCE_TARGETS
+        ${target}
+        TS_FILES
+        ${APP_TS_FILES}
+        LUPDATE_TARGET
+        ${target}_lupdate
+        NO_GLOBAL_TARGET)
+      qt_add_lrelease(TS_FILES ${APP_TS_FILES} LRELEASE_TARGET ${target}_lrelease NO_GLOBAL_TARGET)
+    else()
+      qt_add_lupdate(${target} TS_FILES ${APP_TS_FILES})
+      qt_add_lrelease(${target} TS_FILES ${APP_TS_FILES})
+    endif()
   endif()
 
+  # Copy qm files to deploy dir...
   if(APPLE)
     add_custom_command(
       TARGET ${target}
