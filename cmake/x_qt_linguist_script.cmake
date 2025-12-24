@@ -35,17 +35,16 @@ message(STATUS "[xTools.lupdate] argOutDir: ${argOutDir}")
 message(STATUS "[xTools.lupdate] argTarget: ${argTarget}")
 
 foreach(lan ${X_LANGUAGES})
-  message(STATUS "[xTools.lupdate] Processing language: ${lan}")
   set(ts_file ${argOutDir}/${argTarget}_${lan}.ts)
   execute_process(
-    COMMAND ${argLupdate} ${argSrcDir} -ts ${ts_file}
+    COMMAND ${argLupdate} ${argSrcDir} -ts ${ts_file} -no-obsolete
     WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
     RESULT_VARIABLE result_var
     OUTPUT_VARIABLE output_var)
   if(NOT result_var EQUAL 0)
-    message(WARNING "[xTools.lupdate] lupdate failed for language: ${lan}")
+    message(WARNING "[xTools.lupdate] lupdate failed for language: ${ts_file}")
     message(WARNING "[xTools.lupdate] Output: ${output_var}")
   else()
-    message(STATUS "[xTools.lupdate] lupdate succeeded for language: ${lan}")
+    message(STATUS "[xTools.lupdate] Updating: ${ts_file}")
   endif()
 endforeach(lan)

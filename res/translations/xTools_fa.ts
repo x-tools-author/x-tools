@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>پیمایش خودکار به پایین</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">پیمایش صوتی به پایین</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>پاک کردن</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">دستگاه مدباس جدید</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">پارامترهای اتصال</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">برابری</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">نرخ باود</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">بیت ها را متوقف کنید</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">تازه کردن</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">بیت های داده</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">نام ها</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">آدرس IP</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">بندر</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">نوع دستگاه</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">مهلت زمانی (میلی‌ثانیه)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">تعداد تلاش های مجدد</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">آدرس</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">حالت فقط گوش دادن</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">پارامترهای دستگاه</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">نام دستگاه</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">مانند: زیمنس S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">جستجو کنید</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">ویرایشگر گره</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">ژنرال</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;فایل</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>پنجره جدید</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>خروجی پارامترها</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">خروج از برنامه</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;ابزارها</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>جدید</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;گزینه‌ها</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">از System Proxy استفاده کنید</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">به System Tray خارج شوید</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">سبک برنامه</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">تنظیمات</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">تنظیمات را پاک کنید</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">دایرکتوری تنظیمات را باز کنید</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">سیاست HDPI</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">طرح رنگ</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">تاریک</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">نور</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">سیستم</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;زبان‌ها</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;نمایش</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">در بالا می ماند</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;راهنما</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">درباره Qt</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>درباره</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">اسکرین شات</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">از فروشگاه خرید کنید</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>به گروه QQ بپیوندید</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">کتابچه راهنمای آنلاین</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">منابع را از Github دریافت کنید</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">منابع را از Gitee دریافت کنید</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>بدون عنوان</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>پیام</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>همه</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;زبان‌ها</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>فرم</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">صادرات</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>همه موارد را غیرفعال کنید</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">حذف کنید</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">بالا</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">اضافه کنید</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>پاک کردن</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">واردات</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">پایین</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>پلاگین CAN</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">میزان بیت</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>سوئیچ میزان بیت</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>نرخ بیت اسمی</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>ارسال به موقع</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">پیکربندی سفارشی</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>نامشخص</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">نادرست</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">درست است</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">نوار ابزار Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">نمونه اقدام</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>ورود به سیستم</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">دستگاه RTU جدید</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">دستگاه TCP جدید</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">کویل های جدید</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">ورودی های گسسته جدید</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">ثبت های جدید هلدینگ</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">ثبت های ورودی جدید</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">کویل</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">ورودی های گسسته</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">برگزاری ثبت ها</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">ثبت های ورودی</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">نوار ابزار Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">نمونه اقدام</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>خروج از برنامه</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">گزینه</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

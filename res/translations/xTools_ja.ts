@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>最下位まで自動スクロール</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">一番下までスクロールする</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>クリア</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">新しい Modbus デバイス</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">接続パラメータ</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">パリティ</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">ボーレート</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">ストップビット</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">リフレッシュ</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">データビット</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">名前</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IPアドレス</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">ポート</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">デバイスの種類</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">タイムアウト(ミリ秒)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">リトライ回数</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">住所</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">リスニング専用モード</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">デバイスパラメータ</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">デバイス名</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">例: シーメンス S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">検索</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">ノードエディタ</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">一般的な</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;ファイル</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>新しいウィンドウ</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>パラメータをエクスポート</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">アプリケーションを終了する</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;ツール</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>新規</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;オプション</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">システムプロキシを使用する</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">システムトレイに戻る</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">申請スタイル</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">設定</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">設定をクリアする</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">設定ディレクトリを開く</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">HDPI ポリシー</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">配色</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">暗い</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">ライト</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">システム</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;言語</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;表示</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">トップを維持</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;ヘルプ</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">Qtについて</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>アプリについて</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">スクリーンショット</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">ストアから購入する</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>QQグループに参加する</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">オンラインマニュアル</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">Github からソースを取得する</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">Gitee からソースを取得する</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>無題</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>メッセージ</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>全て</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;言語</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>形状</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">輸出</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>すべての項目を無効にする</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">消去</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">上</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">追加</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>クリア</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">輸入</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>CANプラグイン</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">ビットレート</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>ビットレートスイッチ</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>公称ビットレート</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CANFD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>時間指定送信</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>ループバック</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">カスタム構成</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>不特定</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">間違い</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">真実</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbusツールバー</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">アクション例</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>ログ</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">新しい RTU デバイス</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">新しいTCPデバイス</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">新しいコイル</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">新しい離散入力</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">新しい保有登録簿</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">新しい入力レジスタ</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">コイル</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">ディスクリート入力</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">所蔵レジスター</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">入力レジスタ</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbusツールバー</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">アクション例</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>アプリケーションを終了する</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">オプション</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

@@ -1364,10 +1364,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>Automatyczne przewijanie do dołu</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">Przewijanie dźwięku w dół</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1426,88 +1422,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>Jasne</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">Nowe urządzenie Modbus</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">Parametry połączenia</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">Parytet</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">Szybkość transmisji</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">Zatrzymaj bity</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Odświeżać</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">Bity danych</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">Imiona</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">Adres IP</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Port</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">Typ urządzenia</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">Limit czasu (ms)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">Liczba ponownych prób</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adres</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">Tryb tylko słuchania</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">Parametry urządzenia</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">Nazwa urządzenia</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Takich jak: Siemens S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Szukaj</translation>
     </message>
 </context>
 <context>
@@ -2175,13 +2089,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">Edytor węzłów</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2401,14 +2308,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">Ogólny</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;Plik</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>Nowe okno</translation>
@@ -2431,10 +2330,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Eksportuj parametry</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">Wyjdź z aplikacji</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;Narzędzia</translation>
@@ -2445,86 +2340,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nowy</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;Opcje</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">Użyj systemowego serwera proxy</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">Wyjdź do zasobnika systemowego</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">Styl aplikacji</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">Ustawienia</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">Wyczyść ustawienia</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">Otwórz katalog ustawień</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">Polityka HDPI</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">Schemat kolorów</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">Ciemny</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">Światło</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">System</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;Języki</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;Widok</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">Pozostaje na szczycie</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;Pomoc</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">O Qt</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>O programie</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">Zrzut ekranu</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">Kup w sklepie</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2536,18 +2359,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>Dołącz do grupy QQ</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">Podręcznik internetowy</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">Pobierz źródła z Githuba</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">Pobierz źródła z Gitee</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4287,34 +4098,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nieuprawny</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1,5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>Wiadomość</translation>
@@ -4339,10 +4122,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>Wszystko</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;Języki</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5063,38 +4842,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Formularz</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">Eksport</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>Wyłącz wszystkie elementy</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">Usuwać</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">W górę</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">Dodać</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>Wyczyść</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">Import</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">W dół</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5639,10 +5394,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Wtyczka CAN</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">Szybkość transmisji</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>Przełącznik szybkości transmisji</translation>
@@ -5688,10 +5439,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nominalna przepływność</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>Wysyłanie w określonym czasie</translation>
@@ -5730,10 +5477,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>Pętla zwrotna</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">Konfiguracja niestandardowa</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5893,14 +5636,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>nieokreślony</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">FAŁSZ</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">PRAWDA</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6327,44 +6062,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Pasek narzędzi Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Przykładowa akcja</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>Dziennik</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">Nowe urządzenie RTU</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">Nowe urządzenie TCP</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">Nowe cewki</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">Nowe wejścia dyskretne</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">Nowe rejestry holdingowe</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">Nowe rejestry wejściowe</translation>
     </message>
 </context>
 <context>
@@ -6407,22 +6107,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">Cewki</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">Wejścia dyskretne</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">Prowadzenie rejestrów</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">Rejestry wejściowe</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6695,17 +6379,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Pasek narzędzi Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Przykładowa akcja</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6729,10 +6402,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>Wyjdź z aplikacji</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">Opcja</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

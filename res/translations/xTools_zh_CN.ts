@@ -352,37 +352,6 @@
     </message>
 </context>
 <context>
-    <name>BarChartSettings</name>
-    <message>
-        <source>Data format</source>
-        <translation type="vanished">数据格式</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">渠道</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation type="vanished">颜色</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">姓名</translation>
-    </message>
-    <message>
-        <source>Line</source>
-        <translation type="vanished">线</translation>
-    </message>
-    <message>
-        <source>Spline</source>
-        <translation type="vanished">样条线</translation>
-    </message>
-    <message>
-        <source>Scatter</source>
-        <translation type="vanished">分散</translation>
-    </message>
-</context>
-<context>
     <name>BarCodeAssistant</name>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="14"/>
@@ -883,10 +852,6 @@
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="210"/>
         <source>Interface name is empty, please input the name then try again!</source>
         <translation>接收名称为空，请输入后重试！</translation>
-    </message>
-    <message>
-        <source>Create device failed!</source>
-        <translation type="vanished">创建设备失败！</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.cpp" line="218"/>
@@ -1450,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>清除</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">新的 Modbus 设备</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">连接参数</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">平价</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">波特率</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">停止位</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">刷新</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">数据位</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">名称</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP地址</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">港口</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">设备类型</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">超时（毫秒）</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">重试次数</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">地址</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">只听模式</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">设备参数</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">设备名称</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">如：西门子S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">搜索</translation>
     </message>
 </context>
 <context>
@@ -2155,22 +2038,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>转义字符</translation>
     </message>
     <message>
-        <source>CRC end index</source>
-        <translation type="vanished">CRC 结束索引</translation>
-    </message>
-    <message>
-        <source>CRC start index</source>
-        <translation type="vanished">CRC 起始索引</translation>
-    </message>
-    <message>
-        <source>CRC arithmetic</source>
-        <translation type="vanished">CRC 运算</translation>
-    </message>
-    <message>
-        <source>Append CRC</source>
-        <translation type="vanished">附加CRC</translation>
-    </message>
-    <message>
         <location filename="../../src/page/inputsettings.ui" line="109"/>
         <source>Big endian</source>
         <translation>大端字节序</translation>
@@ -2212,76 +2079,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
-    </message>
-</context>
-<context>
-    <name>LineChartSettings</name>
-    <message>
-        <source>Data type</source>
-        <translation type="vanished">数据类型</translation>
-    </message>
-    <message>
-        <source>Legend</source>
-        <translation type="vanished">传奇</translation>
-    </message>
-    <message>
-        <source>Cache points</source>
-        <translation type="vanished">缓存点</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">清除</translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">进口</translation>
-    </message>
-    <message>
-        <source>Channel</source>
-        <translation type="vanished">渠道</translation>
-    </message>
-    <message>
-        <source>Visible</source>
-        <translation type="vanished">可见的</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Color</source>
-        <translation type="vanished">颜色</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">姓名</translation>
-    </message>
-    <message>
-        <source>Line</source>
-        <translation type="vanished">线</translation>
-    </message>
-    <message>
-        <source>Spline</source>
-        <translation type="vanished">样条线</translation>
-    </message>
-    <message>
-        <source>Scatter</source>
-        <translation type="vanished">分散</translation>
-    </message>
-</context>
-<context>
-    <name>LineChartView</name>
-    <message>
-        <source>Import Data from Excel</source>
-        <translation type="vanished">从 Excel 导入数据</translation>
-    </message>
-    <message>
-        <source>Export Data to Excel</source>
-        <translation type="vanished">将数据导出到 Excel</translation>
     </message>
 </context>
 <context>
@@ -2526,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>导出参数</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">退出申请</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
@@ -2538,66 +2331,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="396"/>
         <source>New</source>
         <translation>新建工具</translation>
-    </message>
-    <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">选项(&amp;O)</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">使用系统代理</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">在线手册</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">应用风格</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="vanished">一般的</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">设置</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">清除设置</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">打开设置目录</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">HDPI政策</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">配色方案</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">黑暗的</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">光</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">系统</translation>
-    </message>
-    <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">保持领先</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">从商店购买</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -2640,29 +2373,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <source>Main Window</source>
-        <translation type="vanished">主窗口</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">退出到系统托盘</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">语言(&amp;L)</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">帮助(&amp;H)</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">关于Qt</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
@@ -2670,37 +2383,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>关于</translation>
     </message>
     <message>
-        <source>Screenshot</source>
-        <translation type="vanished">截屏</translation>
-    </message>
-    <message>
-        <source>Bug from Store</source>
-        <translation type="vanished">来自商店的错误</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="530"/>
         <source>Third Party Open Source</source>
         <translation>第三方开源</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">从 Github 获取源代码</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">文件(&amp;F)</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">从 Gitee 获取源码</translation>
-    </message>
-    <message>
-        <source>About xTools</source>
-        <translation type="vanished">关于 xTools</translation>
-    </message>
-    <message>
-        <source>Buy Ultimate Edition</source>
-        <translation type="vanished">购买终极版</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2712,34 +2397,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>加入QQ群</translation>
-    </message>
-    <message>
-        <source>Links</source>
-        <translation type="vanished">链接</translation>
-    </message>
-    <message>
-        <source>Qt Official Download</source>
-        <translation type="vanished">Qt官方下载</translation>
-    </message>
-    <message>
-        <source>Qt Official Blog</source>
-        <translation type="vanished">Qt 官方博客</translation>
-    </message>
-    <message>
-        <source>Qt Official Release</source>
-        <translation type="vanished">Qt 正式发布</translation>
-    </message>
-    <message>
-        <source>Download xTools from Github</source>
-        <translation type="vanished">从 Github 下载 xTools</translation>
-    </message>
-    <message>
-        <source>Download xTools from Gitee</source>
-        <translation type="vanished">从 Gitee 下载 xTools</translation>
-    </message>
-    <message>
-        <source>Office Web Site</source>
-        <translation type="vanished">办公室网站</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="564"/>
@@ -2907,10 +2564,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>端口</translation>
     </message>
     <message>
-        <source>Client parameters</source>
-        <translation type="vanished">客户端参数</translation>
-    </message>
-    <message>
         <location filename="../../src/tools/modbus/modbusassistant.ui" line="617"/>
         <source>Start address</source>
         <translation>起始地址</translation>
@@ -3059,38 +2712,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="231"/>
         <source>MarkParity</source>
         <translation>标记校验</translation>
-    </message>
-    <message>
-        <source>0x01-ReadCoils</source>
-        <translation type="vanished">0x01-读取线圈</translation>
-    </message>
-    <message>
-        <source>0x02-ReadDiscreteInputs</source>
-        <translation type="vanished">0x02-读取离散输入</translation>
-    </message>
-    <message>
-        <source>0x03-ReadHoldingRegisters</source>
-        <translation type="vanished">0x03-读取保持寄存器</translation>
-    </message>
-    <message>
-        <source>0x04-ReadInputRegisters</source>
-        <translation type="vanished">0x04-读取输入寄存器</translation>
-    </message>
-    <message>
-        <source>0x05-WriteSingleCoil</source>
-        <translation type="vanished">0x05-写入单线圈</translation>
-    </message>
-    <message>
-        <source>0x06-WriteSingleRegister</source>
-        <translation type="vanished">0x06-写单寄存器</translation>
-    </message>
-    <message>
-        <source>0x0f-WriteMultipleCoils</source>
-        <translation type="vanished">0x0f-写入多个线圈</translation>
-    </message>
-    <message>
-        <source>0x10-WriteMultipleRegisters</source>
-        <translation type="vanished">0x10-写入多个寄存器</translation>
     </message>
     <message>
         <location filename="../../src/tools/modbus/modbusassistant.cpp" line="236"/>
@@ -3869,10 +3490,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>输出</translation>
     </message>
     <message>
-        <source>Advanced search</source>
-        <translation type="vanished">高级搜索</translation>
-    </message>
-    <message>
         <location filename="../../src/page/page.ui" line="517"/>
         <source>Input</source>
         <translation>输入</translation>
@@ -3901,34 +3518,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/page.cpp" line="452"/>
         <source>Disable</source>
         <translation>禁止</translation>
-    </message>
-    <message>
-        <source>Serial Port</source>
-        <translation type="vanished">串口</translation>
-    </message>
-    <message>
-        <source>UDP Client</source>
-        <translation type="vanished">UDP客户端</translation>
-    </message>
-    <message>
-        <source>UDP Server</source>
-        <translation type="vanished">UDP服务器</translation>
-    </message>
-    <message>
-        <source>TCP Client</source>
-        <translation type="vanished">TCP客户端</translation>
-    </message>
-    <message>
-        <source>TCP Server</source>
-        <translation type="vanished">TCP服务器</translation>
-    </message>
-    <message>
-        <source>WebSocket Client</source>
-        <translation type="vanished">WebSocket客户端</translation>
-    </message>
-    <message>
-        <source>WebSocket Server</source>
-        <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="326"/>
@@ -4227,26 +3816,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <source>Serial Port</source>
-        <translation type="vanished">串口</translation>
-    </message>
-    <message>
-        <source>BLE Central</source>
-        <translation type="vanished">BLE 中心</translation>
-    </message>
-    <message>
-        <source>BLE Peripheral</source>
-        <translation type="vanished">蓝牙外设</translation>
-    </message>
-    <message>
-        <source>UDP Client</source>
-        <translation type="vanished">UDP客户端</translation>
-    </message>
-    <message>
-        <source>UDP Server</source>
-        <translation type="vanished">UDP服务器</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
@@ -4323,55 +3892,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>无题</translation>
     </message>
     <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
-        <source>WebSocket Client</source>
-        <translation type="vanished">WebSocket客户端</translation>
-    </message>
-    <message>
-        <source>WebSocket Server</source>
-        <translation type="vanished">WebSocket服务器</translation>
-    </message>
-    <message>
-        <source>Local Socket</source>
-        <translation type="vanished">本地套接字</translation>
-    </message>
-    <message>
-        <source>Local Server</source>
-        <translation type="vanished">本地服务器</translation>
-    </message>
-    <message>
-        <source>Charts Test</source>
-        <translation type="vanished">图表测试</translation>
-    </message>
-    <message>
         <location filename="../../src/common/xtools.cpp" line="470"/>
         <location filename="../../src/common/xtools.cpp" line="907"/>
         <location filename="../../src/common/xtools.cpp" line="909"/>
         <source>Binary</source>
         <translation>二进制</translation>
-    </message>
-    <message>
-        <source>Octal</source>
-        <translation type="vanished">八进制</translation>
-    </message>
-    <message>
-        <source>Decimal</source>
-        <translation type="vanished">十进制</translation>
-    </message>
-    <message>
-        <source>Hexadecimal</source>
-        <translation type="vanished">十六进制</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="90"/>
@@ -4555,14 +4080,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>不缩放</translation>
     </message>
     <message>
-        <source>Need to Reboot</source>
-        <translation type="vanished">需要重新启动</translation>
-    </message>
-    <message>
-        <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">该操作需要重新启动才能生效，现在重新启动应用程序吗？</translation>
-    </message>
-    <message>
         <location filename="../../src/utilities/crc.cpp" line="92"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
@@ -4598,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>全部</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">语言(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -4695,101 +4208,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/qrcode/qrcodeassistant.cpp" line="92"/>
         <source>PNG Images (*.png);;JPG Images (*.jpg)</source>
         <translation>PNG (*.png);;JPG (*.jpg)</translation>
-    </message>
-</context>
-<context>
-    <name>QssMgr</name>
-    <message>
-        <source>Dark Amber</source>
-        <translation type="vanished">深琥珀色</translation>
-    </message>
-    <message>
-        <source>Dark Blue</source>
-        <translation type="vanished">深蓝色</translation>
-    </message>
-    <message>
-        <source>Dark Cyan</source>
-        <translation type="vanished">深青色</translation>
-    </message>
-    <message>
-        <source>Dark Light Green</source>
-        <translation type="vanished">深浅绿色</translation>
-    </message>
-    <message>
-        <source>Dark Pink</source>
-        <translation type="vanished">深粉色</translation>
-    </message>
-    <message>
-        <source>Dark Purple</source>
-        <translation type="vanished">深紫色</translation>
-    </message>
-    <message>
-        <source>Dark Red</source>
-        <translation type="vanished">深红色</translation>
-    </message>
-    <message>
-        <source>Dark Teal</source>
-        <translation type="vanished">深青色</translation>
-    </message>
-    <message>
-        <source>Dark Yellow</source>
-        <translation type="vanished">深黄色</translation>
-    </message>
-    <message>
-        <source>Light Amber</source>
-        <translation type="vanished">浅琥珀色</translation>
-    </message>
-    <message>
-        <source>Light Blue</source>
-        <translation type="vanished">浅蓝色</translation>
-    </message>
-    <message>
-        <source>Light Cyan</source>
-        <translation type="vanished">浅青色</translation>
-    </message>
-    <message>
-        <source>Light Cyan(500)</source>
-        <translation type="vanished">浅青色(500)</translation>
-    </message>
-    <message>
-        <source>Light Light Green</source>
-        <translation type="vanished">浅浅绿色</translation>
-    </message>
-    <message>
-        <source>Light Pink</source>
-        <translation type="vanished">浅粉色</translation>
-    </message>
-    <message>
-        <source>Light Purple</source>
-        <translation type="vanished">浅紫色</translation>
-    </message>
-    <message>
-        <source>Light Red</source>
-        <translation type="vanished">浅红色</translation>
-    </message>
-    <message>
-        <source>Light Teal</source>
-        <translation type="vanished">浅青色</translation>
-    </message>
-    <message>
-        <source>Light Yellow</source>
-        <translation type="vanished">浅黄色</translation>
-    </message>
-    <message>
-        <source>Application Stylesheet</source>
-        <translation type="vanished">应用程序样式表</translation>
-    </message>
-    <message>
-        <source>Enable Stylesheet</source>
-        <translation type="vanished">启用样式表</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Please enable stylesheet first!</source>
-        <translation type="vanished">请先启用样式表！</translation>
     </message>
 </context>
 <context>
@@ -5048,18 +4466,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPortTransferModel</name>
     <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/page/transfer/serialport/serialporttransfermodel.cpp" line="106"/>
         <source>Odd</source>
         <translation>奇校验</translation>
@@ -5174,10 +4580,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据位</translation>
     </message>
     <message>
-        <source>Optimized frame</source>
-        <translation type="vanished">优化框架</translation>
-    </message>
-    <message>
         <location filename="../../src/device/serialportui.ui" line="195"/>
         <source>Flow control</source>
         <translation>流控位</translation>
@@ -5199,14 +4601,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="190"/>
         <source>Transfer Option</source>
         <translation>转发选项</translation>
-    </message>
-    <message>
-        <source>Client Address</source>
-        <translation type="vanished">客户地址</translation>
-    </message>
-    <message>
-        <source>Client Port</source>
-        <translation type="vanished">客户端端口</translation>
     </message>
     <message>
         <location filename="../../src/page/transfer/socket/sockettransfermodel.cpp" line="192"/>
@@ -5246,14 +4640,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>SocketUi</name>
-    <message>
-        <source>Client IP</source>
-        <translation type="vanished">客户端IP</translation>
-    </message>
-    <message>
-        <source>Client port</source>
-        <translation type="vanished">客户端端口</translation>
-    </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="86"/>
         <source>Server IP</source>
@@ -5447,30 +4833,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="vanished">删除</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">向上</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">添加</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">进口</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">向下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -6025,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>CAN插件</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">比特率</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>码率切换</translation>
@@ -6074,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>仲裁波特率</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CANFD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>定时发送</translation>
@@ -6116,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>环回模式</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">自定义配置</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -6279,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>未指定</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">错误的</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">真的</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6717,21 +6059,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Log</source>
         <translation>日志视图</translation>
     </message>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 工具栏</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">示例操作</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListModel</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">线圈</translation>
-    </message>
 </context>
 <context>
     <name>xModbus::ModbusDevice</name>
@@ -7045,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 工具栏</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">示例操作</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -7079,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>退出应用</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">选项</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

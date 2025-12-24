@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>아래쪽으로 자동 스크롤</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">아래쪽으로 오디오 스크롤</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>분명한</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">새로운 Modbus 장치</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">연결 매개변수</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">둥가</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">전송 속도</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">정지 비트</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">새로 고치다</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">데이터 비트</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">이름</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP 주소</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">포트</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">장치 유형</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">시간 초과(ms)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">재시도 횟수</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">주소</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">듣기 전용 모드</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">장치 매개변수</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">장치 이름</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">같은: 지멘스 S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">찾다</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">노드 편집기</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">일반적인</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">파일(&amp;F)</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>새 창</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">애플리케이션 종료</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">옵션(&amp;O)</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">시스템 프록시 사용</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">시스템 트레이로 나가기</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">신청 스타일</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">설정</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">설정 지우기</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">설정 디렉토리 열기</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">HDPI 정책</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">색 구성표</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">어두운</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">빛</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">체계</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">언어(&amp;L)</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">최고의 자리에 머물다</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">도움말(&amp;H)</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">Qt 소개</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>정보</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">스크린샷</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">매장에서 구매</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>QQ그룹에 가입하세요</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">온라인 매뉴얼</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">Github에서 소스 가져오기</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">Gitee에서 소스 가져오기</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>제목 없음</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>메시지</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>모두</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">언어(&amp;L)</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>형태</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">내보내다</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>모든 항목 비활성화</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">삭제</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">위로</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">추가하다</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>지우기</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">수입</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">아래에</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>CAN 플러그인</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">비트레이트</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>비트레이트 스위치</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>공칭 비트 전송률</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">캔 FD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>시간 지정 전송</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>루프백</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">맞춤 구성</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>불특정</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">거짓</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">진실</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 도구 모음</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">예시 작업</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>통나무</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">새로운 RTU 장치</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">새 TCP 장치</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">새로운 코일</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">새로운 개별 입력</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">새로운 보유 등록부</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">새로운 입력 레지스터</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">코일</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">개별 입력</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">보유 레지스터</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">입력 레지스터</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 도구 모음</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">예시 작업</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>애플리케이션 종료</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">옵션</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

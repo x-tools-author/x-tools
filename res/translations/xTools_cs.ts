@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>Automatické rolování dolů</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">Posouvání zvuku dolů</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>Jasný</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">Nové zařízení Modbus</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">Parametry připojení</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">Parita</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">Přenosová rychlost</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">Stop bity</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Obnovit</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">Datové bity</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">Jména</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP adresa</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Přístav</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">Typ zařízení</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">Časový limit (ms)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">Počet opakování</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adresa</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">Režim pouze pro poslech</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">Parametry zařízení</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">Název zařízení</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Jako například: Siemens S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Vyhledávání</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">Editor uzlů</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">Generál</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;Soubor</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>Nové okno</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Exportovat parametry</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">Ukončete aplikaci</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;Nástroje</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nový</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;Možnosti</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">Použijte systémový proxy</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">Přejděte do systémové lišty</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">Aplikační styl</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">Nastavení</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">Vymazat Nastavení</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">Otevřete adresář nastavení</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">Zásady HDPI</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">Barevné schéma</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">Tmavý</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">Světlo</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">Systém</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;Jazyky</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;Zobrazit</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">Zůstává na vrcholu</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;Nápověda</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">O Qt</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>O aplikaci</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">Snímek obrazovky</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">Koupit z obchodu</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>Připojte se ke skupině QQ</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">Online manuál</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">Získejte zdroje z Github</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">Získejte zdroje z Gitee</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>Zpráva</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>Vše</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;Jazyky</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Formulář</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">Vývozní</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>Zakázat všechny položky</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">Vymazat</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">Nahoru</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">Přidat</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>Vymazat</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">Importovat</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">Dolů</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Plugin CAN</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">Bitová rychlost</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>Přepínač bitrate</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nominální datový tok</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>Časované odesílání</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">Vlastní konfigurace</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>nespecifikováno</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">falešný</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">věrný</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Panel nástrojů Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Příklad akce</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>Log</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">Nové zařízení RTU</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">Nové TCP zařízení</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">Nové cívky</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">Nové diskrétní vstupy</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">Nové holdingové rejstříky</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">Nové vstupní registry</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">Cívky</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">Diskrétní vstupy</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">Vedení rejstříků</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">Vstupní registry</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Panel nástrojů Modbus</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Příklad akce</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>Ukončete aplikaci</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">Volba</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>Automaattinen vieritys alaspäin</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">Äänen vieritys alaspäin</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>Selkeä</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">Uusi Modbus-laite</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">Yhteysparametrit</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">Pariteetti</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">Tiedonsiirtonopeus</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">Stop bits</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Päivitä</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">Databitit</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">Nimet</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP-osoite</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Portti</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">Laitteen tyyppi</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">Aikakatkaisu (ms)</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">Uudelleenyritysten määrä</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Osoite</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">Vain kuuntelu -tila</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">Laitteen parametrit</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">Laitteen nimi</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">Esimerkiksi: Siemens S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Haku</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">Solmueditori</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">Kenraali</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;Tiedosto</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>Uusi ikkuna</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vienti asetukset</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">Poistu sovelluksesta</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;Työkalut</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Uusi</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;Asetukset</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">Käytä järjestelmän välityspalvelinta</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">Poistu ilmaisinalueelle</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">Sovelluksen tyyli</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">Asetukset</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">Tyhjennä asetukset</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">Avaa asetushakemisto</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">HDPI-käytäntö</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">Värimalli</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">Tumma</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">Kevyt</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">Järjestelmä</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;Kielet</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;Näytä</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">Pysyy huipulla</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;Ohje</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">Tietoja Qt</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>Tietoja</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">Kuvakaappaus</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">Osta Storesta</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>Liity QQ-ryhmään</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">Online-opas</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">Hanki lähteitä Githubista</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">Hanki lähteitä Giteestä</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nimetön</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>Viesti</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>Kaikki</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;Kielet</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Lomake</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">Viedä</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>Poista kaikki kohteet käytöstä</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">Poistaa</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">Ylös</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">Lisätä</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>Tyhjennä</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">Tuoda</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">Alas</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>CAN-laajennus</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">Bittinopeus</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>Bittinopeuskytkin</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nimellinen bittinopeus</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CAN FD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>Ajastettu lähetys</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">Mukautettu kokoonpano</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>määrittelemätön</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">väärä</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">totta</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus-työkalupalkki</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Esimerkkitoiminto</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>Loki</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">Uusi RTU-laite</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">Uusi TCP-laite</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">Uudet kelat</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">Uudet erilliset tulot</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">Uudet omistusrekisterit</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">Uudet syöttörekisterit</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">Kelat</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">Erilliset tulot</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">Omistusrekisterit</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">Tulorekisterit</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus-työkalupalkki</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">Esimerkkitoiminto</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>Poistu sovelluksesta</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">Vaihtoehto</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>

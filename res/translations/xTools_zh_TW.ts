@@ -1357,10 +1357,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>自動滾動到底部</translation>
     </message>
-    <message>
-        <source>Audo scrolling to bottom</source>
-        <translation type="vanished">音頻滾動到底部</translation>
-    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -1419,88 +1415,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/debugoutputui.ui" line="60"/>
         <source>Clear</source>
         <translation>清除</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceConnectionParameterEditor</name>
-    <message>
-        <source>New Modbus Device</source>
-        <translation type="vanished">新的 Modbus 設備</translation>
-    </message>
-    <message>
-        <source>Connection parameters</source>
-        <translation type="vanished">連接參數</translation>
-    </message>
-    <message>
-        <source>Parity</source>
-        <translation type="vanished">平價</translation>
-    </message>
-    <message>
-        <source>Baud rate</source>
-        <translation type="vanished">波特率</translation>
-    </message>
-    <message>
-        <source>Stop bits</source>
-        <translation type="vanished">停止位</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">重新整理</translation>
-    </message>
-    <message>
-        <source>Data bits</source>
-        <translation type="vanished">數據位</translation>
-    </message>
-    <message>
-        <source>Names</source>
-        <translation type="vanished">名稱</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP地址</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">港口</translation>
-    </message>
-    <message>
-        <source>Device type</source>
-        <translation type="vanished">設備類型</translation>
-    </message>
-    <message>
-        <source>Timeout(ms)</source>
-        <translation type="vanished">超時（毫秒）</translation>
-    </message>
-    <message>
-        <source>Number of retries</source>
-        <translation type="vanished">重試次數</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">地址</translation>
-    </message>
-    <message>
-        <source>Listen only mode</source>
-        <translation type="vanished">只聽模式</translation>
-    </message>
-    <message>
-        <source>Device parameters</source>
-        <translation type="vanished">設備參數</translation>
-    </message>
-    <message>
-        <source>Device Name</source>
-        <translation type="vanished">設備名稱</translation>
-    </message>
-    <message>
-        <source>Such as: Siemens S7-300</source>
-        <translation type="vanished">如：西門子S7-300</translation>
-    </message>
-</context>
-<context>
-    <name>DeviceListView</name>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">搜尋</translation>
     </message>
 </context>
 <context>
@@ -2168,13 +2082,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>LayoutManager</name>
-    <message>
-        <source>Node Editor</source>
-        <translation type="vanished">節點編輯器</translation>
-    </message>
-</context>
-<context>
     <name>LinePanel</name>
     <message>
         <location filename="../../src/page/panels/outputpanels/charts/line/linepanel.cpp" line="207"/>
@@ -2394,14 +2301,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <source>General</source>
-        <translation type="vanished">一般的</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;文件</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="358"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
@@ -2424,10 +2323,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>導出參數</translation>
     </message>
     <message>
-        <source>Exit Application</source>
-        <translation type="vanished">退出申請</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="392"/>
         <source>&amp;Tools</source>
         <translation>&amp;工具</translation>
@@ -2438,86 +2333,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>新建</translation>
     </message>
     <message>
-        <source>&amp;Options</source>
-        <translation type="vanished">&amp;選項</translation>
-    </message>
-    <message>
-        <source>Use System Proxy</source>
-        <translation type="vanished">使用系統代理</translation>
-    </message>
-    <message>
-        <source>Exit to System Tray</source>
-        <translation type="vanished">退出到系統托盤</translation>
-    </message>
-    <message>
-        <source>Application Style</source>
-        <translation type="vanished">應用風格</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">設定</translation>
-    </message>
-    <message>
-        <source>Clear Settings</source>
-        <translation type="vanished">清除設置</translation>
-    </message>
-    <message>
-        <source>Open Settings Directory</source>
-        <translation type="vanished">打開設置目錄</translation>
-    </message>
-    <message>
-        <source>HDPI Policy</source>
-        <translation type="vanished">HDPI政策</translation>
-    </message>
-    <message>
-        <source>Color Scheme</source>
-        <translation type="vanished">配色方案</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">黑暗的</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">光</translation>
-    </message>
-    <message>
-        <source>System</source>
-        <translation type="vanished">系統</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="vanished">&amp;語言</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="452"/>
         <source>&amp;View</source>
         <translation>&amp;視圖</translation>
     </message>
     <message>
-        <source>Stays on Top</source>
-        <translation type="vanished">保持領先</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;幫助</translation>
-    </message>
-    <message>
-        <source>About Qt</source>
-        <translation type="vanished">關於Qt</translation>
-    </message>
-    <message>
         <location filename="../../src/mainwindow.cpp" line="695"/>
         <source>About</source>
         <translation>關於</translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="vanished">螢幕截圖</translation>
-    </message>
-    <message>
-        <source>Buy from Store</source>
-        <translation type="vanished">從商店購買</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="505"/>
@@ -2529,18 +2352,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Join in QQ Group</source>
         <translation>加入QQ群</translation>
-    </message>
-    <message>
-        <source>Online Manual</source>
-        <translation type="vanished">在線手冊</translation>
-    </message>
-    <message>
-        <source>Get Sources from Github</source>
-        <translation type="vanished">從 Github 獲取源代碼</translation>
-    </message>
-    <message>
-        <source>Get Sources from Gitee</source>
-        <translation type="vanished">從 Gitee 獲取源碼</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="432"/>
@@ -4280,34 +4091,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>無題</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="vanished">5</translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="vanished">6</translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="vanished">7</translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="vanished">8</translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="vanished">1</translation>
-    </message>
-    <message>
-        <source>1.5</source>
-        <translation type="vanished">1.5</translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="vanished">2</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="20"/>
         <source>Message</source>
         <translation>訊息</translation>
@@ -4332,10 +4115,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
         <source>All</source>
         <translation>全部</translation>
-    </message>
-    <message>
-        <source>&amp;Languages</source>
-        <translation type="obsolete">&amp;語言</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodeeditorregistry.cpp" line="74"/>
@@ -5056,38 +4835,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>形式</translation>
     </message>
     <message>
-        <source>Export</source>
-        <translation type="vanished">出口</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
         <source>Disable all items</source>
         <translation>禁用所有項目</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation type="vanished">刪除</translation>
-    </message>
-    <message>
-        <source>Up</source>
-        <translation type="vanished">向上</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="vanished">添加</translation>
-    </message>
-    <message>
         <location filename="../../src/page/common/tableview.cpp" line="175"/>
         <source>Clear</source>
         <translation>清除</translation>
-    </message>
-    <message>
-        <source>Import</source>
-        <translation type="vanished">進口</translation>
-    </message>
-    <message>
-        <source>Down</source>
-        <translation type="vanished">向下</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.cpp" line="42"/>
@@ -5632,10 +5387,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>CAN插件</translation>
     </message>
     <message>
-        <source>Bitrate</source>
-        <translation type="vanished">比特率</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
         <translation>碼率切換</translation>
@@ -5681,10 +5432,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>標稱比特率</translation>
     </message>
     <message>
-        <source>CAN FD</source>
-        <translation type="vanished">CANFD</translation>
-    </message>
-    <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
         <source>Timed sending</source>
         <translation>定時發送</translation>
@@ -5723,10 +5470,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
         <source>Loopback</source>
         <translation>環回</translation>
-    </message>
-    <message>
-        <source>Custom configuration</source>
-        <translation type="vanished">自定義配置</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
@@ -5886,14 +5629,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
         <source>unspecified</source>
         <translation>未指定</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation type="vanished">錯誤的</translation>
-    </message>
-    <message>
-        <source>true</source>
-        <translation type="vanished">真的</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
@@ -6320,44 +6055,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus</name>
     <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 工具欄</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">示例操作</translation>
-    </message>
-    <message>
         <location filename="../../src/x/modbus/xmodbus.ui" line="36"/>
         <source>Log</source>
         <translation>紀錄</translation>
-    </message>
-</context>
-<context>
-    <name>xModbus::DeviceListView</name>
-    <message>
-        <source>New RTU Device</source>
-        <translation type="vanished">新的RTU設備</translation>
-    </message>
-    <message>
-        <source>New TCP Device</source>
-        <translation type="vanished">新的 TCP 設備</translation>
-    </message>
-    <message>
-        <source>New Coils</source>
-        <translation type="vanished">新線圈</translation>
-    </message>
-    <message>
-        <source>New Discrete Inputs</source>
-        <translation type="vanished">新的離散輸入</translation>
-    </message>
-    <message>
-        <source>New Holding Registers</source>
-        <translation type="vanished">新持有登記冊</translation>
-    </message>
-    <message>
-        <source>New Input Registers</source>
-        <translation type="vanished">新輸入寄存器</translation>
     </message>
 </context>
 <context>
@@ -6400,22 +6100,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 </context>
 <context>
     <name>xModbus::ModbusDeviceListView</name>
-    <message>
-        <source>Coils</source>
-        <translation type="vanished">線圈</translation>
-    </message>
-    <message>
-        <source>Discrete Inputs</source>
-        <translation type="vanished">離散輸入</translation>
-    </message>
-    <message>
-        <source>Holding Registers</source>
-        <translation type="vanished">持有寄存器</translation>
-    </message>
-    <message>
-        <source>Input Registers</source>
-        <translation type="vanished">輸入寄存器</translation>
-    </message>
     <message>
         <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
         <source>New Modbus Device</source>
@@ -6688,17 +6372,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xModbus::xModbus</name>
-    <message>
-        <source>Modbus Tool Bar</source>
-        <translation type="vanished">Modbus 工具欄</translation>
-    </message>
-    <message>
-        <source>Example Action</source>
-        <translation type="vanished">示例操作</translation>
-    </message>
-</context>
-<context>
     <name>xMqtt</name>
     <message>
         <location filename="../../src/x/mqtt/xmqtt.ui" line="57"/>
@@ -6722,10 +6395,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>Exit Application</source>
         <translation>退出申請</translation>
-    </message>
-    <message>
-        <source>Option</source>
-        <translation type="vanished">選項</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="74"/>
