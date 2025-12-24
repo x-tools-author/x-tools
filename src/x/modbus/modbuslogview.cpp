@@ -18,6 +18,7 @@
 #include "modbuslogmodel.h"
 #include "modbuslogmodelfilter.h"
 #include "utilities/compatibility.h"
+#include "utilities/iconengine.h"
 
 namespace xModbus {
 
@@ -63,6 +64,10 @@ ModbusLogView::ModbusLogView(QWidget *parent)
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeError), LogTypeError);
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeRequest), LogTypeRequest);
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeResponse), LogTypeResponse);
+
+    ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
+    ui->toolButtonOpen->setIcon(xIcon(":/res/icons/file_open.svg"));
+    ui->toolButtonSave->setIcon(xIcon(":/res/icons/save.svg"));
 
     connect(ui->comboBoxLogType, xComboBoxActivated, this, &ModbusLogView::onLogTypeChanged);
     connect(ui->lineEditFilter, &QLineEdit::textChanged, this, &ModbusLogView::onFilterTextChanged);

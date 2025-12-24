@@ -14,6 +14,7 @@
 #include <QInputDialog>
 
 #include "scriptrunner.h"
+#include "utilities/iconengine.h"
 
 ScriptBase::ScriptBase(QWidget *parent)
     : QWidget(parent)
@@ -30,6 +31,13 @@ ScriptBase::ScriptBase(QWidget *parent)
     connect(ui->toolButtonRefresh, &QToolButton::clicked, this, &ScriptBase::onRefreshButtonClicked);
     connect(ui->toolButtonHelp, &QToolButton::clicked, this, &ScriptBase::onHelpButtonClicked);
     connect(ui->textEditScript, &QTextEdit::textChanged, this, &ScriptBase::onScriptTextChanged);
+
+    ui->toolButtonClearLog->setIcon(xIcon(":/res/icons/mop.svg"));
+    ui->toolButtonDir->setIcon(xIcon(":/res/icons/folder.svg"));
+    ui->toolButtonHelp->setIcon(xIcon(":/res/icons/help.svg"));
+    ui->toolButtonNew->setIcon(xIcon(":/res/icons/add.svg"));
+    ui->toolButtonRefresh->setIcon(xIcon(":/res/icons/restart_alt.svg"));
+    ui->toolButtonRun->setIcon(xIcon(":/res/icons/play_arrow.svg"));
 
     onRunnerFinished();
 }

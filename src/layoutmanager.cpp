@@ -199,6 +199,7 @@ void LayoutManager::load(const QJsonObject& obj)
     LayoutManagerKeys keys;
     int index = obj.value(keys.xIndex).toInt(0);
     setCurrentIndex(index);
+    qInfo() << "The current xApps layout index is:" << index << obj;
 
 #if X_ENABLE_X_MODBUS
     if (m_modbus) {

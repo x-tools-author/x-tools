@@ -32,7 +32,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QWidget" name="widgetLeft" native="true">
       <layout class="QGridLayout" name="gridLayout">
@@ -51,17 +51,28 @@
        <property name="spacing">
         <number>4</number>
        </property>
-       <item row="24" column="0">
-        <widget class="QLabel" name="label_9">
+       <item row="26" column="0" colspan="3">
+        <widget class="QCheckBox" name="checkBoxFlexibleDataRate">
          <property name="text">
-          <string>Frame type</string>
+          <string>Flexible data rate</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="2">
-        <widget class="QComboBox" name="comboBoxFrameType"/>
+       <item row="25" column="0" colspan="3">
+        <widget class="QCheckBox" name="checkBoxExtendedFormat">
+         <property name="text">
+          <string>Extended format</string>
+         </property>
+        </widget>
        </item>
-       <item row="21" column="0" colspan="3">
+       <item row="24" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Frame ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0" colspan="3">
         <widget class="QLabel" name="label_13">
          <property name="font">
           <font>
@@ -73,24 +84,8 @@
          </property>
         </widget>
        </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>Input format</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="QLabel" name="label_12">
-         <property name="font">
-          <font>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Device selecting</string>
-         </property>
-        </widget>
+       <item row="23" column="2">
+        <widget class="QComboBox" name="comboBoxFrameType"/>
        </item>
        <item row="4" column="0" colspan="3">
         <widget class="QLabel" name="label_11">
@@ -104,32 +99,12 @@
          </property>
         </widget>
        </item>
-       <item row="26" column="0" colspan="3">
-        <widget class="QCheckBox" name="checkBoxExtendedFormat">
-         <property name="text">
-          <string>Extended format</string>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="2">
-        <widget class="QComboBox" name="comboBoxTimedSending"/>
-       </item>
-       <item row="22" column="0">
-        <widget class="QLabel" name="label_14">
-         <property name="text">
-          <string>Timed sending</string>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="2">
+       <item row="24" column="2">
         <widget class="QLineEdit" name="lineEditFrameId">
          <property name="placeholderText">
           <string notr="true">Hex</string>
          </property>
         </widget>
-       </item>
-       <item row="23" column="2">
-        <widget class="QComboBox" name="comboBoxInputFormat"/>
        </item>
        <item row="1" column="0" colspan="3">
         <layout class="QGridLayout" name="gridLayout_2">
@@ -162,7 +137,7 @@
             </sizepolicy>
            </property>
            <property name="sizeAdjustPolicy">
-            <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+            <enum>QComboBox::AdjustToContents</enum>
            </property>
           </widget>
          </item>
@@ -170,6 +145,21 @@
           <widget class="QComboBox" name="comboBoxName"/>
          </item>
         </layout>
+       </item>
+       <item row="0" column="0" colspan="3">
+        <widget class="QLabel" name="label_12">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Device selecting</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="2">
+        <widget class="QComboBox" name="comboBoxTimedSending"/>
        </item>
        <item row="3" column="0" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -189,41 +179,24 @@
          </item>
         </layout>
        </item>
-       <item row="20" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
+       <item row="23" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Frame type</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
-       <item row="28" column="0" colspan="3">
+       <item row="22" column="2">
+        <widget class="QComboBox" name="comboBoxInputFormat"/>
+       </item>
+       <item row="27" column="0" colspan="3">
         <widget class="QCheckBox" name="checkBoxBitrateSwitch">
          <property name="text">
           <string>Bitrate switch</string>
          </property>
         </widget>
        </item>
-       <item row="27" column="0" colspan="3">
-        <widget class="QCheckBox" name="checkBoxFlexibleDataRate">
-         <property name="text">
-          <string>Flexible data rate</string>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="0">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>Frame ID</string>
-         </property>
-        </widget>
-       </item>
-       <item row="29" column="0" colspan="3">
+       <item row="28" column="0" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="spacing">
           <number>0</number>
@@ -246,6 +219,13 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="22" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Input format</string>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0" colspan="3">
         <layout class="QGridLayout" name="gridLayout_3">
@@ -350,6 +330,26 @@
           <widget class="QComboBox" name="comboBoxCanFd"/>
          </item>
         </layout>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Timed sending</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

@@ -43,11 +43,13 @@
     <file>res/icons/file_open.svg</file>
     <file>res/icons/finance_mode.svg</file>
     <file>res/icons/fit_screen.svg</file>
+    <file>res/icons/folder.svg</file>
     <file>res/icons/function.svg</file>
     <file>res/icons/globe_asia.svg</file>
     <file>res/icons/globe.svg</file>
     <file>res/icons/gps.svg</file>
     <file>res/icons/grid_on.svg</file>
+    <file>res/icons/help.svg</file>
     <file>res/icons/hub.svg</file>
     <file>res/icons/left_panel_open.svg</file>
     <file>res/icons/line_series.svg</file>

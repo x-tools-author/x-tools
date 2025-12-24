@@ -170,12 +170,14 @@ void MainWindow::load(const QString& fileName)
     }
 
     if (!QFile::exists(filePath)) {
+        qInfo() << "The file does not exist:" << filePath;
         m_layoutManager->load(QJsonObject());
         return;
     }
 
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
+        qWarning() << "Failed to open file: " << filePath << file.errorString();
         return;
     }
 
@@ -183,13 +185,19 @@ void MainWindow::load(const QString& fileName)
     file.close();
 
     MainWindowParameterKeys keys;
-    QJsonDocument doc = QJsonDocument::fromJson(data);
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &error);
+    if (error.error != QJsonParseError::NoError) {
+        qWarning() << "Failed to parse json file: " << filePath << error.errorString();
+    }
+
     QJsonObject obj = doc.object();
     m_ioPage00->load(obj.value(keys.page00).toObject().toVariantMap());
     m_ioPage01->load(obj.value(keys.page01).toObject().toVariantMap());
     m_ioPage10->load(obj.value(keys.page10).toObject().toVariantMap());
     m_ioPage11->load(obj.value(keys.page11).toObject().toVariantMap());
     m_layoutManager->load(obj.value(keys.layoutManager).toObject());
+    qInfo() << obj;
 
     bool showMax = obj.value(keys.showMax).toBool(false);
     if (showMax) {
@@ -227,8 +235,7 @@ void MainWindow::save(const QString& fileName) const
         return;
     }
 
-    QTextStream out(&file);
-    out << doc.toJson();
+    file.write(doc.toJson());
     file.close();
 }
 

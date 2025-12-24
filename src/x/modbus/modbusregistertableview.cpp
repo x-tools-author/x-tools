@@ -55,6 +55,12 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
 #endif
 
+    ui->toolButtonNew->setIcon(xIcon(":/res/icons/add.svg"));
+    ui->toolButtonDelete->setIcon(xIcon(":/res/icons/delete.svg"));
+    ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
+    ui->toolButtonOpen->setIcon(xIcon(":/res/icons/file_open.svg"));
+    ui->toolButtonSave->setIcon(xIcon(":/res/icons/save.svg"));
+
     m_columnMenu = new xTools::KeepOpenedMenu(ui->toolButtonColumns);
     ui->toolButtonColumns->setMenu(m_columnMenu);
     ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
