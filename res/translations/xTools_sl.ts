@@ -4988,221 +4988,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TftpAssistant</name>
     <message>
-        <location filename="../../src/tools/tftp/tftpassistant.cpp" line="24"/>
         <source>Server</source>
-        <translation type="unfinished">Strežnik</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/tftpassistant.cpp" line="27"/>
-        <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Strežnik</translation>
     </message>
 </context>
 <context>
     <name>TftpClient</name>
     <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="277"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="349"/>
-        <source>Another transfer is already in progress</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="296"/>
-        <source>File already exists: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="303"/>
         <source>Failed to open file for writing: %1</source>
-        <translation type="unfinished">Datoteke za pisanje ni bilo mogoče odpreti: %1</translation>
+        <translation type="obsolete">Datoteke za pisanje ni bilo mogoče odpreti: %1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="361"/>
-        <source>File not found: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="368"/>
         <source>Failed to open file for reading: %1</source>
-        <translation type="unfinished">Datoteke za branje ni bilo mogoče odpreti: %1</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="474"/>
-        <source>Failed to write data to file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="564"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="642"/>
-        <source>Failed to read data from file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="678"/>
-        <source>Unknown TFTP opcode received</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="691"/>
-        <source>Connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Datoteke za branje ni bilo mogoče odpreti: %1</translation>
     </message>
 </context>
 <context>
     <name>TftpClientUi</name>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="14"/>
-        <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="22"/>
-        <source>Server Address:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="29"/>
         <source>127.0.0.1</source>
-        <translation type="unfinished">127.0.0.1</translation>
+        <translation type="obsolete">127.0.0.1</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="36"/>
-        <source>Port:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="43"/>
         <source>69</source>
-        <translation type="unfinished">69</translation>
+        <translation type="obsolete">69</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="56"/>
-        <source>Local Path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="66"/>
         <source>Browse</source>
-        <translation type="unfinished">Prebrskaj</translation>
+        <translation type="obsolete">Prebrskaj</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="73"/>
-        <source>Remote File:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="87"/>
-        <source>Download</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="94"/>
-        <source>Upload</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpclientui.ui" line="101"/>
         <source>Stop</source>
-        <translation type="unfinished">Ustavi</translation>
-    </message>
-</context>
-<context>
-    <name>TftpServer</name>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1164"/>
-        <source>Failed to bind to port %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1290"/>
-        <source>Unknown transfer ID</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Ustavi</translation>
     </message>
 </context>
 <context>
     <name>TftpServerUi</name>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="14"/>
-        <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="22"/>
-        <source>Port:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="29"/>
         <source>69</source>
-        <translation type="unfinished">69</translation>
+        <translation type="obsolete">69</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="42"/>
-        <source>Status:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="49"/>
-        <source>Not Running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="59"/>
-        <source>Root Path:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="69"/>
         <source>Browse</source>
-        <translation type="unfinished">Prebrskaj</translation>
+        <translation type="obsolete">Prebrskaj</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="80"/>
         <source>Start</source>
-        <translation type="unfinished">Začetek</translation>
+        <translation type="obsolete">Začetek</translation>
     </message>
     <message>
-        <location filename="../../src/tools/tftp/src/tftpserverui.ui" line="90"/>
         <source>Stop</source>
-        <translation type="unfinished">Ustavi</translation>
-    </message>
-</context>
-<context>
-    <name>TftpSession</name>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="800"/>
-        <source>File not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="807"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="868"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="984"/>
-        <source>Access violation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="859"/>
-        <source>File already exists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="912"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="964"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1025"/>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1095"/>
-        <source>Illegal TFTP operation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1046"/>
-        <source>Disk full or allocation exceeded</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/tftp/src/tftp.cpp" line="1110"/>
-        <source>Connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Ustavi</translation>
     </message>
 </context>
 <context>
