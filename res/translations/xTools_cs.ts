@@ -4986,66 +4986,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>TftpAssistant</name>
-    <message>
-        <source>Server</source>
-        <translation type="obsolete">Server</translation>
-    </message>
-    <message>
-        <source>Client</source>
-        <translation type="obsolete">Klient</translation>
-    </message>
-</context>
-<context>
-    <name>TftpClient</name>
-    <message>
-        <source>Failed to open file for writing: %1</source>
-        <translation type="obsolete">Nepodařilo se otevřít soubor pro zápis: %1</translation>
-    </message>
-    <message>
-        <source>Failed to open file for reading: %1</source>
-        <translation type="obsolete">Nepodařilo se otevřít soubor pro čtení: %1</translation>
-    </message>
-</context>
-<context>
-    <name>TftpClientUi</name>
-    <message>
-        <source>127.0.0.1</source>
-        <translation type="obsolete">127.0.0.1</translation>
-    </message>
-    <message>
-        <source>69</source>
-        <translation type="obsolete">69</translation>
-    </message>
-    <message>
-        <source>Browse</source>
-        <translation type="obsolete">Prohlížet</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="obsolete">Zastavit</translation>
-    </message>
-</context>
-<context>
-    <name>TftpServerUi</name>
-    <message>
-        <source>69</source>
-        <translation type="obsolete">69</translation>
-    </message>
-    <message>
-        <source>Browse</source>
-        <translation type="obsolete">Prohlížet</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="obsolete">Spustit</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="obsolete">Zastavit</translation>
-    </message>
-</context>
-<context>
     <name>TransferModel</name>
     <message>
         <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
