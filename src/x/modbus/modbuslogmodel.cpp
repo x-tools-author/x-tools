@@ -9,6 +9,7 @@
 #include "modbuslogmodel.h"
 
 #include <QApplication>
+#include <QColor>
 
 namespace xModbus {
 

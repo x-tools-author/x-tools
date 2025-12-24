@@ -1,4 +1,4 @@
-/***************************************************************************************************
+﻿/***************************************************************************************************
  * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xModbus project.
@@ -10,8 +10,16 @@
 
 #include <QModbusDataUnit>
 #include <QModbusDevice>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
+#else
+#include <QModbusRtuSerialMaster>
+#include <QModbusRtuSerialSlave>
+
+typedef QModbusRtuSerialMaster QModbusRtuSerialClient;
+typedef QModbusRtuSerialSlave QModbusRtuSerialServer;
+#endif
 #include <QModbusTcpClient>
 #include <QModbusTcpServer>
 #include <QTimer>
@@ -19,7 +27,6 @@
 #include "modbuscommon.h"
 #include "modbuslogmodel.h"
 #include "modbusregister.h"
-#include "modbusregistertable.h"
 
 #define X_MAX_READ_REGISTERS_PER_REQUEST 100
 
@@ -120,21 +127,21 @@ void ModbusDevice::run()
     connect(m_device, &QModbusDevice::stateChanged, m_device, [=](QModbusDevice::State state) {
         if (state == QModbusDevice::ConnectedState) {
             QString msg = tr("Modbus device connected.");
-            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+            msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(params));
             xModbusLog.addLogThreadSafely(LogTypeMsg, msg);
             if (isClient() && this->m_sendReadRequestsTimer) {
                 this->m_sendReadRequestsTimer->start();
             }
         } else if (state == QModbusDevice::UnconnectedState) {
             QString msg = tr("Modbus device disconnected.");
-            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+            msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(params));
             xModbusLog.addLogThreadSafely(LogTypeMsg, msg);
         }
     });
 
     connect(m_device, &QModbusDevice::errorOccurred, m_device, [=]() {
         QString msg = tr("Modbus device error: %1").arg(m_device->errorString());
-        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+        msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(params));
         xModbusLog.addLogThreadSafely(LogTypeError, msg);
 
         if (isClient() && m_sendReadRequestsTimer) {
@@ -164,7 +171,7 @@ void ModbusDevice::run()
 
     if (!m_device->connectDevice()) {
         QString msg = tr("Failed to connect Modbus device: %1").arg(m_device->errorString());
-        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(params));
+        msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(params));
         xModbusLog.addLogThreadSafely(LogTypeError, msg);
         return;
     }
@@ -398,7 +405,7 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
     if (!reply) {
         QModbusClient *client = qobject_cast<QModbusClient *>(m_device);
         QString msg = tr("Failed to send read request: %1").arg(client->errorString());
-        msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(parameters()));
+        msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(parameters()));
         xModbusLog.addLogThreadSafely(LogTypeError, msg);
         return;
     }
@@ -414,7 +421,7 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
 
                 // 更新对应的ModbusRegister的值
                 m_contextMutex.lock();
-                for (ModbusRegister *reg : m_registers) {
+                for (ModbusRegister *reg : std::as_const(m_registers)) {
                     if (reg->serverAddress() == serverAddress && reg->type() == registerType
                         && reg->address() == address) {
                         reg->setValue(value);
@@ -424,7 +431,7 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
             }
         } else {
             QString msg = tr("Read error: %1").arg(reply->errorString());
-            msg = QString("%1 (%2)").arg(msg).arg(deviceConnectionParametersToString(parameters()));
+            msg = QString("%1 (%2)").arg(msg, deviceConnectionParametersToString(parameters()));
             xModbusLog.addLogThreadSafely(LogTypeError, msg);
         }
 
@@ -457,7 +464,11 @@ void ModbusDevice::setValueInThreadInner(int serverAddress,
         QModbusClient *client = qobject_cast<QModbusClient *>(m_device);
         QModbusDataUnit writeUnit(QModbusDataUnit::RegisterType(registerType),
                                   address,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                                   QList<quint16>() << value);
+#else
+                                  QVector<quint16>() << value);
+#endif
         QModbusReply *reply = client->sendWriteRequest(writeUnit, serverAddress);
         if (!reply) {
             qInfo() << "Failed to send write request:" << client->errorString()
@@ -535,7 +546,7 @@ void ModbusDevice::onDataWritten(QModbusDataUnit::RegisterType table, int addres
         }
 
         m_contextMutex.lock();
-        for (ModbusRegister *reg : m_registers) {
+        for (ModbusRegister *reg : std::as_const(m_registers)) {
             bool matched = (reg->type() == table);
             matched &= (reg->address() == startAddr);
             matched &= (reg->serverAddress() == serverAddress);

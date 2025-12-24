@@ -12,6 +12,7 @@
 #include <QJsonObject>
 
 #include "modbuscommon.h"
+#include "utilities/compatibility.h"
 
 namespace xModbus {
 
@@ -36,7 +37,7 @@ ModbusDeviceEditor::ModbusDeviceEditor(QWidget *parent)
             this,
             &ModbusDeviceEditor::onRefreshButtonClicked);
     connect(ui->comboBoxDeviceType,
-            &QComboBox::currentIndexChanged,
+            xComboBoxIndexChanged,
             this,
             &ModbusDeviceEditor::onDeviceTypeChanged);
 

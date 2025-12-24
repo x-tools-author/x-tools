@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "modbusregistertable.h"
 
+#include <QtMath>
+
 #include "modbuscommon.h"
 
 namespace xModbus {
@@ -185,7 +187,11 @@ bool ModbusRegisterTable::setData(const QModelIndex &index, const QVariant &valu
     emit dataChanged(index, index);
     if (column == REGISTER_TABLE_COLUMN_DECIMALS) {
         QModelIndex valueIndex = this->index(index.row(), REGISTER_TABLE_COLUMN_VALUE);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
+#else
+        emit dataChanged(valueIndex, valueIndex, QVector<int>() << Qt::DisplayRole);
+#endif
     }
 
     return true;
@@ -281,7 +287,11 @@ void ModbusRegisterTable::onRegisterItemValueChanged(ModbusRegister *item)
     }
 
     QModelIndex valueIndex = this->index(row, REGISTER_TABLE_COLUMN_VALUE);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     emit dataChanged(valueIndex, valueIndex, QList<int>() << Qt::DisplayRole);
+#else
+    emit dataChanged(valueIndex, valueIndex, QVector<int>() << Qt::DisplayRole);
+#endif
 }
 
 void ModbusRegisterTable::onRegisterItemNameChanged(ModbusRegister *item)
@@ -292,7 +302,11 @@ void ModbusRegisterTable::onRegisterItemNameChanged(ModbusRegister *item)
     }
 
     QModelIndex nameIndex = this->index(row, REGISTER_TABLE_COLUMN_NAME);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     emit dataChanged(nameIndex, nameIndex, QList<int>() << Qt::DisplayRole);
+#else
+    emit dataChanged(nameIndex, nameIndex, QVector<int>() << Qt::DisplayRole);
+#endif
 }
 
 } // namespace xModbus

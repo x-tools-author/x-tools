@@ -246,7 +246,11 @@ void xCanBus::onConnectBtnClicked()
     }
 
     if (hasErrorFilter()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         int errorFilterInt = this->errorFilter().toInt();
+#else
+        int errorFilterInt = this->errorFilter();
+#endif
         tmp.append(qMakePair(QCanBusDevice::ErrorFilterKey, QVariant(errorFilterInt)));
     }
 
@@ -443,8 +447,11 @@ void xCanBus::updateErrorFilterBtn()
         ui->pushButtonErrorFilter->setText(tr("Unspecified"));
         return;
     }
-
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     int errorFilterInt = errorFilter().toInt();
+#else
+    int errorFilterInt = errorFilter();
+#endif
     QString txt = QString::number(errorFilterInt, 16).toUpper();
     while (txt.length() < 8) {
         txt.prepend('0');

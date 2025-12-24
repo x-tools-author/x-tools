@@ -17,6 +17,7 @@
 
 #include "modbuslogmodel.h"
 #include "modbuslogmodelfilter.h"
+#include "utilities/compatibility.h"
 
 namespace xModbus {
 
@@ -63,7 +64,7 @@ ModbusLogView::ModbusLogView(QWidget *parent)
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeRequest), LogTypeRequest);
     ui->comboBoxLogType->addItem(logTypeToString(LogTypeResponse), LogTypeResponse);
 
-    connect(ui->comboBoxLogType, &QComboBox::activated, this, &ModbusLogView::onLogTypeChanged);
+    connect(ui->comboBoxLogType, xComboBoxActivated, this, &ModbusLogView::onLogTypeChanged);
     connect(ui->lineEditFilter, &QLineEdit::textChanged, this, &ModbusLogView::onFilterTextChanged);
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &ModbusLogView::onClearLogClicked);
     connect(ui->toolButtonSave, &QToolButton::clicked, this, &ModbusLogView::onSaveLogClicked);
@@ -211,7 +212,7 @@ void ModbusLogView::onOpenLogClicked()
     LogItemKeys keys;
     QJsonArray jsonArray = jsonDoc.array();
     QList<ModbusLogModel::LogItem> items;
-    for (const QJsonValue &value : jsonArray) {
+    for (const QJsonValue &value : std::as_const(jsonArray)) {
         if (!value.isObject()) {
             continue;
         }
