@@ -67,6 +67,7 @@ private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
+    void initOptionMenu();
     void initViewMenu();
     void initViewMenuGrid(QMenu* viewMenu);
     void initHelpMenu();

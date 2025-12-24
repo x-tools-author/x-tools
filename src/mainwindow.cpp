@@ -339,6 +339,7 @@ void MainWindow::initMenuBar()
 #if !defined(Q_OS_ANDROID)
     initToolMenu();
 #endif
+    initOptionMenu();
     initViewMenu();
     initHelpMenu();
 }
@@ -417,6 +418,26 @@ void MainWindow::initToolMenu()
             assistant->show();
         });
     }
+}
+
+void MainWindow::initOptionMenu()
+{
+    QAction* action = m_optionMenu->addAction(tr("Using System Proxy"));
+    action->setCheckable(true);
+    connect(action, &QAction::toggled, this, [=](bool checked) {
+        xAPP->settings()->setValue(m_settingsKey.useSystemProxy, checked);
+        action->setChecked(checked);
+        if (checked) {
+            QNetworkProxyFactory::setUseSystemConfiguration(true);
+        } else {
+            QNetworkProxyFactory::setUseSystemConfiguration(false);
+        }
+    });
+    const QString key = m_settingsKey.useSystemProxy;
+    bool defaultValue = QNetworkProxyFactory::usesSystemConfiguration();
+    bool useSystemProxy = xAPP->settings()->value(key, defaultValue).toBool();
+    action->setChecked(useSystemProxy);
+    QNetworkProxyFactory::setUseSystemConfiguration(useSystemProxy);
 }
 
 void MainWindow::initViewMenu()
