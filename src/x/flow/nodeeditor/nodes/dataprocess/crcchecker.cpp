@@ -80,8 +80,8 @@ void CrcChecker::handleData(std::shared_ptr<BaseNodeData> nodeData, QtNodes::Por
             }
 
             QString msg = tr("CRC check failed, expected: %1, got: %2")
-                              .arg(refCrcValue.toHex().toUpper())
-                              .arg(actuallyCrcValue.toHex().toUpper());
+                              .arg(refCrcValue.toHex().toUpper(),
+                                   actuallyCrcValue.toHex().toUpper());
             qWarning() << msg;
             nodeUi->setMessage(msg);
         }

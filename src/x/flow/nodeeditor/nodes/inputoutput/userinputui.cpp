@@ -16,6 +16,7 @@
 #include "nodeeditor/nodes/common/basenode.h"
 #include "nodeeditor/nodes/common/basenodedata.h"
 #include "userinput.h"
+#include "utilities/compatibility.h"
 
 UserInputUi::UserInputUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
@@ -38,11 +39,11 @@ UserInputUi::UserInputUi(BaseNode *node, QWidget *parent)
     }
 
     connect(ui->pushButtonSend, &QPushButton::clicked, this, &UserInputUi::output);
-    connect(ui->comboBoxFormat, &QComboBox::currentIndexChanged, this, &UserInputUi::updateFormat);
+    connect(ui->comboBoxFormat, xComboBoxIndexChanged, this, &UserInputUi::updateFormat);
 
     m_cycleTimer = new QTimer(this);
     connect(m_cycleTimer, &QTimer::timeout, this, &UserInputUi::output);
-    connect(ui->comboBoxTiming, &QComboBox::activated, this, &UserInputUi::updateCycleTimer);
+    connect(ui->comboBoxTiming, xComboBoxActivated, this, &UserInputUi::updateCycleTimer);
 }
 
 UserInputUi::~UserInputUi()

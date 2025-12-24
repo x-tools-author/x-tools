@@ -12,6 +12,7 @@
 #include <QTimer>
 
 #include "randomgenerator.h"
+#include "utilities/compatibility.h"
 
 RandomGeneratorUi::RandomGeneratorUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
@@ -43,7 +44,7 @@ RandomGeneratorUi::RandomGeneratorUi(BaseNode *node, QWidget *parent)
 
     m_cycleTimer = new QTimer(this);
     connect(m_cycleTimer, &QTimer::timeout, this, &RandomGeneratorUi::output);
-    connect(ui->comboBoxInterval, &QComboBox::activated, this, &RandomGeneratorUi::updateCycleTimer);
+    connect(ui->comboBoxInterval, xComboBoxActivated, this, &RandomGeneratorUi::updateCycleTimer);
 }
 
 RandomGeneratorUi::~RandomGeneratorUi()

@@ -15,6 +15,7 @@
 
 #include "common/xtools.h"
 #include "dataview.h"
+#include "utilities/compatibility.h"
 #include "utilities/crc.h"
 
 DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
@@ -46,7 +47,7 @@ DataViewUi::DataViewUi(BaseNode *node, QWidget *parent)
         int rowCount = model->rowCount();
         model->removeRows(0, rowCount);
     });
-    connect(ui->comboBoxFormat, &QComboBox::currentIndexChanged, this, [=]() {
+    connect(ui->comboBoxFormat, xComboBoxIndexChanged, this, [=]() {
         for (int i = 0; i < model->rowCount(); ++i) {
             QByteArray data = model->data(model->index(i, 1), Qt::UserRole + 1).toByteArray();
             int format = ui->comboBoxFormat->currentData().toInt();

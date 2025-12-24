@@ -9,7 +9,6 @@
 #include "logdockwidgetcontentmodelfilter.h"
 
 #include <QDateTime>
-#include <QtLogging>
 
 namespace xFlow {
 

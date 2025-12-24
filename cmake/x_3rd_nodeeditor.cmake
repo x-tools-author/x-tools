@@ -20,7 +20,7 @@ if(ANDROID OR IOS)
 endif()
 
 # Not supported on Qt versions less than 6.5.0
-if(QT_VERSION VERSION_LESS "6.5.0")
+if(QT_VERSION VERSION_LESS "5.15.0")
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
 else()
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" ON)
@@ -44,6 +44,12 @@ if(NOT EXISTS "${X_3RD_DIR}/${packet_name}.zip")
     remove_all_files_of_flow()
     return()
   endif()
+endif()
+
+if(QT_VERSION_MAJOR LESS 6)
+  # cmake-format: off
+  set(USE_QT6 OFF CACHE BOOL "Build with Qt6 (Enabled by default)" FORCE)
+  # cmake-format: on
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/src/x/flow)

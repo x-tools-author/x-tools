@@ -84,9 +84,16 @@ void CommandLineThread::onInput2thread(std::shared_ptr<QtNodes::NodeData> nodeDa
     connect(&process, &QProcess::readAllStandardOutput, &loop, [&process, &all]() {
         all.append(process.readAll());
     });
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     connect(&process, &QProcess::finished, &loop, [&loop](int exitCode, QProcess::ExitStatus) {
         loop.quit();
     });
+#else
+    connect(&process,
+            qOverload<int, QProcess::ExitStatus>(&QProcess::finished),
+            &loop,
+            [&loop](int exitCode, QProcess::ExitStatus) { loop.quit(); });
+#endif
 
     process.start(program, args);
     loop.exec();

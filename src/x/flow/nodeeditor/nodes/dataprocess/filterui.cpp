@@ -11,6 +11,7 @@
 
 #include "common/xtools.h"
 #include "filter.h"
+#include "utilities/compatibility.h"
 
 FilterUi::FilterUi(BaseNode *node, QWidget *parent)
     : BaseNodeUi(node, parent)
@@ -20,7 +21,7 @@ FilterUi::FilterUi(BaseNode *node, QWidget *parent)
     ui->setupUi(w);
     setEmbeddedWidget(w);
 
-    connect(ui->comboBoxFormat, &QComboBox::currentIndexChanged, this, [=]() {
+    connect(ui->comboBoxFormat, xComboBoxIndexChanged, this, [=]() {
         int format = ui->comboBoxFormat->currentData().toInt();
         xSetupTextFormatValidator(ui->lineEditReference, format);
     });

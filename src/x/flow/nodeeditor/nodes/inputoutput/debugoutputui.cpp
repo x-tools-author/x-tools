@@ -118,7 +118,15 @@ void DebugOutputUi::onDataUpdated(QtNodes::PortIndex const portIndex)
             txt = QString("%1%2").arg(header, txt);
         }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
         widget->metaObject()->invokeMethod(widget, "outputBytes", txt, channel);
+#else
+        widget->metaObject()->invokeMethod(widget,
+                                           "outputBytes",
+                                           Qt::QueuedConnection,
+                                           Q_ARG(QString, txt),
+                                           Q_ARG(int, channel));
+#endif
         break;
     }
 }
@@ -129,7 +137,14 @@ void DebugOutputUi::onClearButtonClicked()
     for (QWidget *&widget : widgets) {
         if (widget->objectName() == QString("MainWindow")) {
             int channel = ui->comboBoxChannel->currentData().toInt();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
             widget->metaObject()->invokeMethod(widget, "clearOutput", channel);
+#else
+            widget->metaObject()->invokeMethod(widget,
+                                               "clearOutput",
+                                               Qt::QueuedConnection,
+                                               Q_ARG(int, channel));
+#endif
         }
     }
 }

@@ -109,11 +109,6 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
 endif()
 
-# Do something for Qt5(vc++)
-if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
-  add_compile_options(/execution-charset:utf-8)
-endif()
-
 if(QT_VERSION VERSION_LESS "5.9.0")
   message(FATAL_ERROR "Qt 5.9.0 or later is required")
 elseif(QT_VERSION VERSION_LESS "5.12.0")
@@ -221,6 +216,13 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_3rd.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_qt.cmake)
 include(FindPkgConfig)
 
+# Do something for Qt5(vc++)
+if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
+  if(NOT X_ENABLE_X_FLOW)
+    add_compile_options(/execution-charset:utf-8)
+  endif()
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # xTools application
 set(bin ${X_BINS_DIR}/xTools)
@@ -299,7 +301,6 @@ if(APPLE)
     set(X_ENTITLEMENTS "${CMAKE_SOURCE_DIR}/res/apple/macos/xTools.entitlements")
     configure_file(res/apple/macos/xTools.plist.in ${X_PLIST})
 
-    
     set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${X_PLIST})
     set_target_properties(xTools PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER "com.xtools.xtools")
     if(DEFINED BUNDLE_ID_OPTION)
@@ -317,7 +318,7 @@ if(APPLE)
     # * set(CMAKE_XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION
     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${X_ENTITLEMENTS}")
   endif()
-endif() 
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # Otiose(Just for test)

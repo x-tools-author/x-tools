@@ -20,16 +20,18 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QGraphicsItem>
+#include <QGraphicsProxyWidget>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMetaEnum>
 #include <QMouseEvent>
+#include <QOpenGLWidget>
 #include <QPalette>
 #include <QPixmap>
 #include <QStandardPaths>
+#include <QTimer>
 #include <QVBoxLayout>
-#include <QtOpenGLWidgets/QtOpenGLWidgets>
 
 #include "nodeeditorregistry.h"
 #include "nodeeditorscene.h"
@@ -661,9 +663,9 @@ QList<QtNodes::NodeId> NodeEditorView::orderSelectedNodesByX()
         }
     }
 
-    QList<QtNodes::NodeId> orderedNodeIds(nodeIds.size());
+    QList<QtNodes::NodeId> orderedNodeIds;
     for (int i = 0; i < nodeIds.size(); i++) {
-        orderedNodeIds[i] = nodeIds[i];
+        orderedNodeIds.append(nodeIds[i]);
     }
     return orderedNodeIds;
 }
@@ -682,9 +684,9 @@ QList<QtNodes::NodeId> NodeEditorView::orderSelectedNodesByY()
         }
     }
 
-    QList<QtNodes::NodeId> orderedNodeIds(nodeIds.size());
+    QList<QtNodes::NodeId> orderedNodeIds;
     for (int i = 0; i < nodeIds.size(); i++) {
-        orderedNodeIds[i] = nodeIds[i];
+        orderedNodeIds.append(nodeIds[i]);
     }
     return orderedNodeIds;
 }
