@@ -77,7 +77,7 @@ public:
 
         languageMenu = new QMenu();
         static auto languageActionGroup = new QActionGroup(languageMenu);
-        for (const QString& language : std::as_const(languages)) {
+        for (const QString& language : const_cast<QStringList&>(languages)) {
             QString name = language;
             QString nativeName = QLocale(language).nativeLanguageName();
             if (nativeName.isEmpty()) {

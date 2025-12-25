@@ -105,7 +105,7 @@ void BarCodeAssistant::onRefreshButtonClicked()
     } else {
         // If user typed something, try to find matching type
         QString currentText = ui->comboBoxType->currentText();
-        for (const auto &item : std::as_const(m_allItems)) {
+        for (const auto &item : const_cast<QList<QPair<int, QString>> &>(m_allItems)) {
             if (item.second.compare(currentText, Qt::CaseInsensitive) == 0) {
                 barcodeType = item.first;
                 break;
@@ -258,7 +258,7 @@ void BarCodeAssistant::setupTypeComboBox()
 
     // Create completer for auto-completion
     QStringList itemNames;
-    for (const auto &item : std::as_const(m_allItems)) {
+    for (const auto &item : const_cast<QList<QPair<int, QString>> &>(m_allItems)) {
         itemNames << item.second;
     }
 
@@ -281,7 +281,7 @@ void BarCodeAssistant::updateComboBoxItems(const QString &filter)
     ui->comboBoxType->clear();
 
     // Filter items based on the search text
-    for (const auto &item : std::as_const(m_allItems)) {
+    for (const auto &item : const_cast<QList<QPair<int, QString>> &>(m_allItems)) {
         if (filter.isEmpty() || item.second.contains(filter, Qt::CaseInsensitive)) {
             ui->comboBoxType->addItem(item.second, item.first);
         }

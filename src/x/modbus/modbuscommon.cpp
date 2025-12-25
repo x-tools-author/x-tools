@@ -138,7 +138,7 @@ void setupRtuBaudRate(QComboBox *cb)
 {
     cb->clear();
     auto rates = QSerialPortInfo::standardBaudRates();
-    for (const int &rate : std::as_const(rates)) {
+    for (const int &rate : const_cast<QList<int> &>(rates)) {
         cb->addItem(QString::number(rate), rate);
     }
 

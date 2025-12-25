@@ -82,7 +82,7 @@ QObject *UdpMulticast::initDevice()
 
     QHostAddress hostAddress;
     QList<QNetworkAddressEntry> entries = interface.addressEntries();
-    for (const QNetworkAddressEntry &entry : std::as_const(entries)) {
+    for (const QNetworkAddressEntry &entry : const_cast<QList<QNetworkAddressEntry> &>(entries)) {
         if (entry.ip().protocol() == QAbstractSocket::IPv4Protocol) {
             hostAddress = QHostAddress(entry.ip());
             break;

@@ -20,7 +20,7 @@ xAssistant::xAssistant(QWidget* parent)
 {
     QMenuBar* menuBar = this->menuBar();
     QList<QAction*> actions = menuBar->actions();
-    for (auto& action : std::as_const(actions)) {
+    for (auto& action : const_cast<QList<QAction*>&>(actions)) {
         if (!action->menu()) {
             continue;
         }
@@ -28,7 +28,7 @@ xAssistant::xAssistant(QWidget* parent)
         QMenu* menu = action->menu();
         if (menu->objectName() == "ViewMenu") {
             QList<QAction*> actions = menu->actions();
-            for (auto& action : std::as_const(actions)) {
+            for (auto& action : const_cast<QList<QAction*>&>(actions)) {
                 if (action->objectName() == QString("PageViewAction")) {
                     menu->removeAction(action);
                 }

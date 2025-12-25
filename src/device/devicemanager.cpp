@@ -232,8 +232,10 @@ DeviceUi *DeviceManager::newDeviceUi(int type)
     case static_cast<int>(DeviceManager::ChartsTest):
         return new ChartsTestUi();
 #endif
+#if X_ENABLE_GPS
     case static_cast<int>(DeviceManager::GpsTest):
         return new GpsTestUi();
+#endif
     default:
         return nullptr;
     }

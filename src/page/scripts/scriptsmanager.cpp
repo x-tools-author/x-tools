@@ -26,7 +26,7 @@ ScriptsManager::ScriptsManager(QWidget *parent)
     m_scripts.append(tmp);
     ui->tabWidget->addTab(tmp, QString("JavaScript"));
 
-    for (ScriptBase *script : std::as_const(m_scripts)) {
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         script->loadScripts();
         connect(script, &ScriptBase::invokeWrite, this, &ScriptsManager::invokeWrite);
     }
@@ -44,7 +44,7 @@ void ScriptsManager::load(const QJsonObject &obj)
     index = index < 0 ? 0 : (index >= ui->tabWidget->count() ? 0 : index);
     ui->tabWidget->setCurrentIndex(index);
 
-    for (ScriptBase *script : std::as_const(m_scripts)) {
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         if (obj.contains(script->metaObject()->className())) {
             script->load(obj.value(script->metaObject()->className()).toObject());
         }
@@ -57,7 +57,7 @@ QJsonObject ScriptsManager::save()
     QJsonObject obj;
     obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
 
-    for (ScriptBase *script : std::as_const(m_scripts)) {
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         obj.insert(script->metaObject()->className(), script->save());
     }
 
@@ -66,14 +66,14 @@ QJsonObject ScriptsManager::save()
 
 void ScriptsManager::onBytesRead(const QByteArray &data)
 {
-    for (ScriptBase *script : std::as_const(m_scripts)) {
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         script->onBytesRead(data);
     }
 }
 
 void ScriptsManager::aboutToClose()
 {
-    for (ScriptBase *script : std::as_const(m_scripts)) {
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         script->aboutToClose();
     }
 }

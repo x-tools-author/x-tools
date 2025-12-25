@@ -422,7 +422,7 @@ void ModbusDevice::setupModbusReply(QModbusReply *reply)
 
                 // 更新对应的ModbusRegister的值
                 m_contextMutex.lock();
-                for (ModbusRegister *reg : std::as_const(m_registers)) {
+                for (ModbusRegister *reg : const_cast<QList<ModbusRegister *> &>(m_registers)) {
                     if (reg->serverAddress() == serverAddress && reg->type() == registerType
                         && reg->address() == address) {
                         reg->setValue(value);
@@ -547,7 +547,7 @@ void ModbusDevice::onDataWritten(QModbusDataUnit::RegisterType table, int addres
         }
 
         m_contextMutex.lock();
-        for (ModbusRegister *reg : std::as_const(m_registers)) {
+        for (ModbusRegister *reg : const_cast<QList<ModbusRegister *> &>(m_registers)) {
             bool matched = (reg->type() == table);
             matched &= (reg->address() == startAddr);
             matched &= (reg->serverAddress() == serverAddress);

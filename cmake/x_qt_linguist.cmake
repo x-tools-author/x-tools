@@ -53,6 +53,10 @@ function(x_generate_translations target)
     # * Do not use qt5_create_translation, I do not want to update ts files automatically.
     # * qt5_create_translation(QM_FILES ${APP_TS_FILES})
 
+    if(QT_VERSION VERSION_LESS "5.9.0")
+      return()
+    endif()
+
     # ts -> qm
     qt5_add_translation(QM_FILES ${APP_TS_FILES})
     add_custom_target(

@@ -23,14 +23,15 @@ UdpBroadcastUi::UdpBroadcastUi(QWidget *parent)
     ui->comboBoxInterface->addItem(tr("All Interfaces"), QString("255.255.255.255"));
     // Get all available network interfaces QList<QNetworkInterface> interfaces
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
-    for (const QNetworkInterface &interface : std::as_const(interfaces)) {
+    for (const QNetworkInterface &interface : const_cast<QList<QNetworkInterface> &>(interfaces)) {
         if (!interface.isValid()) {
             continue;
         }
 
         if (interface.flags().testFlag(QNetworkInterface::CanBroadcast)) {
             auto entries = interface.addressEntries();
-            for (const QNetworkAddressEntry &entry : std::as_const(entries)) {
+            for (const QNetworkAddressEntry &entry :
+                 const_cast<QList<QNetworkAddressEntry> &>(entries)) {
                 if (entry.broadcast().isNull()) {
                     continue;
                 }

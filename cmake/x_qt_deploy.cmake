@@ -14,7 +14,9 @@ function(x_deploy_qt_for_windows target)
     return()
   endif()
 
+  message(STATUS "[xTools.Linguist] WINDEPLOYQT_EXECUTABLE:${WINDEPLOYQT_EXECUTABLE}")
   if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/qml)
+    message(STATUS "[xTools.Linguist] Deploy Qt with QML dir: ${CMAKE_CURRENT_LIST_DIR}/qml")
     add_custom_command(
       TARGET ${target}
       POST_BUILD
@@ -23,6 +25,7 @@ function(x_deploy_qt_for_windows target)
       COMMENT "Deploy Qt for Windows..."
       VERBATIM)
   else()
+    message(STATUS "[xTools.Linguist] Deploy Qt without QML dir")
     add_custom_command(
       TARGET ${target}
       POST_BUILD

@@ -65,7 +65,7 @@ void FileMergeAssistant::onImportPushButtonClicked()
     }
 
     ui->listWidget->clear();
-    for (const auto &file : std::as_const(files)) {
+    for (const auto &file : const_cast<QList<QString> &>(files)) {
         ui->listWidget->addItem(file);
     }
 }

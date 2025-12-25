@@ -218,7 +218,7 @@ void ModbusLogView::onOpenLogClicked()
     LogItemKeys keys;
     QJsonArray jsonArray = jsonDoc.array();
     QList<ModbusLogModel::LogItem> items;
-    for (const QJsonValue &value : std::as_const(jsonArray)) {
+    for (const QJsonValue &value : const_cast<QJsonArray &>(jsonArray)) {
         if (!value.isObject()) {
             continue;
         }

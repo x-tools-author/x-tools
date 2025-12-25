@@ -87,7 +87,7 @@ public:
     void updateWindowCaption()
     {
         QList<QWidget *> topLevelWidgets = QApplication::topLevelWidgets();
-        for (QWidget *widget : std::as_const(topLevelWidgets)) {
+        for (QWidget *widget : const_cast<QList<QWidget *> &>(topLevelWidgets)) {
             updateWindowCaption(widget);
         }
     }

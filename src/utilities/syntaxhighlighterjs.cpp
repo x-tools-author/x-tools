@@ -76,7 +76,7 @@ SyntaxHighlighterJs::SyntaxHighlighterJs(QTextDocument *parent)
 
 void SyntaxHighlighterJs::highlightBlock(const QString &text)
 {
-    for (const HighlightingRule &rule : qAsConst(highlightingRules)) {
+    for (const HighlightingRule &rule : const_cast<QVector<HighlightingRule> &>(highlightingRules)) {
         QRegularExpressionMatchIterator i = rule.pattern.globalMatch(text);
         while (i.hasNext()) {
             QRegularExpressionMatch match = i.next();

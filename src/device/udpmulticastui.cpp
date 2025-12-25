@@ -21,7 +21,7 @@ UdpMulticastUi::UdpMulticastUi(QWidget *parent)
 
     // Get all available network interfaces
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
-    for (const QNetworkInterface &interface : std::as_const(interfaces)) {
+    for (const QNetworkInterface &interface : const_cast<QList<QNetworkInterface> &>(interfaces)) {
         if (!interface.isValid()) {
             continue;
         }

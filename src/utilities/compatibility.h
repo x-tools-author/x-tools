@@ -21,8 +21,11 @@
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
 #define xLocalSocketErrorOccurred &QLocalSocket::errorOccurred
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xLocalSocketErrorOccurred qOverload<QLocalSocket::LocalSocketError>(&QLocalSocket::error)
+#else
+#define xLocalSocketErrorOccurred \
+    static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)

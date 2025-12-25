@@ -42,7 +42,7 @@ PanelManager::~PanelManager() {}
 QVariantMap PanelManager::save() const
 {
     QVariantMap map;
-    for (const Panel *panel : std::as_const(m_panels)) {
+    for (const Panel *panel : const_cast<QList<Panel *> &>(m_panels)) {
         map[panel->metaObject()->className()] = panel->save();
     }
     return map;
