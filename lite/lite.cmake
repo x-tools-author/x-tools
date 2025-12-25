@@ -42,6 +42,7 @@ message(STATUS "[xTools] CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
 message(STATUS "[xTools] CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
 message(STATUS "[xTools] CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
 message(STATUS "[xTools] CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools] CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -136,3 +137,13 @@ add_custom_command(
   COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:xTools> --no-compiler-runtime
   COMMENT "Deploy Qt for Windows..."
   VERBATIM)
+cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+if(MINGW)
+  add_custom_command(
+    TARGET xTools
+    POST_BUILD VERBATIM
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/libgcc_s_dw2-1.dll"
+            $<TARGET_FILE_DIR:xTools> "||" ${CMAKE_COMMAND} -E true
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/libstdc++-6.dll"
+            $<TARGET_FILE_DIR:xTools> "||" ${CMAKE_COMMAND} -E true)
+endif()
