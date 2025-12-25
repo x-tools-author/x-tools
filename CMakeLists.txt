@@ -90,6 +90,27 @@ if(CMAKE_CXX_COMPILER_VERSION AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Global settings
+set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
+set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
+set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
+message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
+message(STATUS "------------------------------------------------------------")
+
+# Do not change X_MAGIC option unless you know what you are doing
+option(X_MAGIC "The magic option..." OFF)
+if(X_MAGIC)
+  add_compile_definitions(X_MAGIC)
+endif()
+
+# Do not change X_LATEST_GIT_TAG unless you know what you are doing
+set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
+set(X_ASSET_NAME "${X_ASSET_NAME}-winxp")
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
+
+# --------------------------------------------------------------------------------------------------
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED)
 # Qt modules

@@ -17,6 +17,50 @@ if(MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# CMake module
+include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
+x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
+x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
+if(NOT DEFINED X_LATEST_GIT_TAG)
+  set(X_LATEST_GIT_TAG "9.9.9")
+endif()
+if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
+  # Remove "v" prefix if exists
+  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
+endif()
+
+# --------------------------------------------------------------------------------------------------
+# Target platform
+message(STATUS "------------------------------------------------------------")
+message(STATUS "[xTools] CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "[xTools] CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
+message(STATUS "[xTools] CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "[xTools] CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
+message(STATUS "[xTools] CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "[xTools] CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM: ${CMAKE_HOST_SYSTEM}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM_NAME: ${CMAKE_HOST_SYSTEM_NAME}")
+message(STATUS "[xTools] CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+message(STATUS "[xTools] CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "[xTools] CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
+
+if(CMAKE_CXX_COMPILER_VERSION AND MSVC)
+  set(compiler_version ${CMAKE_CXX_COMPILER_VERSION})
+  if(compiler_version VERSION_GREATER_EQUAL "19.50")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2026")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.30")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2022")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.20")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2019")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.10")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2017")
+  elseif(compiler_version VERSION_GREATER_EQUAL "19.00")
+    message(STATUS "[xTools] MSVC_VERSION: msvc2015")
+  endif()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # Global settings
 set(X_BINS_DIR
     ${CMAKE_CURRENT_SOURCE_DIR}/bin/${QT_VERSION}/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
@@ -32,6 +76,16 @@ if(X_MAGIC)
   add_compile_definitions(X_MAGIC)
 endif()
 
+# Do not change X_LATEST_GIT_TAG unless you know what you are doing
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+  set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}-x64")
+else()
+  set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}-x86")
+endif()
+set(X_ASSET_NAME "${X_ASSET_NAME}-winxp")
+string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
+message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
+
 # --------------------------------------------------------------------------------------------------
 # Get all source files
 file(GLOB_RECURSE X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/lite/src/*.*)
@@ -41,20 +95,6 @@ foreach(tmp_dir ${tmp_dirs})
   file(GLOB_RECURSE src_files ${dir}/*.*)
   list(APPEND X_SOURCES ${src_files})
 endforeach()
-
-# --------------------------------------------------------------------------------------------------
-# CMake module
-include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
-x_git_get_latest_tag(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit(${CMAKE_CURRENT_SOURCE_DIR} "X")
-x_git_get_latest_commit_time(${CMAKE_CURRENT_SOURCE_DIR} "X")
-if(NOT DEFINED X_LATEST_GIT_TAG)
-  set(X_LATEST_GIT_TAG "9.9.9")
-endif()
-if(X_LATEST_GIT_TAG MATCHES "^v[0-9].*")
-  # Remove "v" prefix if exists
-  string(SUBSTRING ${X_LATEST_GIT_TAG} 1 -1 X_LATEST_GIT_TAG)
-endif()
 
 # --------------------------------------------------------------------------------------------------
 # Remove useless files
