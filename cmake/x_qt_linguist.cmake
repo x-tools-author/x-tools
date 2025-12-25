@@ -101,6 +101,13 @@ function(x_generate_translations target)
     endif()
   endif()
 
+  set_target_properties(${target}_lrelease PROPERTIES FOLDER "i18n")
+  set_target_properties(${target}_lupdate PROPERTIES FOLDER "i18n")
+  if(TARGET release_translations)
+    set_target_properties(release_translations PROPERTIES FOLDER "i18n")
+    set_target_properties(update_translations PROPERTIES FOLDER "i18n")
+  endif()
+
   # Copy qm files to deploy dir...
   if(APPLE)
     add_custom_command(
