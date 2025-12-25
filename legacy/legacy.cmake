@@ -77,8 +77,9 @@ add_compile_definitions(X_ENABLE_GPS=0)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(bin ${X_BINS_DIR}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-add_executable(xTools ${X_SOURCES})
+add_executable(xTools ${X_SOURCES} xTools.qrc)
 x_generate_zip(xTools ${X_LATEST_GIT_TAG})
+set_target_properties(xTools PROPERTIES WIN32_EXECUTABLE TRUE)
 target_link_libraries(xTools PRIVATE Qt5::Svg Qt5::Widgets Qt5::Network Qt5::SerialPort
                                      Qt5::WebSockets)
 
