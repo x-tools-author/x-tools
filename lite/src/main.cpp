@@ -14,7 +14,7 @@
 int main(int argc, char *argv[])
 {
     Application::setOrganizationName("xTools");
-    Application::setApplicationName("xTools");
+    Application::setApplicationName("xToolsLite");
     Application::setupHdpi();
     Application app(argc, argv);
 
@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     window.resize(1366, 768);
     window.show();
     window.moveToCenter();
+    window.load();
 
     const int ret = Application::exec();
     Application::uninstallLog();

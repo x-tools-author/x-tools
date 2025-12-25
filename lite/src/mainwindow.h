@@ -6,10 +6,19 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "mainwindow.h"
+#pragma once
 
-MainWindow::MainWindow(QWidget *parent)
-    : xUi(parent)
-{}
+#include <QJsonObject>
 
-MainWindow::~MainWindow() {}
+#include "common/xui.h"
+
+class MainWindow : public xUi
+{
+    Q_OBJECT
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
+
+    void save();
+    void load();
+};

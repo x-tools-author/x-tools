@@ -18,7 +18,8 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Global settings
-set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
+set(X_BINS_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/bin/${QT_VERSION}/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
 set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
 set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
 set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
@@ -33,7 +34,7 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Get all source files
-file(GLOB_RECURSE X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/legacy/src/*.*)
+file(GLOB_RECURSE X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/lite/src/*.*)
 list(APPEND tmp_dirs "common" "device" utilities)
 foreach(tmp_dir ${tmp_dirs})
   set(dir ${CMAKE_CURRENT_SOURCE_DIR}/src/${tmp_dir})
@@ -89,7 +90,6 @@ set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
 if(NOT EXISTS ${WINDEPLOYQT_EXECUTABLE})
   return()
 endif()
-return()
 add_custom_command(
   TARGET xTools
   POST_BUILD

@@ -27,7 +27,7 @@ project(
 # Do something for old Qt version
 find_package(QT NAMES Qt5 QUIET)
 if(DEFINED QT_VERSION AND QT_VERSION VERSION_LESS "5.9.0")
-  include(${CMAKE_CURRENT_SOURCE_DIR}/legacy/legacy.cmake)
+  include(${CMAKE_CURRENT_SOURCE_DIR}/lite/lite.cmake)
   return()
 endif()
 
