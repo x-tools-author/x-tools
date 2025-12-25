@@ -13,6 +13,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QMessageBox>
+#include <QTextStream>
 
 #include "utilities/iconengine.h"
 #include "utilities/keepopenedmenu.h"

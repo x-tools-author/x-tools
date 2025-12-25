@@ -17,6 +17,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QVariantMap>
+#include <QtGlobal>
 
 #include "common/xtools.h"
 
@@ -90,9 +91,9 @@ protected:
                 for (const auto &bytes : bytesList) {
                     QString text = xBytes2string(bytes, data.format);
                     if (dateTimeString.isEmpty()) {
-                        stream << text << Qt::endl;
+                        stream << text << '\n';
                     } else {
-                        stream << QString("[%1]").arg(dateTimeString) + " " + text << Qt::endl;
+                        stream << QString("[%1]").arg(dateTimeString) + " " + text << '\n';
                     }
                 }
             }

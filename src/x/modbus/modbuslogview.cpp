@@ -14,6 +14,7 @@
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QMessageBox>
+#include <QTextStream>
 
 #include "modbuslogmodel.h"
 #include "modbuslogmodelfilter.h"

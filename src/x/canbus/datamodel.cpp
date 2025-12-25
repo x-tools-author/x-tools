@@ -54,9 +54,13 @@ static QString frameFlags(const QCanBusFrame &frame)
         result[2] = u'E';
     }
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
     if (frame.hasLocalEcho()) {
         result[3] = u'L';
     }
+#else
+    result[3] = u'-';
+#endif
 
     return result;
 }

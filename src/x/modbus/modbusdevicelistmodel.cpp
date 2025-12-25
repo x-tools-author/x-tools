@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "modbusdevicelistmodel.h"
 
+#include <QDebug>
 #include <QMainWindow>
 
 #include "modbuscommon.h"

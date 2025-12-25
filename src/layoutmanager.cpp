@@ -9,6 +9,7 @@
 #include "layoutmanager.h"
 
 #include <QAction>
+#include <QDebug>
 
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"

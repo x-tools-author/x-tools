@@ -10,10 +10,11 @@
 
 #include <QEventLoop>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QThread>
 
 #include "commandline.h"
-#include "commandlineui.h"
+#include "utilities/compatibility.h"
 
 CommandLineThread::CommandLineThread(CommandLine *cmdLine)
     : QThread(cmdLine)
@@ -62,7 +63,7 @@ void CommandLineThread::onInput2thread(std::shared_ptr<QtNodes::NodeData> nodeDa
     const QString arguments = parameters[keys.arguments].toString();
     // Split arguments by spaces
     static QRegularExpression re(R"(\s+)");
-    QStringList args = arguments.split(re, Qt::SkipEmptyParts);
+    QStringList args = arguments.split(re, xSkipEmptyParts);
     bool isHexParameters = parameters[keys.isHexParameters].toBool(false);
     bool isUtf8Parameters = parameters[keys.isUtf8Parameters].toBool(true);
     if (!bytes.isEmpty()) {

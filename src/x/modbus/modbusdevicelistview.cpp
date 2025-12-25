@@ -10,6 +10,7 @@
 #include "ui_modbusdevicelistview.h"
 
 #include <QContextMenuEvent>
+#include <QDebug>
 #include <QInputDialog>
 #include <QJsonArray>
 #include <QMenu>
