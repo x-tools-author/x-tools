@@ -24,13 +24,11 @@ project(
   DESCRIPTION "xTools - All in one debugging and development tools")
 
 # --------------------------------------------------------------------------------------------------
-# Do something for Windows XP
-if(WIN32)
-  option(X_BUILD_FOR_WINDOWS_XP "Build for Windows XP" OFF)
-  if(X_BUILD_FOR_WINDOWS_XP)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/legacy/legacy.cmake)
-    return()
-  endif()
+# Do something for old Qt version
+find_package(QT NAMES Qt5 QUIET)
+if(DEFINED QT_VERSION AND QT_VERSION VERSION_LESS "5.9.0")
+  include(${CMAKE_CURRENT_SOURCE_DIR}/legacy/legacy.cmake)
+  return()
 endif()
 
 set(CMAKE_AUTOMOC ON)

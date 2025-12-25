@@ -54,7 +54,7 @@ function(x_generate_translations target)
     # * qt5_create_translation(QM_FILES ${APP_TS_FILES})
 
     if(QT_VERSION VERSION_LESS "5.9.0")
-      return()
+      #return()
     endif()
 
     # ts -> qm

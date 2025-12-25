@@ -1,9 +1,8 @@
 # --------------------------------------------------------------------------------------------------
-# Find Qt5
-find_package(QT NAMES Qt5 REQUIRED)
+# Find Qt5 components
 find_package(
   Qt5
-  COMPONENTS SVG Widgets Network SerialPort WebSockets LinguistTools
+  COMPONENTS Svg Widgets Network SerialPort WebSockets
   REQUIRED)
 
 set(CMAKE_AUTOMOC ON)
@@ -77,17 +76,16 @@ add_compile_definitions(X_ENABLE_GPS=0)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(bin ${X_BINS_DIR}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
-add_executable(xTools ${X_SOURCES} xTools.qrc)
+add_executable(xTools ${X_SOURCES} xTools.qrc xTools.rc)
 x_generate_zip(xTools ${X_LATEST_GIT_TAG})
 set_target_properties(xTools PROPERTIES WIN32_EXECUTABLE TRUE)
+target_link_libraries(xTools PRIVATE Dwmapi)
 target_link_libraries(xTools PRIVATE Qt5::Svg Qt5::Widgets Qt5::Network Qt5::SerialPort
                                      Qt5::WebSockets)
 
 # --------------------------------------------------------------------------------------------------
 # Deploy Qt for Windows
-if(NOT DEFINED WINDEPLOYQT_EXECUTABLE)
-  set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
-endif()
+set(WINDEPLOYQT_EXECUTABLE "${QT_DIR}/../../../bin/windeployqt.exe")
 if(NOT EXISTS ${WINDEPLOYQT_EXECUTABLE})
   return()
 endif()

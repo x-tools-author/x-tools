@@ -20,7 +20,7 @@
 #define xEnableColorScheme 0
 #endif
 
-#if defined(_MSC_VER)
+#ifdef Q_OS_WIN32
 #include <dwmapi.h>
 
 #include <QAction>
@@ -94,9 +94,7 @@ public:
 
     void updateWindowCaption(QWidget *widget)
     {
-#if !defined(_MSC_VER)
-        Q_UNUSED(widget);
-#else
+#ifdef Q_OS_WIN32
         bool isWindows11 = QSysInfo::productVersion().contains("11");
         bool isWindows10 = QSysInfo::productVersion().contains("10");
         if (!isWindows10 && !isWindows11) {
@@ -111,10 +109,9 @@ public:
 
         QColor c = palette.color(QPalette::Window);
         COLORREF colorref = c.red() | (c.green() << 8) | (c.blue() << 16);
-        DwmSetWindowAttribute((HWND) window->winId(),
-                              DWMWA_CAPTION_COLOR,
-                              &colorref,
-                              sizeof(colorref));
+        // The value of DWMWA_CAPTION_COLOR is 35, visit the website for more information:
+        // https://learn.microsoft.com/zh-cn/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute
+        DwmSetWindowAttribute((HWND) window->winId(), 35, &colorref, sizeof(colorref));
 #endif
     }
 

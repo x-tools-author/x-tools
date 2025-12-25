@@ -6,17 +6,33 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
+#include <QDebug>
+
 #include "./application.h"
 #include "./mainwindow.h"
 
 int main(int argc, char *argv[])
 {
+    Application::setOrganizationName("xTools");
+    Application::setApplicationName("xTools");
+    Application::setupHdpi();
     Application app(argc, argv);
 
-    MainWindow mainWindow;
-    mainWindow.setWindowTitle("xTools");
-    mainWindow.resize(800, 600);
-    mainWindow.show();
+    app.setupLanguage();
+    app.showSplashScreenMessage(QObject::tr("Application is booting..."));
+    app.setupAppStyle();
+    app.setupColorScheme();
 
-    return app.exec();
+    MainWindow window;
+    QSplashScreen *splash = app.splashScreen();
+    splash->finish(&window);
+    window.resize(1366, 768);
+    window.show();
+    window.moveToCenter();
+
+    const int ret = Application::exec();
+    Application::uninstallLog();
+
+    qInfo() << "Application exited with code:" << ret;
+    return ret;
 }
