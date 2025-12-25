@@ -11,9 +11,11 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>
+#include <QtGlobal>
 #include <QtMath>
 
 #include "common/xtools.h"
+#include "utilities/compatibility.h"
 
 SerialPort::SerialPort(QObject *parent)
     : Device(parent)
@@ -51,7 +53,7 @@ QObject *SerialPort::initDevice()
     connect(m_serialPort, &QSerialPort::readyRead, m_serialPort, [this, optimizedFrame]() {
         this->readBytesFromDevice(optimizedFrame);
     });
-    connect(m_serialPort, &QSerialPort::errorOccurred, m_serialPort, [this]() {
+    connect(m_serialPort, xSerialPortErrorOccurred, m_serialPort, [this]() {
         emit errorOccurred(m_serialPort->errorString());
     });
 

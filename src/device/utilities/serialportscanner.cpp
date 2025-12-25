@@ -89,6 +89,7 @@ QStringList SerialPortScanner::refresh()
         }
     }
 
+#if 0
     bool isEqual = std::equal(portNames.begin(),
                               portNames.end(),
                               m_lastDevices.begin(),
@@ -100,6 +101,25 @@ QStringList SerialPortScanner::refresh()
         m_lastDevices = infos;
         emit devicesChanged(infos);
     }
+#else
+    if (portNames.size() != m_lastDevices.size()) {
+        m_lastDevices = infos;
+        emit devicesChanged(infos);
+    } else {
+        bool isEqual = true;
+        for (int i = 0; i < portNames.size(); i++) {
+            if (portNames.at(i) != m_lastDevices.at(i).portName()) {
+                isEqual = false;
+                break;
+            }
+        }
+
+        if (!isEqual) {
+            m_lastDevices = infos;
+            emit devicesChanged(infos);
+        }
+    }
+#endif
 
     emit portNamesChanged(portNames);
     return portNames;

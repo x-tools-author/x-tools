@@ -12,8 +12,11 @@
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 #define xWebSocketErrorOccurred &QWebSocket::errorOccurred
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xWebSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QWebSocket::error)
+#else
+#define xWebSocketErrorOccurred \
+    static_cast<void (QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
@@ -24,26 +27,36 @@
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
 #define xTcpSocketErrorOccurred &QTcpSocket::errorOccurred
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xTcpSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QTcpSocket::error)
+#else
+#define xTcpSocketErrorOccurred \
+    static_cast<void (QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QTcpSocket::error)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
 #define xUdpSocketErrorOccurred &QUdpSocket::errorOccurred
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xUdpSocketErrorOccurred qOverload<QAbstractSocket::SocketError>(&QUdpSocket::error)
+#else
+#define xUdpSocketErrorOccurred \
+    static_cast<void (QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QUdpSocket::error)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 #define xComboBoxActivated &QComboBox::activated
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xComboBoxActivated qOverload<int>(&QComboBox::activated)
+#else
+#define xComboBoxActivated static_cast<void (QComboBox::*)(int)>(&QComboBox::activated)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 #define xComboBoxIndexChanged &QComboBox::currentIndexChanged
-#else
+#elif QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xComboBoxIndexChanged qOverload<int>(&QComboBox::currentIndexChanged)
+#else
+#define xComboBoxIndexChanged static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged)
 #endif
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
@@ -56,4 +69,11 @@
 #define xSkipEmptyParts Qt::SkipEmptyParts
 #else
 #define xSkipEmptyParts QString::SkipEmptyParts
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+#define xSerialPortErrorOccurred &QSerialPort::errorOccurred
+#else
+#define xSerialPortErrorOccurred \
+    static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error)
 #endif

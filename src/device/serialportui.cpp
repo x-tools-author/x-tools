@@ -14,6 +14,7 @@
 
 #include "common/xtools.h"
 #include "serialport.h"
+#include "utilities/compatibility.h"
 #include "utilities/serialportscanner.h"
 
 SerialPortUi::SerialPortUi(QWidget *parent)
@@ -30,10 +31,7 @@ SerialPortUi::SerialPortUi(QWidget *parent)
     connect(m_scanner, &SerialPortScanner::devicesChanged, this, &SerialPortUi::onDevicesChanged);
     m_scanner->start();
 
-    connect(ui->comboBoxPortName,
-            qOverload<int>(&QComboBox::currentIndexChanged),
-            this,
-            &SerialPortUi::onDeviceIndexChanged);
+    connect(ui->comboBoxPortName, xComboBoxIndexChanged, this, &SerialPortUi::onDeviceIndexChanged);
     connect(ui->checkBoxIgnoredBusyDevices, &QCheckBox::clicked, this, [=](bool checked) {
         m_scanner->setIsBusyDevicesIgnored(checked);
     });

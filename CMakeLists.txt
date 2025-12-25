@@ -22,13 +22,23 @@ project(
   VERSION 7.0
   LANGUAGES C CXX
   DESCRIPTION "xTools - All in one debugging and development tools")
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# --------------------------------------------------------------------------------------------------
+# Do something for Windows XP
+if(WIN32)
+  option(X_BUILD_FOR_WINDOWS_XP "Build for Windows XP" OFF)
+  if(X_BUILD_FOR_WINDOWS_XP)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/legacy/legacy.cmake)
+    return()
+  endif()
+endif()
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # cmake-format: off
 set(WITH_GFLAGS OFF)

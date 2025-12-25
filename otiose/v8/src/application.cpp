@@ -72,7 +72,7 @@ QJsonArray Application::supportedLanguages()
     filters << QString("xTools_*.qm");
     QList<QFileInfo> fileNames = dir.entryInfoList(filters, QDir::Files | QDir::NoDotAndDotDot);
     QJsonArray languages;
-    for (const QFileInfo &fileName : std::as_const(fileNames)) {
+    for (const QFileInfo &fileName : const_cast<QList<QFileInfo> &>(fileNames)) {
         QString baseName = fileName.baseName();
         baseName.remove("xTools_");
         baseName.remove(".qm");
@@ -225,11 +225,10 @@ void Application::setupHdpi()
     qInfo() << "The current high dpi policy is:" << cookedPolicy;
 }
 
-
 void Application::setupLanguage()
 {
     if (m_translators.count() > 0) {
-        for (QTranslator *translator : std::as_const(m_translators)) {
+        for (QTranslator *translator : const_cast<QList<QTranslator *> &>(m_translators)) {
             qApp->removeTranslator(translator);
             translator->deleteLater();
         }

@@ -48,45 +48,45 @@ QList<int> CRC::supportedAlgorithms(bool enableSumChecks, bool enableLrc)
 QString CRC::algorithmName(Algorithm Algorithm)
 {
     switch (Algorithm) {
-    case Algorithm::CRC_8:
+    case CRC::Algorithm::CRC_8:
         return "CRC-8";
-    case Algorithm::CRC_8_ITU:
+    case CRC::Algorithm::CRC_8_ITU:
         return "CRC-8/ITU";
-    case Algorithm::CRC_8_ROHC:
+    case CRC::Algorithm::CRC_8_ROHC:
         return "CRC-8/ROHC";
-    case Algorithm::CRC_8_MAXIM:
+    case CRC::Algorithm::CRC_8_MAXIM:
         return "CRC-8/MAXIM";
-    case Algorithm::CRC_16_IBM:
+    case CRC::Algorithm::CRC_16_IBM:
         return "CRC-16/IBM";
-    case Algorithm::CRC_16_MAXIM:
+    case CRC::Algorithm::CRC_16_MAXIM:
         return "CRC-16/MAXIM";
-    case Algorithm::CRC_16_USB:
+    case CRC::Algorithm::CRC_16_USB:
         return "CRC-16/USB";
-    case Algorithm::CRC_16_MODBUS:
+    case CRC::Algorithm::CRC_16_MODBUS:
         return "CRC-16/MODBUS";
-    case Algorithm::CRC_16_CCITT:
+    case CRC::Algorithm::CRC_16_CCITT:
         return "CRC-16/CCITT";
-    case Algorithm::CRC_16_CCITT_FALSE:
+    case CRC::Algorithm::CRC_16_CCITT_FALSE:
         return "CRC-16/CCITT-FALSE";
-    case Algorithm::CRC_16_x25:
+    case CRC::Algorithm::CRC_16_x25:
         return "CRC-16/X-25";
-    case Algorithm::CRC_16_XMODEM:
+    case CRC::Algorithm::CRC_16_XMODEM:
         return "CRC-16/XMODEM";
-    case Algorithm::CRC_16_DNP:
+    case CRC::Algorithm::CRC_16_DNP:
         return "CRC-16/DNP";
-    case Algorithm::CRC_32:
+    case CRC::Algorithm::CRC_32:
         return "CRC-32";
-    case Algorithm::CRC_32_MPEG2:
+    case CRC::Algorithm::CRC_32_MPEG2:
         return "CRC-32/MPEG-2";
-    case Algorithm::SUM_8:
+    case CRC::Algorithm::SUM_8:
         return "Sum 8-bit";
-    case Algorithm::SUM_16:
+    case CRC::Algorithm::SUM_16:
         return "Sum 16-bit";
-    case Algorithm::SUM_32:
+    case CRC::Algorithm::SUM_32:
         return "Sum 32-bit";
-    case Algorithm::SUM_64:
+    case CRC::Algorithm::SUM_64:
         return "Sum 64-bit";
-    case Algorithm::LRC:
+    case CRC::Algorithm::LRC:
         return "LRC";
     default:
         return QObject::tr("Unknown");
@@ -101,7 +101,7 @@ void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks, bool enableL
 
     comboBox->clear();
     QList<int> algorithms = supportedAlgorithms(enableSumChecks, enableLrc);
-    for (const int &algorithm : std::as_const(algorithms)) {
+    for (const int &algorithm : const_cast<QList<int> &>(algorithms)) {
         comboBox->addItem(algorithmName(static_cast<Algorithm>(algorithm)), algorithm);
     }
 
