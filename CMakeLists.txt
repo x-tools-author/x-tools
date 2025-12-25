@@ -110,7 +110,7 @@ if(QT_VERSION VERSION_GREATER_EQUAL "6.10.0")
 endif()
 
 if(QT_VERSION VERSION_LESS "5.9.0")
-  message(FATAL_ERROR "Qt 5.9.0 or later is required")
+  message(FATAL_ERROR "[xTools] Qt 5.9.0 or later is required")
 elseif(QT_VERSION VERSION_LESS "5.12.0")
   include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION})
   include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION}/QtCore)
