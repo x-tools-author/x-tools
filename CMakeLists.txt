@@ -26,8 +26,6 @@ project(
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # cmake-format: off
@@ -36,6 +34,15 @@ set(BUILD_TESTING OFF)
 set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
 # cmake-format: on
+
+option(X_LITE_EDITION "Build xTools Lite Edition (for old Qt version)" OFF)
+if(X_LITE_EDITION)
+  set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+else()
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
 
 # --------------------------------------------------------------------------------------------------
 # CMake module
