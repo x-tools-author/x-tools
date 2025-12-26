@@ -65,6 +65,19 @@ function(x_deploy_qt_for_windows target)
                 $<TARGET_FILE_DIR:${target}>)
     endif()
   endif()
+  if(MINGW)
+    cmake_path(GET CMAKE_CXX_COMPILER PARENT_PATH COMPILER_PATH)
+    # add '-' to ignore error if the file does not exist
+    add_custom_command(
+      TARGET ${target}
+      POST_BUILD VERBATIM
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/libstdc++-6.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/libgcc_s_dw2-1.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${COMPILER_PATH}/libwinpthread-1.dll"
+              $<TARGET_FILE_DIR:${target}> "||" ${CMAKE_COMMAND} -E true)
+  endif()
 endfunction()
 
 # --------------------------------------------------------------------------------------------------
