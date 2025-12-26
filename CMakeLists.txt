@@ -23,14 +23,6 @@ project(
   LANGUAGES C CXX
   DESCRIPTION "xTools - All in one debugging and development tools")
 
-# --------------------------------------------------------------------------------------------------
-# Do something for old Qt version
-find_package(QT NAMES Qt5 QUIET)
-if(DEFINED QT_VERSION AND QT_VERSION VERSION_LESS "5.9.0")
-  include(${CMAKE_CURRENT_SOURCE_DIR}/lite/lite.cmake)
-  return()
-endif()
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
