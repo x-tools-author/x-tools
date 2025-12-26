@@ -89,27 +89,6 @@ if(CMAKE_CXX_COMPILER_VERSION AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-# Global settings
-set(X_BINS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE})
-set(X_3RD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rd)
-set(tmp ${CMAKE_SOURCE_DIR}/libs/${QT_VERSION})
-set(X_LIBS_DIR ${tmp}/${CMAKE_BUILD_TYPE}/${CMAKE_CXX_COMPILER_ID}/${CMAKE_CXX_COMPILER_VERSION})
-message(STATUS "[xTools] X_LIBS_DIR: ${X_LIBS_DIR}")
-message(STATUS "------------------------------------------------------------")
-
-# Do not change X_MAGIC option unless you know what you are doing
-option(X_MAGIC "The magic option..." OFF)
-if(X_MAGIC)
-  add_compile_definitions(X_MAGIC)
-endif()
-
-# Do not change X_LATEST_GIT_TAG unless you know what you are doing
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}-${CMAKE_SYSTEM_PROCESSOR}")
-set(X_ASSET_NAME "${X_ASSET_NAME}-winxp")
-string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
-
-# --------------------------------------------------------------------------------------------------
 # Qt6 is preferred, but Qt5 is also supported
 find_package(QT NAMES Qt5 Qt6 REQUIRED)
 # Qt modules
@@ -166,13 +145,6 @@ endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
 
-option(X_ENABLE_GPS "Enable GPS Test device" OFF)
-if(X_ENABLE_GPS)
-  add_compile_definitions(X_ENABLE_GPS=1)
-else()
-  add_compile_definitions(X_ENABLE_GPS=0)
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # Set macOS deployment target (minimum macOS version)
 if(APPLE AND NOT IOS)
@@ -210,6 +182,14 @@ file(GLOB_RECURSE X_SOURCES_UI "${CMAKE_CURRENT_SOURCE_DIR}/src/*.ui")
 set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP} ${X_SOURCES_UI})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
+
+# GPS module
+option(X_ENABLE_GPS "Enable GPS Test device" OFF)
+if(X_ENABLE_GPS)
+  add_compile_definitions(X_ENABLE_GPS=1)
+else()
+  add_compile_definitions(X_ENABLE_GPS=0)
+endif()
 
 # TFTP module
 option(X_ENABLE_TFTP "Enable TFTP Module" OFF)
