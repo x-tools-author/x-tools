@@ -37,6 +37,7 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
     m_filePathlineEdit->setText(m_fileName);
 
     // Appending algorithms to combo box
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
     QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++) {
@@ -47,6 +48,10 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
         algorithmsStringList.append(QString(algorithms.key(i)));
     }
     m_algorithmComboBox->addItems(algorithmsStringList);
+#else
+    m_algorithmComboBox->addItem("Md5");
+#endif
+
     m_algorithmComboBox->setCurrentText("Md5");
 
     m_filePathlineEdit->setReadOnly(true);
@@ -193,8 +198,8 @@ void FileCheckAssistant::onUpperCheckBoxClicked()
 
 void FileCheckAssistant::onAlgorithmChanged(int index)
 {
-    QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
-    m_algorithm = static_cast<QCryptographicHash::Algorithm>(algorithms.value(index));
+    int value = ui->algorithmComboBox->currentData().toInt();
+    m_algorithm = static_cast<QCryptographicHash::Algorithm>(value);
     m_resultLineEdit->clear();
     m_calculatorProgressBar->setValue(0);
 }

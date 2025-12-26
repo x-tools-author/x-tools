@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "mqttdatamodel.h"
 
+#include "utilities/compatibility.h"
+
 namespace xMQTT {
 
 MqttDataModel::MqttDataModel(QObject *parent)
@@ -67,11 +69,15 @@ QVariant MqttDataModel::data(const QModelIndex &index, int role) const
         } else if (column == MQTT_DATA_COLUMN_CLIENT) {
             return QString("%1:%2").arg(msg->clientAddress).arg(msg->clientPort);
         } else if (column == MQTT_DATA_COLUMN_DATA) {
+#if 0
             return QString(msg->dgram.toHex(' '));
+#else
+            return QString::fromUtf8(xBytes2Hex(msg->dgram, ' '));
+#endif
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (column == MQTT_DATA_COLUMN_DATA) {
-            return int(Qt::AlignLeft | Qt::AlignVCenter);
+            return int(int(Qt::AlignLeft) | int(Qt::AlignVCenter));
         } else {
             return Qt::AlignCenter;
         }
@@ -111,7 +117,7 @@ QVariant MqttDataModel::headerData(int section, Qt::Orientation orientation, int
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (section == MQTT_DATA_COLUMN_DATA) {
-            return int(Qt::AlignLeft | Qt::AlignVCenter);
+            return int(int(Qt::AlignLeft) | int(Qt::AlignVCenter));
         } else {
             return Qt::AlignCenter;
         }

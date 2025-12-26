@@ -14,6 +14,7 @@
 #include <QInputDialog>
 
 #include "scriptrunner.h"
+#include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
 
 ScriptBase::ScriptBase(QWidget *parent)
@@ -22,7 +23,7 @@ ScriptBase::ScriptBase(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->comboBoxFile,
-            qOverload<int>(&QComboBox::currentIndexChanged),
+            xComboBoxIndexChanged,
             this,
             &ScriptBase::onScriptComboBoxCurrentIndexChanged);
     connect(ui->toolButtonRun, &QToolButton::clicked, this, &ScriptBase::onRunButtonClicked);
@@ -187,7 +188,7 @@ void ScriptBase::onNewButtonClicked()
     QString fileName = file.fileName();
     ui->comboBoxFile->addItem(txt, fileName);
     ui->comboBoxFile->setCurrentIndex(ui->comboBoxFile->count() - 1);
-    if (file.open(QIODevice::WriteOnly)) {
+    if (file.open(QFlag(QIODevice::OpenModeFlag::WriteOnly))) {
         file.close();
     }
 }

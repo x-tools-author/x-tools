@@ -45,7 +45,11 @@ bool TransferModel::insertRows(int row, int count, const QModelIndex &parent)
         connect(transfer, &Device::finished, this, [=]() { transfer->start(); });
 
         int option = static_cast<int>(TransferType::Bidirectional);
-        m_transfers.insert(row + i, {transfer, tr("Transfer %1").arg(row), option});
+        Item item;
+        item.transfer = transfer;
+        item.description = tr("Transfer %1").arg(row);
+        item.option = option;
+        m_transfers.insert(row + i, item);
         transfer->start();
     }
     endInsertRows();

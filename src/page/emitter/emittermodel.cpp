@@ -152,7 +152,12 @@ bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
 
     TextItem textContext = xDefaultTextItem();
     for (int i = 0; i < count; i++) {
-        Item item{true, tr("Demo") + QString::number(rowCount(QModelIndex())), 1000, textContext};
+        Item item;
+        item.enable = true;
+        item.description = tr("Demo") + QString::number(rowCount(QModelIndex()));
+        item.interval = 1000;
+        item.textItem = textContext;
+        item.elapsedTime = 0;
         m_items.insert(row, item);
     }
 
@@ -201,13 +206,15 @@ QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int 
 
 Qt::ItemFlags EmitterModel::flags(const QModelIndex &index) const
 {
+    Qt::ItemFlags fs = QAbstractTableModel::flags(index);
     if (index.column() == 0) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable | Qt::ItemIsUserCheckable;
+        fs |= Qt::ItemIsEditable;
+        fs |= Qt::ItemIsUserCheckable;
     } else if (index.column() == 1 || index.column() == 2) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
-    } else {
-        return QAbstractTableModel::flags(index);
+        fs |= Qt::ItemIsEditable;
     }
+
+    return fs;
 }
 
 void EmitterModel::increaseElapsedTime(const int row, const int interval)

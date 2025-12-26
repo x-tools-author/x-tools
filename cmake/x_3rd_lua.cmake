@@ -1,4 +1,5 @@
-﻿# https://github.com/lua/lua
+﻿# --------------------------------------------------------------------------------------------------
+# https://github.com/lua/lua
 set(lua_version "5.4.8")
 get_filename_component(COMPILER_DIR ${CMAKE_CXX_COMPILER} DIRECTORY)
 message(STATUS "[xTools.Lua] Compiler dir: ${COMPILER_DIR}")

@@ -1,4 +1,18 @@
-﻿# https://github.com/fukuchi/libqrencode
+﻿macro(remove_all_qrcode_files)
+  file(GLOB_RECURSE QRENCODE_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/qrcode/*.*")
+  foreach(file ${QRENCODE_SOURCE})
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[xTools.qrencode]Remove file: ${file}")
+  endforeach(file ${QRENCODE_SOURCE})
+endmacro()
+
+if(QT_VERSION VERSION_LESS "5.9.0")
+  remove_all_qrcode_files()
+  add_compile_definitions(X_DISABLE_QR_CODE)
+  return()
+endif()
+
+# https://github.com/fukuchi/libqrencode
 set(qrencode_package_name "libqrencode-master")
 
 set(X_QR_ENCODE OFF)
@@ -17,7 +31,7 @@ endif()
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   if(EXISTS ${CMAKE_BINARY_DIR}/3rd/${qrencode_package_name}/qrencoded.lib AND WIN32)
-      set(X_QRENCODE_LIB "qrencoded")
+    set(X_QRENCODE_LIB "qrencoded")
   else()
     if(LINUX AND NOT APPLE)
       set(X_QRENCODE_LIB "qrencode")

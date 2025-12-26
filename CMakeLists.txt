@@ -35,15 +35,6 @@ set(WITH_TOOLS OFF CACHE BOOL "Reset option" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Reset option" FORCE)
 # cmake-format: on
 
-option(X_LITE_EDITION "Build xTools Lite Edition (for old Qt version)" OFF)
-if(X_LITE_EDITION)
-  set(CMAKE_CXX_STANDARD 11)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-else()
-  set(CMAKE_CXX_STANDARD 17)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # CMake module
 include(${CMAKE_SOURCE_DIR}/cmake/x.cmake)
@@ -111,6 +102,13 @@ list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Qml)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Core)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Network)
 list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Widgets)
+if(QT_VERSION VERSION_LESS "5.9.0")
+  set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+else()
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
 if(QT_VERSION VERSION_LESS "5.12.0")
   include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION})
   include_directories(${QT_DIR}/../../../include/QtCore/${QT_VERSION}/QtCore)
@@ -242,10 +240,7 @@ message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPU
 # --------------------------------------------------------------------------------------------------
 # Windows
 if(WIN32)
-  if(MSVC)
-    target_link_libraries(xTools PRIVATE Dwmapi)
-  endif()
-
+  target_link_libraries(xTools PRIVATE Dwmapi Ws2_32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)

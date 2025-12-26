@@ -113,7 +113,7 @@ void updateRawData(QLineEdit *le, T value)
 {
     T *ptr = &value;
     QByteArray tmp = QByteArray::fromRawData(reinterpret_cast<char *>(ptr), sizeof(T));
-    le->setText(tmp.toHex(' '));
+    le->setText(xBytes2Hex(tmp, ' '));
 }
 
 void NumberAssistant::updateRawData()

@@ -56,16 +56,16 @@ FileMergeAssistant::~FileMergeAssistant()
 
 void FileMergeAssistant::onImportPushButtonClicked()
 {
-    auto files = QFileDialog::getOpenFileNames(this,
-                                               tr("Import Files"),
-                                               m_desktopPath,
-                                               tr("Bin file(*.bin);;All file(*)"));
+    QStringList files = QFileDialog::getOpenFileNames(this,
+                                                      tr("Import Files"),
+                                                      m_desktopPath,
+                                                      tr("Bin file(*.bin);;All file(*)"));
     if (files.isEmpty()) {
         return;
     }
 
     ui->listWidget->clear();
-    for (const auto &file : const_cast<QList<QString> &>(files)) {
+    for (const QString &file : const_cast<QStringList &>(files)) {
         ui->listWidget->addItem(file);
     }
 }
@@ -106,7 +106,7 @@ void FileMergeAssistant::onMergePushButtonClicked()
     for (int i = 0; i < ui->listWidget->count(); ++i) {
         QString fileName = ui->listWidget->item(i)->text();
         QFile inFile(fileName);
-        if (!inFile.open(QFile::ReadOnly)) {
+        if (!inFile.open(QFlag(QFile::ReadOnly))) {
             showOpenFileFailedMessageBox(fileName, inFile.errorString());
             ui->progressBar->hide();
             return;
@@ -175,7 +175,7 @@ void FileMergeAssistant::setProgressBarRange()
     for (int i = 0; i < ui->listWidget->count(); ++i) {
         QString fileName = ui->listWidget->item(i)->text();
         QFile file(fileName);
-        if (file.open(QFile::ReadOnly)) {
+        if (file.open(QFlag(QIODevice::ReadOnly))) {
             allBytes += file.size();
             file.close();
         }

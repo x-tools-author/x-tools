@@ -926,13 +926,14 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     } else {
         header = QString("%1 %2").arg(rxTx, dateTimeString);
     }
-#if 0
+#if 1
     header = header.trimmed();
     header = QString("<font color=silver>[%1]</font>").arg(header);
     QString outputText = QString("%1 %2").arg(header, text);
     outputText = outputText.replace("\r", "\\r");
     outputText = outputText.replace("\n", "\\n");
 #else
+    // The compatibility is too poor.
     header = QString("<font color=silver style='font-family: \"Segoe UI\", Arial; font-size: "
                      "12px;'>[%1]</font>")
                  .arg(header.trimmed());

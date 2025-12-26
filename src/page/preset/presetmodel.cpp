@@ -82,7 +82,7 @@ QVariant PresetModel::data(const QModelIndex &index, int role) const
             return QVariant::fromValue(json);
         }
     } else if (role == Qt::TextAlignmentRole) {
-        return int(Qt::AlignLeft | Qt::AlignVCenter);
+        return int(int(Qt::AlignLeft) | int(Qt::AlignVCenter));
     }
 
     return QVariant();
@@ -114,7 +114,9 @@ bool PresetModel::insertRows(int row, int count, const QModelIndex &parent)
 
     TextItem textContext = xDefaultTextItem();
     for (int i = 0; i < count; i++) {
-        Item item{tr("Demo") + QString::number(rowCount(QModelIndex())), textContext};
+        Item item;
+        item.description = tr("Demo") + QString::number(rowCount(QModelIndex()));
+        item.textContext = textContext;
         m_items.insert(row, item);
     }
 
@@ -157,11 +159,12 @@ QVariant PresetModel::headerData(int section, Qt::Orientation orientation, int r
 
 Qt::ItemFlags PresetModel::flags(const QModelIndex &index) const
 {
+    Qt::ItemFlags fs = QAbstractTableModel::flags(index);
     if (index.column() == 0) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
-    } else {
-        return QAbstractTableModel::flags(index);
+        fs |= Qt::ItemIsEditable;
     }
+
+    return fs;
 }
 
 bool PresetModel::moveRows(const QModelIndex &sourceParent,

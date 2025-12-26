@@ -428,6 +428,7 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     QAction* action = m_optionMenu->addAction(tr("Using System Proxy"));
     action->setCheckable(true);
     connect(action, &QAction::toggled, this, [=](bool checked) {
@@ -444,6 +445,7 @@ void MainWindow::initOptionMenu()
     bool useSystemProxy = xAPP->settings()->value(key, defaultValue).toBool();
     action->setChecked(useSystemProxy);
     QNetworkProxyFactory::setUseSystemConfiguration(useSystemProxy);
+#endif
 }
 
 void MainWindow::initViewMenu()

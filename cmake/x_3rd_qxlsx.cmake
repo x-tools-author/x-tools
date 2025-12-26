@@ -1,4 +1,8 @@
-﻿# * https://github.com/QtExcel/QXlsx
+﻿if(QT_VERSION VERSION_LESS "5.9.0")
+  return()
+endif()
+
+# * https://github.com/QtExcel/QXlsx
 # * https://codeload.github.com/QtExcel/QXlsx/zip/refs/tags/v1.4.10
 set(qxlsx_version "1.4.10")
 set(qxlsx_package_name "QXlsx-${qxlsx_version}")

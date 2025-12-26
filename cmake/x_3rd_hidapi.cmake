@@ -16,6 +16,11 @@ macro(remove_all_files_of_hidapi)
   add_compile_definitions(X_ENABLE_HID=0)
 endmacro()
 
+if(QT_VERSION VERSION_LESS "5.9.0")
+  remove_all_files_of_hidapi()
+  return()
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Not supported on Android or iOS yet
 if(ANDROID OR IOS)

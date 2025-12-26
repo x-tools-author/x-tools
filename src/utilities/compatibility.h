@@ -80,3 +80,20 @@
 #define xSerialPortErrorOccurred \
     static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error)
 #endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+#define xBytes2Hex(ba, c) ba.toHex(c)
+#else
+#define xBytes2Hex(ba, c) \
+    ([](const QByteArray &array, char separator) -> QByteArray { \
+        QString tmp = QString(array.toHex()); \
+        QString res; \
+        for (int i = 0; i < tmp.length(); i += 2) { \
+            res.append(tmp.mid(i, 2)); \
+            if (i + 2 < tmp.length() && separator != '\0') { \
+                res.append(separator); \
+            } \
+        } \
+        return res.toUtf8(); \
+    })(ba, c)
+#endif

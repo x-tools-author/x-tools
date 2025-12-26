@@ -1,3 +1,18 @@
+macro(remove_all_mdns_files)
+  file(GLOB_RECURSE MDNS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/mdns/*.*")
+  foreach(file ${MDNS_SOURCE})
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[xTools.mdns]Remove file: ${file}")
+  endforeach(file ${MDNS_SOURCE})
+endmacro()
+
+if(QT_VERSION VERSION_LESS "5.9.0")
+  remove_all_mdns_files()
+  add_compile_definitions(X_DISABLE_MDNS)
+  return()
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # https://github.com/nitroshare/qmdnsengine
 set(qmdns_package_name "qmdnsengine-master")
 

@@ -181,12 +181,13 @@ bool ResponderModel::insertRows(int row, int count, const QModelIndex &parent)
     TextItem responseTextContext = xDefaultTextItem();
     auto option = ResponseOption::InputEqualReference;
     for (int i = 0; i < count; i++) {
-        Item item{true,
-                  tr("Demo") + QString::number(rowCount(QModelIndex())),
-                  option,
-                  1000,
-                  referenceTextContext,
-                  responseTextContext};
+        Item item;
+        item.enable = true;
+        item.description = tr("Demo") + QString::number(rowCount(QModelIndex()));
+        item.option = option;
+        item.delay = 1000;
+        item.referenceTextContext = referenceTextContext;
+        item.responseTextContext = responseTextContext;
         m_items.insert(row, item);
     }
 
@@ -238,12 +239,13 @@ QVariant ResponderModel::headerData(int section, Qt::Orientation orientation, in
 
 Qt::ItemFlags ResponderModel::flags(const QModelIndex &index) const
 {
+    Qt::ItemFlags fs = QAbstractTableModel::flags(index);
     int column = index.column();
     if (column == 0) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsUserCheckable | Qt::ItemIsEditable;
+        fs |= Qt::ItemIsUserCheckable | Qt::ItemIsEditable;
     } else if (column == 1 || column == 2 || column == 3) {
-        return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
-    } else {
-        return QAbstractTableModel::flags(index);
+        fs |= Qt::ItemIsEditable;
     }
+
+    return fs;
 }
