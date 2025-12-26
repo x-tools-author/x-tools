@@ -50,7 +50,7 @@ jobs:
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f"
+        for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f"
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
@@ -68,9 +68,9 @@ jobs:
           cd /workspace && git config --global --add safe.directory /workspace && git tag -d continuous && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
     - name: Upload Release Asset for Linux
       run: |
-        dir bin/Linux/Release
-        find bin/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload  ${{ github.ref_name }} {} \;
-        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload  ${{ github.ref_name }} {} \;
+        dir bin/${{env.QT_VERSION}}/Linux/Release
+        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload  ${{ github.ref_name }} {} \;
+        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload  ${{ github.ref_name }} {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release
@@ -107,8 +107,8 @@ jobs:
         cmake --build . --target xTools_dmg
     - name: Upload Release Asset for macOS
       run: |
-        ls bin/Darwin/Release/xTools
-        find bin/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ github.ref_name }} {} \;
+        ls bin/${{env.QT_VERSION}}/Darwin/Release/xTools
+        find bin/${{env.QT_VERSION}}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ github.ref_name }} {} \;
   release-for-android:
     runs-on: windows-2022
     needs: update-release

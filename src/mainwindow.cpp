@@ -575,7 +575,7 @@ void MainWindow::showQrCode()
                    << QrCodeInfo{tr("Qt QQ Group"), QString(":/res/images/qt_qq.jpg")};
 
     auto* tabWidget = new QTabWidget(&dialog);
-    for (auto& var : qrCodeInfoList) {
+    for (const QrCodeInfo& var : const_cast<QList<QrCodeInfo>&>(qrCodeInfoList)) {
         auto* label = new QLabel(tabWidget);
         QPixmap pix = QPixmap::fromImage(QImage(var.qrCode));
         pix = pix.scaledToHeight(600, Qt::SmoothTransformation);

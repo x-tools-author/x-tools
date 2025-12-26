@@ -70,7 +70,7 @@ jobs:
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
+        for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-windows7:
     runs-on: windows-2022
     needs: update-release
@@ -98,7 +98,7 @@ jobs:
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
+        for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
@@ -112,9 +112,9 @@ jobs:
         cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
     - name: Upload Release Asset for Linux
       run: |
-        dir bin/Linux/Release
-        find bin/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+        dir bin/${{env.QT_VERSION}}/Linux/Release
+        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release
@@ -148,8 +148,8 @@ jobs:
         cmake --build . --target xTools_dmg
     - name: Upload Release Asset for macOS
       run: |
-        ls bin/Darwin/Release/xTools
-        find bin/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
+        ls bin/${{env.QT_VERSION}}/Darwin/Release/xTools
+        find bin/${{env.QT_VERSION}}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
   release-for-android:
     runs-on: ubuntu-24.04
     needs: update-release
