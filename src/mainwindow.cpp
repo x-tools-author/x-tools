@@ -428,7 +428,7 @@ void MainWindow::initToolMenu()
 
 void MainWindow::initOptionMenu()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
     QAction* action = m_optionMenu->addAction(tr("Using System Proxy"));
     action->setCheckable(true);
     connect(action, &QAction::toggled, this, [=](bool checked) {
