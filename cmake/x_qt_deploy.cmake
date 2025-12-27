@@ -17,21 +17,40 @@ function(x_deploy_qt_for_windows target)
   message(STATUS "[xTools.Linguist] WINDEPLOYQT_EXECUTABLE:${WINDEPLOYQT_EXECUTABLE}")
   if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/qml)
     message(STATUS "[xTools.Linguist] Deploy Qt with QML dir: ${CMAKE_CURRENT_LIST_DIR}/qml")
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime --qmldir
-              "${CMAKE_CURRENT_LIST_DIR}/qml"
-      COMMENT "Deploy Qt for Windows..."
-      VERBATIM)
+    if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime --qmldir
+                "${CMAKE_CURRENT_LIST_DIR}/qml"
+        COMMENT "Deploy Qt for Windows..."
+        VERBATIM)
+    else()
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime --qmldir
+                "${CMAKE_CURRENT_LIST_DIR}/qml" --release
+        COMMENT "Deploy Qt for Windows..."
+        VERBATIM)
+    endif()
   else()
     message(STATUS "[xTools.Linguist] Deploy Qt without QML dir")
-    add_custom_command(
-      TARGET ${target}
-      POST_BUILD
-      COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
-      COMMENT "Deploy Qt for Windows..."
-      VERBATIM)
+    if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime
+        COMMENT "Deploy Qt for Windows..."
+        VERBATIM)
+    else()
+      add_custom_command(
+        TARGET ${target}
+        POST_BUILD
+        COMMAND ${WINDEPLOYQT_EXECUTABLE} $<TARGET_FILE:${target}> --no-compiler-runtime --release
+        COMMENT "Deploy Qt for Windows..."
+        VERBATIM)
+    endif()
   endif()
 
   if(MSVC AND NOT ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug"))

@@ -81,7 +81,7 @@
     static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error)
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xBytes2Hex(ba, c) ba.toHex(c)
 #else
 #define xBytes2Hex(ba, c) \
