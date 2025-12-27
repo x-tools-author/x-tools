@@ -21,6 +21,7 @@
 #endif
 
 #ifdef Q_OS_WIN32
+#if !X_BUILD_FOR_WIN_XP
 #include <dwmapi.h>
 
 #include <QAction>
@@ -29,6 +30,7 @@
 #include <QSysInfo>
 #include <QWidget>
 #include <QWindow>
+#endif
 #endif
 
 #include "thememanager.h"
@@ -95,6 +97,7 @@ public:
     void updateWindowCaption(QWidget *widget)
     {
 #ifdef Q_OS_WIN32
+#if !X_BUILD_FOR_WIN_XP
         bool isWindows11 = QSysInfo::productVersion().contains("11");
         bool isWindows10 = QSysInfo::productVersion().contains("10");
         if (!isWindows10 && !isWindows11) {
@@ -112,6 +115,7 @@ public:
         // The value of DWMWA_CAPTION_COLOR is 35, visit the website for more information:
         // https://learn.microsoft.com/zh-cn/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute
         DwmSetWindowAttribute((HWND) window->winId(), 35, &colorref, sizeof(colorref));
+#endif
 #endif
     }
 

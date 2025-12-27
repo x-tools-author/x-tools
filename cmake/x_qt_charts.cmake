@@ -11,6 +11,12 @@ endmacro()
 if(QT_VERSION VERSION_LESS 6.9.0)
   message(STATUS "[xTools-charts] Using Qt Charts module.")
   find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Charts)
+
+  if(QT_VERSION VERSION_LESS "5.9.0")
+    x_remove_all_files_of_charts()
+    return()
+  endif()
+
   if(Qt${QT_VERSION_MAJOR}Charts_FOUND)
     add_compile_definitions(X_ENABLE_CHARTS)
     list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::Charts)

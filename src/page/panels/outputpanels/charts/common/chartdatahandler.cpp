@@ -14,6 +14,8 @@
 #include <QTimer>
 #include <QtMath>
 
+#include "utilities/compatibility.h"
+
 ChartDataHandler::ChartDataHandler(QObject *parent)
     : QThread(parent)
     , m_binaryTail(QByteArray::fromHex("0000807f"))
@@ -64,7 +66,7 @@ void ChartDataHandler::setupDataFormat(QComboBox *comboBox)
     comboBox->addItem(tr("Text") + "-XY", static_cast<int>(DataFormat::TextXY));
 #endif
 
-    connect(comboBox, qOverload<int>(&QComboBox::activated), this, [=](int index) {
+    connect(comboBox, xComboBoxActivated, this, [=](int index) {
         int type = comboBox->itemData(index).toInt();
         setDataFormat(type);
     });

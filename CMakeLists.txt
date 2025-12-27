@@ -240,7 +240,14 @@ message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPU
 # --------------------------------------------------------------------------------------------------
 # Windows
 if(WIN32)
-  target_link_libraries(xTools PRIVATE Dwmapi Ws2_32)
+  if(QT_VERSION VERSION_LESS "5.8.0")
+    add_compile_definitions(X_BUILD_FOR_WIN_XP=1)
+  else()
+    add_compile_definitions(X_BUILD_FOR_WIN_XP=0)
+    target_link_libraries(xTools PRIVATE Dwmapi)
+  endif()
+
+  target_link_libraries(xTools PRIVATE Ws2_32)
   include(${CMAKE_SOURCE_DIR}/cmake/msix/msix.cmake)
   include(${CMAKE_SOURCE_DIR}/cmake/qifw/qifw.cmake)
   set(icon ${CMAKE_CURRENT_SOURCE_DIR}/xTools.ico)
