@@ -1,11 +1,5 @@
 @echo off
 
-cmake -S "%ROOT_DIR%" ^
- -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3-Windows-x86-MinGW4.9.4-20200104" ^
- -DCMAKE_BUILD_TYPE:STRING=Release ^
- -DX_SETUP_BUILDING_FOR_WIN_XP_ENV:BOOL=ON ^
- -G "MinGW Makefiles"
-
 ::setlocal是 Windows 批处理里的“环境变量作用域开关”。
 setlocal
 
@@ -16,6 +10,12 @@ rem 项目根目录：脚本在 scripts\ 下，根目录是上一级
 pushd "%SCRIPT_DIR%.."
 set "ROOT_DIR=%CD%"
 popd
+
+cmake -S "%ROOT_DIR%" ^
+ -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3-Windows-x86-MinGW4.9.4-20200104" ^
+ -DCMAKE_BUILD_TYPE:STRING=Release ^
+ -DX_SETUP_BUILDING_FOR_WIN_XP_ENV:BOOL=ON ^
+ -G "MinGW Makefiles"
 
 rem MinGW 4.9.2 根目录和 bin 目录
 set "MINGW_ROOT=%ROOT_DIR%\tools\Tools\mingw492_32"
