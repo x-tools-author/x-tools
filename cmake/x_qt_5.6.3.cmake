@@ -20,7 +20,7 @@ if(NOT EXISTS ${dst} AND NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_na
   endif()
 
   message(STATUS "[xTools.winXP] Extracting Qt 5.6.3...")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "${dst}"
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${dst}"
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
   execute_process(COMMAND QQtPatcher.exe
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}")
@@ -29,7 +29,7 @@ endif()
 
 if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}")
   if(EXISTS "${dst}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "${dst}"
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${dst}"
                     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
   endif()
 endif()
@@ -55,14 +55,14 @@ if(NOT EXISTS ${mingw_dst} AND NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/Too
   endif()
 
   message(STATUS "[xTools.winXP] Extracting mingw 4.9.2...")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "${mingw_dst}"
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${mingw_dst}"
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
   message(STATUS "[xTools.winXP] mingw 4.9.2 is ready.")
 endif()
 
 if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/Tools")
   if(EXISTS "${mingw_dst}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "${mingw_dst}"
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${mingw_dst}"
                     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
   endif()
 endif()
