@@ -1,44 +1,12 @@
 @echo off
-
-::setlocal是 Windows 批处理里的“环境变量作用域开关”。
 setlocal
 
-rem 脚本所在目录（带尾部反斜杠）
-set "SCRIPT_DIR=%~dp0"
-
-rem 项目根目录：脚本在 scripts\ 下，根目录是上一级
-pushd "%SCRIPT_DIR%.."
+rem 脚本所在目录的上一级
+pushd "%~dp0.."
 set "ROOT_DIR=%CD%"
 popd
 
-cmake -S "%ROOT_DIR%" ^
- -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3-Windows-x86-MinGW4.9.4-20200104" ^
- -DCMAKE_BUILD_TYPE:STRING=Release ^
- -DX_SETUP_BUILDING_FOR_WIN_XP_ENV:BOOL=ON ^
- -G "MinGW Makefiles"
-
-rem MinGW 4.9.2 根目录和 bin 目录
-set "MINGW_ROOT=%ROOT_DIR%\tools\Tools\mingw492_32"
-set "MINGW_BIN=%MINGW_ROOT%\bin"
-
-rem 先从 PATH 里移除系统的 C:\mingw64\bin
-set "PATH=%PATH%;"
-set "PATH=%PATH:;C:\mingw64\bin;=;%"
-if "%PATH:~0,1%"==";" set "PATH=%PATH:~1%"
-
-rem 再把自己的 mingw 放到最前面
-set "PATH=%MINGW_BIN%;%PATH%"
-
-if not exist "%MINGW_BIN%\gcc.exe" (
-    echo [ERROR] gcc.exe not found in "%MINGW_BIN%".
-    echo Please check that MinGW 4.9.2 is extracted to tools\Tools\mingw492_32.
-    goto :EOF
-)
-
-gcc -v
-
-rem 确保 CMake 能从 PATH 找到 gcc/g++/mingw32-make
-set "PATH=%MINGW_BIN%;%PATH%"
+echo ROOT_DIR is: "%ROOT_DIR%"
 
 if not exist "%ROOT_DIR%\build" (
     mkdir "%ROOT_DIR%\build"
@@ -50,11 +18,15 @@ if not exist "win_xp" (
 )
 cd /d "win_xp"
 
+set "PATH=%ROOT_DIR%\tools\Qt5.6.3\Tools\mingw492_32\bin;%PATH%"
+
+:: Download and install Qt 5.6.3 if not exists
 cmake -S "%ROOT_DIR%" ^
- -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3-Windows-x86-MinGW4.9.4-20200104" ^
+ -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3\5.6.3\mingw49_32" ^
  -DCMAKE_BUILD_TYPE:STRING=Release ^
  -DX_SETUP_BUILDING_FOR_WIN_XP_ENV:BOOL=ON ^
  -G "MinGW Makefiles"
+
 cmake --build . --target all
 cmake --build . --target xTools_zip
 

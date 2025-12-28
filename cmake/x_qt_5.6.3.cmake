@@ -1,68 +1,39 @@
-# Setup environment for building with Qt 5.6.3(mingw 4.9.2 32bits)
-
-# Download Qt 5.6.3 from:
-# https://master.dl.sourceforge.net/project/fsu0413-qtbuilds/Qt5.6/Windows-x86/Qt5.6.3-Windows-x86-MinGW4.9.4-20200104.7z?viasf=1
-set(file_name "Qt5.6.3-Windows-x86-MinGW4.9.4-20200104")
-set(download_url "https://master.dl.sourceforge.net/project/fsu0413-qtbuilds/Qt5.6")
-set(src "${download_url}/Windows-x86/${file_name}.7z?viasf=1")
-set(dst "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}.7z")
-if(NOT EXISTS ${dst} AND NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}")
-  message(STATUS "[xTools.winXP] Downloading Qt 5.6.3...")
+# https://github.com/x-tools-author/x-tools/releases/download/v7.6.1/Qt5.6.3.7z
+set(qt_5_6_3 "Qt5.6.3")
+set(qt_5_6_3_url "https://github.com/x-tools-author/x-tools/releases/download/v7.6.1")
+set(qt_5_6_3_url "${qt_5_6_3_url}/${qt_5_6_3}.7z")
+set(dst_path "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}.7z")
+if(NOT EXISTS ${dst_path} AND NOT EXISTS "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}")
+  # Download Qt 5.6.3
+  message(STATUS "[xTools.WinXP] Downloading Qt 5.6.3...")
   file(
-    DOWNLOAD "${src}" "${dst}"
+    DOWNLOAD ${qt_5_6_3_url} ${dst_path}
     SHOW_PROGRESS
     STATUS download_status)
   list(GET download_status 0 download_result)
   if(NOT download_result EQUAL 0)
-    message(FATAL_ERROR "[xTools.winXP] Failed to download Qt 5.6.3 from ${src}")
-    file(REMOVE "${dst}")
-    return()
+    file(REMOVE ${dst_path})
+    message(FATAL_ERROR "[xTools.WinXP] Failed to download Qt 5.6.3 from ${qt_5_6_3_url}")
   endif()
 
-  message(STATUS "[xTools.winXP] Extracting Qt 5.6.3...")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${dst}"
-                  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
-  execute_process(COMMAND QQtPatcher.exe
-                  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}")
-  message(STATUS "[xTools.winXP] Qt 5.6.3 is ready.")
+  # Extract Qt 5.6.3
+  message(STATUS "[xTools.WinXP] Extracting Qt 5.6.3...")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf ${dst_path}
+                  WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/tools/")
+  execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/QQtPatcher.exe)
 endif()
 
-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/${file_name}")
-  if(EXISTS "${dst}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${dst}"
-                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}")
+  if(EXISTS ${dst_path})
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf ${dst_path}
+                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/tools/")
   endif()
 endif()
 
-# Download mingw 4.9.2 from:
-# https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/tools_mingw/qt.tools.win32_mingw492/4.9.2-1i686-4.9.2-release-posix-dwarf-rt_v3-rev1.7z
-set(mingw_file_name "4.9.2-1i686-4.9.2-release-posix-dwarf-rt_v3-rev1")
-set(mingw_download_url "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop")
-set(mingw_download_url "${mingw_download_url}//tools_mingw/qt.tools.win32_mingw492")
-set(mingw_src "${mingw_download_url}/${mingw_file_name}.7z")
-set(mingw_dst "${CMAKE_CURRENT_SOURCE_DIR}/tools/${mingw_file_name}.7z")
-if(NOT EXISTS ${mingw_dst} AND NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/Tools")
-  message(STATUS "[xTools.winXP] Downloading mingw 4.9.2...")
-  file(
-    DOWNLOAD "${mingw_src}" "${mingw_dst}"
-    SHOW_PROGRESS
-    STATUS download_status)
-  list(GET download_status 0 download_result)
-  if(NOT download_result EQUAL 0)
-    message(FATAL_ERROR "[xTools.winXP] Failed to download mingw 4.9.2 from ${mingw_src}")
-    file(REMOVE "${mingw_dst}")
-    return()
-  endif()
-
-  message(STATUS "[xTools.winXP] Extracting mingw 4.9.2...")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${mingw_dst}"
-                  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
-  message(STATUS "[xTools.winXP] mingw 4.9.2 is ready.")
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}")
+  message(FATAL_ERROR "[xTools.WinXP] Qt 5.6.3 setup failed.")
 endif()
 
-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tools/Tools")
-  if(EXISTS "${mingw_dst}")
-    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${mingw_dst}"
-                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tools")
-  endif()
-endif()
+# Apply Qt 5.6.3 patcher
+message(STATUS "[xTools.WinXP] Applying Qt 5.6.3 patcher...")
+execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/QQtPatcher.exe)
