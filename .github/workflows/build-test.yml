@@ -4,24 +4,20 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.3
-  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
-  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
 
 jobs:
-  release-for-linux:
-    runs-on: ubuntu-22.04
+  release-for-windows-xp:
+    runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Build for Linux
+    - name: Build for Windows
+      shell: cmd
       run: |
         git fetch --tags
-        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
-    - name: Upload Release Asset for Linux
+        scripts\ci-build-windows-xp.bat
+    - name: Upload Release Asset for Windows
+      shell: cmd
       run: |
-        dir bin/Linux/Release
-        find bin/Linux/Release/xTools-linux -name "*.deb" -exec echo {} \;
-        find bin/Linux/Release/xTools-linux -name "*.AppImage" -exec echo {} \;
+        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
 

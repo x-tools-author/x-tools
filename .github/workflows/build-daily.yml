@@ -99,6 +99,21 @@ jobs:
       shell: cmd
       run: |
         for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
+  release-for-windows-xp:
+    runs-on: windows-latest
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build for Windows
+      shell: cmd
+      run: |
+        git fetch --tags
+        scripts\ci-build-windows-xp.bat
+    - name: Upload Release Asset for Windnows
+      shell: cmd
+      run: |
+        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
