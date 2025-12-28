@@ -27,6 +27,8 @@ if not exist "%MINGW_BIN%\gcc.exe" (
     goto :EOF
 )
 
+gcc -v
+
 rem 确保 CMake 能从 PATH 找到 gcc/g++/mingw32-make
 set "PATH=%MINGW_BIN%;%PATH%"
 

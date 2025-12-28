@@ -51,6 +51,49 @@ jobs:
       shell: cmd
       run: |
         for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f"
+  release-for-windows7:
+    runs-on: windows-2022
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '5.15.2'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+        dir: '${{ github.workspace }}'
+        modules: 'qtcharts'
+    - name: Build for Windows
+      shell: cmd
+      run: |
+        git fetch --tags
+        mkdir build
+        cd build
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake --build . --target all
+        cmake --build . --target xTools_zip
+    - name: Upload Release Asset for Windnows
+      shell: cmd
+      run: |
+        for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f" --clobber
+  release-for-windows-xp:
+    runs-on: windows-latest
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build for Windows
+      shell: cmd
+      run: |
+        git fetch --tags
+        scripts\ci-build-windows-xp.bat
+    - name: Upload Release Asset for Windnows
+      shell: cmd
+      run: |
+        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f" --clobber
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
