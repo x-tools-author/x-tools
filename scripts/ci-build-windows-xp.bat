@@ -1,4 +1,11 @@
 @echo off
+
+cmake -S "%ROOT_DIR%" ^
+ -DCMAKE_PREFIX_PATH:PATH="%ROOT_DIR%\tools\Qt5.6.3-Windows-x86-MinGW4.9.4-20200104" ^
+ -DCMAKE_BUILD_TYPE:STRING=Release ^
+ -DX_SETUP_BUILDING_FOR_WIN_XP_ENV:BOOL=ON ^
+ -G "MinGW Makefiles"
+
 ::setlocal是 Windows 批处理里的“环境变量作用域开关”。
 setlocal
 
