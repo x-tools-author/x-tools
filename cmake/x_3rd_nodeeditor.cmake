@@ -20,7 +20,7 @@ if(ANDROID OR IOS)
 endif()
 
 # Not supported on Qt versions less than 6.5.0
-if(QT_VERSION VERSION_LESS "5.11.0")
+if(QT_VERSION VERSION_LESS "5.12.0")
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
 else()
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" ON)
