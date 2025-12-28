@@ -25,6 +25,13 @@ if(NOT CMAKE_CXX_STANDARD OR CMAKE_CXX_STANDARD LESS 17)
   return()
 endif()
 
+if(APPLE)
+  if(QT_VERSION VERSION_LESS "5.15.0")
+    remove_all_files_of_flow()
+    return()
+  endif()
+endif()
+
 # Not supported on Qt versions less than 6.5.0
 if(QT_VERSION VERSION_LESS "5.12.0")
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
