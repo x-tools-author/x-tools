@@ -14,6 +14,11 @@ function(x_deploy_qt_for_windows target)
     return()
   endif()
 
+  if(MINGW AND QT_VERSION STREQUAL "6.5.3")
+    # I do not know why, but windeployqt of Qt 6.5.3 mingw has problem with deploying...
+    return()
+  endif()
+
   message(STATUS "[xTools.Linguist] WINDEPLOYQT_EXECUTABLE:${WINDEPLOYQT_EXECUTABLE}")
   if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/qml)
     message(STATUS "[xTools.Linguist] Deploy Qt with QML dir: ${CMAKE_CURRENT_LIST_DIR}/qml")
