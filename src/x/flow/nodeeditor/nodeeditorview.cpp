@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "nodeeditorview.h"
 
+#include <cmath>
+
 #include <QtNodes/NodeDelegateModelRegistry>
 #include <QtNodes/internal/AbstractNodePainter.hpp>
 #include <QtNodes/internal/ConnectionGraphicsObject.hpp>
