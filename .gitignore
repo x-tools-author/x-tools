@@ -31,3 +31,4 @@ xapps/xprivate
 .qmlls.ini
 private.cmake
 private.txt
+/tools

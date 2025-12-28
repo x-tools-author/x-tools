@@ -15,6 +15,14 @@ if(X_USING_VCPKG)
       CACHE STRING "Please specify your own vcpkg.cmake file")
 endif()
 
+if(WIN32)
+  option(X_SETUP_BUILDING_FOR_WIN_XP_ENV "Build for Windows XP" OFF)
+  if(X_SETUP_BUILDING_FOR_WIN_XP_ENV)
+    # Setup environment for building with Qt 5.6.3(mingw 4.9.2 32bits)
+    include(${CMAKE_SOURCE_DIR}/cmake/x_qt_5.6.3.cmake)
+  endif()
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # Project settings
 project(
