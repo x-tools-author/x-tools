@@ -54,7 +54,11 @@ function(x_generate_translations target)
     # * qt5_create_translation(QM_FILES ${APP_TS_FILES})
 
     if(QT_VERSION VERSION_LESS "5.9.0")
-      #return()
+      # return()
+    endif()
+
+    if(NOT WIN32)
+      return()
     endif()
 
     # ts -> qm
@@ -105,11 +109,17 @@ function(x_generate_translations target)
     endif()
   endif()
 
-  set_target_properties(${target}_lrelease PROPERTIES FOLDER "i18n")
-  set_target_properties(${target}_lupdate PROPERTIES FOLDER "i18n")
+  if(TARGET ${target}_lupdate)
+    set_property(TARGET ${target}_lupdate PROPERTY FOLDER "i18n")
+  endif()
+  if(TARGET ${target}_lrelease)
+    set_property(TARGET ${target}_lrelease PROPERTY FOLDER "i18n")
+  endif()
+  if(TARGET update_translations)
+    set_target_properties(update_translations PROPERTIES FOLDER "i18n")
+  endif()
   if(TARGET release_translations)
     set_target_properties(release_translations PROPERTIES FOLDER "i18n")
-    set_target_properties(update_translations PROPERTIES FOLDER "i18n")
   endif()
 
   # Copy qm files to deploy dir...
