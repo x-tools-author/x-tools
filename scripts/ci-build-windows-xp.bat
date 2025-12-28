@@ -21,6 +21,14 @@ rem MinGW 4.9.2 根目录和 bin 目录
 set "MINGW_ROOT=%ROOT_DIR%\tools\Tools\mingw492_32"
 set "MINGW_BIN=%MINGW_ROOT%\bin"
 
+rem 先从 PATH 里移除系统的 C:\mingw64\bin
+set "PATH=%PATH%;"
+set "PATH=%PATH:;C:\mingw64\bin;=;%"
+if "%PATH:~0,1%"==";" set "PATH=%PATH:~1%"
+
+rem 再把自己的 mingw 放到最前面
+set "PATH=%MINGW_BIN%;%PATH%"
+
 if not exist "%MINGW_BIN%\gcc.exe" (
     echo [ERROR] gcc.exe not found in "%MINGW_BIN%".
     echo Please check that MinGW 4.9.2 is extracted to tools\Tools\mingw492_32.
