@@ -19,6 +19,12 @@ if(ANDROID OR IOS)
   return()
 endif()
 
+# if compiler is not supported c++17, disable xFlow
+if(NOT CMAKE_CXX_STANDARD OR CMAKE_CXX_STANDARD LESS 17)
+  remove_all_files_of_flow()
+  return()
+endif()
+
 # Not supported on Qt versions less than 6.5.0
 if(QT_VERSION VERSION_LESS "5.12.0")
   option(X_ENABLE_X_FLOW "Enable xFlow (NodeEditor) support" OFF)
