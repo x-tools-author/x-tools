@@ -92,13 +92,13 @@ jobs:
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/5.15.2/win64_msvc2019_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target all
         cmake --build . --target xTools_zip
     - name: Upload Release Asset for Windnows
       shell: cmd
       run: |
-        for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
+        for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
   release-for-windows-xp:
     runs-on: windows-latest
     needs: update-release
