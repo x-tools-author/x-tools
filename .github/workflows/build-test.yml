@@ -14,7 +14,7 @@ jobs:
     - name: Build for Linux
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
-        cd /workspace && git --version && ls /opt/qt && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
+        cd /workspace && git --version && ls /opt/qt/6.7.3 && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
     - name: Upload Release Asset for Linux
       run: |
         dir bin/6.7.3/Linux/Release
