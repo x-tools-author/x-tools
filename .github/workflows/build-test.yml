@@ -24,7 +24,7 @@ jobs:
       run: |
         docker pull ${{ env.DOCKER_IMAGE }}
         docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-android-arm64_v8a.sh && ./scripts/ci-build-android-arm64_v8a.sh \
+        cd /workspace && chmod +x ./scripts/ci-build-android-armv8a.sh && ./scripts/ci-build-android-armv8a.sh \
         ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
     - name: Upload Release Asset for Android
       run: |
