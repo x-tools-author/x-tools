@@ -21,11 +21,11 @@ jobs:
       with:
         cmake-version: '4.1.x'
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         aqtversion: '==3.1.*'
         version: '6.8.3'
-        host: 'windows'
+        host: 'windows_arm64'
         target: 'desktop'
         arch: 'win64_msvc2022_arm64'
     - name: Build for Windows
