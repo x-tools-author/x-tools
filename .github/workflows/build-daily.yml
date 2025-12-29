@@ -85,16 +85,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.1.x'
     - name: Build for Linux
-      run: |
-        git fetch --tags
-        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
-    - name: Upload Release Asset for Linux
-      run: |
-        dir bin/${{env.QT_VERSION}}/Linux/Release
-        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+      uses: ./.github/actions/ci-linux
+      with:
+        tag: continuous
   release-for-macos:
     runs-on: macos-14
     needs: update-release

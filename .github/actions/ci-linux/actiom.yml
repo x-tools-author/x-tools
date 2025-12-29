@@ -19,6 +19,6 @@ runs:
         cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
     - name: Upload Release Asset for Linux
       run: |
-        dir bin/${{env.QT_VERSION}}/Linux/Release
-        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/${{env.QT_VERSION}}/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+        dir bin/6.8.3/Linux/Release
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
