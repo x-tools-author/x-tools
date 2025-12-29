@@ -3,7 +3,7 @@ description: Building xTools for Windows XP
 
 runs:
   using: "composite"
-  release-for-windows-xp:
+  steps:
     - name: Build for Windows XP
       shell: cmd
       run: |

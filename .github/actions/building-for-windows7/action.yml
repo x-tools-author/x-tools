@@ -3,7 +3,7 @@ description: Building xTools for Windows 7
 
 runs:
   using: "composite"
-  release-for-windows-7:
+  steps:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
