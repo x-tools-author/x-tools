@@ -4,13 +4,15 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
 
 jobs:
   build-test:
-    runs-on: ubuntu-22.04
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -18,7 +20,13 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v2
       with:
         cmake-version: '4.1.x'
-    - name: Build for Linux
-      uses: ./.github/actions/ci-linux
-      with:
-        tag: continuous
+    - name: Build for Android
+      run: |
+        docker pull ${{ env.DOCKER_IMAGE }}
+        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && chmod +x ./scripts/ci-build-android-arm64_v8a.sh && ./scripts/ci-build-android-arm64_v8a.sh \
+        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
+    - name: Upload Release Asset for Android
+      run: |
+        cmake -E copy build/arm64_v8a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-arm64_v8a.apk
+        ls && tree build/arm64_v8a && gh release upload continuous xtools-android-arm64_v8a.apk
