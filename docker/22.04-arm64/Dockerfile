@@ -1,4 +1,4 @@
-﻿FROM ubuntu:22.04:arm64
+﻿FROM --platform=linux/arm64 ubuntu:22.04
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get install -y \
     locales \
