@@ -19,8 +19,9 @@ runs:
         dir bin/6.8.3/Linux/Release
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
-    - name: Upload Release Asset for macOS
+    - name: Upload Release Asset for Linux
       if: ${{ inputs.tag != '' }}
       run: |
-        ls bin/6.8.3/Darwin/Release/xTools
-        find bin/6.8.3/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ inputs.tag }} {} \;
+        dir bin/6.8.3/Linux/Release
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload  ${{ inputs.tag }} {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload  ${{ inputs.tag }} {} \;

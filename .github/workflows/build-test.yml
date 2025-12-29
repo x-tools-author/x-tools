@@ -7,31 +7,15 @@ env:
 
 jobs:
   build-windows:
-    name: Build with Qt
-    runs-on: windows-2022
-    strategy:
-      fail-fast: false
-      matrix:
-        ci_action: [
-          'Windows',
-          'Windows7',
-          'WindowsXP'
-        ]
+    runs-on: ubuntu-22.04
     steps:
-      - name: Pull code
-        uses: actions/checkout@v4
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v2
-        with:
-          cmake-version: '4.1.x'
-      - name: Use cmake
-        run: cmake --version
-      - name: Build for Windows
-        if: ${{ matrix.ci_action == 'Windows' }}
-        uses: ./.github/actions/ci-windows
-      - name: Build for Windows 7
-        if: ${{ matrix.ci_action == 'Windows7' }}
-        uses: ./.github/actions/ci-windows-7
-      - name: Build for Windows XP
-        if: ${{ matrix.ci_action == 'WindowsXP' }}
-        uses: ./.github/actions/ci-windows-xp
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.1.x'
+    - name: Build for Linux
+      uses: ./.github/actions/ci-linux
+      with:
+        tag: continuous
