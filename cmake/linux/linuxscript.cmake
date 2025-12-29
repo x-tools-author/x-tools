@@ -86,7 +86,7 @@ if(${argSkipGlibcCheck} STREQUAL "TRUE")
     COMMAND
       ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
       usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
-      -qmake=${argQmakePath} -appimage -unsupported-allow-new-glibc
+      -qmake=${argQmakePath} -appimage
     WORKING_DIRECTORY ${AppImageRootDir})
 else()
   execute_process(
