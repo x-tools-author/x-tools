@@ -8,6 +8,9 @@ inputs:
 
 runs:
   using: "composite"
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
   steps:
     - name: Build for Linux
       run: |
@@ -19,9 +22,3 @@ runs:
         dir bin/6.8.3/Linux/Release
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
-    - name: Upload Release Asset for Linux
-      if: ${{ inputs.tag != '' }}
-      run: |
-        dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload  ${{ inputs.tag }} {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload  ${{ inputs.tag }} {} \;
