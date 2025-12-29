@@ -9,6 +9,14 @@ jobs:
   build-linux:
     name: Build with Qt
     runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_action: [
+          'building-for-windows',
+          'building-for-windows7',
+          'building-for-windowsxp'
+        ]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -19,12 +27,11 @@ jobs:
       - name: Use cmake
         run: cmake --version
       - name: Build for Windows
+        if: ${{ matrix.ci_action == 'building-for-windows' }}
         uses: ./.github/actions/building-for-windows
-        with:
-          qt_version: '6.8.3'
-          qt_modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: Build for Windows 7
+        if: ${{ matrix.ci_action == 'building-for-windows7' }}
         uses: ./.github/actions/building-for-windows7
       - name: Build for Windows XP
+        if: ${{ matrix.ci_action == 'building-for-windowsxp' }}
         uses: ./.github/actions/building-for-windowsxp
-
