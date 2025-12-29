@@ -39,17 +39,31 @@ FileCheckAssistant::FileCheckAssistant(QWidget* parent)
     // Appending algorithms to combo box
 #if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
-    QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++) {
         if (QString(algorithms.key(i)) == QString("NumAlgorithms")) {
             continue;
         }
 
-        algorithmsStringList.append(QString(algorithms.key(i)));
+        QString key = QString(algorithms.key(i));
+        int value = algorithms.value(i);
+        m_algorithmComboBox->addItem(key, value);
     }
-    m_algorithmComboBox->addItems(algorithmsStringList);
 #else
-    m_algorithmComboBox->addItem("Md5");
+#ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
+    m_algorithmComboBox->addItem("Md4", static_cast<int>(QCryptographicHash::Md4));
+    m_algorithmComboBox->addItem("Md5", static_cast<int>(QCryptographicHash::Md5));
+#endif
+    m_algorithmComboBox->addItem("Sha1", static_cast<int>(QCryptographicHash::Sha1));
+#ifndef QT_CRYPTOGRAPHICHASH_ONLY_SHA1
+    m_algorithmComboBox->addItem("Sha224", static_cast<int>(QCryptographicHash::Sha224));
+    m_algorithmComboBox->addItem("Sha256", static_cast<int>(QCryptographicHash::Sha256));
+    m_algorithmComboBox->addItem("Sha384", static_cast<int>(QCryptographicHash::Sha384));
+    m_algorithmComboBox->addItem("Sha512", static_cast<int>(QCryptographicHash::Sha512));
+    m_algorithmComboBox->addItem("Sha3_224", static_cast<int>(QCryptographicHash::Sha3_224));
+    m_algorithmComboBox->addItem("Sha3_256", static_cast<int>(QCryptographicHash::Sha3_256));
+    m_algorithmComboBox->addItem("Sha3_384", static_cast<int>(QCryptographicHash::Sha3_384));
+    m_algorithmComboBox->addItem("Sha3_512", static_cast<int>(QCryptographicHash::Sha3_512));
+#endif
 #endif
 
     m_algorithmComboBox->setCurrentText("Md5");
