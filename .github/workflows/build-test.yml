@@ -2,6 +2,9 @@ name: build-test
 on:
   workflow_dispatch: # Enables manually
 
+env:
+    GH_TOKEN: ${{ github.token }}
+
 jobs:
   build-test:
     runs-on: ubuntu-24.04-arm
