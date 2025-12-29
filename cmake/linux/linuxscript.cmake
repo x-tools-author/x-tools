@@ -21,6 +21,7 @@ message(STATUS "[xTools.Linux] argQmakePath: ${argQmakePath}")
 message(STATUS "[xTools.Linux] argTargetFile: ${argTargetFile}")
 message(STATUS "[xTools.Linux] argPackageType: ${argPackageType}")
 message(STATUS "[xTools.Linux] argAssetName: ${argAssetName}")
+message(STATUS "[xTools.Linux] argSkipGlibcCheck: ${argSkipGlibcCheck}")
 
 # Remove old working dir then create a new one
 set(AppImageRootDir ${argWorkingDir}/appimage)
@@ -78,7 +79,7 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
                 WORKING_DIRECTORY ${argWorkingDir})
 
 # Make AppImage
-if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
+if(${argSkipGlibcCheck} STREQUAL "TRUE")
   # TODO: remove -unsupported-allow-new-glibc when linuxdeployqt-aarch64 supports new glibc
   # .github/actions/ci-ubuntu-arm/action.yml will build linuxdeployqt-aarch64 with new glibc support
   execute_process(
