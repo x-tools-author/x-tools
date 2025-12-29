@@ -14,6 +14,7 @@ function(x_build_deb target packetName friendlyName version icon)
   list(APPEND args "-DargIcon=${icon}")
   list(APPEND args "-DargLowerTargetName=${lower_target}")
   if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
+    # .github/actions/ci-ubuntu-arm/action.yml will download the tool automatically
     list(APPEND args "-DargTool=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tools/linuxdeployqt-aarch64")
   else()
     list(APPEND args "-DargTool=${CMAKE_CURRENT_FUNCTION_LIST_DIR}/tools/linuxdeployqt")
