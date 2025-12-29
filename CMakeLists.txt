@@ -151,6 +151,7 @@ endif()
 # Do not change X_LATEST_GIT_TAG unless you know what you are doing
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}")
 if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID)
+  # https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ARCHITECTURE_ID.html
   set(X_ASSET_NAME "${X_ASSET_NAME}-${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
 else()
   if(CMAKE_SIZEOF_VOID_P EQUAL 8)
