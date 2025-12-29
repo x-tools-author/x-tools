@@ -12,7 +12,7 @@ runs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: '6.8.3'
+        version: '6.7.3'
         host: 'linux_arm64'
         target: 'desktop'
         arch: 'linux_gcc_arm64'
@@ -32,7 +32,7 @@ runs:
         cmake --version
         mkdir build
         cd build
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/linux_gcc_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.7.3/linux_gcc_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target xTools
         cmake --build . --target xTools_linux
       shell: bash
@@ -40,10 +40,10 @@ runs:
     - name: Upload Release Asset for Linux ARM
       if: ${{ inputs.tag != '' }}
       run: |
-        dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec echo {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec echo  {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
+        dir bin/6.7.3/Linux/Release
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec echo {} \;
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec echo  {} \;
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
       shell: bash
 
