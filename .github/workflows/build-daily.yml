@@ -7,16 +7,6 @@ on:
   #   branches:
   #     - master
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.3
-  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
-  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
-  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
-  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
-
 jobs:
   update-tag:
     runs-on: ubuntu-latest
@@ -99,49 +89,25 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Install Qt for macOS
-      uses: jurplel/install-qt-action@v4
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
       with:
-        version: '${{env.QT_VERSION}}'
-        target: 'desktop'
-        arch: 'clang_64'
-        dir: ${{ github.workspace }}
-        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        cmake-version: '4.1.x'
     - name: Build for macOS
-      # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
-      # brew unlink unixodbc
-      # brew install libiodbc
-      # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
-      # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-      run: |
-        git fetch --tags
-        # brew unlink unixodbc
-        # brew install libiodbc
-        mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-        ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-        mkdir build
-        cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
-        cmake --build . --target all
-        cmake --build . --target xTools_dmg
-    - name: Upload Release Asset for macOS
-      run: |
-        ls bin/${{env.QT_VERSION}}/Darwin/Release/xTools
-        find bin/${{env.QT_VERSION}}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
+      uses: ./.github/actions/ci-macos
+      with:
+        tag: continuous
   release-for-android:
     runs-on: ubuntu-24.04
     needs: update-release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '4.1.x'
       - name: Build for Android with Docker
-        run: |
-          git fetch --tags
-          docker pull ${{ env.DOCKER_IMAGE }}
-          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
-          ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
-      - name: Upload Release Asset for Android
-        run: |
-          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
-          ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk
+        uses: ./.github/actions/ci-android
+        with:
+          tag: continuous
