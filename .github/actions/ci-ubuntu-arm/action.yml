@@ -18,6 +18,7 @@ runs:
         arch: 'linux_gcc_arm64'
         modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
         dir: ${{ github.workspace }}
+
     - name: Install Dependencies
       run: |
         sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
