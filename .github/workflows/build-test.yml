@@ -15,3 +15,9 @@ jobs:
       uses: ./.github/actions/ci-ubuntu-arm
       with:
         tag: continuous
+    - name: Verify Build Artifacts
+      run: |
+        ls -la bin/6.8.3/Linux/Release/xTools-linux
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb"
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage"
+      shell: bash
