@@ -80,7 +80,7 @@ jobs:
         with:
           tag: continuous
   release-for-linux-arm:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-22.04-arm
     needs: update-release
     steps:
     - name: Checkout
