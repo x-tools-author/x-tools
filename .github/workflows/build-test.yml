@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-test:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-22.04-arm
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -38,3 +38,8 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target xTools
         cmake --build . --target xTools_linux
+    - name: Upload Release Asset for Linux
+      run: |
+        dir bin/6.8.3/Linux/Release
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;

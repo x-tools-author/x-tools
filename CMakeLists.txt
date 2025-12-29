@@ -155,10 +155,14 @@ if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID AND NOT "${CMAKE_CXX_COMPILER_ARCH
   # https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ARCHITECTURE_ID.html
   set(X_ASSET_NAME "${X_ASSET_NAME}-${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
 else()
-  if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    set(X_ASSET_NAME "${X_ASSET_NAME}-64bits")
+  if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
+    set(X_ASSET_NAME "${X_ASSET_NAME}-aarch64")
   else()
-    set(X_ASSET_NAME "${X_ASSET_NAME}-32bits")
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+      set(X_ASSET_NAME "${X_ASSET_NAME}-64bits")
+    else()
+      set(X_ASSET_NAME "${X_ASSET_NAME}-32bits")
+    endif()
   endif()
 endif()
 
