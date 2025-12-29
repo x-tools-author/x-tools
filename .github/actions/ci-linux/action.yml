@@ -10,8 +10,6 @@ runs:
   using: "composite"
   steps:
     - name: Build for Linux
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
         cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
@@ -21,3 +19,8 @@ runs:
         dir bin/6.8.3/Linux/Release
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
+    - name: Upload Release Asset for macOS
+      if: ${{ inputs.tag != '' }}
+      run: |
+        ls bin/6.8.3/Darwin/Release/xTools
+        find bin/6.8.3/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ inputs.tag }} {} \;
