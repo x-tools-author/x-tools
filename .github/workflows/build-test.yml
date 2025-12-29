@@ -9,4 +9,4 @@ jobs:
     - name: build for ubuntu arm
       uses: ./.github/actions/ci-ubuntu-arm
       with:
-        tag: 'continuous'
+        tag: continuous
