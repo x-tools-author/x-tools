@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-test:
-    runs-on: ubuntu-24.04
+    runs-on: windows-11-arm
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -20,13 +20,29 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v2
       with:
         cmake-version: '4.1.x'
-    - name: Build for Android
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        aqtversion: '==3.1.*'
+        version: '6.8.3'
+        host: 'windows_arm64'
+        target: 'desktop'
+        arch: 'win64_msvc2022_arm64'
+    - name: Build for Windows
+      shell: cmd
       run: |
-        docker pull ${{ env.DOCKER_IMAGE }}
-        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-android-armv8a.sh && ./scripts/ci-build-android-armv8a.sh \
-        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
-    - name: Upload Release Asset for Android
+        git fetch --tags
+        mkdir build
+        cd build
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" arm64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/win64_msvc2022_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake --build . --target all
+        cmake --build . --target xTools_zip
+    - name: Checking for Artifacts
+      shell: cmd
       run: |
-        cmake -E copy build/arm64_v8a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-arm64_v8a.apk
-        ls && tree build/arm64_v8a && gh release upload continuous xtools-android-arm64_v8a.apk
+        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+    - name: Upload Release Asset for Windows
+      shell: cmd
+      run: |
+        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do echo "%%f" --clobber
