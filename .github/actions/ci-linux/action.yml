@@ -5,19 +5,18 @@ inputs:
   tag:
     description: 'The tag to upload the release asset to.'
     required: false
+  github_token:
+    description: 'Token for GitHub API calls (pass secrets.GITHUB_TOKEN).'
+    required: true
 
 runs:
   using: "composite"
   steps:
     - name: Build for Linux
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
         cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
     - name: Upload Release Asset for Linux
-      if: ${{ inputs.tag != '' }}
       run: |
         dir bin/6.8.3/Linux/Release
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
