@@ -34,6 +34,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get -y update && apt-get instal
     pkg-config \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-y remove -y qt5*
+
 # Configure system locale to UTF-8 (Chinese + English)
 RUN sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
