@@ -28,6 +28,8 @@ jobs:
         host: 'windows_arm64'
         target: 'desktop'
         arch: 'win64_msvc2022_arm64'
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        dir: ${{ github.workspace }}
     - name: Build for Windows
       shell: cmd
       run: |
