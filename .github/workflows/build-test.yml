@@ -25,7 +25,7 @@ jobs:
       with:
         aqtversion: '==3.1.*'
         version: '6.8.3'
-        host: 'windows_arm64'
+        host: 'windows'
         target: 'desktop'
         arch: 'win64_msvc2022_arm64'
     - name: Build for Windows
