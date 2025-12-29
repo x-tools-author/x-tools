@@ -6,16 +6,16 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  build-linux:
+  build-windows:
     name: Build with Qt
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
         ci_action: [
-          'building-for-windows',
-          'building-for-windows7',
-          'building-for-windowsxp'
+          'Windows',
+          'Windows7',
+          'WindowsXP'
         ]
     steps:
       - name: Pull code
@@ -27,11 +27,11 @@ jobs:
       - name: Use cmake
         run: cmake --version
       - name: Build for Windows
-        if: ${{ matrix.ci_action == 'building-for-windows' }}
-        uses: ./.github/actions/building-for-windows
+        if: ${{ matrix.ci_action == 'Windows' }}
+        uses: ./.github/actions/ci-windows
       - name: Build for Windows 7
-        if: ${{ matrix.ci_action == 'building-for-windows7' }}
-        uses: ./.github/actions/building-for-windows7
+        if: ${{ matrix.ci_action == 'Windows7' }}
+        uses: ./.github/actions/ci-windows-7
       - name: Build for Windows XP
-        if: ${{ matrix.ci_action == 'building-for-windowsxp' }}
-        uses: ./.github/actions/building-for-windowsxp
+        if: ${{ matrix.ci_action == 'WindowsXP' }}
+        uses: ./.github/actions/ci-windows-xp

@@ -1,6 +1,11 @@
 ﻿name: CI for Windows XP
 description: Building xTools for Windows XP
 
+inputs:
+  tag:
+    description: 'The tag to upload the release asset to.'
+    required: false
+
 runs:
   using: "composite"
   steps:
@@ -12,3 +17,8 @@ runs:
       shell: cmd
       run: |
         for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+    - name: Upload Release Asset for Windows
+      if: ${{ inputs.tag != '' }}
+      shell: cmd
+      run: |
+        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
