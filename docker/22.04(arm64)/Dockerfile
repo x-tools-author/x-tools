@@ -59,7 +59,9 @@ RUN rm cmake-4.1.4-linux-aarch64.sh
 ENV QT_ROOT=/opt/qt
 COPY Qt ${QT_ROOT}
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+RUN ls /usr/lib/jvm/
+
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
 ENV ANDROID_HOME=/usr/local/lib/android/sdk
 ENV ANDROID_NDK=${HOST_ANDROID_NDK}/ndk/27.2.12479018
 ENV ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/27.2.12479018
