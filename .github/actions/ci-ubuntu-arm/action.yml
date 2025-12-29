@@ -41,9 +41,9 @@ runs:
       if: ${{ inputs.tag != '' }}
       run: |
         dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec echo ${{ inputs.tag }} {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec echo {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec echo ${{ inputs.tag }} {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec echo  {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
       shell: bash
 
