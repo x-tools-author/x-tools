@@ -16,12 +16,22 @@ jobs:
     steps:
       - name: Pull respository
         uses: actions/checkout@v4
-      - name: Install Qt(android)
+      - name: Install Qt(android_armv7)
         uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           target: android
           arch: android_armv7
+          host: linux
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{ env.QT_VERSION }}
+      - name: Install Qt(android_arm64_v8a)
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: '==3.1.*'
+          target: android
+          arch: android_arm64_v8a
           host: linux
           dir: ${{ github.workspace }}
           modules: ${{env.QT_MODULES}}
