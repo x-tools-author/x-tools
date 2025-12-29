@@ -11,13 +11,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: build for ubuntu arm
-      uses: ./.github/actions/ci-ubuntu-arm
-      with:
-        tag: continuous
-    - name: Verify Build Artifacts
+    - name: Build for Linux
       run: |
-        ls -la bin/6.7.3/Linux/Release/xTools-linux
-        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb"
-        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage"
-      shell: bash
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
+        cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
+    - name: Upload Release Asset for Linux
+      run: |
+        dir bin/6.7.3/Linux/Release
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
