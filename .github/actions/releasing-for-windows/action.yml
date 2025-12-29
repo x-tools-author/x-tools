@@ -1,5 +1,14 @@
-﻿name: Building for Windows
-description: Building xTools for Windows
+﻿name: Releasing for Windows
+description: Releasing xTools for Windows
+
+inputs:
+  tag:
+    description: 'The tag to release (e.g., v1.2.3)'
+    required: true
+  upload_enabled:
+    description: 'Enable uploading the artifacts to the release'
+    required: false
+    default: 'true'
 
 runs:
   using: "composite"
@@ -22,7 +31,12 @@ runs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target all
         cmake --build . --target xTools_zip
-    - name: Check for Artifacts
+    - name: Checking for Artifacts
       shell: cmd
       run: |
         for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+    - name: Upload Artifacts to Release
+      if: ${{ inputs.upload_enabled == 'true' }}
+      shell: cmd
+      run: |
+        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
