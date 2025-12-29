@@ -5,8 +5,13 @@ on:
       - 'v*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  QT_VERSION: 6.8.3
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+  QT_VERSION: '6.8.3'
   QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
 
 jobs:
   update-release:
@@ -16,6 +21,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Delete Release
       run: |
+        gh release delete continuous -y || true
         gh release delete ${{ github.ref_name }} -y || true
     - name: Create Release
       run: |
@@ -23,87 +29,47 @@ jobs:
   release-for-windows:
     runs-on: windows-2022
     needs: update-release
+    name: Release for Windows
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_action: [
+          'Windows',
+          'Windows7',
+          'WindowsXP'
+        ]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        # 切换至最新的tag，格式为v开头的版本号
-        ref: ${{ github.ref }}
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: '${{ env.QT_VERSION }}'
-        target: 'desktop'
-        arch: 'win64_msvc2022_64'
-        dir: '${{ github.workspace }}'
-        modules: '${{env.QT_MODULES}}'
-    - name: Build for Windows
-      shell: cmd
-      run: |
-        git fetch --tags
-        mkdir build
-        cd build
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
-        cmake --build . --target all
-        cmake --build . --target xTools_zip
-    - name: Upload Release Asset for Windnows
-      shell: cmd
-      run: |
-        for %%f in (bin\${{env.QT_VERSION}}\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f"
-  release-for-windows7:
-    runs-on: windows-2022
-    needs: update-release
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: '5.15.2'
-        target: 'desktop'
-        arch: 'win64_msvc2019_64'
-        dir: '${{ github.workspace }}'
-        modules: 'qtcharts'
-    - name: Build for Windows
-      shell: cmd
-      run: |
-        git fetch --tags
-        mkdir build
-        cd build
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
-        cmake --build . --target all
-        cmake --build . --target xTools_zip
-    - name: Upload Release Asset for Windnows
-      shell: cmd
-      run: |
-        for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f" --clobber
-  release-for-windows-xp:
-    runs-on: windows-latest
-    needs: update-release
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Build for Windows
-      shell: cmd
-      run: |
-        git fetch --tags
-        scripts\ci-build-windows-xp.bat
-    - name: Upload Release Asset for Windnows
-      shell: cmd
-      run: |
-        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ github.ref_name }} "%%f" --clobber
+      - name: Pull code
+        uses: actions/checkout@v4
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '4.1.x'
+      - name: Use cmake
+        run: cmake --version
+      - name: Build for Windows
+        if: ${{ matrix.ci_action == 'Windows' }}
+        uses: ./.github/actions/ci-windows
+        with:
+          tag: ${{ github.ref_name }}
+      - name: Build for Windows 7
+        if: ${{ matrix.ci_action == 'Windows7' }}
+        uses: ./.github/actions/ci-windows-7
+        with:
+          tag: ${{ github.ref_name }}
+      - name: Build for Windows XP
+        if: ${{ matrix.ci_action == 'WindowsXP' }}
+        uses: ./.github/actions/ci-windows-xp
+        with:
+          tag: ${{ github.ref_name }}
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
-    env:
-      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ref: ${{ github.ref }}  # 切换至最新的tag，格式为v开头的版本号
+        ref: ${{ github.ref }}
     - name: Build for Linux
       run: |
           git fetch --tags
@@ -121,7 +87,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        # 切换至最新的tag，格式为v开头的版本号
         ref: ${{ github.ref }}
     - name: Install Qt for macOS
       uses: jurplel/install-qt-action@v4
@@ -153,80 +118,22 @@ jobs:
         ls bin/${{env.QT_VERSION}}/Darwin/Release/xTools
         find bin/${{env.QT_VERSION}}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ github.ref_name }} {} \;
   release-for-android:
-    runs-on: windows-2022
+    runs-on: ubuntu-24.04
     needs: update-release
-    env:
-      QT_ANDROID_KEYSTORE_PATH: ${{ github.workspace }}\res\android\android_release.keystore
-      QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-      QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-      QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          # 切换至最新的tag，格式为v开头的版本号
-          ref: ${{ github.ref }}
-      - name: Install Qt for Android
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: android
-          arch: android_armv7
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
-      - name: Install Qt for Desktop(mingw)
-        uses: jurplel/install-qt-action@v4
-        with:
-          aqtversion: '==3.1.*'
-          target: desktop
-          arch: win64_mingw
-          host: windows
-          dir: ${{ github.workspace }}
-          modules: ${{env.QT_MODULES}}
-          version: ${{env.QT_VERSION}}
-      - name: CMake for Android
-        shell: cmd
-        run: |
-          git fetch --tags
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\android_armv7\bin\qt-cmake.bat ^
-          -G "MinGW Makefiles" ^
-          -S . ^
-          -B "build\armeabi_v7a" ^
-          -DQT_HOST_PATH:PATH="${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64" ^
-          -DCMAKE_BUILD_TYPE:STRING=Release ^
-          -DCMAKE_CXX_COMPILER:FILEPATH="%ANDROID_NDK_ROOT%/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe" ^
-          -DANDROID_SDK_ROOT:PATH="%ANDROID_SDK_ROOT%" ^
-          -DANDROID_NDK_ROOT:PATH="%ANDROID_NDK_ROOT%" ^
-          -DBUILD_SHARED_LIBS:BOOL=OFF ^
-          -DWITH_TOOLS:BOOL=OFF ^
-          -DWITHOUT_PNG:BOOL=ON
-      - name: Build for android
-        shell: cmd
-        run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          echo %JAVA_HOME%
-          cmake --build build\armeabi_v7a --target xTools --config Release
-      - name: Copy File for Deploy
-        shell: cmd
-        run: |
-            mkdir  build\armeabi_v7a\android-build\libs\armeabi-v7a
-            dir build\armeabi_v7a
-            copy .\build\armeabi_v7a\libxTools_armeabi-v7a.so .\build\armeabi_v7a\android-build\libs\armeabi-v7a /y
-      - name: Deploy for Android
-        shell: cmd
-        run: |
-          set JAVA_HOME=%JAVA_HOME_17_X64%
-          echo %JAVA_HOME%
-          ${{ github.workspace }}\Qt\${{env.QT_VERSION}}\mingw_64\bin\androiddeployqt.exe ^
-          --input build\armeabi_v7a\android-xTools-deployment-settings.json ^
-          --output build\armeabi_v7a\android-build ^
-          --android-platform android-35 ^
-          --sign ${{ env.QT_ANDROID_KEYSTORE_PATH }} ${{ env.QT_ANDROID_KEYSTORE_ALIAS }} --storepass  ${{ env.QT_ANDROID_KEYSTORE_STORE_PASS }}  --keypass ${{ env.QT_ANDROID_KEYSTORE_KEY_PASS }} ^
-          --jdk %JAVA_HOME% --gradle --release
-      - name: Upload Release Asset for Android
-        run: |
-          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-${{ github.ref_name }}-armeabi_v7a.apk
-          ls && tree build/armeabi_v7a && gh release upload ${{ github.ref_name }} xtools-android-${{ github.ref_name }}-armeabi_v7a.apk
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.1.x'
+    - name: Build for Android
+      run: |
+        docker pull ${{ env.DOCKER_IMAGE }}
+        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
+        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
+    - name: Upload Release Asset for Android
+      run: |
+        cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
+        ls && tree build/armeabi_v7a && gh release upload ${{ github.ref_name }} xtools-android-armeabi_v7a.apk
