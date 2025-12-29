@@ -8,6 +8,9 @@ env:
 jobs:
   build-windows:
     runs-on: ubuntu-22.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
     steps:
     - name: Checkout
       uses: actions/checkout@v4
