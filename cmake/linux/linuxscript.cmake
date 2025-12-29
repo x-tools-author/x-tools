@@ -78,8 +78,9 @@ execute_process(
 # Rename the AppImage
 file(GLOB appimages ${argWorkingDir}/*.AppImage)
 foreach(appimage ${appimages})
-  execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${argAssetName}.AppImage
-                  WORKING_DIRECTORY ${argWorkingDir})
+  message(STATUS "Rename AppImage ${appimage} to ${argAssetName}.AppImage")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${argAssetName}.AppImage ||
+                          ${CMAKE_COMMAND} -E true WORKING_DIRECTORY ${argWorkingDir})
 endforeach()
 
 # Make deb
