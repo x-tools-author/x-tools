@@ -12,7 +12,6 @@ runs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        aqtversion: '==3.1.*'
         version: '6.8.3'
         host: 'linux_arm64'
         target: 'desktop'
