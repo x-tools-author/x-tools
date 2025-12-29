@@ -1,0 +1,31 @@
+﻿name: CI for Android
+description: Building xTools for Android
+
+inputs:
+  tag:
+    description: 'The tag to upload the release asset to.'
+    required: false
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build for Android
+      run: |
+        git fetch --tags
+        docker pull ${{ env.DOCKER_IMAGE }}
+        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
+        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
+    - name: Upload Release Asset for Android
+      if: ${{ inputs.tag != '' }}
+      run: |
+        cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
+        ls && tree build/armeabi_v7a && gh release upload ${{ inputs.tag }} xtools-android-armeabi_v7a.apk

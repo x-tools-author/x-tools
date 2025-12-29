@@ -34,3 +34,8 @@ runs:
         cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
         cmake --build . --target all
         cmake --build . --target xTools_dmg
+    - name: Upload Release Asset for macOS
+      if: ${{ inputs.tag != '' }}
+      run: |
+        ls bin/6.8.3/Darwin/Release/xTools
+        find bin/6.8.3/Darwin/Release/xTools -name "*.dmg" -exec gh release upload ${{ inputs.tag }} {} \;
