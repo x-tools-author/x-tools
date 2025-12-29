@@ -24,6 +24,7 @@ runs:
         sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
         wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
         chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+      shell: bash
 
     - name: Build for Linux ARM
       run: |
@@ -34,6 +35,7 @@ runs:
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/linux_gcc_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target xTools
         cmake --build . --target xTools_linux
+      shell: bash
 
     - name: Upload Release Asset for Linux ARM
       if: ${{ inputs.tag != '' }}
@@ -43,4 +45,5 @@ runs:
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec echo ${{ inputs.tag }} {} \;
         find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
+      shell: bash
 
