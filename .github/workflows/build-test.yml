@@ -7,7 +7,7 @@ env:
 
 jobs:
   build-linux:
-    name: Build with Qt5(linux)
+    name: Build with Qt
     runs-on: windows-latest
     steps:
       - name: Pull code
@@ -19,12 +19,12 @@ jobs:
       - name: Use cmake
         run: cmake --version
       - name: Build for Windows
-        shell: cmd
-        run: |
-          git fetch --tags
-          scripts\ci-build-windows-xp.bat
-      - name: Upload Release Asset for Windnows
-        shell: cmd
-        run: |
-          for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do gh release upload continuous "%%f" --clobber
+        uses: ./.github/actions/building-for-windows
+        with:
+          qt_version: '6.8.3'
+          qt_modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      - name: Build for Windows 7
+        uses: ./.github/actions/building-for-windows7
+      - name: Build for Windows XP
+        uses: ./.github/actions/building-for-windowsxp
 
