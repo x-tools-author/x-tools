@@ -14,7 +14,7 @@
 > [![Qt version](https://img.shields.io/badge/Qt-6.9.2+-41CD52?logo=qt)](https://www.qt.io) is required to build xTools on macOS 26.0(and later). [![Qt version](https://img.shields.io/badge/Qt-6.8.x+-41CD52?logo=qt)](https://www.qt.io)(Other will be nice but is not test) is required to build for Android platform.
 
 >[!NOTE]
-> You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb) or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases).
+> You can get *xTools* form [Micorsoft Store(sponsor)](https://apps.microsoft.com/detail/9p29h1ndnkbb) or from [Github Release(community)](https://github.com/x-tools-author/x-tools/releases). You can get the latest daily build form [Daily Build](https://github.com/x-tools-author/x-tools/releases/tag/continuous).
 
 ## Build
 

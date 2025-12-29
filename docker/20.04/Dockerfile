@@ -46,10 +46,14 @@ ENV LC_ALL=zh_CN.UTF-8
 ENV LANGUAGE=zh_CN:zh
 
 # CMake
-RUN wget https://cmake.org/files/v3.30/cmake-3.30.8-linux-x86_64.sh
-RUN chmod +x cmake-3.30.8-linux-x86_64.sh
-RUN ./cmake-3.30.8-linux-x86_64.sh --skip-license --prefix=/usr/local
-RUN rm cmake-3.30.8-linux-x86_64.sh
+# RUN wget https://cmake.org/files/v3.30/cmake-3.30.8-linux-x86_64.sh
+# RUN chmod +x cmake-3.30.8-linux-x86_64.sh
+# RUN ./cmake-3.30.8-linux-x86_64.sh --skip-license --prefix=/usr/local
+# RUN rm cmake-3.30.8-linux-x86_64.sh
+RUN wget https://cmake.org/files/v4.1/cmake-4.1.4-linux-x86_64.sh
+RUN chmod +x cmake-4.1.4-linux-x86_64.sh
+RUN ./cmake-4.1.4-linux-x86_64.sh --skip-license --prefix=/usr/local
+RUN rm cmake-4.1.4-linux-x86_64.sh
 
 # Copy Qt files from host to container
 ENV QT_ROOT=/opt/qt
