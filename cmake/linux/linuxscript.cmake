@@ -59,23 +59,30 @@ execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
 get_filename_component(target_dir ${argTargetFile} DIRECTORY)
 
 # Copy files to bin
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/translations" ${argWorkingDir}/usr/bin/translations)
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts" ${argWorkingDir}/usr/bin/scripts)
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/translations"
+                        ${argWorkingDir}/usr/bin/translations)
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts"
+                        ${argWorkingDir}/usr/bin/scripts)
 
 # Make deb directory from appimage
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb WORKING_DIRECTORY ${argWorkingDir}/../)
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
+                WORKING_DIRECTORY ${argWorkingDir}/../)
 
 # Make AppImage
-execute_process(COMMAND ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-               usr/share/applications/${argPacketName}.desktop -always-overwrite
-               -bundle-non-qt-libs -qmake=${argQmakePath} -appimage
-               WORKING_DIRECTORY ${argWorkingDir})
+execute_process(
+  COMMAND
+    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+    usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
+    -qmake=${argQmakePath} -appimage -unsupported-allow-new-glibc
+  WORKING_DIRECTORY ${argWorkingDir})
 # Rename the AppImage
 file(GLOB appimages ${argWorkingDir}/*.AppImage)
 foreach(appimage ${appimages})
-  execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${argAssetName}.AppImage WORKING_DIRECTORY ${argWorkingDir})
+  execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${appimage} ${argAssetName}.AppImage
+                  WORKING_DIRECTORY ${argWorkingDir})
 endforeach()
 
 # Make deb
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argAssetName}.AppImage ../deb/usr/bin/${argPacketName} WORKING_DIRECTORY ${argWorkingDir})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argAssetName}.AppImage
+                        ../deb/usr/bin/${argPacketName} WORKING_DIRECTORY ${argWorkingDir})
 execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${argWorkingDir}/../deb)

@@ -1,0 +1,34 @@
+﻿name: CI for Linux
+description: Building xTools for Linux
+
+inputs:
+  tag:
+    description: 'The tag to upload the release asset to.'
+    required: false
+  github_token:
+    description: 'Token for GitHub API calls (pass secrets.GITHUB_TOKEN).'
+    required: true
+  docker_image:
+    description: 'Docker image for Linux build (choose distro/glibc).'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build for Linux
+      shell: bash
+      env:
+        # fallback to 20.04 image if not provided
+        DOCKER_IMAGE: ${{ inputs.docker_image != '' && inputs.docker_image || 'ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64' }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      run: |
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && git --version && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+    - name: Upload Release Asset for Linux
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      run: |
+        dir bin/6.8.3/Linux/Release
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ inputs.tag }} {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ inputs.tag }} {} \;
