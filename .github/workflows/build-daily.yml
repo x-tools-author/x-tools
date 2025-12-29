@@ -79,6 +79,16 @@ jobs:
         uses: ./.github/actions/ci-windows-xp
         with:
           tag: continuous
+  release-for-linux-arm:
+    runs-on: ubuntu-24.04-arm
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: build for ubuntu arm
+      uses: ./.github/actions/ci-ubuntu-arm
+      with:
+        tag: continuous
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
