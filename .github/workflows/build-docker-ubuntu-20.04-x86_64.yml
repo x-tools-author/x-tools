@@ -1,4 +1,4 @@
-name: build-docker
+name: build-docker-ubuntu-20.04-x86_64
 on:
   workflow_dispatch: # Enables manually
 
