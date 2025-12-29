@@ -1,0 +1,38 @@
+﻿name: Building for Windows
+description: Building xTools for Windows
+
+inputs:
+  qt_version:
+    description: 'The Qt version to install'
+    required: true
+    default: '6.8.3'
+  qt_modules:
+    description: 'The Qt modules to install'
+    required: true
+    default: 'qtcharts qtserialbus qtserialport qtwebsockets'
+
+runs:
+  using: "composite"
+  release-for-windows:
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '${{ inputs.qt_version }}'
+        target: 'desktop'
+        arch: 'win64_msvc2022_64'
+        dir: '${{ github.workspace }}'
+        modules: '${{ inputs.qt_modules }}'
+    - name: Build for Windows
+      shell: cmd
+      run: |
+        git fetch --tags
+        mkdir build
+        cd build
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ inputs.qt_version }}/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake --build . --target all
+        cmake --build . --target xTools_zip
+    - name: Check for Artifacts
+      shell: cmd
+      run: |
+        for %%f in (bin\${{ inputs.qt_version }}\Windows\Release\xTools-zip\*.zip) do echo "%%f"

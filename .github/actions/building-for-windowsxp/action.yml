@@ -1,0 +1,14 @@
+﻿name: Building for Windows XP
+description: Building xTools for Windows XP
+
+runs:
+  using: "composite"
+  release-for-windows-xp:
+    - name: Build for Windows XP
+      shell: cmd
+      run: |
+        scripts\ci-build-windows-xp.bat
+    - name: Check for Artifacts
+      shell: cmd
+      run: |
+        for %%f in (bin\5.6.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
