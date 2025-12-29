@@ -140,6 +140,12 @@ jobs:
     runs-on: ubuntu-24.04
     needs: update-release
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.1.x'
     - name: Build for Android
       run: |
         docker pull ${{ env.DOCKER_IMAGE }}
