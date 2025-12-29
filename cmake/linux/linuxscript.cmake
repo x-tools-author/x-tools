@@ -24,9 +24,12 @@ message(STATUS "[xTools.Linux] argAssetName: ${argAssetName}")
 
 # Remove old working dir then create a new one
 set(AppImageRootDir ${argWorkingDir}/appimage)
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory ${argWorkingDir} -rf || ${CMAKE_COMMAND} -E true)
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${argSrcDir}/cmake/linux/app ${AppImageRootDir})
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${argTargetFile} ${AppImageRootDir}/usr/bin/${argPacketName})
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory ${argWorkingDir} -rf ||
+                        ${CMAKE_COMMAND} -E true)
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
+                        ${argSrcDir}/cmake/linux/app ${AppImageRootDir})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${argTargetFile}
+                        ${AppImageRootDir}/usr/bin/${argPacketName})
 
 # Update control file
 set(control_file ${AppImageRootDir}/DEBIAN/control)
@@ -76,28 +79,29 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
 
 # Make AppImage
 if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
-# TODO: remove -unsupported-allow-new-glibc when linuxdeployqt-aarch64 supports new glibc
-# .github/actions/ci-ubuntu-arm/action.yml will build linuxdeployqt-aarch64 with new glibc support
-execute_process(
-  COMMAND
-    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-    usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
-    -qmake=${argQmakePath} -appimage -unsupported-allow-new-glibc
-  WORKING_DIRECTORY ${AppImageRootDir})
+  # TODO: remove -unsupported-allow-new-glibc when linuxdeployqt-aarch64 supports new glibc
+  # .github/actions/ci-ubuntu-arm/action.yml will build linuxdeployqt-aarch64 with new glibc support
+  execute_process(
+    COMMAND
+      ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+      usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
+      -qmake=${argQmakePath} -appimage -unsupported-allow-new-glibc
+    WORKING_DIRECTORY ${AppImageRootDir})
 else()
-execute_process(
-  COMMAND
-    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-    usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
-    -qmake=${argQmakePath} -appimage
-  WORKING_DIRECTORY ${AppImageRootDir})
+  execute_process(
+    COMMAND
+      ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+      usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
+      -qmake=${argQmakePath} -appimage
+    WORKING_DIRECTORY ${AppImageRootDir})
 endif()
 
 # Rename the AppImage
 file(GLOB appimages ${AppImageRootDir}/*.AppImage)
 foreach(appimage ${appimages})
   message(STATUS "Rename AppImage ${appimage} to ${argAssetName}.AppImage")
-  execute_process(COMMAND mv ${appimage} ${argAssetName}.AppImage WORKING_DIRECTORY ${AppImageRootDir})
+  execute_process(COMMAND mv ${appimage} ${argAssetName}.AppImage
+                  WORKING_DIRECTORY ${AppImageRootDir})
 endforeach()
 
 # Make deb
