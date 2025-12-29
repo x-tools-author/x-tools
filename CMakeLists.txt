@@ -150,12 +150,16 @@ endif()
 
 # Do not change X_LATEST_GIT_TAG unless you know what you are doing
 set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}")
-# 32 or 64 bit
-if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-  set(X_ASSET_NAME "${X_ASSET_NAME}-64bits")
+if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID)
+  set(X_ASSET_NAME "${X_ASSET_NAME}-${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
 else()
-  set(X_ASSET_NAME "${X_ASSET_NAME}-32bits")
+  if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(X_ASSET_NAME "${X_ASSET_NAME}-64bits")
+  else()
+    set(X_ASSET_NAME "${X_ASSET_NAME}-32bits")
+  endif()
 endif()
+
 if(WIN32)
   if(${QT_VERSION} VERSION_LESS "5.8.0")
     set(X_ASSET_NAME "${X_ASSET_NAME}-winxp")
@@ -164,7 +168,7 @@ if(WIN32)
   endif()
 endif()
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
-message(STATUS "[xTools] Asset name: ${X_ASSET_NAME}")
+message(STATUS "[xTools] X_ASSET_NAME: ${X_ASSET_NAME}")
 
 # --------------------------------------------------------------------------------------------------
 # Set macOS deployment target (minimum macOS version)
