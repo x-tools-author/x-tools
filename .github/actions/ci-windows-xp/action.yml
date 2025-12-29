@@ -1,4 +1,4 @@
-﻿name: Building for Windows XP
+﻿name: CI for Windows XP
 description: Building xTools for Windows XP
 
 runs:
