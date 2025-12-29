@@ -41,9 +41,11 @@ jobs:
           dir: ${{ github.workspace }}
           modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
       - name: install-dependencies
+        shell: bash
         run: |
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
       - name: build for linux
+        shell: bash
         run: |
           git fetch --tags
           cmake --version
