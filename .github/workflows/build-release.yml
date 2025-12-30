@@ -102,9 +102,8 @@ jobs:
         ref: ${{ github.ref }}
     - name: Build for Linux
       run: |
-          git fetch --tags
           docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          cd /workspace && git config --global --add safe.directory /workspace && git tag -d continuous && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh ${{ github.ref_name }}"
+          cd /workspace && git config --global --add safe.directory /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh ${{ github.ref_name }}"
     - name: Upload Release Asset for Linux
       run: |
         dir bin/${{env.QT_VERSION}}/Linux/Release
@@ -137,7 +136,6 @@ jobs:
       # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
       # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
       run: |
-        git fetch --tags
         # brew unlink unixodbc
         # brew install libiodbc
         mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
