@@ -62,6 +62,29 @@ jobs:
         uses: ./.github/actions/ci-windows-xp
         with:
           tag: ${{ github.ref_name }}
+  release-for-linux-arm:
+    runs-on: ubuntu-24.04-arm
+    needs: update-release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install Dependencies
+      run: |
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
+        wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+        chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+      shell: bash
+    - name: Build for Linux ARM
+      run: |
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
+        cd /workspace && git --version && ls /opt/qt/6.7.3 && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
+      shell: bash
+    - name: Upload Release Asset for Linux ARM
+      run: |
+        dir bin/6.7.3/Linux/Release
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload ${{ github.ref_name }} {} \;
+        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload ${{ github.ref_name }} {} \;
+      shell: bash
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
