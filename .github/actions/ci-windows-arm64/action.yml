@@ -1,0 +1,40 @@
+﻿name: CI for Windows ARM64
+description: Building xTools for Windows ARM64
+
+inputs:
+  tag:
+    description: 'The tag to upload the release asset to.'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Pull code
+      uses: actions/checkout@v4
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        aqtversion: '==3.1.*'
+        dir: ${{ github.workspace }}
+        version: 6.8.3
+        target: desktop
+        host: windows_arm64
+        arch: win64_msvc2022_arm64
+        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+    - name: build-msvc-arm64
+      shell: cmd
+      run: |
+        mkdir build
+        cd build
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" arm64
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/win64_msvc2022_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+        cmake --build . --target all --config Release
+    - name: Checking for Artifacts
+      shell: cmd
+      run: |
+        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+    - name: Upload Release Asset for Windows
+      if: ${{ inputs.tag != '' }}
+      shell: cmd
+      run: |
+        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
