@@ -21,7 +21,6 @@ message(STATUS "[xTools.Linux] argQmakePath: ${argQmakePath}")
 message(STATUS "[xTools.Linux] argTargetFile: ${argTargetFile}")
 message(STATUS "[xTools.Linux] argPackageType: ${argPackageType}")
 message(STATUS "[xTools.Linux] argAssetName: ${argAssetName}")
-message(STATUS "[xTools.Linux] argSkipGlibcCheck: ${argSkipGlibcCheck}")
 
 if(NOT EXISTS ${argTool})
   message(FATAL_ERROR "[xTools.Linux] linuxdeployqt tool not found: ${argTool}")
@@ -84,23 +83,12 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
 
 # Make AppImage
 message(STATUS "Create AppImage package")
-if(${argSkipGlibcCheck} STREQUAL "TRUE")
-  # TODO: remove -unsupported-allow-new-glibc when linuxdeployqt-aarch64 supports new glibc
-  # .github/actions/ci-ubuntu-arm/action.yml will build linuxdeployqt-aarch64 with new glibc support
-  execute_process(
-    COMMAND
-      ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-      usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
-      -qmake=${argQmakePath} -appimage
-    WORKING_DIRECTORY ${AppImageRootDir})
-else()
-  execute_process(
-    COMMAND
-      ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-      usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
-      -qmake=${argQmakePath} -appimage
-    WORKING_DIRECTORY ${AppImageRootDir})
-endif()
+execute_process(
+  COMMAND
+    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+    usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
+    -qmake=${argQmakePath} -appimage
+  WORKING_DIRECTORY ${AppImageRootDir})
 
 # Rename the AppImage
 file(GLOB appimages ${AppImageRootDir}/*.AppImage)
