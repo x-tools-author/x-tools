@@ -22,10 +22,11 @@ jobs:
     - name: Delete Release
       run: |
         gh release delete continuous -y || true
+        git push origin --delete tag continuous || true
         gh release delete ${{ github.ref_name }} -y || true
     - name: Create Release
       run: |
-        gh release create ${{ github.ref_name }} --title "Release ${{ github.ref_name }}" --notes "The version is ready. You can see the changed log: https://github.com/x-tools-author/x-tools/blob/master/res/files/history.txt"
+        gh release create ${{ github.ref_name }} --title "Release ${{ github.ref_name }}" --notes-file res/files/release.md
   release-for-windows:
     runs-on: windows-2022
     needs: update-release
@@ -121,6 +122,10 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.ref }}
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '4.1.x'
     - name: Install Qt for macOS
       uses: jurplel/install-qt-action@v4
       with:

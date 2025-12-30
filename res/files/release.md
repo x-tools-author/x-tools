@@ -1,4 +1,6 @@
-﻿|File|Description|
+﻿> The version is ready. You can see the changed log: [Release History](https://github.com/x-tools-author/x-tools/blob/master/res/files/history.txt)
+
+|File|Description|
 |----|-----------|
 |xtools-android-arm64_v8a.apk | for Android arm64-v8a(64bits device, new device is recommended)|
 |xtools-android-armeabi_v7a.apk | for Android armeabi-v7a(32bits device, old device(before 2020) is recommended)|
