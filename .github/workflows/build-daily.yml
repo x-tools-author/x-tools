@@ -28,7 +28,7 @@ jobs:
         git config --global user.email "x-tools@outlook.com"
         git config --global user.name "x-tools-author"
         git tag -d continuous || true
-        git push origin :refs/tags/continuous
+        git push origin --delete continuous || true
         git tag continuous
         git push origin continuous -f
   update-release:
