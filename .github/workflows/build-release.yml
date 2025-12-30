@@ -88,7 +88,7 @@ jobs:
     - name: Build for Linux ARM
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
-        cd /workspace && git --version && ls /opt/qt/6.7.3 && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
+        cd /workspace && git --version && ls /opt/qt/6.7.3 && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh ${{ github.ref_name }}"
       shell: bash
     - name: Upload Release Asset for Linux ARM
       run: |
@@ -108,7 +108,7 @@ jobs:
       run: |
           git fetch --tags
           docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-          cd /workspace && git config --global --add safe.directory /workspace && git tag -d continuous && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+          cd /workspace && git config --global --add safe.directory /workspace && git tag -d continuous && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh ${{ github.ref_name }}"
     - name: Upload Release Asset for Linux
       run: |
         dir bin/${{env.QT_VERSION}}/Linux/Release
@@ -148,7 +148,7 @@ jobs:
         ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
         mkdir build
         cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
+        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{env.QT_VERSION}}/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release -DX_VERSION_OVERRIDE:STRING=${{ github.ref_name }}
         cmake --build . --target all
         cmake --build . --target xTools_dmg
     - name: Upload Release Asset for macOS

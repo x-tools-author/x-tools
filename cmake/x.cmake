@@ -7,6 +7,14 @@ function(x_git_get_latest_tag working_dir prefix)
     OUTPUT_VARIABLE GIT_LATEST_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
+  if(DEFINED X_VERSION_OVERRIDE)
+    message(STATUS "[xTools.git] X_VERSION_OVERRIDE: ${X_VERSION_OVERRIDE}")
+    if(NOT X_VERSION_OVERRIDE STREQUAL "")
+      message(STATUS "[xTools.git] Overriding latest git tag with X_VERSION_OVERRIDE")
+      set(GIT_LATEST_TAG ${X_VERSION_OVERRIDE})
+    endif()
+  endif()
+
   set(USING_DATE_TIME FALSE)
   if(NOT GIT_LATEST_TAG)
     set(USING_DATE_TIME TRUE)
@@ -28,7 +36,7 @@ function(x_git_get_latest_tag working_dir prefix)
     set(GIT_LATEST_TAG ${target_version})
   endif()
 
-  message(STATUS "[xTools-git] Latest git tag(${prefix}_LATEST_GIT_TAG): ${GIT_LATEST_TAG}")
+  message(STATUS "[xTools.git] Latest git tag(${prefix}_LATEST_GIT_TAG): ${GIT_LATEST_TAG}")
   set(${prefix}_LATEST_GIT_TAG="${GIT_LATEST_TAG}" CACHE STRING "Latest git tag" FORCE)
   set(${prefix}_LATEST_GIT_TAG
       "${GIT_LATEST_TAG}"
@@ -44,7 +52,7 @@ function(x_git_get_latest_commit working_dir prefix)
     WORKING_DIRECTORY ${working_dir}
     OUTPUT_VARIABLE GIT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE)
-  message(STATUS "[xTools-git] Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
+  message(STATUS "[xTools.git] Latest git commit(${prefix}_GIT_COMMIT): ${GIT_COMMIT}")
   add_compile_definitions(${prefix}_GIT_COMMIT="${GIT_COMMIT}")
 endfunction()
 
@@ -57,7 +65,7 @@ function(x_git_get_latest_commit_time working_dir prefix)
     OUTPUT_VARIABLE GIT_COMMIT_TIME
     OUTPUT_STRIP_TRAILING_WHITESPACE)
   message(
-    STATUS "[xTools-git] Latest git commit time(${prefix}_GIT_COMMIT_TIME): ${GIT_COMMIT_TIME}")
+    STATUS "[xTools.git] Latest git commit time(${prefix}_GIT_COMMIT_TIME): ${GIT_COMMIT_TIME}")
   add_compile_definitions(${prefix}_GIT_COMMIT_TIME="${GIT_COMMIT_TIME}")
 endfunction()
 

@@ -12,7 +12,7 @@ runs:
     - name: Build for Windows XP
       shell: cmd
       run: |
-        scripts\ci-build-windows-xp.bat
+        scripts\ci-build-windows-xp.bat ${{ inputs.tag }}
     - name: Check for Artifacts
       shell: cmd
       run: |
