@@ -140,7 +140,7 @@ QJsonObject MqttClientUi::save() const
 void MqttClientUi::load(const QJsonObject &obj) const
 {
     const MqttClientUiParameterKeys keys;
-    const QString address = obj.value(keys.serverAddress).toString();
+    const QString address = obj.value(keys.serverAddress).toString("127.0.0.1");
     ui->comboBoxServerAddress->setCurrentText(address);
     ui->spinBoxServerPort->setValue(obj.value(keys.serverPort).toInt(1883));
     int index = obj.value(keys.qos).toInt(static_cast<int>(QoS::AtMostOnce));
