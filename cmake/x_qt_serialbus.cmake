@@ -16,7 +16,7 @@ macro(remove_all_x_canbus_files)
   endforeach(file ${CANBUS_SOURCE})
 endmacro()
 
-if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND AND ${QT_VERSION} VERSION_LESS "5.6.3")
+if(Qt${QT_VERSION_MAJOR}SerialBus_FOUND AND NOT QT_VERSION VERSION_LESS "5.12.0")
   add_compile_definitions(X_ENABLE_SERIALBUS)
   list(APPEND X_LIBS Qt${QT_VERSION_MAJOR}::SerialBus)
 
