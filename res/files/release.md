@@ -2,8 +2,8 @@
 
 |File|Description|
 |----|-----------|
-|xtools-android-arm64_v8a.apk | for Android arm64-v8a(64bits device, new device is recommended)|
-|xtools-android-armeabi_v7a.apk | for Android armeabi-v7a(32bits device, old device(before 2020) is recommended)|
+|xtools-android-arm64_v8a.apk | for Android arm64-v8a(64bits device, new device(after 2020) is recommended)|
+|xtools-android-armeabi_v7a.apk | for Android armeabi-v7a(32bits device, old device is recommended)|
 |xtools-darwin-vX.Y.Z-arm64.dmg | for macOS arm64(macOS 12 or later)|
 |xtools-linux-vX.Y.Z-x86_64.AppImage | for Linux x86_64(64bits Ubuntu 20.04 or later)|
 |xtools-linux-vX.Y.Z-x86_64.deb   | for Linux x86_64(64bits Ubuntu 20.04 or later)|
