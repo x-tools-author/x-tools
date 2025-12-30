@@ -70,7 +70,6 @@ jobs:
       uses: actions/checkout@v4
     - name: Install Dependencies
       run: |
-        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
         wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
         chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
       shell: bash
