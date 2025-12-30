@@ -71,6 +71,10 @@ if(WIN32)
     set(X_VS "VS2013")
   endif()
   set(working_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-${X_VS})
+  if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ARM64")
+    set(working_dir ${working_dir}-arm64)
+  endif()
+
   message(STATUS "[xTools-iconv] Working directory: ${working_dir}")
 
   set(lib_dir ${working_dir}/x64/Release)
@@ -80,8 +84,13 @@ if(WIN32)
     set(devenv ${COMPILER_PATH}/../../../../../../../Common7/IDE/devenv.exe)
     message(STATUS "[xTools-iconv] ${devenv}")
     message(STATUS "[xTools-iconv] Building libiconv using Visual Studio")
-    execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
-                    WORKING_DIRECTORY ${working_dir})
+    if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ARM64")
+      execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|ARM64"
+                      WORKING_DIRECTORY ${working_dir})
+    else()
+      execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
+                      WORKING_DIRECTORY ${working_dir})
+    endif()
   endif()
 
   if(EXISTS ${lib_dir}/libiconv.lib)
