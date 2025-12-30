@@ -11,6 +11,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Install Dependencies
+      run: |
+        sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
+        wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+        chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
     - name: Build for Linux
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
