@@ -51,8 +51,8 @@ jobs:
       matrix:
         ci_action: [
           'Windows',
-          'Windows7',
-          'WindowsXP'
+          'Win7',
+          'WinXP'
         ]
     steps:
       - name: Pull code
@@ -69,12 +69,12 @@ jobs:
         with:
           tag: continuous
       - name: Build for Windows 7
-        if: ${{ matrix.ci_action == 'Windows7' }}
+        if: ${{ matrix.ci_action == 'Win7' }}
         uses: ./.github/actions/ci-windows-7
         with:
           tag: continuous
       - name: Build for Windows XP
-        if: ${{ matrix.ci_action == 'WindowsXP' }}
+        if: ${{ matrix.ci_action == 'WinXP' }}
         uses: ./.github/actions/ci-windows-xp
         with:
           tag: continuous
