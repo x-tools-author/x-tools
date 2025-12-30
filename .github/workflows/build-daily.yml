@@ -44,7 +44,6 @@ jobs:
       run: |
         gh release create continuous --title "Continuous Build" --notes-file res/files/release.md --prerelease
   release-for-windows:
-    name: Release for Windows
     needs: update-release
     runs-on: windows-2022
     strategy:
@@ -80,7 +79,6 @@ jobs:
         with:
           tag: continuous
   release-for-windows-arm:
-    name: Release for Windows ARM64
     needs: update-release
     runs-on: windows-11-arm
     steps:
