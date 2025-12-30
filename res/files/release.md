@@ -1,6 +1,4 @@
-﻿# xTools Daily Building
-
-|File|Description|
+﻿|File|Description|
 |----|-----------|
 |xtools-android-arm64_v8a.apk | for Android ARM64 v8a(New Android PLatform)|
 |xtools-android-armeabi_v7a.apk | for Android ARMv7a(Old Android Platform)|
