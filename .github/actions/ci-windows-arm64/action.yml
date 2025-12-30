@@ -29,6 +29,7 @@ runs:
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" arm64
         cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/win64_msvc2022_arm64' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
         cmake --build . --target all --config Release
+        cmake --build . --target xTools_zip
     - name: Checking for Artifacts
       shell: cmd
       run: |

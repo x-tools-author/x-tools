@@ -79,6 +79,17 @@ jobs:
         uses: ./.github/actions/ci-windows-xp
         with:
           tag: continuous
+  release-for-windows-arm:
+    name: Release for Windows ARM64
+    needs: update-release
+    runs-on: windows-11-arm
+    steps:
+      - name: Pull code
+        uses: actions/checkout@v4
+      - name: Build for Windows ARM64
+        uses: ./.github/actions/ci-windows-arm64
+        with:
+          tag: 'continuous'
   release-for-linux-arm:
     runs-on: ubuntu-24.04-arm
     needs: update-release
