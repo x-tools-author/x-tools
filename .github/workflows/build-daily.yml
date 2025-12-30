@@ -42,7 +42,7 @@ jobs:
         gh release delete continuous -y || true
     - name: Create Release
       run: |
-        gh release create continuous --title "Continuous Build" --notes "Daily build of xTools" --prerelease
+        gh release create continuous --title "Continuous Build" --notes-file ${{ github.workspace }}/res/files/release.txt --prerelease
   release-for-windows:
     name: Release for Windows
     needs: update-release
