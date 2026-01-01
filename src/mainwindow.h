@@ -75,6 +75,7 @@ private:
     void showHistory();
     void showQrCode();
     void tryToReboot(bool doNotReboot = false);
+    void visitOnlineDocumentation();
 
     // HDPI Policy for Windows
     QString qtConfFileName();

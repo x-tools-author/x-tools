@@ -502,6 +502,7 @@ void MainWindow::initViewMenuGrid(QMenu* viewMenu)
 
 void MainWindow::initHelpMenu()
 {
+    m_helpMenu->addAction(tr("Online Documentation"), this, &MainWindow::visitOnlineDocumentation);
     m_helpMenu->addSeparator();
     m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
     m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
@@ -608,6 +609,11 @@ void MainWindow::tryToReboot(bool doNotReboot)
         xAPP->execMs(100);
         qApp->closeAllWindows();
     }
+}
+
+void MainWindow::visitOnlineDocumentation()
+{
+    QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools/"));
 }
 
 QString MainWindow::qtConfFileName()
