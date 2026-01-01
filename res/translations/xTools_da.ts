@@ -902,14 +902,14 @@
 <context>
     <name>ChartDataHandler</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="62"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="65"/>
         <source>Binary</source>
         <translation>Binær</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="66"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
@@ -1210,7 +1210,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DataPersistence</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="135"/>
         <source>Data Persistence</source>
         <translation>Datapersistens</translation>
     </message>
@@ -1568,7 +1568,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>EmitterModel</name>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="185"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="190"/>
         <source>Enable</source>
         <translation>Aktivér</translation>
     </message>
@@ -1578,22 +1578,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Deaktiver</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="155"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="157"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="187"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="192"/>
         <source>Description</source>
         <translation>Beskrivelse</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="189"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="194"/>
         <source>Interval</source>
         <translation>Interval</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="191"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="196"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
@@ -1632,7 +1632,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="191"/>
         <source>Calculate</source>
         <translation>Beregning</translation>
     </message>
@@ -1642,17 +1642,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Åben</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="82"/>
         <source>File Check Assistant</source>
         <translation>Filkontrol-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="152"/>
         <source>Remaining time</source>
         <translation>Resterende tid</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="197"/>
         <source>StopCalculating</source>
         <translation>Stop beregning</translation>
     </message>
@@ -2301,55 +2301,55 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>New Window</source>
         <translation>Ny vindue</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="371"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
         <source>Save Parameters</source>
         <translation>Gem parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="375"/>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="374"/>
+        <location filename="../../src/mainwindow.cpp" line="646"/>
         <source>Import Parameters</source>
         <translation>Importer parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
-        <location filename="../../src/mainwindow.cpp" line="652"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Export Parameters</source>
         <translation>Eksporter parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="392"/>
+        <location filename="../../src/mainwindow.cpp" line="391"/>
         <source>&amp;Tools</source>
         <translation>&amp;Værktøjer</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="396"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>New</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>&amp;View</source>
         <translation>&amp;Vis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
-        <location filename="../../src/mainwindow.cpp" line="544"/>
+        <location filename="../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>Release History</source>
         <translation>Udgivelseshistorik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="506"/>
+        <location filename="../../src/mainwindow.cpp" line="508"/>
         <source>Join in QQ Group</source>
         <translation>Deltag i QQ Group</translation>
     </message>
@@ -2359,73 +2359,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="530"/>
+        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <source>Online Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>Third Party Open Source</source>
         <translation>Tredjeparts open source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="566"/>
         <source>QR Code</source>
         <translation>QR-kode</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="575"/>
         <source>User QQ Group</source>
         <translation>Bruger QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="574"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="595"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
         <source>Need to Reboot</source>
         <translation>Skal genstartes</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="596"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(Genstart venligst din applikation manuelt.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
-        <location filename="../../src/mainwindow.cpp" line="654"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
+        <location filename="../../src/mainwindow.cpp" line="661"/>
         <source>Json Files (*.json)</source>
         <translation>Json-filer (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="690"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="689"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="691"/>
+        <location filename="../../src/mainwindow.cpp" line="698"/>
         <source>Commit time</source>
         <translation>Commit-tid</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="699"/>
         <source>Build Date</source>
         <translation>Bygge dato</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="700"/>
         <source>Copyright</source>
         <translation>Ophavsret</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="701"/>
         <source>All rights reserved.</source>
         <translation>Alle rettigheder forbeholdes.</translation>
     </message>
@@ -3692,17 +3697,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="117"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="147"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
         <translation>Beskrivelse</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
@@ -3969,23 +3974,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Applikationen starter...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation>Farveskema</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation>Mørk</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation>Lys</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>System</translation>
     </message>
@@ -4112,7 +4117,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Svar</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="62"/>
         <source>All</source>
         <translation>Alle</translation>
     </message>
@@ -4265,7 +4270,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ResponderModel</name>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="222"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="223"/>
         <source>Enable</source>
         <translation>Aktivér</translation>
     </message>
@@ -4275,32 +4280,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Deaktiver</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="185"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="186"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="225"/>
         <source>Description</source>
         <translation>Beskrivelse</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="226"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="227"/>
         <source>Option</source>
         <translation>Mulighed</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="228"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="229"/>
         <source>Delay</source>
         <translation>Forsinkelse</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="230"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="231"/>
         <source>Reference Data</source>
         <translation>Reference data</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="232"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="233"/>
         <source>Response Data</source>
         <translation>Responsdata</translation>
     </message>
@@ -4348,22 +4353,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="163"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="164"/>
         <source>New Script</source>
         <translation>Ny script</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="164"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="165"/>
         <source>Please input the script name:</source>
         <translation>Indtast venligst scriptnavnet:</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="267"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="268"/>
         <source>Stop the script</source>
         <translation>Stop script</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="282"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="283"/>
         <source>Run the script</source>
         <translation>Kør script</translation>
     </message>
@@ -4458,7 +4463,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../src/device/serialport.cpp" line="45"/>
+        <location filename="../../src/device/serialport.cpp" line="47"/>
         <source>Failed to open serial port: %1</source>
         <translation>Kunne ikke åbne den serielle port: %1</translation>
     </message>
@@ -4988,7 +4993,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TransferModel</name>
     <message>
-        <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
+        <location filename="../../src/page/transfer/common/transfermodel.cpp" line="50"/>
         <source>Transfer %1</source>
         <translation>Overfør %1</translation>
     </message>
@@ -5278,32 +5283,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataModel</name>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Time</source>
         <translation>Tid</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>Flags</source>
         <translation>Flag</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="123"/>
         <source>DLC</source>
         <translation>DLC</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="125"/>
         <source>Payload</source>
         <translation>Nyttelast</translation>
     </message>
@@ -5526,32 +5531,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="243"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="245"/>
         <source>Delete connection</source>
         <translation>Slet forbindelse</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="278"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="280"/>
         <source>Save Image as...</source>
         <translation>Gem billede som...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="287"/>
         <source>Save Image</source>
         <translation>Gem billede</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="287"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
         <source>Images (*.png)</source>
         <translation>Billeder (*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="299"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="301"/>
         <source>Save Image to Clipboard</source>
         <translation>Gem billede til udklipsholder</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="302"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="304"/>
         <source>Delete</source>
         <translation>Slet</translation>
     </message>
@@ -5797,37 +5802,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xMQTT::MqttDataModel</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="64"/>
         <source>Rx</source>
         <translation>Rx</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="64"/>
         <source>TX</source>
         <translation>TX</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Command</source>
         <translation>Kommando</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="112"/>
         <source>Server</source>
         <translation>Server</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="114"/>
         <source>Client</source>
         <translation>Klient</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="116"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
@@ -5843,37 +5848,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDevice</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="130"/>
         <source>Modbus device connected.</source>
         <translation>Modbus-enhed tilsluttet.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="137"/>
         <source>Modbus device disconnected.</source>
         <translation>Modbus-enhed afbrudt.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="143"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="144"/>
         <source>Modbus device error: %1</source>
         <translation>Modbus-enhedsfejl: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="173"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="174"/>
         <source>Failed to connect Modbus device: %1</source>
         <translation>Kunne ikke forbinde Modbus-enhed: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="407"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="408"/>
         <source>Failed to send read request: %1</source>
         <translation>Kunne ikke sende læseanmodning: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="434"/>
         <source>Read error: %1</source>
         <translation>Læsefejl: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="440"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="441"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
         <translation>Læs %1-svar: Serveradresse=%2, startadresse=%3, værdiantal=%4</translation>
     </message>
@@ -5881,97 +5886,97 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
         <source>New Modbus Device</source>
         <translation>Ny Modbus-enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="73"/>
         <source>New Register Group</source>
         <translation>Ny Registergruppe</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="73"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>New Registers</source>
         <translation>Nye registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>Remove the Selected Item</source>
         <translation>Fjern det valgte element</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="264"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
         <source>Invalid Selection</source>
         <translation>Ugyldigt valg</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
         <source>Please select a register table to add new registers.</source>
         <translation>Vælg venligst en registertabel for at tilføje nye registre.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
         <source>Remove Item</source>
         <translation>Fjern element</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>Are you sure to remove the selected item?</source>
         <translation>Er du sikker på at fjerne det valgte element?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="329"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="330"/>
         <source>Remove Device</source>
         <translation>Fjern enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="330"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="331"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>Enheden kører. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="376"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="377"/>
         <source>Rename Register Table</source>
         <translation>Omdøb registertabel</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="377"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="378"/>
         <source>Please input the new name for the register table:</source>
         <translation>Indtast venligst det nye navn til registertabellen:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="389"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="390"/>
         <source>Rename Register Item</source>
         <translation>Omdøb registreringselement</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="390"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="391"/>
         <source>Please input the new name for the register item:</source>
         <translation>Indtast venligst det nye navn for registerelementet:</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="402"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="403"/>
         <source>Edit Modbus Device</source>
         <translation>Rediger Modbus-enhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="435"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="436"/>
         <source>Change Device parameters</source>
         <translation>Skift enhedsparametre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="436"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="437"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>Enheden kører. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="677"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="678"/>
         <source>TCP Client Device</source>
         <translation>TCP-klientenhed</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="683"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="684"/>
         <source>TCP Server Device</source>
         <translation>TCP-serverenhed</translation>
     </message>
@@ -5997,52 +6002,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="134"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
         <source>Clear Log</source>
         <translation>Ryd log</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="136"/>
         <source>Are you sure you want to clear the log?</source>
         <translation>Er du sikker på, at du vil rydde loggen?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="157"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="148"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
         <source>Save Log</source>
         <translation>Gem log</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="149"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="183"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="150"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="184"/>
         <source>Log Files (*.json)</source>
         <translation>Logfiler (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="159"/>
         <source>Failed to open file for writing: %1</source>
         <translation>Kunne ikke åbne filen til skrivning: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="191"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="203"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="212"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="182"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
         <source>Open Log</source>
         <translation>Åbn Log</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="193"/>
         <source>Failed to open file for reading: %1</source>
         <translation>Kunne ikke åbne filen til læsning: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="205"/>
         <source>Failed to parse log file: %1 at offset %2</source>
         <translation>Kunne ikke parse logfil: %1 ved offset %2</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="214"/>
         <source>Invalid log file format: root element is not an array.</source>
         <translation>Ugyldigt logfilformat: rodelementet er ikke et array.</translation>
     </message>
@@ -6103,50 +6108,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="183"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
         <source>Save Registers</source>
         <translation>Gem registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="185"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="209"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Error</source>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
         <source>Failed to open file for saving.</source>
         <translation>Filen kunne ikke åbnes til lagring.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="207"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Load Registers</source>
         <translation>Indlæs registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <source>Failed to open file for loading.</source>
         <translation>Filen kunne ikke åbnes til indlæsning.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Ugyldigt JSON-format i filen.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="234"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>Import Registers</source>
         <translation>Import registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Registertabellen er ikke tom. </translation>
     </message>

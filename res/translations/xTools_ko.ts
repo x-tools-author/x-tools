@@ -902,14 +902,14 @@
 <context>
     <name>ChartDataHandler</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="60"/>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="62"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="65"/>
         <source>Binary</source>
         <translation>이진수</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="61"/>
-        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="64"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="63"/>
+        <location filename="../../src/page/panels/outputpanels/charts/common/chartdatahandler.cpp" line="66"/>
         <source>Text</source>
         <translation>텍스트</translation>
     </message>
@@ -1210,7 +1210,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>DataPersistence</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="134"/>
+        <location filename="../../src/x/flow/nodeeditor/nodes/inputoutput/datapersistence.cpp" line="135"/>
         <source>Data Persistence</source>
         <translation>데이터 지속성</translation>
     </message>
@@ -1568,7 +1568,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>EmitterModel</name>
     <message>
         <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="185"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="190"/>
         <source>Enable</source>
         <translation>활성화</translation>
     </message>
@@ -1578,22 +1578,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="155"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="157"/>
         <source>Demo</source>
         <translation>데모</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="187"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="192"/>
         <source>Description</source>
         <translation>설명</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="189"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="194"/>
         <source>Interval</source>
         <translation>간격</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="191"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="196"/>
         <source>Data</source>
         <translation>데이터</translation>
     </message>
@@ -1632,7 +1632,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="172"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="191"/>
         <source>Calculate</source>
         <translation>계산</translation>
     </message>
@@ -1642,17 +1642,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>열려 있는</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="63"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="82"/>
         <source>File Check Assistant</source>
         <translation>파일 확인 도우미</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="133"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="152"/>
         <source>Remaining time</source>
         <translation>남은 시간</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="178"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="197"/>
         <source>StopCalculating</source>
         <translation>계산 중지</translation>
     </message>
@@ -2301,55 +2301,55 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="358"/>
+        <location filename="../../src/mainwindow.cpp" line="357"/>
         <source>New Window</source>
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="371"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="375"/>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="374"/>
+        <location filename="../../src/mainwindow.cpp" line="646"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="379"/>
-        <location filename="../../src/mainwindow.cpp" line="652"/>
+        <location filename="../../src/mainwindow.cpp" line="378"/>
+        <location filename="../../src/mainwindow.cpp" line="659"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="392"/>
+        <location filename="../../src/mainwindow.cpp" line="391"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="396"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="452"/>
+        <location filename="../../src/mainwindow.cpp" line="453"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="695"/>
+        <location filename="../../src/mainwindow.cpp" line="702"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
-        <location filename="../../src/mainwindow.cpp" line="544"/>
+        <location filename="../../src/mainwindow.cpp" line="507"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="506"/>
+        <location filename="../../src/mainwindow.cpp" line="508"/>
         <source>Join in QQ Group</source>
         <translation>QQ그룹에 가입하세요</translation>
     </message>
@@ -2359,73 +2359,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="530"/>
+        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <source>Online Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow.cpp" line="532"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="564"/>
+        <location filename="../../src/mainwindow.cpp" line="566"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="575"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="574"/>
+        <location filename="../../src/mainwindow.cpp" line="576"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="595"/>
+        <location filename="../../src/mainwindow.cpp" line="597"/>
         <source>Need to Reboot</source>
         <translation>재시작 필요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="596"/>
+        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
         <translation>작업을 적용하려면 재시작이 필요합니다. 지금 애플리케이션을 재시작하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
+        <location filename="../../src/mainwindow.cpp" line="600"/>
         <source>(Please reboot your application manually.)</source>
         <translation>(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
-        <location filename="../../src/mainwindow.cpp" line="654"/>
+        <location filename="../../src/mainwindow.cpp" line="648"/>
+        <location filename="../../src/mainwindow.cpp" line="661"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="690"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="689"/>
+        <location filename="../../src/mainwindow.cpp" line="696"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="691"/>
+        <location filename="../../src/mainwindow.cpp" line="698"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="692"/>
+        <location filename="../../src/mainwindow.cpp" line="699"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="693"/>
+        <location filename="../../src/mainwindow.cpp" line="700"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="694"/>
+        <location filename="../../src/mainwindow.cpp" line="701"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -3692,17 +3697,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="117"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
         <source>Demo</source>
         <translation>데모</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="147"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
         <source>Description</source>
         <translation>설명</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
         <source>Data</source>
         <translation>데이터</translation>
     </message>
@@ -3969,23 +3974,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>애플리케이션 부팅 중...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="55"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
         <source>Color Scheme</source>
         <translation>색 구성표</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
         <source>Dark</source>
         <translation>어두운</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="58"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
         <source>Light</source>
         <translation>빛</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
         <source>System</source>
         <translation>시스템</translation>
     </message>
@@ -4112,7 +4117,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>응답</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="61"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="62"/>
         <source>All</source>
         <translation>모두</translation>
     </message>
@@ -4265,7 +4270,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>ResponderModel</name>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="222"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="223"/>
         <source>Enable</source>
         <translation>활성화</translation>
     </message>
@@ -4275,32 +4280,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="185"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="186"/>
         <source>Demo</source>
         <translation>데모</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="225"/>
         <source>Description</source>
         <translation>설명</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="226"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="227"/>
         <source>Option</source>
         <translation>옵션</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="228"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="229"/>
         <source>Delay</source>
         <translation>지연</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="230"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="231"/>
         <source>Reference Data</source>
         <translation>참조 데이터</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="232"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="233"/>
         <source>Response Data</source>
         <translation>응답 데이터</translation>
     </message>
@@ -4348,22 +4353,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="163"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="164"/>
         <source>New Script</source>
         <translation>새 스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="164"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="165"/>
         <source>Please input the script name:</source>
         <translation>스크립트 이름을 입력하십시오:</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="267"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="268"/>
         <source>Stop the script</source>
         <translation>스크립트 중지</translation>
     </message>
     <message>
-        <location filename="../../src/page/scripts/scriptbase.cpp" line="282"/>
+        <location filename="../../src/page/scripts/scriptbase.cpp" line="283"/>
         <source>Run the script</source>
         <translation>스크립트 실행</translation>
     </message>
@@ -4458,7 +4463,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>SerialPort</name>
     <message>
-        <location filename="../../src/device/serialport.cpp" line="45"/>
+        <location filename="../../src/device/serialport.cpp" line="47"/>
         <source>Failed to open serial port: %1</source>
         <translation>시리얼 포트를 열 수 없습니다: %1</translation>
     </message>
@@ -4988,7 +4993,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TransferModel</name>
     <message>
-        <location filename="../../src/page/transfer/common/transfermodel.cpp" line="48"/>
+        <location filename="../../src/page/transfer/common/transfermodel.cpp" line="50"/>
         <source>Transfer %1</source>
         <translation>전송 %1</translation>
     </message>
@@ -5278,32 +5283,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataModel</name>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="111"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
         <source>Time</source>
         <translation>시간</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="113"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
         <source>Type</source>
         <translation>유형</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="115"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
         <source>Flags</source>
         <translation>플래그</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="117"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="119"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="123"/>
         <source>DLC</source>
         <translation>DLC</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/datamodel.cpp" line="121"/>
+        <location filename="../../src/x/canbus/datamodel.cpp" line="125"/>
         <source>Payload</source>
         <translation>유효 탑재량</translation>
     </message>
@@ -5526,32 +5531,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::NodeEditorView</name>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="243"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="245"/>
         <source>Delete connection</source>
         <translation>연결 삭제</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="278"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="280"/>
         <source>Save Image as...</source>
         <translation>이미지를 다른 이름으로 저장...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="285"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="287"/>
         <source>Save Image</source>
         <translation>이미지 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="287"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="289"/>
         <source>Images (*.png)</source>
         <translation>이미지(*.png)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="299"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="301"/>
         <source>Save Image to Clipboard</source>
         <translation>이미지를 클립보드에 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="302"/>
+        <location filename="../../src/x/flow/nodeeditor/nodeeditorview.cpp" line="304"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
@@ -5797,37 +5802,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xMQTT::MqttDataModel</name>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="64"/>
         <source>Rx</source>
         <translation>수신</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="62"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="64"/>
         <source>TX</source>
         <translation>텍사스</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="102"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
         <source>Type</source>
         <translation>유형</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="104"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
         <source>Command</source>
         <translation>명령</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="106"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="112"/>
         <source>Server</source>
         <translation>섬기는 사람</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="108"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="114"/>
         <source>Client</source>
         <translation>고객</translation>
     </message>
     <message>
-        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="110"/>
+        <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="116"/>
         <source>Data</source>
         <translation>데이터</translation>
     </message>
@@ -5843,37 +5848,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDevice</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="129"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="130"/>
         <source>Modbus device connected.</source>
         <translation>Modbus 장치가 연결되었습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="136"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="137"/>
         <source>Modbus device disconnected.</source>
         <translation>Modbus 장치 연결이 끊어졌습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="143"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="144"/>
         <source>Modbus device error: %1</source>
         <translation>Modbus 장치 오류: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="173"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="174"/>
         <source>Failed to connect Modbus device: %1</source>
         <translation>Modbus 장치를 연결하지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="407"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="408"/>
         <source>Failed to send read request: %1</source>
         <translation>읽기 요청을 보내지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="433"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="434"/>
         <source>Read error: %1</source>
         <translation>읽기 오류: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevice.cpp" line="440"/>
+        <location filename="../../src/x/modbus/modbusdevice.cpp" line="441"/>
         <source>Read %1 response: Server Address=%2, Start Address=%3, Value Count=%4</source>
         <translation>%1 응답 읽기: 서버 주소=%2, 시작 주소=%3, 값 개수=%4</translation>
     </message>
@@ -5881,97 +5886,97 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusDeviceListView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="71"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
         <source>New Modbus Device</source>
         <translation>새로운 Modbus 장치</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="72"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="73"/>
         <source>New Register Group</source>
         <translation>새 레지스터 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="73"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="74"/>
         <source>New Registers</source>
         <translation>새로운 레지스터</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="75"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="76"/>
         <source>Remove the Selected Item</source>
         <translation>선택한 항목 제거</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="264"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
         <source>Invalid Selection</source>
         <translation>잘못된 선택</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="265"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="266"/>
         <source>Please select a register table to add new registers.</source>
         <translation>새 레지스터를 추가하려면 레지스터 테이블을 선택하십시오.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="310"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
         <source>Remove Item</source>
         <translation>항목 제거</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="311"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="312"/>
         <source>Are you sure to remove the selected item?</source>
         <translation>선택한 항목을 제거하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="329"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="330"/>
         <source>Remove Device</source>
         <translation>장치 제거</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="330"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="331"/>
         <source>The device is running. Do you want to stop and remove it?</source>
         <translation>장치가 실행 중입니다. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="376"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="377"/>
         <source>Rename Register Table</source>
         <translation>레지스터 테이블 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="377"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="378"/>
         <source>Please input the new name for the register table:</source>
         <translation>등록 테이블의 새 이름을 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="389"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="390"/>
         <source>Rename Register Item</source>
         <translation>등록 항목 이름 바꾸기</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="390"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="391"/>
         <source>Please input the new name for the register item:</source>
         <translation>등록 항목의 새 이름을 입력하십시오.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="402"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="403"/>
         <source>Edit Modbus Device</source>
         <translation>Modbus 장치 편집</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="435"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="436"/>
         <source>Change Device parameters</source>
         <translation>장치 매개변수 변경</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="436"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="437"/>
         <source>The device is running. Restarting it to apply new parameters now?</source>
         <translation>장치가 실행 중입니다. </translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="677"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="678"/>
         <source>TCP Client Device</source>
         <translation>TCP 클라이언트 장치</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="683"/>
+        <location filename="../../src/x/modbus/modbusdevicelistview.cpp" line="684"/>
         <source>TCP Server Device</source>
         <translation>TCP 서버 장치</translation>
     </message>
@@ -5997,52 +6002,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="134"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
         <source>Clear Log</source>
         <translation>로그 지우기</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="136"/>
         <source>Are you sure you want to clear the log?</source>
         <translation>로그를 지우시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="147"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="157"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="148"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
         <source>Save Log</source>
         <translation>로그 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="149"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="183"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="150"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="184"/>
         <source>Log Files (*.json)</source>
         <translation>로그 파일(*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="159"/>
         <source>Failed to open file for writing: %1</source>
         <translation>쓰기 위해 파일을 열지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="181"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="191"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="203"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="212"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="182"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
         <source>Open Log</source>
         <translation>로그 열기</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="193"/>
         <source>Failed to open file for reading: %1</source>
         <translation>읽기 위해 파일을 열지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="205"/>
         <source>Failed to parse log file: %1 at offset %2</source>
         <translation>로그 파일을 구문 분석하지 못했습니다: 오프셋 %2에서 %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="214"/>
         <source>Invalid log file format: root element is not an array.</source>
         <translation>잘못된 로그 파일 형식: 루트 요소가 배열이 아닙니다.</translation>
     </message>
@@ -6103,50 +6108,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="183"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
         <source>Save Registers</source>
         <translation>레지스터 저장</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="185"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="209"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="193"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
         <source>Failed to open file for saving.</source>
         <translation>저장할 파일을 열지 못했습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="207"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Load Registers</source>
         <translation>레지스터 로드</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="217"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
         <source>Failed to open file for loading.</source>
         <translation>로드할 파일을 열지 못했습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="226"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
         <source>Invalid JSON format in the file.</source>
         <translation>파일에 잘못된 JSON 형식이 있습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="234"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
         <source>Import Registers</source>
         <translation>가져오기 레지스터</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>레지스터 테이블이 비어 있지 않습니다. </translation>
     </message>
