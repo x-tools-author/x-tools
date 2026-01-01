@@ -66,7 +66,7 @@ void xUi::initMenuBarFile()
         QApplication::closeAllWindows();
         QApplication::quit();
     });
-    action->setShortcut(QKeySequence::Quit);
+    action->setShortcut(QKeySequence("Ctrl+Q"));
 }
 
 void xUi::initMenuBarOption()
