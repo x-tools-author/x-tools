@@ -23,8 +23,8 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Not supported on Android or iOS yet
-if(ANDROID OR IOS)
-  message(STATUS "[xTools-hidapi] HIDAPI is not supported on Android or iOS.")
+if(ANDROID OR APPLE)
+  message(STATUS "[xTools-hidapi] HIDAPI is not supported on Android or Apple platforms.")
   remove_all_files_of_hidapi()
   return()
 endif()

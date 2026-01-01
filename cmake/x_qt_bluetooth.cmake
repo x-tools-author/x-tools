@@ -9,6 +9,12 @@ macro(x_remove_ble_files)
   add_compile_definitions(X_ENABLE_BLUETOOTH=0)
 endmacro()
 
+if(APPLE)
+  message(STATUS "[xTools] Bluetooth module is not supported on Apple platforms.")
+  x_remove_ble_files()
+  return()
+endif()
+
 find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Bluetooth)
 if(Qt${QT_VERSION_MAJOR}Bluetooth_FOUND AND QT_VERSION VERSION_GREATER_EQUAL "6.5.0")
   option(X_ENABLE_BLUETOOTH "Enable Bluetooth module support" ON)
