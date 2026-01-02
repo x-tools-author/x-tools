@@ -100,6 +100,34 @@ endforeach()
 
 # Make deb
 message(STATUS "Create deb package ${argAssetName}.deb")
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argAssetName}.AppImage
-                        ../deb/usr/bin/${argPacketName} WORKING_DIRECTORY ${AppImageRootDir})
+if(FALSE)
+  execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${argAssetName}.AppImage
+                          ../deb/usr/bin/${argPacketName} WORKING_DIRECTORY ${AppImageRootDir})
+else()
+  execute_process(
+    COMMAND
+      ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+      usr/share/applications/${argPacketName}.desktop -always-overwrite -bundle-non-qt-libs
+      -qmake=${argQmakePath}
+    WORKING_DIRECTORY ${argWorkingDir}/deb)
+  execute_process(COMMAND rm ./.DirIcon
+                  COMMAND rm ./AppRun
+                  COMMAND rm ./${argPacketName}.desktop
+                  COMMAND rm ./${argPacketName}.png
+                  WORKING_DIRECTORY ${argWorkingDir}/deb)
+  execute_process(COMMAND mkdir opt
+                  COMMAND mv usr opt/${argFriendlyName} WORKING_DIRECTORY ${argWorkingDir}/deb)
+  execute_process(COMMAND mkdir usr 
+                  COMMAND ${CMAKE_COMMAND} -E copy_directory opt/${argFriendlyName}/share usr/share
+                  WORKING_DIRECTORY ${argWorkingDir}/deb)
+  execute_process(COMMAND mv opt/${argFriendlyName}/translations opt/${argFriendlyName}/bin/translations
+                  WORKING_DIRECTORY ${argWorkingDir}/deb)
+  execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory usr/share/doc
+                  WORKING_DIRECTORY ${argWorkingDir}/deb)
+  set(desktop_file_name ${argWorkingDir}/deb/usr/share/applications/${argPacketName}.desktop)
+  set(old_text "Exec=${argPacketName}")
+  set(new_text "Exec=/opt/${argFriendlyName}/bin/${argPacketName}")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E echo "sed -i s/${old_text}/${new_text}/g ${desktop_file_name}")
+  execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
+endif()
 execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${argWorkingDir}/deb)
