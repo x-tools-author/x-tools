@@ -10,9 +10,7 @@
 
 #include <QActionGroup>
 #include <QApplication>
-#include <QColor>
 #include <QMenu>
-#include <QPalette>
 #include <QSettings>
 #include <QStyleHints>
 
@@ -33,6 +31,11 @@
 #include <QWidget>
 #include <QWindow>
 #endif
+#endif
+
+#ifdef Q_OS_LINUX
+#include <QColor>
+#include <QPalette>
 #endif
 
 #include "thememanager.h"
@@ -153,10 +156,25 @@ public:
             palette.setColor(QPalette::HighlightedText, Qt::black);
             qApp->setPalette(palette);
         } else if (cookedColorScheme == Qt::ColorScheme::Light) {
-            // Light mode palette - reset to default
-            qApp->setPalette(qApp->style()->standardPalette());
+            // Light mode palette
+            palette.setColor(QPalette::Window, Qt::white);
+            palette.setColor(QPalette::WindowText, Qt::black);
+            palette.setColor(QPalette::Base, Qt::white);
+            palette.setColor(QPalette::AlternateBase, QColor(240, 240, 240));
+            palette.setColor(QPalette::ToolTipBase, Qt::black);
+            palette.setColor(QPalette::ToolTipText, Qt::black);
+            palette.setColor(QPalette::Text, Qt::black);
+            palette.setColor(QPalette::Button, QColor(240, 240, 240));
+            palette.setColor(QPalette::ButtonText, Qt::black);
+            palette.setColor(QPalette::BrightText, Qt::red);
+            palette.setColor(QPalette::Link, QColor(0, 0, 255));
+            palette.setColor(QPalette::Highlight, QColor(0, 120, 215));
+            palette.setColor(QPalette::HighlightedText, Qt::white);
+            qApp->setPalette(palette);
+        } else {
+            // System default
+            qApp->setPalette(QApplication::style()->standardPalette());
         }
-        // For Qt::ColorScheme::Unknown, use system default
 #endif
 #endif
         updateWindowCaption();
