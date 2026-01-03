@@ -1,0 +1,37 @@
+name: build-docker-ubuntu-22.04-x86_64
+on:
+  workflow_dispatch: # Enables manually
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    name: Build Docker - Ubuntu 22.04 x86_64
+    runs-on: ubuntu-22.04
+    env:
+      CR_PAT: ${{ secrets.CR_PAT }}
+      QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+      QT_VERSION: 6.8.3
+    steps:
+      - name: Pull respository
+        uses: actions/checkout@v4
+      - name: Install Qt(linux_gcc_64)
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: '==3.1.*'
+          target: desktop
+          arch: linux_gcc_64
+          host: linux
+          dir: ${{ github.workspace }}
+          modules: ${{env.QT_MODULES}}
+          version: ${{ env.QT_VERSION }}
+      - name: Build docker image
+        run: | # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+          docker build -t x-tools-ubuntu-22.04:x86_64 . -f docker/22.04-x86_64/Dockerfile
+      - name: Push docker image to github registry
+        run: |
+          echo ${{ env.CR_PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker rmi ghcr.io/x-tools-author/x-tools-ubuntu-22.04:x86_64 || true
+          docker tag x-tools-ubuntu-22.04:x86_64 ghcr.io/x-tools-author/x-tools-ubuntu-22.04:x86_64
+          docker push ghcr.io/x-tools-author/x-tools-ubuntu-22.04:x86_64
