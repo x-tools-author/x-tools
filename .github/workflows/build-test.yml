@@ -17,8 +17,7 @@ jobs:
     - name: Install Dependencies
       run: |
         rm ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt
-        echo "Using system linuxdeployqt"
-        which linuxdeployqt
+        echo "Using docker linuxdeployqt"
     - name: Build for Linux
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
