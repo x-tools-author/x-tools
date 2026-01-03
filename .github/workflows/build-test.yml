@@ -14,6 +14,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Install Dependencies
+      run: |
+        rm ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt || true
+        wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt
+        chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt
     - name: Build for Linux
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
