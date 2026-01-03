@@ -59,6 +59,12 @@ RUN rm cmake-4.1.4-linux-x86_64.sh
 ENV QT_ROOT=/opt/qt
 COPY Qt ${QT_ROOT}
 
+# linuxdeployqt
+RUN mkdir -p /opt/tools
+RUN wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage -O /opt/tools/linuxdeployqt
+RUN chmod +x /opt/tools/linuxdeployqt
+ENV PATH="/opt/tools:${PATH}"
+
 # ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 # ENV ANDROID_HOME=/usr/local/lib/android/sdk
 # ENV ANDROID_NDK=${HOST_ANDROID_NDK}/ndk/27.2.12479018

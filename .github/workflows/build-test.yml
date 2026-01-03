@@ -17,8 +17,8 @@ jobs:
     - name: Install Dependencies
       run: |
         rm ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt || true
-        wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt
-        chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt
+        echo "Using system linuxdeployqt"
+        which linuxdeployqt
     - name: Build for Linux
       run: |
         docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
@@ -26,5 +26,5 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} ---clobber \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} ---clobber \;

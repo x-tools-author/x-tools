@@ -23,7 +23,8 @@ message(STATUS "[xTools.Linux] argPackageType: ${argPackageType}")
 message(STATUS "[xTools.Linux] argAssetName: ${argAssetName}")
 
 if(NOT EXISTS ${argTool})
-  message(FATAL_ERROR "[xTools.Linux] linuxdeployqt tool not found: ${argTool}")
+  # Using system linuxdeployqt
+  set(argTool linuxdeployqt)
 endif()
 
 # Remove old working dir then create a new one
