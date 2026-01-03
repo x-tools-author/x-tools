@@ -305,6 +305,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Linux
 if(LINUX AND NOT APPLE)
+  option(X_USING_PROJECT_DEPLOY_TOOL "Using project deploy tool(linuxdeployqt)" ON)
   target_link_libraries(xTools PRIVATE dl)
   include(cmake/linux/linux.cmake)
   x_build_deb(xTools "x-tools" "xTools" ${X_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)

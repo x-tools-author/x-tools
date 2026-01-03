@@ -25,5 +25,5 @@ jobs:
     - name: Upload Release Asset for Linux
       run: |
         dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} ---clobber \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} ---clobber \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} --clobber \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} --clobber \;

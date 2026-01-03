@@ -57,3 +57,9 @@ RUN rm cmake-4.1.4-linux-aarch64.sh
 # Copy Qt files from host to container
 ENV QT_ROOT=/opt/qt
 COPY Qt ${QT_ROOT}
+
+# linuxdeployqt
+RUN mkdir -p /opt/tools
+RUN wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O /opt/tools/linuxdeployqt
+RUN chmod +x /opt/tools/linuxdeployqt
+ENV PATH="/opt/tools:${PATH}"
