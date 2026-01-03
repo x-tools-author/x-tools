@@ -149,7 +149,11 @@ if(X_MAGIC)
 endif()
 
 # Do not change X_LATEST_GIT_TAG unless you know what you are doing
-set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}")
+if(DEFINED X_UBUNTU_VERSION AND NOT "${X_UBUNTU_VERSION}" STREQUAL "")
+  set(X_ASSET_NAME "xTools-ubuntu-${X_UBUNTU_VERSION}-v${X_LATEST_GIT_TAG}")
+else()
+  set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}")
+endif()
 if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID AND NOT "${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}"
                                                   STREQUAL "")
   # https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ARCHITECTURE_ID.html

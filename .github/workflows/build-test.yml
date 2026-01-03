@@ -3,15 +3,23 @@ on:
   workflow_dispatch: # Enables manually
 
 env:
-    GH_TOKEN: ${{ github.token }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-22.04:x86_64
+  QT_VERSION: '6.8.3'
+  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
 
 jobs:
   build-test:
-    runs-on: windows-11-arm
+    runs-on: ubuntu-24.04
     steps:
-      - name: Pull code
-        uses: actions/checkout@v4
-      - name: Build for Windows ARM64
-        uses: ./.github/actions/ci-windows-arm64
-        with:
-          tag: 'continuous'
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build for Linux
+      run: |
+        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+        cd /workspace && chmod +x ./scripts/ci-build-ubuntu-22.04.sh && ./scripts/ci-build-ubuntu-22.04.sh"
+    - name: Upload Release Asset for Linux
+      run: |
+        dir bin/6.8.3/Linux/Release
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
