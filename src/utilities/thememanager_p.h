@@ -133,7 +133,7 @@ public:
         QStyleHints *hints = qApp->styleHints();
         hints->setColorScheme(cookedColorScheme);
 
-#ifdef Q_OS_LINUX
+#if 0   //def Q_OS_LINUX
         // On Linux, setColorScheme alone may not be enough, we need to set QPalette
         QPalette palette;
         if (cookedColorScheme == Qt::ColorScheme::Dark) {
