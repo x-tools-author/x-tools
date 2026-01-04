@@ -16,7 +16,7 @@ chmod +x /opt/qt/6.8.3/android_armv7/bin/qt-cmake
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DANDROID_ABI=armeabi-v7a \
     -DQT_HOST_PATH:PATH=/opt/qt/6.8.3/gcc_64 \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     -S . \
     -B build/armeabi_v7a
 if [ $? -ne 0 ]; then

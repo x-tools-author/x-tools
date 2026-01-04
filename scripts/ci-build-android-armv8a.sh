@@ -16,7 +16,7 @@ chmod +x /opt/qt/6.8.3/android_arm64_v8a/bin/qt-cmake
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DANDROID_ABI=arm64-v8a \
     -DQT_HOST_PATH:PATH=/opt/qt/6.8.3/gcc_64 \
-    -G "Unix Makefiles" \
+    -G "Ninja" \
     -S . \
     -B build/arm64_v8a
 if [ $? -ne 0 ]; then
