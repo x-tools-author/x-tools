@@ -10,7 +10,6 @@
 
 #include "page/panels/common/luapanel.h"
 #include "page/panels/outputpanels/datarecords/datarecordsview.h"
-#include "page/panels/outputpanels/gps/gpspanel.h"
 #include "page/panels/outputpanels/search/searchpanel.h"
 #include "page/panels/outputpanels/xymodem/xymodemreceiver.h"
 #include "utilities/iconengine.h"
@@ -32,9 +31,6 @@ OutputPanelsManager::OutputPanelsManager(QWidget *parent)
 #endif
 #if 0
     addPanel<XYModemReceiver>(tr("XY-Modem Receiver"), xIcon(":/res/icons/xy.svg"));
-#endif
-#if X_ENABLE_GPS
-    addPanel<GpsPanel>(QString("GPS"), xIcon(":/res/icons/bds.svg"));
 #endif
 }
 

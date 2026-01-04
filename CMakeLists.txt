@@ -218,27 +218,6 @@ set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP} ${X_SOURCES_UI})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 
-# GPS module
-option(X_ENABLE_GPS "Enable GPS Test device" OFF)
-if(X_ENABLE_GPS)
-  add_compile_definitions(X_ENABLE_GPS=1)
-else()
-  add_compile_definitions(X_ENABLE_GPS=0)
-endif()
-
-# TFTP module
-option(X_ENABLE_TFTP "Enable TFTP Module" OFF)
-if(X_ENABLE_TFTP)
-  add_compile_definitions(X_ENABLE_TFTP=1)
-else()
-  add_compile_definitions(X_ENABLE_TFTP=0)
-  file(GLOB_RECURSE X_SOURCES_TFTP "src/tools/tftp/*.*")
-  foreach(source ${X_SOURCES_TFTP})
-    list(REMOVE_ITEM X_SOURCES ${source})
-    message(STATUS "[xTools.tftp] Remove TFTP source: ${source}")
-  endforeach()
-endif()
-
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
 include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)
