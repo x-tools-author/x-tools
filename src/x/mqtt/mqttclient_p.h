@@ -53,7 +53,9 @@ public:
 
         struct mg_mqtt_opts opts = {};
         memset(&opts, 0, sizeof(opts));
-        opts.topic = mg_str(topic.toUtf8().constData());
+        QByteArray tmp = topic.toUtf8();
+        opts.topic.buf = tmp.data();
+        opts.topic.len = tmp.length();
         opts.qos = d->m_qos;
         mg_mqtt_sub(c, &opts);
         QString msg = QString("Subscribed to %1").arg(QString(topic));
@@ -104,11 +106,13 @@ public:
 
         struct mg_mqtt_opts opts = {};
         memset(&opts, 0, sizeof(opts));
-        opts.topic = mg_str(topic.toUtf8().constData());
+        QByteArray tmp = topic.toUtf8();
+        opts.topic.buf = tmp.data();
+        opts.topic.len = tmp.length();
         opts.message = mg_str(message.constData());
         opts.qos = d->m_qos;
         mg_mqtt_pub(c, &opts);
-        QString msg = QString("Published to %1:%2").arg(QString(topic)).arg(QString(message));
+        QString msg = QString("Published to %1:%2").arg(topic, QString(message));
         emit client->logMessage(msg, false);
     }
 
