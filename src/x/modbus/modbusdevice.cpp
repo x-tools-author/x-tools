@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QModbusDataUnit>
 #include <QModbusDevice>
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 #include <QModbusRtuSerialClient>
 #include <QModbusRtuSerialServer>
 #else
