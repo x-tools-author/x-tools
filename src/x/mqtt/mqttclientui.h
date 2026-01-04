@@ -27,7 +27,7 @@ public:
     explicit MqttClientUi(QWidget *parent = nullptr);
     ~MqttClientUi() override;
 
-    [[nodiscard]] QJsonObject save() const;
+    QJsonObject save() const;
     void load(const QJsonObject &obj) const;
 
 protected:

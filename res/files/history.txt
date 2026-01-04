@@ -1,9 +1,10 @@
 ﻿V7.x.x 202x年xx月xx日（planing）
     新特性：
     01. 通用协议解析器
-    02. 终端（https://gitee.com/laterlove/q-terminal）（sftp, XMODEM, YMODEM, ZMODEM）
+    02. 终端（https://gitee.com/laterlove/q-terminal）（TFTP, XMODEM, YMODEM, ZMODEM）
     03. 网络功能支持ssl
     04. JT808调试功能
+    05. 新的BLE调试功能
 
 V7.7.0 2026年xx月xx日（planing）
     新特性：
