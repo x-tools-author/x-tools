@@ -86,11 +86,10 @@ jobs:
           cmake --build . --target xTools_linux
   build-macos:
     name: Build with Qt5(macos)
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-15
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-15]
         version: [5.9.9, 5.10.1, 5.11.3, 5.12.12, 5.13.2, 5.14.2, 5.15.2]
     steps:
       - name: checkout
