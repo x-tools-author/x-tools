@@ -13,7 +13,7 @@ on:
 jobs:
   build-windows:
     name: Build with Qt5(windows)
-    runs-on: windows-2022
+    runs-on: windows-2025
     strategy:
       fail-fast: false
       matrix:
@@ -90,7 +90,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14]
+        os: [macos-15]
         version: [5.9.9, 5.10.1, 5.11.3, 5.12.12, 5.13.2, 5.14.2, 5.15.2]
     steps:
       - name: checkout
