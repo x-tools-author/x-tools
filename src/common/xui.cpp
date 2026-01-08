@@ -146,6 +146,11 @@ void xUi::initMenuBarOptionSetting()
         xAPP->settings()->clear();
         xAPP->settings()->sync();
     });
+
+    m_optionMenu->addAction(tr("Open Application Directory"), this, []() {
+        const QString path = QApplication::applicationDirPath();
+        QDesktopServices::openUrl(QUrl(path));
+    });
 }
 
 void xUi::initMenuBarOptionStaysOnTop()
