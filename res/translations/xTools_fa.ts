@@ -276,77 +276,72 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
         <translation>دستیار CRC</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
         <translation>دستیار mDNS</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
         <translation>دستیار Ping</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
         <translation>دستیار ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
         <translation>دستیار Base64</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
         <translation>دستیار اعداد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
         <translation>دستیار رشته</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
         <translation>دستیار پخش</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
         <translation>دستیار بررسی فایل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
         <translation>دستیار ادغام فایل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
         <translation>دستیار کد QR</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
         <translation>دستیار بارکد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="67"/>
-        <source>TFTP Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="70"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
         <translation>دستیار گذرگاه CAN</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
         <translation>دستیار Modbus</translation>
     </message>
@@ -1632,7 +1627,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="191"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="195"/>
         <source>Calculate</source>
         <translation>محاسبه</translation>
     </message>
@@ -1652,7 +1647,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>زمان باقی‌مانده</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="197"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="201"/>
         <source>StopCalculating</source>
         <translation>متوقف کردن محاسبه</translation>
     </message>
@@ -2301,136 +2296,133 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="349"/>
         <source>New Window</source>
         <translation>پنجره جدید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>Save Parameters</source>
         <translation>ذخیره پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="374"/>
-        <location filename="../../src/mainwindow.cpp" line="646"/>
+        <location filename="../../src/mainwindow.cpp" line="366"/>
+        <location filename="../../src/mainwindow.cpp" line="619"/>
         <source>Import Parameters</source>
         <translation>وارد کردن پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="378"/>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Export Parameters</source>
         <translation>خروجی پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="391"/>
+        <location filename="../../src/mainwindow.cpp" line="383"/>
         <source>&amp;Tools</source>
         <translation>&amp;ابزارها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="387"/>
         <source>New</source>
         <translation>جدید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="453"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>&amp;View</source>
         <translation>&amp;نمایش</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>About</source>
         <translation>درباره</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="507"/>
-        <location filename="../../src/mainwindow.cpp" line="546"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>تاریخچه نسخه‌ها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="508"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>Join in QQ Group</source>
         <translation>به گروه QQ بپیوندید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="432"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="532"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>منبع باز شخص ثالث</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>کد QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="575"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>گروه QQ کاربر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>گروه QQ Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
         <source>Need to Reboot</source>
-        <translation>نیاز به راه‌اندازی مجدد</translation>
+        <translation type="vanished">نیاز به راه‌اندازی مجدد</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>این عملیات نیاز به راه‌اندازی مجدد دارد تا مؤثر باشد، آیا اکنون برنامه را راه‌اندازی مجدد کنیم؟</translation>
+        <translation type="vanished">این عملیات نیاز به راه‌اندازی مجدد دارد تا مؤثر باشد، آیا اکنون برنامه را راه‌اندازی مجدد کنیم؟</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
         <source>(Please reboot your application manually.)</source>
-        <translation>(لطفاً برنامه خود را به صورت دستی راه‌اندازی مجدد کنید.)</translation>
+        <translation type="vanished">(لطفاً برنامه خود را به صورت دستی راه‌اندازی مجدد کنید.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="648"/>
-        <location filename="../../src/mainwindow.cpp" line="661"/>
+        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="634"/>
         <source>Json Files (*.json)</source>
         <translation>فایل‌های Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Unknown</source>
         <translation>نامشخص</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Commit hash</source>
         <translation>هش کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="698"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Commit time</source>
         <translation>زمان کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Build Date</source>
         <translation>تاریخ ساخت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="700"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Copyright</source>
         <translation>حق کپی‌رایت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="701"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>All rights reserved.</source>
         <translation>تمامی حقوق محفوظ است.</translation>
     </message>
@@ -3325,32 +3317,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputPanelsManager</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="25"/>
         <source>Data Records</source>
         <translation>رکوردهای داده</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Search</source>
         <translation>جستجو</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="28"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Lua Script</source>
         <translation>اسکریپت Lua</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
         <source>Line Chart</source>
         <translation>نمودار خطی</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="31"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>Bar Chart</source>
         <translation>نمودار میله‌ای</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="34"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="33"/>
         <source>XY-Modem Receiver</source>
         <translation>گیرنده XY-Modem</translation>
     </message>
@@ -3974,23 +3966,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>برنامه در حال راه‌اندازی است...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="62"/>
         <source>Color Scheme</source>
         <translation>طرح رنگ</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="64"/>
         <source>Dark</source>
         <translation>تاریک</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="65"/>
         <source>Light</source>
         <translation>نور</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
-        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="66"/>
         <source>System</source>
         <translation>سیستم</translation>
     </message>
@@ -6173,132 +6165,152 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xUi</name>
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>Need to Reboot</source>
+        <translation type="unfinished">نیاز به راه‌اندازی مجدد</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="63"/>
+        <source>The operation need to reboot to effected, reboot the application now?</source>
+        <translation type="unfinished">این عملیات نیاز به راه‌اندازی مجدد دارد تا مؤثر باشد، آیا اکنون برنامه را راه‌اندازی مجدد کنیم؟</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>(Please reboot your application manually.)</source>
+        <translation type="unfinished">(لطفاً برنامه خود را به صورت دستی راه‌اندازی مجدد کنید.)</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="89"/>
         <source>&amp;File</source>
         <translation type="unfinished">&amp;فایل</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="65"/>
+        <location filename="../../src/common/xui.cpp" line="92"/>
         <source>Exit Application</source>
         <translation>خروج از برنامه</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="74"/>
+        <location filename="../../src/common/xui.cpp" line="101"/>
         <source>&amp;Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="87"/>
+        <location filename="../../src/common/xui.cpp" line="114"/>
         <source>High DPI Scaling Policy</source>
         <translation>خط مشی مقیاس گذاری DPI بالا</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="96"/>
+        <location filename="../../src/common/xui.cpp" line="123"/>
         <source>Application Style</source>
         <translation>سبک برنامه</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="105"/>
+        <location filename="../../src/common/xui.cpp" line="132"/>
         <source>Theme</source>
         <translation>تم</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="113"/>
+        <location filename="../../src/common/xui.cpp" line="140"/>
         <source>Open Settings Directory</source>
         <translation>دایرکتوری تنظیمات را باز کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="118"/>
+        <location filename="../../src/common/xui.cpp" line="145"/>
         <source>Clear Settings File</source>
         <translation>پاک کردن فایل تنظیمات</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="127"/>
+        <location filename="../../src/common/xui.cpp" line="150"/>
+        <source>Open Application Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="159"/>
         <source>Stays on Top</source>
         <translation>در بالا می ماند</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="144"/>
+        <location filename="../../src/common/xui.cpp" line="176"/>
         <source>&amp;Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="149"/>
+        <location filename="../../src/common/xui.cpp" line="181"/>
         <source>&amp;Help</source>
         <translation type="unfinished">&amp;راهنما</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="151"/>
+        <location filename="../../src/common/xui.cpp" line="183"/>
         <source>About Qt</source>
         <translation>درباره Qt</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="154"/>
-        <location filename="../../src/common/xui.cpp" line="243"/>
+        <location filename="../../src/common/xui.cpp" line="186"/>
+        <location filename="../../src/common/xui.cpp" line="275"/>
         <source>About</source>
         <translation>درباره</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="167"/>
+        <location filename="../../src/common/xui.cpp" line="199"/>
         <source>Get Source from Gitee</source>
         <translation>منبع را از Gitee دریافت کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="168"/>
+        <location filename="../../src/common/xui.cpp" line="200"/>
         <source>Get Source from Github</source>
         <translation>منبع را از Github دریافت کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="169"/>
+        <location filename="../../src/common/xui.cpp" line="201"/>
         <source>Visit Author Home Page</source>
         <translation>از صفحه اصلی نویسنده بازدید کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="170"/>
+        <location filename="../../src/common/xui.cpp" line="202"/>
         <source>Visit App Store</source>
         <translation>به فروشگاه App مراجعه کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="180"/>
+        <location filename="../../src/common/xui.cpp" line="212"/>
         <source>User Feedback</source>
         <translation>بازخورد کاربر</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="194"/>
+        <location filename="../../src/common/xui.cpp" line="226"/>
         <source>Grab and Save</source>
         <translation>گرفتن و ذخیره</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="198"/>
+        <location filename="../../src/common/xui.cpp" line="230"/>
         <source>Save Grabbed Image</source>
         <translation>ذخیره تصویر گرفته شده</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="209"/>
+        <location filename="../../src/common/xui.cpp" line="241"/>
         <source>Grab and Copy</source>
         <translation>بگیر و کپی کن</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="223"/>
+        <location filename="../../src/common/xui.cpp" line="255"/>
         <source>Commit time</source>
         <translation>زمان تعهد کنید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="230"/>
+        <location filename="../../src/common/xui.cpp" line="262"/>
         <source>Commit</source>
         <translation>متعهد شوید</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="240"/>
+        <location filename="../../src/common/xui.cpp" line="272"/>
         <source>Build Date</source>
         <translation>تاریخ ساخت</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="241"/>
+        <location filename="../../src/common/xui.cpp" line="273"/>
         <source>Copyright</source>
         <translation>حق چاپ</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="242"/>
+        <location filename="../../src/common/xui.cpp" line="274"/>
         <source>All rights reserved.</source>
         <translation>تمامی حقوق محفوظ است.</translation>
     </message>

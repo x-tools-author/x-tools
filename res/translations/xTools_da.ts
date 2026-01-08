@@ -276,77 +276,72 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
         <source>CRC Assistant</source>
         <translation>CRC-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
         <source>mDNS Assistant</source>
         <translation>mDNS-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>Ping Assistant</source>
         <translation>Ping-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
         <source>ASCII Assistant</source>
         <translation>ASCII-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>Base64 Assistant</source>
         <translation>Base64-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
         <source>Number Assistant</source>
         <translation>Talassistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>String Assistant</source>
         <translation>Strengassistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>Broadcast Assistant</source>
         <translation>Broadcast-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>File Check Assistant</source>
         <translation>Filkontrol-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>File Merge Assistant</source>
         <translation>Filsammenføjning-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>QR Code Assistant</source>
         <translation>QR-kode-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>Barcode Assistant</source>
         <translation>Stregkode-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="67"/>
-        <source>TFTP Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="70"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>CAN Bus Assistant</source>
         <translation>CAN-bus-assistent</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Modbus Assistant</source>
         <translation>Modbus-assistent</translation>
     </message>
@@ -1632,7 +1627,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="125"/>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="191"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="195"/>
         <source>Calculate</source>
         <translation>Beregning</translation>
     </message>
@@ -1652,7 +1647,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Resterende tid</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="197"/>
+        <location filename="../../src/tools/filecheck/filecheckassistant.cpp" line="201"/>
         <source>StopCalculating</source>
         <translation>Stop beregning</translation>
     </message>
@@ -2301,136 +2296,133 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="357"/>
+        <location filename="../../src/mainwindow.cpp" line="349"/>
         <source>New Window</source>
         <translation>Ny vindue</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
+        <location filename="../../src/mainwindow.cpp" line="362"/>
         <source>Save Parameters</source>
         <translation>Gem parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="374"/>
-        <location filename="../../src/mainwindow.cpp" line="646"/>
+        <location filename="../../src/mainwindow.cpp" line="366"/>
+        <location filename="../../src/mainwindow.cpp" line="619"/>
         <source>Import Parameters</source>
         <translation>Importer parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="378"/>
-        <location filename="../../src/mainwindow.cpp" line="659"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
         <source>Export Parameters</source>
         <translation>Eksporter parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="391"/>
+        <location filename="../../src/mainwindow.cpp" line="383"/>
         <source>&amp;Tools</source>
         <translation>&amp;Værktøjer</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="395"/>
+        <location filename="../../src/mainwindow.cpp" line="387"/>
         <source>New</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="453"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>&amp;View</source>
         <translation>&amp;Vis</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="702"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="507"/>
-        <location filename="../../src/mainwindow.cpp" line="546"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>Udgivelseshistorik</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="508"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>Join in QQ Group</source>
         <translation>Deltag i QQ Group</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="432"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="505"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="532"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>Tredjeparts open source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="566"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>QR-kode</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="575"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>Bruger QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="576"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ-gruppe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="597"/>
         <source>Need to Reboot</source>
-        <translation>Skal genstartes</translation>
+        <translation type="vanished">Skal genstartes</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="598"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation>Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
+        <translation type="vanished">Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="600"/>
         <source>(Please reboot your application manually.)</source>
-        <translation>(Genstart venligst din applikation manuelt.)</translation>
+        <translation type="vanished">(Genstart venligst din applikation manuelt.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="648"/>
-        <location filename="../../src/mainwindow.cpp" line="661"/>
+        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="634"/>
         <source>Json Files (*.json)</source>
         <translation>Json-filer (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="690"/>
+        <location filename="../../src/mainwindow.cpp" line="663"/>
         <source>Unknown</source>
         <translation>Ukendt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="696"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Commit hash</source>
         <translation>Commit-hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="698"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Commit time</source>
         <translation>Commit-tid</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="699"/>
+        <location filename="../../src/mainwindow.cpp" line="672"/>
         <source>Build Date</source>
         <translation>Bygge dato</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="700"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Copyright</source>
         <translation>Ophavsret</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="701"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>All rights reserved.</source>
         <translation>Alle rettigheder forbeholdes.</translation>
     </message>
@@ -3325,32 +3317,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputPanelsManager</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="25"/>
         <source>Data Records</source>
         <translation>Dataoptegnelser</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="26"/>
         <source>Search</source>
         <translation>Søg</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="28"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="27"/>
         <source>Lua Script</source>
         <translation>Lua-script</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="29"/>
         <source>Line Chart</source>
         <translation>Linje-diagram</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="31"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="30"/>
         <source>Bar Chart</source>
         <translation>Søjlediagram</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="34"/>
+        <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="33"/>
         <source>XY-Modem Receiver</source>
         <translation>XY-Modem modtager</translation>
     </message>
@@ -3974,23 +3966,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Applikationen starter...</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="57"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="62"/>
         <source>Color Scheme</source>
         <translation>Farveskema</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="59"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="64"/>
         <source>Dark</source>
         <translation>Mørk</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager_p.h" line="60"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="65"/>
         <source>Light</source>
         <translation>Lys</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager_p.h" line="39"/>
-        <location filename="../../src/utilities/thememanager_p.h" line="61"/>
+        <location filename="../../src/utilities/thememanager_p.h" line="66"/>
         <source>System</source>
         <translation>System</translation>
     </message>
@@ -6173,132 +6165,152 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xUi</name>
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
+        <source>Need to Reboot</source>
+        <translation type="unfinished">Skal genstartes</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="63"/>
+        <source>The operation need to reboot to effected, reboot the application now?</source>
+        <translation type="unfinished">Operationen kræver genstart for at træde i kraft, genstart applikationen nu?</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="65"/>
+        <source>(Please reboot your application manually.)</source>
+        <translation type="unfinished">(Genstart venligst din applikation manuelt.)</translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="89"/>
         <source>&amp;File</source>
         <translation type="unfinished">&amp;Fil</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="65"/>
+        <location filename="../../src/common/xui.cpp" line="92"/>
         <source>Exit Application</source>
         <translation>Afslut applikation</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="74"/>
+        <location filename="../../src/common/xui.cpp" line="101"/>
         <source>&amp;Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="87"/>
+        <location filename="../../src/common/xui.cpp" line="114"/>
         <source>High DPI Scaling Policy</source>
         <translation>Høj DPI-skaleringspolitik</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="96"/>
+        <location filename="../../src/common/xui.cpp" line="123"/>
         <source>Application Style</source>
         <translation>Anvendelsesstil</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="105"/>
+        <location filename="../../src/common/xui.cpp" line="132"/>
         <source>Theme</source>
         <translation>Tema</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="113"/>
+        <location filename="../../src/common/xui.cpp" line="140"/>
         <source>Open Settings Directory</source>
         <translation>Åbn Indstillingsmappe</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="118"/>
+        <location filename="../../src/common/xui.cpp" line="145"/>
         <source>Clear Settings File</source>
         <translation>Ryd indstillingsfil</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="127"/>
+        <location filename="../../src/common/xui.cpp" line="150"/>
+        <source>Open Application Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/xui.cpp" line="159"/>
         <source>Stays on Top</source>
         <translation>Forbliver på toppen</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="144"/>
+        <location filename="../../src/common/xui.cpp" line="176"/>
         <source>&amp;Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="149"/>
+        <location filename="../../src/common/xui.cpp" line="181"/>
         <source>&amp;Help</source>
         <translation type="unfinished">&amp;Hjælp</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="151"/>
+        <location filename="../../src/common/xui.cpp" line="183"/>
         <source>About Qt</source>
         <translation>Om Qt</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="154"/>
-        <location filename="../../src/common/xui.cpp" line="243"/>
+        <location filename="../../src/common/xui.cpp" line="186"/>
+        <location filename="../../src/common/xui.cpp" line="275"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="167"/>
+        <location filename="../../src/common/xui.cpp" line="199"/>
         <source>Get Source from Gitee</source>
         <translation>Få kilde fra Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="168"/>
+        <location filename="../../src/common/xui.cpp" line="200"/>
         <source>Get Source from Github</source>
         <translation>Hent kilde fra Github</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="169"/>
+        <location filename="../../src/common/xui.cpp" line="201"/>
         <source>Visit Author Home Page</source>
         <translation>Besøg forfatterhjemmesiden</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="170"/>
+        <location filename="../../src/common/xui.cpp" line="202"/>
         <source>Visit App Store</source>
         <translation>Besøg App Store</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="180"/>
+        <location filename="../../src/common/xui.cpp" line="212"/>
         <source>User Feedback</source>
         <translation>Brugerfeedback</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="194"/>
+        <location filename="../../src/common/xui.cpp" line="226"/>
         <source>Grab and Save</source>
         <translation>Grib og gem</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="198"/>
+        <location filename="../../src/common/xui.cpp" line="230"/>
         <source>Save Grabbed Image</source>
         <translation>Gem grebet billede</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="209"/>
+        <location filename="../../src/common/xui.cpp" line="241"/>
         <source>Grab and Copy</source>
         <translation>Grib og kopier</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="223"/>
+        <location filename="../../src/common/xui.cpp" line="255"/>
         <source>Commit time</source>
         <translation>Forpligt tid</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="230"/>
+        <location filename="../../src/common/xui.cpp" line="262"/>
         <source>Commit</source>
         <translation>Begå</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="240"/>
+        <location filename="../../src/common/xui.cpp" line="272"/>
         <source>Build Date</source>
         <translation>Byggedato</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="241"/>
+        <location filename="../../src/common/xui.cpp" line="273"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/common/xui.cpp" line="242"/>
+        <location filename="../../src/common/xui.cpp" line="274"/>
         <source>All rights reserved.</source>
         <translation>Alle rettigheder forbeholdes.</translation>
     </message>
