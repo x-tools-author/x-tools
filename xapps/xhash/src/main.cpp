@@ -18,11 +18,11 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName("xHash");
     QApplication::setApplicationVersion(QString(X_HASH_VERSION));
 
+    xApp::setupHdpi();
     xApp app(argc, argv);
     auto settings = app.settings();
     settings->setValue("Application/boost", QDateTime::currentDateTime().toString(Qt::ISODate));
-
-    app.setupHdpi();
+    app.setupAppStyle();
     app.setupColorScheme();
     app.setupLanguage();
 

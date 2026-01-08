@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
@@ -16,6 +16,7 @@
 #include <QLocale>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QProcess>
 #include <QScreen>
 #include <QStandardPaths>
 #include <QStyleHints>
@@ -37,6 +38,13 @@ xUi::xUi(QWidget *parent)
 #ifdef X_MAGIC
     setWindowOpacity(0.3);
 #endif
+    connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
+    connect(&xStyleMgr.singleton(), &xTools::StyleManager::styleChanged, this, [=]() {
+        tryToReboot();
+    });
+    connect(&xHdpiMgr.singleton(), &xTools::HdpiManager::hdpiChanged, this, [=]() {
+        tryToReboot();
+    });
 }
 
 xUi::~xUi() {}
@@ -47,6 +55,25 @@ void xUi::moveToCenter()
     int x = (screenGeometry.width() - width()) / 2;
     int y = (screenGeometry.height() - height()) / 2;
     move(x, y);
+}
+
+void xUi::tryToReboot(bool doNotReboot)
+{
+    QString title = tr("Need to Reboot");
+    QString text = tr("The operation need to reboot to effected, reboot the application now?");
+    if (doNotReboot) {
+        text += tr("(Please reboot your application manually.)");
+    }
+
+    int ret = QMessageBox::information(this, title, text, QMessageBox::Ok | QMessageBox::Cancel);
+    if (ret == QMessageBox::Ok) {
+        if (!doNotReboot) {
+            QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
+        }
+
+        xAPP->execMs(100);
+        qApp->closeAllWindows();
+    }
 }
 
 void xUi::initMenuBar()

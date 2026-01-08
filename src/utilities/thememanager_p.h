@@ -135,6 +135,11 @@ public:
         Qt::ColorScheme cookedColorScheme = static_cast<Qt::ColorScheme>(colorScheme);
         QStyleHints *hints = qApp->styleHints();
         hints->setColorScheme(cookedColorScheme);
+        static bool firstTime{true};
+        if (firstTime) {
+            firstTime = false;
+            qInfo("The current color scheme is %d.", static_cast<int>(cookedColorScheme));
+        }
 
 #if 0   //def Q_OS_LINUX
         // On Linux, setColorScheme alone may not be enough, we need to set QPalette

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
@@ -19,6 +19,7 @@ public:
     ~xUi() override;
 
     void moveToCenter();
+    void tryToReboot(bool doNotReboot = false);
 
 protected:
     QMenu *m_fileMenu{nullptr};

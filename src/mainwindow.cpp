@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -143,14 +143,6 @@ MainWindow::MainWindow(QWidget* parent)
     QToolButton* button = m_layoutManager->addLayoutPage(QString("xTools"), ioLayoutWidget);
     m_layoutManager->setupPages();
     button->setChecked(true);
-
-    connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
-    connect(&xStyleMgr.singleton(), &xTools::StyleManager::styleChanged, this, [=]() {
-        tryToReboot();
-    });
-    connect(&xHdpiMgr.singleton(), &xTools::HdpiManager::hdpiChanged, this, [=]() {
-        tryToReboot();
-    });
 
     // ---------------------------------------------------------------------------------------------
     initMenuBar();
@@ -590,25 +582,6 @@ void MainWindow::showQrCode()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
-}
-
-void MainWindow::tryToReboot(bool doNotReboot)
-{
-    QString title = tr("Need to Reboot");
-    QString text = tr("The operation need to reboot to effected, reboot the application now?");
-    if (doNotReboot) {
-        text += tr("(Please reboot your application manually.)");
-    }
-
-    int ret = QMessageBox::information(nullptr, title, text, QMessageBox::Ok | QMessageBox::Cancel);
-    if (ret == QMessageBox::Ok) {
-        if (!doNotReboot) {
-            QProcess::startDetached(QApplication::applicationFilePath(), QStringList());
-        }
-
-        xAPP->execMs(100);
-        qApp->closeAllWindows();
-    }
 }
 
 void MainWindow::visitOnlineDocumentation()
