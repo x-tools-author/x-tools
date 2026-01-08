@@ -78,15 +78,18 @@ xApp::xApp(int &argc, char **argv)
     xThemeMgr.setupSettings(settings());
     xHdpiMgr.setupSettings(settings());
 
+    QString version = QApplication::applicationVersion();
+    if (version.isEmpty()) {
 #ifdef X_LATEST_GIT_TAG
-    QString tmp(X_LATEST_GIT_TAG);
-    if (tmp.contains("v")) {
-        tmp.remove("v");
-    }
-    QApplication::setApplicationVersion(tmp);
+        QString tmp(X_LATEST_GIT_TAG);
+        if (tmp.contains("v")) {
+            tmp.remove("v");
+        }
+        QApplication::setApplicationVersion(tmp);
 #else
-    QApplication::setApplicationVersion("0.0.0");
+        QApplication::setApplicationVersion("0.0.0");
 #endif
+    }
 
     const ParameterKeys keys;
     bool clearSettings = xAPP->settings()->value(keys.clearSettings, false).toBool();

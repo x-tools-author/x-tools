@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -168,7 +168,11 @@ void FileCheckAssistant::clearMessage()
 
 void FileCheckAssistant::onOpenPushButtonClicked()
 {
+    QString tmp = ui->filePathlineEdit->text();
     m_fileName = QFileDialog::getOpenFileName();
+    if (m_fileName.isEmpty()) {
+        m_fileName = tmp;
+    }
     m_filePathlineEdit->setText(m_fileName);
     if (!m_fileName.isEmpty()) {
         m_startStopPushButton->setEnabled(true);

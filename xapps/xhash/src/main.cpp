@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     QApplication::setOrganizationName("xTools");
     QApplication::setApplicationName("xHash");
-    QApplication::setApplicationVersion("1.0.0");
+    QApplication::setApplicationVersion(QString(X_HASH_VERSION));
 
     xApp app(argc, argv);
     auto settings = app.settings();
@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
     FileCheckAssistant *fileCheckAssistant = new FileCheckAssistant(&window);
     window.setCentralWidget(fileCheckAssistant);
     window.setWindowIcon(QIcon(":/res/icons/logo.svg"));
-    auto flags = window.windowFlags();
+    Qt::WindowFlags flags = window.windowFlags();
     flags &= ~Qt::WindowMinMaxButtonsHint;
-    window.setWindowFlags(Qt::WindowFlags(flags));
+    window.setWindowFlags(flags);
     window.setMinimumWidth(520);
     window.show();
     window.moveToCenter();

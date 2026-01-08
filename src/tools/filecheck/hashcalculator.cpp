@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2018-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2018-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -125,7 +125,6 @@ void HashCalculator::run()
                 }
             }
 
-            // Responsing the interruption requested
             if (isInterruptionRequested()) {
                 return;
             }

@@ -238,7 +238,7 @@ void xUi::showAboutInfo()
     QString dtString = xBuildDateTimeString(buildDateTimeFormat);
     QString year = xBuildDateTimeString("yyyy");
     info += tr("Build Date") + ": " + dtString + "\n\n";
-    info += tr("Copyright") + QString(" 2025-%1 x-tools-author(x-tools@outlook.com).").arg(year);
+    info += tr("Copyright") + ": " + QString("2025-%1 x-tools@outlook.com. ").arg(year);
     info += tr("All rights reserved.");
     QMessageBox::about(this, tr("About") + QString(" ") + xAPP->applicationName(), info);
 }
