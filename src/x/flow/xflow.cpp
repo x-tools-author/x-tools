@@ -507,7 +507,11 @@ QJsonObject xFlow::cookedNodeStyle(const QJsonObject &style)
     nodeStyle["GradientColor2"] = rgb;
     nodeStyle["GradientColor3"] = rgb;
 
+#if Q_OS_WIN
     QColor normalBoundaryColor = palette.color(QPalette::ColorRole::Button);
+#else
+    QColor normalBoundaryColor = palette.color(QPalette::ColorRole::Shadow);
+#endif
     rgb[0] = normalBoundaryColor.red();
     rgb[1] = normalBoundaryColor.green();
     rgb[2] = normalBoundaryColor.blue();
