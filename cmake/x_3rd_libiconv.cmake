@@ -1,6 +1,6 @@
-﻿# https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.18.tar.gz
-# https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/v1.17-p1.zip devenv libiconv.sln
-# /Build
+﻿# * https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.18.tar.gz
+# * https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/v1.17-p1.zip
+# * devenv libiconv.sln /Build "Release|x64"
 
 # --------------------------------------------------------------------------------------------------
 if(MINGW)
@@ -59,7 +59,23 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Build libiconv if it does not exist
 if(WIN32)
-  if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
+  if(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.50")
+    set(src_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-VS2022)
+    set(dst_dir ${CMAKE_SOURCE_DIR}/3rd/${file_name}/build-VS2026)
+    if(NOT EXISTS ${dst_dir})
+      execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${src_dir} ${dst_dir})
+      file(GLOB_RECURSE pro_files "${dst_dir}/*.vcxproj")
+      foreach(pro_file IN LISTS pro_files)
+        # Replace all occurrences of "v143" with "v145"
+        set(old_text "v143")
+        set(new_text "v145")
+        execute_process(COMMAND powershell -Command "(Get-Content ${pro_file}) -replace
+        '${old_text}', '${new_text}' | Set-Content ${pro_file}")
+      endforeach()
+    endif()
+
+    set(X_VS "VS2026")
+  elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.30")
     set(X_VS "VS2022")
   elseif(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "19.20")
     set(X_VS "VS2019")
