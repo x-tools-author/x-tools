@@ -12,6 +12,10 @@
 #include <hidapi.h>
 #endif
 
+#if X_ENABLE_X_COAP
+#include <coap3/coap.h>
+#endif
+
 #include "application.h"
 #include "mainwindow.h"
 
@@ -23,6 +27,10 @@ int main(int argc, char *argv[])
 {
 #if X_ENABLE_HID
     hid_init();
+#endif
+#if X_ENABLE_X_COAP
+    coap_startup();
+    coap_set_log_level(COAP_LOG_OSCORE);
 #endif
 
     Application::setOrganizationName("xTools");
@@ -64,6 +72,9 @@ int main(int argc, char *argv[])
     Application::uninstallLog();
 #if X_ENABLE_HID
     hid_exit();
+#endif
+#if X_ENABLE_X_COAP
+    coap_cleanup();
 #endif
     qInfo() << "Application exited with code:" << ret;
     return ret;

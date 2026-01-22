@@ -121,7 +121,7 @@ void LayoutManager::setupPages()
     addLayoutPage(QString("xMQTT"), m_mqtt);
 #endif
 #if X_ENABLE_X_COAP
-    m_coap = new xCoap::xCoap(m_layout->parentWidget());
+    m_coap = new xCoAP::xCoAP(m_layout->parentWidget());
     addLayoutPage(QString("xCoAP"), m_coap);
 #endif
 #if X_ENABLE_X_OPCUA
@@ -288,7 +288,7 @@ QList<QAction*> LayoutManager::newWindowActions()
         m_newWindowActions.append(a);
 #endif
 #if X_ENABLE_X_COAP
-        a = createNewWindowAction<xCoap::xCoap>(this, QString("xCoAP"));
+        a = createNewWindowAction<xCoAP::xCoAP>(this, QString("xCoAP"));
         m_newWindowActions.append(a);
 #endif
 #if X_ENABLE_X_OPCUA

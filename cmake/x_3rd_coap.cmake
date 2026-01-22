@@ -1,4 +1,5 @@
 # * https://github.com/obgm/libcoap
+# * Test server: https://coap.me/
 
 macro(x_remove_all_coap_files)
   add_compile_definitions(X_ENABLE_X_COAP=0)

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2026-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xModbus project.
  *
@@ -8,25 +8,22 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
-#include <QWidget>
-
-#include "x/leftrightui.h"
+#include <QComboBox>
+#include <QObject>
+#include <QSpinBox>
 
 namespace xCoAP {
 
-class xCoAPPrivate;
-class xCoAP : public LeftRightUi
+class CoAPCommon : public QObject
 {
     Q_OBJECT
-    xCoAPPrivate* d;
-
 public:
-    explicit xCoAP(QWidget* parent = nullptr);
-    ~xCoAP();
+    explicit CoAPCommon(QObject* parent = nullptr);
+    ~CoAPCommon();
 
-    QJsonObject save() override;
-    void load(const QJsonObject& obj) override;
+    static void setupSocketAddress(QComboBox* comboBox);
+    static void setupSocketPort(QSpinBox* comboBox);
+    static void setupSocketProtocol(QComboBox* comboBox);
 };
 
 } // namespace xCoAP

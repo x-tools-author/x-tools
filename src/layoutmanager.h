@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -41,8 +41,8 @@ class xMqtt;
 }
 #endif
 #if X_ENABLE_X_COAP
-namespace xCoap {
-class xCoap;
+namespace xCoAP {
+class xCoAP;
 }
 #endif
 #if X_ENABLE_X_OPCUA
@@ -100,7 +100,7 @@ private:
     xMqtt::xMqtt* m_mqtt{nullptr};
 #endif
 #if X_ENABLE_X_COAP
-    xCoap::xCoap* m_coap{nullptr};
+    xCoAP::xCoAP* m_coap{nullptr};
 #endif
 #if X_ENABLE_X_OPCUA
     xOpcUa::xOpcUa* m_opcua{nullptr};
