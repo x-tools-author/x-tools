@@ -37,7 +37,7 @@
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="pushButtonRight">
+      <widget class="QPushButton" name="pushButtonLeft">
        <property name="text">
         <string notr="true">PushButton</string>
        </property>
@@ -57,7 +57,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtoneft">
+      <widget class="QPushButton" name="pushButtonRight">
        <property name="text">
         <string notr="true">PushButton</string>
        </property>

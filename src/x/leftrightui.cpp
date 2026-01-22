@@ -39,7 +39,7 @@ void LeftRightUi::setupUi(const QString &leftTitle,
                           const QString &rightTitle,
                           QWidget *right)
 {
-    ui->pushButtoneft->setText(leftTitle);
+    ui->pushButtonLeft->setText(leftTitle);
     ui->pushButtonRight->setText(rightTitle);
 
     if (left && !m_left) {
