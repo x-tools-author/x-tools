@@ -14,6 +14,7 @@
 
 #include "coapcommon.h"
 #include "coapmsgview.h"
+#include "coapresourceview.h"
 #include "coapserver.h"
 
 namespace Ui {
@@ -43,6 +44,8 @@ public:
         QHBoxLayout* layout = new QHBoxLayout(ui->widget);
         layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(m_msgView);
+
+        m_resourceView = new CoAPResourceView(q);
     }
     ~CoAPServerUiPrivate()
     {
@@ -56,6 +59,7 @@ public:
     Ui::CoAPServerUi* ui{nullptr};
     CoAPServer* m_server{nullptr};
     CoAPMsgView* m_msgView{nullptr};
+    CoAPResourceView* m_resourceView{nullptr};
 
 public:
     void onStarted()
@@ -130,6 +134,11 @@ void CoAPServerUi::load(const QJsonObject& obj)
     if (index >= 0) {
         d->ui->comboBoxProtocol->setCurrentIndex(index);
     }
+}
+
+QWidget* CoAPServerUi::resourceView() const
+{
+    return d->m_resourceView;
 }
 
 } // namespace xCoAP

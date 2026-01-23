@@ -57,8 +57,10 @@ public:
 
         m_client = new CoAPClientUi(q);
         m_server = new CoAPServerUi(q);
-        ui->tabWidgetClient->addTab(m_client, "Client");
-        ui->tabWidgetServer->addTab(m_server, "Server");
+        const QString msgTitle = tr("Messages");
+        ui->tabWidgetClient->addTab(m_client, msgTitle);
+        ui->tabWidgetServer->addTab(m_server, msgTitle);
+        ui->tabWidgetServer->addTab(m_server->resourceView(), tr("Resources"));
     }
     ~xCoAPPrivate() {}
 

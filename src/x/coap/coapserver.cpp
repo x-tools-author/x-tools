@@ -26,6 +26,17 @@ namespace xCoAP {
 
 namespace {
 
+/*
+    值	常量	                对应 HTTP	 说明
+    1	COAP_REQUEST_GET	    GET	        获取资源表示
+    2	COAP_REQUEST_POST	    POST	    创建资源或执行操作
+    3	COAP_REQUEST_PUT	    PUT	        更新或创建资源
+    4	COAP_REQUEST_DELETE	    DELETE	    删除资源
+    5	COAP_REQUEST_FETCH	    -	        获取部分资源（类似带条件的 GET）
+    6	COAP_REQUEST_PATCH	    PATCH	    对资源进行部分修改
+    7	COAP_REQUEST_IPATCH	    -	        幂等的 PATCH（保证多次操作结果一致）
+*/
+
 static void hnd_get_hello(coap_resource_t* resource,
                           coap_session_t* session,
                           const coap_pdu_t* request,
@@ -36,6 +47,12 @@ static void hnd_get_hello(coap_resource_t* resource,
     Q_UNUSED(session);
     Q_UNUSED(request);
     Q_UNUSED(query);
+
+    // Get request resource path
+    coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+    qInfo() << "Received GET request for resource:"
+            << QString::fromStdString(
+                   std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
 
     static const char kPayload[] = "Hello from xTools CoAP server";
     coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
@@ -56,6 +73,155 @@ public:
 public:
     QJsonObject m_parameters;
     QMutex m_parametersMutex;
+
+public:
+    static void getHandler(coap_resource_t* resource,
+                           coap_session_t* session,
+                           const coap_pdu_t* request,
+                           const coap_string_t* query,
+                           coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received GET request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "Hello from xTools CoAP server";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void postHandler(coap_resource_t* resource,
+                            coap_session_t* session,
+                            const coap_pdu_t* request,
+                            const coap_string_t* query,
+                            coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received POST request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "POST request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void putHandler(coap_resource_t* resource,
+                           coap_session_t* session,
+                           const coap_pdu_t* request,
+                           const coap_string_t* query,
+                           coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received PUT request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "PUT request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void deleteHandler(coap_resource_t* resource,
+                              coap_session_t* session,
+                              const coap_pdu_t* request,
+                              const coap_string_t* query,
+                              coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received DELETE request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "DELETE request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_DELETED);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void patchHandler(coap_resource_t* resource,
+                             coap_session_t* session,
+                             const coap_pdu_t* request,
+                             const coap_string_t* query,
+                             coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received PATCH request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "PATCH request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void ipatchHandler(coap_resource_t* resource,
+                              coap_session_t* session,
+                              const coap_pdu_t* request,
+                              const coap_string_t* query,
+                              coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received iPATCH request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "iPATCH request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
+    static void fetchHandler(coap_resource_t* resource,
+                             coap_session_t* session,
+                             const coap_pdu_t* request,
+                             const coap_string_t* query,
+                             coap_pdu_t* response)
+    {
+        Q_UNUSED(resource);
+        Q_UNUSED(session);
+        Q_UNUSED(request);
+        Q_UNUSED(query);
+
+        // Get request resource path
+        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        qInfo() << "Received FETCH request for resource:"
+                << QString::fromStdString(
+                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+
+        static const char kPayload[] = "FETCH request received";
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
+        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+    }
 
 private:
     CoAPServer* q{nullptr};
@@ -135,7 +301,7 @@ void CoAPServer::run()
         return;
     }
 
-    coap_register_request_handler(resource, COAP_REQUEST_GET, hnd_get_hello);
+    coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
     coap_add_resource(ctx, resource);
 
     while (!isInterruptionRequested()) {
