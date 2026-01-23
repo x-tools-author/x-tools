@@ -70,7 +70,7 @@ int CoAPMsgModel::rowCount(const QModelIndex& parent) const
 int CoAPMsgModel::columnCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
-    return 9;
+    return 10;
 }
 
 QVariant CoAPMsgModel::headerData(int section, Qt::Orientation orientation, int role) const
