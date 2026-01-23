@@ -9,6 +9,8 @@
 #include "coapmsgview.h"
 #include "ui_coapmsgview.h"
 
+#include <QHeaderView>
+
 #include "coapmsgmodel.h"
 
 namespace Ui {
@@ -29,6 +31,8 @@ public:
 
         m_model = new CoAPMsgModel(q);
         ui->tableView->setModel(m_model);
+        ui->tableView->horizontalHeader()->setSizeAdjustPolicy(QHeaderView::AdjustToContents);
+        ui->tableView->horizontalHeader()->setStretchLastSection(true);
     }
     ~CoAPMsgViewPrivate() override {}
 
