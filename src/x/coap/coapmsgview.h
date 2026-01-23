@@ -13,7 +13,7 @@
 namespace xCoAP {
 
 class CoAPMsgViewPrivate;
-class CoAPMsgView : public QTableView
+class CoAPMsgView : public QWidget
 {
     Q_OBJECT
     CoAPMsgViewPrivate *d{nullptr};

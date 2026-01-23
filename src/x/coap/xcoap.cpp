@@ -11,15 +11,23 @@
 
 #include <QAction>
 #include <QMenu>
+#include <QToolButton>
 
 #include "coapclientui.h"
 #include "coapserverui.h"
+#include "utilities/iconengine.h"
 
 namespace Ui {
 class xCoAP;
 }
 
 namespace xCoAP {
+
+struct xCoAPSettingKeys
+{
+    const QString clientViewVisible{"clientViewVisible"};
+    const QString serverViewVisible{"serverViewVisible"};
+};
 
 class xCoAPPrivate : public QObject
 {
@@ -32,12 +40,20 @@ public:
         ui->setupUi(q);
 
         m_toolButtonMenu = new QMenu(q);
-        m_clientAction = m_toolButtonMenu->addAction("Client View");
-        m_serverAction = m_toolButtonMenu->addAction("Server View");
-        m_clientAction->setCheckable(true);
-        m_serverAction->setCheckable(true);
-        connect(m_clientAction, &QAction::triggered, q, [=]() { onClientActionTriggered(); });
-        connect(m_serverAction, &QAction::triggered, q, [=]() { onServerActionTriggered(); });
+        m_clientCtrlToolButton = new QToolButton(q);
+        m_serverCtrlToolButton = new QToolButton(q);
+        m_clientCtrlToolButton->setToolTip("Show/Hide Client View");
+        m_serverCtrlToolButton->setToolTip("Show/Hide Server View");
+        m_clientCtrlToolButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        m_serverCtrlToolButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        ui->tabWidgetClient->setCornerWidget(m_serverCtrlToolButton, Qt::TopRightCorner);
+        ui->tabWidgetServer->setCornerWidget(m_clientCtrlToolButton, Qt::TopRightCorner);
+        connect(m_clientCtrlToolButton, &QToolButton::clicked, q, [=]() {
+            onClientCtrlToolButtonClicked();
+        });
+        connect(m_serverCtrlToolButton, &QToolButton::clicked, q, [=]() {
+            onServerCtrlToolButtonClicked();
+        });
 
         m_client = new CoAPClientUi(q);
         m_server = new CoAPServerUi(q);
@@ -51,35 +67,44 @@ public:
     CoAPClientUi* m_client{nullptr};
     CoAPServerUi* m_server{nullptr};
     QMenu* m_toolButtonMenu{nullptr};
-    QAction* m_clientAction{nullptr};
-    QAction* m_serverAction{nullptr};
+    QToolButton* m_clientCtrlToolButton{nullptr};
+    QToolButton* m_serverCtrlToolButton{nullptr};
 
 private:
-    void onClientActionTriggered()
+    void onClientCtrlToolButtonClicked()
     {
-        if (this->m_clientAction->isChecked()) {
+        bool isVisible = !ui->tabWidgetClient->isVisible();
+        if (isVisible) {
             ui->tabWidgetClient->show();
         } else {
-            // client and server cannot be hidden at the same time
-            if (this->m_serverAction->isChecked()) {
-                ui->tabWidgetClient->setVisible(this->m_clientAction->isChecked());
+            // Client and Server can not be hidden at the same time
+            if (ui->tabWidgetServer->isVisible()) {
+                ui->tabWidgetClient->setVisible(isVisible);
             } else {
-                this->m_clientAction->setChecked(true);
+                ui->tabWidgetClient->show();
             }
         }
+
+        QString clientCtrlBtnIcon = m_client->isVisible() ? ":res/icons/chevron_left.svg"
+                                                          : ":res/icons/chevron_right.svg";
+        m_clientCtrlToolButton->setIcon(xIcon(clientCtrlBtnIcon));
     }
-    void onServerActionTriggered()
+    void onServerCtrlToolButtonClicked()
     {
-        if (this->m_serverAction->isChecked()) {
+        bool isVisible = !ui->tabWidgetServer->isVisible();
+        if (isVisible) {
             ui->tabWidgetServer->show();
         } else {
-            // client and server cannot be hidden at the same time
-            if (this->m_clientAction->isChecked()) {
-                ui->tabWidgetServer->setVisible(this->m_serverAction->isChecked());
+            // Client and Server can not be hidden at the same time
+            if (ui->tabWidgetClient->isVisible()) {
+                ui->tabWidgetServer->setVisible(isVisible);
             } else {
-                this->m_serverAction->setChecked(true);
+                ui->tabWidgetServer->show();
             }
         }
+        QString serverCtrlBtnIcon = m_server->isVisible() ? ":res/icons/chevron_right.svg"
+                                                          : ":res/icons/chevron_left.svg";
+        m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     }
 
 private:
@@ -96,15 +121,36 @@ xCoAP::~xCoAP() {}
 
 QJsonObject xCoAP::save()
 {
+    xCoAPSettingKeys keys;
     QJsonObject obj;
+    obj.insert(keys.clientViewVisible, d->ui->tabWidgetClient->isVisible());
+    obj.insert(keys.serverViewVisible, d->ui->tabWidgetServer->isVisible());
     return obj;
 }
 
-void xCoAP::load(const QJsonObject& obj) {}
+void xCoAP::load(const QJsonObject& obj)
+{
+    xCoAPSettingKeys keys;
+    bool clientVisible = obj.value(keys.clientViewVisible).toBool(true);
+    bool serverVisible = obj.value(keys.serverViewVisible).toBool(true);
+
+    d->ui->tabWidgetClient->setVisible(clientVisible);
+    d->ui->tabWidgetServer->setVisible(serverVisible);
+    QString clientCtrlBtnIcon = clientVisible ? ":res/icons/chevron_left.svg"
+                                              : ":res/icons/chevron_right.svg";
+    d->m_clientCtrlToolButton->setIcon(xIcon(clientCtrlBtnIcon));
+    QString serverCtrlBtnIcon = serverVisible ? ":res/icons/chevron_right.svg"
+                                              : ":res/icons/chevron_left.svg";
+    d->m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
+}
 
 QMenu* xCoAP::toolButtonMenu()
 {
+#if 0
     return d->m_toolButtonMenu;
+#else
+    return nullptr;
+#endif
 }
 
 } // namespace xCoAP

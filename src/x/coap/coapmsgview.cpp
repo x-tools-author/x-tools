@@ -7,8 +7,13 @@
  * code directory.
  **************************************************************************************************/
 #include "coapmsgview.h"
+#include "ui_coapmsgview.h"
 
 #include "coapmsgmodel.h"
+
+namespace Ui {
+class CoAPMsgView;
+};
 
 namespace xCoAP {
 
@@ -19,12 +24,16 @@ public:
         : QObject(q_ptr)
         , q(q_ptr)
     {
+        ui = new Ui::CoAPMsgView();
+        ui->setupUi(q);
+
         m_model = new CoAPMsgModel(q);
-        q->setModel(m_model);
+        ui->tableView->setModel(m_model);
     }
     ~CoAPMsgViewPrivate() override {}
 
 public:
+    Ui::CoAPMsgView* ui{nullptr};
     CoAPMsgModel* m_model{nullptr};
 
 private:
@@ -32,7 +41,7 @@ private:
 };
 
 CoAPMsgView::CoAPMsgView(QWidget* parent)
-    : QTableView(parent)
+    : QWidget(parent)
 {
     d = new CoAPMsgViewPrivate(this);
 }
