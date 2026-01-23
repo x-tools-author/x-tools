@@ -23,7 +23,8 @@ public:
     explicit CoAPServer(QObject *parent = nullptr);
     ~CoAPServer();
 
-    void startServer(const QJsonObject &config);
+    void startServer(const QJsonObject &parameters);
+    void stopServer();
 
 protected:
     void run() override;

@@ -11,6 +11,8 @@
 #include <QAction>
 #include <QDebug>
 
+#include "layoutpage.h"
+
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"
 #endif
@@ -98,6 +100,15 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
     m_controllerLayout->removeWidget(m_rightLabel);
     m_controllerLayout->addWidget(m_rightLabel);
+
+    if (dynamic_cast<LayoutPage*>(page)) {
+        LayoutPage* layoutPage = dynamic_cast<LayoutPage*>(page);
+        QMenu* menu = layoutPage->toolButtonMenu();
+        if (menu) {
+            button->setMenu(menu);
+            button->setPopupMode(QToolButton::MenuButtonPopup);
+        }
+    }
 
     return button;
 }

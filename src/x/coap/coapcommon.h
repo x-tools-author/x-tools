@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QComboBox>
+#include <QJsonObject>
 #include <QObject>
 #include <QSpinBox>
 
@@ -24,6 +25,41 @@ public:
     static void setupSocketAddress(QComboBox* comboBox);
     static void setupSocketPort(QSpinBox* comboBox);
     static void setupSocketProtocol(QComboBox* comboBox);
+
+public:
+    static bool isValidProtocol(int protocol);
+
+public:
+    struct ClientParameterKeys
+    {
+        const QString serverAddress{"serverAddress"};
+        const QString serverPort{"serverPort"};
+        const QString protocol{"protocol"};
+    };
+    struct ClientParameters
+    {
+        QString serverAddress;
+        quint16 serverPort;
+        int protocol;
+    };
+    static QJsonObject clientParameters2JsonObject(const ClientParameters& params);
+    static ClientParameters jsonObject2ClientParameters(const QJsonObject& obj);
+
+public:
+    struct ServerParameterKeys
+    {
+        const QString serverAddress{"serverAddress"};
+        const QString serverPort{"serverPort"};
+        const QString protocol{"protocol"};
+    };
+    struct ServerParameters
+    {
+        QString serverAddress;
+        quint16 serverPort;
+        int protocol;
+    };
+    static QJsonObject serverParameters2JsonObject(const ServerParameters& params);
+    static ServerParameters jsonObject2ServerParameters(const QJsonObject& obj);
 };
 
 } // namespace xCoAP

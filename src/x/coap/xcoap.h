@@ -11,12 +11,13 @@
 #include <QJsonObject>
 #include <QWidget>
 
-#include "x/leftrightui.h"
+#include "layoutpage.h"
+#include "utilities/serializable.h"
 
 namespace xCoAP {
 
 class xCoAPPrivate;
-class xCoAP : public LeftRightUi
+class xCoAP : public QWidget, public xTools::Serializable, public LayoutPage
 {
     Q_OBJECT
     xCoAPPrivate* d;
@@ -27,6 +28,7 @@ public:
 
     QJsonObject save() override;
     void load(const QJsonObject& obj) override;
+    QMenu* toolButtonMenu() override;
 };
 
 } // namespace xCoAP

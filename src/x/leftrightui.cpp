@@ -9,17 +9,49 @@
 #include "leftrightui.h"
 #include "ui_leftrightui.h"
 
-LeftRightUi::LeftRightUi(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::LeftRightUi)
-{
-    ui->setupUi(this);
+#include <QTabBar>
+
+namespace Ui {
+class LeftRightUi;
 }
 
-LeftRightUi::~LeftRightUi()
+class LeftRightUiPrivate : public QObject
 {
-    delete ui;
+public:
+    LeftRightUiPrivate(LeftRightUi *q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {
+        ui = new Ui::LeftRightUi;
+        ui->setupUi(q);
+
+        m_leftTabBar = new QTabBar(q);
+        m_rightTabBar = new QTabBar(q);
+        ui->horizontalLayout->insertWidget(1, m_leftTabBar);
+        ui->horizontalLayout->insertWidget(3, m_rightTabBar);
+    }
+    ~LeftRightUiPrivate() override { delete ui; }
+
+public:
+    Ui::LeftRightUi *ui{nullptr};
+    QWidget *m_left{nullptr};
+    QWidget *m_right{nullptr};
+    QVBoxLayout *m_leftLayout{nullptr};
+    QVBoxLayout *m_rightLayout{nullptr};
+    QTabBar *m_leftTabBar{nullptr};
+    QTabBar *m_rightTabBar{nullptr};
+
+private:
+    LeftRightUi *q{nullptr};
+};
+
+LeftRightUi::LeftRightUi(QWidget *parent)
+    : QWidget(parent)
+{
+    d = new LeftRightUiPrivate(this);
 }
+
+LeftRightUi::~LeftRightUi() {}
 
 QJsonObject LeftRightUi::save()
 {
@@ -39,24 +71,38 @@ void LeftRightUi::setupUi(const QString &leftTitle,
                           const QString &rightTitle,
                           QWidget *right)
 {
-    ui->pushButtonLeft->setText(leftTitle);
-    ui->pushButtonRight->setText(rightTitle);
+    d->ui->pushButtonLeft->setText(leftTitle);
+    d->ui->pushButtonRight->setText(rightTitle);
 
-    if (left && !m_left) {
-        m_left = left;
-        m_leftLayout = new QVBoxLayout();
-        m_leftLayout->setContentsMargins(0, 0, 0, 0);
-        m_leftLayout->setSpacing(0);
-        ui->widgetLeft->setLayout(m_leftLayout);
-        m_leftLayout->addWidget(m_left);
+    if (left && !d->m_left) {
+        d->m_left = left;
+        d->m_leftLayout = new QVBoxLayout();
+        d->m_leftLayout->setContentsMargins(0, 0, 0, 0);
+        d->m_leftLayout->setSpacing(0);
+        d->ui->widgetLeft->setLayout(d->m_leftLayout);
+        d->m_leftLayout->addWidget(d->m_left);
     }
 
-    if (right && !m_right) {
-        m_right = right;
-        m_rightLayout = new QVBoxLayout();
-        m_rightLayout->setContentsMargins(0, 0, 0, 0);
-        m_rightLayout->setSpacing(0);
-        ui->widgetRight->setLayout(m_rightLayout);
-        m_rightLayout->addWidget(m_right);
+    if (right && !d->m_right) {
+        d->m_right = right;
+        d->m_rightLayout = new QVBoxLayout();
+        d->m_rightLayout->setContentsMargins(0, 0, 0, 0);
+        d->m_rightLayout->setSpacing(0);
+        d->ui->widgetRight->setLayout(d->m_rightLayout);
+        d->m_rightLayout->addWidget(d->m_right);
+    }
+}
+
+void LeftRightUi::addLeftTab(const QString &title)
+{
+    if (d->m_leftTabBar) {
+        d->m_leftTabBar->addTab(title);
+    }
+}
+
+void LeftRightUi::addRightTab(const QString &title)
+{
+    if (d->m_rightTabBar) {
+        d->m_rightTabBar->addTab(title);
     }
 }

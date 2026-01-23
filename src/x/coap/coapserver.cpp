@@ -9,11 +9,18 @@
 #include "coapserver.h"
 
 #include <QDebug>
+#include <QMutex>
 #include <QThread>
 
 #include <coap3/coap.h>
 
-#include <cstring>
+#ifdef _WIN32
+#include <WS2tcpip.h>
+#else
+#include <arpa/inet.h>
+#endif
+
+#include "coapcommon.h"
 
 namespace xCoAP {
 
@@ -47,20 +54,37 @@ public:
     ~CoAPServerPrivate() override {}
 
 public:
+    QJsonObject m_parameters;
+    QMutex m_parametersMutex;
+
 private:
     CoAPServer* q{nullptr};
 };
 
 CoAPServer::CoAPServer(QObject* parent)
     : QThread(parent)
-{}
+{
+    d = new CoAPServerPrivate(this);
+}
 
 CoAPServer::~CoAPServer() {}
 
-void CoAPServer::startServer(const QJsonObject& config)
+void CoAPServer::startServer(const QJsonObject& parameters)
 {
-    Q_UNUSED(config);
+    d->m_parametersMutex.lock();
+    d->m_parameters = parameters;
+    d->m_parametersMutex.unlock();
     if (isRunning()) {
+        exit();
+        wait();
+    }
+    start();
+}
+
+void CoAPServer::stopServer()
+{
+    if (isRunning()) {
+        requestInterruption();
         exit();
         wait();
     }
@@ -69,6 +93,16 @@ void CoAPServer::startServer(const QJsonObject& config)
 void CoAPServer::run()
 {
     qInfo() << "CoAP server thread started:" << QThread::currentThread();
+
+    d->m_parametersMutex.lock();
+    CoAPCommon::ServerParameters params = CoAPCommon::jsonObject2ServerParameters(d->m_parameters);
+    d->m_parametersMutex.unlock();
+
+    if (!CoAPCommon::isValidProtocol(params.protocol)) {
+        qWarning() << "Invalid CoAP protocol:" << params.protocol;
+        return;
+    }
+
     coap_context_t* ctx = coap_new_context(nullptr);
     if (!ctx) {
         qWarning() << "Failed to create CoAP context";
@@ -77,15 +111,17 @@ void CoAPServer::run()
 
     coap_address_t addr;
     coap_address_init(&addr);
-
-#if defined(Q_OS_WIN)
-    // 显式指定 IPv4 任意地址，避免在 Windows 上产生无效参数错误
     addr.addr.sin.sin_family = AF_INET;
-    addr.addr.sin.sin_addr.s_addr = INADDR_ANY;
-    addr.addr.sin.sin_port = htons(433);
-#endif
+    addr.addr.sin.sin_port = htons(params.serverPort);
+    void* addrPtr = reinterpret_cast<void*>(&addr.addr.sin.sin_addr);
+    if (inet_pton(AF_INET, params.serverAddress.toStdString().c_str(), addrPtr) == -1) {
+        qWarning() << "Invalid CoAP server address:" << params.serverAddress;
+        coap_free_context(ctx);
+        return;
+    }
 
-    coap_endpoint_t* endpoint = coap_new_endpoint(ctx, &addr, COAP_PROTO_UDP);
+    coap_proto_t proto = static_cast<coap_proto_t>(params.protocol);
+    coap_endpoint_t* endpoint = coap_new_endpoint(ctx, &addr, proto);
     if (!endpoint) {
         qWarning() << "Failed to create CoAP endpoint";
         coap_free_context(ctx);
@@ -103,7 +139,7 @@ void CoAPServer::run()
     coap_add_resource(ctx, resource);
 
     while (!isInterruptionRequested()) {
-        int result = coap_io_process(ctx, 1000);
+        int result = coap_io_process(ctx, 50);
         if (result < 0) {
             qWarning() << "coap_io_process returned error" << result;
             break;
@@ -111,7 +147,6 @@ void CoAPServer::run()
     }
 
     coap_free_context(ctx);
-
     qInfo() << "CoAP server thread finished:" << QThread::currentThread();
 }
 

@@ -13,13 +13,12 @@
 
 #include "utilities/serializable.h"
 
-namespace Ui {
-class LeftRightUi;
-}
-
+class LeftRightUiPrivate;
 class LeftRightUi : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
+    LeftRightUiPrivate *d{nullptr};
+
 public:
     explicit LeftRightUi(QWidget *parent = nullptr);
     ~LeftRightUi();
@@ -27,11 +26,6 @@ public:
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
     void setupUi(const QString &leftTitle, QWidget *left, const QString &rightTitle, QWidget *right);
-
-private:
-    Ui::LeftRightUi *ui{nullptr};
-    QWidget *m_left{nullptr};
-    QWidget *m_right{nullptr};
-    QVBoxLayout *m_leftLayout{nullptr};
-    QVBoxLayout *m_rightLayout{nullptr};
+    void addLeftTab(const QString &title);
+    void addRightTab(const QString &title);
 };

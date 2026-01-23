@@ -8,25 +8,19 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QThread>
+#include <QTableView>
 
 namespace xCoAP {
 
-class CoAPClientPrivate;
-class CoAPClient : public QThread
+class CoAPMsgViewPrivate;
+class CoAPMsgView : public QTableView
 {
     Q_OBJECT
-    CoAPClientPrivate* d;
+    CoAPMsgViewPrivate *d{nullptr};
 
 public:
-    explicit CoAPClient(QObject* parent = nullptr);
-    ~CoAPClient();
-
-    void startClient(const QJsonObject& parameters);
-    void stopClient();
-
-protected:
-    void run() override;
+    explicit CoAPMsgView(QWidget *parent = nullptr);
+    ~CoAPMsgView() override;
 };
 
 } // namespace xCoAP
