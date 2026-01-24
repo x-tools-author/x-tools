@@ -100,6 +100,11 @@ private:
     void load(const QJsonObject& obj) { Q_UNUSED(obj); }
 };
 
+struct CoAPServerUiParameterKeys
+{
+    const QString message{"message"};
+};
+
 CoAPServerUi::CoAPServerUi(QWidget* parent)
     : QWidget(parent)
 {
@@ -119,6 +124,9 @@ QJsonObject CoAPServerUi::save()
     obj.insert(keys.serverAddress, d->ui->comboBoxServerIp->currentText());
     obj.insert(keys.serverPort, d->ui->spinBoxServerPort->value());
     obj.insert(keys.protocol, d->ui->comboBoxProtocol->currentData().toInt());
+
+    CoAPServerUiParameterKeys uiKeys;
+    obj.insert(uiKeys.message, d->m_msgView->save());
     return obj;
 }
 
@@ -134,6 +142,10 @@ void CoAPServerUi::load(const QJsonObject& obj)
     if (index >= 0) {
         d->ui->comboBoxProtocol->setCurrentIndex(index);
     }
+
+    CoAPServerUiParameterKeys uiKeys;
+    QJsonObject msgObj = obj.value(uiKeys.message).toObject();
+    d->m_msgView->load(msgObj);
 }
 
 QWidget* CoAPServerUi::resourceView() const

@@ -27,6 +27,8 @@ struct xCoAPSettingKeys
 {
     const QString clientViewVisible{"clientViewVisible"};
     const QString serverViewVisible{"serverViewVisible"};
+    const QString client{"client"};
+    const QString server{"server"};
 };
 
 class xCoAPPrivate : public QObject
@@ -127,6 +129,8 @@ QJsonObject xCoAP::save()
     QJsonObject obj;
     obj.insert(keys.clientViewVisible, d->ui->tabWidgetClient->isVisible());
     obj.insert(keys.serverViewVisible, d->ui->tabWidgetServer->isVisible());
+    obj.insert(keys.client, d->m_client->save());
+    obj.insert(keys.server, d->m_server->save());
     return obj;
 }
 
@@ -135,6 +139,10 @@ void xCoAP::load(const QJsonObject& obj)
     xCoAPSettingKeys keys;
     bool clientVisible = obj.value(keys.clientViewVisible).toBool(true);
     bool serverVisible = obj.value(keys.serverViewVisible).toBool(true);
+    if (!clientVisible && !serverVisible) {
+        clientVisible = true;
+        serverVisible = true;
+    }
 
     d->ui->tabWidgetClient->setVisible(clientVisible);
     d->ui->tabWidgetServer->setVisible(serverVisible);
@@ -144,6 +152,8 @@ void xCoAP::load(const QJsonObject& obj)
     QString serverCtrlBtnIcon = serverVisible ? ":res/icons/chevron_right.svg"
                                               : ":res/icons/chevron_left.svg";
     d->m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
+    d->m_client->load(obj.value(keys.client).toObject());
+    d->m_server->load(obj.value(keys.server).toObject());
 }
 
 QMenu* xCoAP::toolButtonMenu()

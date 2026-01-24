@@ -8,25 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
-#include <QTableView>
-
-#include "utilities/serializable.h"
+#include <QComboBox>
+#include <QDialog>
 
 namespace xCoAP {
 
-class CoAPMsgViewPrivate;
-class CoAPMsgView : public QWidget, public xTools::Serializable
+class CoAPOptionEditorPrivate;
+class CoAPOptionEditor : public QDialog
 {
     Q_OBJECT
-    CoAPMsgViewPrivate *d{nullptr};
+    CoAPOptionEditorPrivate *d{nullptr};
 
 public:
-    explicit CoAPMsgView(QWidget *parent = nullptr);
-    ~CoAPMsgView() override;
+    explicit CoAPOptionEditor(QWidget *parent = nullptr);
+    ~CoAPOptionEditor();
 
-    QJsonObject save() override;
-    void load(const QJsonObject &obj) override;
+    void load(QComboBox *optionBox);
+    void save(QComboBox *optionBox);
 };
 
 } // namespace xCoAP

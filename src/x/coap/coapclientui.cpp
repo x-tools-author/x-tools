@@ -15,6 +15,9 @@
 #include "coapclient.h"
 #include "coapcommon.h"
 #include "coapmsgview.h"
+#include "coapoptioneditor.h"
+
+#include "utilities/iconengine.h"
 
 namespace Ui {
 class CoAPClientUi;
@@ -32,8 +35,12 @@ public:
         ui = new Ui::CoAPClientUi();
         ui->setupUi(q_ptr);
         ui->pushButtonClose->setEnabled(false);
+        ui->toolButtonOption->setIcon(xIcon(":res/icons/edit_note.svg"));
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
         connect(ui->pushButtonClose, &QPushButton::clicked, this, [=]() { onCloseButtonClicked(); });
+        connect(ui->toolButtonOption, &QPushButton::clicked, this, [=]() {
+            onOptionButtonClicked();
+        });
 
         m_client = new CoAPClient(q);
         connect(m_client, &CoAPClient::started, this, [=]() { onStarted(); });
@@ -42,6 +49,7 @@ public:
         m_msgView = new CoAPMsgView(q);
         QHBoxLayout* layout = new QHBoxLayout(ui->widget);
         layout->setContentsMargins(0, 0, 0, 0);
+        layout->setSpacing(4);
         layout->addWidget(m_msgView);
     }
     ~CoAPClientUiPrivate() { delete ui; }
@@ -77,6 +85,15 @@ private:
         ui->pushButtonClose->setEnabled(false);
         ui->pushButtonOpen->setEnabled(false);
         m_client->stopClient();
+    }
+    void onOptionButtonClicked()
+    {
+        CoAPOptionEditor editor(q);
+        editor.load(ui->comboBoxOptions);
+        int ret = editor.exec();
+        if (ret == QDialog::Accepted) {
+            editor.save(ui->comboBoxOptions);
+        }
     }
 };
 

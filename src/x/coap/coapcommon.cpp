@@ -81,6 +81,7 @@ QJsonObject CoAPCommon::clientParameters2JsonObject(const ClientParameters& para
     obj[ClientParameterKeys().serverAddress] = params.serverAddress;
     obj[ClientParameterKeys().serverPort] = static_cast<int>(params.serverPort);
     obj[ClientParameterKeys().protocol] = params.protocol;
+    obj[ClientParameterKeys().option] = QString::fromLatin1(params.option.toBase64());
     return obj;
 }
 
@@ -89,8 +90,9 @@ CoAPCommon::ClientParameters CoAPCommon::jsonObject2ClientParameters(const QJson
     ClientParameters params;
     params.serverAddress = obj.value(ClientParameterKeys().serverAddress).toString("localhost");
     params.serverPort = static_cast<quint16>(obj.value(ClientParameterKeys().serverPort).toInt(433));
-    params.protocol = obj.value(ClientParameterKeys().protocol)
-                          .toInt(static_cast<int>(COAP_PROTO_UDP));
+    params.protocol = obj.value(ClientParameterKeys().protocol).toInt(COAP_PROTO_UDP);
+    QString optionBase64 = obj.value(ClientParameterKeys().option).toString("");
+    params.option = QByteArray::fromBase64(optionBase64.toLatin1());
     return params;
 }
 

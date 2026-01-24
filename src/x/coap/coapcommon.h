@@ -35,12 +35,14 @@ public:
         const QString serverAddress{"serverAddress"};
         const QString serverPort{"serverPort"};
         const QString protocol{"protocol"};
+        const QString option{"option"};
     };
     struct ClientParameters
     {
         QString serverAddress;
         quint16 serverPort;
         int protocol;
+        QByteArray option;
     };
     static QJsonObject clientParameters2JsonObject(const ClientParameters& params);
     static ClientParameters jsonObject2ClientParameters(const QJsonObject& obj);
