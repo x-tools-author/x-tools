@@ -16,6 +16,9 @@
 #include "coapcommon.h"
 #include "coapmsgview.h"
 #include "coapoptioneditor.h"
+#include "coapoptionview.h"
+#include "coappayloadview.h"
+#include "coapresourceview.h"
 
 #include "utilities/iconengine.h"
 
@@ -35,10 +38,13 @@ public:
         ui = new Ui::CoAPClientUi();
         ui->setupUi(q_ptr);
         ui->pushButtonClose->setEnabled(false);
-        ui->toolButtonOption->setIcon(xIcon(":res/icons/edit_note.svg"));
+        ui->toolButtonOptionEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+        ui->toolButtonPayloadEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+        ui->toolButtonPayloadList->setIcon(xIcon(":res/icons/list.svg"));
+        ui->toolButtonPayloadSave->setIcon(xIcon(":res/icons/save.svg"));
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
         connect(ui->pushButtonClose, &QPushButton::clicked, this, [=]() { onCloseButtonClicked(); });
-        connect(ui->toolButtonOption, &QPushButton::clicked, this, [=]() {
+        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() {
             onOptionButtonClicked();
         });
 
@@ -51,11 +57,18 @@ public:
         layout->setContentsMargins(0, 0, 0, 0);
         layout->setSpacing(4);
         layout->addWidget(m_msgView);
+
+        m_resourceView = new CoAPResourceView(q);
+        m_payloadView = new CoAPPayloadView(q);
+        m_optionView = new CoAPOptionView(q);
     }
     ~CoAPClientUiPrivate() { delete ui; }
 
 public:
     Ui::CoAPClientUi* ui{nullptr};
+    CoAPResourceView* m_resourceView{nullptr};
+    CoAPPayloadView* m_payloadView{nullptr};
+    CoAPOptionView* m_optionView{nullptr};
 
 private:
     CoAPClientUi* q{nullptr};
@@ -89,10 +102,10 @@ private:
     void onOptionButtonClicked()
     {
         CoAPOptionEditor editor(q);
-        editor.load(ui->comboBoxOptions);
+        editor.load(ui->comboBoxOptionList);
         int ret = editor.exec();
         if (ret == QDialog::Accepted) {
-            editor.save(ui->comboBoxOptions);
+            editor.save(ui->comboBoxOptionList);
         }
     }
 };
@@ -132,6 +145,21 @@ void CoAPClientUi::load(const QJsonObject& obj)
     if (index != -1) {
         d->ui->comboBoxProtocol->setCurrentIndex(index);
     }
+}
+
+QWidget* CoAPClientUi::resourceView()
+{
+    return d->m_resourceView;
+}
+
+QWidget* CoAPClientUi::payloadView()
+{
+    return d->m_payloadView;
+}
+
+QWidget* CoAPClientUi::optionView()
+{
+    return d->m_optionView;
 }
 
 } // namespace xCoAP

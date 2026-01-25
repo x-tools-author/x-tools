@@ -9,27 +9,24 @@
 #pragma once
 
 #include <QJsonObject>
-#include <QWidget>
+#include <QTableView>
 
 #include "utilities/serializable.h"
 
 namespace xCoAP {
 
-class CoAPClientUiPrivate;
-class CoAPClientUi : public QWidget, public xTools::Serializable
+class CoAPOptionViewPrivate;
+class CoAPOptionView : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
-    CoAPClientUiPrivate* d{nullptr};
+    CoAPOptionViewPrivate *d{nullptr};
 
 public:
-    explicit CoAPClientUi(QWidget* parent = nullptr);
-    ~CoAPClientUi();
+    explicit CoAPOptionView(QWidget *parent = nullptr);
+    ~CoAPOptionView() override;
 
     QJsonObject save() override;
-    void load(const QJsonObject& obj) override;
-    QWidget* resourceView();
-    QWidget* payloadView();
-    QWidget* optionView();
+    void load(const QJsonObject &obj) override;
 };
 
 } // namespace xCoAP
