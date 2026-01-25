@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QMutex>
 #include <QThread>
+#include <QTimer>
 
 #include <coap3/coap.h>
 #include <coap3/coap_debug.h>
@@ -54,6 +55,17 @@ public:
         }
         return COAP_RESPONSE_OK;
     }
+    void eventLoopTimeout(QTimer *timer, coap_context_t *ctx)
+    {
+        int result = coap_io_process(ctx, 100);
+        if (result < 0) {
+            qCWarning(xCoAPClientLog) << "coap_io_process returned error" << result;
+            q->exit();
+            return;
+        }
+
+        timer->start();
+    }
 
 private:
     CoAPClient *q{nullptr};
@@ -85,21 +97,57 @@ void CoAPClient::stopClient()
     }
 }
 
+void CoAPClient::getMessage(const QString &path) {}
+
+void CoAPClient::postMessage(const QByteArray &payload, const QString &path)
+{
+    Q_UNUSED(payload);
+    Q_UNUSED(path);
+}
+
+void CoAPClient::putMessage(const QByteArray &payload, const QString &path)
+{
+    Q_UNUSED(payload);
+    Q_UNUSED(path);
+}
+
+void CoAPClient::deleteMessage(const QString &path)
+{
+    Q_UNUSED(path);
+}
+
+void CoAPClient::fetchMessage(const QString &path)
+{
+    Q_UNUSED(path);
+}
+
+void CoAPClient::patchMessage(const QByteArray &payload, const QString &path)
+{
+    Q_UNUSED(payload);
+    Q_UNUSED(path);
+}
+
+void CoAPClient::iPatchMessage(const QByteArray &payload, const QString &path)
+{
+    Q_UNUSED(payload);
+    Q_UNUSED(path);
+}
+
 void CoAPClient::run()
 {
-    qInfo() << "CoAP client thread started:" << QThread::currentThread();
+    qCDebug(xCoAPClientLog) << "CoAP client thread started:" << QThread::currentThread();
     d->m_parametersMutex.lock();
     CoAPCommon::ClientParameters params = CoAPCommon::jsonObject2ClientParameters(d->m_parameters);
     d->m_parametersMutex.unlock();
 
     if (!CoAPCommon::isValidProtocol(params.protocol)) {
-        qWarning() << "Invalid CoAP protocol:" << params.protocol;
+        qCCritical(xCoAPClientLog) << "Invalid CoAP protocol:" << params.protocol;
         return;
     }
 
     coap_context_t *ctx = coap_new_context(nullptr);
     if (!ctx) {
-        qWarning() << "Failed to create CoAP context";
+        qCCritical(xCoAPClientLog) << "Failed to create CoAP context";
         return;
     }
 
@@ -111,64 +159,64 @@ void CoAPClient::run()
     dst.addr.sin.sin_port = htons(params.serverPort);
     void *addrPtr = reinterpret_cast<void *>(&dst.addr.sin.sin_addr);
     if (inet_pton(AF_INET, params.serverAddress.toStdString().c_str(), addrPtr) == -1) {
-        qWarning() << "Invalid CoAP server address:" << params.serverAddress;
+        qCCritical(xCoAPClientLog) << "Invalid CoAP server address:" << params.serverAddress;
         coap_free_context(ctx);
         return;
     }
 
-    qInfo("Connecting to CoAP server %s:%d via protocol %d",
-          params.serverAddress.toStdString().c_str(),
-          params.serverPort,
-          params.protocol);
+    qCInfo(xCoAPClientLog,
+           "Connecting to CoAP server %s:%d via protocol %d",
+           params.serverAddress.toStdString().c_str(),
+           params.serverPort,
+           params.protocol);
 
     coap_proto_t proto = static_cast<coap_proto_t>(params.protocol);
     coap_session_t *session = coap_new_client_session(ctx, nullptr, &dst, proto);
     if (!session) {
-        qWarning() << "Failed to create CoAP client session";
+        qCCritical(xCoAPClientLog) << "Failed to create CoAP client session";
         coap_free_context(ctx);
         return;
     }
 
     coap_pdu_t *request = coap_new_pdu(COAP_MESSAGE_CON, COAP_REQUEST_CODE_GET, session);
     if (!request) {
-        qWarning() << "Failed to create CoAP request PDU";
+        qCCritical(xCoAPClientLog) << "Failed to create CoAP request PDU";
         coap_session_release(session);
         coap_free_context(ctx);
         return;
     }
 
-    // 简单的 1 字节 Token，用于匹配响应
+    // Token...
     static uint8_t s_token = 0;
     uint8_t token_data[1];
     token_data[0] = ++s_token;
     if (!coap_add_token(request, sizeof(token_data), token_data)) {
-        qWarning() << "Failed to add token to CoAP request";
-    }
-
-    // 访问 CoAPServer 中注册的 "hello" 资源
-    const coap_str_const_t *path = coap_make_str_const("hello");
-    coap_add_option(request, COAP_OPTION_URI_PATH, path->length, path->s);
-
-    if (coap_send(session, request) == COAP_INVALID_MID) {
-        qWarning() << "Failed to send CoAP request";
+        qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
         coap_session_release(session);
         coap_free_context(ctx);
         return;
     }
 
-    // 处理 I/O，直到被请求中断
-    while (!isInterruptionRequested()) {
-        int result = coap_io_process(ctx, 100);
-        if (result < 0) {
-            qWarning() << "coap_io_process returned error" << result;
-            break;
-        }
+    // URI Path...
+    const coap_str_const_t *path = coap_make_str_const("hello");
+    coap_add_option(request, COAP_OPTION_URI_PATH, path->length, path->s);
+    if (coap_send(session, request) == COAP_INVALID_MID) {
+        qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
+        coap_session_release(session);
+        coap_free_context(ctx);
+        return;
     }
 
+    // Event loop...
+    QTimer *timer = new QTimer();
+    timer->setInterval(10);
+    timer->setSingleShot(true);
+    connect(timer, &QTimer::timeout, this, [=]() { d->eventLoopTimeout(timer, ctx); });
+    timer->start();
+    exec();
     coap_session_release(session);
     coap_free_context(ctx);
-
-    qInfo() << "CoAP client thread finished:" << QThread::currentThread();
+    qCDebug(xCoAPClientLog) << "CoAP client thread finished:" << QThread::currentThread();
 }
 
 } // namespace xCoAP

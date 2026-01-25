@@ -10,8 +10,13 @@
 
 #include <QComboBox>
 #include <QJsonObject>
+#include <QLoggingCategory>
 #include <QObject>
 #include <QSpinBox>
+
+#define xCoAPLog QLoggingCategory("xTools.xCoAP")
+#define xCoAPClientLog QLoggingCategory("xTools.xCoAP.CoAPClient")
+#define xCoAPServerLog QLoggingCategory("xTools.xCoAP.CoAPServer")
 
 namespace xCoAP {
 

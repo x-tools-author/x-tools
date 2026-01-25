@@ -42,11 +42,18 @@ public:
         ui->toolButtonPayloadEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
         ui->toolButtonPayloadList->setIcon(xIcon(":res/icons/list.svg"));
         ui->toolButtonPayloadSave->setIcon(xIcon(":res/icons/save.svg"));
+        // clang-format off
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
         connect(ui->pushButtonClose, &QPushButton::clicked, this, [=]() { onCloseButtonClicked(); });
-        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() {
-            onOptionButtonClicked();
-        });
+        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() { onOptionButtonClicked(); });
+        connect(ui->pushButtonGet, &QPushButton::clicked, this, [=]() { onGetButtonClicked(); });
+        connect(ui->pushButtonPost, &QPushButton::clicked, this, [=]() { onPostButtonClicked(); });
+        connect(ui->pushButtonPut, &QPushButton::clicked, this, [=]() { onPutButtonClicked(); });
+        connect(ui->pushButtonDelete, &QPushButton::clicked, this, [=]() { onDeleteButtonClicked(); });
+        connect(ui->pushButtonFetch, &QPushButton::clicked, this, [=]() { onFetchButtonClicked(); });
+        connect(ui->pushButtonPatch, &QPushButton::clicked, this, [=]() { onPatchButtonClicked(); });
+        connect(ui->pushButtonIPatch, &QPushButton::clicked, this, [=]() { oniPatchButtonClicked(); });
+        // clang-format on
 
         m_client = new CoAPClient(q);
         connect(m_client, &CoAPClient::started, this, [=]() { onStarted(); });
@@ -57,8 +64,9 @@ public:
         layout->setContentsMargins(0, 0, 0, 0);
         layout->setSpacing(4);
         layout->addWidget(m_msgView);
-
+#if 0
         m_resourceView = new CoAPResourceView(q);
+#endif
         m_payloadView = new CoAPPayloadView(q);
         m_optionView = new CoAPOptionView(q);
     }
@@ -107,6 +115,47 @@ private:
         if (ret == QDialog::Accepted) {
             editor.save(ui->comboBoxOptionList);
         }
+    }
+
+public:
+    void onGetButtonClicked()
+    {
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->getMessage(path);
+    }
+    void onPostButtonClicked()
+    {
+        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->postMessage(payload, path);
+    }
+    void onPutButtonClicked()
+    {
+        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->putMessage(payload, path);
+    }
+    void onDeleteButtonClicked()
+    {
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->deleteMessage(path);
+    }
+    void onFetchButtonClicked()
+    {
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->fetchMessage(path);
+    }
+    void onPatchButtonClicked()
+    {
+        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->patchMessage(payload, path);
+    }
+    void oniPatchButtonClicked()
+    {
+        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
+        const QString path = ui->comboBoxPath->currentText();
+        m_client->iPatchMessage(payload, path);
     }
 };
 
