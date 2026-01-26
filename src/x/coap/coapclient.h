@@ -8,7 +8,11 @@
  **************************************************************************************************/
 #pragma once
 
+#include <memory>
+
 #include <QThread>
+
+#include "coapcommon.h"
 
 namespace xCoAP {
 
@@ -25,16 +29,11 @@ public:
     void startClient(const QJsonObject& parameters);
     void stopClient();
 
-    void getMessage(const QString& path);
-    void postMessage(const QByteArray& payload, const QString& path);
-    void putMessage(const QByteArray& payload, const QString& path);
-    void deleteMessage(const QString& path);
-    void fetchMessage(const QString& path);
-    void patchMessage(const QByteArray& payload, const QString& path);
-    void iPatchMessage(const QByteArray& payload, const QString& path);
-
 signals:
     void errorOccurred(const QString& error);
+    void invokeSendMessage(const QByteArray& payload, const QString& path, int code);
+    void messageReceived(std::shared_ptr<CoAPMsgItem> request,
+                         std::shared_ptr<CoAPMsgItem> response);
 
 protected:
     void run() override;

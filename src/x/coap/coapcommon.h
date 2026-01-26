@@ -14,11 +14,26 @@
 #include <QObject>
 #include <QSpinBox>
 
+struct coap_session_t;
 #define xCoAPLog QLoggingCategory("xTools.xCoAP")
-#define xCoAPClientLog QLoggingCategory("xTools.xCoAP.CoAPClient")
-#define xCoAPServerLog QLoggingCategory("xTools.xCoAP.CoAPServer")
+#define xCoAPClientLog QLoggingCategory("xTools.xCoAP.Client")
+#define xCoAPServerLog QLoggingCategory("xTools.xCoAP.Server")
 
 namespace xCoAP {
+
+struct CoAPMsgItem
+{
+    bool isRx;
+    int messageId;
+    QString clientHost;
+    QString serverHost;
+    int version;
+    int type;
+    int tokenLength;
+    QByteArray token;
+    QByteArray options;
+    QByteArray payload;
+};
 
 class CoAPCommon : public QObject
 {
@@ -30,6 +45,11 @@ public:
     static void setupSocketAddress(QComboBox* comboBox);
     static void setupSocketPort(QSpinBox* comboBox);
     static void setupSocketProtocol(QComboBox* comboBox);
+
+    static QString getSessionRemoteAddress(coap_session_t* session);
+    static quint16 getSessionRemotePort(coap_session_t* session);
+    static QString getSessionLocalAddress(coap_session_t* session);
+    static quint16 getSessionLocalPort(coap_session_t* session);
 
 public:
     static bool isValidProtocol(int protocol);

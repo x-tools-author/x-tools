@@ -9,6 +9,7 @@
 #include "coapcommon.h"
 
 #include <coap3/coap.h>
+#include <coap3/coap_session_internal.h>
 
 #include "common/xtools.h"
 
@@ -58,6 +59,46 @@ void CoAPCommon::setupSocketProtocol(QComboBox* comboBox)
     comboBox->addItem("TLS", static_cast<int>(COAP_PROTO_TLS));
     comboBox->addItem("WS", static_cast<int>(COAP_PROTO_WS));
     comboBox->addItem("WSS", static_cast<int>(COAP_PROTO_WSS));
+}
+
+QString getCoAPAddress(const coap_address_t* addr)
+{
+    char addrStr[INET6_ADDRSTRLEN] = {0};
+    const void* addrPtr = nullptr;
+
+    if (addr->addr.sa.sa_family == AF_INET) {
+        addrPtr = &addr->addr.sin.sin_addr;
+    } else if (addr->addr.sa.sa_family == AF_INET6) {
+        addrPtr = &addr->addr.sin6.sin6_addr;
+    } else {
+        return QString();
+    }
+
+    if (inet_ntop(addr->addr.sa.sa_family, addrPtr, addrStr, sizeof(addrStr)) == nullptr) {
+        return QString();
+    }
+
+    return QString::fromUtf8(addrStr);
+}
+
+QString CoAPCommon::getSessionRemoteAddress(coap_session_t* session)
+{
+    return getCoAPAddress(&session->addr_info.remote);
+}
+
+quint16 CoAPCommon::getSessionRemotePort(coap_session_t* session)
+{
+    return coap_address_get_port(&session->addr_info.remote);
+}
+
+QString CoAPCommon::getSessionLocalAddress(coap_session_t* session)
+{
+    return getCoAPAddress(&session->addr_info.local);
+}
+
+quint16 CoAPCommon::getSessionLocalPort(coap_session_t* session)
+{
+    return coap_address_get_port(&session->addr_info.local);
 }
 
 bool CoAPCommon::isValidProtocol(int protocol)

@@ -15,6 +15,8 @@
 
 #include <coap3/coap.h>
 #include <coap3/coap_debug.h>
+#include <coap3/coap_session.h>
+#include <coap3/coap_session_internal.h>
 
 #include "coapcommon.h"
 
@@ -39,20 +41,54 @@ public:
                                           const coap_pdu_t *received,
                                           const coap_mid_t id)
     {
+        if (!session || !sent || !received || !session->app) {
+            return COAP_RESPONSE_OK;
+        }
+
+        quint16 port = CoAPCommon::getSessionRemotePort(session);
+        QString address = CoAPCommon::getSessionRemoteAddress(session);
+        QString server = QString("%1:%2").arg(address).arg(port);
+        port = CoAPCommon::getSessionLocalPort(session);
+        address = CoAPCommon::getSessionLocalAddress(session);
+        QString client = QString("%1:%2").arg(address).arg(port);
+
+        std::shared_ptr<CoAPMsgItem> requestPdu = std::make_shared<CoAPMsgItem>();
+        requestPdu->isRx = false;
+        requestPdu->messageId = id;
+        requestPdu->version = (sent->hdr_size & 0xC0);
+        requestPdu->clientHost = client;
+        requestPdu->serverHost = server;
+        requestPdu->type = sent->type;
+
+        std::shared_ptr<CoAPMsgItem> responsePdu = std::make_shared<CoAPMsgItem>();
+        responsePdu->isRx = true;
+        responsePdu->messageId = id;
+        responsePdu->version = (received->hdr_size & 0xC0);
+        responsePdu->clientHost = client;
+        responsePdu->serverHost = server;
+
+        //------------------------------------------------------------------------------------------
+        // Get payload
         const uint8_t *data;
         size_t len;
         size_t offset;
         size_t total;
 
-        (void) session;
-        (void) sent;
-        (void) id;
-        if (coap_get_data_large(received, &len, &data, &offset, &total)) {
-            printf("1111%*.*s", (int) len, (int) len, (const char *) data);
-            if (len + offset == total) {
-                printf("\n");
-            }
+        QByteArray payload;
+        if (coap_get_data_large(sent, &len, &data, &offset, &total)) {
+            payload.append(reinterpret_cast<const char *>(data), static_cast<int>(len));
         }
+        requestPdu->payload = payload;
+
+        payload.clear();
+        if (coap_get_data_large(received, &len, &data, &offset, &total)) {
+            payload.append(reinterpret_cast<const char *>(data), static_cast<int>(len));
+        }
+        responsePdu->payload = payload;
+
+        //------------------------------------------------------------------------------------------
+        CoAPClient *clientInstance = static_cast<CoAPClient *>(session->app);
+        emit clientInstance->messageReceived(std::move(requestPdu), std::move(responsePdu));
         return COAP_RESPONSE_OK;
     }
     void eventLoopTimeout(QTimer *timer, coap_context_t *ctx)
@@ -65,6 +101,47 @@ public:
         }
 
         timer->start();
+    }
+    void sendMessage(const QByteArray &payload,
+                     const QString &path,
+                     coap_context_t *ctx,
+                     coap_session_t *session,
+                     int code)
+    {
+        coap_pdu_code_t cookedCode = static_cast<coap_pdu_code_t>(code);
+        coap_pdu_t *request = coap_new_pdu(COAP_MESSAGE_CON, cookedCode, session);
+        if (!request) {
+            qCWarning(xCoAPClientLog) << "Failed to create CoAP request PDU";
+            return;
+        }
+
+        // Token...
+        static uint8_t s_token = 0;
+        uint8_t token_data[1];
+        token_data[0] = ++s_token;
+        if (!coap_add_token(request, sizeof(token_data), token_data)) {
+            qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
+            return;
+        }
+
+        // Payload...
+        if (!payload.isEmpty()) {
+            int ret = coap_add_data(request,
+                                    static_cast<size_t>(payload.size()),
+                                    reinterpret_cast<const uint8_t *>(payload.constData()));
+            if (ret == 0) {
+                qCWarning(xCoAPClientLog) << "Failed to add payload to CoAP request";
+                return;
+            }
+        }
+
+        // URI Path...
+        const coap_str_const_t *pathCtx = coap_make_str_const(path.toUtf8().constData());
+        coap_add_option(request, COAP_OPTION_URI_PATH, pathCtx->length, pathCtx->s);
+        if (coap_send(session, request) == COAP_INVALID_MID) {
+            qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
+            return;
+        }
     }
 
 private:
@@ -95,42 +172,6 @@ void CoAPClient::stopClient()
         exit();
         wait();
     }
-}
-
-void CoAPClient::getMessage(const QString &path) {}
-
-void CoAPClient::postMessage(const QByteArray &payload, const QString &path)
-{
-    Q_UNUSED(payload);
-    Q_UNUSED(path);
-}
-
-void CoAPClient::putMessage(const QByteArray &payload, const QString &path)
-{
-    Q_UNUSED(payload);
-    Q_UNUSED(path);
-}
-
-void CoAPClient::deleteMessage(const QString &path)
-{
-    Q_UNUSED(path);
-}
-
-void CoAPClient::fetchMessage(const QString &path)
-{
-    Q_UNUSED(path);
-}
-
-void CoAPClient::patchMessage(const QByteArray &payload, const QString &path)
-{
-    Q_UNUSED(payload);
-    Q_UNUSED(path);
-}
-
-void CoAPClient::iPatchMessage(const QByteArray &payload, const QString &path)
-{
-    Q_UNUSED(payload);
-    Q_UNUSED(path);
 }
 
 void CoAPClient::run()
@@ -177,41 +218,21 @@ void CoAPClient::run()
         coap_free_context(ctx);
         return;
     }
+    session->app = this;
 
-    coap_pdu_t *request = coap_new_pdu(COAP_MESSAGE_CON, COAP_REQUEST_CODE_GET, session);
-    if (!request) {
-        qCCritical(xCoAPClientLog) << "Failed to create CoAP request PDU";
-        coap_session_release(session);
-        coap_free_context(ctx);
-        return;
-    }
-
-    // Token...
-    static uint8_t s_token = 0;
-    uint8_t token_data[1];
-    token_data[0] = ++s_token;
-    if (!coap_add_token(request, sizeof(token_data), token_data)) {
-        qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
-        coap_session_release(session);
-        coap_free_context(ctx);
-        return;
-    }
-
-    // URI Path...
-    const coap_str_const_t *path = coap_make_str_const("hello");
-    coap_add_option(request, COAP_OPTION_URI_PATH, path->length, path->s);
-    if (coap_send(session, request) == COAP_INVALID_MID) {
-        qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
-        coap_session_release(session);
-        coap_free_context(ctx);
-        return;
-    }
+    // Send message to CoAP server...
+    QTimer *timer = new QTimer();
+    connect(this,
+            &CoAPClient::invokeSendMessage,
+            timer,
+            [=](const QByteArray &payload, const QString &path, int code) {
+                d->sendMessage(payload, path, ctx, session, code);
+            });
 
     // Event loop...
-    QTimer *timer = new QTimer();
     timer->setInterval(10);
     timer->setSingleShot(true);
-    connect(timer, &QTimer::timeout, this, [=]() { d->eventLoopTimeout(timer, ctx); });
+    connect(timer, &QTimer::timeout, timer, [=]() { d->eventLoopTimeout(timer, ctx); });
     timer->start();
     exec();
     coap_session_release(session);

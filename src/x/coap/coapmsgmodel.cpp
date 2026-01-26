@@ -12,6 +12,8 @@
 
 #include <coap3/coap.h>
 
+#include "coapcommon.h"
+
 namespace xCoAP {
 
 class CoAPMsgModelPrivate : public QObject
@@ -24,14 +26,7 @@ public:
     ~CoAPMsgModelPrivate() override {}
 
 public:
-    struct MsgItem
-    {
-        bool isRx;
-        const QString host;
-        const quint16 port;
-        const coap_pdu_t* pdu;
-    };
-    QList<MsgItem> m_msgList;
+    QList<CoAPMsgItem> m_msgList;
     QMutex m_msgListMutex;
 
 private:
@@ -78,25 +73,25 @@ QVariant CoAPMsgModel::headerData(int section, Qt::Orientation orientation, int 
     if (orientation == Qt::Horizontal) {
         if (role == Qt::DisplayRole) {
             switch (section) {
-            case COAP_MODEL_COLUMN_FLAG:
+            case CO_AP_MODEL_COLUMN_FLAG:
                 return tr("Flag");
-            case COAP_MODEL_COLUMN_HOST:
-                return tr("Host");
-            case COAP_MODEL_COLUMN_VERSION:
-                return tr("Version");
-            case COAP_MODEL_COLUMN_TYPE:
-                return tr("Type");
-            case COAP_MODEL_COLUMN_TOKEN_LENGTH:
-                return tr("Token Length");
-            case COAP_MODEL_COLUMN_CODE:
-                return tr("Code");
-            case COAP_MODEL_COLUMN_MESSAGE_ID:
+            case CO_AP_MODEL_COLUMN_MESSAGE_ID:
                 return tr("Message ID");
-            case COAP_MODEL_COLUMN_TOKEN:
+            case CO_AP_MODEL_COLUMN_HOST_LOCAL:
+                return tr("Client");
+            case CO_AP_MODEL_COLUMN_HOST_REMOTE:
+                return tr("Server");
+            case CO_AP_MODEL_COLUMN_VERSION:
+                return tr("Version");
+            case CO_AP_MODEL_COLUMN_TYPE:
+                return tr("Type");
+            case CO_AP_MODEL_COLUMN_TOKEN_LENGTH:
+                return tr("Token Length");
+            case CO_AP_MODEL_COLUMN_TOKEN:
                 return tr("Token");
-            case COAP_MODEL_COLUMN_OPTIONS:
+            case CO_AP_MODEL_COLUMN_OPTIONS:
                 return tr("Options");
-            case COAP_MODEL_COLUMN_PAYLOAD:
+            case CO_AP_MODEL_COLUMN_PAYLOAD:
                 return tr("Payload");
             default:
                 return QVariant();

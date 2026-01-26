@@ -24,14 +24,14 @@ public:
     ~CoAPPayloadModelPrivate() override {}
 
 public:
-    struct MsgItem
+    struct CoAPMsgItem
     {
         bool isRx;
         const QString host;
         const quint16 port;
         const coap_pdu_t* pdu;
     };
-    QList<MsgItem> m_msgList;
+    QList<CoAPMsgItem> m_msgList;
     QMutex m_msgListMutex;
 
 private:

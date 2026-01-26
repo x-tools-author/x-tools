@@ -12,6 +12,8 @@
 #include <QHBoxLayout>
 #include <QObject>
 
+#include <coap3/coap.h>
+
 #include "coapclient.h"
 #include "coapcommon.h"
 #include "coapmsgview.h"
@@ -58,6 +60,12 @@ public:
         m_client = new CoAPClient(q);
         connect(m_client, &CoAPClient::started, this, [=]() { onStarted(); });
         connect(m_client, &CoAPClient::finished, this, [=]() { onFinished(); });
+        connect(m_client,
+                &CoAPClient::messageReceived,
+                this,
+                [=](std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response) {
+                    onMessageReceived(request, response);
+                });
 
         m_msgView = new CoAPMsgView(q);
         QHBoxLayout* layout = new QHBoxLayout(ui->widget);
@@ -116,46 +124,49 @@ private:
             editor.save(ui->comboBoxOptionList);
         }
     }
+    void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
+                           std::shared_ptr<CoAPMsgItem> response)
+    {}
 
 public:
     void onGetButtonClicked()
     {
         const QString path = ui->comboBoxPath->currentText();
-        m_client->getMessage(path);
+        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_GET);
     }
     void onPostButtonClicked()
     {
         const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         const QString path = ui->comboBoxPath->currentText();
-        m_client->postMessage(payload, path);
+        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_POST);
     }
     void onPutButtonClicked()
     {
         const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         const QString path = ui->comboBoxPath->currentText();
-        m_client->putMessage(payload, path);
+        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_PUT);
     }
     void onDeleteButtonClicked()
     {
         const QString path = ui->comboBoxPath->currentText();
-        m_client->deleteMessage(path);
+        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_DELETE);
     }
     void onFetchButtonClicked()
     {
         const QString path = ui->comboBoxPath->currentText();
-        m_client->fetchMessage(path);
+        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_FETCH);
     }
     void onPatchButtonClicked()
     {
         const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         const QString path = ui->comboBoxPath->currentText();
-        m_client->patchMessage(payload, path);
+        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_PATCH);
     }
     void oniPatchButtonClicked()
     {
         const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         const QString path = ui->comboBoxPath->currentText();
-        m_client->iPatchMessage(payload, path);
+        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_IPATCH);
     }
 };
 

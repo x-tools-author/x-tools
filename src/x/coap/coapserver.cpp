@@ -233,7 +233,10 @@ CoAPServer::CoAPServer(QObject* parent)
     d = new CoAPServerPrivate(this);
 }
 
-CoAPServer::~CoAPServer() {}
+CoAPServer::~CoAPServer()
+{
+    stopServer();
+}
 
 void CoAPServer::startServer(const QJsonObject& parameters)
 {
