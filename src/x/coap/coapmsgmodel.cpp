@@ -12,8 +12,6 @@
 
 #include <coap3/coap.h>
 
-#include "coapcommon.h"
-
 namespace xCoAP {
 
 class CoAPMsgModelPrivate : public QObject
@@ -26,7 +24,7 @@ public:
     ~CoAPMsgModelPrivate() override {}
 
 public:
-    QList<CoAPMsgItem> m_msgList;
+    QList<std::shared_ptr<CoAPMsgItem>> m_msgList;
     QMutex m_msgListMutex;
 
 private:
@@ -41,13 +39,63 @@ CoAPMsgModel::CoAPMsgModel(QObject* parent)
 
 CoAPMsgModel::~CoAPMsgModel() {}
 
+void CoAPMsgModel::addRow(std::shared_ptr<CoAPMsgItem> request,
+                          std::shared_ptr<CoAPMsgItem> response)
+{
+    beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
+    d->m_msgListMutex.lock();
+    d->m_msgList.append(request);
+    d->m_msgListMutex.unlock();
+    endInsertRows();
+
+    beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
+    d->m_msgListMutex.lock();
+    d->m_msgList.append(response);
+    d->m_msgListMutex.unlock();
+    endInsertRows();
+}
+
 QVariant CoAPMsgModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {
         return QVariant();
     }
 
+    int row = index.row();
+    int column = index.column();
+    std::shared_ptr<CoAPMsgItem> item = d->m_msgList.at(row);
     if (role == Qt::DisplayRole) {
+        if (column == CO_AP_MODEL_COLUMN_FLAG) {
+            return item->isRx ? tr("Rx") : tr("Tx");
+        } else if (column == CO_AP_MODEL_COLUMN_MESSAGE_ID) {
+            return QString::number(item->messageId);
+        } else if (column == CO_AP_MODEL_COLUMN_HOST_LOCAL) {
+            return item->clientHost;
+        } else if (column == CO_AP_MODEL_COLUMN_HOST_REMOTE) {
+            return item->serverHost;
+        } else if (column == CO_AP_MODEL_COLUMN_VERSION) {
+            return QString::number(item->version);
+        } else if (column == CO_AP_MODEL_COLUMN_TYPE) {
+            return item->type;
+        } else if (column == CO_AP_MODEL_COLUMN_TOKEN_LENGTH) {
+            return QString::number(item->tokenLength);
+        } else if (column == CO_AP_MODEL_COLUMN_TOKEN) {
+            return QString::fromLatin1(item->token.toHex(' '));
+        } else if (column == CO_AP_MODEL_COLUMN_OPTIONS) {
+            return QString::fromLatin1(item->options.toHex(' '));
+        } else if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
+            return QString::fromLatin1(item->payload.toHex(' '));
+        }
+
+        return QVariant();
+    }
+
+    if (role == Qt::TextAlignmentRole) {
+        if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
+            return int(Qt::AlignLeft | Qt::AlignVCenter);
+        }
+
+        return int(Qt::AlignCenter);
     }
 
     return QVariant();

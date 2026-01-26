@@ -11,10 +11,13 @@
 #include <QJsonObject>
 #include <QTableView>
 
+#include "coapcommon.h"
+
 #include "utilities/serializable.h"
 
 namespace xCoAP {
 
+struct CoAPMsgItem;
 class CoAPMsgViewPrivate;
 class CoAPMsgView : public QWidget, public xTools::Serializable
 {
@@ -27,6 +30,7 @@ public:
 
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
+    void addMessage(std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response);
 };
 
 } // namespace xCoAP

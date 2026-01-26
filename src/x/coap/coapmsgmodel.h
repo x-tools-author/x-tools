@@ -10,6 +10,8 @@
 
 #include <QAbstractTableModel>
 
+#include "coapcommon.h"
+
 #define CO_AP_MODEL_COLUMN_FLAG 0
 #define CO_AP_MODEL_COLUMN_MESSAGE_ID 1
 #define CO_AP_MODEL_COLUMN_HOST_LOCAL 2
@@ -22,7 +24,6 @@
 #define CO_AP_MODEL_COLUMN_PAYLOAD 9
 
 namespace xCoAP {
-
 class CoAPMsgModelPrivate;
 class CoAPMsgModel : public QAbstractTableModel
 {
@@ -32,6 +33,7 @@ class CoAPMsgModel : public QAbstractTableModel
 public:
     explicit CoAPMsgModel(QObject *parent = nullptr);
     ~CoAPMsgModel() override;
+    void addRow(std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response);
 
 public:
     QVariant data(const QModelIndex &index, int role) const override;

@@ -15,6 +15,8 @@
 #include <QJsonArray>
 #include <QMenu>
 
+#include <coap3/coap.h>
+
 #include "coapmsgmodel.h"
 #include "utilities/iconengine.h"
 
@@ -38,8 +40,10 @@ public:
 
         m_model = new CoAPMsgModel(q);
         ui->tableView->setModel(m_model);
-        ui->tableView->horizontalHeader()->setSizeAdjustPolicy(QHeaderView::AdjustToContents);
-        ui->tableView->horizontalHeader()->setStretchLastSection(true);
+        QHeaderView* hView = ui->tableView->horizontalHeader();
+        hView->setSectionResizeMode(QHeaderView::ResizeToContents);
+        hView->setStretchLastSection(true);
+        hView->setMinimumSectionSize(80);
 
         int columns = m_model->columnCount(QModelIndex());
         m_columnsMenu = new QMenu(q);
@@ -106,6 +110,12 @@ void CoAPMsgView::load(const QJsonObject& obj)
         d->ui->tableView->setColumnHidden(i, !isVisible);
         actions.at(i)->setChecked(isVisible);
     }
+}
+
+void CoAPMsgView::addMessage(std::shared_ptr<CoAPMsgItem> request,
+                             std::shared_ptr<CoAPMsgItem> response)
+{
+    d->m_model->addRow(request, response);
 }
 
 } // namespace xCoAP

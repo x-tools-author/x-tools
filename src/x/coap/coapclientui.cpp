@@ -126,7 +126,9 @@ private:
     }
     void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
                            std::shared_ptr<CoAPMsgItem> response)
-    {}
+    {
+        m_msgView->addMessage(request, response);
+    }
 
 public:
     void onGetButtonClicked()
