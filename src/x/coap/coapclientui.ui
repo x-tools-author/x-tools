@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>718</width>
-    <height>530</height>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,6 +29,16 @@
    <property name="spacing">
     <number>4</number>
    </property>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="spinBoxServerPort"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="comboBoxServerIp">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="sizePolicy">
@@ -42,10 +52,46 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxProtocol"/>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
    </item>
-   <item row="11" column="0" colspan="2">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Protocol</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout_2">
      <property name="spacing">
       <number>4</number>
@@ -242,51 +288,6 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="comboBoxServerIp"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Server Port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QSpinBox" name="spinBoxServerPort"/>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string notr="true"/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" rowspan="12">
-    <widget class="QWidget" name="widget" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
@@ -303,39 +304,32 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_4">
+   <item row="0" column="2" rowspan="10">
+    <widget class="QWidget" name="widget" native="true">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="comboBoxProtocol"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QPushButton" name="pushButtonOpen">
      <property name="text">
-      <string>Protocol</string>
+      <string>Open Client</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <property name="spacing">
-      <number>4</number>
+   <item row="5" column="0" colspan="2">
+    <widget class="QPushButton" name="pushButtonClose">
+     <property name="text">
+      <string>Close Client</string>
      </property>
-     <item>
-      <widget class="QPushButton" name="pushButtonClose">
-       <property name="text">
-        <string>Close Client</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButtonOpen">
-       <property name="text">
-        <string>Open Client</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
   </layout>
  </widget>
