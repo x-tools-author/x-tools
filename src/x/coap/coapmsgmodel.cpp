@@ -55,6 +55,18 @@ void CoAPMsgModel::addRow(std::shared_ptr<CoAPMsgItem> request,
     endInsertRows();
 }
 
+void CoAPMsgModel::clear()
+{
+    beginResetModel();
+    d->m_msgListMutex.lock();
+    for (auto& item : d->m_msgList) {
+        item.reset();
+    }
+    d->m_msgList.clear();
+    d->m_msgListMutex.unlock();
+    endResetModel();
+}
+
 QVariant CoAPMsgModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {

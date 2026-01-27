@@ -42,6 +42,20 @@
       </widget>
      </item>
      <item>
+      <widget class="QToolButton" name="toolButtonScrolling">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonClear">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="label">
        <property name="text">
         <string notr="true"/>

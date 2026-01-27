@@ -34,6 +34,7 @@ public:
     explicit CoAPMsgModel(QObject *parent = nullptr);
     ~CoAPMsgModel() override;
     void addRow(std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response);
+    void clear();
 
 public:
     QVariant data(const QModelIndex &index, int role) const override;

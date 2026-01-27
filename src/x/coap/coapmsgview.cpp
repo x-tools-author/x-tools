@@ -68,6 +68,15 @@ public:
     CoAPMsgModel* m_model{nullptr};
     QMenu* m_columnsMenu{nullptr};
 
+public:
+    void onScrollToBottomToggled(bool checked)
+    {
+        if (checked) {
+            ui->tableView->scrollToBottom();
+        }
+    }
+    void onClearBtnClicked() { m_model->clear(); }
+
 private:
     CoAPMsgView* q{nullptr};
 };
@@ -116,6 +125,9 @@ void CoAPMsgView::addMessage(std::shared_ptr<CoAPMsgItem> request,
                              std::shared_ptr<CoAPMsgItem> response)
 {
     d->m_model->addRow(request, response);
+    if (d->ui->toolButtonScrolling->isChecked()) {
+        d->ui->tableView->scrollToBottom();
+    }
 }
 
 } // namespace xCoAP
