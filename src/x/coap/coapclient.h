@@ -16,6 +16,7 @@
 
 namespace xCoAP {
 
+struct CoAPMsgItem;
 class CoAPClientPrivate;
 class CoAPClient : public QThread
 {

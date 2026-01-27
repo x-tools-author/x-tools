@@ -14,11 +14,13 @@
 #include <QHeaderView>
 #include <QJsonArray>
 #include <QMenu>
+#include <QMessageBox>
 
 #include <coap3/coap.h>
 
 #include "coapmsgmodel.h"
 #include "utilities/iconengine.h"
+#include "utilities/keepopenedmenu.h"
 
 namespace Ui {
 class CoAPMsgView;
@@ -37,6 +39,17 @@ public:
         ui->setupUi(q);
         ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
         ui->toolButtonColumns->setIcon(xIcon(":res/icons/list.svg"));
+        ui->toolButtonScrolling->setIcon(xIcon(":res/icons/wrap_text.svg"));
+        ui->toolButtonScrolling->setCheckable(true);
+        ui->toolButtonClear->setIcon(xIcon(":res/icons/mop.svg"));
+        ui->toolButtonFilter->setIcon(xIcon(":/res/icons/filter_alt.svg"));
+        ui->toolButtonLimit->setIcon(xIcon(":res/icons/contract.svg"));
+        setupLimitMenu(ui->toolButtonLimit);
+
+        connect(ui->toolButtonScrolling, &QToolButton::clicked, q, [=](bool checked) {
+            onScrollToBottomToggled(checked);
+        });
+        connect(ui->toolButtonClear, &QToolButton::clicked, q, [=]() { onClearBtnClicked(); });
 
         m_model = new CoAPMsgModel(q);
         ui->tableView->setModel(m_model);
@@ -46,7 +59,7 @@ public:
         hView->setMinimumSectionSize(80);
 
         int columns = m_model->columnCount(QModelIndex());
-        m_columnsMenu = new QMenu(q);
+        m_columnsMenu = new xTools::KeepOpenedMenu(q);
         for (int i = 0; i < columns; ++i) {
             QString colName = m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString();
             QAction* action = new QAction(colName);
@@ -75,10 +88,43 @@ public:
             ui->tableView->scrollToBottom();
         }
     }
-    void onClearBtnClicked() { m_model->clear(); }
+    void onClearBtnClicked()
+    {
+        int ret = QMessageBox::warning(q,
+                                       tr("Warning"),
+                                       tr("Are you sure to clear all messages?"),
+                                       QMessageBox::Yes | QMessageBox::No,
+                                       QMessageBox::No);
+        if (ret == QMessageBox::Yes) {
+            m_model->clear();
+        }
+    }
 
 private:
     CoAPMsgView* q{nullptr};
+
+private:
+    void setupLimitMenu(QToolButton* button)
+    {
+        QMenu* menu = new QMenu(button);
+        QActionGroup* actionGroup = new QActionGroup(button);
+        actionGroup->setExclusive(true);
+
+        QList<int> limits = {-1, 1000, 10000, 100000};
+        for (int limit : limits) {
+            QString text = (limit == -1) ? tr("No Limit") : QString::number(limit);
+            QAction* action = new QAction(text, button);
+            action->setCheckable(true);
+            action->setData(limit);
+            menu->addAction(action);
+            actionGroup->addAction(action);
+            if (limit == 10000) {
+                action->setChecked(true);
+            }
+        }
+        button->setMenu(menu);
+        button->setPopupMode(QToolButton::MenuButtonPopup);
+    }
 };
 
 struct CoAPMsgViewParameterKeys

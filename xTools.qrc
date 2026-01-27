@@ -31,6 +31,7 @@
     <file>res/icons/cleaning_services.svg</file>
     <file>res/icons/collapse_all.svg</file>
     <file>res/icons/commit.svg</file>
+    <file>res/icons/contract.svg</file>
     <file>res/icons/counter_1.svg</file>
     <file>res/icons/delete_sweep.svg</file>
     <file>res/icons/delete.svg</file>
@@ -44,6 +45,7 @@
     <file>res/icons/expand_all.svg</file>
     <file>res/icons/fast_forward.svg</file>
     <file>res/icons/file_open.svg</file>
+    <file>res/icons/filter_alt.svg</file>
     <file>res/icons/finance_mode.svg</file>
     <file>res/icons/fit_screen.svg</file>
     <file>res/icons/folder.svg</file>
