@@ -1,7 +1,7 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2026-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of xModbus project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
@@ -14,23 +14,23 @@
 #include "utilities/serializable.h"
 
 namespace Ui {
-class xOpcUa;
+class xHttp;
 }
 
-namespace xOpcUa {
+namespace xHttp {
 
-class xOpcUa : public QWidget, public xTools::Serializable
+class xHttp : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
-    explicit xOpcUa(QWidget* parent = nullptr);
-    ~xOpcUa();
+    explicit xHttp(QWidget* parent = nullptr);
+    ~xHttp();
 
     QJsonObject save() override;
     void load(const QJsonObject& obj) override;
 
 private:
-    Ui::xOpcUa* ui;
+    Ui::xHttp* ui;
 };
 
-} // namespace xOpcUa
+} // namespace xHttp

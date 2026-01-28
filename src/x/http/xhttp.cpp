@@ -1,37 +1,37 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2026-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xopcua.h"
-#include "ui_xopcua.h"
+#include "xhttp.h"
+#include "ui_xhttp.h"
 
-namespace xOpcUa {
+namespace xHttp {
 
-xOpcUa::xOpcUa(QWidget* parent)
+xHttp::xHttp(QWidget* parent)
     : QWidget(parent)
-    , ui(new Ui::xOpcUa)
+    , ui(new Ui::xHttp)
 {
     ui->setupUi(this);
 }
 
-xOpcUa::~xOpcUa()
+xHttp::~xHttp()
 {
     delete ui;
 }
 
-QJsonObject xOpcUa::save()
+QJsonObject xHttp::save()
 {
     QJsonObject obj;
     return obj;
 }
 
-void xOpcUa::load(const QJsonObject& obj)
+void xHttp::load(const QJsonObject& obj)
 {
     Q_UNUSED(obj);
 }
 
-} // namespace xOpcUa
+} // namespace xHttp
