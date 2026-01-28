@@ -14,7 +14,6 @@
 #include <QTimer>
 
 #include <coap3/coap.h>
-#include <coap3/coap_debug.h>
 #include <coap3/coap_session.h>
 #include <coap3/coap_session_internal.h>
 
@@ -25,11 +24,11 @@ namespace xCoAP {
 class CoAPClientPrivate : public QObject
 {
 public:
-    CoAPClientPrivate(CoAPClient *q_ptr)
+    explicit CoAPClientPrivate(CoAPClient *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
     {}
-    ~CoAPClientPrivate() override {}
+    ~CoAPClientPrivate() override { qCInfo(xCoAPClientLog) << "~CoAPClientPrivate"; }
 
 public:
     QJsonObject m_parameters;
@@ -42,7 +41,7 @@ public:
                                           const coap_mid_t id)
     {
         if (!session || !sent || !received || !session->app) {
-            return COAP_RESPONSE_OK;
+            return COAP_RESPONSE_FAIL;
         }
 
         quint16 port = CoAPCommon::getSessionRemotePort(session);
@@ -87,11 +86,11 @@ public:
         responsePdu->payload = payload;
 
         //------------------------------------------------------------------------------------------
-        CoAPClient *clientInstance = static_cast<CoAPClient *>(session->app);
+        auto *clientInstance = static_cast<CoAPClient *>(session->app);
         emit clientInstance->messageReceived(std::move(requestPdu), std::move(responsePdu));
         return COAP_RESPONSE_OK;
     }
-    void eventLoopTimeout(QTimer *timer, coap_context_t *ctx)
+    void eventLoopTimeout(QTimer *timer, coap_context_t *ctx) const
     {
         int result = coap_io_process(ctx, 100);
         if (result < 0) {
@@ -102,13 +101,13 @@ public:
 
         timer->start();
     }
-    void sendMessage(const QByteArray &payload,
-                     const QByteArray &resource,
-                     const QByteArray &option,
-                     int code,
-                     coap_session_t *session)
+    static void sendMessage(const QByteArray &payload,
+                            const QByteArray &resource,
+                            const QByteArray &option,
+                            int code,
+                            coap_session_t *session)
     {
-        coap_pdu_code_t cookedCode = static_cast<coap_pdu_code_t>(code);
+        auto cookedCode = static_cast<coap_pdu_code_t>(code);
         coap_pdu_t *request = coap_new_pdu(COAP_MESSAGE_CON, cookedCode, session);
         if (!request) {
             qCWarning(xCoAPClientLog) << "Failed to create CoAP request PDU";
@@ -171,7 +170,7 @@ CoAPClient::CoAPClient(QObject *parent)
     d = new CoAPClientPrivate(this);
 }
 
-CoAPClient::~CoAPClient() {}
+CoAPClient::~CoAPClient() = default;
 
 void CoAPClient::startClient(const QJsonObject &parameters)
 {
@@ -228,7 +227,7 @@ void CoAPClient::run()
            params.serverPort,
            params.protocol);
 
-    coap_proto_t proto = static_cast<coap_proto_t>(params.protocol);
+    auto proto = static_cast<coap_proto_t>(params.protocol);
     coap_session_t *session = coap_new_client_session(ctx, nullptr, &dst, proto);
     if (!session) {
         qCCritical(xCoAPClientLog) << "Failed to create CoAP client session";
@@ -238,14 +237,16 @@ void CoAPClient::run()
     session->app = this;
 
     // Send message to CoAP server...
-    QTimer *timer = new QTimer();
+    auto *timer = new QTimer();
     connect(this,
             &CoAPClient::invokeSendMessage,
             timer,
-            [=](const QByteArray &payload,
-                const QByteArray &resource,
-                const QByteArray &option,
-                int code) { d->sendMessage(payload, resource, option, code, session); });
+            [session](const QByteArray &payload,
+                      const QByteArray &resource,
+                      const QByteArray &option,
+                      const int code) {
+                xCoAP::CoAPClientPrivate::sendMessage(payload, resource, option, code, session);
+            });
 
     // Event loop...
     timer->setInterval(10);
