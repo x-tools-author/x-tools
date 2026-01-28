@@ -33,7 +33,9 @@ class CoAPMsgModel : public QAbstractTableModel
 public:
     explicit CoAPMsgModel(QObject *parent = nullptr);
     ~CoAPMsgModel() override;
-    void addRow(std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response);
+    void addRow(std::shared_ptr<CoAPMsgItem> request,
+                std::shared_ptr<CoAPMsgItem> response,
+                int max);
     void clear();
 
 public:

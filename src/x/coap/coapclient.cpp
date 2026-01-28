@@ -103,24 +103,16 @@ public:
         timer->start();
     }
     void sendMessage(const QByteArray &payload,
-                     const QString &path,
-                     coap_context_t *ctx,
-                     coap_session_t *session,
-                     int code)
+                     const QByteArray &token,
+                     const QByteArray &resource,
+                     const QByteArray &option,
+                     int code,
+                     coap_session_t *session)
     {
         coap_pdu_code_t cookedCode = static_cast<coap_pdu_code_t>(code);
         coap_pdu_t *request = coap_new_pdu(COAP_MESSAGE_CON, cookedCode, session);
         if (!request) {
             qCWarning(xCoAPClientLog) << "Failed to create CoAP request PDU";
-            return;
-        }
-
-        // Token...
-        static uint8_t s_token = 0;
-        uint8_t token_data[1];
-        token_data[0] = ++s_token;
-        if (!coap_add_token(request, sizeof(token_data), token_data)) {
-            qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
             return;
         }
 
@@ -135,13 +127,38 @@ public:
             }
         }
 
-        // URI Path...
-        const coap_str_const_t *pathCtx = coap_make_str_const(path.toUtf8().constData());
-        coap_add_option(request, COAP_OPTION_URI_PATH, pathCtx->length, pathCtx->s);
+        // Token...
+        if (token.isEmpty()) {
+            if (!coap_add_token(request,
+                                static_cast<size_t>(token.size()),
+                                reinterpret_cast<const uint8_t *>(token.constData()))) {
+                qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
+                return;
+            }
+        }
+
+        // Resource path...
+        if (resource.isEmpty()) {
+            qCWarning(xCoAPClientLog) << "Resource path is empty";
+            return;
+        }
+        coap_add_option(request,
+                        COAP_OPTION_URI_PATH,
+                        resource.size(),
+                        reinterpret_cast<const uint8_t *>(resource.constData()));
         if (coap_send(session, request) == COAP_INVALID_MID) {
             qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
             return;
         }
+#if 0
+        // Options...
+        if (!option.isEmpty()) {
+            coap_add_option(request,
+                            COAP_OPTION_ACCEPT,
+                            option.size(),
+                            reinterpret_cast<const uint8_t *>(option.constData()));
+        }
+#endif
     }
 
 private:
@@ -225,9 +242,11 @@ void CoAPClient::run()
     connect(this,
             &CoAPClient::invokeSendMessage,
             timer,
-            [=](const QByteArray &payload, const QString &path, int code) {
-                d->sendMessage(payload, path, ctx, session, code);
-            });
+            [=](const QByteArray &payload,
+                const QByteArray &token,
+                const QByteArray &resource,
+                const QByteArray &option,
+                int code) { d->sendMessage(payload, token, resource, option, code, session); });
 
     // Event loop...
     timer->setInterval(10);

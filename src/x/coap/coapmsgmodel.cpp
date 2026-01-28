@@ -40,7 +40,8 @@ CoAPMsgModel::CoAPMsgModel(QObject* parent)
 CoAPMsgModel::~CoAPMsgModel() {}
 
 void CoAPMsgModel::addRow(std::shared_ptr<CoAPMsgItem> request,
-                          std::shared_ptr<CoAPMsgItem> response)
+                          std::shared_ptr<CoAPMsgItem> response,
+                          int max)
 {
     beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
     d->m_msgListMutex.lock();
@@ -53,6 +54,14 @@ void CoAPMsgModel::addRow(std::shared_ptr<CoAPMsgItem> request,
     d->m_msgList.append(response);
     d->m_msgListMutex.unlock();
     endInsertRows();
+
+    d->m_msgListMutex.lock();
+    while ((d->m_msgList.count() > max) && (max > 0)) {
+        beginRemoveRows(QModelIndex(), 0, 0);
+        d->m_msgList.removeAt(0);
+        endRemoveRows();
+    }
+    d->m_msgListMutex.unlock();
 }
 
 void CoAPMsgModel::clear()
@@ -96,7 +105,8 @@ QVariant CoAPMsgModel::data(const QModelIndex& index, int role) const
         } else if (column == CO_AP_MODEL_COLUMN_OPTIONS) {
             return QString::fromLatin1(item->options.toHex(' '));
         } else if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
-            return QString::fromLatin1(item->payload.toHex(' '));
+            QString data = QString::fromLatin1(item->payload.toHex(' '));
+            return data.isEmpty() ? tr("(No Payload)") : data;
         }
 
         return QVariant();
@@ -158,8 +168,9 @@ QVariant CoAPMsgModel::headerData(int section, Qt::Orientation orientation, int 
             }
         }
     } else {
-        Q_UNUSED(role);
-        return QString::number(section + 1);
+        if (role == Qt::DisplayRole) {
+            return QString::number(section + 1);
+        }
     }
 
     return QVariant();

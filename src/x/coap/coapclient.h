@@ -32,7 +32,11 @@ public:
 
 signals:
     void errorOccurred(const QString& error);
-    void invokeSendMessage(const QByteArray& payload, const QString& path, int code);
+    void invokeSendMessage(const QByteArray& payload,
+                           const QByteArray& token,
+                           const QByteArray& resource,
+                           const QByteArray& option,
+                           int code);
     void messageReceived(std::shared_ptr<CoAPMsgItem> request,
                          std::shared_ptr<CoAPMsgItem> response);
 

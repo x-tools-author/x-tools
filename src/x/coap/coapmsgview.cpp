@@ -18,9 +18,13 @@
 
 #include <coap3/coap.h>
 
-#include "coapmsgmodel.h"
 #include "utilities/iconengine.h"
 #include "utilities/keepopenedmenu.h"
+
+#include "coapmsgfilter.h"
+#include "coapmsgmodel.h"
+
+#define CO_AP_NO_LIMIT -1
 
 namespace Ui {
 class CoAPMsgView;
@@ -41,6 +45,7 @@ public:
         ui->toolButtonColumns->setIcon(xIcon(":res/icons/list.svg"));
         ui->toolButtonScrolling->setIcon(xIcon(":res/icons/wrap_text.svg"));
         ui->toolButtonScrolling->setCheckable(true);
+        ui->toolButtonScrolling->setChecked(true);
         ui->toolButtonClear->setIcon(xIcon(":res/icons/mop.svg"));
         ui->toolButtonFilter->setIcon(xIcon(":/res/icons/filter_alt.svg"));
         ui->toolButtonLimit->setIcon(xIcon(":res/icons/contract.svg"));
@@ -52,7 +57,9 @@ public:
         connect(ui->toolButtonClear, &QToolButton::clicked, q, [=]() { onClearBtnClicked(); });
 
         m_model = new CoAPMsgModel(q);
-        ui->tableView->setModel(m_model);
+        m_filter = new CoAPMsgFilter(q);
+        m_filter->setSourceModel(m_model);
+        ui->tableView->setModel(m_filter);
         QHeaderView* hView = ui->tableView->horizontalHeader();
         hView->setSectionResizeMode(QHeaderView::ResizeToContents);
         hView->setStretchLastSection(true);
@@ -79,7 +86,9 @@ public:
 public:
     Ui::CoAPMsgView* ui{nullptr};
     CoAPMsgModel* m_model{nullptr};
+    CoAPMsgFilter* m_filter{nullptr};
     QMenu* m_columnsMenu{nullptr};
+    QActionGroup* m_limitActionGroup{nullptr};
 
 public:
     void onScrollToBottomToggled(bool checked)
@@ -100,24 +109,39 @@ public:
         }
     }
 
+public:
+    int getLimit() const
+    {
+        for (QAction* action : m_limitActionGroup->actions()) {
+            if (action->isChecked()) {
+                return action->data().toInt();
+            }
+        }
+        return -1;
+    }
+
 private:
     CoAPMsgView* q{nullptr};
 
 private:
     void setupLimitMenu(QToolButton* button)
     {
-        QMenu* menu = new QMenu(button);
-        QActionGroup* actionGroup = new QActionGroup(button);
-        actionGroup->setExclusive(true);
+        if (m_limitActionGroup) {
+            return;
+        }
 
-        QList<int> limits = {-1, 1000, 10000, 100000};
+        QMenu* menu = new QMenu(button);
+        m_limitActionGroup = new QActionGroup(button);
+        m_limitActionGroup->setExclusive(true);
+
+        QList<int> limits = {CO_AP_NO_LIMIT, 1000, 10000, 100000, 1000000};
         for (int limit : limits) {
-            QString text = (limit == -1) ? tr("No Limit") : QString::number(limit);
+            QString text = (limit == CO_AP_NO_LIMIT) ? tr("No Limit") : QString::number(limit);
             QAction* action = new QAction(text, button);
             action->setCheckable(true);
             action->setData(limit);
             menu->addAction(action);
-            actionGroup->addAction(action);
+            m_limitActionGroup->addAction(action);
             if (limit == 10000) {
                 action->setChecked(true);
             }
@@ -130,6 +154,8 @@ private:
 struct CoAPMsgViewParameterKeys
 {
     const QString columns{"columns"};
+    const QString limit{"limit"};
+    const QString scrollToBottom{"scrollToBottom"};
 };
 
 CoAPMsgView::CoAPMsgView(QWidget* parent)
@@ -144,6 +170,7 @@ QJsonObject CoAPMsgView::save()
 {
     CoAPMsgViewParameterKeys keys;
     QJsonObject obj;
+    // Save columns visibility
     QJsonArray columnsArray;
     int columnCount = d->m_model->columnCount(QModelIndex());
     for (int i = 0; i < columnCount; ++i) {
@@ -151,12 +178,23 @@ QJsonObject CoAPMsgView::save()
         columnsArray.append(isVisible);
     }
     obj[keys.columns] = columnsArray;
+
+    // Save limit
+    for (QAction* action : d->m_limitActionGroup->actions()) {
+        if (action->isChecked()) {
+            obj[keys.limit] = action->data().toInt();
+            break;
+        }
+    }
+
+    obj[keys.scrollToBottom] = d->ui->toolButtonScrolling->isChecked();
     return obj;
 }
 
 void CoAPMsgView::load(const QJsonObject& obj)
 {
     CoAPMsgViewParameterKeys keys;
+    // Load columns visibility
     QJsonArray columnsArray = obj.value(keys.columns).toArray();
     int columnCount = d->m_model->columnCount(QModelIndex());
     QList<QAction*> actions = d->m_columnsMenu->actions();
@@ -165,12 +203,24 @@ void CoAPMsgView::load(const QJsonObject& obj)
         d->ui->tableView->setColumnHidden(i, !isVisible);
         actions.at(i)->setChecked(isVisible);
     }
+
+    // Load limit(The default is no limit)
+    int limit = obj.value(keys.limit).toInt(CO_AP_NO_LIMIT);
+    for (QAction* action : d->m_limitActionGroup->actions()) {
+        if (action->data().toInt() == limit) {
+            action->setChecked(true);
+            break;
+        }
+    }
+
+    bool scrollToBottom = obj.value(keys.scrollToBottom).toBool(true);
+    d->ui->toolButtonScrolling->setChecked(scrollToBottom);
 }
 
 void CoAPMsgView::addMessage(std::shared_ptr<CoAPMsgItem> request,
                              std::shared_ptr<CoAPMsgItem> response)
 {
-    d->m_model->addRow(request, response);
+    d->m_model->addRow(request, response, d->getLimit());
     if (d->ui->toolButtonScrolling->isChecked()) {
         d->ui->tableView->scrollToBottom();
     }

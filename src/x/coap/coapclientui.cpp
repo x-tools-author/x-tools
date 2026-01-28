@@ -39,22 +39,22 @@ public:
     {
         ui = new Ui::CoAPClientUi();
         ui->setupUi(q_ptr);
+        setupPayload();
+        setupResource();
+        setupOption();
+        setupToken();
         ui->pushButtonClose->setEnabled(false);
-        ui->toolButtonOptionEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
-        ui->toolButtonPayloadEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
-        ui->toolButtonPayloadList->setIcon(xIcon(":res/icons/list.svg"));
-        ui->toolButtonPayloadSave->setIcon(xIcon(":res/icons/save.svg"));
+
         // clang-format off
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
         connect(ui->pushButtonClose, &QPushButton::clicked, this, [=]() { onCloseButtonClicked(); });
-        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() { onOptionButtonClicked(); });
-        connect(ui->pushButtonGet, &QPushButton::clicked, this, [=]() { onGetButtonClicked(); });
-        connect(ui->pushButtonPost, &QPushButton::clicked, this, [=]() { onPostButtonClicked(); });
-        connect(ui->pushButtonPut, &QPushButton::clicked, this, [=]() { onPutButtonClicked(); });
-        connect(ui->pushButtonDelete, &QPushButton::clicked, this, [=]() { onDeleteButtonClicked(); });
-        connect(ui->pushButtonFetch, &QPushButton::clicked, this, [=]() { onFetchButtonClicked(); });
-        connect(ui->pushButtonPatch, &QPushButton::clicked, this, [=]() { onPatchButtonClicked(); });
-        connect(ui->pushButtonIPatch, &QPushButton::clicked, this, [=]() { oniPatchButtonClicked(); });
+        connect(ui->pushButtonGet, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_GET); });
+        connect(ui->pushButtonPost, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_POST); });
+        connect(ui->pushButtonPut, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_PUT); });
+        connect(ui->pushButtonDelete, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_DELETE); });
+        connect(ui->pushButtonFetch, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_FETCH); });
+        connect(ui->pushButtonPatch, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_PATCH); });
+        connect(ui->pushButtonIPatch, &QPushButton::clicked, this, [=]() { sendMessage(COAP_REQUEST_IPATCH); });
         // clang-format on
 
         m_client = new CoAPClient(q);
@@ -82,14 +82,80 @@ public:
 
 public:
     Ui::CoAPClientUi* ui{nullptr};
+    CoAPMsgView* m_msgView{nullptr};
     CoAPResourceView* m_resourceView{nullptr};
     CoAPPayloadView* m_payloadView{nullptr};
     CoAPOptionView* m_optionView{nullptr};
 
+public:
+    void onPayloadTextChanged()
+    {
+        QString payload = ui->textEditPayload->toPlainText();
+        if (!payload.contains('\t')) {
+            return;
+        }
+
+        QTextCursor cursor = ui->textEditPayload->textCursor();
+        int pos = cursor.position();
+
+        // Replace tab with spaces
+        payload.replace("\t", "    ");
+        ui->textEditPayload->blockSignals(true);
+        ui->textEditPayload->setPlainText(payload);
+        ui->textEditPayload->blockSignals(false);
+        cursor.setPosition(pos + 3);
+        ui->textEditPayload->setTextCursor(cursor);
+    }
+
 private:
     CoAPClientUi* q{nullptr};
     CoAPClient* m_client{nullptr};
-    CoAPMsgView* m_msgView{nullptr};
+
+private:
+    void setupPayload()
+    {
+        ui->toolButtonPayloadFormat->setIcon(xIcon(":res/icons/transform.svg"));
+        ui->toolButtonPayloadEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+        ui->toolButtonPayloadLoad->setIcon(xIcon(":res/icons/file_open.svg"));
+        ui->toolButtonPayloadSave->setIcon(xIcon(":res/icons/save.svg"));
+        connect(ui->textEditPayload, &QTextEdit::textChanged, q, [=]() { onPayloadTextChanged(); });
+    }
+    void setupToken()
+    {
+        ui->toolButtonTokenFormat->setIcon(xIcon(":res/icons/transform.svg"));
+        ui->toolButtonTokenRemove->setIcon(xIcon(":res/icons/save.svg"));
+        ui->toolButtonTokenAdd->setIcon(xIcon(":res/icons/file_open.svg"));
+        ui->toolButtonTokenEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+    }
+    void setupResource()
+    {
+        ui->toolButtonResourceFormat->setIcon(xIcon(":res/icons/transform.svg"));
+        ui->toolButtonResourceRemove->setIcon(xIcon(":res/icons/save.svg"));
+        ui->toolButtonResourceAdd->setIcon(xIcon(":res/icons/file_open.svg"));
+        ui->toolButtonResourceEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+    }
+    void setupOption()
+    {
+        ui->toolButtonOptionFormat->setIcon(xIcon(":res/icons/transform.svg"));
+        ui->toolButtonOptionRemove->setIcon(xIcon(":res/icons/save.svg"));
+        ui->toolButtonOptionAdd->setIcon(xIcon(":res/icons/file_open.svg"));
+        ui->toolButtonOptionEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() {
+            onOptionButtonClicked();
+        });
+    }
+    void sendMessage(coap_request_t requestType)
+    {
+        QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
+        QByteArray token = ui->comboBoxToken->currentText().toUtf8();
+        QByteArray resource = ui->comboBoxResource->currentText().toUtf8();
+        QByteArray option = ui->comboBoxOption->currentText().toUtf8();
+        emit m_client->invokeSendMessage(payload,
+                                         token,
+                                         resource,
+                                         option,
+                                         static_cast<int>(requestType));
+    }
 
 private:
     void onStarted()
@@ -118,10 +184,10 @@ private:
     void onOptionButtonClicked()
     {
         CoAPOptionEditor editor(q);
-        editor.load(ui->comboBoxOptionList);
+        editor.load(ui->comboBoxOption);
         int ret = editor.exec();
         if (ret == QDialog::Accepted) {
-            editor.save(ui->comboBoxOptionList);
+            editor.save(ui->comboBoxOption);
         }
     }
     void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
@@ -129,47 +195,16 @@ private:
     {
         m_msgView->addMessage(request, response);
     }
+};
 
-public:
-    void onGetButtonClicked()
-    {
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_GET);
-    }
-    void onPostButtonClicked()
-    {
-        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_POST);
-    }
-    void onPutButtonClicked()
-    {
-        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_PUT);
-    }
-    void onDeleteButtonClicked()
-    {
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_DELETE);
-    }
-    void onFetchButtonClicked()
-    {
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(QByteArray(), path, COAP_REQUEST_FETCH);
-    }
-    void onPatchButtonClicked()
-    {
-        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_PATCH);
-    }
-    void oniPatchButtonClicked()
-    {
-        const QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        const QString path = ui->comboBoxPath->currentText();
-        emit m_client->invokeSendMessage(payload, path, COAP_REQUEST_IPATCH);
-    }
+struct CoAPClientUiParameterKeys
+{
+    const QString payload{"payload"};
+    const QString token{"token"};
+    const QString resource{"resource"};
+    const QString option{"option"};
+
+    const QString message{"message"};
 };
 
 CoAPClientUi::CoAPClientUi(QWidget* parent)
@@ -191,7 +226,25 @@ QJsonObject CoAPClientUi::save()
     obj[keys.serverAddress] = d->ui->comboBoxServerIp->currentText();
     obj[keys.serverPort] = d->ui->spinBoxServerPort->value();
     obj[keys.protocol] = d->ui->comboBoxProtocol->currentData().toInt();
+
+    CoAPClientUiParameterKeys uiKeys;
+    obj[uiKeys.payload] = d->ui->textEditPayload->toPlainText();
+    obj[uiKeys.token] = d->ui->comboBoxToken->currentText();
+    obj[uiKeys.resource] = d->ui->comboBoxResource->currentText();
+    obj[uiKeys.option] = d->ui->comboBoxOption->currentText();
+    obj[uiKeys.message] = d->m_msgView->save();
+
     return obj;
+}
+
+QString defaultPayload()
+{
+    QJsonObject obj;
+    obj.insert("project", "xTools");
+    obj.insert("subProject", "xCoAP");
+    obj.insert("author", "x-tools-author");
+    obj.insert("email", "x-tools@outlook.com");
+    return QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented));
 }
 
 void CoAPClientUi::load(const QJsonObject& obj)
@@ -207,6 +260,18 @@ void CoAPClientUi::load(const QJsonObject& obj)
     if (index != -1) {
         d->ui->comboBoxProtocol->setCurrentIndex(index);
     }
+
+    CoAPClientUiParameterKeys uiKeys;
+    const QString defaultResource = QString("/hello");
+    const QString defaultToken = QString("xTools.xCoAP.Client");
+    const QString defaultOption = QString("accept: application/json");
+    QString payload = obj.value(uiKeys.payload).toString(defaultPayload());
+    payload = payload.isEmpty() ? defaultPayload() : payload;
+    d->ui->textEditPayload->setPlainText(payload);
+    d->ui->comboBoxResource->setCurrentText(obj.value(uiKeys.resource).toString(defaultResource));
+    d->ui->comboBoxToken->setCurrentText(obj.value(uiKeys.token).toString(defaultToken));
+    d->ui->comboBoxOption->setCurrentText(obj.value(uiKeys.option).toString(defaultOption));
+    d->m_msgView->load(obj.value(uiKeys.message).toObject());
 }
 
 QWidget* CoAPClientUi::resourceView()
