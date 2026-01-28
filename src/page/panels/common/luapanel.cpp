@@ -50,6 +50,8 @@ LuaPanel::LuaPanel(QWidget *parent)
     connect(ui->comboBoxResultFormat, xComboBoxActivated, this, &LuaPanel::onResultFormatChanged);
     xSetupTextFormat(ui->comboBoxTestFormat);
     xSetupTextFormat(ui->comboBoxResultFormat);
+    xSetNoneBorder(ui->plainTextEditScriptString);
+    xSetNoneBorder(ui->plainTextEditScriptTable);
     onTestFormatChanged();
     onResultFormatChanged();
 
