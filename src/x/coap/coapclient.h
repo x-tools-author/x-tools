@@ -33,7 +33,6 @@ public:
 signals:
     void errorOccurred(const QString& error);
     void invokeSendMessage(const QByteArray& payload,
-                           const QByteArray& token,
                            const QByteArray& resource,
                            const QByteArray& option,
                            int code);

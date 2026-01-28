@@ -10,6 +10,7 @@
 #include "ui_coapclientui.h"
 
 #include <QHBoxLayout>
+#include <QJsonArray>
 #include <QObject>
 
 #include <coap3/coap.h>
@@ -40,9 +41,9 @@ public:
         ui = new Ui::CoAPClientUi();
         ui->setupUi(q_ptr);
         setupPayload();
-        setupResource();
         setupOption();
-        setupToken();
+        setupOptionUriPath();
+        setupOptionContextFormat();
         ui->pushButtonClose->setEnabled(false);
 
         // clang-format off
@@ -120,41 +121,76 @@ private:
         ui->toolButtonPayloadSave->setIcon(xIcon(":res/icons/save.svg"));
         connect(ui->textEditPayload, &QTextEdit::textChanged, q, [=]() { onPayloadTextChanged(); });
     }
-    void setupToken()
+    void setupOption() { ui->toolButtonOptionSettings->setIcon(xIcon(":res/icons/edit_note.svg")); }
+    void setupOptionUriPath()
     {
-        ui->toolButtonTokenFormat->setIcon(xIcon(":res/icons/transform.svg"));
-        ui->toolButtonTokenRemove->setIcon(xIcon(":res/icons/save.svg"));
-        ui->toolButtonTokenAdd->setIcon(xIcon(":res/icons/file_open.svg"));
-        ui->toolButtonTokenEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
-    }
-    void setupResource()
-    {
-        ui->toolButtonResourceFormat->setIcon(xIcon(":res/icons/transform.svg"));
-        ui->toolButtonResourceRemove->setIcon(xIcon(":res/icons/save.svg"));
-        ui->toolButtonResourceAdd->setIcon(xIcon(":res/icons/file_open.svg"));
-        ui->toolButtonResourceEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
-    }
-    void setupOption()
-    {
-        ui->toolButtonOptionFormat->setIcon(xIcon(":res/icons/transform.svg"));
-        ui->toolButtonOptionRemove->setIcon(xIcon(":res/icons/save.svg"));
-        ui->toolButtonOptionAdd->setIcon(xIcon(":res/icons/file_open.svg"));
-        ui->toolButtonOptionEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
-        connect(ui->toolButtonOptionEdit, &QPushButton::clicked, this, [=]() {
-            onOptionButtonClicked();
+        ui->toolButtonUriPathAdd->setIcon(xIcon(":res/icons/add.svg"));
+        ui->toolButtonUriPathRemove->setIcon(xIcon(":res/icons/remove.svg"));
+        connect(ui->toolButtonUriPathAdd, &QToolButton::clicked, this, [=]() {
+            const QString txt = ui->comboBoxOptionUriPath->currentText();
+            int index = this->ui->comboBoxOptionUriPath->findText(txt);
+            if (index == -1 && !txt.isEmpty()) {
+                this->ui->comboBoxOptionUriPath->addItem(txt);
+            }
         });
+        connect(ui->toolButtonUriPathRemove, &QToolButton::clicked, this, [=]() {
+            const QString txt = ui->comboBoxOptionUriPath->currentText();
+            int index = this->ui->comboBoxOptionUriPath->findText(txt);
+            if (index != -1) {
+                this->ui->comboBoxOptionUriPath->removeItem(index);
+            }
+        });
+    }
+    void setupOptionContextFormat()
+    {
+        auto addItem = [this](const QString& key, int value) {
+            QString txt = QString::number(value) + QString("-") + key;
+            ui->comboBoxOptionContentFormat->addItem(txt, value);
+            ui->comboBoxOptionContentFormat->setItemData(ui->comboBoxOptionContentFormat->count()
+                                                             - 1,
+                                                         key,
+                                                         Qt::ToolTipRole);
+        };
+
+        addItem("application/json", COAP_MEDIATYPE_APPLICATION_JSON);
+        addItem("text/plain", COAP_MEDIATYPE_TEXT_PLAIN);
+        addItem("application/octet-stream", COAP_MEDIATYPE_APPLICATION_OCTET_STREAM);
+        addItem("application/link-format", COAP_MEDIATYPE_APPLICATION_LINK_FORMAT);
+        addItem("application/xml", COAP_MEDIATYPE_APPLICATION_XML);
+        addItem("application/rdf+xml", COAP_MEDIATYPE_APPLICATION_RDF_XML);
+        addItem("application/exi", COAP_MEDIATYPE_APPLICATION_EXI);
+        addItem("application/cbor", COAP_MEDIATYPE_APPLICATION_CBOR);
+        addItem("application/cwt", COAP_MEDIATYPE_APPLICATION_CWT);
+        addItem("application/coap-group+json", COAP_MEDIATYPE_APPLICATION_COAP_GROUP_JSON);
+        addItem("application/cose; cose-type=\"cose-sign\"", COAP_MEDIATYPE_APPLICATION_COSE_SIGN);
+        addItem("application/cose; cose-type=\"cose-sign1\"", COAP_MEDIATYPE_APPLICATION_COSE_SIGN1);
+        const QString coseEncrypt = "application/cose; cose-type=\"cose-encrypt\"";
+        const QString coseEncrypt0 = "application/cose; cose-type=\"cose-encrypt0\"";
+        addItem(coseEncrypt, COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT);
+        addItem(coseEncrypt0, COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT0);
+        addItem("application/cose; cose-type=\"cose-mac\"", COAP_MEDIATYPE_APPLICATION_COSE_MAC);
+        addItem("application/cose; cose-type=\"cose-mac0\"", COAP_MEDIATYPE_APPLICATION_COSE_MAC0);
+        addItem("application/cose-key", COAP_MEDIATYPE_APPLICATION_COSE_KEY);
+        addItem("application/cose-key-set", COAP_MEDIATYPE_APPLICATION_COSE_KEY_SET);
+        addItem("application/senml+json", COAP_MEDIATYPE_APPLICATION_SENML_JSON);
+        addItem("application/sensml+json", COAP_MEDIATYPE_APPLICATION_SENSML_JSON);
+        addItem("application/senml+cbor", COAP_MEDIATYPE_APPLICATION_SENML_CBOR);
+        addItem("application/sensml+cbor", COAP_MEDIATYPE_APPLICATION_SENSML_CBOR);
+        addItem("application/senml-exi", COAP_MEDIATYPE_APPLICATION_SENML_EXI);
+        addItem("application/sensml-exi", COAP_MEDIATYPE_APPLICATION_SENSML_EXI);
+        addItem("application/senml+xml", COAP_MEDIATYPE_APPLICATION_SENML_XML);
+        addItem("application/sensml+xml", COAP_MEDIATYPE_APPLICATION_SENSML_XML);
+        addItem("application/dots+cbor", COAP_MEDIATYPE_APPLICATION_DOTS_CBOR);
+        addItem("application/ace+cbor", COAP_MEDIATYPE_APPLICATION_ACE_CBOR);
+        addItem("application/missing-blocks+cbor-seq", COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ);
+        addItem("application/oscore", COAP_MEDIATYPE_APPLICATION_OSCORE);
     }
     void sendMessage(coap_request_t requestType)
     {
         QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        QByteArray token = ui->comboBoxToken->currentText().toUtf8();
-        QByteArray resource = ui->comboBoxResource->currentText().toUtf8();
-        QByteArray option = ui->comboBoxOption->currentText().toUtf8();
-        emit m_client->invokeSendMessage(payload,
-                                         token,
-                                         resource,
-                                         option,
-                                         static_cast<int>(requestType));
+        QByteArray resource = ui->comboBoxOptionUriPath->currentText().toUtf8();
+        QByteArray option = ui->comboBoxOptionContentFormat->currentText().toUtf8();
+        emit m_client->invokeSendMessage(payload, resource, option, static_cast<int>(requestType));
     }
 
 private:
@@ -184,11 +220,7 @@ private:
     void onOptionButtonClicked()
     {
         CoAPOptionEditor editor(q);
-        editor.load(ui->comboBoxOption);
         int ret = editor.exec();
-        if (ret == QDialog::Accepted) {
-            editor.save(ui->comboBoxOption);
-        }
     }
     void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
                            std::shared_ptr<CoAPMsgItem> response)
@@ -200,9 +232,9 @@ private:
 struct CoAPClientUiParameterKeys
 {
     const QString payload{"payload"};
-    const QString token{"token"};
-    const QString resource{"resource"};
-    const QString option{"option"};
+    const QString uriPath{"uriPath"};
+    const QString uriPaths{"uriPaths"};
+    const QString contextFormat{"contextFormat"};
 
     const QString message{"message"};
 };
@@ -229,9 +261,13 @@ QJsonObject CoAPClientUi::save()
 
     CoAPClientUiParameterKeys uiKeys;
     obj[uiKeys.payload] = d->ui->textEditPayload->toPlainText();
-    obj[uiKeys.token] = d->ui->comboBoxToken->currentText();
-    obj[uiKeys.resource] = d->ui->comboBoxResource->currentText();
-    obj[uiKeys.option] = d->ui->comboBoxOption->currentText();
+    QJsonArray uriPaths;
+    for (int i = 0; i < d->ui->comboBoxOptionUriPath->count(); ++i) {
+        uriPaths.append(d->ui->comboBoxOptionUriPath->itemText(i));
+    }
+    obj[uiKeys.uriPaths] = uriPaths;
+    obj[uiKeys.uriPath] = d->ui->comboBoxOptionUriPath->currentText();
+    obj[uiKeys.contextFormat] = d->ui->comboBoxOptionContentFormat->currentData().toInt();
     obj[uiKeys.message] = d->m_msgView->save();
 
     return obj;
@@ -262,15 +298,30 @@ void CoAPClientUi::load(const QJsonObject& obj)
     }
 
     CoAPClientUiParameterKeys uiKeys;
-    const QString defaultResource = QString("/hello");
-    const QString defaultToken = QString("xTools.xCoAP.Client");
-    const QString defaultOption = QString("accept: application/json");
+    // Payload
     QString payload = obj.value(uiKeys.payload).toString(defaultPayload());
     payload = payload.isEmpty() ? defaultPayload() : payload;
     d->ui->textEditPayload->setPlainText(payload);
-    d->ui->comboBoxResource->setCurrentText(obj.value(uiKeys.resource).toString(defaultResource));
-    d->ui->comboBoxToken->setCurrentText(obj.value(uiKeys.token).toString(defaultToken));
-    d->ui->comboBoxOption->setCurrentText(obj.value(uiKeys.option).toString(defaultOption));
+    // Options: URI Path
+    QJsonArray uriPaths = obj.value(uiKeys.uriPaths).toArray();
+    d->ui->comboBoxOptionUriPath->clear();
+    for (const QJsonValue& val : uriPaths) {
+        QString path = val.toString();
+        if (!path.isEmpty()) {
+            d->ui->comboBoxOptionUriPath->addItem(path);
+        }
+    }
+    const QString defaultResource = QString("path/to/resource");
+    QString uriPath = obj.value(uiKeys.uriPath).toString(defaultResource);
+    uriPath = uriPath.isEmpty() ? defaultResource : uriPath;
+    d->ui->comboBoxOptionUriPath->setCurrentText(uriPath);
+    // Options: Content Format
+    int defaultFormat = COAP_MEDIATYPE_APPLICATION_JSON;
+    int format = obj.value(uiKeys.contextFormat).toInt(defaultFormat);
+    index = d->ui->comboBoxOptionContentFormat->findData(format);
+    index = index == -1 ? d->ui->comboBoxOptionContentFormat->findData(defaultFormat) : index;
+    d->ui->comboBoxOptionContentFormat->setCurrentIndex(index);
+    // Message View
     d->m_msgView->load(obj.value(uiKeys.message).toObject());
 }
 

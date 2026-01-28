@@ -103,7 +103,6 @@ public:
         timer->start();
     }
     void sendMessage(const QByteArray &payload,
-                     const QByteArray &token,
                      const QByteArray &resource,
                      const QByteArray &option,
                      int code,
@@ -126,7 +125,7 @@ public:
                 return;
             }
         }
-
+#if 0
         // Token...
         if (token.isEmpty()) {
             if (!coap_add_token(request,
@@ -136,6 +135,7 @@ public:
                 return;
             }
         }
+#endif
 
         // Resource path...
         if (resource.isEmpty()) {
@@ -243,10 +243,9 @@ void CoAPClient::run()
             &CoAPClient::invokeSendMessage,
             timer,
             [=](const QByteArray &payload,
-                const QByteArray &token,
                 const QByteArray &resource,
                 const QByteArray &option,
-                int code) { d->sendMessage(payload, token, resource, option, code, session); });
+                int code) { d->sendMessage(payload, resource, option, code, session); });
 
     // Event loop...
     timer->setInterval(10);
