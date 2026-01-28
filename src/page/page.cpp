@@ -110,7 +110,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(ui->tabResponder, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
 
     ui->toolButtonRightPanel->setCheckable(true);
-    ui->toolButtonRightPanel->setIcon(xIcon(":/res/icons/dock_to_left.svg"));
+    ui->toolButtonRightPanel->setIcon(xIcon(":/res/icons/terminal.svg"));
+    ui->toolButtonRightPanel->setText(tr("Scripts"));
     connect(ui->toolButtonRightPanel,
             &QToolButton::clicked,
             this,

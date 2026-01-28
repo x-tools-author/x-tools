@@ -43,8 +43,12 @@ void IconEngine::paint(QPainter *painter, const QRect &rect, QIcon::Mode mode, Q
     QColor iconColor = palette.color(QPalette::ButtonText);
     if (mode == QIcon::Disabled) {
         iconColor.setAlpha(100);
-    } else if (mode == QIcon::Selected) {
-        iconColor = palette.color(QPalette::Highlight);
+    } else if (mode == QIcon::Selected || mode == QIcon::Active) {
+        iconColor = palette.color(QPalette::HighlightedText);
+    }
+
+    if (state == QIcon::On) {
+        iconColor = palette.color(QPalette::HighlightedText);
     }
 
     if (!m_color.isEmpty()) {
