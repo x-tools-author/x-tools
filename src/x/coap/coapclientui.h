@@ -8,7 +8,6 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QJsonObject>
 #include <QWidget>
 
 #include "utilities/serializable.h"
@@ -27,9 +26,9 @@ public:
 
     QJsonObject save() override;
     void load(const QJsonObject& obj) override;
-    QWidget* resourceView();
-    QWidget* payloadView();
-    QWidget* optionView();
+    QWidget* resourceView() const;
+    QWidget* payloadView() const;
+    QWidget* optionView() const;
 };
 
 } // namespace xCoAP

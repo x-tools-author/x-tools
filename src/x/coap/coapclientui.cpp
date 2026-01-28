@@ -69,7 +69,7 @@ public:
                 });
 
         m_msgView = new CoAPMsgView(q);
-        QHBoxLayout* layout = new QHBoxLayout(ui->widget);
+        auto* layout = new QHBoxLayout(ui->widget);
         layout->setContentsMargins(0, 0, 0, 0);
         layout->setSpacing(4);
         layout->addWidget(m_msgView);
@@ -79,7 +79,7 @@ public:
         m_payloadView = new CoAPPayloadView(q);
         m_optionView = new CoAPOptionView(q);
     }
-    ~CoAPClientUiPrivate() { delete ui; }
+    ~CoAPClientUiPrivate() override { delete ui; }
 
 public:
     Ui::CoAPClientUi* ui{nullptr};
@@ -185,7 +185,7 @@ private:
         addItem("application/missing-blocks+cbor-seq", COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ);
         addItem("application/oscore", COAP_MEDIATYPE_APPLICATION_OSCORE);
     }
-    void sendMessage(coap_request_t requestType)
+    void sendMessage(const coap_request_t requestType) const
     {
         QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         QByteArray resource = ui->comboBoxOptionUriPath->currentText().toUtf8();
@@ -194,36 +194,37 @@ private:
     }
 
 private:
-    void onStarted()
+    void onStarted() const
     {
         ui->pushButtonClose->setEnabled(true);
         ui->pushButtonOpen->setEnabled(false);
     }
-    void onFinished()
+    void onFinished() const
     {
         ui->pushButtonClose->setEnabled(false);
         ui->pushButtonOpen->setEnabled(true);
     }
-    void onOpenButtonClicked()
+    void onOpenButtonClicked() const
     {
         ui->pushButtonClose->setEnabled(false);
         ui->pushButtonOpen->setEnabled(false);
         onCloseButtonClicked();
         m_client->startClient(q->save());
     }
-    void onCloseButtonClicked()
+    void onCloseButtonClicked() const
     {
         ui->pushButtonClose->setEnabled(false);
         ui->pushButtonOpen->setEnabled(false);
         m_client->stopClient();
     }
-    void onOptionButtonClicked()
+    void onOptionButtonClicked() const
     {
         CoAPOptionEditor editor(q);
         int ret = editor.exec();
+        Q_UNUSED(ret);
     }
     void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
-                           std::shared_ptr<CoAPMsgItem> response)
+                           std::shared_ptr<CoAPMsgItem> response) const
     {
         m_msgView->addMessage(request, response);
     }
@@ -249,7 +250,10 @@ CoAPClientUi::CoAPClientUi(QWidget* parent)
     CoAPCommon::setupSocketProtocol(d->ui->comboBoxProtocol);
 }
 
-CoAPClientUi::~CoAPClientUi() {}
+CoAPClientUi::~CoAPClientUi()
+{
+    // Nothing to do yet
+}
 
 QJsonObject CoAPClientUi::save()
 {
@@ -325,17 +329,17 @@ void CoAPClientUi::load(const QJsonObject& obj)
     d->m_msgView->load(obj.value(uiKeys.message).toObject());
 }
 
-QWidget* CoAPClientUi::resourceView()
+QWidget* CoAPClientUi::resourceView() const
 {
     return d->m_resourceView;
 }
 
-QWidget* CoAPClientUi::payloadView()
+QWidget* CoAPClientUi::payloadView() const
 {
     return d->m_payloadView;
 }
 
-QWidget* CoAPClientUi::optionView()
+QWidget* CoAPClientUi::optionView() const
 {
     return d->m_optionView;
 }

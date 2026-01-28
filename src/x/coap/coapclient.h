@@ -25,7 +25,7 @@ class CoAPClient : public QThread
 
 public:
     explicit CoAPClient(QObject* parent = nullptr);
-    ~CoAPClient();
+    ~CoAPClient() override;
 
     void startClient(const QJsonObject& parameters);
     void stopClient();
