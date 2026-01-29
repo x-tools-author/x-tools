@@ -33,11 +33,11 @@ public:
 signals:
     void errorOccurred(const QString& error);
     void invokeSendMessage(const QByteArray& payload,
-                           const QByteArray& resource,
-                           const QByteArray& option,
-                           int code);
-    void messageReceived(std::shared_ptr<CoAPMsgItem> request,
-                         std::shared_ptr<CoAPMsgItem> response);
+                           const QString& uriPath,
+                           const int contextFormat,
+                           const int code);
+    void messageReceived(const std::shared_ptr<CoAPMsgItem>& request,
+                         const std::shared_ptr<CoAPMsgItem>& response);
 
 protected:
     void run() override;

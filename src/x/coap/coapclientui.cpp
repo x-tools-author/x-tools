@@ -189,8 +189,11 @@ private:
     {
         QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
         QByteArray resource = ui->comboBoxOptionUriPath->currentText().toUtf8();
-        QByteArray option = ui->comboBoxOptionContentFormat->currentText().toUtf8();
-        emit m_client->invokeSendMessage(payload, resource, option, static_cast<int>(requestType));
+        int contextFormat = ui->comboBoxOptionContentFormat->currentData().toInt();
+        emit m_client->invokeSendMessage(payload,
+                                         resource,
+                                         contextFormat,
+                                         static_cast<int>(requestType));
     }
 
 private:

@@ -18,6 +18,8 @@
 #include <coap3/coap_session.h>
 #include <coap3/coap_session_internal.h>
 
+#include "utilities/compatibility.h"
+
 #include "coapcommon.h"
 #include "coapglobal.h"
 
@@ -115,9 +117,9 @@ public:
         timer->start();
     }
     static void sendMessage(const QByteArray &payload,
-                            const QByteArray &resource,
-                            const QByteArray &option,
-                            int code,
+                            const QString &uriPath,
+                            const int contextFormat,
+                            const int code,
                             coap_session_t *session)
     {
         auto cookedCode = static_cast<coap_pdu_code_t>(code);
@@ -145,6 +147,35 @@ public:
             }
         }
 
+        // Resource path...
+        const QStringList paths = uriPath.split('/', xSkipEmptyParts);
+        for (const QString &path : paths) {
+            QByteArray pathData = path.toUtf8();
+            qInfo() << "Adding URI path segment:" << path;
+            size_t size = static_cast<size_t>(pathData.size());
+            const uint8_t *data = reinterpret_cast<const uint8_t *>(pathData.constData());
+            if (!coap_add_option(request, COAP_OPTION_URI_PATH, size, data)) {
+                qCWarning(xCoAPClientLog) << "Failed to add resource path segment to CoAP request";
+                return;
+            }
+        }
+
+        // Client name...
+        if (gCoAPGlobal.isClientNameEnabled() && !gCoAPGlobal.clientName().isEmpty()) {
+            QByteArray clientName = gCoAPGlobal.clientName().toUtf8();
+            const size_t size = static_cast<size_t>(clientName.size());
+            const uint8_t *data = reinterpret_cast<const uint8_t *>(clientName.constData());
+            if (!coap_add_option(request, COAP_OPTION_URI_HOST, size, data)) {
+                qCWarning(xCoAPClientLog) << "Failed to add client name to CoAP request";
+            }
+        }
+
+        // Specified options...
+        if (coap_send(session, request) == COAP_INVALID_MID) {
+            qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
+            return;
+        }
+
         // Payload...
         if (!payload.isEmpty()) {
             size_t size = payload.size();
@@ -153,29 +184,6 @@ public:
                 qCWarning(xCoAPClientLog) << "Failed to add payload to CoAP request";
                 return;
             }
-        }
-
-        // Resource path...
-        size_t size = static_cast<size_t>(resource.size());
-        const uint8_t *data = reinterpret_cast<const uint8_t *>(resource.constData());
-        if (!coap_add_option(request, COAP_OPTION_URI_PATH, size, data)) {
-            qCWarning(xCoAPClientLog) << "Failed to add resource path to CoAP request";
-            return;
-        }
-
-        // Client name...
-        if (gCoAPGlobal.isClientNameEnabled() && !gCoAPGlobal.clientName().isEmpty()) {
-            QByteArray clientName = gCoAPGlobal.clientName().toUtf8();
-            coap_add_option(request,
-                            COAP_OPTION_URI_HOST,
-                            clientName.size(),
-                            reinterpret_cast<const uint8_t *>(clientName.constData()));
-        }
-
-        // Specified options...
-        if (coap_send(session, request) == COAP_INVALID_MID) {
-            qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
-            return;
         }
     }
 
@@ -261,10 +269,10 @@ void CoAPClient::run()
             &CoAPClient::invokeSendMessage,
             timer,
             [session](const QByteArray &payload,
-                      const QByteArray &resource,
-                      const QByteArray &option,
+                      const QString &uriPath,
+                      const int contextFormat,
                       const int code) {
-                xCoAP::CoAPClientPrivate::sendMessage(payload, resource, option, code, session);
+                xCoAP::CoAPClientPrivate::sendMessage(payload, uriPath, contextFormat, code, session);
             });
 
     // Event loop...

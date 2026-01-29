@@ -203,3 +203,114 @@ coap_add_option(response,
 ```
 
 CoAP Option 的设计体现了物联网协议的核心理念：'在极简的基础上提供足够的灵活性'，是理解 CoAP 协议的关键部分。
+
+这是 CoAP（受约束的应用协议） 中 PDU（协议数据单元）消息码（Code） 的枚举定义。在 CoAP 中，消息码用于标识请求方法或响应状态。
+
+以下是各类取值的简要含义：
+
+一、空消息码（Empty）
+COAP_EMPTY_CODE = 0
+空消息，通常用于 ACK 或 RST 报文，不含请求或响应。
+
+二、请求方法（Request Methods）
+对应 HTTP 的常见方法，用于客户端向服务器请求操作资源：
+
+GET – 获取资源
+
+POST – 创建资源或提交数据
+
+PUT – 更新或替换资源
+
+DELETE – 删除资源
+
+FETCH – （RFC 8132）有条件地获取部分资源
+
+PATCH – （RFC 8132）部分更新资源
+
+iPATCH – 幂等的 PATCH
+
+三、响应状态码（Response Codes）
+格式为 c.xx（c=类别，xx=具体编号），类似 HTTP 状态码：
+
+2.xx 成功类
+2.01 Created – 资源已创建
+
+2.02 Deleted – 资源已删除
+
+2.03 Valid – 资源有效（缓存相关）
+
+2.04 Changed – 资源已更改
+
+2.05 Content – 返回资源内容
+
+2.31 Continue – 请求已收到，继续发送剩余部分
+
+4.xx 客户端错误
+4.00 Bad Request – 请求语法错误
+
+4.01 Unauthorized – 需要认证
+
+4.02 Bad Option – 选项错误
+
+4.03 Forbidden – 无权限
+
+4.04 Not Found – 资源不存在
+
+4.05 Method Not Allowed – 方法不允许
+
+4.06 Not Acceptable – 无法满足 Accept 选项
+
+4.08 Request Entity Incomplete – 请求不完整
+
+4.09 Conflict – 资源冲突
+
+4.12 Precondition Failed – 前提条件失败
+
+4.13 Request Entity Too Large – 请求实体过大
+
+4.15 Unsupported Content-Format – 不支持的媒体类型
+
+4.22 Unprocessable Entity – 语义错误（RFC 4918）
+
+4.29 Too Many Requests – 请求过多
+
+5.xx 服务器错误
+5.00 Internal Server Error – 服务器内部错误
+
+5.01 Not Implemented – 方法未实现
+
+5.02 Bad Gateway – 网关错误
+
+5.03 Service Unavailable – 服务不可用
+
+5.04 Gateway Timeout – 网关超时
+
+5.05 Proxying Not Supported – 不支持代理
+
+5.08 Hop Limit Reached – 跳数超限（类似 TTL）
+
+四、信令码（Signaling Codes）
+用于 CoAP 的 CoAP over TCP/TLS 扩展（RFC 8323），管理连接：
+
+CSM – 连接设置参数交换
+
+Ping – 保活探测
+
+Pong – 对 Ping 的回应
+
+Release – 优雅关闭连接
+
+Abort – 立即中止连接
+
+总结
+这个枚举覆盖了 CoAP 协议的核心操作码，分为：
+
+空码
+
+请求方法
+
+响应状态码（成功/客户端错误/服务器错误）
+
+信令码（用于 TCP/TLS 传输）
+
+这些代码在 CoAP 消息头中占用 1 字节，用于标识消息类型和结果。
