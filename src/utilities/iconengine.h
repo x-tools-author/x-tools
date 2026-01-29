@@ -10,7 +10,12 @@
 
 #include <QIconEngine>
 
+#if 0 // QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#define xIcon(file) QIcon(file)
+#else
 #define xIcon(file) QIcon(new xTools::IconEngine(file))
+#endif
+
 #define xColorIcon(file, color) QIcon(new xTools::IconEngine(file, color))
 
 namespace xTools {

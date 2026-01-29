@@ -98,12 +98,10 @@ QVariant CoAPMsgModel::data(const QModelIndex& index, int role) const
             return QString::number(item->version);
         } else if (column == CO_AP_MODEL_COLUMN_TYPE) {
             return item->type;
-        } else if (column == CO_AP_MODEL_COLUMN_TOKEN_LENGTH) {
-            return QString::number(item->tokenLength);
-        } else if (column == CO_AP_MODEL_COLUMN_TOKEN) {
+        } else if (column == CO_AP_MODEL_COLUMN_CODE_LENGTH) {
+            return QString::number(item->code);
+        } else if (column == CO_AP_MODEL_COLUMN_CODE) {
             return QString::fromLatin1(item->token.toHex(' '));
-        } else if (column == CO_AP_MODEL_COLUMN_OPTIONS) {
-            return QString::fromLatin1(item->options.toHex(' '));
         } else if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
             QString data = QString::fromLatin1(item->payload.toHex(' '));
             return data.isEmpty() ? tr("(No Payload)") : data;
@@ -135,7 +133,7 @@ int CoAPMsgModel::rowCount(const QModelIndex& parent) const
 int CoAPMsgModel::columnCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
-    return 10;
+    return 9;
 }
 
 QVariant CoAPMsgModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -155,12 +153,10 @@ QVariant CoAPMsgModel::headerData(int section, Qt::Orientation orientation, int 
                 return tr("Version");
             case CO_AP_MODEL_COLUMN_TYPE:
                 return tr("Type");
-            case CO_AP_MODEL_COLUMN_TOKEN_LENGTH:
-                return tr("Token Length");
-            case CO_AP_MODEL_COLUMN_TOKEN:
+            case CO_AP_MODEL_COLUMN_CODE_LENGTH:
+                return tr("Code");
+            case CO_AP_MODEL_COLUMN_CODE:
                 return tr("Token");
-            case CO_AP_MODEL_COLUMN_OPTIONS:
-                return tr("Options");
             case CO_AP_MODEL_COLUMN_PAYLOAD:
                 return tr("Payload");
             default:

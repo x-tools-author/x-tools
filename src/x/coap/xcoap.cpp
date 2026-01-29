@@ -13,9 +13,11 @@
 #include <QMenu>
 #include <QToolButton>
 
-#include "coapclientui.h"
-#include "coapserverui.h"
 #include "utilities/iconengine.h"
+
+#include "coapclientui.h"
+#include "coapglobal.h"
+#include "coapserverui.h"
 
 namespace Ui {
 class xCoAP;
@@ -29,6 +31,7 @@ struct xCoAPSettingKeys
     const QString serverViewVisible{"serverViewVisible"};
     const QString client{"client"};
     const QString server{"server"};
+    const QString globalSettings{"globalSettings"};
 };
 
 class xCoAPPrivate : public QObject
@@ -41,7 +44,20 @@ public:
         ui = new Ui::xCoAP();
         ui->setupUi(q);
 
+        // Tool button menu
         m_toolButtonMenu = new QMenu(q);
+        QAction* exportAction = m_toolButtonMenu->addAction("Export CoAP Configuration");
+        exportAction->setIcon(xIcon(":res/icons/save.svg"));
+        QAction* importAction = m_toolButtonMenu->addAction("Import CoAP Configuration");
+        importAction->setIcon(xIcon(":res/icons/file_open.svg"));
+        m_toolButtonMenu->addSeparator();
+        QAction* settingAction = m_toolButtonMenu->addAction(tr("Global Settings"));
+        settingAction->setIcon(xIcon(":res/icons/settings.svg"));
+        connect(exportAction, &QAction::triggered, q, [=]() { onExportActionTriggered(); });
+        connect(importAction, &QAction::triggered, q, [=]() { onImportActionTriggered(); });
+        connect(settingAction, &QAction::triggered, q, [=]() { onSettingsActionTriggered(); });
+
+        // Client and Server control tool buttons
         m_clientCtrlToolButton = new QToolButton(q);
         m_serverCtrlToolButton = new QToolButton(q);
         m_clientCtrlToolButton->setToolTip("Show/Hide Client View");
@@ -57,6 +73,7 @@ public:
             onServerCtrlToolButtonClicked();
         });
 
+        // Client and Server tabs
         m_client = new CoAPClientUi(q);
         m_server = new CoAPServerUi(q);
         ui->tabWidgetClient->addTab(m_client, tr("Client"));
@@ -111,6 +128,9 @@ private:
                                                           : ":res/icons/chevron_left.svg";
         m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     }
+    void onExportActionTriggered() {}
+    void onImportActionTriggered() {}
+    void onSettingsActionTriggered() { gCoAPGlobal.showThenMoveToCenter(); }
 
 private:
     xCoAP* q{nullptr};
@@ -132,6 +152,7 @@ QJsonObject xCoAP::save()
     obj.insert(keys.serverViewVisible, d->ui->tabWidgetServer->isVisible());
     obj.insert(keys.client, d->m_client->save());
     obj.insert(keys.server, d->m_server->save());
+    obj.insert(keys.globalSettings, gCoAPGlobal.save());
     return obj;
 }
 
@@ -155,15 +176,12 @@ void xCoAP::load(const QJsonObject& obj)
     d->m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     d->m_client->load(obj.value(keys.client).toObject());
     d->m_server->load(obj.value(keys.server).toObject());
+    gCoAPGlobal.load(obj.value(keys.globalSettings).toObject());
 }
 
 QMenu* xCoAP::toolButtonMenu()
 {
-#if 0
     return d->m_toolButtonMenu;
-#else
-    return nullptr;
-#endif
 }
 
 } // namespace xCoAP

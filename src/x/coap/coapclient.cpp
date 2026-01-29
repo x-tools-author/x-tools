@@ -10,6 +10,7 @@
 
 #include <QDebug>
 #include <QMutex>
+#include <QRandomGenerator>
 #include <QThread>
 #include <QTimer>
 
@@ -18,6 +19,7 @@
 #include <coap3/coap_session_internal.h>
 
 #include "coapcommon.h"
+#include "coapglobal.h"
 
 namespace xCoAP {
 
@@ -58,6 +60,11 @@ public:
         requestPdu->clientHost = client;
         requestPdu->serverHost = server;
         requestPdu->type = sent->type;
+        requestPdu->code = sent->code;
+        if (sent->e_token_length > 0 && sent->actual_token.length > 0) {
+            requestPdu->token.append(reinterpret_cast<const char *>(sent->actual_token.s),
+                                     static_cast<int>(sent->actual_token.length));
+        }
 
         std::shared_ptr<CoAPMsgItem> responsePdu = std::make_shared<CoAPMsgItem>();
         responsePdu->isRx = true;
@@ -65,6 +72,12 @@ public:
         responsePdu->version = (received->hdr_size & 0xC0);
         responsePdu->clientHost = client;
         responsePdu->serverHost = server;
+        responsePdu->type = received->type;
+        responsePdu->code = received->code;
+        if (received->e_token_length > 0 && received->actual_token.length > 0) {
+            responsePdu->token.append(reinterpret_cast<const char *>(received->actual_token.s),
+                                      static_cast<int>(received->actual_token.length));
+        }
 
         //------------------------------------------------------------------------------------------
         // Get payload
@@ -114,50 +127,56 @@ public:
             return;
         }
 
-        // Payload...
-        if (!payload.isEmpty()) {
-            int ret = coap_add_data(request,
-                                    static_cast<size_t>(payload.size()),
-                                    reinterpret_cast<const uint8_t *>(payload.constData()));
-            if (ret == 0) {
-                qCWarning(xCoAPClientLog) << "Failed to add payload to CoAP request";
-                return;
-            }
-        }
-#if 0
         // Token...
-        if (token.isEmpty()) {
-            if (!coap_add_token(request,
-                                static_cast<size_t>(token.size()),
-                                reinterpret_cast<const uint8_t *>(token.constData()))) {
+        if (gCoAPGlobal.isTokenEnabled() && gCoAPGlobal.tokenLength() > 0) {
+            int tokenLen = gCoAPGlobal.tokenLength();
+            QByteArray token;
+            token.resize(tokenLen);
+            for (int i = 0; i < qMin<int>(tokenLen, 8); ++i) {
+                qint64 randomValue = QRandomGenerator::global()->generate64();
+                token[i] = static_cast<char>(randomValue % 256);
+            }
+
+            size_t len = static_cast<size_t>(token.size());
+            const uint8_t *data = reinterpret_cast<const uint8_t *>(token.constData());
+            if (!coap_add_token(request, len, data)) {
                 qCWarning(xCoAPClientLog) << "Failed to add token to CoAP request";
                 return;
             }
         }
-#endif
+
+        // Payload...
+        if (!payload.isEmpty()) {
+            size_t size = payload.size();
+            const uint8_t *data = reinterpret_cast<const uint8_t *>(payload.constData());
+            if (!coap_add_data(request, size, data)) {
+                qCWarning(xCoAPClientLog) << "Failed to add payload to CoAP request";
+                return;
+            }
+        }
 
         // Resource path...
-        if (resource.isEmpty()) {
-            qCWarning(xCoAPClientLog) << "Resource path is empty";
+        size_t size = static_cast<size_t>(resource.size());
+        const uint8_t *data = reinterpret_cast<const uint8_t *>(resource.constData());
+        if (!coap_add_option(request, COAP_OPTION_URI_PATH, size, data)) {
+            qCWarning(xCoAPClientLog) << "Failed to add resource path to CoAP request";
             return;
         }
-        coap_add_option(request,
-                        COAP_OPTION_URI_PATH,
-                        resource.size(),
-                        reinterpret_cast<const uint8_t *>(resource.constData()));
+
+        // Client name...
+        if (gCoAPGlobal.isClientNameEnabled() && !gCoAPGlobal.clientName().isEmpty()) {
+            QByteArray clientName = gCoAPGlobal.clientName().toUtf8();
+            coap_add_option(request,
+                            COAP_OPTION_URI_HOST,
+                            clientName.size(),
+                            reinterpret_cast<const uint8_t *>(clientName.constData()));
+        }
+
+        // Specified options...
         if (coap_send(session, request) == COAP_INVALID_MID) {
             qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
             return;
         }
-#if 0
-        // Options...
-        if (!option.isEmpty()) {
-            coap_add_option(request,
-                            COAP_OPTION_ACCEPT,
-                            option.size(),
-                            reinterpret_cast<const uint8_t *>(option.constData()));
-        }
-#endif
     }
 
 private:

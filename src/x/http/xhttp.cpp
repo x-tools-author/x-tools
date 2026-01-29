@@ -9,6 +9,8 @@
 #include "xhttp.h"
 #include "ui_xhttp.h"
 
+#include <QJsonObject>
+
 namespace xHttp {
 
 xHttp::xHttp(QWidget* parent)

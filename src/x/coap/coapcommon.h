@@ -29,7 +29,7 @@ struct CoAPMsgItem
     QString serverHost;
     int version;
     int type;
-    int tokenLength;
+    int code;
     QByteArray token;
     QByteArray options;
     QByteArray payload;
