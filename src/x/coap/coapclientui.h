@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QMenu>
 #include <QWidget>
 
 #include "utilities/serializable.h"
@@ -28,7 +29,9 @@ public:
     void load(const QJsonObject& obj) override;
     QWidget* resourceView() const;
     QWidget* payloadView() const;
-    QWidget* optionView() const;
+
+signals:
+    void invokeChangeTabIndex(int index);
 };
 
 } // namespace xCoAP

@@ -30,7 +30,11 @@ struct xCoAPSettingKeys
     const QString clientViewVisible{"clientViewVisible"};
     const QString serverViewVisible{"serverViewVisible"};
     const QString client{"client"};
+    const QString clientTabIndex{"clientTabIndex"};
+
     const QString server{"server"};
+    const QString serverTabIndex{"serverTabIndex"};
+
     const QString globalSettings{"globalSettings"};
 };
 
@@ -77,10 +81,14 @@ public:
         m_client = new CoAPClientUi(q);
         m_server = new CoAPServerUi(q);
         ui->tabWidgetClient->addTab(m_client, tr("Client"));
-        ui->tabWidgetClient->addTab(m_client->optionView(), tr("Options"));
         ui->tabWidgetClient->addTab(m_client->payloadView(), tr("Payloads"));
         ui->tabWidgetServer->addTab(m_server, tr("Server"));
         ui->tabWidgetServer->addTab(m_server->resourceView(), tr("Resources"));
+        connect(m_client, &CoAPClientUi::invokeChangeTabIndex, q, [=](int index) {
+            if (index >= 0 && index < ui->tabWidgetClient->count()) {
+                ui->tabWidgetClient->setCurrentIndex(index);
+            }
+        });
     }
     ~xCoAPPrivate() {}
 
@@ -149,9 +157,13 @@ QJsonObject xCoAP::save()
     xCoAPSettingKeys keys;
     QJsonObject obj;
     obj.insert(keys.clientViewVisible, d->ui->tabWidgetClient->isVisible());
-    obj.insert(keys.serverViewVisible, d->ui->tabWidgetServer->isVisible());
     obj.insert(keys.client, d->m_client->save());
+    obj.insert(keys.clientTabIndex, d->ui->tabWidgetClient->currentIndex());
+
+    obj.insert(keys.serverViewVisible, d->ui->tabWidgetServer->isVisible());
     obj.insert(keys.server, d->m_server->save());
+    obj.insert(keys.serverTabIndex, d->ui->tabWidgetServer->currentIndex());
+
     obj.insert(keys.globalSettings, gCoAPGlobal.save());
     return obj;
 }
@@ -166,16 +178,21 @@ void xCoAP::load(const QJsonObject& obj)
         serverVisible = true;
     }
 
+    const QString clientCtrlBtnIcon = clientVisible ? ":res/icons/chevron_left.svg"
+                                                    : ":res/icons/chevron_right.svg";
+    const QString serverCtrlBtnIcon = serverVisible ? ":res/icons/chevron_right.svg"
+                                                    : ":res/icons/chevron_left.svg";
+    // Client
     d->ui->tabWidgetClient->setVisible(clientVisible);
-    d->ui->tabWidgetServer->setVisible(serverVisible);
-    QString clientCtrlBtnIcon = clientVisible ? ":res/icons/chevron_left.svg"
-                                              : ":res/icons/chevron_right.svg";
     d->m_clientCtrlToolButton->setIcon(xIcon(clientCtrlBtnIcon));
-    QString serverCtrlBtnIcon = serverVisible ? ":res/icons/chevron_right.svg"
-                                              : ":res/icons/chevron_left.svg";
-    d->m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     d->m_client->load(obj.value(keys.client).toObject());
+    d->ui->tabWidgetClient->setCurrentIndex(obj.value(keys.clientTabIndex).toInt(0));
+    // Server
+    d->ui->tabWidgetServer->setVisible(serverVisible);
+    d->m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     d->m_server->load(obj.value(keys.server).toObject());
+    d->ui->tabWidgetServer->setCurrentIndex(obj.value(keys.serverTabIndex).toInt(0));
+    // Global Settings
     gCoAPGlobal.load(obj.value(keys.globalSettings).toObject());
 }
 

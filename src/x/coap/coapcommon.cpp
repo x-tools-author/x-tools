@@ -61,6 +61,60 @@ void CoAPCommon::setupSocketProtocol(QComboBox* comboBox)
     comboBox->addItem("WSS", static_cast<int>(COAP_PROTO_WSS));
 }
 
+static void addContextFormatItem(const QString& key, int value, QComboBox* cb)
+{
+    QString txt = QString::number(value) + QString("-") + key;
+    cb->addItem(txt, value);
+    cb->setItemData(cb->count() - 1, key, Qt::ToolTipRole);
+};
+
+void CoAPCommon::setupContextFormat(QComboBox* comboBox)
+{
+    if (!comboBox) {
+        return;
+    }
+
+    comboBox->clear();
+
+    // clang-format off
+    addContextFormatItem("application/json", COAP_MEDIATYPE_APPLICATION_JSON, comboBox);
+    addContextFormatItem("text/plain", COAP_MEDIATYPE_TEXT_PLAIN, comboBox);
+    addContextFormatItem("application/octet-stream", COAP_MEDIATYPE_APPLICATION_OCTET_STREAM, comboBox);
+    addContextFormatItem("application/link-format", COAP_MEDIATYPE_APPLICATION_LINK_FORMAT, comboBox);
+    addContextFormatItem("application/xml", COAP_MEDIATYPE_APPLICATION_XML, comboBox);
+    addContextFormatItem("application/rdf+xml", COAP_MEDIATYPE_APPLICATION_RDF_XML, comboBox);
+    addContextFormatItem("application/exi", COAP_MEDIATYPE_APPLICATION_EXI, comboBox);
+    addContextFormatItem("application/cbor", COAP_MEDIATYPE_APPLICATION_CBOR, comboBox);
+    addContextFormatItem("application/cwt", COAP_MEDIATYPE_APPLICATION_CWT, comboBox);
+    addContextFormatItem("application/coap-group+json", COAP_MEDIATYPE_APPLICATION_COAP_GROUP_JSON, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-sign\"", COAP_MEDIATYPE_APPLICATION_COSE_SIGN, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-sign1\"", COAP_MEDIATYPE_APPLICATION_COSE_SIGN1, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-encrypt\"", COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-encrypt0\"", COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT0, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-mac\"", COAP_MEDIATYPE_APPLICATION_COSE_MAC, comboBox);
+    addContextFormatItem("application/cose; cose-type=\"cose-mac0\"", COAP_MEDIATYPE_APPLICATION_COSE_MAC0, comboBox);
+    addContextFormatItem("application/cose-key", COAP_MEDIATYPE_APPLICATION_COSE_KEY, comboBox);
+    addContextFormatItem("application/cose-key-set", COAP_MEDIATYPE_APPLICATION_COSE_KEY_SET, comboBox);
+    addContextFormatItem("application/senml+json", COAP_MEDIATYPE_APPLICATION_SENML_JSON, comboBox);
+    addContextFormatItem("application/sensml+json", COAP_MEDIATYPE_APPLICATION_SENSML_JSON, comboBox);
+    addContextFormatItem("application/senml+cbor", COAP_MEDIATYPE_APPLICATION_SENML_CBOR, comboBox);
+    addContextFormatItem("application/sensml+cbor", COAP_MEDIATYPE_APPLICATION_SENSML_CBOR, comboBox);
+    addContextFormatItem("application/senml-exi", COAP_MEDIATYPE_APPLICATION_SENML_EXI, comboBox);
+    addContextFormatItem("application/sensml-exi", COAP_MEDIATYPE_APPLICATION_SENSML_EXI, comboBox);
+    addContextFormatItem("application/senml+xml", COAP_MEDIATYPE_APPLICATION_SENML_XML, comboBox);
+    addContextFormatItem("application/sensml+xml", COAP_MEDIATYPE_APPLICATION_SENSML_XML, comboBox);
+    addContextFormatItem("application/dots+cbor", COAP_MEDIATYPE_APPLICATION_DOTS_CBOR, comboBox);
+    addContextFormatItem("application/ace+cbor", COAP_MEDIATYPE_APPLICATION_ACE_CBOR, comboBox);
+    addContextFormatItem("application/missing-blocks+cbor-seq", COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ, comboBox);
+    addContextFormatItem("application/oscore", COAP_MEDIATYPE_APPLICATION_OSCORE, comboBox);
+    // clang-format on
+
+    int index = comboBox->findData(COAP_MEDIATYPE_APPLICATION_JSON);
+    if (index != -1) {
+        comboBox->setCurrentIndex(index);
+    }
+}
+
 QString getCoAPAddress(const coap_address_t* addr)
 {
     char addrStr[INET6_ADDRSTRLEN] = {0};

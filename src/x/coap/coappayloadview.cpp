@@ -15,8 +15,12 @@
 #include <QJsonArray>
 #include <QMenu>
 
-#include "coapmsgmodel.h"
+#include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
+
+#include "coapcommon.h"
+#include "coappayloadeditor.h"
+#include "coappayloadmodel.h"
 
 namespace Ui {
 class CoAPPayloadView;
@@ -35,12 +39,22 @@ public:
         ui->setupUi(q);
         ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
         ui->toolButtonColumns->setIcon(xIcon(":res/icons/list.svg"));
+        ui->toolButtonColumns->hide();
+        ui->toolButtonAdd->setIcon(xIcon(":res/icons/add.svg"));
+        ui->toolButtonRemove->setIcon(xIcon(":res/icons/delete_sweep.svg"));
+        ui->toolButtonEdit->setIcon(xIcon(":res/icons/edit_note.svg"));
+        ui->toolButtonClear->setIcon(xIcon(":res/icons/delete.svg"));
 
-        m_model = new CoAPMsgModel(q);
+        // Model
+        m_model = new CoAPPayloadModel(q);
         ui->tableView->setModel(m_model);
         ui->tableView->horizontalHeader()->setSizeAdjustPolicy(QHeaderView::AdjustToContents);
         ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
+        // Menus
+        m_toolButtonMenu = new QMenu(q);
+        CoAPCommon::setupContextFormat(ui->comboBoxFormats);
+        ui->comboBoxFormats->insertItem(0, tr("All formats"), -1);
         int columns = m_model->columnCount(QModelIndex());
         m_columnsMenu = new QMenu(q);
         for (int i = 0; i < columns; ++i) {
@@ -56,16 +70,45 @@ public:
         }
         ui->toolButtonColumns->setMenu(m_columnsMenu);
         ui->toolButtonColumns->setPopupMode(QToolButton::MenuButtonPopup);
+
+        // Payload editor
+        m_editor = new CoAPPayloadEditor();
+        connect(m_editor, &CoAPPayloadEditor::accepted, q, [this]() { this->onEditorAccepted(); });
+        connect(ui->toolButtonAdd, &QToolButton::clicked, q, [this]() { this->onAddPayload(); });
+        connect(ui->toolButtonEdit, &QToolButton::clicked, q, [this]() { this->onEditPayload(); });
+        connect(ui->toolButtonRemove, &QToolButton::clicked, q, [this]() {
+            this->onDeletePayloads();
+        });
+        connect(ui->toolButtonClear, &QToolButton::clicked, q, [this]() {
+            this->onClearPayloads();
+        });
+        connect(ui->comboBoxFormats, xComboBoxIndexChanged, q, [=]() {
+            this->onContextFormatChanged();
+        });
+        connect(ui->lineEditFilter, &QLineEdit::textChanged, q, [=](const QString& text) {
+            this->onFilterTextChanged();
+        });
     }
-    ~CoAPPayloadViewPrivate() override {}
+    ~CoAPPayloadViewPrivate() override { m_editor->deleteLater(); }
 
 public:
     Ui::CoAPPayloadView* ui{nullptr};
-    CoAPMsgModel* m_model{nullptr};
+    CoAPPayloadModel* m_model{nullptr};
     QMenu* m_columnsMenu{nullptr};
+    QMenu* m_toolButtonMenu{nullptr};
 
 private:
     CoAPPayloadView* q{nullptr};
+    CoAPPayloadEditor* m_editor{nullptr};
+
+private:
+    void onEditorAccepted() {}
+    void onAddPayload() { m_editor->show(); }
+    void onEditPayload() {}
+    void onDeletePayloads() {}
+    void onClearPayloads() {}
+    void onContextFormatChanged() {}
+    void onFilterTextChanged() {}
 };
 
 struct CoAPPayloadViewParameterKeys
@@ -106,6 +149,16 @@ void CoAPPayloadView::load(const QJsonObject& obj)
         d->ui->tableView->setColumnHidden(i, !isVisible);
         actions.at(i)->setChecked(isVisible);
     }
+}
+
+QMenu* CoAPPayloadView::toolButtonMenu() const
+{
+    return d->m_toolButtonMenu;
+}
+
+QString CoAPPayloadView::addPayload(int contextFormat, const QByteArray& payload)
+{
+    return QString("");
 }
 
 } // namespace xCoAP

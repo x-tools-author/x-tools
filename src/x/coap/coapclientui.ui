@@ -117,16 +117,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButtonPayloadFormat">
-         <property name="toolTip">
-          <string>Payload format</string>
-         </property>
-         <property name="text">
-          <string>...</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QToolButton" name="toolButtonPayloadLoad">
          <property name="toolTip">
           <string>Preset payload list</string>
@@ -179,13 +169,6 @@
          </property>
          <property name="text">
           <string>Options</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButtonOptionSettings">
-         <property name="text">
-          <string>...</string>
          </property>
         </widget>
        </item>

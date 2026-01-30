@@ -70,7 +70,7 @@ int CoAPPayloadModel::rowCount(const QModelIndex& parent) const
 int CoAPPayloadModel::columnCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
-    return 10;
+    return 3;
 }
 
 QVariant CoAPPayloadModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -78,33 +78,20 @@ QVariant CoAPPayloadModel::headerData(int section, Qt::Orientation orientation, 
     if (orientation == Qt::Horizontal) {
         if (role == Qt::DisplayRole) {
             switch (section) {
-            case COAP_MODEL_COLUMN_FLAG:
-                return tr("Flag");
-            case COAP_MODEL_COLUMN_HOST:
-                return tr("Host");
-            case COAP_MODEL_COLUMN_VERSION:
-                return tr("Version");
-            case COAP_MODEL_COLUMN_TYPE:
-                return tr("Type");
-            case COAP_MODEL_COLUMN_TOKEN_LENGTH:
-                return tr("Token Length");
-            case COAP_MODEL_COLUMN_CODE:
-                return tr("Code");
-            case COAP_MODEL_COLUMN_MESSAGE_ID:
-                return tr("Message ID");
-            case COAP_MODEL_COLUMN_TOKEN:
-                return tr("Token");
-            case COAP_MODEL_COLUMN_OPTIONS:
-                return tr("Options");
-            case COAP_MODEL_COLUMN_PAYLOAD:
-                return tr("Payload");
+            case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
+                return tr("Description");
+            case CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT:
+                return tr("Format");
+            case CO_AP_PAYLOAD_MODEL_COLUMN_DATA:
+                return tr("Data");
             default:
                 return QVariant();
             }
         }
     } else {
-        Q_UNUSED(role);
-        return QString::number(section + 1);
+        if (role == Qt::DisplayRole) {
+            return QString::number(section + 1);
+        }
     }
 
     return QVariant();

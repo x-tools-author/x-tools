@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QMenu>
 #include <QTableView>
 
 #include "utilities/serializable.h"
@@ -27,6 +28,8 @@ public:
 
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
+    QMenu *toolButtonMenu() const;
+    QString addPayload(int contextFormat, const QByteArray &payload);
 };
 
 } // namespace xCoAP
