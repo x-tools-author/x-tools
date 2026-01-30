@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -15,7 +15,7 @@ SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
 {
     // 关键字
     QTextCharFormat keywordFormat;
-    keywordFormat.setForeground(QColor("#0077aa"));
+    keywordFormat.setForeground(QColor(0x00, 0x77, 0xaa));
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns = {"\\bif\\b",
                                    "\\bthen\\b",
@@ -42,7 +42,7 @@ SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
 
     // 单行注释
     QTextCharFormat commentFormat;
-    commentFormat.setForeground(QColor("#888888"));
+    commentFormat.setForeground(QColor(0x88, 0x88, 0x88));
     HighlightingRule commentRule;
     commentRule.pattern = QRegularExpression("--[^\n]*");
     commentRule.format = commentFormat;
@@ -50,7 +50,7 @@ SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
 
     // 字符串
     QTextCharFormat stringFormat;
-    stringFormat.setForeground(QColor("#aa5500"));
+    stringFormat.setForeground(QColor(0xaa, 0x55, 0x00));
     HighlightingRule stringRule;
     stringRule.pattern = QRegularExpression("\".*\"|'.*'");
     stringRule.format = stringFormat;
@@ -58,7 +58,7 @@ SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
 
     // 数字
     QTextCharFormat numberFormat;
-    numberFormat.setForeground(QColor("#009900"));
+    numberFormat.setForeground(QColor(0x00, 0x99, 0x00));
     HighlightingRule numberRule;
     numberRule.pattern = QRegularExpression("\\b[0-9]+(\\.[0-9]+)?\\b");
     numberRule.format = numberFormat;
