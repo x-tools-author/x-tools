@@ -15,6 +15,8 @@
 #include <QJsonArray>
 #include <QMenu>
 
+#include "coapcommon.h"
+
 namespace Ui {
 class CoAPPayloadEditor;
 };
@@ -30,6 +32,7 @@ public:
     {
         ui = new Ui::CoAPPayloadEditor();
         ui->setupUi(q);
+        CoAPCommon::setupContextFormat(ui->comboBoxContextFormat);
 
         connect(ui->buttonBox, &QDialogButtonBox::accepted, q, [=]() { emit q->accepted(); });
         connect(ui->buttonBox, &QDialogButtonBox::rejected, q, [=]() { q->close(); });

@@ -102,9 +102,9 @@ private:
     CoAPPayloadEditor* m_editor{nullptr};
 
 private:
-    void onEditorAccepted() {}
+    void onEditorAccepted() { m_editor->close(); }
     void onAddPayload() { m_editor->show(); }
-    void onEditPayload() {}
+    void onEditPayload() { m_editor->show(); }
     void onDeletePayloads() {}
     void onClearPayloads() {}
     void onContextFormatChanged() {}
