@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -20,8 +20,7 @@ class I18nPrivate;
 class I18n : public QObject
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(I18n)
-    Q_DISABLE_COPY(I18n)
+    I18nPrivate* d{nullptr};
 
     I18n(QObject* parent = nullptr);
 

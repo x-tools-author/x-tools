@@ -20,8 +20,7 @@ class StyleManagerPrivate;
 class StyleManager : public QObject
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(StyleManager)
-    Q_DISABLE_COPY(StyleManager)
+    StyleManagerPrivate* d{nullptr};
 
     StyleManager(QObject* parent = nullptr);
 

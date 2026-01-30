@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -21,8 +21,7 @@ class ThemeManagerPrivate;
 class ThemeManager : public QObject
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(ThemeManager)
-    Q_DISABLE_COPY(ThemeManager)
+    ThemeManagerPrivate *d{nullptr};
 
     ThemeManager(QObject *parent = nullptr);
 

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -7,13 +7,170 @@
  * code directory.
  **************************************************************************************************/
 #include "i18n.h"
-#include "i18n_p.h"
+
+#include <QActionGroup>
+#include <QCoreApplication>
+#include <QDebug>
+#include <QDir>
+#include <QFileInfoList>
+#include <QLocale>
+#include <QMenu>
+#include <QSettings>
+#include <QTranslator>
 
 namespace xTools {
 
+class I18nPrivate : public QObject
+{
+public:
+    I18nPrivate(I18n* q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {}
+    ~I18nPrivate() {}
+
+    void setupLanguage()
+    {
+        if (!settings) {
+            return;
+        }
+
+        QString defaultLanguage = QLocale::system().name();
+        QString language = settings->value(keyLanguage, defaultLanguage).toString();
+        const QString qmFilesPath = translationsPath();
+
+        qInfo() << "The qm files path is:" << qmFilesPath;
+
+        QStringList qmFiles;
+        findQmFile(qmFilesPath, language, qmFiles);
+        for (const QString& qmFile : const_cast<const QStringList&>(qmFiles)) {
+            setupLanguage(qmFile);
+        }
+    }
+
+    void initLanguageMenu()
+    {
+        QString path = translationsPath();
+        QDir dir(path);
+        QFileInfoList fileInfoList = dir.entryInfoList(QStringList("*.qm"),
+                                                       QDir::Files | QDir::NoDotAndDotDot);
+        QStringList languages;
+        for (const QFileInfo& fileInfo : const_cast<const QFileInfoList&>(fileInfoList)) {
+            QString baseName = fileInfo.baseName(); // e.g., xTools_zh_CN
+
+            if (baseName.startsWith("qt_")) {
+                continue;
+            }
+
+            int index = baseName.indexOf("_");
+            if (index == -1) {
+                continue;
+            }
+
+            QString prefix = baseName.left(index + 1); // e.g., xTools_
+            QString locale = baseName.remove(prefix);  // e.g., zh_CN
+            if (!languages.contains(locale)) {
+                languages.append(locale);
+            }
+        }
+
+        languageMenu = new QMenu();
+        static auto languageActionGroup = new QActionGroup(languageMenu);
+        for (const QString& language : const_cast<QStringList&>(languages)) {
+            QString name = language;
+            QString nativeName = QLocale(language).nativeLanguageName();
+            if (nativeName.isEmpty()) {
+                continue;
+            }
+
+            QLocale locale(language);
+            auto* action = new QAction(nativeName, languageMenu);
+            action->setCheckable(true);
+            languageMenu->addAction(action);
+            languageActionGroup->addAction(action);
+
+            QObject::connect(action, &QAction::triggered, action, [=]() {
+                if (!this->settings) {
+                    return;
+                }
+
+                settings->setValue(keyLanguage, language);
+                emit q->languageChanged();
+            });
+
+            QString defaultLanguage = QLocale::system().name();
+            if (!settings) {
+                continue;
+            }
+
+            QString tmp = settings->value(keyLanguage, defaultLanguage).toString();
+            if (tmp == name) {
+                action->setChecked(true);
+            }
+        }
+    }
+
+public:
+    QMenu* languageMenu{nullptr};
+    QSettings* settings{nullptr};
+    I18n* q{nullptr};
+
+private:
+    const QString keyLanguage{"Application/language"};
+
+private:
+    void findQmFile(const QString& path, const QString& language, QStringList& qmFiles)
+    {
+        QDir dir(path);
+        QFileInfoList infos = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+        for (const QFileInfo& info : const_cast<const QFileInfoList&>(infos)) {
+            if (info.isDir()) {
+                findQmFile(info.absoluteFilePath(), language, qmFiles);
+            } else if (info.isFile() && info.suffix().toLower() == "qm") {
+                QString fileName = info.fileName();
+                if (fileName.endsWith("_" + language + ".qm")) {
+                    qmFiles.append(info.absoluteFilePath());
+                }
+            }
+        }
+    }
+
+    void setupLanguage(const QString& qmFile)
+    {
+        QString appPath = QCoreApplication::applicationDirPath();
+        QString tmp = qmFile;
+        tmp = tmp.remove(appPath + "/");
+
+        QTranslator* translator = new QTranslator();
+        if (!translator->load(qmFile)) {
+            qWarning() << qPrintable(QString("The qm file(%1) can not be loaded.").arg(tmp));
+            return;
+        }
+
+        if (!qApp->installTranslator(translator)) {
+            qWarning() << qPrintable(QString("The qm file(%1) can not be installed.").arg(tmp));
+        }
+
+        qInfo() << qPrintable(QString("The qm file(%1) is installed.").arg(tmp));
+    }
+
+    QString translationsPath() const
+    {
+        QString path = QCoreApplication::applicationDirPath();
+#if defined(Q_OS_MAC)
+        path += "/../Resources";
+#endif
+        path += "/translations/";
+        return path;
+        ;
+    }
+};
+
 I18n::I18n(QObject* parent)
-    : QObject(*new I18nPrivate(), parent)
-{}
+    : QObject(parent)
+{
+    d = new I18nPrivate(this);
+}
 
 I18n::~I18n() {}
 
@@ -25,20 +182,17 @@ I18n& I18n::singleton()
 
 QMenu* I18n::languageMenu()
 {
-    Q_D(I18n);
     return d->languageMenu;
 }
 
 void I18n::setupSettings(QSettings* settings)
 {
-    Q_D(I18n);
     d->settings = settings;
     d->initLanguageMenu();
 }
 
 void I18n::setupLanguage()
 {
-    Q_D(I18n);
     d->setupLanguage();
 }
 
