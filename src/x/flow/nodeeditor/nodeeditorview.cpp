@@ -589,7 +589,7 @@ void NodeEditorView::onNodeCreated(QtNodes::NodeId nodeId)
     }
 
 #if 1
-    // TODO: Fixme
+    // TODO: Fix Me
     // Wait for parameters loaded(Undo/Redo)
     QTimer::singleShot(10, popupUi, [=]() {
         baseNodeUi->adjustSize();
