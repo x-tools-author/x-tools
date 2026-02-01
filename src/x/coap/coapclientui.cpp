@@ -45,8 +45,9 @@ public:
         setupOptionContextFormat();
         ui->pushButtonClose->setEnabled(false);
         ui->toolButtonClient->hide();
-
+#if 0
         m_syntaxHighlighter = new xTools::SyntaxHighlighterJson(ui->textEditPayload->document());
+#endif
 
         // clang-format off
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
