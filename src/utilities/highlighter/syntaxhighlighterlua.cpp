@@ -10,9 +10,30 @@
 
 namespace xTools {
 
+class SyntaxHighlighterLuaPrivate
+{
+public:
+    explicit SyntaxHighlighterLuaPrivate(SyntaxHighlighterLua *q_ptr)
+        : q(q_ptr)
+    {}
+    ~SyntaxHighlighterLuaPrivate() = default;
+
+public:
+    struct HighlightingRule
+    {
+        QRegularExpression pattern;
+        QTextCharFormat format;
+    };
+    QVector<HighlightingRule> m_highlightingRules;
+
+private:
+    SyntaxHighlighterLua *q{nullptr};
+};
+
 SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
+    d = new SyntaxHighlighterLuaPrivate(this);
     // 关键字
     QTextCharFormat keywordFormat;
     keywordFormat.setForeground(QColor(0x00, 0x77, 0xaa));
@@ -34,40 +55,42 @@ SyntaxHighlighterLua::SyntaxHighlighterLua(QTextDocument *parent)
                                    "\\bfalse\\b",
                                    "\\bnil\\b"};
     for (const QString &pattern : keywordPatterns) {
-        HighlightingRule rule;
+        SyntaxHighlighterLuaPrivate::HighlightingRule rule;
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
-        highlightingRules.append(rule);
+        d->m_highlightingRules.append(rule);
     }
 
     // 单行注释
     QTextCharFormat commentFormat;
     commentFormat.setForeground(QColor(0x88, 0x88, 0x88));
-    HighlightingRule commentRule;
+    SyntaxHighlighterLuaPrivate::HighlightingRule commentRule;
     commentRule.pattern = QRegularExpression("--[^\n]*");
     commentRule.format = commentFormat;
-    highlightingRules.append(commentRule);
+    d->m_highlightingRules.append(commentRule);
 
     // 字符串
     QTextCharFormat stringFormat;
     stringFormat.setForeground(QColor(0xaa, 0x55, 0x00));
-    HighlightingRule stringRule;
+    SyntaxHighlighterLuaPrivate::HighlightingRule stringRule;
     stringRule.pattern = QRegularExpression("\".*\"|'.*'");
     stringRule.format = stringFormat;
-    highlightingRules.append(stringRule);
+    d->m_highlightingRules.append(stringRule);
 
     // 数字
     QTextCharFormat numberFormat;
     numberFormat.setForeground(QColor(0x00, 0x99, 0x00));
-    HighlightingRule numberRule;
+    SyntaxHighlighterLuaPrivate::HighlightingRule numberRule;
     numberRule.pattern = QRegularExpression("\\b[0-9]+(\\.[0-9]+)?\\b");
     numberRule.format = numberFormat;
-    highlightingRules.append(numberRule);
+    d->m_highlightingRules.append(numberRule);
 }
 
 void SyntaxHighlighterLua::highlightBlock(const QString &text)
 {
-    for (const HighlightingRule &rule : const_cast<QVector<HighlightingRule> &>(highlightingRules)) {
+    for (const SyntaxHighlighterLuaPrivate::HighlightingRule &rule :
+         const_cast<QVector<SyntaxHighlighterLuaPrivate::HighlightingRule> &>(
+             d->m_highlightingRules)) {
         QRegularExpressionMatchIterator i = rule.pattern.globalMatch(text);
         while (i.hasNext()) {
             QRegularExpressionMatch match = i.next();

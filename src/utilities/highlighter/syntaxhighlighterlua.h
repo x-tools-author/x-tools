@@ -16,22 +16,17 @@
 
 namespace xTools {
 
+class SyntaxHighlighterLuaPrivate;
 class SyntaxHighlighterLua : public QSyntaxHighlighter
 {
     Q_OBJECT
+    SyntaxHighlighterLuaPrivate *d{nullptr};
+
 public:
     SyntaxHighlighterLua(QTextDocument *parent = nullptr);
 
 protected:
     void highlightBlock(const QString &text) override;
-
-private:
-    struct HighlightingRule
-    {
-        QRegularExpression pattern;
-        QTextCharFormat format;
-    };
-    QVector<HighlightingRule> highlightingRules;
 };
 
 } // namespace xTools

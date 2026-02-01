@@ -9,7 +9,7 @@
 #include "scriptlua.h"
 
 #include "scriptrunnerlua.h"
-#include "utilities/syntaxhighlighterlua.h"
+#include "utilities/highlighter/syntaxhighlighterlua.h"
 
 ScriptLua::ScriptLua(QWidget *parent)
     : ScriptBase(parent)

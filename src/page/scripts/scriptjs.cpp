@@ -9,7 +9,7 @@
 #include "scriptjs.h"
 
 #include "scriptrunnerjs.h"
-#include "utilities/syntaxhighlighterjs.h"
+#include "utilities/highlighter/syntaxhighlighterjs.h"
 
 ScriptJs::ScriptJs(QWidget *parent)
     : ScriptBase(parent)
