@@ -16,13 +16,14 @@
 
 #include <coap3/coap.h>
 
+#include "utilities/highlighter/syntaxhighlighterjson.h"
+#include "utilities/iconengine.h"
+
 #include "coapclient.h"
 #include "coapcommon.h"
 #include "coapmsgview.h"
 #include "coappayloadview.h"
 #include "coapresourceview.h"
-
-#include "utilities/iconengine.h"
 
 namespace Ui {
 class CoAPClientUi;
@@ -44,6 +45,8 @@ public:
         setupOptionContextFormat();
         ui->pushButtonClose->setEnabled(false);
         ui->toolButtonClient->hide();
+
+        m_syntaxHighlighter = new xTools::SyntaxHighlighterJson(ui->textEditPayload->document());
 
         // clang-format off
         connect(ui->pushButtonOpen, &QPushButton::clicked, this, [=]() { onOpenButtonClicked(); });
@@ -89,6 +92,7 @@ public:
     CoAPMsgView* m_msgView{nullptr};
     CoAPResourceView* m_resourceView{nullptr};
     CoAPPayloadView* m_payloadView{nullptr};
+    xTools::SyntaxHighlighterJson* m_syntaxHighlighter{nullptr};
 
 public:
     void onPayloadTextChanged()
