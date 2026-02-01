@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QDebug>
 
+#include "common/xapp.h"
 #include "layoutpage.h"
 
 #if X_ENABLE_X_BLE
@@ -133,6 +134,7 @@ void LayoutManager::setupPages()
 #endif
 #if X_ENABLE_X_COAP
     m_coap = new xCoAP::xCoAP(m_layout->parentWidget());
+    m_coap->setupSettings(xAPP->settings());
     addLayoutPage(QString("xCoAP"), m_coap);
 #endif
 #if X_ENABLE_X_OPCUA

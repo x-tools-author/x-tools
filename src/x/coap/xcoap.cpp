@@ -10,7 +10,9 @@
 #include "ui_xcoap.h"
 
 #include <QAction>
+#include <QFileDialog>
 #include <QMenu>
+#include <QMessageBox>
 #include <QToolButton>
 
 #include "utilities/iconengine.h"
@@ -19,13 +21,16 @@
 #include "coapglobal.h"
 #include "coapserverui.h"
 
+#define X_COAP_SETTING_FILE_NAME \
+    getLastOpenOrSaveFilePath(d->m_settings) + QString("/xCoapSettings.json")
+
 namespace Ui {
 class xCoAP;
 }
 
 namespace xCoAP {
 
-struct xCoAPSettingKeys
+struct xCoAPParameterKeys
 {
     const QString clientViewVisible{"clientViewVisible"};
     const QString serverViewVisible{"serverViewVisible"};
@@ -36,6 +41,11 @@ struct xCoAPSettingKeys
     const QString serverTabIndex{"serverTabIndex"};
 
     const QString globalSettings{"globalSettings"};
+};
+
+struct xCoAPSettingKeys
+{
+    const QString openOrSaveFilePath{"openOrSaveFilePath"};
 };
 
 class xCoAPPrivate : public QObject
@@ -99,6 +109,7 @@ public:
     QMenu* m_toolButtonMenu{nullptr};
     QToolButton* m_clientCtrlToolButton{nullptr};
     QToolButton* m_serverCtrlToolButton{nullptr};
+    QSettings* m_settings{nullptr};
 
 private:
     void onClientCtrlToolButtonClicked()
@@ -136,8 +147,8 @@ private:
                                                           : ":res/icons/chevron_left.svg";
         m_serverCtrlToolButton->setIcon(xIcon(serverCtrlBtnIcon));
     }
-    void onExportActionTriggered() {}
-    void onImportActionTriggered() {}
+    void onExportActionTriggered() { q->exportSettings(QString()); }
+    void onImportActionTriggered() { q->importSettings(QString()); }
     void onSettingsActionTriggered() { gCoAPGlobal.showThenMoveToCenter(); }
 
 private:
@@ -152,9 +163,110 @@ xCoAP::xCoAP(QWidget* parent)
 
 xCoAP::~xCoAP() {}
 
-QJsonObject xCoAP::save()
+void xCoAP::setupSettings(QSettings* settings)
+{
+    d->m_settings = settings;
+}
+
+static QString getLastOpenOrSaveFilePath(QSettings* settings)
 {
     xCoAPSettingKeys keys;
+    QString defaultPath = QDir::homePath();
+    if (settings) {
+        return settings->value(keys.openOrSaveFilePath, defaultPath).toString();
+    } else {
+        return defaultPath;
+    }
+}
+
+static void setLastOpenOrSaveFilePath(QSettings* settings, const QString& fileName)
+{
+    // Save the directory path for next time use
+    if (settings) {
+        xCoAPSettingKeys keys;
+        QFileInfo fileInfo(fileName);
+        QString dirPath = fileInfo.absolutePath();
+        settings->setValue(keys.openOrSaveFilePath, dirPath);
+    }
+}
+
+void xCoAP::exportSettings(const QString& filePath)
+{
+    QString cookedFilePath = filePath;
+    if (cookedFilePath.isEmpty()) {
+        cookedFilePath = QFileDialog::getSaveFileName(this,
+                                                      tr("Export CoAP Configuration"),
+                                                      X_COAP_SETTING_FILE_NAME,
+                                                      tr("JSON Files (*.json);;All Files (*)"));
+        if (cookedFilePath.isEmpty()) {
+            return;
+        } else {
+            setLastOpenOrSaveFilePath(d->m_settings, cookedFilePath);
+        }
+    }
+
+    QJsonObject obj = save();
+    QFile file(cookedFilePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this,
+                             tr("Export CoAP Configuration Failed"),
+                             tr("Failed to open file %1 for writing.").arg(cookedFilePath));
+        return;
+    }
+    QByteArray data = QJsonDocument(obj).toJson(QJsonDocument::Indented);
+    file.write(data);
+    file.close();
+}
+
+void xCoAP::importSettings(const QString& filePath)
+{
+    QString cookedFilePath = filePath;
+    if (cookedFilePath.isEmpty()) {
+        cookedFilePath = QFileDialog::getOpenFileName(this,
+                                                      tr("Import CoAP Configuration"),
+                                                      X_COAP_SETTING_FILE_NAME,
+                                                      tr("JSON Files (*.json);;All Files (*)"));
+        if (cookedFilePath.isEmpty()) {
+            return;
+        } else {
+            setLastOpenOrSaveFilePath(d->m_settings, cookedFilePath);
+        }
+    }
+
+    QFile file(cookedFilePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this,
+                             tr("Import CoAP Configuration Failed"),
+                             tr("Failed to open file %1 for reading.").arg(cookedFilePath));
+        return;
+    }
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonParseError parseError;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
+    if (parseError.error != QJsonParseError::NoError) {
+        QMessageBox::warning(this,
+                             tr("Import CoAP Configuration Failed"),
+                             tr("Failed to parse JSON file %1: %2")
+                                 .arg(cookedFilePath)
+                                 .arg(parseError.errorString()));
+        return;
+    }
+    if (!doc.isObject()) {
+        QMessageBox::warning(this,
+                             tr("Import CoAP Configuration Failed"),
+                             tr("The content of file %1 is not a valid JSON object.")
+                                 .arg(cookedFilePath));
+        return;
+    }
+
+    load(doc.object());
+}
+
+QJsonObject xCoAP::save()
+{
+    xCoAPParameterKeys keys;
     QJsonObject obj;
     obj.insert(keys.clientViewVisible, d->ui->tabWidgetClient->isVisible());
     obj.insert(keys.client, d->m_client->save());
@@ -170,7 +282,7 @@ QJsonObject xCoAP::save()
 
 void xCoAP::load(const QJsonObject& obj)
 {
-    xCoAPSettingKeys keys;
+    xCoAPParameterKeys keys;
     bool clientVisible = obj.value(keys.clientViewVisible).toBool(true);
     bool serverVisible = obj.value(keys.serverViewVisible).toBool(true);
     if (!clientVisible && !serverVisible) {

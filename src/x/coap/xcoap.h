@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QJsonObject>
+#include <QSettings>
 #include <QWidget>
 
 #include "layoutpage.h"
@@ -25,6 +26,10 @@ class xCoAP : public QWidget, public xTools::Serializable, public LayoutPage
 public:
     explicit xCoAP(QWidget* parent = nullptr);
     ~xCoAP();
+
+    void setupSettings(QSettings* settings);
+    void exportSettings(const QString& filePath);
+    void importSettings(const QString& filePath);
 
     QJsonObject save() override;
     void load(const QJsonObject& obj) override;
