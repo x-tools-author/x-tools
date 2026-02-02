@@ -218,6 +218,20 @@ set(X_SOURCES ${X_SOURCES_H} ${X_SOURCES_CPP} ${X_SOURCES_UI})
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 
+# Log
+option(X_ENABLE_LOG "Enable logging system" ON)
+if(NOT X_ENABLE_LOG)
+  file(GLOB_RECURSE LOG_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/log/*.*")
+  foreach(file IN LISTS LOG_FILES)
+    list(REMOVE_ITEM X_SOURCES ${file})
+    message(STATUS "[xTools] Remove log file: ${file}")
+  endforeach()
+
+  add_compile_definitions(X_ENABLE_LOG=0)
+else()
+  add_compile_definitions(X_ENABLE_LOG=1)
+endif()
+
 # --------------------------------------------------------------------------------------------------
 # xApplications selector(just for Qt6.8.0 or later)
 include(${CMAKE_SOURCE_DIR}/xapps/xApp.cmake)

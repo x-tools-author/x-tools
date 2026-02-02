@@ -14,6 +14,10 @@
 #include "common/xapp.h"
 #include "layoutpage.h"
 
+#if X_ENABLE_LOG
+#include "log/log.h"
+#endif
+
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"
 #endif
@@ -48,6 +52,7 @@ struct LayoutManagerKeys
     const QString xOpcUa{"xOpcUa"};
 
     const QString xFlow{"xFlow"};
+    const QString xLog{"xLog"};
 };
 
 LayoutManager::LayoutManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
@@ -145,7 +150,9 @@ void LayoutManager::setupPages()
     m_flow = new xFlow::xFlow(m_layout->parentWidget());
     addLayoutPage(QString("xFlow"), m_flow);
 #endif
-
+#if X_ENABLE_LOG
+    addLayoutPage(QString("xLog"), xLogMgr.logView());
+#endif
     if (m_layout->count() == 1) {
         m_controller->hide();
     }
@@ -204,7 +211,9 @@ QJsonObject LayoutManager::save()
 #if X_ENABLE_X_FLOW
     obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
 #endif
-
+#if X_ENABLE_LOG
+    obj[keys.xLog] = xLogMgr.save();
+#endif
     return obj;
 }
 
@@ -250,6 +259,10 @@ void LayoutManager::load(const QJsonObject& obj)
         QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
         m_flow->load(flowObj);
     }
+#endif
+#if X_ENABLE_LOG
+    QJsonObject logObj = obj.value(keys.xLog).toObject(QJsonObject());
+    xLogMgr.load(logObj);
 #endif
 }
 

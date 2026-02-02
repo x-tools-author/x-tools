@@ -16,15 +16,19 @@
 #include <coap3/coap.h>
 #endif
 
-#include "application.h"
-#include "mainwindow.h"
-
 #if X_ENABLE_SINGLE_APPLICATION
-#include "singleapplication.h"
+#include <singleapplication.h>
 #endif
+
+#include "application.h"
+#include "log/log.h"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
+#if X_ENABLE_LOG
+    qInstallMessageHandler(xLog::Log::messageHandler);
+#endif
 #if X_ENABLE_HID
     hid_init();
 #endif
