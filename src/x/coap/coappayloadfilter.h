@@ -13,7 +13,7 @@
 namespace xCoAP {
 
 class CoAPPayloadFilterPrivate;
-class CoAPPayloadFilter : public QAbstractTableModel
+class CoAPPayloadFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
     CoAPPayloadFilterPrivate *d;
@@ -21,6 +21,12 @@ class CoAPPayloadFilter : public QAbstractTableModel
 public:
     explicit CoAPPayloadFilter(QObject *parent = nullptr);
     ~CoAPPayloadFilter() override;
+
+    void setFormat(int format);
+    void setFilterText(const QString &text);
+
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 };
 
 } // namespace xCoAP

@@ -52,6 +52,26 @@ void CoAPPayloadModel::addPayload(const QJsonObject& context)
                      index(rowCount(QModelIndex()) - 1, columnCount(QModelIndex()) - 1));
 }
 
+void CoAPPayloadModel::clearPayloads()
+{
+    beginResetModel();
+    d->m_payloads.clear();
+    endResetModel();
+}
+
+void CoAPPayloadModel::updateRow(int row, const QJsonObject& context)
+{
+    if (row < 0 || row >= d->m_payloads.size()) {
+        return;
+    }
+
+    CoAPCommon::PayloadContext ctx = CoAPCommon::jsonObject2PayloadContext(context);
+    d->m_payloads[row]->description = ctx.description;
+    d->m_payloads[row]->format = ctx.format;
+    d->m_payloads[row]->data = ctx.data;
+    emit dataChanged(index(row, 0), index(row, columnCount(QModelIndex()) - 1));
+}
+
 QVariant CoAPPayloadModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {
@@ -74,6 +94,20 @@ QVariant CoAPPayloadModel::data(const QModelIndex& index, int role) const
     }
 
     if (role == Qt::DisplayRole) {
+        const auto& payload = d->m_payloads.at(index.row());
+        switch (index.column()) {
+        case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
+            return payload->description;
+        case CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT:
+            return payload->format;
+        case CO_AP_PAYLOAD_MODEL_COLUMN_DATA:
+            return QString::fromUtf8(payload->data);
+        default:
+            return QVariant();
+        }
+    }
+
+    if (role == Qt::EditRole) {
         const auto& payload = d->m_payloads.at(index.row());
         switch (index.column()) {
         case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
@@ -139,6 +173,22 @@ QVariant CoAPPayloadModel::headerData(int section, Qt::Orientation orientation, 
     }
 
     return QVariant();
+}
+
+bool CoAPPayloadModel::removeRows(int row, int count, const QModelIndex& parent)
+{
+    Q_UNUSED(parent);
+    if (row < 0 || row >= d->m_payloads.size() || count <= 0
+        || (row + count) > d->m_payloads.size()) {
+        return false;
+    }
+
+    beginRemoveRows(QModelIndex(), row, row + count - 1);
+    for (int i = 0; i < count; ++i) {
+        d->m_payloads.removeAt(row);
+    }
+    endRemoveRows();
+    return true;
 }
 
 } // namespace xCoAP

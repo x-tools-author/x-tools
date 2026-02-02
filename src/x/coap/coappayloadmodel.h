@@ -30,12 +30,15 @@ public:
     ~CoAPPayloadModel() override;
 
     void addPayload(const QJsonObject &context);
+    void clearPayloads();
+    void updateRow(int row, const QJsonObject &context);
 
 public:
     QVariant data(const QModelIndex &index, int role) const override;
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+    bool removeRows(int row, int count, const QModelIndex &parent) override;
 };
 
 } // namespace xCoAP

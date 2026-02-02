@@ -43,6 +43,7 @@ public:
     int tokenLength() const;
     bool isServerNameEnabled() const;
     QString serverName() const;
+    QString serverCachePath() const;
 };
 
 } // namespace xCoAP

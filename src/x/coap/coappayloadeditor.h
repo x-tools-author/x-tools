@@ -29,6 +29,9 @@ public:
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
 
+    int fromRow() const;
+    void setFromRow(int row);
+
 signals:
     void accepted();
 };

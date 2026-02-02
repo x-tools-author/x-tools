@@ -177,7 +177,7 @@ public:
         }
 
         // Payload...
-        if (!payload.isEmpty()) {
+        if (!payload.isEmpty() && code != COAP_REQUEST_GET) {
             size_t size = payload.size();
             const uint8_t *data = reinterpret_cast<const uint8_t *>(payload.constData());
             if (!coap_add_data(request, size, data)) {

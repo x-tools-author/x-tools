@@ -10,23 +10,19 @@
 #include "ui_coapglobal.h"
 
 #include <QAction>
+#include <QFileDialog>
 #include <QMenu>
 #include <QScreen>
 #include <QToolButton>
+
+#include "common/xapp.h"
+#include "utilities/iconengine.h"
 
 namespace Ui {
 class CoAPGlobal;
 }
 
 namespace xCoAP {
-
-struct CoAPGlobalSettingKeys
-{
-    const QString clientViewVisible{"clientViewVisible"};
-    const QString serverViewVisible{"serverViewVisible"};
-    const QString client{"client"};
-    const QString server{"server"};
-};
 
 class CoAPGlobalPrivate : public QObject
 {
@@ -37,9 +33,12 @@ public:
     {
         ui = new Ui::CoAPGlobal();
         ui->setupUi(q);
+        ui->lineEditServerCachePath->setReadOnly(true);
+        ui->toolButtonServerCachePath->setIcon(xIcon(":res/icons/folder.svg"));
 
         connect(ui->buttonBox, &QDialogButtonBox::accepted, q, [=]() { onAccepted(); });
         connect(ui->buttonBox, &QDialogButtonBox::rejected, q, [=]() { onRejected(); });
+        connect(ui->toolButtonServerCachePath, &QToolButton::clicked, q, [=]() { onBrowse(); });
     }
     ~CoAPGlobalPrivate() { delete ui; }
 
@@ -53,6 +52,18 @@ public:
     {
         q->close();
         q->load(m_cachedParameters);
+    }
+    void onBrowse()
+    {
+        QString dir
+            = QFileDialog::getExistingDirectory(q,
+                                                QObject::tr("Select CoAP Server Cache Directory"),
+                                                ui->lineEditServerCachePath->text().trimmed(),
+                                                QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
+        if (!dir.isEmpty()) {
+            ui->lineEditServerCachePath->setText(dir);
+        }
     }
 
 private:
@@ -68,6 +79,8 @@ struct CoAPGlobalParameterKeys
 
     const QString enableServerName{"enableServerName"};
     const QString serverName{"serverName"};
+    const QString serverCachePath{"serverCachePath"};
+    const QString cacheResourceFromPost{"cacheResourceFromPost"};
 };
 
 CoAPGlobal::CoAPGlobal(QWidget* parent)
@@ -105,6 +118,8 @@ QJsonObject CoAPGlobal::save()
     obj.insert(keys.tokenLength, d->ui->spinBoxTokenLength->value());
     obj.insert(keys.enableServerName, d->ui->checkBoxServerName->isChecked());
     obj.insert(keys.serverName, d->ui->lineEditServerName->text().trimmed());
+    obj.insert(keys.serverCachePath, d->ui->lineEditServerCachePath->text().trimmed());
+    obj.insert(keys.cacheResourceFromPost, d->ui->checkBoxServerCache->isChecked());
     return obj;
 }
 
@@ -113,13 +128,20 @@ void CoAPGlobal::load(const QJsonObject& obj)
     CoAPGlobalParameterKeys keys;
     const QString defaultClientName = QString("com.x-tools.x-coap.client");
     const QString defaultServerName = QString("com.x-tools.x-coap.server");
+    const QString cache = xAPP->settingsPath() + QString("/xCoAPServerCache");
     d->ui->checkBoxClientName->setChecked(obj.value(keys.enableClientName).toBool(false));
     d->ui->lineEditClientName->setText(obj.value(keys.clientName).toString(defaultClientName));
     d->ui->checkBoxTokenLength->setChecked(obj.value(keys.enableToken).toBool(false));
     d->ui->spinBoxTokenLength->setValue(obj.value(keys.tokenLength).toInt(0));
     d->ui->checkBoxServerName->setChecked(obj.value(keys.enableServerName).toBool(false));
     d->ui->lineEditServerName->setText(obj.value(keys.serverName).toString(defaultServerName));
+    d->ui->lineEditServerCachePath->setText(obj.value(keys.serverCachePath).toString(cache));
     d->m_cachedParameters = save();
+    d->ui->checkBoxServerCache->setChecked(obj.value(keys.cacheResourceFromPost).toBool(true));
+    QDir dir;
+    if (!dir.exists(d->ui->lineEditServerCachePath->text().trimmed())) {
+        dir.mkpath(d->ui->lineEditServerCachePath->text().trimmed());
+    }
 }
 
 bool CoAPGlobal::isClientNameEnabled() const
@@ -150,6 +172,11 @@ bool CoAPGlobal::isServerNameEnabled() const
 QString CoAPGlobal::serverName() const
 {
     return d->ui->lineEditServerName->text().trimmed();
+}
+
+QString CoAPGlobal::serverCachePath() const
+{
+    return d->ui->lineEditServerCachePath->text().trimmed();
 }
 
 } // namespace xCoAP

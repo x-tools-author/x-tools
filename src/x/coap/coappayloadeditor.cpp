@@ -41,6 +41,7 @@ public:
 
 public:
     Ui::CoAPPayloadEditor* ui{nullptr};
+    int m_fromRow{-1};
 
 private:
     CoAPPayloadEditor* q{nullptr};
@@ -74,6 +75,16 @@ void CoAPPayloadEditor::load(const QJsonObject& obj)
     }
     d->ui->lineEditDescription->setText(ctx.description);
     d->ui->textEditPayload->setPlainText(QString::fromUtf8(ctx.data));
+}
+
+int CoAPPayloadEditor::fromRow() const
+{
+    return d->m_fromRow;
+}
+
+void CoAPPayloadEditor::setFromRow(int row)
+{
+    d->m_fromRow = row;
 }
 
 } // namespace xCoAP
