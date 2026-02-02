@@ -20,8 +20,11 @@
 #include <singleapplication.h>
 #endif
 
-#include "application.h"
+#if X_ENABLE_LOG
 #include "log/log.h"
+#endif
+
+#include "application.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -39,7 +42,6 @@ int main(int argc, char *argv[])
 
     Application::setOrganizationName("xTools");
     Application::setApplicationName("xTools");
-    Application::installLog(argv[0]);
     Application::setupHdpi();
     Application app(argc, argv);
 
@@ -73,7 +75,6 @@ int main(int argc, char *argv[])
 #endif
 
     const int ret = Application::exec();
-    Application::uninstallLog();
 #if X_ENABLE_HID
     hid_exit();
 #endif

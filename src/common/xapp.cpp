@@ -13,7 +13,7 @@
 #include <QWidget>
 #endif
 
-#if !defined(X_DISABLE_LOG)
+#if X_ENABLE_GOOGLE_LOG
 #include <glog/logging.h>
 #endif
 
@@ -113,7 +113,7 @@ xApp::~xApp() {}
 
 void googleLogToQtLog(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-#if !defined(X_DISABLE_LOG)
+#if X_ENABLE_GOOGLE_LOG
     QByteArray localMsg = msg.toUtf8();
     const char *file = context.file ? context.file : "";
     const int line = context.line;
@@ -145,7 +145,7 @@ void xApp::installLog(char *argv0)
     // Google log is just for release edition.
     return;
 #endif
-#if !defined(X_DISABLE_LOG)
+#if X_ENABLE_GOOGLE_LOG
     // Redirect the log message to Qt log.
     qInstallMessageHandler(googleLogToQtLog);
 
@@ -178,7 +178,7 @@ void xApp::installLog(char *argv0)
 
 void xApp::uninstallLog()
 {
-#if !defined(X_DISABLE_LOG)
+#if X_ENABLE_GOOGLE_LOG
 #if defined(QT_RELEASE)
     google::ShutdownGoogleLogging();
 #endif
