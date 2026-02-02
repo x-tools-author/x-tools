@@ -61,26 +61,32 @@ public:
                             const coap_string_t* query,
                             coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        QString uriPathQStr = CoAPCommon::getCoAPResource(resource);
+        if (uriPathQStr.isEmpty()) {
+            qCWarning(xCoAPServerLog) << "POST request with empty URI path received.";
+            coap_pdu_set_code(response, COAP_RESPONSE_CODE_BAD_REQUEST);
+            static const QByteArray payload = QByteArray("Empty URI path in POST request");
+            coap_add_data(response,
+                          payload.size(),
+                          reinterpret_cast<const uint8_t*>(payload.constData()));
+            return;
+        }
+        qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPathQStr;
 
-        bool cache = gCoAPGlobal.isEnableCachePostMessages();
-        if (cache) {
-            QString rootPath = gCoAPGlobal.serverCachePath();
-            qInfo() << "Caching POST message as enabled.";
+        uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
+        if (contextFormat != CO_AP_INVALID_CONTEXT_FORMAT) {
+            if (gCoAPGlobal.isEnableCachePostMessages()) {
+                QString rootPath = gCoAPGlobal.serverCachePath();
+                qCDebug(xCoAPServerLog) << "Caching POST message as enabled.";
+            }
         }
 
-        // Get request resource path
-        coap_str_const_t* uriPath = coap_resource_get_uri_path(resource);
-        qInfo() << "Received POST request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uriPath->s), uriPath->length));
-
-        static const char kPayload[] = "POST request received";
+        // Response the request payload
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        QByteArray payload = CoAPCommon::getCoAPPayload(request);
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
     }
     static void putHandler(coap_resource_t* resource,
                            coap_session_t* session,
@@ -270,6 +276,7 @@ void CoAPServer::run()
     }
 
     coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
+    coap_register_request_handler(resource, COAP_REQUEST_POST, CoAPServerPrivate::postHandler);
     coap_add_resource(ctx, resource);
 
     while (!isInterruptionRequested()) {

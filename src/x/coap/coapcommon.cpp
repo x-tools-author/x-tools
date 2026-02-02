@@ -204,24 +204,60 @@ QString getCoAPAddress(const coap_address_t* addr)
     return QString::fromUtf8(addrStr);
 }
 
-QString CoAPCommon::getSessionRemoteAddress(coap_session_t* session)
+QString CoAPCommon::getCoAPRemoteAddress(coap_session_t* session)
 {
     return getCoAPAddress(&session->addr_info.remote);
 }
 
-quint16 CoAPCommon::getSessionRemotePort(coap_session_t* session)
+quint16 CoAPCommon::getCoAPRemotePort(coap_session_t* session)
 {
     return coap_address_get_port(&session->addr_info.remote);
 }
 
-QString CoAPCommon::getSessionLocalAddress(coap_session_t* session)
+QString CoAPCommon::getCoAPLocalAddress(coap_session_t* session)
 {
     return getCoAPAddress(&session->addr_info.local);
 }
 
-quint16 CoAPCommon::getSessionLocalPort(coap_session_t* session)
+quint16 CoAPCommon::getCoAPLocalPort(coap_session_t* session)
 {
     return coap_address_get_port(&session->addr_info.local);
+}
+
+QByteArray CoAPCommon::getCoAPPayload(const coap_pdu_t* pdu)
+{
+    const uint8_t* data;
+    size_t len;
+    size_t offset;
+    size_t total;
+    QByteArray payload;
+    if (coap_get_data_large(pdu, &len, &data, &offset, &total)) {
+        payload = QByteArray(reinterpret_cast<const char*>(data), static_cast<int>(len));
+    }
+
+    return payload;
+}
+
+QString CoAPCommon::getCoAPResource(coap_resource_t* resource)
+{
+    coap_str_const_t* uriPath = coap_resource_get_uri_path(resource);
+    std::string uriPathStr(reinterpret_cast<const char*>(uriPath->s), uriPath->length);
+    QString uriPathQStr = QString::fromStdString(uriPathStr);
+    return uriPathQStr;
+}
+
+uint32_t CoAPCommon::getCoAPPayloadFormat(const coap_pdu_t* pdu)
+{
+    coap_opt_iterator_t opt_iter;
+    coap_opt_t* opt = coap_check_option(pdu, COAP_OPTION_CONTENT_FORMAT, &opt_iter);
+    if (opt) {
+        const uint8_t* buf = coap_opt_value(opt);
+        size_t len = coap_opt_length(opt);
+        uint32_t contextFormat = coap_decode_var_bytes(buf, len);
+        return contextFormat;
+    }
+
+    return CO_AP_INVALID_CONTEXT_FORMAT;
 }
 
 bool CoAPCommon::isValidProtocol(int protocol)

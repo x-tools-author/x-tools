@@ -14,10 +14,14 @@
 #include <QObject>
 #include <QSpinBox>
 
+struct coap_pdu_t;
 struct coap_session_t;
+struct coap_resource_t;
 #define xCoAPLog QLoggingCategory("xTools.xCoAP")
 #define xCoAPClientLog QLoggingCategory("xTools.xCoAP.Client")
 #define xCoAPServerLog QLoggingCategory("xTools.xCoAP.Server")
+
+#define CO_AP_INVALID_CONTEXT_FORMAT 0
 
 namespace xCoAP {
 
@@ -51,10 +55,13 @@ public: // Context Format
     QString fileContextSuffix(int format);
 
 public:
-    static QString getSessionRemoteAddress(coap_session_t* session);
-    static quint16 getSessionRemotePort(coap_session_t* session);
-    static QString getSessionLocalAddress(coap_session_t* session);
-    static quint16 getSessionLocalPort(coap_session_t* session);
+    static QString getCoAPRemoteAddress(coap_session_t* session);
+    static quint16 getCoAPRemotePort(coap_session_t* session);
+    static QString getCoAPLocalAddress(coap_session_t* session);
+    static quint16 getCoAPLocalPort(coap_session_t* session);
+    static QByteArray getCoAPPayload(const coap_pdu_t* pdu);
+    static QString getCoAPResource(coap_resource_t* resource);
+    static uint32_t getCoAPPayloadFormat(const coap_pdu_t* pdu);
 
 public:
     static bool isValidProtocol(int protocol);

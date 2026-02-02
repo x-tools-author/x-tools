@@ -48,11 +48,11 @@ public:
             return COAP_RESPONSE_FAIL;
         }
 
-        quint16 port = CoAPCommon::getSessionRemotePort(session);
-        QString address = CoAPCommon::getSessionRemoteAddress(session);
+        quint16 port = CoAPCommon::getCoAPRemotePort(session);
+        QString address = CoAPCommon::getCoAPRemoteAddress(session);
         QString server = QString("%1:%2").arg(address).arg(port);
-        port = CoAPCommon::getSessionLocalPort(session);
-        address = CoAPCommon::getSessionLocalAddress(session);
+        port = CoAPCommon::getCoAPLocalPort(session);
+        address = CoAPCommon::getCoAPLocalAddress(session);
         QString client = QString("%1:%2").arg(address).arg(port);
 
         std::shared_ptr<CoAPMsgItem> requestPdu = std::make_shared<CoAPMsgItem>();
