@@ -147,7 +147,7 @@ public:
             }
         }
 
-        // Resource path...
+        // Option-Resource path...
         const QStringList paths = uriPath.split('/', xSkipEmptyParts);
         for (const QString &path : paths) {
             QByteArray pathData = path.toUtf8();
@@ -160,7 +160,7 @@ public:
             }
         }
 
-        // Client name...
+        // Option-Client name...
         if (gCoAPGlobal.isClientNameEnabled() && !gCoAPGlobal.clientName().isEmpty()) {
             QByteArray clientName = gCoAPGlobal.clientName().toUtf8();
             const size_t size = static_cast<size_t>(clientName.size());
@@ -170,10 +170,14 @@ public:
             }
         }
 
-        // Specified options...
-        if (coap_send(session, request) == COAP_INVALID_MID) {
-            qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
-            return;
+        // Option-Content format...
+        if (contextFormat >= 0) {
+            uint8_t buf[4];
+            size_t size = coap_encode_var_bytes(buf, static_cast<uint32_t>(contextFormat));
+            if (!coap_add_option(request, COAP_OPTION_CONTENT_FORMAT, size, buf)) {
+                qCWarning(xCoAPClientLog) << "Failed to add content format to CoAP request";
+                return;
+            }
         }
 
         // Payload...
@@ -184,6 +188,12 @@ public:
                 qCWarning(xCoAPClientLog) << "Failed to add payload to CoAP request";
                 return;
             }
+        }
+
+        // Specified options...
+        if (coap_send(session, request) == COAP_INVALID_MID) {
+            qCWarning(xCoAPClientLog) << "Failed to send CoAP request";
+            return;
         }
     }
 

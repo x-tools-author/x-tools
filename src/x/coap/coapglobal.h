@@ -44,6 +44,7 @@ public:
     bool isServerNameEnabled() const;
     QString serverName() const;
     QString serverCachePath() const;
+    bool isEnableCachePostMessages() const;
 };
 
 } // namespace xCoAP

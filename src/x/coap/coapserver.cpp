@@ -21,6 +21,7 @@
 #endif
 
 #include "coapcommon.h"
+#include "coapglobal.h"
 
 namespace xCoAP {
 
@@ -65,11 +66,17 @@ public:
         Q_UNUSED(request);
         Q_UNUSED(query);
 
+        bool cache = gCoAPGlobal.isEnableCachePostMessages();
+        if (cache) {
+            QString rootPath = gCoAPGlobal.serverCachePath();
+            qInfo() << "Caching POST message as enabled.";
+        }
+
         // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
+        coap_str_const_t* uriPath = coap_resource_get_uri_path(resource);
         qInfo() << "Received POST request for resource:"
                 << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+                       std::string(reinterpret_cast<const char*>(uriPath->s), uriPath->length));
 
         static const char kPayload[] = "POST request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);

@@ -12,6 +12,7 @@
 #include <QAction>
 #include <QFileDialog>
 #include <QMenu>
+#include <QMutex>
 #include <QScreen>
 #include <QToolButton>
 
@@ -45,6 +46,7 @@ public:
 public:
     Ui::CoAPGlobal* ui{nullptr};
     QJsonObject m_cachedParameters;
+    QMutex m_mutex;
 
 public:
     void onAccepted() { q->close(); }
@@ -55,15 +57,15 @@ public:
     }
     void onBrowse()
     {
-        QString dir
-            = QFileDialog::getExistingDirectory(q,
-                                                QObject::tr("Select CoAP Server Cache Directory"),
-                                                ui->lineEditServerCachePath->text().trimmed(),
-                                                QFileDialog::ShowDirsOnly
-                                                    | QFileDialog::DontResolveSymlinks);
+        m_mutex.lock();
+        const QString title = tr("Select CoAP Server Cache Directory");
+        const QString path = ui->lineEditServerCachePath->text().trimmed();
+        QFileDialog::Options options = QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks;
+        QString dir = QFileDialog::getExistingDirectory(q, title, path, options);
         if (!dir.isEmpty()) {
             ui->lineEditServerCachePath->setText(dir);
         }
+        m_mutex.unlock();
     }
 
 private:
@@ -118,7 +120,9 @@ QJsonObject CoAPGlobal::save()
     obj.insert(keys.tokenLength, d->ui->spinBoxTokenLength->value());
     obj.insert(keys.enableServerName, d->ui->checkBoxServerName->isChecked());
     obj.insert(keys.serverName, d->ui->lineEditServerName->text().trimmed());
+    d->m_mutex.lock();
     obj.insert(keys.serverCachePath, d->ui->lineEditServerCachePath->text().trimmed());
+    d->m_mutex.unlock();
     obj.insert(keys.cacheResourceFromPost, d->ui->checkBoxServerCache->isChecked());
     return obj;
 }
@@ -135,13 +139,18 @@ void CoAPGlobal::load(const QJsonObject& obj)
     d->ui->spinBoxTokenLength->setValue(obj.value(keys.tokenLength).toInt(0));
     d->ui->checkBoxServerName->setChecked(obj.value(keys.enableServerName).toBool(false));
     d->ui->lineEditServerName->setText(obj.value(keys.serverName).toString(defaultServerName));
+    d->m_mutex.lock();
     d->ui->lineEditServerCachePath->setText(obj.value(keys.serverCachePath).toString(cache));
+    d->m_mutex.unlock();
     d->m_cachedParameters = save();
     d->ui->checkBoxServerCache->setChecked(obj.value(keys.cacheResourceFromPost).toBool(true));
+
     QDir dir;
+    d->m_mutex.lock();
     if (!dir.exists(d->ui->lineEditServerCachePath->text().trimmed())) {
         dir.mkpath(d->ui->lineEditServerCachePath->text().trimmed());
     }
+    d->m_mutex.unlock();
 }
 
 bool CoAPGlobal::isClientNameEnabled() const
@@ -176,7 +185,15 @@ QString CoAPGlobal::serverName() const
 
 QString CoAPGlobal::serverCachePath() const
 {
-    return d->ui->lineEditServerCachePath->text().trimmed();
+    d->m_mutex.lock();
+    QString cachePath = d->ui->lineEditServerCachePath->text().trimmed();
+    d->m_mutex.unlock();
+    return cachePath;
+}
+
+bool CoAPGlobal::isEnableCachePostMessages() const
+{
+    return d->ui->checkBoxServerCache->isChecked();
 }
 
 } // namespace xCoAP

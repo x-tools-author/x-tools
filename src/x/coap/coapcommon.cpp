@@ -118,6 +118,72 @@ void CoAPCommon::setupContextFormat(QComboBox* comboBox)
     }
 }
 
+QString CoAPCommon::fileContextSuffix(int format)
+{
+    switch (format) {
+    case COAP_MEDIATYPE_APPLICATION_JSON:
+        return QStringLiteral("json");
+    case COAP_MEDIATYPE_TEXT_PLAIN:
+        return QStringLiteral("txt");
+    case COAP_MEDIATYPE_APPLICATION_OCTET_STREAM:
+        return QStringLiteral("bin");
+    case COAP_MEDIATYPE_APPLICATION_LINK_FORMAT:
+        return QStringLiteral("link");
+    case COAP_MEDIATYPE_APPLICATION_XML:
+        return QStringLiteral("xml");
+    case COAP_MEDIATYPE_APPLICATION_EXI:
+        return QStringLiteral("exi");
+    case COAP_MEDIATYPE_APPLICATION_CBOR:
+        return QStringLiteral("cbor");
+    case COAP_MEDIATYPE_APPLICATION_CWT:
+        return QStringLiteral("cwt");
+    case COAP_MEDIATYPE_APPLICATION_COAP_GROUP_JSON:
+        return QStringLiteral("group.json");
+    case COAP_MEDIATYPE_APPLICATION_COSE_SIGN:
+        return QStringLiteral("cose-sign");
+    case COAP_MEDIATYPE_APPLICATION_COSE_SIGN1:
+        return QStringLiteral("cose-sign1");
+    case COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT:
+        return QStringLiteral("cose-encrypt");
+    case COAP_MEDIATYPE_APPLICATION_COSE_ENCRYPT0:
+        return QStringLiteral("cose-encrypt0");
+    case COAP_MEDIATYPE_APPLICATION_COSE_MAC:
+        return QStringLiteral("cose-mac");
+    case COAP_MEDIATYPE_APPLICATION_COSE_MAC0:
+        return QStringLiteral("cose-mac0");
+    case COAP_MEDIATYPE_APPLICATION_COSE_KEY:
+        return QStringLiteral("cose-key");
+    case COAP_MEDIATYPE_APPLICATION_COSE_KEY_SET:
+        return QStringLiteral("cose-key-set");
+    case COAP_MEDIATYPE_APPLICATION_SENML_JSON:
+        return QStringLiteral("senml.json");
+    case COAP_MEDIATYPE_APPLICATION_SENSML_JSON:
+        return QStringLiteral("sensml.json");
+    case COAP_MEDIATYPE_APPLICATION_SENML_CBOR:
+        return QStringLiteral("senml.cbor");
+    case COAP_MEDIATYPE_APPLICATION_SENSML_CBOR:
+        return QStringLiteral("sensml.cbor");
+    case COAP_MEDIATYPE_APPLICATION_SENML_EXI:
+        return QStringLiteral("senml.exi");
+    case COAP_MEDIATYPE_APPLICATION_SENSML_EXI:
+        return QStringLiteral("sensml.exi");
+    case COAP_MEDIATYPE_APPLICATION_SENML_XML:
+        return QStringLiteral("senml.xml");
+    case COAP_MEDIATYPE_APPLICATION_SENSML_XML:
+        return QStringLiteral("sensml.xml");
+    case COAP_MEDIATYPE_APPLICATION_DOTS_CBOR:
+        return QStringLiteral("dots.cbor");
+    case COAP_MEDIATYPE_APPLICATION_ACE_CBOR:
+        return QStringLiteral("ace.cbor");
+    case COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ:
+        return QStringLiteral("mb.cbor-seq");
+    case COAP_MEDIATYPE_APPLICATION_OSCORE:
+        return QStringLiteral("oscore");
+    default:
+        return QString();
+    }
+}
+
 QString getCoAPAddress(const coap_address_t* addr)
 {
     char addrStr[INET6_ADDRSTRLEN] = {0};
