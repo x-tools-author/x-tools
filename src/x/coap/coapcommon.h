@@ -88,6 +88,23 @@ public:
     };
     static QJsonObject serverParameters2JsonObject(const ServerParameters& params);
     static ServerParameters jsonObject2ServerParameters(const QJsonObject& obj);
+
+public:
+    struct PayloadContextKeys
+    {
+        const QString description{"description"};
+        const QString format{"format"};
+        const QString data{"data"};
+    };
+    struct PayloadContext
+    {
+        QString description;
+        int format;
+        QByteArray data;
+    };
+    static PayloadContext defaultPayloadContext();
+    static QJsonObject payloadContext2JsonObject(const PayloadContext& context);
+    static PayloadContext jsonObject2PayloadContext(const QJsonObject& obj);
 };
 
 } // namespace xCoAP

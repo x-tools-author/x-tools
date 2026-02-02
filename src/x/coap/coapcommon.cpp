@@ -11,6 +11,9 @@
 #include <coap3/coap.h>
 #include <coap3/coap_session_internal.h>
 
+#include <QJsonDocument>
+#include <QJsonObject>
+
 #include "common/xtools.h"
 
 namespace xCoAP {
@@ -209,6 +212,43 @@ CoAPCommon::ServerParameters CoAPCommon::jsonObject2ServerParameters(const QJson
     params.serverPort = static_cast<quint16>(obj.value(keys.serverPort).toInt(433));
     params.protocol = obj.value(keys.protocol).toInt(static_cast<int>(COAP_PROTO_UDP));
     return params;
+}
+
+CoAPCommon::PayloadContext CoAPCommon::defaultPayloadContext()
+{
+    QJsonObject payload;
+    payload.insert("project", "xTools");
+    payload.insert("subProject", "xCoAP");
+    payload.insert("author", "x-tools-author");
+    payload.insert("email", "x-tools@outlook.com");
+    QJsonDocument doc(payload);
+    QByteArray data = doc.toJson(QJsonDocument::Indented);
+    PayloadContext context;
+    context.description = QString("Default Payload");
+    context.format = COAP_MEDIATYPE_APPLICATION_JSON;
+    context.data = data;
+    return context;
+}
+
+CoAPCommon::PayloadContext CoAPCommon::jsonObject2PayloadContext(const QJsonObject& obj)
+{
+    PayloadContext context;
+    PayloadContextKeys keys;
+    context.description = obj.value(keys.description).toString("");
+    context.format = obj.value(keys.format).toInt(COAP_MEDIATYPE_APPLICATION_JSON);
+    QString dataBase64 = obj.value(keys.data).toString("");
+    context.data = QByteArray::fromBase64(dataBase64.toLatin1());
+    return context;
+}
+
+QJsonObject CoAPCommon::payloadContext2JsonObject(const PayloadContext& context)
+{
+    QJsonObject obj;
+    PayloadContextKeys keys;
+    obj[keys.description] = context.description;
+    obj[keys.format] = context.format;
+    obj[keys.data] = QString::fromLatin1(context.data.toBase64());
+    return obj;
 }
 
 } // namespace xCoAP

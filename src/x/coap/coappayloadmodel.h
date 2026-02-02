@@ -9,10 +9,13 @@
 #pragma once
 
 #include <QAbstractTableModel>
+#include <QJsonObject>
 
 #define CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION 0
 #define CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT 1
 #define CO_AP_PAYLOAD_MODEL_COLUMN_DATA 2
+
+#define CO_AP_PAYLOAD_DATA_ROLE_PAYLOAD Qt::UserRole + 1
 
 namespace xCoAP {
 
@@ -25,6 +28,8 @@ class CoAPPayloadModel : public QAbstractTableModel
 public:
     explicit CoAPPayloadModel(QObject *parent = nullptr);
     ~CoAPPayloadModel() override;
+
+    void addPayload(const QJsonObject &context);
 
 public:
     QVariant data(const QModelIndex &index, int role) const override;

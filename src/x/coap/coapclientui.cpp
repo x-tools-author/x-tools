@@ -10,6 +10,7 @@
 #include "ui_coapclientui.h"
 
 #include <QHBoxLayout>
+#include <QInputDialog>
 #include <QJsonArray>
 #include <QMessageBox>
 #include <QObject>
@@ -85,6 +86,10 @@ public:
         connect(ui->toolButtonPayloadSave, &QToolButton::clicked, q, [=]() {
             onSavePayloadBtnClicked();
         });
+        connect(m_payloadView,
+                &CoAPPayloadView::payloadActivated,
+                q,
+                [=](int format, const QByteArray& payload) { onPayloadActivated(format, payload); });
     }
     ~CoAPClientUiPrivate() override { delete ui; }
 
@@ -192,14 +197,35 @@ private:
     }
     void onSavePayloadBtnClicked() const
     {
+        QString description = QInputDialog::getText(q,
+                                                    tr("Payload Description"),
+                                                    tr("Please enter the payload description:"),
+                                                    QLineEdit::Normal,
+                                                    QString(tr("Payload description")));
+        if (description.isEmpty()) {
+            return;
+        }
+
         int contextFormat = ui->comboBoxOptionContentFormat->currentData().toInt();
         QByteArray payload = ui->textEditPayload->toPlainText().toUtf8();
-        QString errStr = m_payloadView->addPayload(contextFormat, payload);
+        QString errStr = m_payloadView->addPayload(description, contextFormat, payload);
         if (!errStr.isEmpty()) {
             QMessageBox::warning(q,
                                  tr("Save Payload Failed"),
                                  tr("Failed to save payload: %1").arg(errStr));
         }
+    }
+    void onPayloadActivated(int format, const QByteArray& payload) const
+    {
+        int index = ui->comboBoxOptionContentFormat->findData(format);
+        if (index == -1) {
+            QMessageBox::warning(q,
+                                 tr("Unknown Content Format"),
+                                 tr("The content format %1 is unknown.").arg(format));
+            return;
+        }
+        ui->comboBoxOptionContentFormat->setCurrentIndex(index);
+        ui->textEditPayload->setPlainText(QString::fromUtf8(payload));
     }
 };
 
@@ -211,6 +237,7 @@ struct CoAPClientUiParameterKeys
     const QString contextFormat{"contextFormat"};
 
     const QString message{"message"};
+    const QString payloads{"payloads"};
 };
 
 CoAPClientUi::CoAPClientUi(QWidget* parent)
@@ -249,18 +276,9 @@ QJsonObject CoAPClientUi::save()
     obj[uiKeys.uriPath] = d->ui->comboBoxOptionUriPath->currentText();
     obj[uiKeys.contextFormat] = d->ui->comboBoxOptionContentFormat->currentData().toInt();
     obj[uiKeys.message] = d->m_msgView->save();
+    obj[uiKeys.payloads] = d->m_payloadView->save();
 
     return obj;
-}
-
-QString defaultPayload()
-{
-    QJsonObject obj;
-    obj.insert("project", "xTools");
-    obj.insert("subProject", "xCoAP");
-    obj.insert("author", "x-tools-author");
-    obj.insert("email", "x-tools@outlook.com");
-    return QString::fromUtf8(QJsonDocument(obj).toJson(QJsonDocument::Indented));
 }
 
 void CoAPClientUi::load(const QJsonObject& obj)
@@ -278,9 +296,10 @@ void CoAPClientUi::load(const QJsonObject& obj)
     }
 
     CoAPClientUiParameterKeys uiKeys;
+    CoAPCommon::PayloadContext ctx = CoAPCommon::defaultPayloadContext();
     // Payload
-    QString payload = obj.value(uiKeys.payload).toString(defaultPayload());
-    payload = payload.isEmpty() ? defaultPayload() : payload;
+    QString payload = obj.value(uiKeys.payload).toString(QString::fromUtf8(ctx.data));
+    payload = payload.isEmpty() ? QString::fromUtf8(ctx.data) : payload;
     d->ui->textEditPayload->setPlainText(payload);
     // Options: URI Path
     const QJsonArray uriPaths = obj.value(uiKeys.uriPaths).toArray();
@@ -301,8 +320,9 @@ void CoAPClientUi::load(const QJsonObject& obj)
     index = d->ui->comboBoxOptionContentFormat->findData(format);
     index = index == -1 ? d->ui->comboBoxOptionContentFormat->findData(defaultFormat) : index;
     d->ui->comboBoxOptionContentFormat->setCurrentIndex(index);
-    // Message View
+    // Pages
     d->m_msgView->load(obj.value(uiKeys.message).toObject());
+    d->m_payloadView->load(obj.value(uiKeys.payloads).toObject());
 }
 
 QWidget* CoAPClientUi::resourceView() const

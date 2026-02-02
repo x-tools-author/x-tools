@@ -46,11 +46,6 @@ private:
     CoAPPayloadEditor* q{nullptr};
 };
 
-struct CoAPPayloadEditorParameterKeys
-{
-    const QString columns{"columns"};
-};
-
 CoAPPayloadEditor::CoAPPayloadEditor(QWidget* parent)
     : QWidget(parent)
 {
@@ -62,14 +57,23 @@ CoAPPayloadEditor::~CoAPPayloadEditor() {}
 
 QJsonObject CoAPPayloadEditor::save()
 {
-    CoAPPayloadEditorParameterKeys keys;
-    QJsonObject obj;
+    CoAPCommon::PayloadContext ctx;
+    ctx.format = d->ui->comboBoxContextFormat->currentData().toInt();
+    ctx.description = d->ui->lineEditDescription->text();
+    ctx.data = d->ui->textEditPayload->toPlainText().toUtf8();
+    QJsonObject obj = CoAPCommon::payloadContext2JsonObject(ctx);
     return obj;
 }
 
 void CoAPPayloadEditor::load(const QJsonObject& obj)
 {
-    CoAPPayloadEditorParameterKeys keys;
+    CoAPCommon::PayloadContext ctx = CoAPCommon::jsonObject2PayloadContext(obj);
+    int index = d->ui->comboBoxContextFormat->findData(ctx.format);
+    if (index != -1) {
+        d->ui->comboBoxContextFormat->setCurrentIndex(index);
+    }
+    d->ui->lineEditDescription->setText(ctx.description);
+    d->ui->textEditPayload->setPlainText(QString::fromUtf8(ctx.data));
 }
 
 } // namespace xCoAP

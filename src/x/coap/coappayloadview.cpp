@@ -50,6 +50,9 @@ public:
         ui->tableView->setModel(m_model);
         ui->tableView->horizontalHeader()->setSizeAdjustPolicy(QHeaderView::AdjustToContents);
         ui->tableView->horizontalHeader()->setStretchLastSection(true);
+        connect(m_model, &CoAPPayloadModel::dataChanged, q, [this]() {
+            this->onModelDataChanged();
+        });
 
         // Menus
         m_toolButtonMenu = new QMenu(q);
@@ -102,18 +105,53 @@ private:
     CoAPPayloadEditor* m_editor{nullptr};
 
 private:
-    void onEditorAccepted() { m_editor->close(); }
-    void onAddPayload() { m_editor->show(); }
+    void onEditorAccepted()
+    {
+        QJsonObject obj = m_editor->save();
+        m_editor->close();
+        m_model->addPayload(obj);
+    }
+    void onAddPayload()
+    {
+        CoAPCommon::PayloadContext ctx = CoAPCommon::defaultPayloadContext();
+        m_editor->load(CoAPCommon::payloadContext2JsonObject(ctx));
+        m_editor->show();
+    }
     void onEditPayload() { m_editor->show(); }
     void onDeletePayloads() {}
     void onClearPayloads() {}
     void onContextFormatChanged() {}
     void onFilterTextChanged() {}
+    void onModelDataChanged()
+    {
+        m_toolButtonMenu->clear();
+        for (int row = 0; row < m_model->rowCount(QModelIndex()); ++row) {
+            QString desc = m_model->data(m_model->index(row, 0), Qt::DisplayRole).toString();
+            QAction* action = m_toolButtonMenu->addAction(desc);
+            action->setData(row);
+
+            connect(action, &QAction::triggered, q, [=]() {
+                QVariant obj = m_model->data(m_model->index(row, 0),
+                                             CO_AP_PAYLOAD_DATA_ROLE_PAYLOAD);
+                if (!obj.isValid()) {
+                    return;
+                }
+
+                auto payloadPtr = obj.value<std::shared_ptr<CoAPCommon::PayloadContext>>();
+                if (!payloadPtr) {
+                    return;
+                }
+                CoAPCommon::PayloadContext ctx = *payloadPtr;
+                emit q->payloadActivated(ctx.format, ctx.data);
+            });
+        }
+    }
 };
 
 struct CoAPPayloadViewParameterKeys
 {
     const QString columns{"columns"};
+    const QString payloads{"payloads"};
 };
 
 CoAPPayloadView::CoAPPayloadView(QWidget* parent)
@@ -135,6 +173,26 @@ QJsonObject CoAPPayloadView::save()
         columnsArray.append(isVisible);
     }
     obj[keys.columns] = columnsArray;
+
+    // Payloads
+    QJsonArray payloadsArray;
+    for (int row = 0; row < d->m_model->rowCount(QModelIndex()); ++row) {
+        QVariant ctx = d->m_model->data(d->m_model->index(row, 0), CO_AP_PAYLOAD_DATA_ROLE_PAYLOAD);
+        if (!ctx.isValid()) {
+            continue;
+        }
+
+        auto payloadPtr = ctx.value<std::shared_ptr<CoAPCommon::PayloadContext>>();
+        if (!payloadPtr) {
+            continue;
+        }
+
+        QJsonObject payloadObj = CoAPCommon::payloadContext2JsonObject(*payloadPtr);
+        ;
+        payloadsArray.append(payloadObj);
+    }
+    obj[keys.payloads] = payloadsArray;
+
     return obj;
 }
 
@@ -149,6 +207,13 @@ void CoAPPayloadView::load(const QJsonObject& obj)
         d->ui->tableView->setColumnHidden(i, !isVisible);
         actions.at(i)->setChecked(isVisible);
     }
+
+    // Payloads
+    QJsonArray payloadsArray = obj.value(keys.payloads).toArray();
+    for (const QJsonValue& val : payloadsArray) {
+        QJsonObject payloadObj = val.toObject();
+        d->m_model->addPayload(payloadObj);
+    }
 }
 
 QMenu* CoAPPayloadView::toolButtonMenu() const
@@ -156,8 +221,16 @@ QMenu* CoAPPayloadView::toolButtonMenu() const
     return d->m_toolButtonMenu;
 }
 
-QString CoAPPayloadView::addPayload(int contextFormat, const QByteArray& payload)
+QString CoAPPayloadView::addPayload(const QString& description,
+                                    int contextFormat,
+                                    const QByteArray& payload)
 {
+    CoAPCommon::PayloadContext ctx;
+    ctx.description = description;
+    ctx.format = contextFormat;
+    ctx.data = payload;
+    QJsonObject obj = CoAPCommon::payloadContext2JsonObject(ctx);
+    d->m_model->addPayload(obj);
     return QString("");
 }
 

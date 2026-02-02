@@ -29,7 +29,10 @@ public:
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
     QMenu *toolButtonMenu() const;
-    QString addPayload(int contextFormat, const QByteArray &payload);
+    QString addPayload(const QString &description, int contextFormat, const QByteArray &payload);
+
+signals:
+    void payloadActivated(int format, const QByteArray &payload);
 };
 
 } // namespace xCoAP

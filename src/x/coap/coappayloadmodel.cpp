@@ -12,6 +12,8 @@
 
 #include <coap3/coap.h>
 
+#include "coapcommon.h"
+
 namespace xCoAP {
 
 class CoAPPayloadModelPrivate : public QObject
@@ -24,15 +26,7 @@ public:
     ~CoAPPayloadModelPrivate() override {}
 
 public:
-    struct CoAPMsgItem
-    {
-        bool isRx;
-        const QString host;
-        const quint16 port;
-        const coap_pdu_t* pdu;
-    };
-    QList<CoAPMsgItem> m_msgList;
-    QMutex m_msgListMutex;
+    QList<std::shared_ptr<CoAPCommon::PayloadContext>> m_payloads;
 
 private:
     CoAPPayloadModel* q{nullptr};
@@ -46,13 +40,59 @@ CoAPPayloadModel::CoAPPayloadModel(QObject* parent)
 
 CoAPPayloadModel::~CoAPPayloadModel() {}
 
+void CoAPPayloadModel::addPayload(const QJsonObject& context)
+{
+    CoAPCommon::PayloadContext ctx = CoAPCommon::jsonObject2PayloadContext(context);
+    auto payloadPtr = std::make_shared<CoAPCommon::PayloadContext>(ctx);
+
+    beginInsertRows(QModelIndex(), d->m_payloads.size(), d->m_payloads.size());
+    d->m_payloads.append(payloadPtr);
+    endInsertRows();
+    emit dataChanged(index(0, 0),
+                     index(rowCount(QModelIndex()) - 1, columnCount(QModelIndex()) - 1));
+}
+
 QVariant CoAPPayloadModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {
         return QVariant();
     }
 
+    int row = index.row();
+    int column = index.column();
+    if (row < 0 || row >= d->m_payloads.size()) {
+        return QVariant();
+    }
+
+    if (column < 0 || column >= columnCount(QModelIndex())) {
+        return QVariant();
+    }
+
+    if (role == CO_AP_PAYLOAD_DATA_ROLE_PAYLOAD) {
+        const std::shared_ptr<CoAPCommon::PayloadContext>& payload = d->m_payloads.at(index.row());
+        return QVariant::fromValue(payload);
+    }
+
     if (role == Qt::DisplayRole) {
+        const auto& payload = d->m_payloads.at(index.row());
+        switch (index.column()) {
+        case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
+            return payload->description;
+        case CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT:
+            return payload->format;
+        case CO_AP_PAYLOAD_MODEL_COLUMN_DATA:
+            return QString::fromUtf8(payload->data);
+        default:
+            return QVariant();
+        }
+    }
+
+    if (role == Qt::TextAlignmentRole) {
+        if (column == CO_AP_PAYLOAD_MODEL_COLUMN_DATA) {
+            return int(Qt::AlignLeft | Qt::AlignVCenter);
+        } else {
+            return int(Qt::AlignCenter);
+        }
     }
 
     return QVariant();
@@ -60,11 +100,7 @@ QVariant CoAPPayloadModel::data(const QModelIndex& index, int role) const
 
 int CoAPPayloadModel::rowCount(const QModelIndex& parent) const
 {
-    Q_UNUSED(parent);
-    d->m_msgListMutex.lock();
-    int count = d->m_msgList.count();
-    d->m_msgListMutex.unlock();
-    return count;
+    return d->m_payloads.size();
 }
 
 int CoAPPayloadModel::columnCount(const QModelIndex& parent) const
@@ -86,6 +122,14 @@ QVariant CoAPPayloadModel::headerData(int section, Qt::Orientation orientation, 
                 return tr("Data");
             default:
                 return QVariant();
+            }
+        }
+
+        if (role == Qt::TextAlignmentRole) {
+            if (section == CO_AP_PAYLOAD_MODEL_COLUMN_DATA) {
+                return int(Qt::AlignLeft | Qt::AlignVCenter);
+            } else {
+                return int(Qt::AlignCenter);
             }
         }
     } else {
