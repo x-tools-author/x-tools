@@ -10,6 +10,7 @@
 #include "ui_xcoap.h"
 
 #include <QAction>
+#include <QDesktopServices>
 #include <QFileDialog>
 #include <QMenu>
 #include <QMessageBox>
@@ -60,9 +61,9 @@ public:
 
         // Tool button menu
         m_toolButtonMenu = new QMenu(q);
-        QAction* exportAction = m_toolButtonMenu->addAction("Export CoAP Configuration");
+        QAction* exportAction = m_toolButtonMenu->addAction(tr("Export CoAP Configuration"));
         exportAction->setIcon(xIcon(":res/icons/save.svg"));
-        QAction* importAction = m_toolButtonMenu->addAction("Import CoAP Configuration");
+        QAction* importAction = m_toolButtonMenu->addAction(tr("Import CoAP Configuration"));
         importAction->setIcon(xIcon(":res/icons/file_open.svg"));
         m_toolButtonMenu->addSeparator();
         QAction* settingAction = m_toolButtonMenu->addAction(tr("Global Settings"));
@@ -70,6 +71,9 @@ public:
         connect(exportAction, &QAction::triggered, q, [=]() { onExportActionTriggered(); });
         connect(importAction, &QAction::triggered, q, [=]() { onImportActionTriggered(); });
         connect(settingAction, &QAction::triggered, q, [=]() { onSettingsActionTriggered(); });
+        QAction* cacheAction = m_toolButtonMenu->addAction(tr("Open Server Cache Directory"));
+        cacheAction->setIcon(xIcon(":res/icons/folder.svg"));
+        connect(cacheAction, &QAction::triggered, q, [=]() { onOpenCachePath(); });
 
         // Client and Server control tool buttons
         m_clientCtrlToolButton = new QToolButton(q);
@@ -150,6 +154,11 @@ private:
     void onExportActionTriggered() { q->exportSettings(QString()); }
     void onImportActionTriggered() { q->importSettings(QString()); }
     void onSettingsActionTriggered() { gCoAPGlobal.showThenMoveToCenter(); }
+    void onOpenCachePath()
+    {
+        QString path = gCoAPGlobal.serverCachePath();
+        QDesktopServices::openUrl(path);
+    }
 
 private:
     xCoAP* q{nullptr};
@@ -249,8 +258,7 @@ void xCoAP::importSettings(const QString& filePath)
         QMessageBox::warning(this,
                              tr("Import CoAP Configuration Failed"),
                              tr("Failed to parse JSON file %1: %2")
-                                 .arg(cookedFilePath)
-                                 .arg(parseError.errorString()));
+                                 .arg(cookedFilePath, parseError.errorString()));
         return;
     }
     if (!doc.isObject()) {

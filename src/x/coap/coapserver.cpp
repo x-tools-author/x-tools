@@ -9,6 +9,7 @@
 #include "coapserver.h"
 
 #include <QDebug>
+#include <QFile>
 #include <QMutex>
 #include <QThread>
 
@@ -46,14 +47,30 @@ public:
                            coap_pdu_t* response)
     {
         // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received GET request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPathQStr = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received GET request for resource:" << uriPathQStr;
 
-        static const char kPayload[] = "Hello from xTools CoAP server";
-        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
+        QString suffix = CoAPCommon::getContextFormatSuffix(contextFormat);
+        QString rootPath = gCoAPGlobal.serverCachePath();
+        QString filePath = QString("%1/%2.%3").arg(rootPath, uriPathQStr, suffix);
+        QFile file(filePath);
+        if (file.open(QIODevice::ReadOnly)) {
+            QByteArray payload = file.readAll();
+            file.close();
+            coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
+            coap_add_data(response,
+                          payload.size(),
+                          reinterpret_cast<const uint8_t*>(payload.constData()));
+            qCDebug(xCoAPServerLog) << "Served GET request from cached file:" << filePath;
+            return;
+        } else {
+            static const char kPayload[] = "Can not get the requested resource.";
+            size_t len = std::strlen(kPayload);
+            const uint8_t* data = reinterpret_cast<const uint8_t*>(kPayload);
+            coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
+            coap_add_data(response, len, data);
+        }
     }
     static void postHandler(coap_resource_t* resource,
                             coap_session_t* session,
@@ -74,16 +91,27 @@ public:
         qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPathQStr;
 
         uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
+        QByteArray payload = CoAPCommon::getCoAPPayload(request);
         if (contextFormat != CO_AP_INVALID_CONTEXT_FORMAT) {
             if (gCoAPGlobal.isEnableCachePostMessages()) {
+                QString suffix = CoAPCommon::getContextFormatSuffix(static_cast<int>(contextFormat));
                 QString rootPath = gCoAPGlobal.serverCachePath();
-                qCDebug(xCoAPServerLog) << "Caching POST message as enabled.";
+                QString filePath = QString("%1/%2.%3").arg(rootPath, uriPathQStr, suffix);
+                QFile file(filePath);
+                if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+                    file.write(payload);
+                    file.close();
+                } else {
+                    qCWarning(xCoAPServerLog)
+                        << "Failed to cache POST request payload to file:" << filePath
+                        << ", error:" << file.errorString();
+                }
+                qCDebug(xCoAPServerLog) << "Caching POST request payload to file:" << filePath;
             }
         }
 
         // Response the request payload
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
-        QByteArray payload = CoAPCommon::getCoAPPayload(request);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
         coap_add_data(response, len, data);

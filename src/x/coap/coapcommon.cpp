@@ -118,7 +118,7 @@ void CoAPCommon::setupContextFormat(QComboBox* comboBox)
     }
 }
 
-QString CoAPCommon::fileContextSuffix(int format)
+QString CoAPCommon::getContextFormatSuffix(int format)
 {
     switch (format) {
     case COAP_MEDIATYPE_APPLICATION_JSON:

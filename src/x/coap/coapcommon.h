@@ -49,12 +49,10 @@ public:
     static void setupSocketAddress(QComboBox* comboBox);
     static void setupSocketPort(QSpinBox* comboBox);
     static void setupSocketProtocol(QComboBox* comboBox);
-
-public: // Context Format
     static void setupContextFormat(QComboBox* cb);
-    QString fileContextSuffix(int format);
 
 public:
+    static QString getContextFormatSuffix(int format);
     static QString getCoAPRemoteAddress(coap_session_t* session);
     static quint16 getCoAPRemotePort(coap_session_t* session);
     static QString getCoAPLocalAddress(coap_session_t* session);
