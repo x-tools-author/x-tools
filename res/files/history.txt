@@ -7,7 +7,7 @@
     05. 新的BLE调试功能
     06. opcua调试功能
 
-V7.7.0 2026年xx月xx日（planing）
+V7.7.0 2026年xx月xx日
     新特性：
     01. coap调试功能
     bug修复：
