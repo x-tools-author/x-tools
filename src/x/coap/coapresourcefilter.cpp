@@ -1,57 +1,44 @@
 ﻿/***************************************************************************************************
  * Copyright 2026-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
- * The file is encoded using "utf8 with bom", it is a part of xModbus project.
+ * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "coappayloadfilter.h"
-
-#include <QMutex>
-
-#include <coap3/coap.h>
+#include "coapresourcefilter.h"
 
 #include "coapcommon.h"
-#include "coappayloadmodel.h"
+#include "coapresourcemodel.h"
 
 namespace xCoAP {
 
-class CoAPPayloadFilterPrivate : public QObject
+class CoAPResourceFilterPrivate : public QObject
 {
 public:
-    CoAPPayloadFilterPrivate(CoAPPayloadFilter* q_ptr)
+    CoAPResourceFilterPrivate(CoAPResourceFilter* q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
     {}
-    ~CoAPPayloadFilterPrivate() override {}
+    ~CoAPResourceFilterPrivate() override {}
 
 public:
-    struct CoAPMsgItem
-    {
-        bool isRx;
-        const QString host;
-        const quint16 port;
-        const coap_pdu_t* pdu;
-    };
-    QList<CoAPMsgItem> m_msgList;
-    QMutex m_msgListMutex;
-    int m_format{-1};
+    int m_format{CO_AP_INVALID_CONTEXT_FORMAT};
     QString m_filterText;
 
 private:
-    CoAPPayloadFilter* q{nullptr};
+    CoAPResourceFilter* q{nullptr};
 };
 
-CoAPPayloadFilter::CoAPPayloadFilter(QObject* parent)
+CoAPResourceFilter::CoAPResourceFilter(QObject* parent)
     : QSortFilterProxyModel(parent)
 {
-    d = new CoAPPayloadFilterPrivate(this);
+    d = new CoAPResourceFilterPrivate(this);
 }
 
-CoAPPayloadFilter::~CoAPPayloadFilter() {}
+CoAPResourceFilter::~CoAPResourceFilter() {}
 
-void CoAPPayloadFilter::setFormat(int format)
+void CoAPResourceFilter::setFormat(int format)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
     beginFilterChange();
@@ -63,7 +50,7 @@ void CoAPPayloadFilter::setFormat(int format)
 #endif
 }
 
-void CoAPPayloadFilter::setFilterText(const QString& text)
+void CoAPResourceFilter::setFilterText(const QString& text)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
     beginFilterChange();
@@ -75,36 +62,40 @@ void CoAPPayloadFilter::setFilterText(const QString& text)
 #endif
 }
 
-bool CoAPPayloadFilter::filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const
+bool CoAPResourceFilter::filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const
 {
     QAbstractItemModel* sourceModel = this->sourceModel();
     if (!sourceModel) {
+        qCWarning(xCoAPLog) << "Source model is null!";
         return false;
     }
 
-    CoAPPayloadModel* model = qobject_cast<CoAPPayloadModel*>(sourceModel);
+    CoAPResourceModel* model = qobject_cast<CoAPResourceModel*>(sourceModel);
     if (!model) {
+        qCWarning(xCoAPLog) << "Source model is not CoAPResourceModel!";
         return false;
     }
 
     if (sourceRow < 0 || sourceRow >= model->rowCount(sourceParent)) {
+        qCWarning(xCoAPLog) << "Invalid source row:" << sourceRow;
         return false;
     }
 
     QModelIndex formatIndex = model->index(sourceRow, 0, sourceParent);
-    QVariant formatVar = model->data(formatIndex, CO_AP_PAYLOAD_DATA_ROLE_PAYLOAD);
+    QVariant formatVar = model->data(formatIndex, COAP_RES_MODEL_COLUMN_FORMAT);
     if (!formatVar.isValid()) {
+        qCWarning(xCoAPLog) << "Invalid format data at row:" << sourceRow;
         return false;
     }
 
     const auto& payload = formatVar.value<std::shared_ptr<CoAPCommon::PayloadContext>>();
-    QModelIndex index = model->index(sourceRow, CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT, sourceParent);
+    QModelIndex index = model->index(sourceRow, COAP_RES_MODEL_COLUMN_FORMAT, sourceParent);
     int format = model->data(index, Qt::EditRole).toInt();
-    index = model->index(sourceRow, CO_AP_PAYLOAD_MODEL_COLUMN_DATA, sourceParent);
+    index = model->index(sourceRow, COAP_RES_MODEL_COLUMN_PAYLOAD, sourceParent);
     QString dataStr = model->data(index, Qt::DisplayRole).toString();
 
     bool accept = true;
-    if (d->m_format != -1) {
+    if (d->m_format != CO_AP_INVALID_CONTEXT_FORMAT) {
         accept = (format == d->m_format);
     }
     if (accept && !d->m_filterText.isEmpty()) {

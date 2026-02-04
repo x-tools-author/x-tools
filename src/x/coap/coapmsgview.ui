@@ -60,16 +60,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButtonFilter">
-       <property name="toolTip">
-        <string>Categories filter</string>
-       </property>
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLineEdit" name="lineEditFilter">
        <property name="placeholderText">
         <string>Payload filter</string>

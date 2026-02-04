@@ -21,6 +21,11 @@ class CoAPMsgFilter : public QSortFilterProxyModel
 public:
     CoAPMsgFilter(QObject *parent = nullptr);
     ~CoAPMsgFilter() override;
+
+    void setFilterText(const QString &text);
+
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 };
 
 } // namespace xCoAP

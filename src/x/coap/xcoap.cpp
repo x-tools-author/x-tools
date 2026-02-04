@@ -73,6 +73,7 @@ public:
         connect(settingAction, &QAction::triggered, q, [=]() { onSettingsActionTriggered(); });
         QAction* cacheAction = m_toolButtonMenu->addAction(tr("Open Server Cache Directory"));
         cacheAction->setIcon(xIcon(":res/icons/folder.svg"));
+        cacheAction->setVisible(false);
         connect(cacheAction, &QAction::triggered, q, [=]() { onOpenCachePath(); });
 
         // Client and Server control tool buttons

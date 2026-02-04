@@ -13,6 +13,7 @@
 
 namespace xCoAP {
 
+class CoAPResourceModel;
 class CoAPServerPrivate;
 class CoAPServer : public QThread
 {
@@ -25,6 +26,7 @@ public:
 
     void startServer(const QJsonObject &parameters);
     void stopServer();
+    void setCoAPResourceModel(CoAPResourceModel *model);
 
 protected:
     void run() override;

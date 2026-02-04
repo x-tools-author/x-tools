@@ -47,14 +47,15 @@ public:
         ui->toolButtonScrolling->setCheckable(true);
         ui->toolButtonScrolling->setChecked(true);
         ui->toolButtonClear->setIcon(xIcon(":res/icons/mop.svg"));
-        ui->toolButtonFilter->setIcon(xIcon(":/res/icons/filter_alt.svg"));
         ui->toolButtonLimit->setIcon(xIcon(":res/icons/contract.svg"));
         setupLimitMenu(ui->toolButtonLimit);
-
+        connect(ui->toolButtonClear, &QToolButton::clicked, q, [=]() { onClearBtnClicked(); });
         connect(ui->toolButtonScrolling, &QToolButton::clicked, q, [=](bool checked) {
             onScrollToBottomToggled(checked);
         });
-        connect(ui->toolButtonClear, &QToolButton::clicked, q, [=]() { onClearBtnClicked(); });
+        connect(ui->lineEditFilter, &QLineEdit::textChanged, q, [=](const QString& text) {
+            m_filter->setFilterText(text);
+        });
 
         m_model = new CoAPMsgModel(q);
         m_filter = new CoAPMsgFilter(q);

@@ -40,6 +40,17 @@ public:
         connect(ui->buttonBox, &QDialogButtonBox::accepted, q, [=]() { onAccepted(); });
         connect(ui->buttonBox, &QDialogButtonBox::rejected, q, [=]() { onRejected(); });
         connect(ui->toolButtonServerCachePath, &QToolButton::clicked, q, [=]() { onBrowse(); });
+
+        // Hide something not used yet...
+        const int count = ui->horizontalLayoutCache->count();
+        for (int i = 0; i < count; ++i) {
+            QWidget* w = ui->horizontalLayoutCache->itemAt(i)->widget();
+            if (w) {
+                w->hide();
+            }
+        }
+        ui->checkBoxServerCache->hide();
+        q->adjustSize();
     }
     ~CoAPGlobalPrivate() { delete ui; }
 

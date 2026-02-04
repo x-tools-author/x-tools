@@ -64,8 +64,9 @@ public:
         requestPdu->type = sent->type;
         requestPdu->code = sent->code;
         if (sent->e_token_length > 0 && sent->actual_token.length > 0) {
-            requestPdu->token.append(reinterpret_cast<const char *>(sent->actual_token.s),
-                                     static_cast<int>(sent->actual_token.length));
+            const char *tokenData = reinterpret_cast<const char *>(sent->actual_token.s);
+            int tokenLen = static_cast<int>(sent->actual_token.length);
+            requestPdu->token.append(tokenData, tokenLen);
         }
 
         std::shared_ptr<CoAPMsgItem> responsePdu = std::make_shared<CoAPMsgItem>();
@@ -77,8 +78,9 @@ public:
         responsePdu->type = received->type;
         responsePdu->code = received->code;
         if (received->e_token_length > 0 && received->actual_token.length > 0) {
-            responsePdu->token.append(reinterpret_cast<const char *>(received->actual_token.s),
-                                      static_cast<int>(received->actual_token.length));
+            const char *tokenData = reinterpret_cast<const char *>(received->actual_token.s);
+            int tokenLen = static_cast<int>(received->actual_token.length);
+            responsePdu->token.append(tokenData, tokenLen);
         }
 
         //------------------------------------------------------------------------------------------
@@ -173,7 +175,9 @@ public:
         // Option-Content format...
         if (contextFormat >= 0) {
             uint8_t buf[4];
-            size_t size = coap_encode_var_bytes(buf, static_cast<uint32_t>(contextFormat));
+            size_t size = coap_encode_var_safe(buf,
+                                               sizeof(buf),
+                                               static_cast<uint32_t>(contextFormat));
             if (!coap_add_option(request, COAP_OPTION_CONTENT_FORMAT, size, buf)) {
                 qCWarning(xCoAPClientLog) << "Failed to add content format to CoAP request";
                 return;

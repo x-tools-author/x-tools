@@ -9,6 +9,12 @@
 #pragma once
 
 #include <QAbstractTableModel>
+#include <QJsonObject>
+
+#define COAP_RES_MODEL_COLUMN_DESCRIPTION 0
+#define COAP_RES_MODEL_COLUMN_URI 1
+#define COAP_RES_MODEL_COLUMN_FORMAT 2
+#define COAP_RES_MODEL_COLUMN_PAYLOAD 3
 
 namespace xCoAP {
 
@@ -22,9 +28,17 @@ public:
     explicit CoAPResourceModel(QObject *parent = nullptr);
     ~CoAPResourceModel() override;
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    void addResource(const QJsonObject &obj);
+    void updateResource(int row, const QJsonObject &obj);
+    QJsonObject saveRow(int row) const;
+    void deleteRow(int row);
+    void clearAllRows();
+    QStringList uriPaths() const;
+
+    int rowCount(const QModelIndex &parent) const override;
+    int columnCount(const QModelIndex &parent) const override;
+    QVariant data(const QModelIndex &index, int role) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 };
 
 } // namespace xCoAP

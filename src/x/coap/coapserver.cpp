@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QMutex>
 #include <QThread>
+#include <QTimer>
 
 #include <coap3/coap.h>
 
@@ -23,6 +24,7 @@
 
 #include "coapcommon.h"
 #include "coapglobal.h"
+#include "coapresourcemodel.h"
 
 namespace xCoAP {
 
@@ -38,6 +40,8 @@ public:
 public:
     QJsonObject m_parameters;
     QMutex m_parametersMutex;
+    QMutex m_uriPathsMutex;
+    CoAPResourceModel* m_resModel{nullptr};
 
 public:
     static void getHandler(coap_resource_t* resource,
@@ -63,7 +67,6 @@ public:
                           payload.size(),
                           reinterpret_cast<const uint8_t*>(payload.constData()));
             qCDebug(xCoAPServerLog) << "Served GET request from cached file:" << filePath;
-            return;
         } else {
             static const char kPayload[] = "Can not get the requested resource.";
             size_t len = std::strlen(kPayload);
@@ -258,6 +261,11 @@ void CoAPServer::stopServer()
     }
 }
 
+void CoAPServer::setCoAPResourceModel(CoAPResourceModel* model)
+{
+    d->m_resModel = model;
+}
+
 void CoAPServer::run()
 {
     qInfo() << "CoAP server thread started:" << QThread::currentThread();
@@ -296,25 +304,74 @@ void CoAPServer::run()
         return;
     }
 
-    coap_resource_t* resource = coap_resource_init(coap_make_str_const("hello"), 0);
-    if (!resource) {
-        qWarning() << "Failed to create CoAP resource";
-        coap_free_context(ctx);
-        return;
-    }
-
-    coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
-    coap_register_request_handler(resource, COAP_REQUEST_POST, CoAPServerPrivate::postHandler);
-    coap_add_resource(ctx, resource);
-
-    while (!isInterruptionRequested()) {
+    // CoAP event loop
+    QTimer* processTimer = new QTimer();
+    processTimer->setInterval(10);
+    connect(processTimer, &QTimer::timeout, processTimer, [ctx]() {
         int result = coap_io_process(ctx, 50);
-        if (result < 0) {
-            qWarning() << "coap_io_process returned error" << result;
-            break;
-        }
-    }
+        Q_UNUSED(result);
+    });
 
+    // Register resources
+    QTimer* resourceTimer = new QTimer();
+    resourceTimer->setInterval(100);
+    QStringList registered;
+    QStringList preUriPaths;
+    connect(resourceTimer, &QTimer::timeout, resourceTimer, [this, ctx, &registered, &preUriPaths]() {
+        this->d->m_uriPathsMutex.lock();
+        QStringList uriPaths = this->d->m_resModel->uriPaths();
+        this->d->m_uriPathsMutex.unlock();
+
+        // Resource list not changed
+        if (uriPaths == preUriPaths) {
+            return;
+        }
+
+        // Cancel deleted resources
+        for (const QString& oldUri : std::as_const(preUriPaths)) {
+            if (!uriPaths.contains(oldUri)) {
+                const QByteArray bytes = oldUri.toUtf8();
+                coap_str_const_t* str = coap_make_str_const(bytes.constData());
+                coap_resource_t* resource = coap_resource_init(str, 0);
+                coap_register_handler(resource, COAP_REQUEST_GET, NULL);
+            }
+        }
+
+        // Add new resources
+        for (const QString& uriPath : std::as_const(uriPaths)) {
+            QByteArray tmp = uriPath.toUtf8();
+            if (preUriPaths.contains(tmp)) {
+                continue;
+            }
+
+            preUriPaths.append(tmp);
+            coap_str_const_t* str = coap_make_str_const(tmp);
+            coap_resource_t* resource = coap_resource_init(str, 0);
+            if (!resource) {
+                qWarning() << "Failed to create CoAP resource";
+                continue;
+            }
+
+            // clang-format off
+            coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_POST, CoAPServerPrivate::postHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_PUT, CoAPServerPrivate::putHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_DELETE, CoAPServerPrivate::deleteHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_PATCH, CoAPServerPrivate::patchHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_IPATCH, CoAPServerPrivate::ipatchHandler);
+            coap_add_resource(ctx, resource);
+            // clang-format on
+            qCDebug(xCoAPServerLog) << "Registered CoAP resource:" << uriPath;
+        }
+
+        preUriPaths = uriPaths;
+    });
+
+    processTimer->start();
+    resourceTimer->start();
+    exec();
+    processTimer->stop();
+    resourceTimer->start();
     coap_free_context(ctx);
     qInfo() << "CoAP server thread finished:" << QThread::currentThread();
 }

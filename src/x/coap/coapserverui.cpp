@@ -45,7 +45,8 @@ public:
         layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(m_msgView);
 
-        m_resourceView = new CoAPResourceView(q);
+        m_resView = new CoAPResourceView(q);
+        m_server->setCoAPResourceModel(m_resView->resourceModel());
     }
     ~CoAPServerUiPrivate()
     {
@@ -59,7 +60,7 @@ public:
     Ui::CoAPServerUi* ui{nullptr};
     CoAPServer* m_server{nullptr};
     CoAPMsgView* m_msgView{nullptr};
-    CoAPResourceView* m_resourceView{nullptr};
+    CoAPResourceView* m_resView{nullptr};
 
 public:
     void onStarted()
@@ -103,6 +104,7 @@ private:
 struct CoAPServerUiParameterKeys
 {
     const QString message{"message"};
+    const QString resource{"resource"};
 };
 
 CoAPServerUi::CoAPServerUi(QWidget* parent)
@@ -127,6 +129,7 @@ QJsonObject CoAPServerUi::save()
 
     CoAPServerUiParameterKeys uiKeys;
     obj.insert(uiKeys.message, d->m_msgView->save());
+    obj.insert(uiKeys.resource, d->m_resView->save());
     return obj;
 }
 
@@ -144,13 +147,13 @@ void CoAPServerUi::load(const QJsonObject& obj)
     }
 
     CoAPServerUiParameterKeys uiKeys;
-    QJsonObject msgObj = obj.value(uiKeys.message).toObject();
-    d->m_msgView->load(msgObj);
+    d->m_msgView->load(obj.value(uiKeys.message).toObject());
+    d->m_resView->load(obj.value(uiKeys.resource).toObject());
 }
 
 QWidget* CoAPServerUi::resourceView() const
 {
-    return d->m_resourceView;
+    return d->m_resView;
 }
 
 } // namespace xCoAP

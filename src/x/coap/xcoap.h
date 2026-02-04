@@ -21,7 +21,7 @@ class xCoAPPrivate;
 class xCoAP : public QWidget, public xTools::Serializable, public LayoutPage
 {
     Q_OBJECT
-    xCoAPPrivate* d;
+    xCoAPPrivate* d{nullptr};
 
 public:
     explicit xCoAP(QWidget* parent = nullptr);

@@ -8,26 +8,25 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QWidget>
-
-#include "utilities/serializable.h"
+#include <QSortFilterProxyModel>
 
 namespace xCoAP {
 
-class CoAPResourceModel;
-class CoAPResourceViewPrivate;
-class CoAPResourceView : public QWidget, public xTools::Serializable
+class CoAPResourceFilterPrivate;
+class CoAPResourceFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
-    CoAPResourceViewPrivate *d{nullptr};
+    CoAPResourceFilterPrivate *d{nullptr};
 
 public:
-    explicit CoAPResourceView(QWidget *parent = nullptr);
-    ~CoAPResourceView() override;
+    explicit CoAPResourceFilter(QObject *parent = nullptr);
+    ~CoAPResourceFilter() override;
 
-    QJsonObject save() override;
-    void load(const QJsonObject &obj) override;
-    CoAPResourceModel *resourceModel() const;
+    void setFormat(int format);
+    void setFilterText(const QString &text);
+
+protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 };
 
 } // namespace xCoAP

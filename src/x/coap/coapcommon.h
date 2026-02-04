@@ -21,7 +21,7 @@ struct coap_resource_t;
 #define xCoAPClientLog QLoggingCategory("xTools.xCoAP.Client")
 #define xCoAPServerLog QLoggingCategory("xTools.xCoAP.Server")
 
-#define CO_AP_INVALID_CONTEXT_FORMAT 0
+#define CO_AP_INVALID_CONTEXT_FORMAT -1
 
 namespace xCoAP {
 
@@ -53,6 +53,7 @@ public:
 
 public:
     static QString getContextFormatSuffix(int format);
+    static QString getContextFormatString(int format);
     static QString getCoAPRemoteAddress(coap_session_t* session);
     static quint16 getCoAPRemotePort(coap_session_t* session);
     static QString getCoAPLocalAddress(coap_session_t* session);
@@ -63,6 +64,8 @@ public:
 
 public:
     static bool isValidProtocol(int protocol);
+    static bool clearAllItems();
+    static bool deleteSelectedItems();
 
 public:
     struct ClientParameterKeys
@@ -114,6 +117,24 @@ public:
     static PayloadContext defaultPayloadContext();
     static QJsonObject payloadContext2JsonObject(const PayloadContext& context);
     static PayloadContext jsonObject2PayloadContext(const QJsonObject& obj);
+
+public:
+    struct ResourceItem
+    {
+        QString description;
+        QString uriPath;
+        int contextFormat;
+        QByteArray payload;
+    };
+    struct ResourceItemKeys
+    {
+        const QString description{"description"};
+        const QString uriPath{"uriPath"};
+        const QString contextFormat{"contextFormat"};
+        const QString payload{"payload"};
+    };
+    static QJsonObject resourceItem2JsonObject(const ResourceItem& item);
+    static ResourceItem jsonObject2ResourceItem(const QJsonObject& obj);
 };
 
 } // namespace xCoAP

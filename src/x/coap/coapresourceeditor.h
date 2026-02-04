@@ -14,20 +14,25 @@
 
 namespace xCoAP {
 
-class CoAPResourceModel;
-class CoAPResourceViewPrivate;
-class CoAPResourceView : public QWidget, public xTools::Serializable
+class CoAPResourceEditorPrivate;
+class CoAPResourceEditor : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
-    CoAPResourceViewPrivate *d{nullptr};
+    CoAPResourceEditorPrivate *d{nullptr};
 
 public:
-    explicit CoAPResourceView(QWidget *parent = nullptr);
-    ~CoAPResourceView() override;
+    explicit CoAPResourceEditor(QWidget *parent = nullptr);
+    ~CoAPResourceEditor() override;
 
     QJsonObject save() override;
     void load(const QJsonObject &obj) override;
-    CoAPResourceModel *resourceModel() const;
+
+    int editingRow() const;
+    void setEditingRow(int row);
+
+signals:
+    void accepted();
+    void rejected();
 };
 
 } // namespace xCoAP

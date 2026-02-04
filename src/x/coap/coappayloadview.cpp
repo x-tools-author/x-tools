@@ -155,12 +155,7 @@ public:
     void onEdit() { m_editor->show(); }
     void onRemove()
     {
-        int ret = QMessageBox::question(q,
-                                        QObject::tr("Remove selected payloads"),
-                                        QObject::tr("Are you sure to remove selected payloads?"),
-                                        QMessageBox::Yes | QMessageBox::No,
-                                        QMessageBox::No);
-        if (ret != QMessageBox::Yes) {
+        if (!CoAPCommon::deleteSelectedItems()) {
             return;
         }
 
@@ -170,16 +165,17 @@ public:
             return;
         }
 
-        QSet<int> rows;
-        for (const QModelIndex& index : selectedIndexes) {
-            rows.insert(m_filter->mapToSource(index).row());
+        QList<int> rowList;
+        for (const QModelIndex& index : std::as_const(selectedIndexes)) {
+            int row = m_filter->mapToSource(index).row();
+            if (!rowList.contains(row)) {
+                rowList.append(row);
+            }
         }
 
-        QList<int> rowList = rows.values();
         std::sort(rowList.begin(), rowList.end(), std::greater<int>());
-
-        for (int row : rowList) {
-            m_model->removeRow(row);
+        for (int i = 0; i < rowList.count(); i++) {
+            m_model->removeRow(rowList.first());
         }
     }
     void onDoubleClicked(const QModelIndex& index)
@@ -286,7 +282,7 @@ void CoAPPayloadView::load(const QJsonObject& obj)
 
     // Payloads
     QJsonArray payloadsArray = obj.value(keys.payloads).toArray();
-    for (const QJsonValue& val : payloadsArray) {
+    for (const QJsonValue& val : std::as_const(payloadsArray)) {
         QJsonObject payloadObj = val.toObject();
         d->m_model->addPayload(payloadObj);
     }
