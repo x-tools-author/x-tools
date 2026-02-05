@@ -15,6 +15,8 @@
 #include <QTimer>
 
 #include <coap3/coap.h>
+#include <coap3/coap_session.h>
+#include <coap3/coap_session_internal.h>
 
 #ifdef _WIN32
 #include <WS2tcpip.h>
@@ -67,12 +69,14 @@ public:
                           payload.size(),
                           reinterpret_cast<const uint8_t*>(payload.constData()));
             qCDebug(xCoAPServerLog) << "Served GET request from cached file:" << filePath;
+            outputMessage(resource, session, request, query, response);
         } else {
             static const char kPayload[] = "Can not get the requested resource.";
             size_t len = std::strlen(kPayload);
             const uint8_t* data = reinterpret_cast<const uint8_t*>(kPayload);
             coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
             coap_add_data(response, len, data);
+            outputMessage(resource, session, request, query, response);
         }
     }
     static void postHandler(coap_resource_t* resource,
@@ -89,35 +93,19 @@ public:
             coap_add_data(response,
                           payload.size(),
                           reinterpret_cast<const uint8_t*>(payload.constData()));
+            outputMessage(resource, session, request, query, response);
             return;
         }
         qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPathQStr;
 
         uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
         QByteArray payload = CoAPCommon::getCoAPPayload(request);
-        if (contextFormat != CO_AP_INVALID_CONTEXT_FORMAT) {
-            if (gCoAPGlobal.isEnableCachePostMessages()) {
-                QString suffix = CoAPCommon::getContextFormatSuffix(static_cast<int>(contextFormat));
-                QString rootPath = gCoAPGlobal.serverCachePath();
-                QString filePath = QString("%1/%2.%3").arg(rootPath, uriPathQStr, suffix);
-                QFile file(filePath);
-                if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-                    file.write(payload);
-                    file.close();
-                } else {
-                    qCWarning(xCoAPServerLog)
-                        << "Failed to cache POST request payload to file:" << filePath
-                        << ", error:" << file.errorString();
-                }
-                qCDebug(xCoAPServerLog) << "Caching POST request payload to file:" << filePath;
-            }
-        }
-
         // Response the request payload
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
         coap_add_data(response, len, data);
+        outputMessage(resource, session, request, query, response);
     }
     static void putHandler(coap_resource_t* resource,
                            coap_session_t* session,
@@ -139,6 +127,7 @@ public:
         static const char kPayload[] = "PUT request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        outputMessage(resource, session, request, query, response);
     }
     static void deleteHandler(coap_resource_t* resource,
                               coap_session_t* session,
@@ -160,6 +149,7 @@ public:
         static const char kPayload[] = "DELETE request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_DELETED);
         coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        outputMessage(resource, session, request, query, response);
     }
     static void patchHandler(coap_resource_t* resource,
                              coap_session_t* session,
@@ -181,6 +171,7 @@ public:
         static const char kPayload[] = "PATCH request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        outputMessage(resource, session, request, query, response);
     }
     static void ipatchHandler(coap_resource_t* resource,
                               coap_session_t* session,
@@ -202,6 +193,7 @@ public:
         static const char kPayload[] = "iPATCH request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        outputMessage(resource, session, request, query, response);
     }
     static void fetchHandler(coap_resource_t* resource,
                              coap_session_t* session,
@@ -223,10 +215,60 @@ public:
         static const char kPayload[] = "FETCH request received";
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
         coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        outputMessage(resource, session, request, query, response);
     }
 
 private:
     CoAPServer* q{nullptr};
+
+private:
+    static void outputMessage(coap_resource_t* resource,
+                              coap_session_t* session,
+                              const coap_pdu_t* request,
+                              const coap_string_t* query,
+                              coap_pdu_t* response)
+    {
+        quint16 port = CoAPCommon::getCoAPRemotePort(session);
+        QString address = CoAPCommon::getCoAPRemoteAddress(session);
+        QString server = QString("%1:%2").arg(address).arg(port);
+        port = CoAPCommon::getCoAPLocalPort(session);
+        address = CoAPCommon::getCoAPLocalAddress(session);
+        QString client = QString("%1:%2").arg(address).arg(port);
+
+        std::shared_ptr<CoAPMsgItem> requestPdu = std::make_shared<CoAPMsgItem>();
+        int id = ntohs(request->mid);
+        requestPdu->isRx = false;
+        requestPdu->messageId = id;
+        requestPdu->version = (request->hdr_size & 0xC0);
+        requestPdu->clientHost = client;
+        requestPdu->serverHost = server;
+        requestPdu->type = request->type;
+        requestPdu->code = request->code;
+        if (request->e_token_length > 0 && request->actual_token.length > 0) {
+            const char* tokenData = reinterpret_cast<const char*>(request->actual_token.s);
+            int tokenLen = static_cast<int>(request->actual_token.length);
+            requestPdu->token.append(tokenData, tokenLen);
+        }
+
+        std::shared_ptr<CoAPMsgItem> responsePdu = std::make_shared<CoAPMsgItem>();
+        responsePdu->isRx = true;
+        responsePdu->messageId = id;
+        responsePdu->version = (response->hdr_size & 0xC0);
+        responsePdu->clientHost = client;
+        responsePdu->serverHost = server;
+        responsePdu->type = response->type;
+        responsePdu->code = response->code;
+        if (response->e_token_length > 0 && response->actual_token.length > 0) {
+            const char* tokenData = reinterpret_cast<const char*>(response->actual_token.s);
+            int tokenLen = static_cast<int>(response->actual_token.length);
+            responsePdu->token.append(tokenData, tokenLen);
+        }
+
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (q) {
+            emit static_cast<CoAPServer*>(q)->messageReceived(responsePdu, requestPdu);
+        }
+    }
 };
 
 CoAPServer::CoAPServer(QObject* parent)
@@ -298,6 +340,7 @@ void CoAPServer::run()
 
     coap_proto_t proto = static_cast<coap_proto_t>(params.protocol);
     coap_endpoint_t* endpoint = coap_new_endpoint(ctx, &addr, proto);
+    endpoint->context->app = this;
     if (!endpoint) {
         qWarning() << "Failed to create CoAP endpoint";
         coap_free_context(ctx);

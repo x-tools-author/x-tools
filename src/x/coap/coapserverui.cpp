@@ -47,6 +47,12 @@ public:
 
         m_resView = new CoAPResourceView(q);
         m_server->setCoAPResourceModel(m_resView->resourceModel());
+        connect(m_server,
+                &CoAPServer::messageReceived,
+                this,
+                [=](std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response) {
+                    onMessageReceived(request, response);
+                });
     }
     ~CoAPServerUiPrivate()
     {
@@ -87,6 +93,11 @@ public:
         if (m_server->isRunning()) {
             m_server->stopServer();
         }
+    }
+    void onMessageReceived(std::shared_ptr<CoAPMsgItem> request,
+                           std::shared_ptr<CoAPMsgItem> response) const
+    {
+        m_msgView->addMessage(request, response);
     }
 
 private:

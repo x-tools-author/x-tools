@@ -43,17 +43,21 @@ void CoAPMsgModel::addRow(std::shared_ptr<CoAPMsgItem> request,
                           std::shared_ptr<CoAPMsgItem> response,
                           int max)
 {
-    beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
-    d->m_msgListMutex.lock();
-    d->m_msgList.append(request);
-    d->m_msgListMutex.unlock();
-    endInsertRows();
+    if (request) {
+        beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
+        d->m_msgListMutex.lock();
+        d->m_msgList.append(request);
+        d->m_msgListMutex.unlock();
+        endInsertRows();
+    }
 
-    beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
-    d->m_msgListMutex.lock();
-    d->m_msgList.append(response);
-    d->m_msgListMutex.unlock();
-    endInsertRows();
+    if (response) {
+        beginInsertRows(QModelIndex(), rowCount(QModelIndex()), rowCount(QModelIndex()));
+        d->m_msgListMutex.lock();
+        d->m_msgList.append(response);
+        d->m_msgListMutex.unlock();
+        endInsertRows();
+    }
 
     d->m_msgListMutex.lock();
     while ((d->m_msgList.count() > max) && (max > 0)) {

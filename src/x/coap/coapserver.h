@@ -11,6 +11,8 @@
 #include <QJsonObject>
 #include <QThread>
 
+#include "coapcommon.h"
+
 namespace xCoAP {
 
 class CoAPResourceModel;
@@ -27,6 +29,10 @@ public:
     void startServer(const QJsonObject &parameters);
     void stopServer();
     void setCoAPResourceModel(CoAPResourceModel *model);
+
+signals:
+    void messageReceived(const std::shared_ptr<CoAPMsgItem> &request,
+                         const std::shared_ptr<CoAPMsgItem> &response);
 
 protected:
     void run() override;

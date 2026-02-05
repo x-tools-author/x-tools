@@ -178,7 +178,8 @@ void CoAPResourceView::load(const QJsonObject& obj)
         d->m_model->addResource(val.toObject());
     }
 
-    int index = d->ui->comboBoxFilter->findData(obj.value(keys.filterFormat).toInt());
+    int tmp = CO_AP_INVALID_CONTEXT_FORMAT;
+    int index = d->ui->comboBoxFilter->findData(obj.value(keys.filterFormat).toInt(tmp));
     d->ui->comboBoxFilter->setCurrentIndex(index >= 0 ? index : 0);
     d->ui->lineEditFilter->setText(obj.value(keys.filterText).toString(""));
     d->m_filter->setFilterText(d->ui->lineEditFilter->text().trimmed());
