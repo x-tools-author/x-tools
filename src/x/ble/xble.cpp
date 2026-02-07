@@ -13,11 +13,22 @@
 namespace xBle {
 
 xBle::xBle(QWidget* parent)
-    : LeftRightUi(parent)
+    : QWidget(parent)
 {
     xBleDevMgr.startScan();
 }
 
 xBle::~xBle() {}
+
+QJsonObject xBle::save()
+{
+    QJsonObject obj;
+    return obj;
+}
+
+void xBle::load(const QJsonObject& obj)
+{
+    Q_UNUSED(obj);
+}
 
 } // namespace xBle

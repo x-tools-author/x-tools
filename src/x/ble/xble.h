@@ -8,18 +8,23 @@
  **************************************************************************************************/
 #pragma once
 
+#include <QJsonObject>
 #include <QWidget>
 
-#include "x/leftrightui.h"
+#include "utilities/serializable.h"
 
 namespace xBle {
 
-class xBle : public LeftRightUi
+class xBle : public QWidget, public xTools::Serializable
 {
     Q_OBJECT
 public:
     explicit xBle(QWidget* parent = nullptr);
     ~xBle() override;
+
+public:
+    QJsonObject save() override;
+    void load(const QJsonObject& obj) override;
 };
 
 } // namespace xBle
