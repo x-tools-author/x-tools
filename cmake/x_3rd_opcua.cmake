@@ -23,7 +23,7 @@ if(NOT X_ENABLE_X_OPCUA)
 endif()
 
 # --------------------------------------------------------------------------------------------------
-set(package_version v1.4.14)
+set(package_version v1.5.0)
 set(package_name open62541-${package_version})
 set(base_url https://github.com/open62541/open62541/releases/download/${package_version})
 set(src_dir ${X_3RD_DIR}/${package_name})
@@ -34,6 +34,8 @@ if(NOT EXISTS ${src_dir}/CMakeLists.txt)
   execute_process(COMMAND git clone https://github.com/open62541/open62541.git ${package_name}
                   WORKING_DIRECTORY ${X_3RD_DIR})
   execute_process(COMMAND git switch -c ${package_version} WORKING_DIRECTORY ${src_dir})
+  # update submodule
+  execute_process(COMMAND git submodule update --init --recursive WORKING_DIRECTORY ${src_dir})
 endif()
 
 if(NOT EXISTS ${src_dir}/CMakeLists.txt)
