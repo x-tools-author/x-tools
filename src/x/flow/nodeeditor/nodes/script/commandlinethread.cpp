@@ -82,7 +82,7 @@ void CommandLineThread::onInput2thread(std::shared_ptr<QtNodes::NodeData> nodeDa
 
     QEventLoop loop;
     QByteArray all;
-    connect(&process, &QProcess::readAllStandardOutput, &loop, [&process, &all]() {
+    connect(&process, &QProcess::readyReadStandardOutput, &loop, [&process, &all]() {
         all.append(process.readAll());
     });
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
