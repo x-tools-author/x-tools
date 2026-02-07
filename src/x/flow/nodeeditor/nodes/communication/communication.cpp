@@ -62,11 +62,11 @@ QtNodes::NodeDataType Communication::dataType(QtNodes::PortType portType,
                                               QtNodes::PortIndex portIndex) const
 {
     if (portType == QtNodes::PortType::In) {
-        return QtNodes::NodeDataType{QString("QByteArray"), QString("[In]")};
+        return QtNodes::NodeDataType{QString("QByteArray"), QString("[Tx]")};
     } else if (portIndex == 0 && portType == QtNodes::PortType::Out) {
         return QtNodes::NodeDataType{QString("QByteArray"), QString("[Rx]")};
     } else if (portIndex == 1 && portType == QtNodes::PortType::Out) {
-        return QtNodes::NodeDataType{QString("QByteArray"), QString("[Tx]")};
+        return QtNodes::NodeDataType{QString("QByteArray"), QString("[Written]")};
     }
 
     return QtNodes::NodeDataType{QString("-"), QString("[-]")};
