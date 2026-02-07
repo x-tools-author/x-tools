@@ -36,6 +36,9 @@
 #if X_ENABLE_X_OPCUA
 #include "x/opcua/xopcua.h"
 #endif
+#if X_ENABLE_X_HTTP
+#include "x/http/xhttp.h"
+#endif
 #if X_ENABLE_X_FLOW
 #include "x/flow/xflow.h"
 #endif
@@ -50,6 +53,7 @@ struct LayoutManagerKeys
     const QString xMqtt{"xMqtt"};
     const QString xCoap{"xCoap"};
     const QString xOpcUa{"xOpcUa"};
+    const QString xHttp{"xHttp"};
 
     const QString xFlow{"xFlow"};
     const QString xLog{"xLog"};
@@ -146,6 +150,10 @@ void LayoutManager::setupPages()
     m_opcua = new xOpcUa::xOpcUa(m_layout->parentWidget());
     addLayoutPage(QString("xOpcUa"), m_opcua);
 #endif
+#if X_ENABLE_X_HTTP
+    m_http = new xHttp::xHttp(m_layout->parentWidget());
+    addLayoutPage(QString("xHTTP"), m_http);
+#endif
 #if X_ENABLE_X_FLOW
     m_flow = new xFlow::xFlow(m_layout->parentWidget());
     addLayoutPage(QString("xFlow"), m_flow);
@@ -208,6 +216,9 @@ QJsonObject LayoutManager::save()
 #if X_ENABLE_X_OPCUA
     obj[keys.xOpcUa] = m_opcua ? m_opcua->save() : QJsonObject();
 #endif
+#if X_ENABLE_X_HTTP
+    obj[keys.xHttp] = m_http ? m_http->save() : QJsonObject();
+#endif
 #if X_ENABLE_X_FLOW
     obj[keys.xFlow] = m_flow ? m_flow->save() : QJsonObject();
 #endif
@@ -252,6 +263,12 @@ void LayoutManager::load(const QJsonObject& obj)
     if (m_opcua) {
         QJsonObject opcuaObj = obj.value(keys.xOpcUa).toObject(QJsonObject());
         m_opcua->load(opcuaObj);
+    }
+#endif
+#if X_ENABLE_X_HTTP
+    if (m_http) {
+        QJsonObject httpObj = obj.value(keys.xHttp).toObject(QJsonObject());
+        m_http->load(httpObj);
     }
 #endif
 #if X_ENABLE_X_FLOW
@@ -319,6 +336,10 @@ QList<QAction*> LayoutManager::newWindowActions()
 #endif
 #if X_ENABLE_X_OPCUA
         a = createNewWindowAction<xOpcUa::xOpcUa>(this, QString("xOpcUa"));
+        m_newWindowActions.append(a);
+#endif
+#if X_ENABLE_X_HTTP
+        a = createNewWindowAction<xHttp::xHttp>(this, QString("xHTTP"));
         m_newWindowActions.append(a);
 #endif
 #if X_ENABLE_X_FLOW

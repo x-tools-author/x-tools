@@ -50,6 +50,11 @@ namespace xOpcUa {
 class xOpcUa;
 }
 #endif
+#if X_ENABLE_X_HTTP
+namespace xHttp {
+class xHttp;
+}
+#endif
 #if X_ENABLE_X_FLOW
 namespace xFlow {
 class xFlow;
@@ -104,6 +109,9 @@ private:
 #endif
 #if X_ENABLE_X_OPCUA
     xOpcUa::xOpcUa* m_opcua{nullptr};
+#endif
+#if X_ENABLE_X_HTTP
+    xHttp::xHttp* m_http{nullptr};
 #endif
 #if X_ENABLE_X_FLOW
     xFlow::xFlow* m_flow{nullptr};
