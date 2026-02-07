@@ -46,7 +46,7 @@ function(x_generate_translations target)
     set(ts_file ${CMAKE_CURRENT_LIST_DIR}/res/translations/${target}_${lang}.ts)
     list(APPEND APP_TS_FILES ${ts_file})
   endforeach()
-  set(out_dir "${CMAKE_BINARY_DIR}/x_tmp/${target}/translations")
+  set(out_dir "${CMAKE_BINARY_DIR}/qm/${target}/translations")
 
   # Qt5
   if(${QT_VERSION} VERSION_LESS "6.0.0")
