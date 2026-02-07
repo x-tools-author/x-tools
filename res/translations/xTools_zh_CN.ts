@@ -967,7 +967,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="72"/>
         <source>Arguments</source>
-        <translation>论点</translation>
+        <translation>参数</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/commandlineui.ui" line="81"/>
@@ -2047,7 +2047,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascript.cpp" line="31"/>
         <source>Java Script</source>
-        <translation>Java脚本</translation>
+        <translation>JS脚本</translation>
     </message>
 </context>
 <context>
