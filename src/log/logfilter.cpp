@@ -40,20 +40,38 @@ LogFilter::~LogFilter() {}
 
 void LogFilter::setFilterLogLevel(int level)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    d->m_filterLogLevel = level;
+    endFilterChange();
+#else
     d->m_filterLogLevel = level;
     invalidateFilter();
+#endif
 }
 
 void LogFilter::setFilterCategory(const QString& category)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    d->m_filterCategory = category;
+    endFilterChange();
+#else
     d->m_filterCategory = category;
     invalidateFilter();
+#endif
 }
 
 void LogFilter::setFilterText(const QString& text)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    d->m_filterText = text;
+    endFilterChange();
+#else
     d->m_filterText = text;
     invalidateFilter();
+#endif
 }
 
 bool LogFilter::filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const
