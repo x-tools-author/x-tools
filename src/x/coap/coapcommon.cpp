@@ -82,6 +82,8 @@ void CoAPCommon::setupContextFormat(QComboBox* comboBox)
 
     // clang-format off
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_JSON), COAP_MEDIATYPE_APPLICATION_JSON, comboBox);
+    // TODO: Add more context formats
+#if 0
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_TEXT_PLAIN), COAP_MEDIATYPE_TEXT_PLAIN, comboBox);
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_OCTET_STREAM), COAP_MEDIATYPE_APPLICATION_OCTET_STREAM, comboBox);
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_LINK_FORMAT), COAP_MEDIATYPE_APPLICATION_LINK_FORMAT, comboBox);
@@ -110,6 +112,7 @@ void CoAPCommon::setupContextFormat(QComboBox* comboBox)
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_ACE_CBOR), COAP_MEDIATYPE_APPLICATION_ACE_CBOR, comboBox);
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ), COAP_MEDIATYPE_APPLICATION_MB_CBOR_SEQ, comboBox);
     addContextFormatItem(getContextFormatString(COAP_MEDIATYPE_APPLICATION_OSCORE), COAP_MEDIATYPE_APPLICATION_OSCORE, comboBox);
+#endif
     // clang-format on
 
     int index = comboBox->findData(COAP_MEDIATYPE_APPLICATION_JSON);
