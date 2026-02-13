@@ -434,7 +434,7 @@ CoAPCommon::ResourceItem CoAPCommon::jsonObject2ResourceItem(const QJsonObject& 
     ResourceItem item;
     ResourceItemKeys keys;
     item.description = obj.value(keys.description).toString("xtools/xcoap/info");
-    item.uriPath = obj.value(keys.uriPath).toString(QString("hello"));
+    item.uriPath = obj.value(keys.uriPath).toString(QString("xtools/xcoap/info"));
     item.contextFormat = obj.value(keys.contextFormat).toInt(COAP_MEDIATYPE_APPLICATION_JSON);
     QString hex = obj.value(keys.payload).toString("");
     item.payload = QByteArray::fromHex(hex.toLatin1());
