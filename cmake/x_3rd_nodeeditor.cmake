@@ -1,5 +1,5 @@
 ﻿# https://codeload.github.com/paceholder/nodeeditor/zip/refs/tags/3.0.12
-set(packet_version 3.0.12)
+set(packet_version 3.0.16)
 set(packet_name nodeeditor-${packet_version})
 set(packet_url "https://codeload.github.com/paceholder/nodeeditor/zip/refs/tags/${packet_version}")
 
