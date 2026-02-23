@@ -99,6 +99,7 @@ public:
         qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPathQStr;
 
         uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
+        Q_UNUSED(contextFormat);
         QByteArray payload = CoAPCommon::getCoAPPayload(request);
         // Response the request payload
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
