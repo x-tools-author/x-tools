@@ -3,7 +3,7 @@ description: Building xTools for Windows
 
 inputs:
   tag:
-    description: 'The tag to upload the release asset to.'
+    description: "The tag to upload the release asset to."
     required: false
 
 runs:
@@ -12,11 +12,11 @@ runs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: '6.8.3'
-        target: 'desktop'
-        arch: 'win64_msvc2022_64'
-        dir: '${{ github.workspace }}'
-        modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+        version: "6.11.0"
+        target: "desktop"
+        arch: "win64_msvc2022_64"
+        dir: "${{ github.workspace }}"
+        modules: "qtcharts qtserialbus qtserialport qtwebsockets"
     - name: Build for Windows
       shell: cmd
       run: |
@@ -24,15 +24,15 @@ runs:
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -DX_VERSION_OVERRIDE:STRING=${{ inputs.tag }} -G "Ninja" ../
+        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.11.0/win64_msvc2022_64' -DCMAKE_BUILD_TYPE=Release -DX_VERSION_OVERRIDE:STRING=${{ inputs.tag }} -G "Ninja" ../
         cmake --build . --target all
         cmake --build . --target xTools_zip
     - name: Checking for Artifacts
       shell: cmd
       run: |
-        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+        for %%f in (bin\6.11.0\Windows\Release\xTools-zip\*.zip) do echo "%%f"
     - name: Upload Release Asset for Windows
       if: ${{ inputs.tag != '' }}
       shell: cmd
       run: |
-        for %%f in (bin\6.8.3\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
+        for %%f in (bin\6.11.0\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber

@@ -1,7 +1,7 @@
 ﻿name: build-windows
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: # Enables manually
   pull_request:
     branches:
@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.1]
+        version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.2, 6.11.0]
         arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
         exclude:
           - version: 6.2.4
@@ -32,9 +32,13 @@ jobs:
             arch: win64_msvc2019_64
           - version: 6.9.3
             arch: win64_mingw
-          - version: 6.10.1
+          - version: 6.10.2
             arch: win64_msvc2019_64
-          - version: 6.10.1
+          - version: 6.10.2
+            arch: win64_mingw
+          - version: 6.11.0
+            arch: win64_msvc2019_64
+          - version: 6.11.0
             arch: win64_mingw
     steps:
       - name: Pull code
@@ -42,12 +46,12 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: desktop
           arch: ${{ matrix.arch }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          modules: "qtcharts qtserialbus qtserialport qtwebsockets"
       - name: build-msvc
         shell: cmd
         if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
