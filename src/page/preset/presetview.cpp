@@ -59,6 +59,7 @@ PresetView::PresetView(QWidget *parent)
         m_groupEditor->raise();
         m_groupEditor->activateWindow();
     });
+    onDataChanged();
 }
 
 PresetView::~PresetView()

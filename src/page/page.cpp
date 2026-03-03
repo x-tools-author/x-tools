@@ -394,8 +394,8 @@ void Page::initUi()
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
-    ui->toolButtonInputPreset->setIcon(xIcon(":/res/icons/list.svg"));
-    ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    //ui->toolButtonInputPreset->setIcon(xIcon(":/res/icons/list.svg"));
+    ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
 
     initUiDeviceControl();
@@ -467,8 +467,8 @@ void Page::initUiInputControl()
 
 void Page::initUiOutput()
 {
-    ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
+    ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->tabWidget->setCurrentIndex(0);
     ui->tabTransfers->setCurrentIndex(0);
 

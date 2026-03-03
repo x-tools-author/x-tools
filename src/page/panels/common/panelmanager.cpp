@@ -26,7 +26,8 @@ PanelManager::PanelManager(QWidget *parent)
     m_panelButton->setIcon(xIcon(":/res/icons/dock_to_right.svg"));
     m_panelButton->setCheckable(true);
     m_panelButton->setToolTip(tr("Hide/Show Panels"));
-    m_panelButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    m_panelButton->setText(m_panelButton->text());
+    m_panelButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     m_panelButton->setChecked(false);
     connect(m_panelButton, &QToolButton::clicked, this, [this](bool checked) {
         this->setVisible(checked);

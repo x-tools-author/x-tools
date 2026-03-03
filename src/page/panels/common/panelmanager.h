@@ -56,7 +56,7 @@ public:
         button->setCheckable(true);
         button->setToolTip(name);
         // Show icon only
-        button->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        button->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         m_buttonGroup.addButton(button);
         connect(button, &QToolButton::clicked, this, [this, panel]() {
             this->m_layout->setCurrentWidget(panel);
