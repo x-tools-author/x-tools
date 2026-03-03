@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -61,8 +61,9 @@ void IconEngine::paint(QPainter *painter, const QRect &rect, QIcon::Mode mode, Q
 
     if (m_iconFile != lastIconFile || iconColor != lastColor || cachedPixmap.isNull()) {
         QPixmap pixmap(m_iconFile);
-        if (pixmap.isNull())
+        if (pixmap.isNull()) {
             return;
+        }
 
         QPixmap coloredPixmap(pixmap.size());
         coloredPixmap.fill(Qt::transparent);
