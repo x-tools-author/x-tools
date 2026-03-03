@@ -58,6 +58,8 @@ else()
     libopen62541-deploy
     COMMAND ${CMAKE_COMMAND} --install . --prefix ${out_dir}
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/3rd/${package_name})
-  set_target_properties(libopen62541-deploy PROPERTIES FOLDER "3rd")
+  set_target_properties(libopen62541-deploy PROPERTIES FOLDER "open62541")
+  set_target_properties(open62541-code-generation PROPERTIES FOLDER "open62541")
+  set_target_properties(open62541-generator-ids-ns0 PROPERTIES FOLDER "open62541")
   list(APPEND X_LIBS open62541::open62541)
 endif()
