@@ -4607,7 +4607,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="186"/>
         <source>Demo</source>
-        <translation></translation>
+        <translation>演示</translation>
     </message>
     <message>
         <location filename="../../src/page/responder/respondermodel.cpp" line="225"/>
@@ -5162,7 +5162,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/common/tableview.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/page/common/tableview.ui" line="89"/>
@@ -5880,12 +5880,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="104"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="105"/>
         <source>Are you sure to clear all messages?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您确定要清除所有消息吗？</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="140"/>
@@ -5903,7 +5903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="154"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">格式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="156"/>
@@ -5929,17 +5929,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="176"/>
         <source>URI Path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">URI路径</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="178"/>
         <source>Context Format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">上下文格式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="180"/>
         <source>Payload (Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载（十六进制）</translation>
     </message>
 </context>
 <context>

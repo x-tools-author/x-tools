@@ -1,5 +1,5 @@
 ﻿# https://github.com/simpleble/simpleble.git
-set(package_version v0.10.3)
+set(package_version v0.12.1)
 
 macro(x_remove_all_ble_files)
   file(GLOB_RECURSE BLE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/x/ble/*.*")
@@ -29,7 +29,7 @@ if(EXISTS ${dst_dir}/include/simpleble/SimpleBLE.h)
   list(APPEND CMAKE_PREFIX_PATH ${dst_dir})
   find_package(simpleble REQUIRED)
   message(STATUS "[xTools] Found simpleble: ${dst_dir}")
-  list(APPEND X_LIBS simpleble::simpleble simpleble::simpleble-c)
+  list(APPEND X_LIBS simpleble::simpleble)
   return()
 endif()
 
@@ -40,12 +40,12 @@ FetchContent_Declare(
   GIT_TAG ${package_version}
   SOURCE_SUBDIR simpleble)
 FetchContent_MakeAvailable(simpleble)
-list(APPEND X_LIBS simpleble::simpleble simpleble::simpleble-c)
+list(APPEND X_LIBS simpleble::simpleble)
 
 # Install simpleble
 add_custom_target(
   simpleble_post ALL
-  DEPENDS simpleble simpleble-c
+  DEPENDS simpleble
   COMMAND ${CMAKE_COMMAND} --install . --prefix ${dst_dir}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/_deps/simpleble-build
   COMMENT "Installing simpleble to ${dst_dir}")
