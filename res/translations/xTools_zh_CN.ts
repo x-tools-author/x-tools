@@ -380,7 +380,7 @@
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.ui" line="89"/>
         <source>010000000000</source>
-        <translation></translation>
+        <translation>010000000000</translation>
     </message>
     <message>
         <location filename="../../src/tools/barcode/barcodeassistant.cpp" line="39"/>
@@ -526,7 +526,7 @@
     <message>
         <location filename="../../src/device/blecentralui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="41"/>
@@ -949,17 +949,17 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">协议</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">有效负载</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="122"/>
         <source>Preset payload list</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">预设负载列表</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="125"/>
@@ -974,37 +974,37 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="132"/>
         <source>Save current payload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存当前负载</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="142"/>
         <source>Edit payload list</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">编辑负载列表</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="157"/>
         <source>Please input CoAP resource</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入 CoAP 资源</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="171"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选项</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="192"/>
         <source>Please input CoAP option</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入 CoAP 选项</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="207"/>
         <source>URI path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">URI 路径</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="236"/>
         <source>Please input CoAP payload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入 CoAP 有效负载</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="297"/>
@@ -1014,17 +1014,17 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="321"/>
         <source>Open Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">打开客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="328"/>
         <source>Close Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="342"/>
         <source>Client Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">客户端设置</translation>
     </message>
 </context>
 <context>
@@ -1032,27 +1032,27 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="14"/>
         <source>CoAP Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CoAP 全局设置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="59"/>
         <source>Client name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">客户端名称</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="74"/>
         <source>CoAP Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CoAP 客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="86"/>
         <source>CoAP Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CoAP 服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>
         <source>Token length</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">令牌长度</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="100"/>
@@ -1062,7 +1062,7 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="109"/>
         <source>Cache path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">缓存路径</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="129"/>
@@ -1072,7 +1072,7 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="141"/>
         <source>Cache resource from post message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">缓存来自 POST 消息的资源</translation>
     </message>
 </context>
 <context>
@@ -1088,12 +1088,12 @@
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="65"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载过滤</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="88"/>
         <source>Max records count</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最大记录数</translation>
     </message>
 </context>
 <context>
@@ -1101,17 +1101,17 @@
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="14"/>
         <source>Payload editor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载编辑器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="51"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载描述</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="58"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">上下文格式</translation>
     </message>
 </context>
 <context>
@@ -1124,12 +1124,12 @@
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="47"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="57"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">编辑</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="67"/>
@@ -1139,12 +1139,12 @@
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="77"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="87"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">筛选</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="97"/>
@@ -1157,7 +1157,7 @@
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="48"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">上下文格式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="60"/>
@@ -1167,7 +1167,7 @@
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="74"/>
         <source>Uri Path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">URI路径</translation>
     </message>
 </context>
 <context>
@@ -1175,7 +1175,7 @@
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="43"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="53"/>
@@ -1185,12 +1185,12 @@
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="63"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="73"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">筛选</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="83"/>
@@ -1213,22 +1213,22 @@
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="55"/>
         <source>Close Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="65"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">协议</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="72"/>
         <source>Open Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开启服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="107"/>
         <source>Server Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">服务器设置</translation>
     </message>
 </context>
 <context>
@@ -1393,7 +1393,14 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;SimSun&apos;;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;!-- 译文 --&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../src/tools/crc/crcassistant.ui" line="265"/>
@@ -1597,7 +1604,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="74"/>
         <source>...</source>
-        <translation></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/outputpanels/datarecords/datarecordsview.ui" line="94"/>
@@ -1899,7 +1906,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/tools/filecheck/filecheckassistant.ui" line="37"/>
@@ -1958,7 +1965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/tools/filemerge/filemergeassistant.ui" line="26"/>
@@ -2123,37 +2130,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
         <source>Local format</source>
-        <translation></translation>
+        <translation>本地格式</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="52"/>
         <source>Longitude</source>
-        <translation></translation>
+        <translation>经度</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="69"/>
         <source>ddmm.mmmm</source>
-        <translation></translation>
+        <translation>ddmm.mmmm</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="76"/>
         <source>Altitude</source>
-        <translation></translation>
+        <translation>海拔</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="89"/>
         <source>GNSS</source>
-        <translation></translation>
+        <translation>全球导航卫星系统</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="96"/>
         <source>Latitude</source>
-        <translation></translation>
+        <translation>纬度</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="113"/>
         <source>Altitude unit</source>
-        <translation></translation>
+        <translation>海拔单位</translation>
     </message>
 </context>
 <context>
@@ -2360,7 +2367,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/script/javascriptui.ui" line="32"/>
@@ -2374,7 +2381,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(bytes) {&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return bytes;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;函数 process(bytes) {&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    返回 bytes;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -2564,7 +2580,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="32"/>
@@ -2634,7 +2650,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &amp;quot;input string is: &amp;quot; .. input&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;function process(input)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;    return &quot;输入字符串是: &quot; .. input&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;end&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -3688,7 +3713,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/panels/outputpanels/outputpanelsmanager.cpp" line="33"/>
         <source>XY-Modem Receiver</source>
-        <translation></translation>
+        <translation>XY-Modem 接收器</translation>
     </message>
 </context>
 <context>
@@ -3900,7 +3925,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="823"/>
         <source>[%1][%2][%3][%4]</source>
-        <translation></translation>
+        <translation>【%1】【%2】【%3】【%4】</translation>
     </message>
 </context>
 <context>
@@ -4683,7 +4708,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表单</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptbase.ui" line="22"/>
@@ -4752,32 +4777,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="61"/>
         <source>Array element at index %1 is out of byte range: %2</source>
-        <translation></translation>
+        <translation>数组元素在索引 %1 处超出字节范围：%2</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="68"/>
         <source>Array element at index %1 is not a number</source>
-        <translation></translation>
+        <translation>数组元素在索引 %1 处不是数字</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="74"/>
         <source>The &apos;length&apos; property of the array is not a number</source>
-        <translation></translation>
+        <translation>数组的 &apos;length&apos; 属性不是数字</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="77"/>
         <source>xWriteBytes expects a string or an array of bytes</source>
-        <translation></translation>
+        <translation>xWriteBytes 需要一个字符串或字节数组</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="109"/>
         <source>Cannot open script file: %1</source>
-        <translation></translation>
+        <translation>无法打开脚本文件：%1</translation>
     </message>
     <message>
         <location filename="../../src/page/scripts/scriptrunnerjs.cpp" line="127"/>
         <source>Script executed successfully.</source>
-        <translation></translation>
+        <translation>脚本执行成功。</translation>
     </message>
 </context>
 <context>
@@ -5066,7 +5091,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/socketui.ui" line="138"/>
         <source>post/hello</source>
-        <translation></translation>
+        <translation>post/hello</translation>
     </message>
     <message>
         <location filename="../../src/device/socketui.ui" line="145"/>
@@ -5435,22 +5460,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="69"/>
         <source>Invalid network interface: %1</source>
-        <translation></translation>
+        <translation>无效的网络接口：%1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="76"/>
         <source>Network interface %1 does not support multicast</source>
-        <translation></translation>
+        <translation>网络接口 %1 不支持组播</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="94"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation></translation>
+        <translation>绑定 UDP 套接字失败：%1</translation>
     </message>
     <message>
         <location filename="../../src/device/udpmulticast.cpp" line="103"/>
         <source>Failed to join multicast group %1:%2: %3</source>
-        <translation></translation>
+        <translation>加入多播组 %1:%2 失败：%3</translation>
     </message>
 </context>
 <context>
@@ -5814,37 +5839,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="201"/>
         <source>Payload Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载描述</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Please enter the payload description:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入负载描述：</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="204"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载描述</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="214"/>
         <source>Save Payload Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存负载失败</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Failed to save payload: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存负载失败：%1</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="223"/>
         <source>Unknown Content Format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未知内容格式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>The content format %1 is unknown.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">内容格式 %1 未知。</translation>
     </message>
 </context>
 <context>
@@ -5852,7 +5877,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
         <source>Select CoAP Server Cache Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择 CoAP 服务器缓存目录</translation>
     </message>
 </context>
 <context>
@@ -5870,7 +5895,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="111"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">(无有效负载)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="149"/>
@@ -5880,12 +5905,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="151"/>
         <source>Message ID</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">消息 ID</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="153"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="155"/>
@@ -5900,22 +5925,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="159"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">类型</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="161"/>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">代码</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="163"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">令牌</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="165"/>
         <source>Payload</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">有效负载</translation>
     </message>
 </context>
 <context>
@@ -5959,7 +5984,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="72"/>
         <source>All formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">所有格式</translation>
     </message>
 </context>
 <context>
@@ -5990,7 +6015,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourceview.cpp" line="60"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全部</translation>
     </message>
 </context>
 <context>
@@ -5998,50 +6023,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导出 CoAP 配置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="210"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="238"/>
         <source>JSON Files (*.json);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">JSON 文件 (*.json);;所有文件 (*)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
         <source>Export CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导出 CoAP 配置失败</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="223"/>
         <source>Failed to open file %1 for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无法打开文件 %1 进行写入。</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入 CoAP 配置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
         <source>Import CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入 CoAP 配置失败</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="250"/>
         <source>Failed to open file %1 for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无法打开文件 %1 进行读取。</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="261"/>
         <source>Failed to parse JSON file %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无法解析 JSON 文件 %1：%2</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="268"/>
         <source>The content of file %1 is not a valid JSON object.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">文件 %1 的内容不是有效的 JSON 对象。</translation>
     </message>
 </context>
 <context>
@@ -6049,32 +6074,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导出 CoAP 配置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="66"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入 CoAP 配置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="69"/>
         <source>Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全局设置</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="74"/>
         <source>Open Server Cache Directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">打开服务器缓存目录</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="98"/>
         <source>Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="99"/>
         <source>Payloads</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">负载</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="100"/>
@@ -6084,7 +6109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">资源</translation>
     </message>
 </context>
 <context>
@@ -6426,12 +6451,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/log/logmodel.cpp" line="85"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">信息</translation>
     </message>
     <message>
         <location filename="../../src/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
         <location filename="../../src/log/logmodel.cpp" line="89"/>
@@ -6451,7 +6476,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">时间戳</translation>
     </message>
     <message>
         <location filename="../../src/log/logmodel.cpp" line="147"/>
@@ -6461,7 +6486,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/log/logmodel.cpp" line="149"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">模块</translation>
     </message>
     <message>
         <location filename="../../src/log/logmodel.cpp" line="151"/>
@@ -6479,12 +6504,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/log/logview.cpp" line="50"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">信息</translation>
     </message>
     <message>
         <location filename="../../src/log/logview.cpp" line="51"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
         <location filename="../../src/log/logview.cpp" line="52"/>
@@ -6494,17 +6519,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/log/logview.cpp" line="55"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全部类别</translation>
     </message>
     <message>
         <location filename="../../src/log/logview.cpp" line="105"/>
         <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">清除日志消息</translation>
     </message>
     <message>
         <location filename="../../src/log/logview.cpp" line="106"/>
         <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">您确定要清除所有日志消息吗？</translation>
     </message>
 </context>
 <context>
