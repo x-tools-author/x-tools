@@ -2520,6 +2520,49 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>LogView</name>
+    <message>
+        <location filename="../../src/log/logview.ui" line="14"/>
+        <source>Log view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="35"/>
+        <source>Log level</source>
+        <translation type="unfinished">Poziom dziennika</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="58"/>
+        <source>Filter</source>
+        <translation type="unfinished">Filtr</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="71"/>
+        <source>Clear log</source>
+        <translation type="unfinished">Wyczyść dziennik</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="81"/>
+        <source>Log category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="88"/>
+        <source>Scroll to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="98"/>
+        <source>Log filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="111"/>
+        <source>Disable log</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LuaPanel</name>
     <message>
         <location filename="../../src/page/panels/common/luapanel.ui" line="14"/>
@@ -6374,6 +6417,97 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/flow/xflow.cpp" line="366"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>Czy na pewno wyczyścić wszystkie węzły?</translation>
+    </message>
+</context>
+<context>
+    <name>xLog::LogModel</name>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="83"/>
+        <source>Debug</source>
+        <translation type="unfinished">Odpluskwić</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="87"/>
+        <source>Warning</source>
+        <translation type="unfinished">Ostrzeżenie</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="89"/>
+        <source>Critical</source>
+        <translation type="unfinished">Krytyczny</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="91"/>
+        <source>Fatal</source>
+        <translation type="unfinished">Śmiertelny</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="93"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Nieznany</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <source>Timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="147"/>
+        <source>Level</source>
+        <translation type="unfinished">Poziom</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <source>Module</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="151"/>
+        <source>Message</source>
+        <translation type="unfinished">Wiadomość</translation>
+    </message>
+</context>
+<context>
+    <name>xLog::LogViewPrivate</name>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="49"/>
+        <source>Debug</source>
+        <translation type="unfinished">Odpluskwić</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="50"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="51"/>
+        <source>Warning</source>
+        <translation type="unfinished">Ostrzeżenie</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="52"/>
+        <source>Critical</source>
+        <translation type="unfinished">Krytyczny</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="55"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="105"/>
+        <source>Clear log messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="106"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
