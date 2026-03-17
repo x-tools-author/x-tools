@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14]
+        os: [macos-14, macos-15]
         version: [6.2.4, 6.5.3, 6.8.3, 6.9.3]
         arch: [clang_64]
     steps:
