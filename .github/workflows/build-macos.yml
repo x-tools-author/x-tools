@@ -20,6 +20,9 @@ jobs:
         os: [macos-14, macos-15]
         version: [6.2.4, 6.5.3, 6.8.3, 6.9.3]
         arch: [clang_64]
+        include:
+          - version: 6.9.3
+            os: macos-26
     steps:
       - name: checkout
         uses: actions/checkout@v4
