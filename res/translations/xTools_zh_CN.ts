@@ -4407,15 +4407,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Color Scheme</source>
-        <translation type="vanished">主题颜色</translation>
+        <translation>主题颜色</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="vanished">暗黑主题</translation>
+        <translation>暗黑主题</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="vanished">明亮主题</translation>
+        <translation>明亮主题</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager.cpp" line="37"/>
