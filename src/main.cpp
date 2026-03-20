@@ -7,6 +7,7 @@
  * code directory.
  **************************************************************************************************/
 #include <QDebug>
+#include <QScreen>
 
 #if X_ENABLE_HID
 #include <hidapi.h>
@@ -61,10 +62,24 @@ int main(int argc, char *argv[])
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
     window.resize(1366, 768);
-    window.show();
-    window.moveToCenter();
-    window.load();
 
+    QScreen *screen = QGuiApplication::primaryScreen();
+    bool isSmallScreen = false;
+    if (screen) {
+        QRect screenGeometry = screen->availableGeometry();
+        if (screenGeometry.width() < window.width() || screenGeometry.height() < window.height()) {
+            isSmallScreen = true;
+        }
+    }
+
+    if (isSmallScreen) {
+        window.showMaximized();
+    } else {
+        window.show();
+        window.moveToCenter();
+    }
+
+    window.load();
 #if X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
         window.show();
