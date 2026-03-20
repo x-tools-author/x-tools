@@ -33,7 +33,9 @@ private:
         AssistantTypeBarcode,
         AssistantTypeTFTP,
         AssistantTypeCANBus = 100,
-        AssistantTypeModbus
+        AssistantTypeModbus,
+
+        AssistantType3rdHexEdit = 1000
     };
 
 public:

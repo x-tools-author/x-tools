@@ -9,11 +9,17 @@
 #include "crc.h"
 
 #include <utility>
+#include <QMetaEnum>
+
+#if defined(X_USING_QCRC_CALC)
+#include "qucrc_t.h"
+#endif
 
 namespace xTools {
 
 QList<int> CRC::supportedAlgorithms(bool enableSumChecks, bool enableLrc)
 {
+#if !defined(X_USING_QCRC_CALC)
     QList<int> Algorithms;
     Algorithms << static_cast<int>(Algorithm::CRC_8);
     Algorithms << static_cast<int>(Algorithm::CRC_8_ITU);
@@ -43,11 +49,33 @@ QList<int> CRC::supportedAlgorithms(bool enableSumChecks, bool enableLrc)
     }
 
     return Algorithms;
+#else
+    QList<int> algorithms;
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    for (int i = 0; i < metaEnum.keyCount(); ++i) {
+        int value = metaEnum.value(i);
+        algorithms << value;
+    }
+
+    if (!enableSumChecks) {
+        algorithms.removeAll(static_cast<int>(Algorithm::SUM_8));
+        algorithms.removeAll(static_cast<int>(Algorithm::SUM_16));
+        algorithms.removeAll(static_cast<int>(Algorithm::SUM_32));
+        algorithms.removeAll(static_cast<int>(Algorithm::SUM_64));
+    }
+
+    if (!enableLrc) {
+        algorithms.removeAll(static_cast<int>(Algorithm::LRC));
+    }
+
+    return algorithms;
+#endif
 }
 
-QString CRC::algorithmName(Algorithm Algorithm)
+QString CRC::algorithmName(Algorithm algorithm)
 {
-    switch (Algorithm) {
+#if !defined(X_USING_QCRC_CALC)
+    switch (algorithm) {
     case CRC::Algorithm::CRC_8:
         return "CRC-8";
     case CRC::Algorithm::CRC_8_ITU:
@@ -91,6 +119,37 @@ QString CRC::algorithmName(Algorithm Algorithm)
     default:
         return QObject::tr("Unknown");
     }
+#else
+    if (algorithm >= Algorithm::SUM_8) {
+        switch (algorithm) {
+        case CRC::Algorithm::SUM_8:
+            return "Sum 8-bit";
+        case CRC::Algorithm::SUM_16:
+            return "Sum 16-bit";
+        case CRC::Algorithm::SUM_32:
+            return "Sum 32-bit";
+        case CRC::Algorithm::SUM_64:
+            return "Sum 64-bit";
+        case CRC::Algorithm::LRC:
+            return "LRC";
+        default:
+            return QObject::tr("Unknown");
+        }
+    } else {
+        static QRegularExpression reg("[-_/]");
+        QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+        const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+        for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+            QString name = QString::fromStdString(info.name.toStdString());
+            name.replace(reg, "_");
+            if (name == key) {
+                return QString::fromStdString(info.name.toStdString());
+            }
+        }
+
+        return QString(key);
+    }
+#endif
 }
 
 void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks, bool enableLrc)
@@ -115,12 +174,13 @@ void CRC::setupAlgorithm(QComboBox *comboBox, bool enableSumChecks, bool enableL
         comboBox->insertSeparator(lrcIndex);
     }
 
-    comboBox->setMaxVisibleItems(30);
+    comboBox->setMaxVisibleItems(16);
 }
 
-uint32_t CRC::poly(CRC::Algorithm algorithm)
+uint64_t CRC::poly(CRC::Algorithm algorithm)
 {
-    uint32_t poly = 0;
+#if !defined(X_USING_QCRC_CALC)
+    uint64_t poly = 0;
 
     switch (algorithm) {
     case CRC::Algorithm::CRC_8:
@@ -156,11 +216,25 @@ uint32_t CRC::poly(CRC::Algorithm algorithm)
     }
 
     return poly;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.poly;
+        }
+    }
+
+    return 0;
+#endif
 }
 
-uint32_t CRC::xorValue(CRC::Algorithm algorithm)
+uint64_t CRC::xorValue(CRC::Algorithm algorithm)
 {
-    uint32_t value = 0;
+#if !defined(X_USING_QCRC_CALC)
+    uint64_t value = 0;
 
     switch (algorithm) {
     case CRC::Algorithm::CRC_8:
@@ -196,11 +270,24 @@ uint32_t CRC::xorValue(CRC::Algorithm algorithm)
     }
 
     return value;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.xor_out;
+        }
+    }
+    return 0;
+#endif
 }
 
-uint32_t CRC::initialValue(CRC::Algorithm algorithm)
+uint64_t CRC::initialValue(CRC::Algorithm algorithm)
 {
-    uint32_t init = 0;
+#if !defined(X_USING_QCRC_CALC)
+    uint64_t init = 0;
 
     switch (algorithm) {
     case CRC::Algorithm::CRC_8:
@@ -234,10 +321,24 @@ uint32_t CRC::initialValue(CRC::Algorithm algorithm)
     }
 
     return init;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.init;
+        }
+    }
+
+    return 0;
+#endif
 }
 
 bool CRC::isInputReversal(CRC::Algorithm algorithm)
 {
+#if !defined(X_USING_QCRC_CALC)
     bool reversal = true;
 
     switch (algorithm) {
@@ -266,10 +367,24 @@ bool CRC::isInputReversal(CRC::Algorithm algorithm)
     }
 
     return reversal;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.ref_in;
+        }
+    }
+
+    return 0;
+#endif
 }
 
 bool CRC::isOutputReversal(CRC::Algorithm algorithm)
 {
+#if !defined(X_USING_QCRC_CALC)
     bool reversal = true;
 
     switch (algorithm) {
@@ -298,10 +413,24 @@ bool CRC::isOutputReversal(CRC::Algorithm algorithm)
     }
 
     return reversal;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.ref_out;
+        }
+    }
+
+    return false;
+#endif
 }
 
 int CRC::bitsWidth(CRC::Algorithm algorithm)
 {
+#if !defined(X_USING_QCRC_CALC)
     int ret = -1;
     switch (algorithm) {
     case CRC::Algorithm::CRC_8:
@@ -330,10 +459,24 @@ int CRC::bitsWidth(CRC::Algorithm algorithm)
         break;
     }
     return ret;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return info.bits;
+        }
+    }
+
+    return 8;
+#endif
 }
 
 QString CRC::friendlyPoly(Algorithm algorithm)
 {
+#if !defined(X_USING_QCRC_CALC)
     QString formula = QString("Error: Formula not found");
 
     switch (algorithm) {
@@ -368,6 +511,18 @@ QString CRC::friendlyPoly(Algorithm algorithm)
     }
 
     return formula;
+#else
+    QMetaEnum metaEnum = QMetaEnum::fromType<CRC::Algorithm>();
+    const char *key = metaEnum.valueToKey(static_cast<int>(algorithm));
+    for (const CRC_Param_Info &info : QuCRC_t::CRC_List) {
+        QString name = QString::fromStdString(info.name.toStdString());
+        name.replace(QRegularExpression("[-_/]"), "_");
+        if (name == key) {
+            return QString("---");
+        }
+    }
+    return QString("Unknown algorithm");
+#endif
 }
 
 template<typename T>
@@ -478,6 +633,9 @@ QByteArray CRC::calculate(const QByteArray &data, int algorithm)
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     } else if (bw == 32) {
         auto ret = crcCalculate<uint32_t>(ptr, data.length(), cookedAlgorithm);
+        retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
+    } else if (bw == 64) {
+        auto ret = crcCalculate<uint64_t>(ptr, data.length(), cookedAlgorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     }
 

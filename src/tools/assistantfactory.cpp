@@ -38,6 +38,10 @@
 #include "modbus/modbusassistant.h"
 #endif
 
+#ifdef X_ENABLE_Q_HEX_EDIT
+#include "qhexedit.h"
+#endif
+
 AssistantFactory::AssistantFactory(QObject* parent)
     : QObject(parent)
 {
@@ -67,13 +71,23 @@ AssistantFactory::AssistantFactory(QObject* parent)
 
 QList<int> AssistantFactory::supportedAssistants()
 {
-    return m_typeNameMap.keys();
+    QList<int> keys = m_typeNameMap.keys();
+
+#ifdef X_ENABLE_Q_HEX_EDIT
+    keys.append(AssistantType3rdHexEdit);
+#endif
+
+    return keys;
 }
 
 QString AssistantFactory::assistantName(int type) const
 {
     if (m_typeNameMap.contains(type)) {
         return m_typeNameMap.value(type);
+    }
+
+    if (type == AssistantType3rdHexEdit) {
+        return tr("Hex Editor");
     }
 
     QString name = QString("UnknownType(%1)").arg(type);
@@ -98,6 +112,12 @@ QWidget* AssistantFactory::newAssistant(int type)
         QWidget* w = qobject_cast<QWidget*>(obj);
         w->setWindowTitle(assistantName(type));
         return w;
+    }
+
+    if (type == AssistantType3rdHexEdit) {
+#ifdef X_ENABLE_Q_HEX_EDIT
+        return new QHexEdit();
+#endif
     }
 
     return Q_NULLPTR;
