@@ -53,6 +53,12 @@ public:
                 [=](std::shared_ptr<CoAPMsgItem> request, std::shared_ptr<CoAPMsgItem> response) {
                     onMessageReceived(request, response);
                 });
+        connect(m_server, &CoAPServer::clientOnline, this, [=](const QString& ip, quint16 port) {
+            onClientOnline(ip, port);
+        });
+        connect(m_server, &CoAPServer::clientOffline, this, [=](const QString& ip, quint16 port) {
+            onClientOffline(ip, port);
+        });
     }
     ~CoAPServerUiPrivate()
     {
@@ -98,6 +104,22 @@ public:
                            std::shared_ptr<CoAPMsgItem> response) const
     {
         m_msgView->addMessage(request, response);
+    }
+    void onClientOnline(const QString& ip, quint16 port)
+    {
+        ui->listWidget->addItem(QString("%1:%2").arg(ip).arg(port));
+    }
+    void onClientOffline(const QString& ip, quint16 port)
+    {
+        QString target = QString("%1:%2").arg(ip).arg(port);
+        for (int i = 0; i < ui->listWidget->count(); ++i) {
+            QListWidgetItem* item = ui->listWidget->item(i);
+            if (item->text() == target) {
+                ui->listWidget->takeItem(i);
+                delete item;
+                break;
+            }
+        }
     }
 
 private:

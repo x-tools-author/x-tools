@@ -34,6 +34,8 @@ public:
 signals:
     void messageReceived(const std::shared_ptr<CoAPMsgItem> &request,
                          const std::shared_ptr<CoAPMsgItem> &response);
+    void clientOnline(const QString &ip, quint16 port);
+    void clientOffline(const QString &ip, quint16 port);
 
 protected:
     void run() override;

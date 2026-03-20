@@ -58,11 +58,13 @@ void CoAPCommon::setupSocketProtocol(QComboBox* comboBox)
 
     comboBox->clear();
     comboBox->addItem("UDP", static_cast<int>(COAP_PROTO_UDP));
-    comboBox->addItem("DTLS", static_cast<int>(COAP_PROTO_DTLS));
     comboBox->addItem("TCP", static_cast<int>(COAP_PROTO_TCP));
+#if 0
+    comboBox->addItem("DTLS", static_cast<int>(COAP_PROTO_DTLS));
     comboBox->addItem("TLS", static_cast<int>(COAP_PROTO_TLS));
     comboBox->addItem("WS", static_cast<int>(COAP_PROTO_WS));
     comboBox->addItem("WSS", static_cast<int>(COAP_PROTO_WSS));
+#endif
 }
 
 static void addContextFormatItem(const QString& key, int value, QComboBox* cb)

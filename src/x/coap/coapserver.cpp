@@ -46,6 +46,41 @@ public:
     CoAPResourceModel* m_resModel{nullptr};
 
 public:
+    static int eventHandler(coap_session_t* session, const coap_event_t event)
+    {
+        if (session && event == COAP_EVENT_SERVER_SESSION_NEW) {
+            QString remoteAddress = CoAPCommon::getCoAPRemoteAddress(session);
+            quint16 remotePort = CoAPCommon::getCoAPRemotePort(session);
+            QString localAddress = CoAPCommon::getCoAPLocalAddress(session);
+            quint16 localPort = CoAPCommon::getCoAPLocalPort(session);
+
+            CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+            emit q->clientOnline(remoteAddress, remotePort);
+            qCInfo(xCoAPServerLog).noquote() << QString("Client connected: %1:%2 -> %3:%4")
+                                                    .arg(remoteAddress)
+                                                    .arg(remotePort)
+                                                    .arg(localAddress)
+                                                    .arg(localPort);
+        }
+
+        if (session && event == COAP_EVENT_SERVER_SESSION_DEL) {
+            QString remoteAddress = CoAPCommon::getCoAPRemoteAddress(session);
+            quint16 remotePort = CoAPCommon::getCoAPRemotePort(session);
+            QString localAddress = CoAPCommon::getCoAPLocalAddress(session);
+            quint16 localPort = CoAPCommon::getCoAPLocalPort(session);
+
+            CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+            emit q->clientOffline(remoteAddress, remotePort);
+            qCInfo(xCoAPServerLog).noquote() << QString("Client disconnected: %1:%2 -> %3:%4")
+                                                    .arg(remoteAddress)
+                                                    .arg(remotePort)
+                                                    .arg(localAddress)
+                                                    .arg(localPort);
+        }
+
+        return 0;
+    }
+
     static void getHandler(coap_resource_t* resource,
                            coap_session_t* session,
                            const coap_pdu_t* request,
@@ -368,6 +403,8 @@ void CoAPServer::run()
         qWarning() << "Failed to create CoAP context";
         return;
     }
+    ctx->app = this;
+    coap_register_event_handler(ctx, CoAPServerPrivate::eventHandler);
 
     coap_address_t addr;
     coap_address_init(&addr);
@@ -382,12 +419,12 @@ void CoAPServer::run()
 
     coap_proto_t proto = static_cast<coap_proto_t>(params.protocol);
     coap_endpoint_t* endpoint = coap_new_endpoint(ctx, &addr, proto);
-    endpoint->context->app = this;
     if (!endpoint) {
         qWarning() << "Failed to create CoAP endpoint";
         coap_free_context(ctx);
         return;
     }
+    endpoint->context->app = this;
 
     // CoAP event loop
     QTimer* processTimer = new QTimer();
@@ -405,7 +442,6 @@ void CoAPServer::run()
         this->d->registerResource(ctx, registeredUriPaths);
     });
 
-    ctx->app = this;
     processTimer->start();
     resourceTimer->start();
     exec();
