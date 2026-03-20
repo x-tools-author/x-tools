@@ -82,15 +82,6 @@ private:
     void onWrapModeChanged();
     void onTerminalModeChanged();
     void onExternalPanelButtonClicked(bool checked);
-#if 0
-    void onSearchButtonClicked();
-    void onSearchTextChanged();
-
-    void performSearch();
-    void highlightSearchResults(const QString &text, const QRegularExpression &regex);
-    void highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex);
-    void performSearch(QString &line);
-#endif
 
     void openDevice();
     void closeDevice();
