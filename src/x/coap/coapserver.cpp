@@ -84,7 +84,7 @@ public:
         QString uriPath = CoAPCommon::getCoAPResource(resource);
         qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPath;
         CoAPResourceModel* model = q->d->m_resModel;
-        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
+        QByteArray payload = model->postPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
@@ -107,7 +107,7 @@ public:
         qCDebug(xCoAPServerLog) << "Received PUT request for resource:" << uriPath;
 
         CoAPResourceModel* model = q->d->m_resModel;
-        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
+        QByteArray payload = model->putPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
@@ -130,7 +130,7 @@ public:
         qCDebug(xCoAPServerLog) << "Received DELETE request for resource:" << uriPath;
 
         CoAPResourceModel* model = q->d->m_resModel;
-        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
+        QByteArray payload = model->deletePayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
@@ -251,6 +251,7 @@ public:
             coap_register_request_handler(resource, COAP_REQUEST_DELETE, CoAPServerPrivate::deleteHandler);
             coap_register_request_handler(resource, COAP_REQUEST_PATCH, CoAPServerPrivate::patchHandler);
             coap_register_request_handler(resource, COAP_REQUEST_IPATCH, CoAPServerPrivate::ipatchHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_FETCH, CoAPServerPrivate::fetchHandler);
             coap_add_resource(ctx, resource);
             // clang-format on
             qCDebug(xCoAPServerLog) << "Registered CoAP resource:" << uriPath;

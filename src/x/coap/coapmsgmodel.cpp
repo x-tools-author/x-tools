@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "coapmsgmodel.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMutex>
 
 #include <coap3/coap.h>
@@ -107,11 +109,22 @@ QVariant CoAPMsgModel::data(const QModelIndex& index, int role) const
         } else if (column == CO_AP_MODEL_COLUMN_CODE) {
             return QString::fromLatin1(item->token.toHex(' '));
         } else if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
-            QString data = QString::fromLatin1(item->payload.toHex(' '));
+            QJsonDocument doc = QJsonDocument::fromJson(item->payload);
+            QString data = doc.toJson(QJsonDocument::Compact);
             return data.isEmpty() ? tr("(No Payload)") : data;
         }
 
         return QVariant();
+    }
+
+    if (role == Qt::ToolTipRole) {
+        if (column == CO_AP_MODEL_COLUMN_PAYLOAD) {
+            QJsonDocument doc = QJsonDocument::fromJson(item->payload);
+            QString data = doc.toJson(QJsonDocument::Indented);
+            if (!data.isEmpty()) {
+                return data;
+            }
+        }
     }
 
     if (role == Qt::TextAlignmentRole) {

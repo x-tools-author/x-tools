@@ -41,10 +41,17 @@ CoAPResourceModel::~CoAPResourceModel() {}
 
 void CoAPResourceModel::addResource(const QJsonObject& obj)
 {
-    beginInsertRows(QModelIndex(), d->m_resourceItems.count(), d->m_resourceItems.count());
     CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(obj);
-    d->m_resourceItems.append(item);
-    endInsertRows();
+    QStringList uriPaths = this->uriPaths();
+    if (uriPaths.contains(item.uriPath)) {
+        int row = uriPaths.indexOf(item.uriPath);
+        d->m_resourceItems[row] = item;
+        emit dataChanged(index(row, 0), index(row, columnCount(QModelIndex()) - 1));
+    } else {
+        beginInsertRows(QModelIndex(), d->m_resourceItems.count(), d->m_resourceItems.count());
+        d->m_resourceItems.append(item);
+        endInsertRows();
+    }
 }
 
 void CoAPResourceModel::updateResource(int row, const QJsonObject& obj)
@@ -188,31 +195,41 @@ QVariant CoAPResourceModel::data(const QModelIndex& index, int role) const
 
     const auto& item = d->m_resourceItems.at(row);
     if (role == Qt::DisplayRole) {
-        switch (index.column()) {
-        case COAP_RES_MODEL_COLUMN_DESCRIPTION:
+        if (index.column() == COAP_RES_MODEL_COLUMN_DESCRIPTION) {
             return item.description;
-        case COAP_RES_MODEL_COLUMN_URI:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_URI) {
             return item.uriPath;
-        case COAP_RES_MODEL_COLUMN_FORMAT:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_FORMAT) {
             return CoAPCommon::getContextFormatString(item.contextFormat);
-        case COAP_RES_MODEL_COLUMN_PAYLOAD:
-            return QString::fromLatin1(item.payload.toHex());
-        default:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_PAYLOAD) {
+            QJsonDocument doc = QJsonDocument::fromJson(item.payload);
+            QString data = doc.toJson(QJsonDocument::Compact);
+            return data.isEmpty() ? tr("(No Payload)") : data;
+        } else {
             return QVariant();
         }
     }
 
+    if (role == Qt::ToolTipRole) {
+        if (column == COAP_RES_MODEL_COLUMN_PAYLOAD) {
+            QJsonDocument doc = QJsonDocument::fromJson(item.payload);
+            QString data = doc.toJson(QJsonDocument::Indented);
+            if (!data.isEmpty()) {
+                return data;
+            }
+        }
+    }
+
     if (role == Qt::EditRole) {
-        switch (index.column()) {
-        case COAP_RES_MODEL_COLUMN_DESCRIPTION:
+        if (index.column() == COAP_RES_MODEL_COLUMN_DESCRIPTION) {
             return item.description;
-        case COAP_RES_MODEL_COLUMN_URI:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_URI) {
             return item.uriPath;
-        case COAP_RES_MODEL_COLUMN_FORMAT:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_FORMAT) {
             return item.contextFormat;
-        case COAP_RES_MODEL_COLUMN_PAYLOAD:
+        } else if (index.column() == COAP_RES_MODEL_COLUMN_PAYLOAD) {
             return QVariant::fromValue(item.payload);
-        default:
+        } else {
             return QVariant();
         }
     }
