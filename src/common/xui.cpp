@@ -36,7 +36,7 @@ xUi::xUi(QWidget *parent)
     winId(); // Ensure the window is created before moving it to the center
     initMenuBar();
 #ifdef X_MAGIC
-    setWindowOpacity(0.3);
+    setWindowOpacity(0.5);
 #endif
     connect(&xI18n.singleton(), &xTools::I18n::languageChanged, this, [=]() { tryToReboot(); });
     connect(&xStyleMgr.singleton(), &xTools::StyleManager::styleChanged, this, [=]() {

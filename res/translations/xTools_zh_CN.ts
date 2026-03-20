@@ -949,7 +949,7 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation>协议</translation>
+        <translation>指定的协议</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
@@ -1223,12 +1223,12 @@
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="54"/>
         <source>Protocol</source>
-        <translation>协议</translation>
+        <translation>指定的协议</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="64"/>
         <source>Open Server</source>
-        <translation>开启服务器</translation>
+        <translation>打开服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="99"/>
