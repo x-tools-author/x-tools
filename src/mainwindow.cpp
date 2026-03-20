@@ -518,6 +518,7 @@ void MainWindow::initHelpMenu()
     ctxs.append(qMakePair(QString("QXlsx"), QString("https://github.com/QtExcel/QXlsx")));
     ctxs.append(qMakePair(QString("nodeeditor"), QString("https://github.com/paceholder/nodeeditor")));
     ctxs.append(qMakePair(QString("QCustomPlot"), QString("https://www.qcustomplot.com/")));
+    ctxs.append(qMakePair(QString("QCRC_Calc"), QString("https://github.com/KoynovStas/QCRC_Calc")));
     // clang-format on
 
     m_helpMenu->addSeparator();
