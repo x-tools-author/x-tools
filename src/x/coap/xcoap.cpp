@@ -91,19 +91,6 @@ public:
         connect(m_serverCtrlToolButton, &QToolButton::clicked, q, [=]() {
             onServerCtrlToolButtonClicked();
         });
-
-        // Client and Server tabs
-        m_client = new CoAPClientUi(q);
-        m_server = new CoAPServerUi(q);
-        ui->tabWidgetClient->addTab(m_client, tr("Client", "xCoAP"));
-        ui->tabWidgetClient->addTab(m_client->payloadView(), tr("Payloads", "xCoAP"));
-        ui->tabWidgetServer->addTab(m_server, tr("Server", "xCoAP"));
-        ui->tabWidgetServer->addTab(m_server->resourceView(), tr("Resources", "xCoAP"));
-        connect(m_client, &CoAPClientUi::invokeChangeTabIndex, q, [=](int index) {
-            if (index >= 0 && index < ui->tabWidgetClient->count()) {
-                ui->tabWidgetClient->setCurrentIndex(index);
-            }
-        });
     }
     ~xCoAPPrivate() {}
 
@@ -169,6 +156,18 @@ xCoAP::xCoAP(QWidget* parent)
     : QWidget(parent)
 {
     d = new xCoAPPrivate(this);
+    // Client and Server tabs
+    d->m_client = new CoAPClientUi(this);
+    d->m_server = new CoAPServerUi(this);
+    d->ui->tabWidgetClient->addTab(d->m_client, tr("Client", "xCoAP"));
+    d->ui->tabWidgetClient->addTab(d->m_client->payloadView(), tr("Payloads", "xCoAP"));
+    d->ui->tabWidgetServer->addTab(d->m_server, tr("Server", "xCoAP"));
+    d->ui->tabWidgetServer->addTab(d->m_server->resourceView(), tr("Resources", "xCoAP"));
+    connect(d->m_client, &CoAPClientUi::invokeChangeTabIndex, this, [=](int index) {
+        if (index >= 0 && index < d->ui->tabWidgetClient->count()) {
+            d->ui->tabWidgetClient->setCurrentIndex(index);
+        }
+    });
 }
 
 xCoAP::~xCoAP() {}

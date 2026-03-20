@@ -6028,50 +6028,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
+        <source>Client</source>
+        <comment>xCoAP</comment>
+        <translation>客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
+        <source>Payloads</source>
+        <comment>xCoAP</comment>
+        <translation>负载</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
+        <source>Server</source>
+        <comment>xCoAP</comment>
+        <translation>服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="165"/>
+        <source>Resources</source>
+        <comment>xCoAP</comment>
+        <translation>资源</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="207"/>
         <source>Export CoAP Configuration</source>
         <translation>导出 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="210"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="238"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="209"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="237"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation>JSON 文件 (*.json);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Export CoAP Configuration Failed</source>
         <translation>导出 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="223"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
         <source>Failed to open file %1 for writing.</source>
         <translation>无法打开文件 %1 进行写入。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="235"/>
         <source>Import CoAP Configuration</source>
         <translation>导入 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>Import CoAP Configuration Failed</source>
         <translation>导入 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="250"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
         <source>Failed to open file %1 for reading.</source>
         <translation>无法打开文件 %1 进行读取。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="261"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation>无法解析 JSON 文件 %1：%2</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="268"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation>文件 %1 的内容不是有效的 JSON 对象。</translation>
     </message>
@@ -6099,28 +6123,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>打开服务器缓存目录</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="98"/>
         <source>Client</source>
         <comment>xCoAP</comment>
-        <translation>客户端</translation>
+        <translation type="vanished">客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="99"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
-        <translation>负载</translation>
+        <translation type="vanished">负载</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="100"/>
         <source>Server</source>
         <comment>xCoAP</comment>
-        <translation>服务器</translation>
+        <translation type="vanished">服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
-        <translation>资源</translation>
+        <translation type="vanished">资源</translation>
     </message>
     <message>
         <source>Client</source>

@@ -8,6 +8,8 @@
  **************************************************************************************************/
 #include "coappayloadmodel.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMutex>
 
 #include <coap3/coap.h>
@@ -95,28 +97,37 @@ QVariant CoAPPayloadModel::data(const QModelIndex& index, int role) const
 
     if (role == Qt::DisplayRole) {
         const auto& payload = d->m_payloads.at(index.row());
-        switch (index.column()) {
-        case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
+        if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION) {
             return payload->description;
-        case CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT:
+        } else if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT) {
             return payload->format;
-        case CO_AP_PAYLOAD_MODEL_COLUMN_DATA:
-            return QString::fromUtf8(payload->data);
-        default:
+        } else if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_DATA) {
+            QJsonDocument doc = QJsonDocument::fromJson(payload->data);
+            QByteArray json = doc.toJson(QJsonDocument::Compact);
+            return QString::fromUtf8(json);
+        } else {
             return QVariant();
+        }
+    }
+
+    if (role == Qt::ToolTipRole) {
+        const auto& payload = d->m_payloads.at(index.row());
+        if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_DATA) {
+            QJsonDocument doc = QJsonDocument::fromJson(payload->data);
+            QByteArray json = doc.toJson(QJsonDocument::Indented);
+            return QString::fromUtf8(json);
         }
     }
 
     if (role == Qt::EditRole) {
         const auto& payload = d->m_payloads.at(index.row());
-        switch (index.column()) {
-        case CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION:
+        if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_DESCRIPTION) {
             return payload->description;
-        case CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT:
+        } else if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_FORMAT) {
             return payload->format;
-        case CO_AP_PAYLOAD_MODEL_COLUMN_DATA:
+        } else if (index.column() == CO_AP_PAYLOAD_MODEL_COLUMN_DATA) {
             return QString::fromUtf8(payload->data);
-        default:
+        } else {
             return QVariant();
         }
     }

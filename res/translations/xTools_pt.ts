@@ -5979,50 +5979,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
+        <source>Client</source>
+        <comment>xCoAP</comment>
+        <translation type="unfinished">Cliente</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
+        <source>Payloads</source>
+        <comment>xCoAP</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
+        <source>Server</source>
+        <comment>xCoAP</comment>
+        <translation type="unfinished">Servidor</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="165"/>
+        <source>Resources</source>
+        <comment>xCoAP</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="207"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="210"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="238"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="209"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="237"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Export CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="223"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
         <source>Failed to open file %1 for writing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="235"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>Import CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="250"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
         <source>Failed to open file %1 for reading.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="261"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="268"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6050,28 +6074,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="98"/>
         <source>Client</source>
         <comment>xCoAP</comment>
-        <translation type="unfinished">Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="99"/>
-        <source>Payloads</source>
-        <comment>xCoAP</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="100"/>
         <source>Server</source>
         <comment>xCoAP</comment>
-        <translation type="unfinished">Servidor</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
-        <source>Resources</source>
-        <comment>xCoAP</comment>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Servidor</translation>
     </message>
     <message>
         <source>Client</source>
