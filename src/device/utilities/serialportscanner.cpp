@@ -76,7 +76,11 @@ QStringList SerialPortScanner::refresh()
     auto infos = QSerialPortInfo::availablePorts();
     for (auto &info : infos) {
         const QString portName = info.portName();
-        if (portName.toLower().contains("bluetooth")) {
+        if (info.description().toLower().contains("bluetooth")) {
+            continue;
+        }
+
+        if (info.description().contains(QString::fromUtf8("蓝牙"))) {
             continue;
         }
 

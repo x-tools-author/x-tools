@@ -715,6 +715,16 @@ void xSetupPortName(QComboBox *comboBox)
 {
     QList<QSerialPortInfo> infos = QSerialPortInfo::availablePorts();
     for (auto &info : infos) {
+#if 0
+        if (info.description().toLower().contains("bluetooth")) {
+            continue;
+        }
+
+        if (info.description().contains(QString::fromUtf8("蓝牙"))) {
+            continue;
+        }
+#endif
+
         comboBox->addItem(info.portName());
     }
 }
