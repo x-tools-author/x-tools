@@ -5839,37 +5839,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPClientUiPrivate</name>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="201"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Payload Description</source>
         <translation>负载描述</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="203"/>
         <source>Please enter the payload description:</source>
         <translation>请输入负载描述：</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="204"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="205"/>
         <source>Payload description</source>
         <translation>负载描述</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="214"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Save Payload Failed</source>
         <translation>保存负载失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="216"/>
         <source>Failed to save payload: %1</source>
         <translation>保存负载失败：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="223"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>Unknown Content Format</source>
         <translation>未知内容格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="225"/>
         <source>The content format %1 is unknown.</source>
         <translation>内容格式 %1 未知。</translation>
     </message>
@@ -6101,22 +6101,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="98"/>
         <source>Client</source>
+        <comment>xCoAP</comment>
         <translation>客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="99"/>
         <source>Payloads</source>
+        <comment>xCoAP</comment>
         <translation>负载</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="100"/>
         <source>Server</source>
+        <comment>xCoAP</comment>
         <translation>服务器</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
         <source>Resources</source>
+        <comment>xCoAP</comment>
         <translation>资源</translation>
+    </message>
+    <message>
+        <source>Client</source>
+        <translation type="vanished">客户端</translation>
+    </message>
+    <message>
+        <source>Payloads</source>
+        <translation type="vanished">负载</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation type="vanished">服务器</translation>
+    </message>
+    <message>
+        <source>Resources</source>
+        <translation type="vanished">资源</translation>
     </message>
 </context>
 <context>
@@ -6581,7 +6601,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="114"/>
         <source>Client</source>
-        <translation>客户</translation>
+        <translation>客户端</translation>
     </message>
     <message>
         <location filename="../../src/x/mqtt/mqttdatamodel.cpp" line="116"/>

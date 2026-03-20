@@ -5790,37 +5790,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPClientUiPrivate</name>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="201"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Payload Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="203"/>
         <source>Please enter the payload description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="204"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="205"/>
         <source>Payload description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="214"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Save Payload Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="216"/>
         <source>Failed to save payload: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="223"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>Unknown Content Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
+        <location filename="../../src/x/coap/coapclientui.cpp" line="225"/>
         <source>The content format %1 is unknown.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6052,22 +6052,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="98"/>
         <source>Client</source>
+        <comment>xCoAP</comment>
         <translation type="unfinished">Cliënt</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="99"/>
         <source>Payloads</source>
+        <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="100"/>
         <source>Server</source>
+        <comment>xCoAP</comment>
         <translation type="unfinished">Server</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
         <source>Resources</source>
+        <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Client</source>
+        <translation type="obsolete">Cliënt</translation>
+    </message>
+    <message>
+        <source>Server</source>
+        <translation type="obsolete">Server</translation>
     </message>
 </context>
 <context>

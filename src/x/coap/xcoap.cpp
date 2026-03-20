@@ -95,10 +95,10 @@ public:
         // Client and Server tabs
         m_client = new CoAPClientUi(q);
         m_server = new CoAPServerUi(q);
-        ui->tabWidgetClient->addTab(m_client, tr("Client"));
-        ui->tabWidgetClient->addTab(m_client->payloadView(), tr("Payloads"));
-        ui->tabWidgetServer->addTab(m_server, tr("Server"));
-        ui->tabWidgetServer->addTab(m_server->resourceView(), tr("Resources"));
+        ui->tabWidgetClient->addTab(m_client, tr("Client", "xCoAP"));
+        ui->tabWidgetClient->addTab(m_client->payloadView(), tr("Payloads", "xCoAP"));
+        ui->tabWidgetServer->addTab(m_server, tr("Server", "xCoAP"));
+        ui->tabWidgetServer->addTab(m_server->resourceView(), tr("Resources", "xCoAP"));
         connect(m_client, &CoAPClientUi::invokeChangeTabIndex, q, [=](int index) {
             if (index >= 0 && index < ui->tabWidgetClient->count()) {
                 ui->tabWidgetClient->setCurrentIndex(index);

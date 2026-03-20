@@ -46,6 +46,7 @@ public:
         setupOptionContextFormat();
         ui->pushButtonClose->setEnabled(false);
         ui->toolButtonClient->hide();
+        ui->textEditPayload->setWordWrapMode(QTextOption::NoWrap);
 #if 0
         m_syntaxHighlighter = new xTools::SyntaxHighlighterJson(ui->textEditPayload->document());
 #endif
