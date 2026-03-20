@@ -1151,6 +1151,11 @@
 <context>
     <name>CoAPResourceEditor</name>
     <message>
+        <location filename="../../src/x/coap/coapresourceeditor.ui" line="14"/>
+        <source>Resource Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="48"/>
         <source>Context format</source>
         <translation type="unfinished"></translation>
@@ -1197,32 +1202,37 @@
 <context>
     <name>CoAPServerUi</name>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="41"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="124"/>
         <source>Server Port</source>
         <translation type="unfinished">Порт сервера</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="48"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="41"/>
         <source>Server IP</source>
         <translation type="unfinished">IP сервера</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="55"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="81"/>
         <source>Close Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="65"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="54"/>
         <source>Protocol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="72"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="64"/>
         <source>Open Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapserverui.ui" line="107"/>
+        <location filename="../../src/x/coap/coapserverui.ui" line="99"/>
+        <source>Client List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/coapserverui.ui" line="111"/>
         <source>Server Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2515,44 +2525,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
-        <location filename="../../src/log/logview.ui" line="14"/>
-        <source>Log view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="unfinished">Рівень журналу</translation>
+        <translation type="obsolete">Рівень журналу</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="unfinished">фільтр</translation>
+        <translation type="obsolete">фільтр</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="unfinished">Очистити журнал</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.ui" line="81"/>
-        <source>Log category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.ui" line="88"/>
-        <source>Scroll to bottom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.ui" line="98"/>
-        <source>Log filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.ui" line="111"/>
-        <source>Disable log</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Очистити журнал</translation>
     </message>
 </context>
 <context>
@@ -4516,22 +4498,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Рівно раз (2)</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapcommon.cpp" line="325"/>
+        <location filename="../../src/x/coap/coapcommon.cpp" line="345"/>
         <source>Clear All Items</source>
         <translation type="unfinished">Очистити всі елементи</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapcommon.cpp" line="326"/>
+        <location filename="../../src/x/coap/coapcommon.cpp" line="346"/>
         <source>Are you sure to clear all items? This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapcommon.cpp" line="336"/>
+        <location filename="../../src/x/coap/coapcommon.cpp" line="356"/>
         <source>Delete Selected Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapcommon.cpp" line="337"/>
+        <location filename="../../src/x/coap/coapcommon.cpp" line="357"/>
         <source>Are you sure to delete selected items? This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5854,62 +5836,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPMsgModel</name>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="94"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Rx</source>
         <translation type="unfinished">Rx</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="94"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Tx</source>
         <translation type="unfinished">Tx</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="111"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="114"/>
         <source>(No Payload)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="149"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="162"/>
         <source>Flag</source>
         <translation type="unfinished">Прапор</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="151"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="164"/>
         <source>Message ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="153"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="166"/>
         <source>Client</source>
         <translation type="unfinished">Клієнт</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="155"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="168"/>
         <source>Server</source>
         <translation type="unfinished">Сервер</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="157"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="170"/>
         <source>Version</source>
         <translation type="unfinished">Версія</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="159"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="172"/>
         <source>Type</source>
         <translation type="unfinished">Тип</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="161"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="174"/>
         <source>Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="163"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="176"/>
         <source>Token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="165"/>
+        <location filename="../../src/x/coap/coapmsgmodel.cpp" line="178"/>
         <source>Payload</source>
         <translation type="unfinished">Корисне навантаження</translation>
     </message>
@@ -5961,22 +5943,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPResourceModel</name>
     <message>
-        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="174"/>
+        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="207"/>
+        <source>(No Payload)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="258"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="176"/>
+        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="260"/>
         <source>URI Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="178"/>
+        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="262"/>
         <source>Context Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="180"/>
+        <location filename="../../src/x/coap/coapresourcemodel.cpp" line="264"/>
         <source>Payload (Hex)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6415,92 +6402,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="unfinished">Налагодження</translation>
+        <translation type="obsolete">Налагодження</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="85"/>
-        <source>Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logmodel.cpp" line="87"/>
-        <source>Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="unfinished">Критичний</translation>
+        <translation type="obsolete">Критичний</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="unfinished">Фатальний</translation>
+        <translation type="obsolete">Фатальний</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="unfinished">Невідомо</translation>
+        <translation type="obsolete">Невідомо</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="145"/>
-        <source>Timestamp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="unfinished">Рівень</translation>
+        <translation type="obsolete">Рівень</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="149"/>
-        <source>Module</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="unfinished">повідомлення</translation>
+        <translation type="obsolete">повідомлення</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="49"/>
         <source>Debug</source>
-        <translation type="unfinished">Налагодження</translation>
+        <translation type="obsolete">Налагодження</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="50"/>
-        <source>Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="51"/>
-        <source>Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="52"/>
         <source>Critical</source>
-        <translation type="unfinished">Критичний</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="55"/>
-        <source>All categories</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="105"/>
-        <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="106"/>
-        <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Критичний</translation>
     </message>
 </context>
 <context>
