@@ -3738,7 +3738,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="53"/>
         <source>Show statistician</source>
-        <translation>显示统计信息</translation>
+        <translation>统计信息</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="60"/>
