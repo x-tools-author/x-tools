@@ -759,7 +759,7 @@ void Page::writeBytes()
         return;
     }
 
-    auto parameters = m_inputSettings->parameters();
+    InputSettings::Parameters parameters = m_inputSettings->parameters();
     QByteArray prefix = xCookedAffixes(parameters.prefix);
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
