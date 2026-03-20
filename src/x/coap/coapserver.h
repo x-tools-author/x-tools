@@ -21,6 +21,7 @@ class CoAPServer : public QThread
 {
     Q_OBJECT
     CoAPServerPrivate *d;
+    friend class CoAPServerPrivate;
 
 public:
     explicit CoAPServer(QObject *parent = nullptr);

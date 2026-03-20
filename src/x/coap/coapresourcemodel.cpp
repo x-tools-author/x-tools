@@ -8,6 +8,9 @@
  **************************************************************************************************/
 #include "coapresourcemodel.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
+
 #include "coapcommon.h"
 
 namespace xCoAP {
@@ -89,6 +92,70 @@ QStringList CoAPResourceModel::uriPaths() const
         tmp.append(item.uriPath);
     }
     return tmp;
+}
+
+QByteArray CoAPResourceModel::getPayload(const QString& uriPath, const QByteArray& payload)
+{
+    for (const auto& item : std::as_const(d->m_resourceItems)) {
+        if (item.uriPath == uriPath) {
+            return item.payload;
+        }
+    }
+    return QByteArray();
+}
+
+QByteArray CoAPResourceModel::postPayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
+}
+
+QByteArray CoAPResourceModel::putPayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
+}
+
+QByteArray CoAPResourceModel::deletePayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
+}
+
+QByteArray CoAPResourceModel::patchPayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
+}
+
+QByteArray CoAPResourceModel::ipatchPayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
+}
+
+QByteArray CoAPResourceModel::fetchPayload(const QString& uriPath, const QByteArray& payload)
+{
+    CoAPCommon::ResourceItem item = CoAPCommon::jsonObject2ResourceItem(QJsonObject());
+    item.payload = payload;
+    item.uriPath = uriPath;
+    addResource(CoAPCommon::resourceItem2JsonObject(item));
+    return payload;
 }
 
 int CoAPResourceModel::rowCount(const QModelIndex& parent) const

@@ -303,6 +303,24 @@ uint32_t CoAPCommon::getCoAPPayloadFormat(const coap_pdu_t* pdu)
     return CO_AP_INVALID_CONTEXT_FORMAT;
 }
 
+QByteArray CoAPCommon::getInnerErrorPayload(const QString& errorMessage)
+{
+    QJsonObject obj;
+    obj.insert("error", errorMessage);
+    QJsonDocument doc(obj);
+    QByteArray data = doc.toJson(QJsonDocument::Indented);
+    return data;
+}
+
+QByteArray CoAPCommon::getNotFoundPayload(const QString& uriPath)
+{
+    QJsonObject obj;
+    obj.insert("error", QString("Resource not found: %1").arg(uriPath));
+    QJsonDocument doc(obj);
+    QByteArray data = doc.toJson(QJsonDocument::Indented);
+    return data;
+}
+
 bool CoAPCommon::isValidProtocol(int protocol)
 {
     switch (protocol) {

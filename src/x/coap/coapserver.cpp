@@ -52,32 +52,22 @@ public:
                            const coap_string_t* query,
                            coap_pdu_t* response)
     {
-        // Get request resource path
-        QString uriPathQStr = CoAPCommon::getCoAPResource(resource);
-        qCDebug(xCoAPServerLog) << "Received GET request for resource:" << uriPathQStr;
-
-        uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
-        QString suffix = CoAPCommon::getContextFormatSuffix(contextFormat);
-        QString rootPath = gCoAPGlobal.serverCachePath();
-        QString filePath = QString("%1/%2.%3").arg(rootPath, uriPathQStr, suffix);
-        QFile file(filePath);
-        if (file.open(QIODevice::ReadOnly)) {
-            QByteArray payload = file.readAll();
-            file.close();
-            coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
-            coap_add_data(response,
-                          payload.size(),
-                          reinterpret_cast<const uint8_t*>(payload.constData()));
-            qCDebug(xCoAPServerLog) << "Served GET request from cached file:" << filePath;
-            outputMessage(resource, session, request, query, response);
-        } else {
-            static const char kPayload[] = "Can not get the requested resource.";
-            size_t len = std::strlen(kPayload);
-            const uint8_t* data = reinterpret_cast<const uint8_t*>(kPayload);
-            coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
-            coap_add_data(response, len, data);
-            outputMessage(resource, session, request, query, response);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "GET request received but inner error occurred!";
+            return;
         }
+
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received GET request from cached file:" << uriPath;
+
+        CoAPResourceModel* model = q->d->m_resModel;
+        QStringList uriPaths = model->uriPaths();
+        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
+        coap_add_data(response, payload.size(), data);
+        outputMessage(resource, session, request, query, response);
     }
     static void postHandler(coap_resource_t* resource,
                             coap_session_t* session,
@@ -85,23 +75,16 @@ public:
                             const coap_string_t* query,
                             coap_pdu_t* response)
     {
-        QString uriPathQStr = CoAPCommon::getCoAPResource(resource);
-        if (uriPathQStr.isEmpty()) {
-            qCWarning(xCoAPServerLog) << "POST request with empty URI path received.";
-            coap_pdu_set_code(response, COAP_RESPONSE_CODE_BAD_REQUEST);
-            static const QByteArray payload = QByteArray("Empty URI path in POST request");
-            coap_add_data(response,
-                          payload.size(),
-                          reinterpret_cast<const uint8_t*>(payload.constData()));
-            outputMessage(resource, session, request, query, response);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "POST request received but inner error occurred!";
             return;
         }
-        qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPathQStr;
 
-        uint32_t contextFormat = CoAPCommon::getCoAPPayloadFormat(request);
-        Q_UNUSED(contextFormat);
-        QByteArray payload = CoAPCommon::getCoAPPayload(request);
-        // Response the request payload
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received POST request for resource:" << uriPath;
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
         size_t len = payload.size();
         const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
@@ -114,20 +97,21 @@ public:
                            const coap_string_t* query,
                            coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "PUT request received but inner error occurred!";
+            return;
+        }
 
-        // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received PUT request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received PUT request for resource:" << uriPath;
 
-        static const char kPayload[] = "PUT request received";
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
         outputMessage(resource, session, request, query, response);
     }
     static void deleteHandler(coap_resource_t* resource,
@@ -136,20 +120,21 @@ public:
                               const coap_string_t* query,
                               coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "DELETE request received but inner error occurred!";
+            return;
+        }
 
-        // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received DELETE request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received DELETE request for resource:" << uriPath;
 
-        static const char kPayload[] = "DELETE request received";
-        coap_pdu_set_code(response, COAP_RESPONSE_CODE_DELETED);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->getPayload(uriPath, CoAPCommon::getCoAPPayload(request));
+        coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
         outputMessage(resource, session, request, query, response);
     }
     static void patchHandler(coap_resource_t* resource,
@@ -158,20 +143,21 @@ public:
                              const coap_string_t* query,
                              coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "PATCH request received but inner error occurred!";
+            return;
+        }
 
-        // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received PATCH request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received PATCH request for resource:" << uriPath;
 
-        static const char kPayload[] = "PATCH request received";
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->patchPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
         outputMessage(resource, session, request, query, response);
     }
     static void ipatchHandler(coap_resource_t* resource,
@@ -180,20 +166,21 @@ public:
                               const coap_string_t* query,
                               coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "iPATCH request received but inner error occurred!";
+            return;
+        }
 
-        // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received iPATCH request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received iPATCH request for resource:" << uriPath;
 
-        static const char kPayload[] = "iPATCH request received";
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->ipatchPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CHANGED);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
         outputMessage(resource, session, request, query, response);
     }
     static void fetchHandler(coap_resource_t* resource,
@@ -202,21 +189,74 @@ public:
                              const coap_string_t* query,
                              coap_pdu_t* response)
     {
-        Q_UNUSED(resource);
-        Q_UNUSED(session);
-        Q_UNUSED(request);
-        Q_UNUSED(query);
+        CoAPServer* q = static_cast<CoAPServer*>(session->context->app);
+        if (!(q && q->d && q->d->m_resModel)) {
+            qCWarning(xCoAPServerLog) << "FETCH request received but inner error occurred!";
+            return;
+        }
 
-        // Get request resource path
-        coap_str_const_t* uri_path = coap_resource_get_uri_path(resource);
-        qInfo() << "Received FETCH request for resource:"
-                << QString::fromStdString(
-                       std::string(reinterpret_cast<const char*>(uri_path->s), uri_path->length));
+        QString uriPath = CoAPCommon::getCoAPResource(resource);
+        qCDebug(xCoAPServerLog) << "Received FETCH request for resource:" << uriPath;
 
-        static const char kPayload[] = "FETCH request received";
+        CoAPResourceModel* model = q->d->m_resModel;
+        QByteArray payload = model->fetchPayload(uriPath, CoAPCommon::getCoAPPayload(request));
         coap_pdu_set_code(response, COAP_RESPONSE_CODE_CONTENT);
-        coap_add_data(response, std::strlen(kPayload), reinterpret_cast<const uint8_t*>(kPayload));
+        size_t len = payload.size();
+        const uint8_t* data = reinterpret_cast<const uint8_t*>(payload.constData());
+        coap_add_data(response, len, data);
         outputMessage(resource, session, request, query, response);
+    }
+
+public:
+    void registerResource(coap_context_t* ctx, QStringList& registeredUriPaths)
+    {
+        m_uriPathsMutex.lock();
+        QStringList uriPaths = m_resModel->uriPaths();
+        m_uriPathsMutex.unlock();
+
+        // Resource list not changed
+        if (uriPaths == registeredUriPaths) {
+            return;
+        }
+
+        // Cancel deleted resources
+        for (const QString& oldUri : std::as_const(registeredUriPaths)) {
+            if (!uriPaths.contains(oldUri)) {
+                const QByteArray bytes = oldUri.toUtf8();
+                coap_str_const_t* str = coap_make_str_const(bytes.constData());
+                coap_resource_t* resource = coap_resource_init(str, 0);
+                coap_register_handler(resource, COAP_REQUEST_GET, NULL);
+            }
+        }
+
+        // Add new resources
+        for (const QString& uriPath : std::as_const(uriPaths)) {
+            QByteArray tmp = uriPath.toUtf8();
+            if (registeredUriPaths.contains(tmp)) {
+                continue;
+            }
+
+            registeredUriPaths.append(tmp);
+            coap_str_const_t* str = coap_make_str_const(tmp);
+            coap_resource_t* resource = coap_resource_init(str, 0);
+            if (!resource) {
+                qWarning() << "Failed to create CoAP resource";
+                continue;
+            }
+
+            // clang-format off
+            coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_POST, CoAPServerPrivate::postHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_PUT, CoAPServerPrivate::putHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_DELETE, CoAPServerPrivate::deleteHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_PATCH, CoAPServerPrivate::patchHandler);
+            coap_register_request_handler(resource, COAP_REQUEST_IPATCH, CoAPServerPrivate::ipatchHandler);
+            coap_add_resource(ctx, resource);
+            // clang-format on
+            qCDebug(xCoAPServerLog) << "Registered CoAP resource:" << uriPath;
+        }
+
+        registeredUriPaths = uriPaths;
     }
 
 private:
@@ -356,66 +396,20 @@ void CoAPServer::run()
         Q_UNUSED(result);
     });
 
-    // Register resources
+    // Register resources(Using timer)
     QTimer* resourceTimer = new QTimer();
     resourceTimer->setInterval(100);
-    QStringList registered;
-    QStringList preUriPaths;
-    connect(resourceTimer, &QTimer::timeout, resourceTimer, [this, ctx, &registered, &preUriPaths]() {
-        this->d->m_uriPathsMutex.lock();
-        QStringList uriPaths = this->d->m_resModel->uriPaths();
-        this->d->m_uriPathsMutex.unlock();
-
-        // Resource list not changed
-        if (uriPaths == preUriPaths) {
-            return;
-        }
-
-        // Cancel deleted resources
-        for (const QString& oldUri : std::as_const(preUriPaths)) {
-            if (!uriPaths.contains(oldUri)) {
-                const QByteArray bytes = oldUri.toUtf8();
-                coap_str_const_t* str = coap_make_str_const(bytes.constData());
-                coap_resource_t* resource = coap_resource_init(str, 0);
-                coap_register_handler(resource, COAP_REQUEST_GET, NULL);
-            }
-        }
-
-        // Add new resources
-        for (const QString& uriPath : std::as_const(uriPaths)) {
-            QByteArray tmp = uriPath.toUtf8();
-            if (preUriPaths.contains(tmp)) {
-                continue;
-            }
-
-            preUriPaths.append(tmp);
-            coap_str_const_t* str = coap_make_str_const(tmp);
-            coap_resource_t* resource = coap_resource_init(str, 0);
-            if (!resource) {
-                qWarning() << "Failed to create CoAP resource";
-                continue;
-            }
-
-            // clang-format off
-            coap_register_request_handler(resource, COAP_REQUEST_GET, CoAPServerPrivate::getHandler);
-            coap_register_request_handler(resource, COAP_REQUEST_POST, CoAPServerPrivate::postHandler);
-            coap_register_request_handler(resource, COAP_REQUEST_PUT, CoAPServerPrivate::putHandler);
-            coap_register_request_handler(resource, COAP_REQUEST_DELETE, CoAPServerPrivate::deleteHandler);
-            coap_register_request_handler(resource, COAP_REQUEST_PATCH, CoAPServerPrivate::patchHandler);
-            coap_register_request_handler(resource, COAP_REQUEST_IPATCH, CoAPServerPrivate::ipatchHandler);
-            coap_add_resource(ctx, resource);
-            // clang-format on
-            qCDebug(xCoAPServerLog) << "Registered CoAP resource:" << uriPath;
-        }
-
-        preUriPaths = uriPaths;
+    QStringList registeredUriPaths;
+    connect(resourceTimer, &QTimer::timeout, resourceTimer, [this, ctx, &registeredUriPaths]() {
+        this->d->registerResource(ctx, registeredUriPaths);
     });
 
+    ctx->app = this;
     processTimer->start();
     resourceTimer->start();
     exec();
     processTimer->stop();
-    resourceTimer->start();
+    resourceTimer->stop();
     coap_free_context(ctx);
     qInfo() << "CoAP server thread finished:" << QThread::currentThread();
 }

@@ -61,6 +61,8 @@ public:
     static QByteArray getCoAPPayload(const coap_pdu_t* pdu);
     static QString getCoAPResource(coap_resource_t* resource);
     static uint32_t getCoAPPayloadFormat(const coap_pdu_t* pdu);
+    static QByteArray getInnerErrorPayload(const QString& errorMessage);
+    static QByteArray getNotFoundPayload(const QString& uriPath);
 
 public:
     static bool isValidProtocol(int protocol);

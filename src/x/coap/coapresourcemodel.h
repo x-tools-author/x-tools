@@ -35,6 +35,16 @@ public:
     void clearAllRows();
     QStringList uriPaths() const;
 
+public:
+    QByteArray getPayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray postPayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray putPayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray deletePayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray patchPayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray ipatchPayload(const QString &uriPath, const QByteArray &payload);
+    QByteArray fetchPayload(const QString &uriPath, const QByteArray &payload);
+
+public:
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
