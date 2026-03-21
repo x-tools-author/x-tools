@@ -38,7 +38,7 @@
 #include "modbus/modbusassistant.h"
 #endif
 
-#ifdef X_ENABLE_Q_HEX_EDIT
+#if X_ENABLE_Q_HEX_EDIT
 #include "qhexedit.h"
 #endif
 
@@ -115,7 +115,7 @@ QWidget* AssistantFactory::newAssistant(int type)
     }
 
     if (type == AssistantType3rdHexEdit) {
-#ifdef X_ENABLE_Q_HEX_EDIT
+#if X_ENABLE_Q_HEX_EDIT
         return new QHexEdit();
 #endif
     }
