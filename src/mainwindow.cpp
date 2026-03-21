@@ -151,7 +151,7 @@ MainWindow::MainWindow(QWidget* parent)
     });
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow() { }
 
 void MainWindow::load(const QString& fileName)
 {
@@ -391,8 +391,9 @@ void MainWindow::initToolMenu()
         QString name = AssistantFactory::instance()->assistantName(type);
         auto* action = new QAction(name, this);
         QWidget* assistant = AssistantFactory::instance()->newAssistant(type);
-
-        Q_ASSERT_X(assistant, __FUNCTION__, "A null assistant widget!");
+        if (!assistant) {
+            continue;
+        }
 
         assistant->hide();
         toolMenu->addAction(action);
