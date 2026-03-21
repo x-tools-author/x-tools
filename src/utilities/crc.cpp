@@ -548,6 +548,7 @@ T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
     T rawPoly = static_cast<T>(CRC::poly(algorithm));
     uint8_t byte = 0;
 
+    constexpr int bitWidth = static_cast<int>(sizeof(T) * 8);
     T temp = 1;
     while (length--) {
         byte = *(input++);
@@ -555,9 +556,10 @@ T crcCalculate(const uint8_t *input, uint64_t length, CRC::Algorithm algorithm)
             reverseInt(byte, byte);
         }
 
-        crcReg ^= static_cast<T>((byte << 8 * (sizeof(T) - 1)));
+        // Fix the issue where the shift count may be negative or too large
+        crcReg ^= static_cast<T>(static_cast<T>(byte) << (bitWidth - 8));
         for (int i = 0; i < 8; i++) {
-            if (crcReg & (temp << (sizeof(T) * 8 - 1))) {
+            if (crcReg & (temp << (bitWidth - 1))) {
                 crcReg = static_cast<T>((crcReg << 1) ^ rawPoly);
             } else {
                 crcReg = static_cast<T>(crcReg << 1);
