@@ -21,7 +21,7 @@ class CRC : public QObject
     Q_OBJECT
 public:
     enum class Algorithm {
-#if defined(X_USING_QCRC_CALC)
+#if X_USING_QCRC_CALC
         CRC_3_GSM,
         CRC_3_ROHC,
         CRC_3_SAE_J1850,
