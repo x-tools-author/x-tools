@@ -346,7 +346,7 @@
         <translation>مساعد Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="90"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
         <source>Hex Editor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1851,7 +1851,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/devicesettings.ui" line="69"/>
-        <location filename="../../src/page/devicesettings.cpp" line="151"/>
+        <location filename="../../src/page/devicesettings.cpp" line="155"/>
         <source>Save to file</source>
         <translation>حفظ إلى ملف</translation>
     </message>
@@ -1871,7 +1871,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>ماكس بايت</translation>
     </message>
     <message>
-        <location filename="../../src/page/devicesettings.cpp" line="153"/>
+        <location filename="../../src/page/devicesettings.cpp" line="157"/>
         <source>Text File(*.txt)</source>
         <translation>ملف نصي (*.txt)</translation>
     </message>
@@ -2178,6 +2178,55 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/filecheck/hashcalculator.cpp" line="84"/>
         <source>Calculating finished</source>
         <translation>اكتمل الحساب</translation>
+    </message>
+</context>
+<context>
+    <name>HexEditor</name>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="14"/>
+        <source>Hex Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="27"/>
+        <source>New</source>
+        <translation type="unfinished">جديد</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="37"/>
+        <source>Save as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="47"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="70"/>
+        <source>Save</source>
+        <translation type="unfinished">يحفظ</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.ui" line="89"/>
+        <source>Bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="45"/>
+        <source>Open File</source>
+        <translation type="unfinished">افتح الملف</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="47"/>
+        <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="67"/>
+        <source>All Files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="65"/>
+        <source>Save File As</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5511,6 +5560,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/device/udpmulticastui.ui" line="92"/>
         <source>Multicast loopback</source>
         <translation>استرجاع البث المتعدد</translation>
+    </message>
+</context>
+<context>
+    <name>UndoStack</name>
+    <message>
+        <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="115"/>
+        <source>Inserting %1 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="137"/>
+        <source>Delete %1 chars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="162"/>
+        <source>Overwrite %1 chars</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
