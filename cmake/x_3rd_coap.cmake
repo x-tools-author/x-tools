@@ -20,7 +20,7 @@ if(NOT WIN32)
   return()
 endif()
 
-option(X_ENABLE_X_COAP "Enable CoAP support via libcoap" OFF)
+option(X_ENABLE_X_COAP "Enable CoAP support via libcoap" ON)
 if(NOT X_ENABLE_X_COAP)
   x_remove_all_coap_files()
   return()
