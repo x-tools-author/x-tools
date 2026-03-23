@@ -20,6 +20,11 @@ if(NOT WIN32)
   return()
 endif()
 
+if(QT_VERSION VERSION_LESS 6.5.0)
+  x_remove_all_coap_files()
+  return()
+endif()
+
 option(X_ENABLE_X_COAP "Enable CoAP support via libcoap" ON)
 if(NOT X_ENABLE_X_COAP)
   x_remove_all_coap_files()
