@@ -60,6 +60,7 @@ xCanBus::xCanBus(QWidget* parent)
     ui->comboBoxDataBitrate->setEditable(true);
     ui->pushButtonDisconnect->setEnabled(false);
     ui->toolButtonSend->setIcon(xIcon(":res/icons/send.svg"));
+    ui->tabWidget->tabBar()->hide();
     connect(ui->pushButtonConnect, &QPushButton::clicked, this, &xCanBus::onConnectBtnClicked);
     connect(ui->pushButtonDisconnect, &QPushButton::clicked, this, &xCanBus::onDisconnectBtnClicked);
     connect(ui->comboBoxPlugins, &QComboBox::currentTextChanged, this, &xCanBus::onPluginChanged);

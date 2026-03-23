@@ -31,6 +31,11 @@ DataView::DataView(QWidget *parent)
     ui->setupUi(this);
     ui->toolButtonClear->setIcon(xIcon(":res/icons/mop.svg"));
     ui->toolButtonScrolling->setIcon(xIcon(":res/icons/wrap_text.svg"));
+    ui->toolButtonClear->setText(ui->toolButtonClear->toolTip());
+    ui->toolButtonScrolling->setText(ui->toolButtonScrolling->toolTip());
+    ui->toolButtonClear->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonScrolling->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
     m_model = new DataModel(this);
     m_filter = new DataFilter(this);
     m_filter->setSourceModel(m_model);
