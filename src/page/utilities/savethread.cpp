@@ -43,7 +43,7 @@ void saveDataToFile(const SaveThread::SaveContext &ctx, QFile *file)
 {
     QDateTime now = QDateTime::currentDateTime();
     QString dateFmt = QLocale().dateFormat();
-    QString timeFmt = QLocale().timeFormat(QLocale::ShortFormat);
+    QString timeFmt = QLocale::system().timeFormat();
 
     QString date = now.toString(dateFmt);
     QString time = now.toString(timeFmt);
@@ -59,7 +59,8 @@ void saveDataToFile(const SaveThread::SaveContext &ctx, QFile *file)
         line += time + " ";
     }
     if (ctx.parameters.saveMs) {
-        line += ms + " ";
+        line = line.trimmed();
+        line += QString(".%1").arg(ms) + " ";
     }
 
     static const QRegularExpression reg("[\\s]+");
