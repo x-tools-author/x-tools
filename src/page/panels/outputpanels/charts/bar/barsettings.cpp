@@ -14,6 +14,7 @@
 #include <QCheckBox>
 #include <QColorDialog>
 #include <QComboBox>
+#include <QDesktopServices>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QLabel>
@@ -24,6 +25,7 @@
 #include "barpanel.h"
 #include "common/xtools.h"
 #include "utilities/compatibility.h"
+#include "utilities/iconengine.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using namespace QtCharts;
@@ -34,6 +36,11 @@ BarSettings::BarSettings(QWidget *parent)
     , ui(new Ui::BarSettings)
 {
     ui->setupUi(this);
+    ui->toolButtonHelp->setIcon(xIcon(":/res/icons/help.svg"));
+    connect(ui->toolButtonHelp, &QToolButton::clicked, this, [=]() {
+        const QUrl url("https://x-tools-author.github.io/x-tools/docs/04.panels/3.charts/");
+        QDesktopServices::openUrl(url);
+    });
 
     xSetupChartsDataFormat(ui->comboBoxDataFormat);
     connect(ui->comboBoxDataFormat, xComboBoxActivated, this, [=]() {

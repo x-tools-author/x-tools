@@ -408,37 +408,42 @@
 <context>
     <name>BarSettings</name>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="23"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="26"/>
         <source>Data format</source>
         <translation>فرمت داده</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="44"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.ui" line="46"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="51"/>
         <source>Channel</source>
         <translation>کانال</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="45"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="52"/>
         <source>Color</source>
         <translation>رنگ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="46"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="53"/>
         <source>Name</source>
         <translation>نام</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="160"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="167"/>
         <source>Line</source>
         <translation>خط</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="162"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="169"/>
         <source>Spline</source>
         <translation>منحنی</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="164"/>
+        <location filename="../../src/page/panels/outputpanels/charts/bar/barsettings.cpp" line="171"/>
         <source>Scatter</source>
         <translation>پراکنده</translation>
     </message>
@@ -2435,58 +2440,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>نقاط کش</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="125"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="108"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="135"/>
         <source>Clear</source>
         <translation>پاک کردن</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="132"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="142"/>
         <source>Export</source>
         <translation>صادرات</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="139"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.ui" line="149"/>
         <source>Import</source>
         <translation>واردات</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="50"/>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="229"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="57"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="236"/>
         <source>Channel</source>
         <translation>کانال</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="51"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="58"/>
         <source>Visible</source>
         <translation>قابل مشاهده</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="52"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="59"/>
         <source>Type</source>
         <translation>نوع</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="55"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="62"/>
         <source>Color</source>
         <translation>رنگ</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="56"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="63"/>
         <source>Name</source>
         <translation>نام</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="240"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="247"/>
         <source>Line</source>
         <translation>خط</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="242"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="249"/>
         <source>Spline</source>
         <translation>منحنی</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="244"/>
+        <location filename="../../src/page/panels/outputpanels/charts/line/linesettings.cpp" line="251"/>
         <source>Scatter</source>
         <translation>پراکنده</translation>
     </message>
