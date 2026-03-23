@@ -61,6 +61,11 @@ QStringList OutputSettings::highlighterKeywords() const
     return ui->lineEditHighlighter->text().split(",", xSkipEmptyParts);
 }
 
+bool OutputSettings::showRN() const
+{
+    return ui->checkBoxRN->isChecked();
+}
+
 QVariantMap OutputSettings::save()
 {
     QVariantMap map;
@@ -68,6 +73,7 @@ QVariantMap OutputSettings::save()
     map.insert("enableHighlighter", isEnableHighlighter());
     map.insert("filterText", ui->lineEditFilter->text());
     map.insert("highlighterKeywords", ui->lineEditHighlighter->text());
+    map.insert("showRN", ui->checkBoxRN->isChecked());
     return map;
 }
 
@@ -77,4 +83,5 @@ void OutputSettings::load(const QVariantMap &data)
     ui->checkBoxHighlighter->setChecked(data.value("enableHighlighter").toBool());
     ui->lineEditFilter->setText(data.value("filterText").toString());
     ui->lineEditHighlighter->setText(data.value("highlighterKeywords").toString());
+    ui->checkBoxRN->setChecked(data.value("showRN", true).toBool());
 }

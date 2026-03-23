@@ -26,6 +26,7 @@ public:
     bool isEnableHighlighter() const;
     QString filterText() const;
     QStringList highlighterKeywords() const;
+    bool showRN() const;
 
     QVariantMap save();
     void load(const QVariantMap &data);

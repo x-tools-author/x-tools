@@ -3742,27 +3742,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="20"/>
+        <location filename="../../src/page/outputsettings.ui" line="34"/>
         <source>Enable highlighter</source>
         <translation>高亮显示</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="33"/>
+        <location filename="../../src/page/outputsettings.ui" line="47"/>
         <source>Filter text</source>
         <translation>过滤文件</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="43"/>
+        <location filename="../../src/page/outputsettings.ui" line="64"/>
         <source>Hello,Word</source>
         <translation>Hello, Word</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="53"/>
+        <location filename="../../src/page/outputsettings.ui" line="74"/>
+        <source>Show \r and \n</source>
+        <translation>显示 \r 和 \n</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/outputsettings.ui" line="27"/>
         <source>Show statistician</source>
         <translation>统计信息</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="60"/>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable filter</source>
         <translation>过滤使能</translation>
     </message>

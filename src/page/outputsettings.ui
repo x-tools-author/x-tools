@@ -7,13 +7,27 @@
     <x>0</x>
     <y>0</y>
     <width>218</width>
-    <height>124</height>
+    <height>203</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="checkBoxFilter">
+     <property name="text">
+      <string>Enable filter</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="checkBoxShowStatistician">
+     <property name="text">
+      <string>Show statistician</string>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="checkBoxHighlighter">
      <property name="text">
@@ -37,6 +51,13 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="0">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
    <item row="5" column="0">
     <widget class="QLineEdit" name="lineEditHighlighter">
      <property name="placeholderText">
@@ -47,24 +68,10 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QCheckBox" name="checkBoxShowStatistician">
+   <item row="6" column="0">
+    <widget class="QCheckBox" name="checkBoxRN">
      <property name="text">
-      <string>Show statistician</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="checkBoxFilter">
-     <property name="text">
-      <string>Enable filter</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <string>Show \r and \n</string>
      </property>
     </widget>
    </item>

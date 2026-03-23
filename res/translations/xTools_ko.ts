@@ -3693,27 +3693,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="20"/>
+        <location filename="../../src/page/outputsettings.ui" line="34"/>
         <source>Enable highlighter</source>
         <translation>형광펜 활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="33"/>
+        <location filename="../../src/page/outputsettings.ui" line="47"/>
         <source>Filter text</source>
         <translation>텍스트 필터링</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="43"/>
+        <location filename="../../src/page/outputsettings.ui" line="64"/>
         <source>Hello,Word</source>
         <translation>안녕하세요, 워드</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="53"/>
+        <location filename="../../src/page/outputsettings.ui" line="74"/>
+        <source>Show \r and \n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/outputsettings.ui" line="27"/>
         <source>Show statistician</source>
         <translation>통계학자 표시</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="60"/>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable filter</source>
         <translation>필터 활성화</translation>
     </message>

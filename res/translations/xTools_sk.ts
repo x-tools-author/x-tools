@@ -3693,27 +3693,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>OutputSettings</name>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="20"/>
+        <location filename="../../src/page/outputsettings.ui" line="34"/>
         <source>Enable highlighter</source>
         <translation>Povoliť zvýrazňovač</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="33"/>
+        <location filename="../../src/page/outputsettings.ui" line="47"/>
         <source>Filter text</source>
         <translation>Filtrovať text</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="43"/>
+        <location filename="../../src/page/outputsettings.ui" line="64"/>
         <source>Hello,Word</source>
         <translation>Dobrý deň, Word</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="53"/>
+        <location filename="../../src/page/outputsettings.ui" line="74"/>
+        <source>Show \r and \n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/outputsettings.ui" line="27"/>
         <source>Show statistician</source>
         <translation>Ukážte štatistikovi</translation>
     </message>
     <message>
-        <location filename="../../src/page/outputsettings.ui" line="60"/>
+        <location filename="../../src/page/outputsettings.ui" line="20"/>
         <source>Enable filter</source>
         <translation>Povoliť filter</translation>
     </message>
