@@ -30,6 +30,7 @@ private:
     void onSearchButtonClicked();
     void onSearchTextChanged();
 
+    QRegularExpression buildSearchRegularExpression() const;
     void performSearch();
     void highlightSearchResults(const QString &text, const QRegularExpression &regex);
     void highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex);

@@ -2290,12 +2290,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>데이터 미리보기 표시</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="78"/>
+        <location filename="../../src/page/inputsettings.ui" line="84"/>
         <source>Append suffix</source>
         <translation>접미사 추가</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="65"/>
+        <location filename="../../src/page/inputsettings.ui" line="71"/>
         <source>Append prefix</source>
         <translation>접두사 추가</translation>
     </message>
@@ -2305,63 +2305,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>이스케이프 문자</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="45"/>
-        <location filename="../../src/page/inputsettings.ui" line="117"/>
+        <location filename="../../src/page/inputsettings.ui" line="48"/>
+        <location filename="../../src/page/inputsettings.ui" line="126"/>
         <source>Hex format, such as: 0D 0A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="52"/>
+        <location filename="../../src/page/inputsettings.ui" line="58"/>
         <source>Custom prefix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="93"/>
+        <location filename="../../src/page/inputsettings.ui" line="99"/>
         <source>Data Preprocessing</source>
         <translation>데이터 전처리</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="110"/>
+        <location filename="../../src/page/inputsettings.ui" line="116"/>
         <source>Custom suffix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="130"/>
+        <location filename="../../src/page/inputsettings.ui" line="142"/>
         <source>Append checking data</source>
         <translation>확인 데이터 추가</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="137"/>
+        <location filename="../../src/page/inputsettings.ui" line="149"/>
         <source>Big endian</source>
         <translation>빅엔디안</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="149"/>
+        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start from Left</source>
         <translation>왼쪽부터 시작</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="156"/>
+        <location filename="../../src/page/inputsettings.ui" line="168"/>
         <source>Start from right</source>
         <translation>오른쪽부터 시작</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="169"/>
+        <location filename="../../src/page/inputsettings.ui" line="181"/>
         <source>Arithmetic</source>
         <translation>산수</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="189"/>
+        <location filename="../../src/page/inputsettings.ui" line="201"/>
         <source>Start index</source>
         <translation>인덱스 시작</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="202"/>
+        <location filename="../../src/page/inputsettings.ui" line="214"/>
         <source>End index</source>
         <translation>종료 인덱스</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="214"/>
+        <location filename="../../src/page/inputsettings.ui" line="226"/>
         <source>Data Checking</source>
         <translation>데이터 확인</translation>
     </message>
@@ -4808,22 +4808,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>전체 단어</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="103"/>
+        <source>Reversal filter logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="110"/>
+        <source>Audo scrolling</source>
+        <translation type="unfinished">감히 스크롤을 해보시겠어요?</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="162"/>
         <source>Could not find any matches.</source>
         <translation>일치하는 항목을 찾을 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="168"/>
         <source>Found %1 matches.</source>
         <translation>%1개의 일치 항목을 찾았습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="127"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="207"/>
         <source>Line %1:</source>
         <translation>행 %1:</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="135"/>
+        <source>No lines passed the filter.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="140"/>
+        <source>Found %1 results.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="261"/>
         <source>Search results:</source>
         <translation>검색 결과:</translation>
     </message>

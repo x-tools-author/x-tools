@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>603</width>
     <height>300</height>
    </rect>
   </property>
@@ -94,6 +94,20 @@
       <widget class="QCheckBox" name="checkBoxWholeWord">
        <property name="text">
         <string>Whole word</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBoxReversal">
+       <property name="text">
+        <string>Reversal filter logic</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBoxAudoScrolling">
+       <property name="text">
+        <string>Audo scrolling</string>
        </property>
       </widget>
      </item>

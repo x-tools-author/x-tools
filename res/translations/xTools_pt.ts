@@ -2290,12 +2290,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Mostrar visualização dos dados</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="78"/>
+        <location filename="../../src/page/inputsettings.ui" line="84"/>
         <source>Append suffix</source>
         <translation>Anexar sufixo</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="65"/>
+        <location filename="../../src/page/inputsettings.ui" line="71"/>
         <source>Append prefix</source>
         <translation>Anexar prefixo</translation>
     </message>
@@ -2305,63 +2305,63 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Personagem de fuga</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="45"/>
-        <location filename="../../src/page/inputsettings.ui" line="117"/>
+        <location filename="../../src/page/inputsettings.ui" line="48"/>
+        <location filename="../../src/page/inputsettings.ui" line="126"/>
         <source>Hex format, such as: 0D 0A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="52"/>
+        <location filename="../../src/page/inputsettings.ui" line="58"/>
         <source>Custom prefix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="93"/>
+        <location filename="../../src/page/inputsettings.ui" line="99"/>
         <source>Data Preprocessing</source>
         <translation>Pré-processamento de dados</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="110"/>
+        <location filename="../../src/page/inputsettings.ui" line="116"/>
         <source>Custom suffix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="130"/>
+        <location filename="../../src/page/inputsettings.ui" line="142"/>
         <source>Append checking data</source>
         <translation>Anexar dados de verificação</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="137"/>
+        <location filename="../../src/page/inputsettings.ui" line="149"/>
         <source>Big endian</source>
         <translation>grande endian</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="149"/>
+        <location filename="../../src/page/inputsettings.ui" line="161"/>
         <source>Start from Left</source>
         <translation>Comece da esquerda</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="156"/>
+        <location filename="../../src/page/inputsettings.ui" line="168"/>
         <source>Start from right</source>
         <translation>Comece da direita</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="169"/>
+        <location filename="../../src/page/inputsettings.ui" line="181"/>
         <source>Arithmetic</source>
         <translation>Aritmética</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="189"/>
+        <location filename="../../src/page/inputsettings.ui" line="201"/>
         <source>Start index</source>
         <translation>Índice inicial</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="202"/>
+        <location filename="../../src/page/inputsettings.ui" line="214"/>
         <source>End index</source>
         <translation>Índice final</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="214"/>
+        <location filename="../../src/page/inputsettings.ui" line="226"/>
         <source>Data Checking</source>
         <translation>Verificação de dados</translation>
     </message>
@@ -4808,22 +4808,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Palavra inteira</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="145"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="103"/>
+        <source>Reversal filter logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.ui" line="110"/>
+        <source>Audo scrolling</source>
+        <translation type="unfinished">Eu te desafio a rolar</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="162"/>
         <source>Could not find any matches.</source>
         <translation>Não foi possível encontrar nenhuma correspondência.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="151"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="168"/>
         <source>Found %1 matches.</source>
         <translation>Encontradas %1 correspondências.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="190"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="127"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="207"/>
         <source>Line %1:</source>
         <translation>Linha %1:</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="224"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="135"/>
+        <source>No lines passed the filter.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="140"/>
+        <source>Found %1 results.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="243"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="261"/>
         <source>Search results:</source>
         <translation>Resultados da pesquisa:</translation>
     </message>

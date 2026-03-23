@@ -4,6 +4,8 @@
 #include "searchpanel.h"
 #include "ui_searchpanel.h"
 
+#include <QScrollBar>
+
 SearchPanel::SearchPanel(QWidget *parent)
     : Panel(parent)
     , ui(new Ui::SearchPanel)
@@ -15,6 +17,7 @@ SearchPanel::SearchPanel(QWidget *parent)
     connect(ui->checkBoxRegex, &QCheckBox::clicked, this, [this](int) { performSearch(); });
     connect(ui->checkBoxMatchCase, &QCheckBox::clicked, this, [this](int) { performSearch(); });
     connect(ui->checkBoxWholeWord, &QCheckBox::clicked, this, [this](int) { performSearch(); });
+    connect(ui->checkBoxReversal, &QCheckBox::clicked, this, [this](int) { performSearch(); });
 }
 
 SearchPanel::~SearchPanel()
@@ -34,32 +37,37 @@ void SearchPanel::performSearch(QString &line)
         return;
     }
 
-    // 获取搜索选项
+    highlightSearchResultsForLine(line, buildSearchRegularExpression());
+    if (ui->checkBoxAudoScrolling->isChecked()) {
+        QScrollBar *scrollBar = ui->textBrowserSearchResult->verticalScrollBar();
+        if (scrollBar) {
+            scrollBar->setValue(scrollBar->maximum());
+            qInfo() << "Auto-scrolled to the bottom.";
+        }
+    }
+}
+
+QRegularExpression SearchPanel::buildSearchRegularExpression() const
+{
     bool useRegex = ui->checkBoxRegex->isChecked();
     bool matchCase = ui->checkBoxMatchCase->isChecked();
     bool wholeWord = ui->checkBoxWholeWord->isChecked();
 
-    // 构建正则表达式
-    QString pattern = searchText;
+    QString pattern = ui->lineEditSearch->text();
     if (!useRegex) {
-        // 如果不使用正则表达式，则转义特殊字符
         pattern = QRegularExpression::escape(pattern);
     }
 
-    // 如果需要全词匹配，则添加单词边界
     if (wholeWord) {
         pattern = QString("\\b%1\\b").arg(pattern);
     }
 
-    // 创建正则表达式对象
     QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption;
     if (!matchCase) {
         options |= QRegularExpression::CaseInsensitiveOption;
     }
-    QRegularExpression regex(pattern, options);
 
-    // 只在当前行中搜索匹配项
-    highlightSearchResultsForLine(line, regex);
+    return QRegularExpression(pattern, options);
 }
 
 void SearchPanel::setWholeWordCheckBoxEnabled(bool checked)
@@ -93,40 +101,49 @@ void SearchPanel::performSearch()
         return;
     }
 
-    // 获取搜索选项
-    bool useRegex = ui->checkBoxRegex->isChecked();
-    bool matchCase = ui->checkBoxMatchCase->isChecked();
-    bool wholeWord = ui->checkBoxWholeWord->isChecked();
-
-    // 构建正则表达式
-    QString pattern = searchText;
-    if (!useRegex) {
-        // 如果不使用正则表达式，则转义特殊字符
-        pattern = QRegularExpression::escape(pattern);
-    }
-
-    // 如果需要全词匹配，则添加单词边界
-    if (wholeWord) {
-        pattern = QString("\\b%1\\b").arg(pattern);
-    }
-
-    // 创建正则表达式对象
-    QRegularExpression::PatternOptions options = QRegularExpression::NoPatternOption;
-    if (!matchCase) {
-        options |= QRegularExpression::CaseInsensitiveOption;
-    }
-    QRegularExpression regex(pattern, options);
-
     // 获取textBrowserOutput的文本内容
     QString content = m_originalTextBrowser->toPlainText();
 
     // 执行搜索并高亮结果
-    highlightSearchResults(content, regex);
+    highlightSearchResults(content, buildSearchRegularExpression());
 }
 
 void SearchPanel::highlightSearchResults(const QString &text, const QRegularExpression &regex)
 {
     ui->textBrowserSearchResult->clear();
+
+    bool reversal = ui->checkBoxReversal->isChecked();
+    if (reversal) {
+        QStringList lines = text.split('\n');
+        QStringList filteredResults;
+
+        for (int i = 0; i < lines.size(); ++i) {
+            const QString &line = lines[i];
+            if (regex.match(line).hasMatch()) {
+                continue;
+            }
+
+            QString html = "<div style='margin-bottom:10px;'>";
+            QString info = tr("Line %1:").arg(i + 1);
+            html += QString("<p style='color:gray;margin:0;'>%1</p>").arg(info);
+            html += QString("<pre style='margin:0;'>%1</pre>").arg(line.toHtmlEscaped());
+            html += "</div>";
+            filteredResults.append(html);
+        }
+
+        if (filteredResults.isEmpty()) {
+            QString info = tr("No lines passed the filter.");
+            ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
+            return;
+        }
+
+        QString info = tr("Found %1 results.").arg(filteredResults.size());
+        ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
+        for (const QString &html : filteredResults) {
+            ui->textBrowserSearchResult->append(html);
+        }
+        return;
+    }
 
     // 查找所有匹配项
     QRegularExpressionMatchIterator matchIterator = regex.globalMatch(text);
@@ -211,11 +228,31 @@ void SearchPanel::highlightSearchResults(const QString &text, const QRegularExpr
 
 void SearchPanel::highlightSearchResultsForLine(const QString &line, const QRegularExpression &regex)
 {
+    bool reversal = ui->checkBoxReversal->isChecked();
+
     // 查找所有匹配项
     QRegularExpressionMatchIterator matchIterator = regex.globalMatch(line);
+    bool hasMatch = matchIterator.hasNext();
+
+    if (reversal) {
+        if (hasMatch) {
+            return;
+        }
+
+        if (ui->textBrowserSearchResult->document()->isEmpty()) {
+            QString info = tr("Search results:");
+            ui->textBrowserSearchResult->setHtml(QString("<p style='color:gray'>%1</p>").arg(info));
+        }
+
+        //QString html = "<div style='margin-bottom:5px;'>";
+        //html += QString("<pre style='margin:0;'>%1</pre>").arg(line.toHtmlEscaped());
+        //html += "</div>";
+        ui->textBrowserSearchResult->append(line);
+        return;
+    }
 
     // 如果没有匹配项，直接返回
-    if (!matchIterator.hasNext()) {
+    if (!hasMatch) {
         return;
     }
 
