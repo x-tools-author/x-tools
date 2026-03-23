@@ -29,6 +29,11 @@ public:
         int suffix;
         int escapeCharacter;
 
+        bool usingCustomPrefix;
+        bool usingCustomSuffix;
+        QByteArray customPrefix;
+        QByteArray customSuffix;
+
         int algorithm;
         int startIndex;
         int endIndex;

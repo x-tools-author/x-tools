@@ -276,74 +276,79 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="44"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
         <source>CRC Assistant</source>
         <translation>Помощник CRC</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="46"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>mDNS Assistant</source>
         <translation>Помощник mDNS</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>Ping Assistant</source>
         <translation>Помощник Ping</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="49"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
         <source>ASCII Assistant</source>
         <translation>Помощник ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>Base64 Assistant</source>
         <translation>Помощник Base64</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="51"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>Number Assistant</source>
         <translation>Помощник чисел</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
         <source>String Assistant</source>
         <translation>Помощник строк</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>Broadcast Assistant</source>
         <translation>Помощник вещания</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
         <source>File Check Assistant</source>
         <translation>Помощник проверки файлов</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
         <source>File Merge Assistant</source>
         <translation>Помощник слияния файлов</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
         <source>QR Code Assistant</source>
         <translation>Помощник QR кодов</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
         <source>Barcode Assistant</source>
         <translation>Помощник штрихкодов</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="67"/>
         <source>CAN Bus Assistant</source>
         <translation>Помощник CAN шины</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="68"/>
         <source>Modbus Assistant</source>
         <translation>Помощник Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="90"/>
+        <source>Hex Editor</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2285,62 +2290,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Показать предварительный просмотр данных</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="35"/>
+        <location filename="../../src/page/inputsettings.ui" line="78"/>
         <source>Append suffix</source>
         <translation>Добавить суффикс</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="48"/>
+        <location filename="../../src/page/inputsettings.ui" line="65"/>
         <source>Append prefix</source>
         <translation>Добавить префикс</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="64"/>
+        <location filename="../../src/page/inputsettings.ui" line="38"/>
         <source>Escape character</source>
         <translation>Побег персонаж</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="89"/>
+        <location filename="../../src/page/inputsettings.ui" line="45"/>
+        <location filename="../../src/page/inputsettings.ui" line="117"/>
+        <source>Hex format, such as: 0D 0A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/inputsettings.ui" line="52"/>
+        <source>Custom prefix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/inputsettings.ui" line="93"/>
         <source>Data Preprocessing</source>
         <translation>Предварительная обработка данных</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="102"/>
+        <location filename="../../src/page/inputsettings.ui" line="110"/>
+        <source>Custom suffix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/inputsettings.ui" line="130"/>
         <source>Append checking data</source>
         <translation>Добавить данные проверки</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="109"/>
+        <location filename="../../src/page/inputsettings.ui" line="137"/>
         <source>Big endian</source>
         <translation>Большой порядок байтов</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="121"/>
+        <location filename="../../src/page/inputsettings.ui" line="149"/>
         <source>Start from Left</source>
         <translation>Начать слева</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="128"/>
+        <location filename="../../src/page/inputsettings.ui" line="156"/>
         <source>Start from right</source>
         <translation>Начать справа</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="141"/>
+        <location filename="../../src/page/inputsettings.ui" line="169"/>
         <source>Arithmetic</source>
         <translation>Арифметика</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="161"/>
+        <location filename="../../src/page/inputsettings.ui" line="189"/>
         <source>Start index</source>
         <translation>Начальный индекс</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="174"/>
+        <location filename="../../src/page/inputsettings.ui" line="202"/>
         <source>End index</source>
         <translation>Конечный индекс</translation>
     </message>
     <message>
-        <location filename="../../src/page/inputsettings.ui" line="186"/>
+        <location filename="../../src/page/inputsettings.ui" line="214"/>
         <source>Data Checking</source>
         <translation>Проверка данных</translation>
     </message>
@@ -2629,13 +2650,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="366"/>
-        <location filename="../../src/mainwindow.cpp" line="619"/>
+        <location filename="../../src/mainwindow.cpp" line="621"/>
         <source>Import Parameters</source>
         <translation>Импорт параметров</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="370"/>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="634"/>
         <source>Export Parameters</source>
         <translation>Экспорт параметров</translation>
     </message>
@@ -2650,53 +2671,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Новый</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="446"/>
         <source>&amp;View</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
-        <location filename="../../src/mainwindow.cpp" line="538"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="540"/>
         <source>Release History</source>
         <translation>История релизов</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="501"/>
         <source>Join in QQ Group</source>
         <translation>Присоединяйтесь к группе QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
+        <location filename="../../src/mainwindow.cpp" line="425"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
+        <location filename="../../src/mainwindow.cpp" line="498"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="524"/>
+        <location filename="../../src/mainwindow.cpp" line="526"/>
         <source>Third Party Open Source</source>
         <translation>Сторонние открытые исходники</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="558"/>
+        <location filename="../../src/mainwindow.cpp" line="560"/>
         <source>QR Code</source>
         <translation>QR код</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="567"/>
+        <location filename="../../src/mainwindow.cpp" line="569"/>
         <source>User QQ Group</source>
         <translation>Пользовательская группа QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="570"/>
         <source>Qt QQ Group</source>
         <translation>Qt группа QQ</translation>
     </message>
@@ -2713,38 +2734,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Пожалуйста, перезапустите приложение вручную.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="621"/>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
+        <location filename="../../src/mainwindow.cpp" line="623"/>
+        <location filename="../../src/mainwindow.cpp" line="636"/>
         <source>Json Files (*.json)</source>
         <translation>Файлы Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="663"/>
+        <location filename="../../src/mainwindow.cpp" line="665"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="669"/>
+        <location filename="../../src/mainwindow.cpp" line="671"/>
         <source>Commit hash</source>
         <translation>Хеш коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="673"/>
         <source>Commit time</source>
         <translation>Время коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="672"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Build Date</source>
         <translation>Дата сборки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Copyright</source>
         <translation>Авторские права</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="676"/>
         <source>All rights reserved.</source>
         <translation>Все права защищены.</translation>
     </message>
@@ -3841,7 +3862,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="327"/>
-        <location filename="../../src/page/page.cpp" line="795"/>
+        <location filename="../../src/page/page.cpp" line="801"/>
         <source>Error: No device is opened.</source>
         <translation>Ошибка: Устройство не открыто.</translation>
     </message>
@@ -3876,7 +3897,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Показать панели скриптов</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="823"/>
+        <location filename="../../src/page/page.cpp" line="829"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4141,7 +4162,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/utilities/crc.cpp" line="92"/>
+        <location filename="../../src/utilities/crc.cpp" line="91"/>
+        <location filename="../../src/utilities/crc.cpp" line="150"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="84"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
@@ -4184,23 +4206,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xtools.cpp" line="365"/>
         <location filename="../../src/common/xtools.cpp" line="427"/>
-        <location filename="../../src/common/xtools.cpp" line="742"/>
-        <location filename="../../src/common/xtools.cpp" line="760"/>
+        <location filename="../../src/common/xtools.cpp" line="752"/>
+        <location filename="../../src/common/xtools.cpp" line="770"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Нет</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="468"/>
-        <location filename="../../src/common/xtools.cpp" line="911"/>
-        <location filename="../../src/common/xtools.cpp" line="913"/>
+        <location filename="../../src/common/xtools.cpp" line="921"/>
+        <location filename="../../src/common/xtools.cpp" line="923"/>
         <source>Text</source>
         <translation>Текст</translation>
     </message>
     <message>
         <location filename="../../src/common/xtools.cpp" line="470"/>
-        <location filename="../../src/common/xtools.cpp" line="907"/>
-        <location filename="../../src/common/xtools.cpp" line="909"/>
+        <location filename="../../src/common/xtools.cpp" line="917"/>
+        <location filename="../../src/common/xtools.cpp" line="919"/>
         <source>Binary</source>
         <translation>Двоичный</translation>
     </message>
@@ -4230,66 +4252,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Ввод не содержит ссылку</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="743"/>
+        <location filename="../../src/common/xtools.cpp" line="753"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Четный</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="744"/>
+        <location filename="../../src/common/xtools.cpp" line="754"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Нечетный</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="745"/>
+        <location filename="../../src/common/xtools.cpp" line="755"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Пробел</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="746"/>
+        <location filename="../../src/common/xtools.cpp" line="756"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="762"/>
+        <location filename="../../src/common/xtools.cpp" line="772"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="763"/>
+        <location filename="../../src/common/xtools.cpp" line="773"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="765"/>
+        <location filename="../../src/common/xtools.cpp" line="775"/>
         <source>Hardware</source>
         <translation>Аппаратное</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="766"/>
+        <location filename="../../src/common/xtools.cpp" line="776"/>
         <source>Software</source>
         <translation>Программное</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="872"/>
+        <location filename="../../src/common/xtools.cpp" line="882"/>
         <source>Disabled</source>
         <translation>Отключено</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="874"/>
+        <location filename="../../src/common/xtools.cpp" line="884"/>
         <source>Bidirectional</source>
         <translation>Двунаправленный</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="876"/>
+        <location filename="../../src/common/xtools.cpp" line="886"/>
         <source>Unidirectional</source>
         <translation>Однонаправленный</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="56"/>
+        <location filename="../../src/main.cpp" line="57"/>
         <source>Application is booting...</source>
         <translation>Приложение загружается...</translation>
     </message>
@@ -5917,17 +5939,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPPayloadModel</name>
     <message>
-        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="152"/>
+        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="163"/>
         <source>Description</source>
         <translation type="unfinished">Описание</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="154"/>
+        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="165"/>
         <source>Format</source>
         <translation type="unfinished">Формат</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="156"/>
+        <location filename="../../src/x/coap/coappayloadmodel.cpp" line="167"/>
         <source>Data</source>
         <translation type="unfinished">Данные</translation>
     </message>

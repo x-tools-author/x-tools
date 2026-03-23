@@ -761,9 +761,15 @@ void Page::writeBytes()
 
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QByteArray prefix = xCookedAffixes(parameters.prefix);
+    if (parameters.usingCustomPrefix) {
+        prefix = parameters.customPrefix;
+    }
     QByteArray payload = this->payload();
     QByteArray crc = this->crc(payload);
     QByteArray suffix = xCookedAffixes(parameters.suffix);
+    if (parameters.usingCustomSuffix) {
+        suffix = parameters.customSuffix;
+    }
 
     QByteArray bytes;
     if (parameters.appendCrc) {

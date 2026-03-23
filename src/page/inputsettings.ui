@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>273</width>
-    <height>293</height>
+    <width>285</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,8 +23,11 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_2">
+     <item row="8" column="1">
+      <widget class="QComboBox" name="comboBoxEscapeCharacter"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_3">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -32,7 +35,27 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Append suffix</string>
+        <string>Escape character</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLineEdit" name="lineEditPrefix">
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string>Hex format, such as: 0D 0A</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBoxPrefix">
+       <property name="text">
+        <string>Custom prefix</string>
        </property>
       </widget>
      </item>
@@ -49,11 +72,8 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="comboBoxSuffix"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_3">
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -61,22 +81,12 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Escape character</string>
+        <string>Append suffix</string>
        </property>
       </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QComboBox" name="comboBoxEscapeCharacter"/>
      </item>
      <item row="2" column="1">
       <widget class="QComboBox" name="comboBoxPrefix"/>
-     </item>
-     <item row="0" column="0" colspan="2">
-      <widget class="Line" name="line_2">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-      </widget>
      </item>
      <item row="1" column="0" colspan="2">
       <widget class="QLabel" name="label_7">
@@ -87,6 +97,36 @@
        </property>
        <property name="text">
         <string>Data Preprocessing</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBoxSuffix"/>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBoxSuffix">
+       <property name="text">
+        <string>Custom suffix</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="2">
+      <widget class="QLineEdit" name="lineEditSuffix">
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="placeholderText">
+        <string>Hex format, such as: 0D 0A</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
