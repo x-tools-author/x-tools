@@ -67,6 +67,10 @@ void DeviceSettings::saveData(const QByteArray &data, bool isRx)
 {
     SaveThread::SaveParameters params;
     params.saveToFile = ui->checkBoxSaveToFile->isChecked();
+    if (!params.saveToFile) {
+        return;
+    }
+
     params.fileName = m_fileName;
     params.saveRx = ui->checkBoxSaveRx->isChecked();
     params.saveTx = ui->checkBoxSaveTx->isChecked();
