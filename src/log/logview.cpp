@@ -35,43 +35,9 @@ public:
     LogViewPrivate(LogView* q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {
-        ui = new Ui::LogView();
-        ui->setupUi(q);
-        ui->toolButtonScrolling->setIcon(xIcon(":/res/icons/wrap_text.svg"));
-        ui->toolButtonScrolling->setCheckable(true);
-        ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
-        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-        ui->tableView->horizontalHeader()->setStretchLastSection(true);
-        ui->tableView->setAlternatingRowColors(true);
-
-        // Log level
-        ui->comboBoxLevel->addItem(tr("Debug"), QtMsgType::QtDebugMsg);
-        ui->comboBoxLevel->addItem(tr("Info"), QtMsgType::QtInfoMsg);
-        ui->comboBoxLevel->addItem(tr("Warning"), QtMsgType::QtWarningMsg);
-        ui->comboBoxLevel->addItem(tr("Critical"), QtMsgType::QtCriticalMsg);
-
-        // Log modules
-        ui->comboBoxCategory->addItem(tr("All categories"), QString("default"));
-        connect(ui->comboBoxLevel, xComboBoxActivated, q, [this]() { onLogLevelChanged(); });
-        connect(ui->comboBoxCategory, xComboBoxActivated, q, [this]() { onLogCategoryChanged(); });
-        connect(ui->lineEditFilter, &QLineEdit::textChanged, q, [this]() { onFilterTextChanged(); });
-        connect(ui->toolButtonClear, &QToolButton::clicked, q, [this]() { onClearLogs(); });
-    }
+    {}
     ~LogViewPrivate() override { delete ui; }
 
-public:
-    Ui::LogView* ui{nullptr};
-
-private:
-    LogView* q{nullptr};
-
-private:
-    LogFilter* filter()
-    {
-        QAbstractItemModel* model = ui->tableView->model();
-        return qobject_cast<LogFilter*>(model);
-    }
     void onLogLevelChanged()
     {
         LogFilter* f = filter();
@@ -119,12 +85,48 @@ private:
             }
         }
     }
+
+public:
+    Ui::LogView* ui{nullptr};
+
+private:
+    LogView* q{nullptr};
+
+private:
+    LogFilter* filter()
+    {
+        QAbstractItemModel* model = ui->tableView->model();
+        return qobject_cast<LogFilter*>(model);
+    }
 };
 
 LogView::LogView(QWidget* parent)
     : QWidget(parent)
 {
     d = new LogViewPrivate(this);
+    d->ui = new Ui::LogView();
+    d->ui->setupUi(this);
+    d->ui->toolButtonScrolling->setIcon(xIcon(":/res/icons/wrap_text.svg"));
+    d->ui->toolButtonScrolling->setCheckable(true);
+    d->ui->toolButtonClear->setIcon(xIcon(":/res/icons/mop.svg"));
+    d->ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    d->ui->tableView->horizontalHeader()->setStretchLastSection(true);
+    d->ui->tableView->setAlternatingRowColors(true);
+
+    // Log level
+    d->ui->comboBoxLevel->addItem(tr("Debug"), QtMsgType::QtDebugMsg);
+    d->ui->comboBoxLevel->addItem(tr("Info"), QtMsgType::QtInfoMsg);
+    d->ui->comboBoxLevel->addItem(tr("Warning"), QtMsgType::QtWarningMsg);
+    d->ui->comboBoxLevel->addItem(tr("Critical"), QtMsgType::QtCriticalMsg);
+
+    // Log modules
+    d->ui->comboBoxCategory->addItem(tr("All categories"), QString("default"));
+    // clang-format off
+    connect(d->ui->comboBoxLevel, xComboBoxActivated, this, [=]() { d->onLogLevelChanged(); });
+    connect(d->ui->comboBoxCategory, xComboBoxActivated, this, [=]() { d->onLogCategoryChanged(); });
+    connect(d->ui->lineEditFilter, &QLineEdit::textChanged, this, [=]() { d->onFilterTextChanged(); });
+    connect(d->ui->toolButtonClear, &QToolButton::clicked, this, [=]() { d->onClearLogs(); });
+    // clang-format on
 }
 
 LogView::~LogView() {}

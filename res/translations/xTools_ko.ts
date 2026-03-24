@@ -6630,39 +6630,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xLog::LogViewPrivate</name>
+    <name>xLog::LogView</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="49"/>
+        <location filename="../../src/log/logview.cpp" line="117"/>
         <source>Debug</source>
         <translation type="unfinished">디버그</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="50"/>
+        <location filename="../../src/log/logview.cpp" line="118"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="51"/>
+        <location filename="../../src/log/logview.cpp" line="119"/>
         <source>Warning</source>
         <translation type="unfinished">경고</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="52"/>
+        <location filename="../../src/log/logview.cpp" line="120"/>
         <source>Critical</source>
         <translation type="unfinished">비판적인</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="55"/>
+        <location filename="../../src/log/logview.cpp" line="123"/>
         <source>All categories</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="105"/>
+        <source>Debug</source>
+        <translation type="obsolete">디버그</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="obsolete">경고</translation>
+    </message>
+    <message>
+        <source>Critical</source>
+        <translation type="obsolete">비판적인</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="71"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="106"/>
+        <location filename="../../src/log/logview.cpp" line="72"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>
