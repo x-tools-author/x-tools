@@ -1,0 +1,16 @@
+[
+  {
+    "name": "GCC-4.9.2-i686-w64-mingw32",
+    "compilers": {
+      "C": "${workspaceFolder}/tools/Qt5.6.3/Tools/mingw492_32/bin/gcc.exe",
+      "CXX": "${workspaceFolder}/tools/Qt5.6.3/Tools/mingw492_32/bin/g++.exe"
+    },
+    "isTrusted": true,
+    "environmentVariables": {
+      "CMT_MINGW_PATH": "${workspaceFolder}/tools/Qt5.6.3/Tools/mingw492_32/bin"
+    },
+    "preferredGenerator": {
+      "name": "MinGW Makefiles"
+    }
+  }
+]
