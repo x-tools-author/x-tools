@@ -48,6 +48,8 @@ DataView::DataView(QWidget *parent)
 
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &DataView::onClearBtnClicked);
     connect(m_model, &DataModel::rowsInserted, this, &DataView::onRowInserted);
+    ui->toolButtonPanel->setVisible(false);
+    ui->stackedWidget->setVisible(false);
 }
 
 DataView::~DataView()
@@ -72,6 +74,28 @@ void DataView::load(const QJsonObject &obj)
 DataModel *DataView::model()
 {
     return m_model;
+}
+
+void DataView::addPanel(const QString &name, const QIcon &icon, QWidget *widget)
+{
+    if (widget == nullptr) {
+        return;
+    }
+
+    ui->stackedWidget->addWidget(widget);
+    QToolButton *btn = new QToolButton(this);
+    btn->setCheckable(true);
+    ui->horizontalLayoutTab->addWidget(btn);
+    btn->setText(name);
+    btn->setIcon(icon);
+    btn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    connect(btn, &QToolButton::clicked, [this, btn, widget] {
+        if (btn->isChecked()) {
+            ui->stackedWidget->setCurrentWidget(widget);
+        } else {
+            ui->stackedWidget->setCurrentWidget(nullptr);
+        }
+    });
 }
 
 void DataView::onClearBtnClicked()

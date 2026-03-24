@@ -31,6 +31,9 @@ public:
 
     DataModel *model();
 
+public:
+    void addPanel(const QString &name, const QIcon &icon, QWidget *widget);
+
 private:
     Ui::DataView *ui{nullptr};
     DataModel *m_model{nullptr};
