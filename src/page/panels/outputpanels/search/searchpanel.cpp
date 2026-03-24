@@ -4,6 +4,7 @@
 #include "searchpanel.h"
 #include "ui_searchpanel.h"
 
+#include <QDebug>
 #include <QScrollBar>
 
 SearchPanel::SearchPanel(QWidget *parent)
