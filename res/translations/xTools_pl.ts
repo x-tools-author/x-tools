@@ -6648,34 +6648,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogView</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="117"/>
-        <source>Debug</source>
-        <translation type="unfinished">Odpluskwić</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="118"/>
-        <source>Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="119"/>
-        <source>Warning</source>
-        <translation type="unfinished">Ostrzeżenie</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="120"/>
-        <source>Critical</source>
-        <translation type="unfinished">Krytyczny</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="123"/>
-        <source>All categories</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>xLog::LogViewPrivate</name>
-    <message>
         <source>Debug</source>
         <translation type="obsolete">Odpluskwić</translation>
     </message>
@@ -6687,13 +6659,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Critical</source>
         <translation type="obsolete">Krytyczny</translation>
     </message>
+</context>
+<context>
+    <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="71"/>
+        <location filename="../../src/log/logview_p.h" line="41"/>
+        <source>Debug</source>
+        <translation type="unfinished">Odpluskwić</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="42"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="43"/>
+        <source>Warning</source>
+        <translation type="unfinished">Ostrzeżenie</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="44"/>
+        <source>Critical</source>
+        <translation type="unfinished">Krytyczny</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="48"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="101"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="72"/>
+        <location filename="../../src/log/logview_p.h" line="102"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>

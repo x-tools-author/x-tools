@@ -6688,34 +6688,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogView</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="117"/>
-        <source>Debug</source>
-        <translation>调试</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="118"/>
-        <source>Info</source>
-        <translation>信息</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="119"/>
-        <source>Warning</source>
-        <translation>警告</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="120"/>
-        <source>Critical</source>
-        <translation>严重</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview.cpp" line="123"/>
-        <source>All categories</source>
-        <translation>全部</translation>
-    </message>
-</context>
-<context>
-    <name>xLog::LogViewPrivate</name>
-    <message>
         <source>Debug</source>
         <translation type="vanished">调试</translation>
     </message>
@@ -6733,15 +6705,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>All categories</source>
-        <translation type="vanished">全部类别</translation>
+        <translation type="vanished">全部</translation>
+    </message>
+</context>
+<context>
+    <name>xLog::LogViewPrivate</name>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="41"/>
+        <source>Debug</source>
+        <translation>调试</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="71"/>
+        <location filename="../../src/log/logview_p.h" line="42"/>
+        <source>Info</source>
+        <translation>信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="43"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="44"/>
+        <source>Critical</source>
+        <translation>严重</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="48"/>
+        <source>All categories</source>
+        <translation>全部</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview_p.h" line="101"/>
         <source>Clear log messages</source>
         <translation>清除日志消息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="72"/>
+        <location filename="../../src/log/logview_p.h" line="102"/>
         <source>Are you sure to clear all log messages?</source>
         <translation>您确定要清除所有日志消息吗？</translation>
     </message>
