@@ -32,7 +32,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <widget class="QWidget" name="widgetLeft" native="true">
       <layout class="QGridLayout" name="gridLayout">
@@ -137,7 +137,7 @@
             </sizepolicy>
            </property>
            <property name="sizeAdjustPolicy">
-            <enum>QComboBox::AdjustToContents</enum>
+            <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
            </property>
           </widget>
          </item>
@@ -213,6 +213,9 @@
          </item>
          <item>
           <widget class="QToolButton" name="toolButtonSend">
+           <property name="toolTip">
+            <string>Send data</string>
+           </property>
            <property name="text">
             <string notr="true"/>
            </property>
