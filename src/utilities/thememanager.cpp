@@ -58,11 +58,11 @@ public:
         }
 
         actionGroup = new QActionGroup(q);
-        colorSchemeMenu = new QMenu(tr("Color Scheme"));
+        colorSchemeMenu = new QMenu(QObject::tr("Color Scheme"));
         QMap<Qt::ColorScheme, QString> colorSchemeMap;
-        colorSchemeMap.insert(Qt::ColorScheme::Dark, tr("Dark"));
-        colorSchemeMap.insert(Qt::ColorScheme::Light, tr("Light"));
-        colorSchemeMap.insert(Qt::ColorScheme::Unknown, tr("System"));
+        colorSchemeMap.insert(Qt::ColorScheme::Dark, QObject::tr("Dark"));
+        colorSchemeMap.insert(Qt::ColorScheme::Light, QObject::tr("Light"));
+        colorSchemeMap.insert(Qt::ColorScheme::Unknown, QObject::tr("System"));
 
         for (auto it = colorSchemeMap.begin(); it != colorSchemeMap.end(); ++it) {
             auto action = new QAction(it.value(), q);

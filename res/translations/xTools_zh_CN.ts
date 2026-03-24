@@ -4288,11 +4288,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
+        <location filename="../../src/log/logview.cpp" line="41"/>
+        <source>Debug</source>
+        <translation>调试</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="42"/>
+        <source>Info</source>
+        <translation>信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="43"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
         <source>Warning</source>
         <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="44"/>
+        <source>Critical</source>
+        <translation>严重</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="48"/>
+        <source>All categories</source>
+        <translation>全部</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="101"/>
+        <source>Clear log messages</source>
+        <translation>清除日志消息</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="102"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation>您确定要清除所有日志消息吗？</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
@@ -4506,19 +4537,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>单向</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="61"/>
         <source>Color Scheme</source>
-        <translation type="vanished">主题颜色</translation>
+        <translation>主题颜色</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="63"/>
         <source>Dark</source>
-        <translation type="vanished">暗黑主题</translation>
+        <translation>暗黑主题</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="64"/>
         <source>Light</source>
-        <translation type="vanished">明亮主题</translation>
+        <translation>明亮主题</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager.cpp" line="37"/>
+        <location filename="../../src/utilities/thememanager.cpp" line="65"/>
         <source>System</source>
         <translation>跟随系统</translation>
     </message>
@@ -4674,6 +4709,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/coap/coappayloadview.cpp" line="142"/>
         <source>Are you sure to clear all payloads?</source>
         <translation>您确定要清空所有负载吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
+        <source>Select CoAP Server Cache Directory</source>
+        <translation>选择 CoAP 服务器缓存目录</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
+        <source>Export CoAP Configuration</source>
+        <translation>导出 CoAP 配置</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
+        <source>Import CoAP Configuration</source>
+        <translation>导入 CoAP 配置</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
+        <source>Global Settings</source>
+        <translation>全局设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
+        <source>Open Server Cache Path</source>
+        <translation>打开服务器缓存目录</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
+        <source>Show/Hide Client View</source>
+        <translation>隐藏/显示客户端面板</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
+        <source>Show/Hide Server View</source>
+        <translation>隐藏/显示服务器面板</translation>
     </message>
 </context>
 <context>
@@ -6021,9 +6091,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPGlobalPrivate</name>
     <message>
-        <location filename="../../src/x/coap/coapglobal_p.h" line="74"/>
         <source>Select CoAP Server Cache Directory</source>
-        <translation>选择 CoAP 服务器缓存目录</translation>
+        <translation type="vanished">选择 CoAP 服务器缓存目录</translation>
     </message>
 </context>
 <context>
@@ -6172,74 +6241,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="56"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
         <source>Client</source>
         <comment>xCoAP</comment>
         <translation>客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="57"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
         <translation>负载</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="58"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
         <source>Server</source>
         <comment>xCoAP</comment>
         <translation>服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="59"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
         <translation>资源</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
         <translation>导出 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="103"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="131"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation>JSON 文件 (*.json);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="115"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
         <translation>导出 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="116"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
         <translation>无法打开文件 %1 进行写入。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="129"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
         <translation>导入 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="142"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="153"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="160"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
         <translation>导入 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="143"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
         <translation>无法打开文件 %1 进行读取。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="154"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation>无法解析 JSON 文件 %1：%2</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation>文件 %1 的内容不是有效的 JSON 对象。</translation>
     </message>
@@ -6247,24 +6316,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAPPrivate</name>
     <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="46"/>
         <source>Export CoAP Configuration</source>
-        <translation>导出 CoAP 配置</translation>
+        <translation type="vanished">导出 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="48"/>
         <source>Import CoAP Configuration</source>
-        <translation>导入 CoAP 配置</translation>
+        <translation type="vanished">导入 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="51"/>
         <source>Global Settings</source>
-        <translation>全局设置</translation>
+        <translation type="vanished">全局设置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="56"/>
         <source>Open Server Cache Directory</source>
-        <translation>打开服务器缓存目录</translation>
+        <translation type="vanished">打开服务器缓存目录</translation>
     </message>
     <message>
         <source>Client</source>
@@ -6711,39 +6776,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview_p.h" line="43"/>
         <source>Debug</source>
-        <translation>调试</translation>
+        <translation type="vanished">调试</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="44"/>
         <source>Info</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="45"/>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="46"/>
         <source>Critical</source>
-        <translation>严重</translation>
+        <translation type="vanished">严重</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="50"/>
         <source>All categories</source>
-        <translation>全部</translation>
+        <translation type="vanished">全部</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="103"/>
         <source>Clear log messages</source>
-        <translation>清除日志消息</translation>
+        <translation type="vanished">清除日志消息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="104"/>
         <source>Are you sure to clear all log messages?</source>
-        <translation>您确定要清除所有日志消息吗？</translation>
+        <translation type="vanished">您确定要清除所有日志消息吗？</translation>
     </message>
 </context>
 <context>
@@ -7146,26 +7204,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xTools::ThemeManager</name>
+    <message>
+        <source>System</source>
+        <translation type="vanished">跟随系统</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="vanished">明亮主题</translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation type="vanished">暗黑主题</translation>
+    </message>
+</context>
+<context>
     <name>xTools::ThemeManagerPrivate</name>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="61"/>
         <source>Color Scheme</source>
-        <translation>主题颜色</translation>
+        <translation type="vanished">主题颜色</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="63"/>
         <source>Dark</source>
-        <translation>暗黑主题</translation>
+        <translation type="vanished">暗黑主题</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="64"/>
         <source>Light</source>
-        <translation>明亮主题</translation>
+        <translation type="vanished">明亮主题</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="65"/>
         <source>System</source>
-        <translation>跟随系统</translation>
+        <translation type="vanished">跟随系统</translation>
     </message>
 </context>
 <context>

@@ -4413,19 +4413,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>يتم تشغيل التطبيق...</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="61"/>
         <source>Color Scheme</source>
-        <translation type="vanished">نظام الألوان</translation>
+        <translation>نظام الألوان</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="63"/>
         <source>Dark</source>
-        <translation type="vanished">مظلم</translation>
+        <translation>مظلم</translation>
     </message>
     <message>
+        <location filename="../../src/utilities/thememanager.cpp" line="64"/>
         <source>Light</source>
-        <translation type="vanished">ضوء</translation>
+        <translation>ضوء</translation>
     </message>
     <message>
         <location filename="../../src/utilities/hdpimanager.cpp" line="37"/>
+        <location filename="../../src/utilities/thememanager.cpp" line="65"/>
         <source>System</source>
         <translation>نظام</translation>
     </message>
@@ -4455,11 +4459,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>لا تقرب</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="41"/>
+        <source>Debug</source>
+        <translation type="unfinished">تصحيح</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="42"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="43"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
         <source>Warning</source>
         <translation>تحذير</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="44"/>
+        <source>Critical</source>
+        <translation type="unfinished">شديد الأهمية</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="48"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="101"/>
+        <source>Clear log messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="102"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
@@ -4644,6 +4679,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="142"/>
         <source>Are you sure to clear all payloads?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
+        <source>Select CoAP Server Cache Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
+        <source>Export CoAP Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
+        <source>Import CoAP Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
+        <source>Global Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
+        <source>Open Server Cache Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
+        <source>Show/Hide Client View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
+        <source>Show/Hide Server View</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5990,14 +6060,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
-    <name>xCoAP::CoAPGlobalPrivate</name>
-    <message>
-        <location filename="../../src/x/coap/coapglobal_p.h" line="74"/>
-        <source>Select CoAP Server Cache Directory</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>xCoAP::CoAPMsgModel</name>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
@@ -6143,100 +6205,80 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="56"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
         <source>Client</source>
         <comment>xCoAP</comment>
         <translation type="unfinished">عميل</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="57"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="58"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
         <source>Server</source>
         <comment>xCoAP</comment>
         <translation type="unfinished">الخادم</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="59"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="103"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="131"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="115"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="116"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="129"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="142"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="153"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="160"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="143"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="154"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>xCoAP::xCoAPPrivate</name>
-    <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="46"/>
-        <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="48"/>
-        <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="51"/>
-        <source>Global Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/x/coap/xcoap_p.h" line="56"/>
-        <source>Open Server Cache Directory</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Client</source>
         <comment>xCoAP</comment>
@@ -6656,39 +6698,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview_p.h" line="43"/>
         <source>Debug</source>
-        <translation type="unfinished">تصحيح</translation>
+        <translation type="obsolete">تصحيح</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="44"/>
-        <source>Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview_p.h" line="45"/>
         <source>Warning</source>
-        <translation type="unfinished">تحذير</translation>
+        <translation type="obsolete">تحذير</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="46"/>
         <source>Critical</source>
-        <translation type="unfinished">شديد الأهمية</translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview_p.h" line="50"/>
-        <source>All categories</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview_p.h" line="103"/>
-        <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/log/logview_p.h" line="104"/>
-        <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">شديد الأهمية</translation>
     </message>
 </context>
 <context>
@@ -7091,26 +7110,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xTools::ThemeManager</name>
+    <message>
+        <source>System</source>
+        <translation type="obsolete">نظام</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="obsolete">ضوء</translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation type="obsolete">مظلم</translation>
+    </message>
+</context>
+<context>
     <name>xTools::ThemeManagerPrivate</name>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="61"/>
         <source>Color Scheme</source>
-        <translation type="unfinished">نظام الألوان</translation>
+        <translation type="obsolete">نظام الألوان</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="63"/>
         <source>Dark</source>
-        <translation type="unfinished">مظلم</translation>
+        <translation type="obsolete">مظلم</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="64"/>
         <source>Light</source>
-        <translation type="unfinished">ضوء</translation>
+        <translation type="obsolete">ضوء</translation>
     </message>
     <message>
-        <location filename="../../src/utilities/thememanager.cpp" line="65"/>
         <source>System</source>
-        <translation type="unfinished">نظام</translation>
+        <translation type="obsolete">نظام</translation>
     </message>
 </context>
 <context>
