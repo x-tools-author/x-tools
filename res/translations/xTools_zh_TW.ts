@@ -1669,6 +1669,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>自動滾動到底部</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="79"/>
+        <source>Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -2605,16 +2610,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
+        <location filename="../../src/log/logview.ui" line="14"/>
+        <source>Log view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="obsolete">日誌級別</translation>
+        <translation type="unfinished">日誌級別</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="obsolete">篩選</translation>
+        <translation type="unfinished">篩選</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="obsolete">清除日誌</translation>
+        <translation type="unfinished">清除日誌</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="81"/>
+        <source>Log category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="88"/>
+        <source>Scroll to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="98"/>
+        <source>Log filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="111"/>
+        <source>Disable log</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4882,34 +4915,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished">我敢讓你滾動</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="162"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="163"/>
         <source>Could not find any matches.</source>
         <translation>找不到任何匹配項。</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="168"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="169"/>
         <source>Found %1 matches.</source>
         <translation>找到 %1 個匹配項。</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="127"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="207"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="128"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="208"/>
         <source>Line %1:</source>
         <translation>第 %1 行：</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="135"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="140"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="243"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="261"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="244"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="262"/>
         <source>Search results:</source>
         <translation>搜索結果：</translation>
     </message>
@@ -5649,7 +5682,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>碼率切換</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="226"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="217"/>
+        <source>Send data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
         <source>Input format</source>
         <translation>輸入格式</translation>
     </message>
@@ -5684,12 +5722,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>幀ID</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="293"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Nominal bitrate</source>
         <translation>標稱比特率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
         <source>Timed sending</source>
         <translation>定時發送</translation>
     </message>
@@ -5704,12 +5742,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>擴展格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="368"/>
         <source>Data View</source>
         <translation>數據視圖</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="306"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
         <source>Data bitrate</source>
         <translation>數據比特率</translation>
     </message>
@@ -5719,17 +5757,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>靈活的數據速率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="251"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
         <source>Error filter</source>
         <translation>錯誤過濾器</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="283"/>
         <source>Loopback</source>
         <translation>環回</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="267"/>
         <source>Receive own</source>
         <translation>收到自己的</translation>
     </message>
@@ -5788,12 +5826,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Question</source>
         <translation>問題</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Are you sure to clear all data?</source>
         <translation>您確定清除所有數據嗎？</translation>
     </message>
@@ -5801,114 +5839,114 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
         <source>No error has occurred</source>
         <translation>沒有發生錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
         <source>The transmission has timed out</source>
         <translation>傳輸超時</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
         <translation>由於總線仲裁失敗，無法發送幀</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>The controller encountered an error</source>
         <translation>控制器遇到錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>A protocol violation has occurred</source>
         <translation>發生了協議違規</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>A transceiver error occurred</source>
         <translation>發生收發器錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>The transmission received no acknowledgment</source>
         <translation>傳輸未收到確認</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>The CAN bus is offline</source>
         <translation>CAN總線離線</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>A CAN bus error occurred</source>
         <translation>發生 CAN 總線錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>The controller restarted</source>
         <translation>控制器重新啟動</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>An unknown error has occurred</source>
         <translation>發生未知錯誤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
         <source>Matches every other error type</source>
         <translation>匹配所有其他錯誤類型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
         <source>The CAN bus device is not connected.</source>
         <translation>CAN 總線設備未連接。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
         <source>Invalid frame ID.</source>
         <translation>幀 ID 無效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Payload is empty.</source>
         <translation>有效負載為空。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="365"/>
         <source>unspecified</source>
         <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Data Frame</source>
         <translation>數據框</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Remote Request Frame</source>
         <translation>遠程請求幀</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="402"/>
         <source>Error Frame</source>
         <translation>錯誤幀</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="411"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="412"/>
         <source>Disabled</source>
         <translation>殘疾人</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="447"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="448"/>
         <source>Unspecified</source>
         <translation>未指定</translation>
     </message>
@@ -6541,47 +6579,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="obsolete">偵錯</translation>
+        <translation type="unfinished">偵錯</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="obsolete">警告</translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="obsolete">批判的</translation>
+        <translation type="unfinished">批判的</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="obsolete">致命的</translation>
+        <translation type="unfinished">致命的</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="obsolete">未知</translation>
+        <translation type="unfinished">未知</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <source>Timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="obsolete">等級</translation>
+        <translation type="unfinished">等級</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <source>Module</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="obsolete">訊息</translation>
+        <translation type="unfinished">訊息</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
+        <location filename="../../src/log/logview.cpp" line="49"/>
         <source>Debug</source>
-        <translation type="obsolete">偵錯</translation>
+        <translation type="unfinished">偵錯</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="50"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="51"/>
         <source>Warning</source>
-        <translation type="obsolete">警告</translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="52"/>
         <source>Critical</source>
-        <translation type="obsolete">批判的</translation>
+        <translation type="unfinished">批判的</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="55"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="105"/>
+        <source>Clear log messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="106"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

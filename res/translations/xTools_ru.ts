@@ -1669,6 +1669,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>Автоматическая прокрутка вниз</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="79"/>
+        <source>Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -2605,16 +2610,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
+        <location filename="../../src/log/logview.ui" line="14"/>
+        <source>Log view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="obsolete">Уровень журнала</translation>
+        <translation type="unfinished">Уровень журнала</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="obsolete">Фильтр</translation>
+        <translation type="unfinished">Фильтр</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="obsolete">Очистить журнал</translation>
+        <translation type="unfinished">Очистить журнал</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="81"/>
+        <source>Log category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="88"/>
+        <source>Scroll to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="98"/>
+        <source>Log filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="111"/>
+        <source>Disable log</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4882,34 +4915,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished">Я смею тебя прокрутить</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="162"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="163"/>
         <source>Could not find any matches.</source>
         <translation>Не удалось найти совпадения.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="168"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="169"/>
         <source>Found %1 matches.</source>
         <translation>Найдено %1 совпадений.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="127"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="207"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="128"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="208"/>
         <source>Line %1:</source>
         <translation>Строка %1:</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="135"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="140"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="243"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="261"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="244"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="262"/>
         <source>Search results:</source>
         <translation>Результаты поиска:</translation>
     </message>
@@ -5649,7 +5682,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Переключатель битрейта</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="226"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="217"/>
+        <source>Send data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
         <source>Input format</source>
         <translation>Формат ввода</translation>
     </message>
@@ -5684,12 +5722,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Идентификатор кадра</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="293"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Nominal bitrate</source>
         <translation>Номинальный битрейт</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
         <source>Timed sending</source>
         <translation>Отправка по времени</translation>
     </message>
@@ -5704,12 +5742,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Расширенный формат</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="368"/>
         <source>Data View</source>
         <translation>Просмотр данных</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="306"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
         <source>Data bitrate</source>
         <translation>Битрейт данных</translation>
     </message>
@@ -5719,17 +5757,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Гибкая скорость передачи данных</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="251"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
         <source>Error filter</source>
         <translation>Фильтр ошибок</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="283"/>
         <source>Loopback</source>
         <translation>петлевая проверка</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="267"/>
         <source>Receive own</source>
         <translation>Получить собственный</translation>
     </message>
@@ -5788,12 +5826,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Question</source>
         <translation>Вопрос</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Are you sure to clear all data?</source>
         <translation>Вы уверены, что удалите все данные?</translation>
     </message>
@@ -5801,114 +5839,114 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
         <source>No error has occurred</source>
         <translation>Никакой ошибки не произошло</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
         <source>The transmission has timed out</source>
         <translation>Время передачи истекло</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
         <translation>Кадр не удалось отправить из-за потери арбитража на шине.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>The controller encountered an error</source>
         <translation>Контроллер обнаружил ошибку</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>A protocol violation has occurred</source>
         <translation>Произошло нарушение протокола</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>A transceiver error occurred</source>
         <translation>Произошла ошибка трансивера</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>The transmission received no acknowledgment</source>
         <translation>Передача не получила подтверждения</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>The CAN bus is offline</source>
         <translation>CAN-шина отключена</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>A CAN bus error occurred</source>
         <translation>Произошла ошибка шины CAN</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>The controller restarted</source>
         <translation>Контроллер перезапустился</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>An unknown error has occurred</source>
         <translation>Произошла неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
         <source>Matches every other error type</source>
         <translation>Соответствует всем остальным типам ошибок</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
         <source>The CAN bus device is not connected.</source>
         <translation>Устройство шины CAN не подключено.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
         <source>Invalid frame ID.</source>
         <translation>Неверный идентификатор кадра.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Payload is empty.</source>
         <translation>Полезная нагрузка пуста.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="365"/>
         <source>unspecified</source>
         <translation>неопределенный</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Data Frame</source>
         <translation>Кадр данных</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Remote Request Frame</source>
         <translation>Кадр удаленного запроса</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="402"/>
         <source>Error Frame</source>
         <translation>Ошибка кадра</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="411"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="412"/>
         <source>Disabled</source>
         <translation>Неполноценный</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="447"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="448"/>
         <source>Unspecified</source>
         <translation>Не указано</translation>
     </message>
@@ -6550,47 +6588,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="obsolete">Отлаживать</translation>
+        <translation type="unfinished">Отлаживать</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="obsolete">Предупреждение</translation>
+        <translation type="unfinished">Предупреждение</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="obsolete">Критический</translation>
+        <translation type="unfinished">Критический</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="obsolete">Фатальный</translation>
+        <translation type="unfinished">Фатальный</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="obsolete">Неизвестно</translation>
+        <translation type="unfinished">Неизвестно</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <source>Timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="obsolete">Уровень</translation>
+        <translation type="unfinished">Уровень</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <source>Module</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="obsolete">Сообщение</translation>
+        <translation type="unfinished">Сообщение</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
+        <location filename="../../src/log/logview.cpp" line="49"/>
         <source>Debug</source>
-        <translation type="obsolete">Отлаживать</translation>
+        <translation type="unfinished">Отлаживать</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="50"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="51"/>
         <source>Warning</source>
-        <translation type="obsolete">Предупреждение</translation>
+        <translation type="unfinished">Предупреждение</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="52"/>
         <source>Critical</source>
-        <translation type="obsolete">Критический</translation>
+        <translation type="unfinished">Критический</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="55"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="105"/>
+        <source>Clear log messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="106"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

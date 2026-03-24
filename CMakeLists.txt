@@ -221,12 +221,6 @@ list(APPEND X_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.rc)
 # Log
 option(X_ENABLE_LOG "Enable logging system" ON)
 if(NOT X_ENABLE_LOG)
-  file(GLOB_RECURSE LOG_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/log/*.*")
-  foreach(file IN LISTS LOG_FILES)
-    list(REMOVE_ITEM X_SOURCES ${file})
-    message(STATUS "[xTools] Remove log file: ${file}")
-  endforeach()
-
   add_compile_definitions(X_ENABLE_LOG=0)
 else()
   add_compile_definitions(X_ENABLE_LOG=1)

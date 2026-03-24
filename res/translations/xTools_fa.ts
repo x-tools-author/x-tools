@@ -1669,6 +1669,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <source>Auto scrolling to bottom</source>
         <translation>پیمایش خودکار به پایین</translation>
     </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.ui" line="79"/>
+        <source>Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DataViewUi</name>
@@ -2605,16 +2610,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
+        <location filename="../../src/log/logview.ui" line="14"/>
+        <source>Log view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="obsolete">سطح گزارش</translation>
+        <translation type="unfinished">سطح گزارش</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="obsolete">فیلتر کنید</translation>
+        <translation type="unfinished">فیلتر کنید</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="obsolete">پاک کردن گزارش</translation>
+        <translation type="unfinished">پاک کردن گزارش</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="81"/>
+        <source>Log category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="88"/>
+        <source>Scroll to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="98"/>
+        <source>Log filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.ui" line="111"/>
+        <source>Disable log</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4882,34 +4915,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished">من به شما جرات می کنم ورق بزنید</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="162"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="163"/>
         <source>Could not find any matches.</source>
         <translation>هیچ تطابقی پیدا نشد.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="168"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="169"/>
         <source>Found %1 matches.</source>
         <translation>تعداد %1 تطابق پیدا شد.</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="127"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="207"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="128"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="208"/>
         <source>Line %1:</source>
         <translation>خط %1:</translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="135"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="140"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="243"/>
-        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="261"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="244"/>
+        <location filename="../../src/page/panels/outputpanels/search/searchpanel.cpp" line="262"/>
         <source>Search results:</source>
         <translation>نتایج جستجو:</translation>
     </message>
@@ -5649,7 +5682,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>سوئیچ میزان بیت</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="226"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="217"/>
+        <source>Send data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
         <source>Input format</source>
         <translation>فرمت ورودی</translation>
     </message>
@@ -5684,12 +5722,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>شناسه قاب</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="293"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Nominal bitrate</source>
         <translation>نرخ بیت اسمی</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="337"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
         <source>Timed sending</source>
         <translation>ارسال به موقع</translation>
     </message>
@@ -5704,12 +5742,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>فرمت توسعه یافته</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="365"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="368"/>
         <source>Data View</source>
         <translation>مشاهده داده ها</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="306"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
         <source>Data bitrate</source>
         <translation>نرخ بیت داده</translation>
     </message>
@@ -5719,17 +5757,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>نرخ داده انعطاف پذیر</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="251"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
         <source>Error filter</source>
         <translation>فیلتر خطا</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="280"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="283"/>
         <source>Loopback</source>
         <translation>Loopback</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="264"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="267"/>
         <source>Receive own</source>
         <translation>خود را دریافت کنید</translation>
     </message>
@@ -5788,12 +5826,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Question</source>
         <translation>سوال</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="74"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Are you sure to clear all data?</source>
         <translation>آیا مطمئن هستید که همه داده ها را پاک می کنید؟</translation>
     </message>
@@ -5801,114 +5839,114 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="81"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
         <source>No error has occurred</source>
         <translation>هیچ خطایی رخ نداده است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
         <source>The transmission has timed out</source>
         <translation>زمان انتقال به پایان رسیده است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
         <translation>فریم به دلیل از دست دادن داوری در اتوبوس ارسال نشد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>The controller encountered an error</source>
         <translation>کنترلر با خطا مواجه شد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>A protocol violation has occurred</source>
         <translation>نقض پروتکل رخ داده است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>A transceiver error occurred</source>
         <translation>خطای فرستنده گیرنده رخ داد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>The transmission received no acknowledgment</source>
         <translation>انتقال هیچ تأییدیه ای دریافت نکرد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>The CAN bus is offline</source>
         <translation>اتوبوس CAN آفلاین است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>A CAN bus error occurred</source>
         <translation>یک خطای CAN bus رخ داد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>The controller restarted</source>
         <translation>کنترلر دوباره راه اندازی شد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>An unknown error has occurred</source>
         <translation>یک خطای ناشناخته رخ داده است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
         <source>Matches every other error type</source>
         <translation>با هر نوع خطای دیگری مطابقت دارد</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Warning</source>
         <translation>هشدار</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="287"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
         <source>The CAN bus device is not connected.</source>
         <translation>دستگاه CAN bus متصل نیست.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
         <source>Invalid frame ID.</source>
         <translation>شناسه قاب نامعتبر است.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="303"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
         <source>Payload is empty.</source>
         <translation>بار خالی است.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="364"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="365"/>
         <source>unspecified</source>
         <translation>نامشخص</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="399"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Data Frame</source>
         <translation>چارچوب داده</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Remote Request Frame</source>
         <translation>قاب درخواست از راه دور</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="402"/>
         <source>Error Frame</source>
         <translation>قاب خطا</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="411"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="412"/>
         <source>Disabled</source>
         <translation>از کار افتاده است</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="447"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="448"/>
         <source>Unspecified</source>
         <translation>نامشخص</translation>
     </message>
@@ -6550,47 +6588,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="obsolete">اشکال زدایی</translation>
+        <translation type="unfinished">اشکال زدایی</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="obsolete">هشدار</translation>
+        <translation type="unfinished">هشدار</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="obsolete">انتقادی</translation>
+        <translation type="unfinished">انتقادی</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="obsolete">کشنده</translation>
+        <translation type="unfinished">کشنده</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="obsolete">نامشخص</translation>
+        <translation type="unfinished">نامشخص</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <source>Timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="obsolete">سطح</translation>
+        <translation type="unfinished">سطح</translation>
     </message>
     <message>
+        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <source>Module</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="obsolete">پیام</translation>
+        <translation type="unfinished">پیام</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
+        <location filename="../../src/log/logview.cpp" line="49"/>
         <source>Debug</source>
-        <translation type="obsolete">اشکال زدایی</translation>
+        <translation type="unfinished">اشکال زدایی</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="50"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="51"/>
         <source>Warning</source>
-        <translation type="obsolete">هشدار</translation>
+        <translation type="unfinished">هشدار</translation>
     </message>
     <message>
+        <location filename="../../src/log/logview.cpp" line="52"/>
         <source>Critical</source>
-        <translation type="obsolete">انتقادی</translation>
+        <translation type="unfinished">انتقادی</translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="55"/>
+        <source>All categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="105"/>
+        <source>Clear log messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/log/logview.cpp" line="106"/>
+        <source>Are you sure to clear all log messages?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
