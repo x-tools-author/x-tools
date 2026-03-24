@@ -5992,7 +5992,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::CoAPGlobalPrivate</name>
     <message>
-        <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
+        <location filename="../../src/x/coap/coapglobal_p.h" line="74"/>
         <source>Select CoAP Server Cache Directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6143,74 +6143,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="56"/>
         <source>Client</source>
         <comment>xCoAP</comment>
         <translation type="unfinished">Cliente</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="57"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="58"/>
         <source>Server</source>
         <comment>xCoAP</comment>
         <translation type="unfinished">Servidor</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="165"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="59"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="207"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="101"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="209"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="237"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="103"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="131"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="115"/>
         <source>Export CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="222"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="116"/>
         <source>Failed to open file %1 for writing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="235"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="129"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="142"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="153"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="160"/>
         <source>Import CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="249"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="143"/>
         <source>Failed to open file %1 for reading.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="260"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="154"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="267"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6218,22 +6218,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAPPrivate</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
+        <location filename="../../src/x/coap/xcoap_p.h" line="46"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="66"/>
+        <location filename="../../src/x/coap/xcoap_p.h" line="48"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="69"/>
+        <location filename="../../src/x/coap/xcoap_p.h" line="51"/>
         <source>Global Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="74"/>
+        <location filename="../../src/x/coap/xcoap_p.h" line="56"/>
         <source>Open Server Cache Directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6656,37 +6656,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
-        <location filename="../../src/log/logview_p.h" line="41"/>
+        <location filename="../../src/log/logview_p.h" line="43"/>
         <source>Debug</source>
         <translation type="unfinished">Depurar</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="42"/>
+        <location filename="../../src/log/logview_p.h" line="44"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="43"/>
+        <location filename="../../src/log/logview_p.h" line="45"/>
         <source>Warning</source>
         <translation type="unfinished">Advertencia</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="44"/>
+        <location filename="../../src/log/logview_p.h" line="46"/>
         <source>Critical</source>
         <translation type="unfinished">Crítico</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="48"/>
+        <location filename="../../src/log/logview_p.h" line="50"/>
         <source>All categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="101"/>
+        <location filename="../../src/log/logview_p.h" line="103"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview_p.h" line="102"/>
+        <location filename="../../src/log/logview_p.h" line="104"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>
