@@ -16,6 +16,9 @@
 SerialPortScanner::SerialPortScanner(QObject *parent)
     : QThread{parent}
 {
+#if QT_VERSION <= QT_VERSION_CHECK(5, 7, 0)
+    qRegisterMetaType<QList<QSerialPortInfo>>("QList<QSerialPortInfo>");
+#endif
     m_isBusyDevicesIgnored.store(false);
     refresh();
 }
