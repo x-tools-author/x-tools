@@ -14,7 +14,7 @@ endmacro()
 if(QT_VERSION VERSION_GREATER_EQUAL "6.8.0")
   option(X_ENABLE_Q_HEX_EDIT "Enable using QHexEdit library" ON)
 else()
-  option(X_ENABLE_Q_HEX_EDIT "Enable QHexEdit library" OFF)
+  option(X_ENABLE_Q_HEX_EDIT "Enable using QHexEdit library" ON)
 endif()
 
 if(NOT X_ENABLE_Q_HEX_EDIT)
