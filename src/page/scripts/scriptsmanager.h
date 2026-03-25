@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -7,6 +7,8 @@
  * code directory.
  **************************************************************************************************/
 #pragma once
+
+#include "page/common/panel.h"
 
 #include <QJsonObject>
 #include <QObject>
@@ -22,17 +24,17 @@ struct ScriptsManagerParameterKeys
 };
 
 class ScriptBase;
-class ScriptsManager : public QWidget
+class ScriptsManager : public Panel
 {
     Q_OBJECT
 public:
     explicit ScriptsManager(QWidget *parent = nullptr);
     ~ScriptsManager();
 
-    void load(const QJsonObject &obj);
-    QJsonObject save();
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+    void onBytesRead(const QByteArray &data, const QString &flag) override;
 
-    void onBytesRead(const QByteArray &data);
     void aboutToClose();
 
 signals:

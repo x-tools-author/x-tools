@@ -82,23 +82,23 @@ struct ParameterKeys
     const QString outputSettings{"outputSettings"};
 
     // Input settings
-    const QString cycleInterval{"cycleInterval"};
+    const QString inputCycleInterval{"inputCycleInterval"};
     const QString inputFormat{"inputFormat"};
     const QString inputSettings{"inputSettings"};
 
-    // Tabs
-    const QString tabIndex{"tabIndex"};
-    const QString preset{"presetItems"};
-    const QString emitterItems{"emitterItems"};
-    const QString responserItems{"responserItems"};
-    const QString transfers{"transfers"};
-    const QString protocolFactory{"protocolFactory"};
-    const QString dataRecords{"dataRecords"};
-    const QString searchPanel{"searchPanel"};
-    const QString barPanel{"barPanel"};
-    const QString linePanel{"linePanel"};
-    const QString scriptsManager{"scriptsView"};
-    const QString luaView{"luaView"};
+    // Panels
+    const QString panelIndex{"panelIndex"};
+    const QString panelPreset{"panelPreset"};
+    const QString panelEmitter{"panelEmitter"};
+    const QString panelResponder{"panelResponder"};
+    const QString panelTransfers{"panelTransfers"};
+    const QString panelProtocolFactory{"panelProtocolFactory"};
+    const QString panelDataRecords{"panelDataRecords"};
+    const QString panelSearch{"panelSearch"};
+    const QString panelBar{"panelBar"};
+    const QString panelLine{"panelLine"};
+    const QString panelScripts{"panelScripts"};
+    const QString panelLua{"panelLua"};
 };
 
 class PagePrivate : public QObject
@@ -164,7 +164,7 @@ public:
     EmitterPanel *m_emitterPanel{nullptr};
     ResponderPanel *m_responderPanel{nullptr};
     TransfersPanel *m_transfersPanel{nullptr};
-    ScriptsManager *m_scriptsManager{nullptr};
+    ScriptsManager *m_scriptsPanel{nullptr};
     DataRecordsView *m_dataRecordsView{nullptr};
     SearchPanel *m_filterView{nullptr};
     BarPanel *m_barPanel{nullptr};
@@ -189,15 +189,6 @@ PagePrivate::PagePrivate(Page *q_ptr)
 
 void PagePrivate::initUi()
 {
-#if 0
-    const QIcon icon = QIcon(":/res/icons/settings.svg");
-    ui->pushButtonDeviceSettings->setIcon(icon);
-    ui->pushButtonOutputSettings->setIcon(icon);
-    ui->pushButtonInputSettings->setIcon(icon);
-#endif
-    ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
-
     initUiDeviceControl();
     initUiOutputControl();
     initUiInputControl();
@@ -851,8 +842,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->addTab(tr("Bar Charts"), d->m_barPanel);
     d->addTab(tr("Line Charts"), d->m_linePanel);
 #endif
-    d->m_scriptsManager = new ScriptsManager(this);
-    d->addTab(tr("Scripts"), d->m_scriptsManager);
+    d->m_scriptsPanel = new ScriptsManager(this);
+    d->addTab(tr("Scripts"), d->m_scriptsPanel);
 #ifdef X_ENABLE_LUA
     d->m_luaView = new LuaView(this);
     d->addTab(QString("Lua"), d->m_luaView);
@@ -867,7 +858,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->m_panels.append(d->m_barPanel);
     d->m_panels.append(d->m_linePanel);
 #endif
-    //d->m_panels.append(d->m_scriptsManager);
+    d->m_panels.append(d->m_scriptsPanel);
 #ifdef X_ENABLE_LUA
     d->m_panels.append(d->m_luaView);
 #endif
@@ -941,7 +932,7 @@ QVariantMap Page::save() const
     map.insert(keys.outputTerminalMode, d->ui->checkBoxTerminalMode->isChecked());
 
     // Input settings
-    map.insert(keys.cycleInterval, d->ui->comboBoxInputInterval->currentData());
+    map.insert(keys.inputCycleInterval, d->ui->comboBoxInputInterval->currentData());
     map.insert(keys.inputFormat, d->ui->comboBoxInputFormat->currentData());
     map.insert(keys.inputSettings, d->m_inputSettings->save());
 
@@ -953,20 +944,20 @@ QVariantMap Page::save() const
             break;
         }
     }
-    map.insert(keys.tabIndex, index);
-    map.insert(keys.preset, d->m_presetPanel->save());
-    map.insert(keys.emitterItems, d->m_emitterPanel->save());
-    map.insert(keys.responserItems, d->m_responderPanel->save());
-    map.insert(keys.transfers, d->m_transfersPanel->save());
-    map.insert(keys.dataRecords, d->m_dataRecordsView->save());
-    map.insert(keys.searchPanel, d->m_filterView->save());
-    map.insert(keys.scriptsManager, d->m_scriptsManager->save());
+    map.insert(keys.panelIndex, index);
+    map.insert(keys.panelPreset, d->m_presetPanel->save());
+    map.insert(keys.panelEmitter, d->m_emitterPanel->save());
+    map.insert(keys.panelResponder, d->m_responderPanel->save());
+    map.insert(keys.panelTransfers, d->m_transfersPanel->save());
+    map.insert(keys.panelDataRecords, d->m_dataRecordsView->save());
+    map.insert(keys.panelSearch, d->m_filterView->save());
+    map.insert(keys.panelScripts, d->m_scriptsPanel->save());
 #ifdef X_ENABLE_CHARTS
-    map.insert(keys.barPanel, d->m_barPanel->save());
-    map.insert(keys.linePanel, d->m_linePanel->save());
+    map.insert(keys.panelBar, d->m_barPanel->save());
+    map.insert(keys.panelLine, d->m_linePanel->save());
 #endif
 #ifdef X_ENABLE_LUA
-    map.insert(keys.luaView, d->m_luaView->save());
+    map.insert(keys.panelLua, d->m_luaView->save());
 #endif
 
     return map;
@@ -1016,7 +1007,7 @@ void Page::load(const QVariantMap &parameters)
     d->m_outputSettings->load(outputSettings);
 
     // Input settings
-    int inputInterval = parameters.value(keys.cycleInterval).toInt();
+    int inputInterval = parameters.value(keys.inputCycleInterval).toInt();
     int inputFormat = parameters.value(keys.inputFormat).toInt();
     QVariantMap inputSettings = parameters.value(keys.inputSettings).toMap();
 
@@ -1027,25 +1018,25 @@ void Page::load(const QVariantMap &parameters)
     d->m_inputSettings->load(inputSettings);
 
     // Load Tabs
-    int tabIndex = parameters.value(keys.tabIndex, -1).toInt();
-    if (tabIndex >= 0 && tabIndex < d->m_tabToolButtons.size()) {
-        d->m_tabToolButtons[tabIndex]->setChecked(true);
-        d->ui->stackedWidget->setCurrentIndex(tabIndex);
+    int panelIndex = parameters.value(keys.panelIndex, -1).toInt();
+    if (panelIndex >= 0 && panelIndex < d->m_tabToolButtons.size()) {
+        d->m_tabToolButtons[panelIndex]->setChecked(true);
+        d->ui->stackedWidget->setCurrentIndex(panelIndex);
         d->ui->stackedWidget->show();
     }
-    d->m_presetPanel->load(parameters.value(keys.preset).toMap());
-    d->m_emitterPanel->load(parameters.value(keys.emitterItems).toMap());
-    d->m_responderPanel->load(parameters.value(keys.responserItems).toMap());
-    d->m_transfersPanel->load(parameters.value(keys.transfers).toMap());
-    d->m_dataRecordsView->load(parameters.value(keys.dataRecords).toMap());
-    d->m_filterView->load(parameters.value(keys.searchPanel).toMap());
+    d->m_presetPanel->load(parameters.value(keys.panelPreset).toMap());
+    d->m_emitterPanel->load(parameters.value(keys.panelEmitter).toMap());
+    d->m_responderPanel->load(parameters.value(keys.panelResponder).toMap());
+    d->m_transfersPanel->load(parameters.value(keys.panelTransfers).toMap());
+    d->m_dataRecordsView->load(parameters.value(keys.panelDataRecords).toMap());
+    d->m_filterView->load(parameters.value(keys.panelSearch).toMap());
 #ifdef X_ENABLE_CHARTS
-    d->m_barPanel->load(parameters.value(keys.barPanel).toMap());
-    d->m_linePanel->load(parameters.value(keys.linePanel).toMap());
+    d->m_barPanel->load(parameters.value(keys.panelBar).toMap());
+    d->m_linePanel->load(parameters.value(keys.panelLine).toMap());
 #endif
-    d->m_scriptsManager->load(parameters.value(keys.scriptsManager).toJsonObject());
+    d->m_scriptsPanel->load(parameters.value(keys.panelScripts).toMap());
 #ifdef X_ENABLE_LUA
-    d->m_luaView->load(parameters.value(keys.luaView).toMap());
+    d->m_luaView->load(parameters.value(keys.panelLua).toMap());
 #endif
 
     d->onDeviceTypeChanged();
@@ -1077,7 +1068,7 @@ void Page::appendOutputControl(QWidget *widget)
 
 void Page::aboutToClose()
 {
-    d->m_scriptsManager->aboutToClose();
+    d->m_scriptsPanel->aboutToClose();
 }
 
 void hideAllWidgets(QHBoxLayout *layout)

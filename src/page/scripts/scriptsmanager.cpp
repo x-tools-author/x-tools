@@ -13,7 +13,7 @@
 #include "scriptlua.h"
 
 ScriptsManager::ScriptsManager(QWidget *parent)
-    : QWidget(parent)
+    : Panel(parent)
     , ui(new Ui::ScriptsManager)
 {
     ui->setupUi(this);
@@ -37,24 +37,10 @@ ScriptsManager::~ScriptsManager()
     delete ui;
 }
 
-void ScriptsManager::load(const QJsonObject &obj)
+QVariantMap ScriptsManager::save() const
 {
     ScriptsManagerParameterKeys keys;
-    int index = obj.value(keys.tabIndex).toInt(0);
-    index = index < 0 ? 0 : (index >= ui->tabWidget->count() ? 0 : index);
-    ui->tabWidget->setCurrentIndex(index);
-
-    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
-        if (obj.contains(script->metaObject()->className())) {
-            script->load(obj.value(script->metaObject()->className()).toObject());
-        }
-    }
-}
-
-QJsonObject ScriptsManager::save()
-{
-    ScriptsManagerParameterKeys keys;
-    QJsonObject obj;
+    QVariantMap obj;
     obj.insert(keys.tabIndex, ui->tabWidget->currentIndex());
 
     for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
@@ -64,7 +50,21 @@ QJsonObject ScriptsManager::save()
     return obj;
 }
 
-void ScriptsManager::onBytesRead(const QByteArray &data)
+void ScriptsManager::load(const QVariantMap &parameters)
+{
+    ScriptsManagerParameterKeys keys;
+    int index = parameters.value(keys.tabIndex).toInt(0);
+    index = index < 0 ? 0 : (index >= ui->tabWidget->count() ? 0 : index);
+    ui->tabWidget->setCurrentIndex(index);
+
+    for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
+        if (parameters.contains(script->metaObject()->className())) {
+            script->load(parameters.value(script->metaObject()->className()).toJsonObject());
+        }
+    }
+}
+
+void ScriptsManager::onBytesRead(const QByteArray &data, const QString &flag)
 {
     for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         script->onBytesRead(data);
