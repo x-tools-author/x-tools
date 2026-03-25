@@ -31,7 +31,7 @@
 #include "page/emitter/emitterview.h"
 #include "page/preset/presetpanel.h"
 #include "page/preset/presetview.h"
-#include "page/responder/responderview.h"
+#include "page/responder/responderpanel.h"
 #include "page/scripts/scriptsmanager.h"
 #include "page/search/searchpanel.h"
 #include "page/transfer/transfersview.h"
@@ -104,10 +104,7 @@ struct ParameterKeys
 class PagePrivate : public QObject
 {
 public:
-    explicit PagePrivate(Page *q_ptr)
-        : QObject(q_ptr)
-        , q(q_ptr)
-    { }
+    explicit PagePrivate(Page *q_ptr);
 
     void initUi();
     void initUiDeviceControl();
@@ -165,7 +162,7 @@ public:
 
     PresetPanel *m_presetPanel{nullptr};
     EmitterPanel *m_emitterPanel{nullptr};
-    ResponderView *m_responderView{nullptr};
+    ResponderPanel *m_responderPanel{nullptr};
     TransfersView *m_transfersView{nullptr};
     ScriptsManager *m_scriptsManager{nullptr};
     DataRecordsView *m_dataRecordsView{nullptr};
@@ -184,6 +181,11 @@ public:
 private:
     Page *q;
 };
+
+PagePrivate::PagePrivate(Page *q_ptr)
+    : QObject(q_ptr)
+    , q(q_ptr)
+{ }
 
 void PagePrivate::initUi()
 {
@@ -832,14 +834,14 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->m_txStatistician = new Statistician(d->ui->labelTxInfo, this);
     d->m_presetPanel = new PresetPanel(this);
     d->m_emitterPanel = new EmitterPanel(this);
-    d->m_responderView = new ResponderView(this);
+    d->m_responderPanel = new ResponderPanel(this);
     d->m_transfersView = new TransfersView(this);
     d->m_dataRecordsView = new DataRecordsView(this);
     d->m_filterView = new SearchPanel(this);
 
     d->addTab(tr("Presets"), d->m_presetPanel);
     d->addTab(tr("Emitter"), d->m_emitterPanel);
-    d->addTab(tr("Responder"), d->m_responderView);
+    d->addTab(tr("Responder"), d->m_responderPanel);
     d->addTab(tr("Transfers"), d->m_transfersView);
     d->addTab(tr("Records"), d->m_dataRecordsView);
     d->addTab(tr("Search"), d->m_filterView);
@@ -857,6 +859,24 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->addTab(QString("Lua"), d->m_luaView);
 #endif
 
+    d->m_panels.append(d->m_presetPanel);
+    d->m_panels.append(d->m_emitterPanel);
+    d->m_panels.append(d->m_responderPanel);
+    //d->m_panels.append(d->m_transfersView);
+    d->m_panels.append(d->m_dataRecordsView);
+#ifdef X_ENABLE_CHARTS
+    d->m_panels.append(d->m_barPanel);
+    d->m_panels.append(d->m_linePanel);
+#endif
+    //d->m_panels.append(d->m_scriptsManager);
+#ifdef X_ENABLE_LUA
+    d->m_panels.append(d->m_luaView);
+#endif
+    for (Panel *panel : d->m_panels) {
+        connect(panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+    }
+
+    // Move the controller to the right side if needed.
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
         if (l) {
@@ -937,7 +957,7 @@ QVariantMap Page::save() const
     map.insert(keys.tabIndex, index);
     map.insert(keys.preset, d->m_presetPanel->save());
     map.insert(keys.emitterItems, d->m_emitterPanel->save());
-    map.insert(keys.responserItems, d->m_responderView->save());
+    map.insert(keys.responserItems, d->m_responderPanel->save());
     map.insert(keys.transfers, d->m_transfersView->save());
     map.insert(keys.dataRecords, d->m_dataRecordsView->save());
     map.insert(keys.searchPanel, d->m_filterView->save());
@@ -1016,7 +1036,7 @@ void Page::load(const QVariantMap &parameters)
     }
     d->m_presetPanel->load(parameters.value(keys.preset).toMap());
     d->m_emitterPanel->load(parameters.value(keys.emitterItems).toMap());
-    d->m_responderView->load(parameters.value(keys.responserItems).toMap());
+    d->m_responderPanel->load(parameters.value(keys.responserItems).toMap());
     d->m_transfersView->load(parameters.value(keys.transfers).toMap());
     d->m_dataRecordsView->load(parameters.value(keys.dataRecords).toMap());
     d->m_filterView->load(parameters.value(keys.searchPanel).toMap());
@@ -1028,23 +1048,6 @@ void Page::load(const QVariantMap &parameters)
 #ifdef X_ENABLE_LUA
     d->m_luaView->load(parameters.value(keys.luaView).toMap());
 #endif
-
-    d->m_panels.append(d->m_presetPanel);
-    d->m_panels.append(d->m_emitterPanel);
-    //d->m_panels.append(d->m_responderView);
-    //d->m_panels.append(d->m_transfersView);
-    d->m_panels.append(d->m_dataRecordsView);
-#ifdef X_ENABLE_CHARTS
-    d->m_panels.append(d->m_barPanel);
-    d->m_panels.append(d->m_linePanel);
-#endif
-    //d->m_panels.append(d->m_scriptsManager);
-#ifdef X_ENABLE_LUA
-    d->m_panels.append(d->m_luaView);
-#endif
-    for (Panel *panel : d->m_panels) {
-        connect(panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
-    }
 
     d->onDeviceTypeChanged();
     d->onInputFormatChanged();
