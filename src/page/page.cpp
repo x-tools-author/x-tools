@@ -88,6 +88,8 @@ struct ParameterKeys
 
     // Panels
     const QString panelIndex{"panelIndex"};
+    const QString panelWidth{"panelWidth"};
+
     const QString panelPreset{"panelPreset"};
     const QString panelEmitter{"panelEmitter"};
     const QString panelResponder{"panelResponder"};
@@ -819,6 +821,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     d->ui->setupUi(this);
     d->ui->stackedWidget->hide();
+    d->ui->splitter->setChildrenCollapsible(false);
 
     d->m_rxStatistician = new Statistician(d->ui->labelRxInfo, this);
     d->m_txStatistician = new Statistician(d->ui->labelTxInfo, this);
@@ -945,6 +948,7 @@ QVariantMap Page::save() const
         }
     }
     map.insert(keys.panelIndex, index);
+    map.insert(keys.panelWidth, d->ui->stackedWidget->width());
     map.insert(keys.panelPreset, d->m_presetPanel->save());
     map.insert(keys.panelEmitter, d->m_emitterPanel->save());
     map.insert(keys.panelResponder, d->m_responderPanel->save());
@@ -1024,6 +1028,9 @@ void Page::load(const QVariantMap &parameters)
         d->ui->stackedWidget->setCurrentIndex(panelIndex);
         d->ui->stackedWidget->show();
     }
+    int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
+    d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
+
     d->m_presetPanel->load(parameters.value(keys.panelPreset).toMap());
     d->m_emitterPanel->load(parameters.value(keys.panelEmitter).toMap());
     d->m_responderPanel->load(parameters.value(keys.panelResponder).toMap());
