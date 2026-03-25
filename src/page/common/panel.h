@@ -25,5 +25,6 @@ public:
     virtual void onBytesWritten(const QByteArray &bytes, const QString &flag);
 
 signals:
+    // If some bytes need to be sent to the device, emit this signal.
     void outputBytes(const QByteArray &bytes);
 };

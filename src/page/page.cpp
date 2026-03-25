@@ -90,7 +90,6 @@ struct ParameterKeys
 
 class PagePrivate : public QObject
 {
-    Q_OBJECT
 public:
     explicit PagePrivate(Page *q_ptr)
         : QObject(q_ptr)
@@ -155,7 +154,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     addTab(QString("Lua"), m_luaView);
 #endif
 
-    connect(m_presetPanel, &PresetPanel::invokeWrite, this, &Page::writeSpecifiedBytes);
+    connect(m_presetPanel, &PresetPanel::outputBytes, this, &Page::writeSpecifiedBytes);
     connect(m_emitterView, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
     connect(m_responderView, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
     connect(m_scriptsManager, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
