@@ -34,7 +34,7 @@
 #include "page/responder/responderpanel.h"
 #include "page/scripts/scriptsmanager.h"
 #include "page/search/searchpanel.h"
-#include "page/transfer/transfersview.h"
+#include "page/transfer/transferspanel.h"
 
 #ifdef X_ENABLE_CHARTS
 #include "page/charts/bar/barpanel.h"
@@ -163,7 +163,7 @@ public:
     PresetPanel *m_presetPanel{nullptr};
     EmitterPanel *m_emitterPanel{nullptr};
     ResponderPanel *m_responderPanel{nullptr};
-    TransfersView *m_transfersView{nullptr};
+    TransfersPanel *m_transfersPanel{nullptr};
     ScriptsManager *m_scriptsManager{nullptr};
     DataRecordsView *m_dataRecordsView{nullptr};
     SearchPanel *m_filterView{nullptr};
@@ -277,7 +277,6 @@ void PagePrivate::initUiOutput()
     ui->toolButtonInputPreset->setMenu(presetView->menu());
     ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
     ui->stackedWidget->setCurrentIndex(0);
-    m_transfersView->setCurrentIndex(0);
 
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
@@ -835,14 +834,14 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->m_presetPanel = new PresetPanel(this);
     d->m_emitterPanel = new EmitterPanel(this);
     d->m_responderPanel = new ResponderPanel(this);
-    d->m_transfersView = new TransfersView(this);
+    d->m_transfersPanel = new TransfersPanel(this);
     d->m_dataRecordsView = new DataRecordsView(this);
     d->m_filterView = new SearchPanel(this);
 
     d->addTab(tr("Presets"), d->m_presetPanel);
     d->addTab(tr("Emitter"), d->m_emitterPanel);
     d->addTab(tr("Responder"), d->m_responderPanel);
-    d->addTab(tr("Transfers"), d->m_transfersView);
+    d->addTab(tr("Transfers"), d->m_transfersPanel);
     d->addTab(tr("Records"), d->m_dataRecordsView);
     d->addTab(tr("Search"), d->m_filterView);
 
@@ -862,7 +861,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->m_panels.append(d->m_presetPanel);
     d->m_panels.append(d->m_emitterPanel);
     d->m_panels.append(d->m_responderPanel);
-    //d->m_panels.append(d->m_transfersView);
+    d->m_panels.append(d->m_transfersPanel);
     d->m_panels.append(d->m_dataRecordsView);
 #ifdef X_ENABLE_CHARTS
     d->m_panels.append(d->m_barPanel);
@@ -958,7 +957,7 @@ QVariantMap Page::save() const
     map.insert(keys.preset, d->m_presetPanel->save());
     map.insert(keys.emitterItems, d->m_emitterPanel->save());
     map.insert(keys.responserItems, d->m_responderPanel->save());
-    map.insert(keys.transfers, d->m_transfersView->save());
+    map.insert(keys.transfers, d->m_transfersPanel->save());
     map.insert(keys.dataRecords, d->m_dataRecordsView->save());
     map.insert(keys.searchPanel, d->m_filterView->save());
     map.insert(keys.scriptsManager, d->m_scriptsManager->save());
@@ -1037,7 +1036,7 @@ void Page::load(const QVariantMap &parameters)
     d->m_presetPanel->load(parameters.value(keys.preset).toMap());
     d->m_emitterPanel->load(parameters.value(keys.emitterItems).toMap());
     d->m_responderPanel->load(parameters.value(keys.responserItems).toMap());
-    d->m_transfersView->load(parameters.value(keys.transfers).toMap());
+    d->m_transfersPanel->load(parameters.value(keys.transfers).toMap());
     d->m_dataRecordsView->load(parameters.value(keys.dataRecords).toMap());
     d->m_filterView->load(parameters.value(keys.searchPanel).toMap());
 #ifdef X_ENABLE_CHARTS
