@@ -9,11 +9,17 @@
 #include "page.h"
 #include "ui_page.h"
 
+#include <QButtonGroup>
 #include <QDateTime>
 #include <QDebug>
 #include <QMenu>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QRegularExpression>
 #include <QTimer>
+#include <QToolButton>
+#include <QVariantMap>
+#include <QWidget>
 #include <QWidgetAction>
 
 #include "device/device.h"
@@ -48,6 +54,12 @@
 #include "utilities/iconengine.h"
 #include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
+
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class Page;
+}
+QT_END_NAMESPACE
 
 struct ParameterKeys
 {
@@ -96,320 +108,83 @@ public:
         , q(q_ptr)
     {}
 
+    void initUi();
+    void initUiDeviceControl();
+    void initUiOutputControl();
+    void initUiInputControl();
+    void initUiOutput();
+    void initUiInput();
+
+    void onDeviceTypeChanged();
+    void onCycleIntervalChanged();
+    void onInputFormatChanged();
+    void onOpenButtonClicked();
+    void onHighlighterEnableChanged();
+    void onHighlighterKeywordsChanged();
+    void onShowStatisticianChanged(bool checked);
+
+    void onOpened();
+    void onClosed();
+    void onErrorOccurred(const QString &error);
+    void onWarningOccurred(const QString &warning);
+    void onBytesRead(const QByteArray &bytes, const QString &from);
+    void onBytesWritten(const QByteArray &bytes, const QString &to);
+    void onWrapModeChanged();
+    void onTerminalModeChanged();
+    void onExternalPanelButtonClicked(bool checked);
+
+    void openDevice();
+    void closeDevice();
+    void setupDevice(Device *device);
+    void writeBytes();
+    void writeSpecifiedBytes(const QByteArray &bytes);
+    void updateLabelInfo();
+    void setupMenu(QPushButton *target, QWidget *actionWidget);
+    void setUiEnabled(bool enabled);
+    void outputText(const QByteArray &bytes, const QString &flag, bool isRx);
+    void saveControllerParameters();
+    void loadControllerParameters();
+
+    void addTab(const QString &name, QWidget *widget);
+    void setTab(QWidget *widget);
+    void removeTestDevices();
+
+    QByteArray payload() const;
+    QByteArray crc(const QByteArray &payload) const;
+
 public:
+    Ui::Page *ui{nullptr};
+    DeviceUi *m_deviceController{nullptr};
+    DeviceSettings *m_ioSettings{nullptr};
+    OutputSettings *m_outputSettings{nullptr};
+    InputSettings *m_inputSettings{nullptr};
+    SyntaxHighlighter *m_highlighter{nullptr};
+    Statistician *m_rxStatistician{nullptr};
+    Statistician *m_txStatistician{nullptr};
+
+    PresetPanel *m_presetPanel{nullptr};
+    EmitterView *m_emitterView{nullptr};
+    ResponderView *m_responderView{nullptr};
+    TransfersView *m_transfersView{nullptr};
+    ScriptsManager *m_scriptsManager{nullptr};
+    DataRecordsView *m_dataRecordsView{nullptr};
+    SearchPanel *m_filterView{nullptr};
+    BarPanel *m_barPanel{nullptr};
+    LinePanel *m_linePanel{nullptr};
+    LuaView *m_luaView{nullptr};
+
+    QList<QToolButton *> m_tabToolButtons;
+    QTimer *m_writeTimer{nullptr};
+    QTimer *m_updateLabelInfoTimer{nullptr};
+    QSettings *m_settings{nullptr};
+
     QList<Panel *> m_panels;
 
 private:
     Page *q;
 };
 
-Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
-    : QWidget{parent}
-    , ui{new Ui::Page}
-    , m_deviceController{nullptr}
-    , m_ioSettings{nullptr}
-    , m_outputSettings{nullptr}
-    , m_inputSettings{nullptr}
-    , m_highlighter{new SyntaxHighlighter(this)}
-    , m_writeTimer{new QTimer(this)}
-    , m_updateLabelInfoTimer{new QTimer(this)}
-    , m_settings{settings}
-{
-    d = new PagePrivate(this);
-
-    if (settings == nullptr) {
-        static QSettings defaultSettings("IO_Page.ini", QSettings::IniFormat);
-        m_settings = &defaultSettings;
-    }
-
-    ui->setupUi(this);
-    ui->stackedWidget->hide();
-
-    m_rxStatistician = new Statistician(ui->labelRxInfo, this);
-    m_txStatistician = new Statistician(ui->labelTxInfo, this);
-    m_presetPanel = new PresetPanel(this);
-    m_emitterView = new EmitterView(this);
-    m_responderView = new ResponderView(this);
-    m_transfersView = new TransfersView(this);
-    m_dataRecordsView = new DataRecordsView(this);
-    m_filterView = new SearchPanel(this);
-
-    addTab(tr("Presets"), m_presetPanel);
-    addTab(tr("Emitter"), m_emitterView);
-    addTab(tr("Responder"), m_responderView);
-    addTab(tr("Transfers"), m_transfersView);
-    addTab(tr("Records"), m_dataRecordsView);
-    addTab(tr("Search"), m_filterView);
-
-#ifdef X_ENABLE_CHARTS
-    m_barPanel = new BarPanel(this);
-    m_linePanel = new LinePanel(this);
-    addTab(tr("Bar Charts"), m_barPanel);
-    addTab(tr("Line Charts"), m_linePanel);
-#endif
-    m_scriptsManager = new ScriptsManager(this);
-    addTab(tr("Scripts"), m_scriptsManager);
-#ifdef X_ENABLE_LUA
-    m_luaView = new LuaView(this);
-    addTab(QString("Lua"), m_luaView);
-#endif
-
-    connect(m_presetPanel, &PresetPanel::outputBytes, this, &Page::writeSpecifiedBytes);
-    connect(m_emitterView, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
-    connect(m_responderView, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
-    connect(m_scriptsManager, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
-
-    if (direction == ControllerDirection::Right) {
-        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
-        if (l) {
-            auto item = l->takeAt(0);
-            l->addItem(item);
-        }
-    }
-
-    m_writeTimer->setInterval(1000);
-    connect(m_writeTimer, &QTimer::timeout, this, &Page::writeBytes);
-
-    // TODO: Do not use timer to update label info, use signal-slot mechanism instead.
-    m_updateLabelInfoTimer->setInterval(100);
-    connect(m_updateLabelInfoTimer, &QTimer::timeout, this, &Page::updateLabelInfo);
-    m_updateLabelInfoTimer->start();
-
-    // clang-format off
-    connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
-    connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
-    connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
-    // clang-format on
-
-    initUi();
-
-    onShowStatisticianChanged(false);
-    onDeviceTypeChanged();
-    onTerminalModeChanged();
-    onInputFormatChanged();
-    onExternalPanelButtonClicked(false);
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    ui->widgetController->setMaximumWidth(256);
-#endif
-}
-
-Page::~Page()
-{
-    m_updateLabelInfoTimer->stop();
-    saveControllerParameters();
-    delete ui;
-}
-
-QVariantMap Page::save() const
-{
-    QVariantMap map;
-    ParameterKeys keys;
-    // Communication settings
-    map.insert(keys.communicationType, ui->comboBoxDeviceTypes->currentData());
-    map.insert(keys.communicationSettings, m_ioSettings->save());
-    if (m_deviceController) {
-        map.insert(keys.communication, m_deviceController->save());
-    }
-
-    // Output settings
-    map.insert(keys.outputFormat, ui->comboBoxOutputFormat->currentData());
-    map.insert(keys.outputRx, ui->checkBoxOutputRx->isChecked());
-    map.insert(keys.outputTx, ui->checkBoxOutputTx->isChecked());
-    map.insert(keys.outputFlag, ui->checkBoxOutputFlag->isChecked());
-    map.insert(keys.outputDate, ui->checkBoxOutputDate->isChecked());
-    map.insert(keys.outputTime, ui->checkBoxOutputTime->isChecked());
-    map.insert(keys.outputMs, ui->checkBoxOutputMs->isChecked());
-    map.insert(keys.outputSettings, m_outputSettings->save());
-    map.insert(keys.outputWrap, ui->checkBoxWrap->isChecked());
-    map.insert(keys.outputTerminalMode, ui->checkBoxTerminalMode->isChecked());
-
-    // Input settings
-    map.insert(keys.cycleInterval, ui->comboBoxInputInterval->currentData());
-    map.insert(keys.inputFormat, ui->comboBoxInputFormat->currentData());
-    map.insert(keys.inputSettings, m_inputSettings->save());
-
-    // Tabs
-    int index = -1;
-    for (QToolButton *btn : m_tabToolButtons) {
-        if (btn->isChecked()) {
-            index = m_tabToolButtons.indexOf(btn);
-            break;
-        }
-    }
-    map.insert(keys.tabIndex, index);
-    map.insert(keys.preset, m_presetPanel->save());
-    map.insert(keys.emitterItems, m_emitterView->save());
-    map.insert(keys.responserItems, m_responderView->save());
-    map.insert(keys.transfers, m_transfersView->save());
-    map.insert(keys.dataRecords, m_dataRecordsView->save());
-    map.insert(keys.searchPanel, m_filterView->save());
-    map.insert(keys.scriptsManager, m_scriptsManager->save());
-#ifdef X_ENABLE_CHARTS
-    map.insert(keys.barPanel, m_barPanel->save());
-    map.insert(keys.linePanel, m_linePanel->save());
-#endif
-#ifdef X_ENABLE_LUA
-    map.insert(keys.luaView, m_luaView->save());
-#endif
-
-    return map;
-}
-
-void Page::load(const QVariantMap &parameters)
-{
-    if (parameters.isEmpty()) {
-        return;
-    }
-
-    ParameterKeys keys;
-
-    // Communication settings
-    int communicationType = parameters.value(keys.communicationType).toInt();
-    int index = ui->comboBoxDeviceTypes->findData(communicationType);
-    QVariantMap communicationSettings = parameters.value(keys.communicationSettings).toMap();
-    m_ioSettings->load(communicationSettings);
-
-    ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
-    if (m_deviceController) {
-        m_deviceController->load(parameters.value(keys.communication).toMap());
-    }
-
-    // Output settings
-    int outputFormat = parameters.value(keys.outputFormat).toInt();
-    bool outputRx = parameters.value(keys.outputRx).toBool();
-    bool outputTx = parameters.value(keys.outputTx).toBool();
-    bool outputFlag = parameters.value(keys.outputFlag).toBool();
-    bool outputDate = parameters.value(keys.outputDate).toBool();
-    bool outputTime = parameters.value(keys.outputTime).toBool();
-    bool outputMs = parameters.value(keys.outputMs).toBool();
-    bool outputWrap = parameters.value(keys.outputWrap).toBool();
-    bool outputTerminalMode = parameters.value(keys.outputTerminalMode).toBool();
-    QVariantMap outputSettings = parameters.value(keys.outputSettings).toMap();
-
-    index = ui->comboBoxOutputFormat->findData(outputFormat);
-    ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
-    ui->checkBoxOutputRx->setChecked(outputRx);
-    ui->checkBoxOutputTx->setChecked(outputTx);
-    ui->checkBoxOutputFlag->setChecked(outputFlag);
-    ui->checkBoxOutputDate->setChecked(outputDate);
-    ui->checkBoxOutputTime->setChecked(outputTime);
-    ui->checkBoxOutputMs->setChecked(outputMs);
-    ui->checkBoxWrap->setChecked(outputWrap);
-    ui->checkBoxTerminalMode->setChecked(outputTerminalMode);
-    m_outputSettings->load(outputSettings);
-
-    // Input settings
-    int inputInterval = parameters.value(keys.cycleInterval).toInt();
-    int inputFormat = parameters.value(keys.inputFormat).toInt();
-    QVariantMap inputSettings = parameters.value(keys.inputSettings).toMap();
-
-    index = ui->comboBoxInputInterval->findData(inputInterval);
-    ui->comboBoxInputInterval->setCurrentIndex(index == -1 ? 0 : index);
-    index = ui->comboBoxInputFormat->findData(inputFormat);
-    ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
-    m_inputSettings->load(inputSettings);
-
-    // Load Tabs
-    int tabIndex = parameters.value(keys.tabIndex, -1).toInt();
-    if (tabIndex >= 0 && tabIndex < m_tabToolButtons.size()) {
-        m_tabToolButtons[tabIndex]->setChecked(true);
-        ui->stackedWidget->setCurrentIndex(tabIndex);
-    }
-    m_presetPanel->load(parameters.value(keys.preset).toMap());
-    m_emitterView->load(parameters.value(keys.emitterItems).toMap());
-    m_responderView->load(parameters.value(keys.responserItems).toMap());
-    m_transfersView->load(parameters.value(keys.transfers).toMap());
-    m_dataRecordsView->load(parameters.value(keys.dataRecords).toMap());
-    m_filterView->load(parameters.value(keys.searchPanel).toMap());
-#ifdef X_ENABLE_CHARTS
-    m_barPanel->load(parameters.value(keys.barPanel).toMap());
-    m_linePanel->load(parameters.value(keys.linePanel).toMap());
-#endif
-    m_scriptsManager->load(parameters.value(keys.scriptsManager).toJsonObject());
-#ifdef X_ENABLE_LUA
-    m_luaView->load(parameters.value(keys.luaView).toMap());
-#endif
-
-    onDeviceTypeChanged();
-    onInputFormatChanged();
-    onWrapModeChanged();
-}
-
-QTabWidget *Page::tabWidget()
-{
-    return nullptr;
-}
-
-QToolButton *Page::presetToolButton()
-{
-    return ui->toolButtonInputPreset;
-}
-
-void Page::inputBytes(const QByteArray &bytes)
-{
-    auto device = m_deviceController ? m_deviceController->device() : nullptr;
-    if (device && device->isRunning()) {
-        device->writeBytes(bytes);
-    } else {
-        QString msg = tr("Error: No device is opened.");
-        ui->textBrowserOutput->append(QString("<span style=\"color:#FF0000;\">%1</span>").arg(msg));
-    }
-}
-
-void Page::prependOutputControl(QWidget *widget)
-{
-    ui->horizontalLayoutOutput->insertWidget(0, widget);
-}
-
-void Page::appendOutputControl(QWidget *widget)
-{
-    ui->horizontalLayoutOutput->addWidget(widget);
-}
-
-void Page::hideTransferWidgets()
-{
-    // Nothing to do yet
-}
-
-void Page::removeTestDevices()
-{
-    for (int i = 0; i < ui->comboBoxDeviceTypes->count(); i++) {
-        int type = ui->comboBoxDeviceTypes->itemData(i).toInt();
-        if (type == static_cast<int>(DeviceManager::ChartsTest)) {
-            ui->comboBoxDeviceTypes->removeItem(i);
-            break;
-        }
-    }
-}
-
-void Page::aboutToClose()
-{
-    m_scriptsManager->aboutToClose();
-}
-
-void hideAllWidgets(QHBoxLayout *layout)
-{
-    int count = layout->count();
-    for (int i = count - 1; i >= 0; i--) {
-        QLayoutItem *item = layout->itemAt(i);
-        if (item) {
-            QWidget *w = item->widget();
-            if (w) {
-                w->hide();
-            }
-        }
-    }
-}
-
-void Page::showLiteMode()
-{
-    hideTransferWidgets();
-    removeTestDevices();
-    hideAllWidgets(ui->horizontalLayoutTab);
-}
-
-void Page::initUi()
+void PagePrivate::initUi()
 {
 #if 0
     const QIcon icon = QIcon(":/res/icons/settings.svg");
@@ -428,10 +203,13 @@ void Page::initUi()
     initUiInput();
 }
 
-void Page::initUiDeviceControl()
+void PagePrivate::initUiDeviceControl()
 {
-    connect(ui->comboBoxDeviceTypes, xComboBoxActivated, this, &Page::onDeviceTypeChanged);
-    connect(ui->pushButtonDeviceOpen, &QPushButton::clicked, this, &Page::onOpenButtonClicked);
+    connect(ui->comboBoxDeviceTypes, xComboBoxActivated, this, &PagePrivate::onDeviceTypeChanged);
+    connect(ui->pushButtonDeviceOpen,
+            &QPushButton::clicked,
+            this,
+            &PagePrivate::onOpenButtonClicked);
 
     QPushButton *target = ui->pushButtonDeviceSettings;
     m_ioSettings = new DeviceSettings();
@@ -440,7 +218,7 @@ void Page::initUiDeviceControl()
     xDevMgr.setupDeviceTypes(ui->comboBoxDeviceTypes);
 }
 
-void Page::initUiOutputControl()
+void PagePrivate::initUiOutputControl()
 {
     xSetupTextFormat(ui->comboBoxOutputFormat);
     ui->checkBoxOutputRx->setChecked(true);
@@ -453,27 +231,30 @@ void Page::initUiOutputControl()
     connect(m_outputSettings,
             &OutputSettings::highlighterEnableChanged,
             this,
-            &Page::onHighlighterEnableChanged);
+            &PagePrivate::onHighlighterEnableChanged);
 
     connect(m_outputSettings,
             &OutputSettings::highlighterKeywordsChanged,
             this,
-            &Page::onHighlighterKeywordsChanged);
+            &PagePrivate::onHighlighterKeywordsChanged);
     connect(m_outputSettings,
             &OutputSettings::showStatisticianChanged,
             this,
-            &Page::onShowStatisticianChanged);
+            &PagePrivate::onShowStatisticianChanged);
     m_highlighter->setDocument(ui->textBrowserOutput->document());
 }
 
-void Page::initUiInputControl()
+void PagePrivate::initUiInputControl()
 {
-    connect(ui->comboBoxInputFormat, xComboBoxActivated, this, &Page::onInputFormatChanged);
-    connect(ui->comboBoxInputInterval, xComboBoxActivated, this, &Page::onCycleIntervalChanged);
-    connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &Page::writeBytes);
+    connect(ui->comboBoxInputFormat, xComboBoxActivated, this, &PagePrivate::onInputFormatChanged);
+    connect(ui->comboBoxInputInterval,
+            xComboBoxActivated,
+            this,
+            &PagePrivate::onCycleIntervalChanged);
+    connect(ui->pushButtonInputWriteBytes, &QPushButton::clicked, this, &PagePrivate::writeBytes);
 
     xSetupTextFormat(ui->comboBoxInputFormat);
-    ui->comboBoxInputInterval->addItem(tr("Disable"), -1);
+    ui->comboBoxInputInterval->addItem(Page::tr("Disable"), -1);
     for (int i = 10; i <= 50; i += 10) {
         ui->comboBoxInputInterval->addItem(QString::number(i), i);
     }
@@ -488,7 +269,7 @@ void Page::initUiInputControl()
     setupMenu(ui->pushButtonInputSettings, m_inputSettings);
 }
 
-void Page::initUiOutput()
+void PagePrivate::initUiOutput()
 {
     PresetView *presetView = m_presetPanel->presetView();
     ui->toolButtonInputPreset->setMenu(presetView->menu());
@@ -499,9 +280,9 @@ void Page::initUiOutput()
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
 
-void Page::initUiInput() {}
+void PagePrivate::initUiInput() {}
 
-void Page::onDeviceTypeChanged()
+void PagePrivate::onDeviceTypeChanged()
 {
     if (m_deviceController != nullptr) {
         saveControllerParameters();
@@ -530,7 +311,7 @@ void Page::onDeviceTypeChanged()
     m_ioSettings->addWidgets(widgets);
 }
 
-void Page::onCycleIntervalChanged()
+void PagePrivate::onCycleIntervalChanged()
 {
     int interval = ui->comboBoxInputInterval->currentData().toInt();
     if (interval > 0) {
@@ -540,7 +321,7 @@ void Page::onCycleIntervalChanged()
     }
 }
 
-void Page::onInputFormatChanged()
+void PagePrivate::onInputFormatChanged()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     QString placeholderText = xBytes2string(QByteArray("(null)"), format);
@@ -564,7 +345,7 @@ void Page::onInputFormatChanged()
     ui->plainTextEditInput->setVisible(!usingLineEdit);
 }
 
-void Page::onOpenButtonClicked()
+void PagePrivate::onOpenButtonClicked()
 {
     ui->pushButtonDeviceOpen->setEnabled(false);
     if (m_deviceController->device() && m_deviceController->device()->isRunning()) {
@@ -574,24 +355,24 @@ void Page::onOpenButtonClicked()
     }
 }
 
-void Page::onHighlighterEnableChanged()
+void PagePrivate::onHighlighterEnableChanged()
 {
     bool enabled = m_outputSettings->isEnableHighlighter();
     m_highlighter->setEnabled(enabled);
 }
 
-void Page::onHighlighterKeywordsChanged()
+void PagePrivate::onHighlighterKeywordsChanged()
 {
     QStringList keywords = m_outputSettings->highlighterKeywords();
     m_highlighter->setKeywords(keywords);
 }
 
-void Page::onShowStatisticianChanged(bool checked)
+void PagePrivate::onShowStatisticianChanged(bool checked)
 {
     ui->widgetRxTxInfo->setVisible(checked);
 }
 
-void Page::onOpened()
+void PagePrivate::onOpened()
 {
 #if X_ENABLE_CHARTS
     m_linePanel->resetChart();
@@ -602,32 +383,32 @@ void Page::onOpened()
     onCycleIntervalChanged();
 
     ui->pushButtonDeviceOpen->setEnabled(true);
-    ui->pushButtonDeviceOpen->setText(tr("Close"));
+    ui->pushButtonDeviceOpen->setText(Page::tr("Close"));
 }
 
-void Page::onClosed()
+void PagePrivate::onClosed()
 {
     m_writeTimer->stop();
 
     setUiEnabled(true);
     ui->pushButtonDeviceOpen->setEnabled(true);
-    ui->pushButtonDeviceOpen->setText(tr("Open"));
+    ui->pushButtonDeviceOpen->setText(Page::tr("Open"));
 }
 
-void Page::onErrorOccurred(const QString &error)
+void PagePrivate::onErrorOccurred(const QString &error)
 {
     closeDevice();
     if (!error.isEmpty()) {
-        QMessageBox::warning(this, tr("Error Occurred"), error);
+        QMessageBox::warning(q, Page::tr("Error Occurred"), error);
     }
 }
 
-void Page::onWarningOccurred(const QString &warning)
+void PagePrivate::onWarningOccurred(const QString &warning)
 {
-    QMessageBox::warning(this, tr("Warning"), warning);
+    QMessageBox::warning(q, Page::tr("Warning"), warning);
 }
 
-void Page::onBytesRead(const QByteArray &bytes, const QString &from)
+void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
 {
     QByteArray cookedBytes = bytes;
     QString cookedFrom = from;
@@ -655,10 +436,10 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     }
 
     m_scriptsManager->onBytesRead(bytes);
-    emit bytesRead(cookedBytes, cookedFrom);
+    emit q->bytesRead(cookedBytes, cookedFrom);
 }
 
-void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
+void PagePrivate::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     QByteArray cookedBytes = bytes;
     QString cookedTo = to;
@@ -676,10 +457,10 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(cookedBytes, true);
     m_txStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedTo, false);
-    emit bytesWritten(cookedBytes, cookedTo);
+    emit q->bytesWritten(cookedBytes, cookedTo);
 }
 
-void Page::onWrapModeChanged()
+void PagePrivate::onWrapModeChanged()
 {
     if (ui->checkBoxWrap->isChecked()) {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapAnywhere);
@@ -690,7 +471,7 @@ void Page::onWrapModeChanged()
     }
 }
 
-void Page::onTerminalModeChanged()
+void PagePrivate::onTerminalModeChanged()
 {
     bool terminalMode = ui->checkBoxTerminalMode->isChecked();
     ui->checkBoxOutputRx->setEnabled(!terminalMode);
@@ -703,9 +484,9 @@ void Page::onTerminalModeChanged()
     m_filterView->setWholeWordCheckBoxEnabled(terminalMode);
 }
 
-void Page::onExternalPanelButtonClicked(bool checked) {}
+void PagePrivate::onExternalPanelButtonClicked(bool checked) {}
 
-void Page::openDevice()
+void PagePrivate::openDevice()
 {
     if (!m_deviceController->device()) {
         qWarning() << "Failed to create device";
@@ -719,26 +500,26 @@ void Page::openDevice()
     m_deviceController->openDevice();
 }
 
-void Page::closeDevice()
+void PagePrivate::closeDevice()
 {
     m_deviceController->closeDevice();
 }
 
-void Page::setupDevice(Device *device)
+void PagePrivate::setupDevice(Device *device)
 {
     if (!device) {
         return;
     }
 
-    connect(device, &Device::opened, this, &Page::onOpened);
-    connect(device, &Device::closed, this, &Page::onClosed);
-    connect(device, &Device::bytesWritten, this, &Page::onBytesWritten);
-    connect(device, &Device::bytesRead, this, &Page::onBytesRead);
-    connect(device, &Device::errorOccurred, this, &Page::onErrorOccurred);
-    connect(device, &Device::warningOccurred, this, &::Page::onWarningOccurred);
+    connect(device, &Device::opened, this, &PagePrivate::onOpened);
+    connect(device, &Device::closed, this, &PagePrivate::onClosed);
+    connect(device, &Device::bytesWritten, this, &PagePrivate::onBytesWritten);
+    connect(device, &Device::bytesRead, this, &PagePrivate::onBytesRead);
+    connect(device, &Device::errorOccurred, this, &PagePrivate::onErrorOccurred);
+    connect(device, &Device::warningOccurred, this, &PagePrivate::onWarningOccurred);
 }
 
-void Page::writeBytes()
+void PagePrivate::writeBytes()
 {
     if (!m_deviceController->device()) {
         return;
@@ -777,18 +558,18 @@ void Page::writeBytes()
     }
 }
 
-void Page::writeSpecifiedBytes(const QByteArray &bytes)
+void PagePrivate::writeSpecifiedBytes(const QByteArray &bytes)
 {
     auto device = m_deviceController ? m_deviceController->device() : nullptr;
     if (device && device->isRunning()) {
         device->writeBytes(bytes);
     } else {
-        QString msg = tr("Error: No device is opened.");
+        QString msg = Page::tr("Error: No device is opened.");
         ui->textBrowserOutput->append(QString("<span style=\"color:#d24373;\">%1</span>").arg(msg));
     }
 }
 
-void Page::updateLabelInfo()
+void PagePrivate::updateLabelInfo()
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
 
@@ -811,7 +592,8 @@ void Page::updateLabelInfo()
     if (!parameters.appendCrc) {
         crcString.clear();
     }
-    QString info = tr("[%1][%2][%3][%4]").arg(prefixString, payloadString, crcString, suffixString);
+    QString info = Page::tr("[%1][%2][%3][%4]")
+                       .arg(prefixString, payloadString, crcString, suffixString);
     QFontMetrics fontWidth(ui->labelInfo->font());
     info = fontWidth.elidedText(info, Qt::ElideMiddle, ui->labelInfo->width());
     if (parameters.showDataPreview) {
@@ -821,7 +603,7 @@ void Page::updateLabelInfo()
     }
 }
 
-void Page::setupMenu(QPushButton *target, QWidget *actionWidget)
+void PagePrivate::setupMenu(QPushButton *target, QWidget *actionWidget)
 {
     QMenu *menu = new QMenu(target);
     QWidgetAction *action = new QWidgetAction(menu);
@@ -830,7 +612,7 @@ void Page::setupMenu(QPushButton *target, QWidget *actionWidget)
     target->setMenu(menu);
 }
 
-void Page::setUiEnabled(bool enabled)
+void PagePrivate::setUiEnabled(bool enabled)
 {
     if (m_deviceController) {
         m_deviceController->setUiEnabled(enabled);
@@ -877,7 +659,7 @@ QString flagString(bool isRx, const QString &flag)
     return str;
 }
 
-void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
+void PagePrivate::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
 {
     bool showRx = ui->checkBoxOutputRx->isChecked();
     bool showTx = ui->checkBoxOutputTx->isChecked();
@@ -948,7 +730,7 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
     m_filterView->performSearch(outputText);
 }
 
-void Page::saveControllerParameters()
+void PagePrivate::saveControllerParameters()
 {
     if (m_deviceController) {
         auto parameters = m_deviceController->save();
@@ -956,7 +738,7 @@ void Page::saveControllerParameters()
     }
 }
 
-void Page::loadControllerParameters()
+void PagePrivate::loadControllerParameters()
 {
     if (m_deviceController) {
         auto parameters = m_settings->value(m_deviceController->metaObject()->className());
@@ -966,7 +748,7 @@ void Page::loadControllerParameters()
     }
 }
 
-void Page::addTab(const QString &name, QWidget *widget)
+void PagePrivate::addTab(const QString &name, QWidget *widget)
 {
     QToolButton *button = new QToolButton();
     button->setText(name);
@@ -985,7 +767,7 @@ void Page::addTab(const QString &name, QWidget *widget)
     m_tabToolButtons.append(button);
 }
 
-void Page::setTab(QWidget *widget)
+void PagePrivate::setTab(QWidget *widget)
 {
     if (widget) {
         ui->stackedWidget->show();
@@ -995,7 +777,18 @@ void Page::setTab(QWidget *widget)
     }
 }
 
-QByteArray Page::payload() const
+void PagePrivate::removeTestDevices()
+{
+    for (int i = 0; i < ui->comboBoxDeviceTypes->count(); i++) {
+        int type = ui->comboBoxDeviceTypes->itemData(i).toInt();
+        if (type == static_cast<int>(DeviceManager::ChartsTest)) {
+            ui->comboBoxDeviceTypes->removeItem(i);
+            break;
+        }
+    }
+}
+
+QByteArray PagePrivate::payload() const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     QString text;
@@ -1017,7 +810,7 @@ QByteArray Page::payload() const
     return payload;
 }
 
-QByteArray Page::crc(const QByteArray &payload) const
+QByteArray PagePrivate::crc(const QByteArray &payload) const
 {
     InputSettings::Parameters parameters = m_inputSettings->parameters();
     xTools::CRC::Context ctx;
@@ -1028,4 +821,281 @@ QByteArray Page::crc(const QByteArray &payload) const
     ctx.data = payload;
 
     return xTools::CRC::calculate(ctx);
+}
+
+Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
+    : QWidget{parent}
+{
+    d = new PagePrivate(this);
+    d->ui = new Ui::Page;
+    d->m_highlighter = new SyntaxHighlighter(this);
+    d->m_writeTimer = new QTimer(this);
+    d->m_updateLabelInfoTimer = new QTimer(this);
+    d->m_settings = settings;
+
+    if (settings == nullptr) {
+        static QSettings defaultSettings("IO_Page.ini", QSettings::IniFormat);
+        d->m_settings = &defaultSettings;
+    }
+
+    d->ui->setupUi(this);
+    d->ui->stackedWidget->hide();
+
+    d->m_rxStatistician = new Statistician(d->ui->labelRxInfo, this);
+    d->m_txStatistician = new Statistician(d->ui->labelTxInfo, this);
+    d->m_presetPanel = new PresetPanel(this);
+    d->m_emitterView = new EmitterView(this);
+    d->m_responderView = new ResponderView(this);
+    d->m_transfersView = new TransfersView(this);
+    d->m_dataRecordsView = new DataRecordsView(this);
+    d->m_filterView = new SearchPanel(this);
+
+    d->addTab(tr("Presets"), d->m_presetPanel);
+    d->addTab(tr("Emitter"), d->m_emitterView);
+    d->addTab(tr("Responder"), d->m_responderView);
+    d->addTab(tr("Transfers"), d->m_transfersView);
+    d->addTab(tr("Records"), d->m_dataRecordsView);
+    d->addTab(tr("Search"), d->m_filterView);
+
+#ifdef X_ENABLE_CHARTS
+    d->m_barPanel = new BarPanel(this);
+    d->m_linePanel = new LinePanel(this);
+    d->addTab(tr("Bar Charts"), d->m_barPanel);
+    d->addTab(tr("Line Charts"), d->m_linePanel);
+#endif
+    d->m_scriptsManager = new ScriptsManager(this);
+    d->addTab(tr("Scripts"), d->m_scriptsManager);
+#ifdef X_ENABLE_LUA
+    d->m_luaView = new LuaView(this);
+    d->addTab(QString("Lua"), d->m_luaView);
+#endif
+
+    connect(d->m_presetPanel, &PresetPanel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+    connect(d->m_emitterView, &EmitterView::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+    connect(d->m_responderView, &ResponderView::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+    connect(d->m_scriptsManager, &ScriptsManager::invokeWrite, this, &Page::writeBytes);
+
+    if (direction == ControllerDirection::Right) {
+        QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
+        if (l) {
+            auto item = l->takeAt(0);
+            l->addItem(item);
+        }
+    }
+
+    d->m_writeTimer->setInterval(1000);
+    connect(d->m_writeTimer, &QTimer::timeout, d, &PagePrivate::writeBytes);
+
+    // TODO: Do not use timer to update label info, use signal-slot mechanism instead.
+    d->m_updateLabelInfoTimer->setInterval(100);
+    connect(d->m_updateLabelInfoTimer, &QTimer::timeout, d, &PagePrivate::updateLabelInfo);
+    d->m_updateLabelInfoTimer->start();
+
+    // clang-format off
+    connect(d->ui->lineEditInput, &QLineEdit::returnPressed, d, &PagePrivate::writeBytes);
+    connect(d->ui->checkBoxWrap, &QCheckBox::clicked, d, &PagePrivate::onWrapModeChanged);
+    connect(d->ui->checkBoxTerminalMode, &QCheckBox::clicked, d, &PagePrivate::onTerminalModeChanged);
+    // clang-format on
+
+    d->initUi();
+
+    d->onShowStatisticianChanged(false);
+    d->onDeviceTypeChanged();
+    d->onTerminalModeChanged();
+    d->onInputFormatChanged();
+    d->onExternalPanelButtonClicked(false);
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    d->ui->widgetController->setMaximumWidth(256);
+#endif
+}
+
+Page::~Page()
+{
+    d->m_updateLabelInfoTimer->stop();
+    d->saveControllerParameters();
+    delete d->ui;
+    d = nullptr;
+}
+
+QVariantMap Page::save() const
+{
+    QVariantMap map;
+    ParameterKeys keys;
+    // Communication settings
+    map.insert(keys.communicationType, d->ui->comboBoxDeviceTypes->currentData());
+    map.insert(keys.communicationSettings, d->m_ioSettings->save());
+    if (d->m_deviceController) {
+        map.insert(keys.communication, d->m_deviceController->save());
+    }
+
+    // Output settings
+    map.insert(keys.outputFormat, d->ui->comboBoxOutputFormat->currentData());
+    map.insert(keys.outputRx, d->ui->checkBoxOutputRx->isChecked());
+    map.insert(keys.outputTx, d->ui->checkBoxOutputTx->isChecked());
+    map.insert(keys.outputFlag, d->ui->checkBoxOutputFlag->isChecked());
+    map.insert(keys.outputDate, d->ui->checkBoxOutputDate->isChecked());
+    map.insert(keys.outputTime, d->ui->checkBoxOutputTime->isChecked());
+    map.insert(keys.outputMs, d->ui->checkBoxOutputMs->isChecked());
+    map.insert(keys.outputSettings, d->m_outputSettings->save());
+    map.insert(keys.outputWrap, d->ui->checkBoxWrap->isChecked());
+    map.insert(keys.outputTerminalMode, d->ui->checkBoxTerminalMode->isChecked());
+
+    // Input settings
+    map.insert(keys.cycleInterval, d->ui->comboBoxInputInterval->currentData());
+    map.insert(keys.inputFormat, d->ui->comboBoxInputFormat->currentData());
+    map.insert(keys.inputSettings, d->m_inputSettings->save());
+
+    // Tabs
+    int index = -1;
+    for (QToolButton *btn : d->m_tabToolButtons) {
+        if (btn->isChecked()) {
+            index = d->m_tabToolButtons.indexOf(btn);
+            break;
+        }
+    }
+    map.insert(keys.tabIndex, index);
+    map.insert(keys.preset, d->m_presetPanel->save());
+    map.insert(keys.emitterItems, d->m_emitterView->save());
+    map.insert(keys.responserItems, d->m_responderView->save());
+    map.insert(keys.transfers, d->m_transfersView->save());
+    map.insert(keys.dataRecords, d->m_dataRecordsView->save());
+    map.insert(keys.searchPanel, d->m_filterView->save());
+    map.insert(keys.scriptsManager, d->m_scriptsManager->save());
+#ifdef X_ENABLE_CHARTS
+    map.insert(keys.barPanel, d->m_barPanel->save());
+    map.insert(keys.linePanel, d->m_linePanel->save());
+#endif
+#ifdef X_ENABLE_LUA
+    map.insert(keys.luaView, d->m_luaView->save());
+#endif
+
+    return map;
+}
+
+void Page::load(const QVariantMap &parameters)
+{
+    if (parameters.isEmpty()) {
+        return;
+    }
+
+    ParameterKeys keys;
+
+    // Communication settings
+    int communicationType = parameters.value(keys.communicationType).toInt();
+    int index = d->ui->comboBoxDeviceTypes->findData(communicationType);
+    QVariantMap communicationSettings = parameters.value(keys.communicationSettings).toMap();
+    d->m_ioSettings->load(communicationSettings);
+
+    d->ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
+    if (d->m_deviceController) {
+        d->m_deviceController->load(parameters.value(keys.communication).toMap());
+    }
+
+    // Output settings
+    int outputFormat = parameters.value(keys.outputFormat).toInt();
+    bool outputRx = parameters.value(keys.outputRx).toBool();
+    bool outputTx = parameters.value(keys.outputTx).toBool();
+    bool outputFlag = parameters.value(keys.outputFlag).toBool();
+    bool outputDate = parameters.value(keys.outputDate).toBool();
+    bool outputTime = parameters.value(keys.outputTime).toBool();
+    bool outputMs = parameters.value(keys.outputMs).toBool();
+    bool outputWrap = parameters.value(keys.outputWrap).toBool();
+    bool outputTerminalMode = parameters.value(keys.outputTerminalMode).toBool();
+    QVariantMap outputSettings = parameters.value(keys.outputSettings).toMap();
+
+    index = d->ui->comboBoxOutputFormat->findData(outputFormat);
+    d->ui->comboBoxOutputFormat->setCurrentIndex(index == -1 ? 0 : index);
+    d->ui->checkBoxOutputRx->setChecked(outputRx);
+    d->ui->checkBoxOutputTx->setChecked(outputTx);
+    d->ui->checkBoxOutputFlag->setChecked(outputFlag);
+    d->ui->checkBoxOutputDate->setChecked(outputDate);
+    d->ui->checkBoxOutputTime->setChecked(outputTime);
+    d->ui->checkBoxOutputMs->setChecked(outputMs);
+    d->ui->checkBoxWrap->setChecked(outputWrap);
+    d->ui->checkBoxTerminalMode->setChecked(outputTerminalMode);
+    d->m_outputSettings->load(outputSettings);
+
+    // Input settings
+    int inputInterval = parameters.value(keys.cycleInterval).toInt();
+    int inputFormat = parameters.value(keys.inputFormat).toInt();
+    QVariantMap inputSettings = parameters.value(keys.inputSettings).toMap();
+
+    index = d->ui->comboBoxInputInterval->findData(inputInterval);
+    d->ui->comboBoxInputInterval->setCurrentIndex(index == -1 ? 0 : index);
+    index = d->ui->comboBoxInputFormat->findData(inputFormat);
+    d->ui->comboBoxInputFormat->setCurrentIndex(index == -1 ? 0 : index);
+    d->m_inputSettings->load(inputSettings);
+
+    // Load Tabs
+    int tabIndex = parameters.value(keys.tabIndex, -1).toInt();
+    if (tabIndex >= 0 && tabIndex < d->m_tabToolButtons.size()) {
+        d->m_tabToolButtons[tabIndex]->setChecked(true);
+        d->ui->stackedWidget->setCurrentIndex(tabIndex);
+    }
+    d->m_presetPanel->load(parameters.value(keys.preset).toMap());
+    d->m_emitterView->load(parameters.value(keys.emitterItems).toMap());
+    d->m_responderView->load(parameters.value(keys.responserItems).toMap());
+    d->m_transfersView->load(parameters.value(keys.transfers).toMap());
+    d->m_dataRecordsView->load(parameters.value(keys.dataRecords).toMap());
+    d->m_filterView->load(parameters.value(keys.searchPanel).toMap());
+#ifdef X_ENABLE_CHARTS
+    d->m_barPanel->load(parameters.value(keys.barPanel).toMap());
+    d->m_linePanel->load(parameters.value(keys.linePanel).toMap());
+#endif
+    d->m_scriptsManager->load(parameters.value(keys.scriptsManager).toJsonObject());
+#ifdef X_ENABLE_LUA
+    d->m_luaView->load(parameters.value(keys.luaView).toMap());
+#endif
+
+    d->onDeviceTypeChanged();
+    d->onInputFormatChanged();
+    d->onWrapModeChanged();
+}
+
+void Page::writeBytes(const QByteArray &bytes)
+{
+    auto device = d->m_deviceController ? d->m_deviceController->device() : nullptr;
+    if (device && device->isRunning()) {
+        device->writeBytes(bytes);
+    } else {
+        QString msg = tr("Error: No device is opened.");
+        d->ui->textBrowserOutput->append(
+            QString("<span style=\"color:#FF0000;\">%1</span>").arg(msg));
+    }
+}
+
+void Page::prependOutputControl(QWidget *widget)
+{
+    d->ui->horizontalLayoutOutput->insertWidget(0, widget);
+}
+
+void Page::appendOutputControl(QWidget *widget)
+{
+    d->ui->horizontalLayoutOutput->addWidget(widget);
+}
+
+void Page::aboutToClose()
+{
+    d->m_scriptsManager->aboutToClose();
+}
+
+void hideAllWidgets(QHBoxLayout *layout)
+{
+    int count = layout->count();
+    for (int i = count - 1; i >= 0; i--) {
+        QLayoutItem *item = layout->itemAt(i);
+        if (item) {
+            QWidget *w = item->widget();
+            if (w) {
+                w->hide();
+            }
+        }
+    }
+}
+
+void Page::showLiteMode()
+{
+    d->removeTestDevices();
+    hideAllWidgets(d->ui->horizontalLayoutTab);
 }
