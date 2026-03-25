@@ -73,10 +73,13 @@ QList<int> xSupportedTextFormats()
         textFormats << static_cast<int>(TextFormat::Ascii);
         textFormats << static_cast<int>(TextFormat::Utf8);
 #if X_ENABLE_ICONV
-        textFormats << static_cast<int>(TextFormat::GB2312);
-        textFormats << static_cast<int>(TextFormat::CSGB2312);
         textFormats << static_cast<int>(TextFormat::GBK);
         textFormats << static_cast<int>(TextFormat::GB18030);
+        textFormats << static_cast<int>(TextFormat::GB2312);
+        textFormats << static_cast<int>(TextFormat::CSGB2312);
+        textFormats << static_cast<int>(TextFormat::CSUNICODE);
+        textFormats << static_cast<int>(TextFormat::UNICODEBIG);
+        textFormats << static_cast<int>(TextFormat::UNICODELITTLE);
 #endif
     }
 
@@ -108,7 +111,12 @@ QString xTextFormatName(TextFormat format)
         return QString("GBK");
     case TextFormat::GB18030:
         return QString("GB18030");
-
+    case TextFormat::CSUNICODE:
+        return QString("UCS-2");
+    case TextFormat::UNICODEBIG:
+        return QString("UCS-2BE");
+    case TextFormat::UNICODELITTLE:
+        return QString("UCS-2LE");
     default:
         return "Unknown";
     }
@@ -212,6 +220,18 @@ QString xBytes2string(const QByteArray &bytes, int format)
         QString name = xTextFormatName(TextFormat::GB18030);
         QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
         return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::CSUNICODE) == format) {
+        QString name = xTextFormatName(TextFormat::CSUNICODE);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::UNICODEBIG) == format) {
+        QString name = xTextFormatName(TextFormat::UNICODEBIG);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
+    } else if (static_cast<int>(TextFormat::UNICODELITTLE) == format) {
+        QString name = xTextFormatName(TextFormat::UNICODELITTLE);
+        QByteArray utf8 = convertEncoding(bytes, name.toLatin1().data(), "UTF-8");
+        return QString::fromUtf8(utf8);
     }
 #endif
     else {
@@ -263,6 +283,15 @@ QByteArray xString2bytes(const QString &text, int format)
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     } else if (format == static_cast<int>(TextFormat::GB18030)) {
         QString name = xTextFormatName(TextFormat::GB18030);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::CSUNICODE)) {
+        QString name = xTextFormatName(TextFormat::CSUNICODE);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::UNICODEBIG)) {
+        QString name = xTextFormatName(TextFormat::UNICODEBIG);
+        data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
+    } else if (format == static_cast<int>(TextFormat::UNICODELITTLE)) {
+        QString name = xTextFormatName(TextFormat::UNICODELITTLE);
         data = convertEncoding(text.toUtf8(), "UTF-8", name.toLatin1().data());
     }
 #endif

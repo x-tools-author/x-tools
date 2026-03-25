@@ -27,7 +27,10 @@ enum class TextFormat {
     CSGB2312,
     GBK,
     GB18030,
-    HexWithoutSpace
+    HexWithoutSpace,
+    CSUNICODE,
+    UNICODEBIG,
+    UNICODELITTLE
 };
 QList<int> xSupportedTextFormats();
 QString xTextFormatName(TextFormat format);
