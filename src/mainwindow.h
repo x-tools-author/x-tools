@@ -79,6 +79,7 @@ private:
     // HDPI Policy for Windows
     QString qtConfFileName();
     void createQtConf();
+    QString defalutDataJsonFile() const;
 
     void onSaveActionTriggered() const;
     void onImportActionTriggered();

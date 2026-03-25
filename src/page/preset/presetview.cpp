@@ -112,10 +112,11 @@ void PresetView::onActionTriggered(int row)
 void PresetView::onDataChanged()
 {
     m_menu->clear();
-    m_menu->addAction(tr("Edit Data"), this, [this]() {
+    QAction *a = m_menu->addAction(tr("Edit Data"), this, [this]() {
         emit invokeComeHere();
         m_menu->hide();
     });
+    a->setVisible(false);
 
     m_menu->addMenu(m_groupEditor->groupMenu());
     m_menu->addSeparator();

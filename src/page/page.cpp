@@ -106,7 +106,7 @@ public:
     explicit PagePrivate(Page *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {}
+    { }
 
     void initUi();
     void initUiDeviceControl();
@@ -192,7 +192,6 @@ void PagePrivate::initUi()
     ui->pushButtonOutputSettings->setIcon(icon);
     ui->pushButtonInputSettings->setIcon(icon);
 #endif
-    //ui->toolButtonInputPreset->setIcon(xIcon(":/res/icons/list.svg"));
     ui->toolButtonInputPreset->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     ui->toolButtonInputPreset->setStyleSheet("QToolButton::menu-indicator{image: none;}");
 
@@ -280,7 +279,7 @@ void PagePrivate::initUiOutput()
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
 
-void PagePrivate::initUiInput() {}
+void PagePrivate::initUiInput() { }
 
 void PagePrivate::onDeviceTypeChanged()
 {
@@ -422,42 +421,29 @@ void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
         }
     }
 #endif
-
     m_ioSettings->saveData(cookedBytes, false);
     m_rxStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedFrom, true);
 
-    m_dataRecordsView->onBytesRead(cookedBytes, cookedFrom);
-    m_dataRecordsView->onBytesRead(cookedBytes, cookedFrom);
-    m_responderView->inputBytes(cookedBytes);
-
-    if (m_transfersView->isEnabled()) {
-        m_transfersView->inputBytes(cookedBytes);
+    // Notify panels
+    for (Panel *panel : m_panels) {
+        panel->onBytesRead(cookedBytes, cookedFrom);
     }
 
-    m_scriptsManager->onBytesRead(bytes);
     emit q->bytesRead(cookedBytes, cookedFrom);
 }
 
 void PagePrivate::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
-    QByteArray cookedBytes = bytes;
-    QString cookedTo = to;
-#if X_ENABLE_LUA
-    LuaPanel *luaPanel = m_luaView->outputPanel();
-    if (luaPanel && !luaPanel->isBypassed()) {
-        QByteArray result = luaPanel->handleData(bytes);
-        if (!result.isEmpty()) {
-            cookedBytes = result;
-            cookedTo = to + " (Lua)";
-        }
+    // Notify panels
+    for (Panel *panel : m_panels) {
+        panel->onBytesWritten(bytes, to);
     }
-#endif
 
-    m_ioSettings->saveData(cookedBytes, true);
-    m_txStatistician->inputBytes(cookedBytes);
-    outputText(cookedBytes, cookedTo, false);
-    emit q->bytesWritten(cookedBytes, cookedTo);
+    m_ioSettings->saveData(bytes, true);
+    m_txStatistician->inputBytes(bytes);
+    outputText(bytes, to, false);
+    emit q->bytesWritten(bytes, to);
 }
 
 void PagePrivate::onWrapModeChanged()
@@ -484,7 +470,7 @@ void PagePrivate::onTerminalModeChanged()
     m_filterView->setWholeWordCheckBoxEnabled(terminalMode);
 }
 
-void PagePrivate::onExternalPanelButtonClicked(bool checked) {}
+void PagePrivate::onExternalPanelButtonClicked(bool checked) { }
 
 void PagePrivate::openDevice()
 {
@@ -870,11 +856,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->addTab(QString("Lua"), d->m_luaView);
 #endif
 
-    connect(d->m_presetPanel, &PresetPanel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
-    connect(d->m_emitterView, &EmitterView::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
-    connect(d->m_responderView, &ResponderView::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
-    connect(d->m_scriptsManager, &ScriptsManager::invokeWrite, this, &Page::writeBytes);
-
     if (direction == ControllerDirection::Right) {
         QHBoxLayout *l = qobject_cast<QHBoxLayout *>(layout());
         if (l) {
@@ -898,13 +879,11 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     // clang-format on
 
     d->initUi();
-
     d->onShowStatisticianChanged(false);
     d->onDeviceTypeChanged();
     d->onTerminalModeChanged();
     d->onInputFormatChanged();
     d->onExternalPanelButtonClicked(false);
-
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     d->ui->widgetController->setMaximumWidth(256);
 #endif
@@ -1032,6 +1011,7 @@ void Page::load(const QVariantMap &parameters)
     if (tabIndex >= 0 && tabIndex < d->m_tabToolButtons.size()) {
         d->m_tabToolButtons[tabIndex]->setChecked(true);
         d->ui->stackedWidget->setCurrentIndex(tabIndex);
+        d->ui->stackedWidget->show();
     }
     d->m_presetPanel->load(parameters.value(keys.preset).toMap());
     d->m_emitterView->load(parameters.value(keys.emitterItems).toMap());
@@ -1047,6 +1027,23 @@ void Page::load(const QVariantMap &parameters)
 #ifdef X_ENABLE_LUA
     d->m_luaView->load(parameters.value(keys.luaView).toMap());
 #endif
+
+    d->m_panels.append(d->m_presetPanel);
+    //d->m_panels.append(d->m_emitterView);
+    //d->m_panels.append(d->m_responderView);
+    //d->m_panels.append(d->m_transfersView);
+    d->m_panels.append(d->m_dataRecordsView);
+#ifdef X_ENABLE_CHARTS
+    d->m_panels.append(d->m_barPanel);
+    d->m_panels.append(d->m_linePanel);
+#endif
+    //d->m_panels.append(d->m_scriptsManager);
+#ifdef X_ENABLE_LUA
+    d->m_panels.append(d->m_luaView);
+#endif
+    for (Panel *panel : d->m_panels) {
+        connect(panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+    }
 
     d->onDeviceTypeChanged();
     d->onInputFormatChanged();

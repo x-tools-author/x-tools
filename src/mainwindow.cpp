@@ -151,14 +151,13 @@ MainWindow::MainWindow(QWidget* parent)
     });
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow() { }
 
 void MainWindow::load(const QString& fileName)
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xAPP->settingsPath();
-        filePath = path + "/data_v7_7.json";
+        filePath = defalutDataJsonFile();
     }
 
     if (!QFile::exists(filePath)) {
@@ -216,8 +215,7 @@ void MainWindow::save(const QString& fileName) const
 
     QString filePath = fileName;
     if (fileName.isEmpty()) {
-        const QString path = xAPP->settingsPath();
-        filePath = path + "/data.json";
+        filePath = defalutDataJsonFile();
     }
 
     QFile file(filePath);
@@ -608,6 +606,12 @@ void MainWindow::createQtConf()
         auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
         qWarning() << qPrintable(info);
     }
+}
+
+QString MainWindow::defalutDataJsonFile() const
+{
+    const QString path = xAPP->settingsPath();
+    return path + "/data_v7_7.json";
 }
 
 void MainWindow::onSaveActionTriggered() const
