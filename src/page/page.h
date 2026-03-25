@@ -25,7 +25,7 @@ class Page;
 QT_END_NAMESPACE
 
 class EmitterView;
-class PresetView;
+class PresetPanel;
 class ResponderView;
 class TransfersView;
 class ScriptsManager;
@@ -42,9 +42,13 @@ class InputSettings;
 class OutputSettings;
 class DeviceSettings;
 class SyntaxHighlighter;
+
+class PagePrivate;
 class Page : public QWidget
 {
     Q_OBJECT
+    PagePrivate *d{nullptr};
+
 public:
     enum ControllerDirection { Left, Right };
 
@@ -52,7 +56,7 @@ public:
     explicit Page(ControllerDirection direction, QSettings *settings, QWidget *parent = nullptr);
     ~Page() override;
 
-    QVariantMap save();
+    QVariantMap save() const;
     void load(const QVariantMap &parameters);
     QTabWidget *tabWidget();
     QToolButton *presetToolButton();
@@ -122,7 +126,7 @@ private:
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
 
-    PresetView *m_presetView{nullptr};
+    PresetPanel *m_presetPanel{nullptr};
     EmitterView *m_emitterView{nullptr};
     ResponderView *m_responderView{nullptr};
     TransfersView *m_transfersView{nullptr};

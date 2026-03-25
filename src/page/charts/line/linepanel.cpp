@@ -87,10 +87,10 @@ LinePanel::~LinePanel()
     m_settings->deleteLater();
 }
 
-QWidget *LinePanel::menuWidget()
-{
-    return m_settings;
-}
+// QWidget *LinePanel::menuWidget()
+// {
+//     return m_settings;
+// }
 
 QVariantMap LinePanel::save() const
 {

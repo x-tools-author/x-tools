@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -83,10 +83,10 @@ BarPanel::~BarPanel()
     m_settings->deleteLater();
 }
 
-QWidget *BarPanel::menuWidget()
-{
-    return m_settings;
-}
+// QWidget *BarPanel::menuWidget()
+// {
+//     return m_settings;
+// }
 
 QVariantMap BarPanel::save() const
 {

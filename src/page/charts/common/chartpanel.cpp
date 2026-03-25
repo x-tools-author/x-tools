@@ -59,11 +59,11 @@ ChartPanel::ChartPanel(QWidget *parent)
 
 ChartPanel::~ChartPanel() {}
 
-void ChartPanel::inputBytes(const QByteArray &bytes, const QString &flag)
-{
-    Q_UNUSED(flag);
-    m_chartDataHandler->inputBytes(bytes);
-}
+// void ChartPanel::inputBytes(const QByteArray &bytes, const QString &flag)
+// {
+//     Q_UNUSED(flag);
+//     m_chartDataHandler->inputBytes(bytes);
+// }
 
 ChartDataHandler *ChartPanel::chartDataHandler() const
 {

@@ -9,8 +9,10 @@
 #include "luaview.h"
 #include "ui_luaview.h"
 
+#include "luapanel.h"
+
 LuaView::LuaView(QWidget *parent)
-    : QWidget(parent)
+    : Panel(parent)
     , ui(new Ui::LuaView)
 {
     ui->setupUi(this);
@@ -19,4 +21,14 @@ LuaView::LuaView(QWidget *parent)
 LuaView::~LuaView()
 {
     delete ui;
+}
+
+LuaPanel *LuaView::outputPanel() const
+{
+    return ui->widgetOutputLua;
+}
+
+LuaPanel *LuaView::inputPanel() const
+{
+    return ui->widgetInputLua;
 }

@@ -46,7 +46,7 @@ public:
     explicit LinePanel(QWidget *parent = Q_NULLPTR);
     ~LinePanel() override;
 
-    QWidget *menuWidget() override;
+    //QWidget *menuWidget() override;
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;

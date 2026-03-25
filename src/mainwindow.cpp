@@ -151,14 +151,14 @@ MainWindow::MainWindow(QWidget* parent)
     });
 }
 
-MainWindow::~MainWindow() { }
+MainWindow::~MainWindow() {}
 
 void MainWindow::load(const QString& fileName)
 {
     QString filePath = fileName;
     if (fileName.isEmpty()) {
         const QString path = xAPP->settingsPath();
-        filePath = path + "/data.json";
+        filePath = path + "/data_v7_7.json";
     }
 
     if (!QFile::exists(filePath)) {

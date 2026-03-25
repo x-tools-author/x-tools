@@ -8,18 +8,22 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QWidget>
+#include "page/common/panel.h"
 
 namespace Ui {
 class LuaView;
 }
 
-class LuaView : public QWidget
+class LuaPanel;
+class LuaView : public Panel
 {
     Q_OBJECT
 public:
     explicit LuaView(QWidget *parent = nullptr);
     ~LuaView() override;
+
+    LuaPanel *outputPanel() const;
+    LuaPanel *inputPanel() const;
 
 private:
     Ui::LuaView *ui;

@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -10,6 +10,7 @@
 #include "ui_luapanel.h"
 
 #include <QFile>
+#include <QMenu>
 
 #include "common/xtools.h"
 #include "luarunner.h"
@@ -121,10 +122,10 @@ void LuaPanel::load(const QVariantMap &parameters)
     ui->lineEditTestData->setText(testData);
 }
 
-QMenu *LuaPanel::buttonMenu() const
-{
-    return m_menu;
-}
+// QMenu *LuaPanel::buttonMenu() const
+// {
+//     return m_menu;
+// }
 
 QByteArray LuaPanel::handleData(const QByteArray &data) const
 {

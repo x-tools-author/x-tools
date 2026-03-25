@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -28,7 +28,7 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-    QMenu *buttonMenu() const override;
+
     QByteArray handleData(const QByteArray &data) const;
     bool isBypassed() const;
 
