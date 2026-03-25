@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -23,6 +23,17 @@ namespace Ui {
 class Page;
 }
 QT_END_NAMESPACE
+
+class EmitterView;
+class PresetView;
+class ResponderView;
+class TransfersView;
+class ScriptsManager;
+class DataRecordsView;
+class SearchPanel;
+class BarPanel;
+class LinePanel;
+class LuaView;
 
 class Device;
 class DeviceUi;
@@ -95,6 +106,9 @@ private:
     void saveControllerParameters();
     void loadControllerParameters();
 
+    void addTab(const QString &name, QWidget *widget);
+    void setTab(QWidget *widget);
+
     QByteArray payload() const;
     QByteArray crc(const QByteArray &payload) const;
 
@@ -107,6 +121,19 @@ private:
     SyntaxHighlighter *m_highlighter;
     Statistician *m_rxStatistician;
     Statistician *m_txStatistician;
+
+    PresetView *m_presetView{nullptr};
+    EmitterView *m_emitterView{nullptr};
+    ResponderView *m_responderView{nullptr};
+    TransfersView *m_transfersView{nullptr};
+    ScriptsManager *m_scriptsManager{nullptr};
+    DataRecordsView *m_dataRecordsView{nullptr};
+    SearchPanel *m_filterView{nullptr};
+    BarPanel *m_barPanel{nullptr};
+    LinePanel *m_linePanel{nullptr};
+    LuaView *m_luaView{nullptr};
+
+    QList<QToolButton *> m_tabToolButtons;
 
     QTimer *m_writeTimer;
     QTimer *m_updateLabelInfoTimer;

@@ -10,7 +10,7 @@
 
 #include <QVariantMap>
 
-#include "page/panels/common/panel.h"
+#include "page/common/panel.h"
 
 namespace Ui {
 class DataRecordsView;

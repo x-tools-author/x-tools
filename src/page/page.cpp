@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -20,26 +20,27 @@
 #include "device/devicemanager.h"
 #include "device/deviceui.h"
 
-#include "devicesettings.h"
-#include "emitter/emitterview.h"
-#include "page/panels/inputpanels/inputpanelsmanager.h"
-#include "page/panels/outputpanels/search/searchpanel.h"
+#include "page/datarecords/datarecordsview.h"
+#include "page/emitter/emitterview.h"
 #include "page/preset/presetview.h"
 #include "page/responder/responderview.h"
+#include "page/scripts/scriptsmanager.h"
+#include "page/search/searchpanel.h"
+#include "page/transfer/transfersview.h"
 
 #ifdef X_ENABLE_CHARTS
-#include "page/panels/outputpanels/charts/bar/barpanel.h"
-#include "page/panels/outputpanels/charts/line/linepanel.h"
+#include "page/charts/bar/barpanel.h"
+#include "page/charts/line/linepanel.h"
 #endif
-
 #ifdef X_ENABLE_LUA
-#include "page/panels/common/luapanel.h"
+#include "page/lua/luaview.h"
 #endif
 
 #include "common/xtools.h"
+#include "devicesettings.h"
 #include "inputsettings.h"
 #include "outputsettings.h"
-#include "scripts/scriptsmanager.h"
+
 #include "utilities/compatibility.h"
 #include "utilities/crc.h"
 #include "utilities/iconengine.h"
@@ -102,23 +103,42 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     }
 
     ui->setupUi(this);
+    ui->stackedWidget->hide();
+
     m_rxStatistician = new Statistician(ui->labelRxInfo, this);
     m_txStatistician = new Statistician(ui->labelTxInfo, this);
 
-    connect(ui->tabPreset, &PresetView::outputBytes, this, &Page::writeSpecifiedBytes);
-    connect(ui->tabEmitter, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
-    connect(ui->tabResponder, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
+    m_presetView = new PresetView(this);
+    addTab(tr("Presets"), m_presetView);
+    m_emitterView = new EmitterView(this);
+    addTab(tr("Emitter"), m_emitterView);
+    m_responderView = new ResponderView(this);
+    addTab(tr("Responder"), m_responderView);
+    m_transfersView = new TransfersView(this);
+    addTab(tr("Transfers"), m_transfersView);
+    m_dataRecordsView = new DataRecordsView(this);
+    addTab(tr("Records"), m_dataRecordsView);
+    m_filterView = new SearchPanel(this);
+    addTab(tr("Search"), m_filterView);
+#ifdef X_ENABLE_CHARTS
+    m_barPanel = new BarPanel(this);
+    addTab(tr("Bar Charts"), m_barPanel);
+    m_linePanel = new LinePanel(this);
+    addTab(tr("Line Charts"), m_linePanel);
+#endif
+    m_scriptsManager = new ScriptsManager(this);
+    addTab(tr("Scripts"), m_scriptsManager);
+#ifdef X_ENABLE_LUA
+    m_luaView = new LuaView(this);
+    addTab(QString("Lua"), m_luaView);
+#endif
 
-    ui->toolButtonRightPanel->setCheckable(true);
-    ui->toolButtonRightPanel->setIcon(xIcon(":/res/icons/terminal.svg"));
-    ui->toolButtonRightPanel->setText(tr("Scripts"));
-    connect(ui->toolButtonRightPanel,
-            &QToolButton::clicked,
-            this,
-            &Page::onExternalPanelButtonClicked);
-    connect(ui->widgetScripts, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
-    connect(ui->tabPreset, &PresetView::invokeComeHere, this, [this]() {
-        ui->tabWidget->setCurrentWidget(ui->tabPreset);
+    connect(m_presetView, &PresetView::outputBytes, this, &Page::writeSpecifiedBytes);
+    connect(m_emitterView, &EmitterView::outputBytes, this, &Page::writeSpecifiedBytes);
+    connect(m_responderView, &ResponderView::outputBytes, this, &Page::writeSpecifiedBytes);
+    connect(m_scriptsManager, &ScriptsManager::invokeWrite, this, &Page::inputBytes);
+    connect(m_presetView, &PresetView::invokeComeHere, this, [this]() {
+        this->setTab(this->m_presetView);
     });
 
     if (direction == ControllerDirection::Right) {
@@ -141,7 +161,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     connect(ui->lineEditInput, &QLineEdit::returnPressed, this, &Page::writeBytes);
     connect(ui->checkBoxWrap, &QCheckBox::clicked, this, &Page::onWrapModeChanged);
     connect(ui->checkBoxTerminalMode, &QCheckBox::clicked, this, &Page::onTerminalModeChanged);
-    connect(ui->widgetInputPanels, &InputPanelsManager::visibleChanged, this, &Page::onInputFormatChanged);
+    //connect(ui->widgetInputPanels, &InputPanelsManager::visibleChanged, this, &Page::onInputFormatChanged);
     // clang-format on
 
     initUi();
@@ -156,6 +176,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     ui->widgetController->setMaximumWidth(256);
 #endif
 
+#if 0
     connect(ui->tabTransfers,
             &TransfersView::bytesRead,
             ui->widgetOutputPanels,
@@ -164,10 +185,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
             &TransfersView::bytesWritten,
             ui->widgetOutputPanels,
             &OutputPanelsManager::onBytesWritten);
-
-#if 1
-    int index = ui->tabWidget->indexOf(ui->tabProtocolFactory);
-    ui->tabWidget->removeTab(index);
 #endif
 }
 
@@ -188,8 +205,8 @@ QVariantMap Page::save()
     if (m_deviceController) {
         map.insert(keys.communication, m_deviceController->save());
     }
-    map.insert(keys.communicationShowScriptPanel, ui->toolButtonRightPanel->isChecked());
-    map.insert(keys.communicationScriptPanel, ui->widgetScripts->save().toVariantMap());
+    //map.insert(keys.communicationShowScriptPanel, ui->toolButtonRightPanel->isChecked());
+    //map.insert(keys.communicationScriptPanel, ui->widgetScripts->save().toVariantMap());
 
     // Output settings
     map.insert(keys.outputFormat, ui->comboBoxOutputFormat->currentData());
@@ -209,17 +226,17 @@ QVariantMap Page::save()
     map.insert(keys.inputSettings, m_inputSettings->save());
 
     // Tabs
-    map.insert(keys.tabIndex, ui->tabWidget->currentIndex());
-    map.insert(keys.presetItems, ui->tabPreset->save());
-    map.insert(keys.emitterItems, ui->tabEmitter->save());
-    map.insert(keys.responserItems, ui->tabResponder->save());
-    if (ui->tabTransfers->isEnabled()) {
-        map.insert(keys.transfers, ui->tabTransfers->save());
-    }
+    // map.insert(keys.tabIndex, ui->tabWidget->currentIndex());
+    // map.insert(keys.presetItems, ui->tabPreset->save());
+    // map.insert(keys.emitterItems, ui->tabEmitter->save());
+    // map.insert(keys.responserItems, ui->tabResponder->save());
+    // if (ui->tabTransfers->isEnabled()) {
+    //     map.insert(keys.transfers, ui->tabTransfers->save());
+    // }
 
     // Panels
-    map.insert(keys.inputPanels, ui->widgetInputPanels->save());
-    map.insert(keys.outputPanels, ui->widgetOutputPanels->save());
+    // map.insert(keys.inputPanels, ui->widgetInputPanels->save());
+    // map.insert(keys.outputPanels, ui->widgetOutputPanels->save());
 
     return map;
 }
@@ -238,14 +255,14 @@ void Page::load(const QVariantMap &parameters)
     QVariantMap communicationSettings = parameters.value(keys.communicationSettings).toMap();
     m_ioSettings->load(communicationSettings);
     QVariantMap scriptPanel = parameters.value(keys.communicationScriptPanel).toMap();
-    ui->widgetScripts->load(QJsonObject::fromVariantMap(scriptPanel));
+    //ui->widgetScripts->load(QJsonObject::fromVariantMap(scriptPanel));
 
     ui->comboBoxDeviceTypes->setCurrentIndex(index == -1 ? 0 : index);
     if (m_deviceController) {
         m_deviceController->load(parameters.value(keys.communication).toMap());
     }
     bool showScriptPanel = parameters.value(keys.communicationShowScriptPanel, false).toBool();
-    ui->toolButtonRightPanel->setChecked(showScriptPanel);
+    //ui->toolButtonRightPanel->setChecked(showScriptPanel);
     onExternalPanelButtonClicked(showScriptPanel);
 
     // Output settings
@@ -284,15 +301,15 @@ void Page::load(const QVariantMap &parameters)
     m_inputSettings->load(inputSettings);
 
     // Load Tabs
-    ui->tabWidget->setCurrentIndex(parameters.value(keys.tabIndex, 0).toInt());
-    ui->tabPreset->load(parameters.value(keys.presetItems).toMap());
-    ui->tabEmitter->load(parameters.value(keys.emitterItems).toMap());
-    ui->tabResponder->load(parameters.value(keys.responserItems).toMap());
-    ui->tabTransfers->load(parameters.value(keys.transfers).toMap());
+    // ui->tabWidget->setCurrentIndex(parameters.value(keys.tabIndex, 0).toInt());
+    // ui->tabPreset->load(parameters.value(keys.presetItems).toMap());
+    // ui->tabEmitter->load(parameters.value(keys.emitterItems).toMap());
+    // ui->tabResponder->load(parameters.value(keys.responserItems).toMap());
+    // ui->tabTransfers->load(parameters.value(keys.transfers).toMap());
 
-    // Load Panels
-    ui->widgetInputPanels->load(parameters.value(keys.inputPanels).toMap());
-    ui->widgetOutputPanels->load(parameters.value(keys.outputPanels).toMap());
+    // // Load Panels
+    // ui->widgetInputPanels->load(parameters.value(keys.inputPanels).toMap());
+    // ui->widgetOutputPanels->load(parameters.value(keys.outputPanels).toMap());
 
     onDeviceTypeChanged();
     onInputFormatChanged();
@@ -310,7 +327,8 @@ void Page::load(const QVariantMap &parameters)
 
 QTabWidget *Page::tabWidget()
 {
-    return ui->tabWidget;
+    // return ui->tabWidget;
+    return nullptr;
 }
 
 QToolButton *Page::presetToolButton()
@@ -341,9 +359,9 @@ void Page::appendOutputControl(QWidget *widget)
 
 void Page::hideTransferWidgets()
 {
-    ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabTransfers));
-    ui->tabTransfers->setEnabled(false);
-    ui->tabTransfers->hide();
+    // ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabTransfers));
+    // ui->tabTransfers->setEnabled(false);
+    // ui->tabTransfers->hide();
 }
 
 void Page::removeTestDevices()
@@ -359,7 +377,7 @@ void Page::removeTestDevices()
 
 void Page::aboutToClose()
 {
-    ui->widgetScripts->aboutToClose();
+    //ui->widgetScripts->aboutToClose();
 }
 
 void hideAllWidgets(QHBoxLayout *layout)
@@ -380,10 +398,9 @@ void Page::showLiteMode()
 {
     hideTransferWidgets();
     removeTestDevices();
-    hideAllWidgets(ui->horizontalLayoutOutputPanelsController);
-    hideAllWidgets(ui->horizontalLayoutInputPanelsController);
+    hideAllWidgets(ui->horizontalLayoutTab);
 
-    ui->toolButtonRightPanel->hide();
+    //ui->toolButtonRightPanel->hide();
 }
 
 void Page::initUi()
@@ -467,28 +484,28 @@ void Page::initUiInputControl()
 
 void Page::initUiOutput()
 {
-    ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
-    ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
-    ui->tabWidget->setCurrentIndex(0);
-    ui->tabTransfers->setCurrentIndex(0);
+    // ui->toolButtonInputPreset->setMenu(ui->tabPreset->menu());
+    // ui->toolButtonInputPreset->setPopupMode(QToolButton::InstantPopup);
+    // ui->tabWidget->setCurrentIndex(0);
+    // ui->tabTransfers->setCurrentIndex(0);
 
-    SearchPanel *searchPanel = ui->widgetOutputPanels->getPanel<SearchPanel>();
-    if (searchPanel) {
-        searchPanel->setOriginalTextBrowser(ui->textBrowserOutput);
-    }
+    // SearchPanel *searchPanel = ui->widgetOutputPanels->getPanel<SearchPanel>();
+    // if (searchPanel) {
+    //     searchPanel->setOriginalTextBrowser(ui->textBrowserOutput);
+    // }
 
-    QList<QToolButton *> buttons = ui->widgetOutputPanels->buttons();
-    for (auto &button : buttons) {
-        ui->horizontalLayoutOutputPanelsController->addWidget(button);
-    }
+    // QList<QToolButton *> buttons = ui->widgetOutputPanels->buttons();
+    // for (auto &button : buttons) {
+    //     ui->horizontalLayoutOutputPanelsController->addWidget(button);
+    // }
 }
 
 void Page::initUiInput()
 {
-    QList<QToolButton *> buttons = ui->widgetInputPanels->buttons();
-    for (auto &button : buttons) {
-        ui->horizontalLayoutInputPanelsController->addWidget(button);
-    }
+    // QList<QToolButton *> buttons = ui->widgetInputPanels->buttons();
+    // for (auto &button : buttons) {
+    //     ui->horizontalLayoutInputPanelsController->addWidget(button);
+    // }
 }
 
 void Page::onDeviceTypeChanged()
@@ -552,14 +569,14 @@ void Page::onInputFormatChanged()
 
     // If the input panels are visible, hide the line edit or plain text edit
     // to make ui simple.
-    bool rightPanelVisible = ui->widgetInputPanels->isVisible();
-    if (rightPanelVisible) {
-        ui->lineEditInput->setVisible(true);
-        ui->plainTextEditInput->setVisible(true);
-    } else {
-        ui->lineEditInput->setVisible(usingLineEdit);
-        ui->plainTextEditInput->setVisible(!usingLineEdit);
-    }
+    // bool rightPanelVisible = ui->widgetInputPanels->isVisible();
+    // if (rightPanelVisible) {
+    //     ui->lineEditInput->setVisible(true);
+    //     ui->plainTextEditInput->setVisible(true);
+    // } else {
+    //     ui->lineEditInput->setVisible(usingLineEdit);
+    //     ui->plainTextEditInput->setVisible(!usingLineEdit);
+    // }
 }
 
 void Page::onOpenButtonClicked()
@@ -591,7 +608,7 @@ void Page::onShowStatisticianChanged(bool checked)
 
 void Page::onOpened()
 {
-#if X_ENABLE_CHARTS
+#if 0 //X_ENABLE_CHARTS
     LinePanel *linePanel = ui->widgetOutputPanels->getPanel<LinePanel>();
     if (linePanel) {
         linePanel->resetChart();
@@ -636,7 +653,7 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
 {
     QByteArray cookedBytes = bytes;
     QString cookedFrom = from;
-#ifdef X_ENABLE_LUA
+#if 0 //def 0//X_ENABLE_LUA
     LuaPanel *luaPanel = ui->widgetOutputPanels->getPanel<LuaPanel>();
     if (luaPanel && !luaPanel->isBypassed()) {
         QByteArray result = luaPanel->handleData(bytes);
@@ -651,15 +668,15 @@ void Page::onBytesRead(const QByteArray &bytes, const QString &from)
     m_rxStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedFrom, true);
 
-    ui->widgetOutputPanels->inputBytes(bytes, from);
-    ui->widgetOutputPanels->onBytesRead(bytes, from);
-    ui->tabResponder->inputBytes(cookedBytes);
+    // ui->widgetOutputPanels->inputBytes(bytes, from);
+    // ui->widgetOutputPanels->onBytesRead(bytes, from);
+    // ui->tabResponder->inputBytes(cookedBytes);
 
-    if (ui->tabTransfers->isEnabled()) {
-        ui->tabTransfers->inputBytes(cookedBytes);
-    }
+    // if (ui->tabTransfers->isEnabled()) {
+    //     ui->tabTransfers->inputBytes(cookedBytes);
+    // }
 
-    ui->widgetScripts->onBytesRead(bytes);
+    // ui->widgetScripts->onBytesRead(bytes);
     emit bytesRead(cookedBytes, cookedFrom);
 }
 
@@ -667,7 +684,7 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     QByteArray cookedBytes = bytes;
     QString cookedTo = to;
-#ifdef X_ENABLE_LUA
+#if 0 //def 0 // X_ENABLE_LUA
     LuaPanel *luaPanel = ui->widgetOutputPanels->getPanel<LuaPanel>();
     if (luaPanel && !luaPanel->isBypassed()) {
         QByteArray result = luaPanel->handleData(bytes);
@@ -681,8 +698,8 @@ void Page::onBytesWritten(const QByteArray &bytes, const QString &to)
     m_ioSettings->saveData(cookedBytes, true);
     m_txStatistician->inputBytes(cookedBytes);
     outputText(cookedBytes, cookedTo, false);
-    ui->widgetOutputPanels->inputBytes(bytes, to);
-    ui->widgetOutputPanels->onBytesWritten(bytes, to);
+    // ui->widgetOutputPanels->inputBytes(bytes, to);
+    // ui->widgetOutputPanels->onBytesWritten(bytes, to);
     emit bytesWritten(cookedBytes, cookedTo);
 }
 
@@ -707,17 +724,17 @@ void Page::onTerminalModeChanged()
     ui->checkBoxOutputTime->setEnabled(!terminalMode);
     ui->checkBoxOutputMs->setEnabled(!terminalMode);
 
-    SearchPanel *searchPanel = ui->widgetOutputPanels->getPanel<SearchPanel>();
-    if (searchPanel) {
-        searchPanel->setWholeWordCheckBoxEnabled(terminalMode);
-    }
+    // SearchPanel *searchPanel = ui->widgetOutputPanels->getPanel<SearchPanel>();
+    // if (searchPanel) {
+    //     searchPanel->setWholeWordCheckBoxEnabled(terminalMode);
+    // }
 }
 
 void Page::onExternalPanelButtonClicked(bool checked)
 {
-    ui->widgetScripts->setVisible(checked);
-    ui->toolButtonRightPanel->setToolTip(checked ? tr("Hide Scripts Panels")
-                                                 : tr("Show Scripts Panels"));
+    //ui->widgetScripts->setVisible(checked);
+    // ui->toolButtonRightPanel->setToolTip(checked ? tr("Hide Scripts Panels")
+    //                                              : tr("Show Scripts Panels"));
 }
 
 void Page::openDevice()
@@ -779,7 +796,7 @@ void Page::writeBytes()
     }
 
     if (!bytes.isEmpty()) {
-#ifdef X_ENABLE_LUA
+#if 0 //def 0 //X_ENABLE_LUA
         LuaPanel *luaPanel = ui->widgetInputPanels->getPanel<LuaPanel>();
         if (luaPanel) {
             QByteArray result = luaPanel->handleData(bytes);
@@ -952,7 +969,7 @@ void Page::outputText(const QByteArray &bytes, const QString &flag, bool isRx)
               .arg(header, text);
 #endif
 
-#if 1
+#if 0
     // 在添加到输出前进行搜索匹配
     SearchPanel *searchPanel = ui->widgetOutputPanels->getPanel<SearchPanel>();
     if (searchPanel) {
@@ -984,6 +1001,35 @@ void Page::loadControllerParameters()
         if (!parameters.isNull() && parameters.isValid()) {
             m_deviceController->load(parameters.toMap());
         }
+    }
+}
+
+void Page::addTab(const QString &name, QWidget *widget)
+{
+    QToolButton *button = new QToolButton();
+    button->setText(name);
+    ui->horizontalLayoutTab->addWidget(button);
+    ui->stackedWidget->addWidget(widget);
+
+    button->setCheckable(true);
+    connect(button, &QToolButton::clicked, this, [this, button, widget](bool checked) {
+        this->setTab(checked ? widget : nullptr);
+        for (auto &btn : m_tabToolButtons) {
+            if (btn != button) {
+                btn->setChecked(false);
+            }
+        }
+    });
+    m_tabToolButtons.append(button);
+}
+
+void Page::setTab(QWidget *widget)
+{
+    if (widget) {
+        ui->stackedWidget->show();
+        ui->stackedWidget->setCurrentWidget(widget);
+    } else {
+        ui->stackedWidget->hide();
     }
 }
 

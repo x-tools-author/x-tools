@@ -14,7 +14,7 @@
 #include <QPointF>
 #include <QVariantMap>
 
-#include "../../../common/panel.h"
+#include "page/common/panel.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 using QtCharts::QChart;
