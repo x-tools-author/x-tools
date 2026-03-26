@@ -25,7 +25,4 @@ public:
     void load(const QVariantMap &parameters) override;
 
     void onBytesRead(const QByteArray &bytes, const QString &flag) override;
-    void onBytesWritten(const QByteArray &bytes, const QString &flag) override;
-
-    ResponderView *view() const;
 };

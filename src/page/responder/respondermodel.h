@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -11,9 +11,19 @@
 #include "common/xtools.h"
 #include "page/common/tablemodel.h"
 
+#define RESPONSE_MODEL_COLUMN_ENABLE 0
+#define RESPONSE_MODEL_COLUMN_DESCRIPTION 1
+#define RESPONSE_MODEL_COLUMN_OPTION 2
+#define RESPONSE_MODEL_COLUMN_DELAY 3
+#define RESPONSE_MODEL_COLUMN_REFERENCE 4
+#define RESPONSE_MODEL_COLUMN_RESPONSE 5
+
+class ResponderModelPrivate;
 class ResponderModel : public TableModel
 {
     Q_OBJECT
+    ResponderModelPrivate *d;
+
 public:
     explicit ResponderModel(QObject *parent = nullptr);
 
@@ -28,27 +38,4 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent) override;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
-
-private:
-    struct Item
-    {
-        bool enable{true};
-        QString description{"Demo"};
-        ResponseOption option = ResponseOption::InputEqualReference;
-        int delay{1000};
-        TextItem referenceTextContext;
-        TextItem responseTextContext;
-    };
-    struct ItemKeys
-    {
-        QString enable{"enable"};
-        QString description{"description"};
-        QString option{"option"};
-        QString delay{"delay"};
-        QString reference{"reference"};
-        QString response{"response"};
-    };
-
-private:
-    QList<Item> m_items;
 };

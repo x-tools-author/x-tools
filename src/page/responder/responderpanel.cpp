@@ -18,8 +18,8 @@ public:
     explicit ResponderPanelPrivate(ResponderPanel *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    { }
-    ~ResponderPanelPrivate() { }
+    {}
+    ~ResponderPanelPrivate() {}
 
 public:
     ResponderPanel *q;
@@ -35,9 +35,11 @@ ResponderPanel::ResponderPanel(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     d->m_view = new ResponderView(this);
     layout->addWidget(d->m_view);
+
+    connect(d->m_view, &ResponderView::outputBytes, this, &ResponderPanel::outputBytes);
 }
 
-ResponderPanel::~ResponderPanel() { }
+ResponderPanel::~ResponderPanel() {}
 
 QVariantMap ResponderPanel::save() const
 {
@@ -51,17 +53,5 @@ void ResponderPanel::load(const QVariantMap &parameters)
 
 void ResponderPanel::onBytesRead(const QByteArray &bytes, const QString &flag)
 {
-    Q_UNUSED(bytes);
-    Q_UNUSED(flag);
-}
-
-void ResponderPanel::onBytesWritten(const QByteArray &bytes, const QString &flag)
-{
-    Q_UNUSED(bytes);
-    Q_UNUSED(flag);
-}
-
-ResponderView *ResponderPanel::view() const
-{
-    return d->m_view;
+    d->m_view->inputBytes(bytes);
 }

@@ -28,9 +28,7 @@
 
 #include "page/datarecords/datarecordsview.h"
 #include "page/emitter/emitterpanel.h"
-#include "page/emitter/emitterview.h"
 #include "page/preset/presetpanel.h"
-#include "page/preset/presetview.h"
 #include "page/responder/responderpanel.h"
 #include "page/scripts/scriptsmanager.h"
 #include "page/search/searchpanel.h"

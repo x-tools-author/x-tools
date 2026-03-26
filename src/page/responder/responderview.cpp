@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -22,6 +22,22 @@
 
 #include "common/xtools.h"
 #include "respondermodel.h"
+
+class ResponderViewPrivate : public QObject
+{
+public:
+    explicit ResponderViewPrivate(ResponderView *q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {}
+    ~ResponderViewPrivate() {}
+
+public:
+    ResponderModel *m_tableModel{nullptr};
+
+private:
+    ResponderView *q;
+};
 
 class ResponserItemDelegate : public QStyledItemDelegate
 {
@@ -86,15 +102,16 @@ public:
 ResponderView::ResponderView(QWidget *parent)
     : TableView(parent)
 {
-    m_tableModel = new ResponderModel(this);
-    setTableModel(m_tableModel);
+    d = new ResponderViewPrivate(this);
+    d->m_tableModel = new ResponderModel(this);
+    setTableModel(d->m_tableModel);
 
     auto *tv = tableView();
-    tv->setItemDelegateForColumn(2, new ResponserItemDelegate(tv));
+    tv->setItemDelegateForColumn(RESPONSE_MODEL_COLUMN_OPTION, new ResponserItemDelegate(tv));
 
     auto hHeader = tv->horizontalHeader();
-    hHeader->setSectionResizeMode(4, QHeaderView::ResizeMode::Stretch);
-    hHeader->setSectionResizeMode(5, QHeaderView::ResizeMode::Stretch);
+    hHeader->setSectionResizeMode(RESPONSE_MODEL_COLUMN_REFERENCE, QHeaderView::ResizeMode::Stretch);
+    hHeader->setSectionResizeMode(RESPONSE_MODEL_COLUMN_RESPONSE, QHeaderView::ResizeMode::Stretch);
 }
 
 ResponderView::~ResponderView() {}
@@ -109,17 +126,22 @@ void ResponderView::inputBytes(const QByteArray &bytes)
         return;
     }
 
-    int rows = m_tableModel->rowCount(QModelIndex());
+    int rows = d->m_tableModel->rowCount(QModelIndex());
     for (int i = 0; i < rows; i++) {
-        bool enable = m_tableModel->data(m_tableModel->index(i, 0), Qt::EditRole).toBool();
+        QModelIndex index = d->m_tableModel->index(i, RESPONSE_MODEL_COLUMN_ENABLE);
+        bool enable = d->m_tableModel->data(index, Qt::EditRole).toBool();
         if (!enable) {
             continue;
         }
 
-        int option = m_tableModel->data(m_tableModel->index(i, 2), Qt::EditRole).toInt();
-        int delay = m_tableModel->data(m_tableModel->index(i, 3), Qt::EditRole).toInt();
-        QJsonObject ref = m_tableModel->data(m_tableModel->index(i, 4), Qt::EditRole).toJsonObject();
-        QJsonObject res = m_tableModel->data(m_tableModel->index(i, 5), Qt::EditRole).toJsonObject();
+        index = d->m_tableModel->index(i, RESPONSE_MODEL_COLUMN_OPTION);
+        int option = d->m_tableModel->data(index, Qt::EditRole).toInt();
+        index = d->m_tableModel->index(i, RESPONSE_MODEL_COLUMN_DELAY);
+        int delay = d->m_tableModel->data(index, Qt::EditRole).toInt();
+        index = d->m_tableModel->index(i, RESPONSE_MODEL_COLUMN_REFERENCE);
+        QJsonObject ref = d->m_tableModel->data(index, Qt::EditRole).toJsonObject();
+        index = d->m_tableModel->index(i, RESPONSE_MODEL_COLUMN_RESPONSE);
+        QJsonObject res = d->m_tableModel->data(index, Qt::EditRole).toJsonObject();
 
         auto cookedOption = static_cast<ResponseOption>(option);
         TextItem cookedRef = xLoadTextItem(ref);
@@ -157,5 +179,5 @@ void ResponderView::inputBytes(const QByteArray &bytes)
 
 QList<int> ResponderView::textItemColumns() const
 {
-    return QList<int>{4, 5};
+    return QList<int>{RESPONSE_MODEL_COLUMN_REFERENCE, RESPONSE_MODEL_COLUMN_RESPONSE};
 }

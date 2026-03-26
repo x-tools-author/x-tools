@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -11,9 +11,12 @@
 #include "page/common/tableview.h"
 
 class ResponderModel;
+class ResponderViewPrivate;
 class ResponderView : public TableView
 {
     Q_OBJECT
+    ResponderViewPrivate *d{nullptr};
+
 public:
     explicit ResponderView(QWidget *parent = nullptr);
     ~ResponderView();
@@ -22,7 +25,4 @@ public:
 
 protected:
     QList<int> textItemColumns() const override;
-
-private:
-    ResponderModel *m_tableModel{nullptr};
 };
