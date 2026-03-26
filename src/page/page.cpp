@@ -740,6 +740,16 @@ void PagePrivate::addTab(const QString &name, QWidget *widget)
         }
     });
     m_tabToolButtons.append(button);
+
+    Panel *panel = qobject_cast<Panel *>(widget);
+    if (panel && panel->menuWidget()) {
+        QMenu *menu = new QMenu(button);
+        QWidgetAction *action = new QWidgetAction(menu);
+        action->setDefaultWidget(panel->menuWidget());
+        menu->addAction(action);
+        button->setMenu(menu);
+        button->setPopupMode(QToolButton::MenuButtonPopup);
+    }
 }
 
 void PagePrivate::setTab(QWidget *widget)
@@ -862,6 +872,16 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     for (Panel *panel : d->m_panels) {
         connect(panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
     }
+
+    // Add data from transfers panel to data records view.
+    connect(d->m_transfersPanel,
+            &TransfersPanel::bytesRead,
+            d->m_dataRecordsView,
+            &DataRecordsView::onBytesRead);
+    connect(d->m_transfersPanel,
+            &TransfersPanel::bytesWritten,
+            d->m_dataRecordsView,
+            &DataRecordsView::onBytesWritten);
 
     // Move the controller to the right side if needed.
     if (direction == ControllerDirection::Right) {

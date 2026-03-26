@@ -1660,7 +1660,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/datarecords/datarecordsview.cpp" line="149"/>
         <source>Are you sure to clear all records?</source>
-        <translation>您去欸的那个清空所有记录吗？</translation>
+        <translation>您确定要清空所有数据记录吗？</translation>
     </message>
 </context>
 <context>

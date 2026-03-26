@@ -40,10 +40,9 @@ public:
     explicit BarPanel(QWidget *parent = Q_NULLPTR);
     ~BarPanel() override;
 
-    //QWidget *menuWidget() override;
-
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
+    QWidget *menuWidget() override;
     void resetChart() override;
 
 private:

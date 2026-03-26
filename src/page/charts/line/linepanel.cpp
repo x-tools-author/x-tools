@@ -87,11 +87,6 @@ LinePanel::~LinePanel()
     m_settings->deleteLater();
 }
 
-// QWidget *LinePanel::menuWidget()
-// {
-//     return m_settings;
-// }
-
 QVariantMap LinePanel::save() const
 {
     QVariantMap data;
@@ -168,6 +163,11 @@ void LinePanel::load(const QVariantMap &parameters)
             }
         }
     }
+}
+
+QWidget *LinePanel::menuWidget()
+{
+    return m_settings;
 }
 
 void LinePanel::resetChart()

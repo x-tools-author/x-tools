@@ -49,3 +49,8 @@ void Panel::onBytesWritten(const QByteArray &bytes, const QString &flag)
     Q_UNUSED(bytes);
     Q_UNUSED(flag);
 }
+
+QWidget *Panel::menuWidget()
+{
+    return Q_NULLPTR;
+}

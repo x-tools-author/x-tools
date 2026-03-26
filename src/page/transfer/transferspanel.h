@@ -22,7 +22,9 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-
     void onBytesRead(const QByteArray &bytes, const QString &flag) override;
-    void onBytesWritten(const QByteArray &bytes, const QString &flag) override;
+
+signals:
+    void bytesRead(const QByteArray &bytes, const QString &flag);
+    void bytesWritten(const QByteArray &bytes, const QString &flag);
 };

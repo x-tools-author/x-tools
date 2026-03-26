@@ -10,10 +10,12 @@
 
 #include <QTabWidget>
 
-class TransferView;
+class TransferViewPrivate;
 class TransfersView : public QTabWidget
 {
     Q_OBJECT
+    TransferViewPrivate *d{nullptr};
+
 public:
     explicit TransfersView(QWidget *parent = nullptr);
     ~TransfersView() override;
@@ -23,19 +25,10 @@ public:
 
     QVariantMap save() const;
     void load(const QVariantMap &data);
-
     void inputBytes(const QByteArray &bytes);
+
 signals:
     void outputBytes(const QByteArray &bytes);
-
     void bytesRead(const QByteArray &bytes, const QString &flag);
     void bytesWritten(const QByteArray &bytes, const QString &flag);
-
-private:
-    struct TransfersContext
-    {
-        QString name;
-        TransferView *view;
-    };
-    QList<TransfersContext> m_transfersContextList;
 };

@@ -18,8 +18,8 @@ public:
     explicit TransfersPanelPrivate(TransfersPanel *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    { }
-    ~TransfersPanelPrivate() { }
+    {}
+    ~TransfersPanelPrivate() {}
 
 public:
     TransfersPanel *q;
@@ -34,6 +34,10 @@ TransfersPanel::TransfersPanel(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     d->m_transfersView = new TransfersView(this);
     layout->addWidget(d->m_transfersView);
+
+    connect(d->m_transfersView, &TransfersView::bytesRead, this, &TransfersPanel::bytesRead);
+    connect(d->m_transfersView, &TransfersView::bytesWritten, this, &TransfersPanel::bytesWritten);
+    connect(this, &TransfersPanel::outputBytes, this, &TransfersPanel::outputBytes);
 }
 
 TransfersPanel::~TransfersPanel()
@@ -51,6 +55,7 @@ void TransfersPanel::load(const QVariantMap &parameters)
     d->m_transfersView->load(parameters);
 }
 
-void TransfersPanel::onBytesRead(const QByteArray &bytes, const QString &flag) { }
-
-void TransfersPanel::onBytesWritten(const QByteArray &bytes, const QString &flag) { }
+void TransfersPanel::onBytesRead(const QByteArray &bytes, const QString &flag)
+{
+    d->m_transfersView->inputBytes(bytes);
+}
