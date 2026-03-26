@@ -22,11 +22,55 @@
 
 #include "emittermodel.h"
 
+class EmitterViewPrivate : public QObject
+{
+public:
+    EmitterViewPrivate(EmitterView *q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {}
+    ~EmitterViewPrivate() {}
+
+public:
+    void try2Output()
+    {
+        int rows = m_tableModel->rowCount(QModelIndex());
+        for (int i = 0; i < rows; ++i) {
+            m_tableModel->increaseElapsedTime(i, 10);
+            if (!m_tableModel->isTimeout(i)) {
+                continue;
+            }
+
+            m_tableModel->resetElapsedTime(i);
+
+            if (!m_tableModel->data(m_tableModel->index(i, 0), Qt::EditRole).toBool()) {
+                continue;
+            }
+
+            QVariant var = m_tableModel->data(m_tableModel->index(i, 3), Qt::EditRole);
+            QJsonObject json = var.toJsonObject();
+            TextItem textItem = xLoadTextItem(json);
+            QByteArray bytes = xTextItem2array(textItem);
+
+            if (!q->isDisableAll()) {
+                emit q->outputBytes(bytes);
+            }
+        }
+    }
+
+public:
+    EmitterModel *m_tableModel;
+
+private:
+    EmitterView *q;
+};
+
 EmitterView::EmitterView(QWidget *parent)
     : TableView(parent)
 {
-    m_tableModel = new EmitterModel(this);
-    setTableModel(m_tableModel);
+    d = new EmitterViewPrivate(this);
+    d->m_tableModel = new EmitterModel(this);
+    setTableModel(d->m_tableModel);
 
     QTableView *tv = tableView();
     QHeaderView *hHeader = tv->horizontalHeader();
@@ -36,7 +80,7 @@ EmitterView::EmitterView(QWidget *parent)
     timer->setInterval(10);
     timer->setSingleShot(true);
     connect(timer, &QTimer::timeout, timer, [=]() {
-        try2Output();
+        d->try2Output();
         timer->start();
     });
     timer->start();
@@ -47,30 +91,4 @@ EmitterView::~EmitterView() {}
 QList<int> EmitterView::textItemColumns() const
 {
     return QList<int>{3};
-}
-
-void EmitterView::try2Output()
-{
-    int rows = m_tableModel->rowCount(QModelIndex());
-    for (int i = 0; i < rows; ++i) {
-        m_tableModel->increaseElapsedTime(i, 10);
-        if (!m_tableModel->isTimeout(i)) {
-            continue;
-        }
-
-        m_tableModel->resetElapsedTime(i);
-
-        if (!m_tableModel->data(m_tableModel->index(i, 0), Qt::EditRole).toBool()) {
-            continue;
-        }
-
-        QVariant var = m_tableModel->data(m_tableModel->index(i, 3), Qt::EditRole);
-        QJsonObject json = var.toJsonObject();
-        TextItem textItem = xLoadTextItem(json);
-        QByteArray bytes = xTextItem2array(textItem);
-
-        if (!isDisableAll()) {
-            emit outputBytes(bytes);
-        }
-    }
 }

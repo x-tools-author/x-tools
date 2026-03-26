@@ -13,9 +13,17 @@
 #include "common/xtools.h"
 #include "page/common/tablemodel.h"
 
+#define EMITTER_MODEL_COLUMN_ENABLE 0
+#define EMITTER_MODEL_COLUMN_DESCRIPTION 1
+#define EMITTER_MODEL_COLUMN_INTERVAL 2
+#define EMITTER_MODEL_COLUMN_DATA 3
+
+class EmitterModelPrivate;
 class EmitterModel : public TableModel
 {
     Q_OBJECT
+    EmitterModelPrivate *d{nullptr};
+
 public:
     explicit EmitterModel(QObject *parent = nullptr);
 
@@ -34,25 +42,4 @@ public:
     void increaseElapsedTime(const int row, const int interval);
     bool isTimeout(const int row) const;
     void resetElapsedTime(const int row);
-
-private:
-    struct Item
-    {
-        bool enable{true};
-        QString description{"Demo"};
-        int interval{1000};
-        TextItem textItem;
-
-        int elapsedTime{0};
-    };
-    struct ItemKeys
-    {
-        const QString enable{"enable"};
-        const QString description{"description"};
-        const QString interval{"interval"};
-        QString textItem{"textItem"};
-    };
-
-private:
-    QList<Item> m_items;
 };

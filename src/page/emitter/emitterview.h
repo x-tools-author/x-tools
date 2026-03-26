@@ -10,20 +10,16 @@
 
 #include "page/common/tableview.h"
 
-class EmitterModel;
+class EmitterViewPrivate;
 class EmitterView : public TableView
 {
     Q_OBJECT
+    EmitterViewPrivate *d{nullptr};
+
 public:
     explicit EmitterView(QWidget *parent = nullptr);
     ~EmitterView();
 
 protected:
     QList<int> textItemColumns() const override;
-
-private:
-    void try2Output();
-
-private:
-    EmitterModel *m_tableModel;
 };

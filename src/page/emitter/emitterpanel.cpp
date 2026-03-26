@@ -18,8 +18,8 @@ public:
     explicit EmitterPanelPrivate(EmitterPanel *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    { }
-    ~EmitterPanelPrivate() { }
+    {}
+    ~EmitterPanelPrivate() {}
 
 public:
     EmitterPanel *q;
@@ -35,6 +35,8 @@ EmitterPanel::EmitterPanel(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     d->m_view = new EmitterView(this);
     layout->addWidget(d->m_view);
+
+    connect(d->m_view, &EmitterView::outputBytes, this, &EmitterPanel::outputBytes);
 }
 
 EmitterPanel::~EmitterPanel()
@@ -50,9 +52,4 @@ QVariantMap EmitterPanel::save() const
 void EmitterPanel::load(const QVariantMap &parameters)
 {
     d->m_view->load(parameters);
-}
-
-EmitterView *EmitterPanel::emitterView() const
-{
-    return d->m_view;
 }

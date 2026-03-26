@@ -10,9 +10,45 @@
 
 #include <QDebug>
 
+class EmitterModelPrivate : public QObject
+{
+public:
+    EmitterModelPrivate(EmitterModel *q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {}
+    ~EmitterModelPrivate() {}
+
+public:
+    struct Item
+    {
+        bool enable{true};
+        QString description{"Demo"};
+        int interval{1000};
+        TextItem textItem;
+
+        int elapsedTime{0};
+    };
+    struct ItemKeys
+    {
+        const QString enable{"enable"};
+        const QString description{"description"};
+        const QString interval{"interval"};
+        QString textItem{"textItem"};
+    };
+
+public:
+    QList<Item> m_items;
+
+private:
+    EmitterModel *q;
+};
+
 EmitterModel::EmitterModel(QObject *parent)
     : TableModel{parent}
-{}
+{
+    d = new EmitterModelPrivate(this);
+}
 
 QVariantMap EmitterModel::saveRow(const int row)
 {
@@ -21,19 +57,19 @@ QVariantMap EmitterModel::saveRow(const int row)
         return QVariantMap();
     }
 
-    QVariant var = data(index(row, 0), Qt::EditRole);
+    QVariant var = data(index(row, EMITTER_MODEL_COLUMN_ENABLE), Qt::EditRole);
     bool enable = var.toBool();
 
-    var = data(index(row, 1), Qt::DisplayRole);
+    var = data(index(row, EMITTER_MODEL_COLUMN_DESCRIPTION), Qt::DisplayRole);
     QString description = var.toString();
 
-    var = data(index(row, 2), Qt::EditRole);
+    var = data(index(row, EMITTER_MODEL_COLUMN_INTERVAL), Qt::EditRole);
     int interval = var.toInt();
 
-    var = data(index(row, 3), Qt::EditRole);
+    var = data(index(row, EMITTER_MODEL_COLUMN_DATA), Qt::EditRole);
     QJsonObject item = var.toJsonObject();
 
-    ItemKeys keys;
+    EmitterModelPrivate::ItemKeys keys;
     QVariantMap map;
     map.insert(keys.textItem, item.toVariantMap());
     map.insert(keys.description, description);
@@ -49,25 +85,25 @@ void EmitterModel::loadRow(const int row, const QVariantMap &item)
         return;
     }
 
-    ItemKeys keys;
+    EmitterModelPrivate::ItemKeys keys;
     bool enable = item.value(keys.enable).toBool();
-    setData(index(row, 0), enable, Qt::EditRole);
+    setData(index(row, EMITTER_MODEL_COLUMN_ENABLE), enable, Qt::EditRole);
 
     QString description = item.value(keys.description).toString();
-    setData(index(row, 1), description, Qt::EditRole);
+    setData(index(row, EMITTER_MODEL_COLUMN_DESCRIPTION), description, Qt::EditRole);
 
     int interval = item.value(keys.interval).toInt();
-    setData(index(row, 2), interval, Qt::EditRole);
+    setData(index(row, EMITTER_MODEL_COLUMN_INTERVAL), interval, Qt::EditRole);
 
     QJsonObject json = item.value(keys.textItem).toJsonObject();
-    setData(index(row, 3), json, Qt::EditRole);
+    setData(index(row, EMITTER_MODEL_COLUMN_DATA), json, Qt::EditRole);
 }
 
 int EmitterModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
 
-    int count = m_items.count();
+    int count = d->m_items.count();
     return count;
 }
 
@@ -80,35 +116,36 @@ int EmitterModel::columnCount(const QModelIndex &parent) const
 QVariant EmitterModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
-    if (row < 0 || row >= m_items.count()) {
+    if (row < 0 || row >= d->m_items.count()) {
         return QVariant();
     }
 
-    const Item item = m_items.at(row);
+    const EmitterModelPrivate::Item item = d->m_items.at(row);
 
     int column = index.column();
     if (role == Qt::DisplayRole) {
-        if (column == 0) {
+        if (column == EMITTER_MODEL_COLUMN_ENABLE) {
             return item.enable ? tr("Enable") : tr("Disable");
-        } else if (column == 1) {
+        } else if (column == EMITTER_MODEL_COLUMN_DESCRIPTION) {
             return item.description;
-        } else if (column == 2) {
+        } else if (column == EMITTER_MODEL_COLUMN_INTERVAL) {
             return item.interval;
-        } else if (column == 3) {
+        } else if (column == EMITTER_MODEL_COLUMN_DATA) {
             return xTextItem2string(item.textItem);
         }
     } else if (role == Qt::EditRole) {
-        if (column == 0) {
+        if (column == EMITTER_MODEL_COLUMN_ENABLE) {
             return item.enable;
-        } else if (column == 1) {
+        } else if (column == EMITTER_MODEL_COLUMN_DESCRIPTION) {
             return item.description;
-        } else if (column == 2) {
+        } else if (column == EMITTER_MODEL_COLUMN_INTERVAL) {
             return item.interval;
-        } else if (column == 3) {
+        } else if (column == EMITTER_MODEL_COLUMN_DATA) {
             return xSaveTextItem(item.textItem);
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (column == 0 || column == 1 || column == 2) {
+        if (column == EMITTER_MODEL_COLUMN_ENABLE || column == EMITTER_MODEL_COLUMN_DESCRIPTION
+            || column == EMITTER_MODEL_COLUMN_INTERVAL) {
             return Qt::AlignCenter;
         }
     }
@@ -119,23 +156,23 @@ QVariant EmitterModel::data(const QModelIndex &index, int role) const
 bool EmitterModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     int row = index.row();
-    if (row < 0 || row >= m_items.count()) {
+    if (row < 0 || row >= d->m_items.count()) {
         return false;
     }
 
     bool result = true;
-    Item &item = m_items[row];
+    EmitterModelPrivate::Item &item = d->m_items[row];
 
     int column = index.column();
     if (role == Qt::EditRole) {
-        if (column == 0) {
+        if (column == EMITTER_MODEL_COLUMN_ENABLE) {
             item.enable = value.toBool();
-        } else if (column == 1) {
+        } else if (column == EMITTER_MODEL_COLUMN_DESCRIPTION) {
             item.description = value.toString();
-        } else if (column == 2) {
+        } else if (column == EMITTER_MODEL_COLUMN_INTERVAL) {
             item.interval = value.toInt();
             item.interval = qMax(100, item.interval);
-        } else if (column == 3) {
+        } else if (column == EMITTER_MODEL_COLUMN_DATA) {
             item.textItem = xLoadTextItem(value.toJsonObject());
         } else {
             result = false;
@@ -152,13 +189,13 @@ bool EmitterModel::insertRows(int row, int count, const QModelIndex &parent)
 
     TextItem textContext = xDefaultTextItem();
     for (int i = 0; i < count; i++) {
-        Item item;
+        EmitterModelPrivate::Item item;
         item.enable = true;
         item.description = tr("Demo") + QString::number(rowCount(QModelIndex()));
         item.interval = 1000;
         item.textItem = textContext;
         item.elapsedTime = 0;
-        m_items.insert(row, item);
+        d->m_items.insert(row, item);
     }
 
     endInsertRows();
@@ -173,7 +210,7 @@ bool EmitterModel::removeRows(int row, int count, const QModelIndex &parent)
 
     beginRemoveRows(parent, row, row + count - 1);
     for (int i = 0; i < count; i++) {
-        m_items.removeAt(row);
+        d->m_items.removeAt(row);
     }
     endRemoveRows();
     return true;
@@ -186,17 +223,17 @@ QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int 
     }
 
     if (role == Qt::DisplayRole) {
-        if (section == 0) {
+        if (section == EMITTER_MODEL_COLUMN_ENABLE) {
             return tr("Enable");
-        } else if (section == 1) {
+        } else if (section == EMITTER_MODEL_COLUMN_DESCRIPTION) {
             return tr("Description");
-        } else if (section == 2) {
+        } else if (section == EMITTER_MODEL_COLUMN_INTERVAL) {
             return tr("Interval");
-        } else if (section == 3) {
+        } else if (section == EMITTER_MODEL_COLUMN_DATA) {
             return tr("Data");
         }
     } else if (role == Qt::TextAlignmentRole) {
-        if (section == 3) {
+        if (section == EMITTER_MODEL_COLUMN_DATA) {
             return Qt::AlignLeft;
         }
     }
@@ -207,10 +244,11 @@ QVariant EmitterModel::headerData(int section, Qt::Orientation orientation, int 
 Qt::ItemFlags EmitterModel::flags(const QModelIndex &index) const
 {
     Qt::ItemFlags fs = QAbstractTableModel::flags(index);
-    if (index.column() == 0) {
+    if (index.column() == EMITTER_MODEL_COLUMN_ENABLE) {
         fs |= Qt::ItemIsEditable;
         fs |= Qt::ItemIsUserCheckable;
-    } else if (index.column() == 1 || index.column() == 2) {
+    } else if (index.column() == EMITTER_MODEL_COLUMN_DESCRIPTION
+               || index.column() == EMITTER_MODEL_COLUMN_INTERVAL) {
         fs |= Qt::ItemIsEditable;
     }
 
@@ -219,16 +257,16 @@ Qt::ItemFlags EmitterModel::flags(const QModelIndex &index) const
 
 void EmitterModel::increaseElapsedTime(const int row, const int interval)
 {
-    if (row >= 0 || row < m_items.count()) {
-        m_items[row].elapsedTime += interval;
+    if (row >= 0 || row < d->m_items.count()) {
+        d->m_items[row].elapsedTime += interval;
     }
 }
 
 bool EmitterModel::isTimeout(const int row) const
 {
     bool timeout = false;
-    if (row >= 0 || row < m_items.count()) {
-        timeout = m_items[row].elapsedTime >= m_items[row].interval;
+    if (row >= 0 || row < d->m_items.count()) {
+        timeout = d->m_items[row].elapsedTime >= d->m_items[row].interval;
     }
 
     return timeout;
@@ -236,7 +274,7 @@ bool EmitterModel::isTimeout(const int row) const
 
 void EmitterModel::resetElapsedTime(const int row)
 {
-    if (row >= 0 || row < m_items.count()) {
-        m_items[row].elapsedTime = 0;
+    if (row >= 0 || row < d->m_items.count()) {
+        d->m_items[row].elapsedTime = 0;
     }
 }
