@@ -1891,33 +1891,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>EmitterModel</name>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="190"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="128"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="227"/>
         <source>Enable</source>
         <translation>Włącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="92"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="128"/>
         <source>Disable</source>
         <translation>Wyłącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="157"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="194"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="192"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="229"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="194"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="231"/>
         <source>Interval</source>
         <translation>Interwał</translation>
     </message>
     <message>
-        <location filename="../../src/page/emitter/emittermodel.cpp" line="196"/>
+        <location filename="../../src/page/emitter/emittermodel.cpp" line="233"/>
         <source>Data</source>
         <translation>Dane</translation>
     </message>
@@ -2662,49 +2662,143 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Formularz</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="32"/>
+        <location filename="../../src/page/lua/luapanel.ui" line="49"/>
         <source>Test</source>
         <translation>Test</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="39"/>
+        <location filename="../../src/page/lua/luapanel.ui" line="78"/>
+        <source>Save</source>
+        <translation type="unfinished">Ratować</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="85"/>
+        <source>New</source>
+        <translation type="unfinished">Nowy</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="92"/>
+        <source>Save as</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="99"/>
+        <source>Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="106"/>
+        <source>Scripts</source>
+        <translation type="unfinished">Skrypty</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="129"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="141"/>
         <source>Test data</source>
         <translation>Dane testowe</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="63"/>
+        <location filename="../../src/page/lua/luapanel.ui" line="150"/>
+        <source>String parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="160"/>
+        <source>Array parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.ui" line="66"/>
         <source>Result data</source>
         <translation>Dane wynikowe</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="73"/>
+        <location filename="../../src/page/lua/luapanel.ui" line="32"/>
         <source>Bypass</source>
         <translation>Objazd</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="90"/>
         <source>Table Parameters</source>
-        <translation>Parametry tabeli</translation>
+        <translation type="vanished">Parametry tabeli</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.ui" line="112"/>
         <source>String Parameters</source>
-        <translation>Parametry ciągu</translation>
+        <translation type="vanished">Parametry ciągu</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
         <source>Default Lua Script</source>
-        <translation>Domyślny skrypt Lua</translation>
+        <translation type="vanished">Domyślny skrypt Lua</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="41"/>
         <source>Checksum Lua Script</source>
-        <translation>Skrypt Lua sumy kontrolnej</translation>
+        <translation type="vanished">Skrypt Lua sumy kontrolnej</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="43"/>
         <source>Lua Script(String)</source>
-        <translation>Skrypt Lua (ciąg)</translation>
+        <translation type="vanished">Skrypt Lua (ciąg)</translation>
+    </message>
+</context>
+<context>
+    <name>LuaPanelPrivate</name>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="99"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="164"/>
+        <source>No script selected to save.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="106"/>
+        <source>Cannot open file for writing: %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="118"/>
+        <source>Save file: %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
+        <source>New Lua Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
+        <source>Enter script name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="137"/>
+        <source>A script with the name &apos;%1&apos; already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="144"/>
+        <source>Cannot create file: %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="170"/>
+        <source>Save Lua Script As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="171"/>
+        <source>Enter new script name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="184"/>
+        <source>Cannot save file as: %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luapanel.cpp" line="213"/>
+        <source>Failed to open the script: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2735,12 +2829,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LuaView</name>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="42"/>
+        <location filename="../../src/page/lua/luaview.ui" line="74"/>
+        <source>(The handler of the rx data)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Input data processing Lua script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="49"/>
+        <location filename="../../src/page/lua/luaview.ui" line="161"/>
+        <source>(The handler of the tx data)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Output data processing Lua script</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3835,7 +3939,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="385"/>
+        <location filename="../../src/page/page.cpp" line="383"/>
         <source>Open</source>
         <translation>Otwórz</translation>
     </message>
@@ -3936,22 +4040,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Wstępnie ustawiona lista danych</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="831"/>
+        <location filename="../../src/page/page.cpp" line="839"/>
         <source>Presets</source>
         <translation>Ustawienia wstępne</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="832"/>
+        <location filename="../../src/page/page.cpp" line="840"/>
         <source>Emitter</source>
         <translation>Emiter</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="833"/>
+        <location filename="../../src/page/page.cpp" line="841"/>
         <source>Responder</source>
         <translation>Odpowiadający</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="834"/>
+        <location filename="../../src/page/page.cpp" line="842"/>
         <source>Transfers</source>
         <translation>Transfery</translation>
     </message>
@@ -3960,53 +4064,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Fabryka Protokołu</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="845"/>
+        <location filename="../../src/page/page.cpp" line="853"/>
         <source>Scripts</source>
         <translation type="unfinished">Skrypty</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="835"/>
+        <location filename="../../src/page/page.cpp" line="843"/>
         <source>Records</source>
         <translation type="unfinished">Dokumentacja</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="836"/>
+        <location filename="../../src/page/page.cpp" line="844"/>
         <source>Search</source>
         <translation type="unfinished">Szukaj</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="841"/>
+        <location filename="../../src/page/page.cpp" line="849"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="842"/>
+        <location filename="../../src/page/page.cpp" line="850"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="544"/>
-        <location filename="../../src/page/page.cpp" line="1056"/>
+        <location filename="../../src/page/page.cpp" line="542"/>
+        <location filename="../../src/page/page.cpp" line="1074"/>
         <source>Error: No device is opened.</source>
         <translation>Błąd: Żadne urządzenie nie jest otwarte.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="252"/>
+        <location filename="../../src/page/page.cpp" line="250"/>
         <source>Disable</source>
         <translation>Wyłącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="376"/>
+        <location filename="../../src/page/page.cpp" line="374"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="392"/>
+        <location filename="../../src/page/page.cpp" line="390"/>
         <source>Error Occurred</source>
         <translation>Wystąpił błąd</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="398"/>
+        <location filename="../../src/page/page.cpp" line="396"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
@@ -4019,7 +4123,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Pokaż panele skryptów</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="572"/>
+        <location filename="../../src/page/page.cpp" line="570"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4158,27 +4262,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="94"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="96"/>
         <source>Send</source>
         <translation type="unfinished">Wysłać</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="144"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="146"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="175"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="177"/>
         <source>Option</source>
         <translation type="unfinished">Opcja</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="178"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="182"/>
         <source>Data</source>
         <translation>Dane</translation>
     </message>
@@ -4248,36 +4352,59 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Interwał pozycji (ms)</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="69"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="277"/>
         <source>Group Sending</source>
         <translation>Wysyłanie grupowe</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
-        <translation>Ostrzeżenie</translation>
+        <translation type="vanished">Ostrzeżenie</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
         <source>The group name cannot be empty.</source>
-        <translation>Nazwa grupy nie może być pusta.</translation>
+        <translation type="vanished">Nazwa grupy nie może być pusta.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <source>The columns cannot be empty.</source>
-        <translation>Kolumny nie mogą być puste.</translation>
+        <translation type="vanished">Kolumny nie mogą być puste.</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="182"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation>Grupa o nazwie &quot;%1&quot; już istnieje. Zamienić ją?</translation>
+        <translation type="vanished">Grupa o nazwie &quot;%1&quot; już istnieje. Zamienić ją?</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
-        <translation>Wyślij grupy</translation>
+        <translation type="vanished">Wyślij grupy</translation>
+    </message>
+</context>
+<context>
+    <name>PresetViewGroupEditorPrivate</name>
+    <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="132"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="147"/>
+        <source>Warning</source>
+        <translation type="unfinished">Ostrzeżenie</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="132"/>
+        <source>The group name cannot be empty.</source>
+        <translation type="unfinished">Nazwa grupy nie może być pusta.</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
+        <source>The columns cannot be empty.</source>
+        <translation type="unfinished">Kolumny nie mogą być puste.</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="148"/>
+        <source>The group name &quot;%1&quot; already exists. Replace it?</source>
+        <translation type="unfinished">Grupa o nazwie &quot;%1&quot; już istnieje. Zamienić ją?</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="207"/>
+        <source>Send Groups</source>
+        <translation type="unfinished">Wyślij grupy</translation>
     </message>
 </context>
 <context>
@@ -4836,43 +4963,43 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ResponderModel</name>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="223"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="144"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="261"/>
         <source>Enable</source>
         <translation>Włącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="107"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="144"/>
         <source>Disable</source>
         <translation>Wyłącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="186"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="224"/>
         <source>Demo</source>
         <translation>Demo</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="225"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="263"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="227"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="265"/>
         <source>Option</source>
         <translation>Opcja</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="229"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="267"/>
         <source>Delay</source>
         <translation>Opóźnienie</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="231"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="269"/>
         <source>Reference Data</source>
         <translation>Dane odniesienia</translation>
     </message>
     <message>
-        <location filename="../../src/page/responder/respondermodel.cpp" line="233"/>
+        <location filename="../../src/page/responder/respondermodel.cpp" line="271"/>
         <source>Response Data</source>
         <translation>Dane odpowiedzi</translation>
     </message>
@@ -5434,69 +5561,69 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Wyłącz wszystkie elementy</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="176"/>
+        <location filename="../../src/page/common/tableview.cpp" line="178"/>
         <source>Clear</source>
         <translation>Wyczyść</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="42"/>
+        <location filename="../../src/page/common/tableview.cpp" line="44"/>
         <source>Move Up</source>
         <translation>Podnieść</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="43"/>
+        <location filename="../../src/page/common/tableview.cpp" line="45"/>
         <source>Move Down</source>
         <translation>Opuszczać</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="44"/>
+        <location filename="../../src/page/common/tableview.cpp" line="46"/>
         <source>Clear All Items</source>
         <translation>Wyczyść wszystkie elementy</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="45"/>
+        <location filename="../../src/page/common/tableview.cpp" line="47"/>
         <source>Import Items from JSON File</source>
         <translation>Importuj elementy z pliku JSON</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="46"/>
+        <location filename="../../src/page/common/tableview.cpp" line="48"/>
         <source>Export Items to JSON File</source>
         <translation>Eksportuj elementy do pliku JSON</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="47"/>
+        <location filename="../../src/page/common/tableview.cpp" line="49"/>
         <source>Delete Selected Item</source>
         <translation>Usuń wybrany element</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="48"/>
+        <location filename="../../src/page/common/tableview.cpp" line="50"/>
         <source>Add New Item</source>
         <translation>Dodaj nowy element</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="177"/>
+        <location filename="../../src/page/common/tableview.cpp" line="179"/>
         <source>Are you sure to clear all items?</source>
         <translation>Czy na pewno chcesz wyczyścić wszystkie elementy?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="192"/>
+        <location filename="../../src/page/common/tableview.cpp" line="194"/>
         <source>No Item be Selected</source>
         <translation>Nie wybrano elementu</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="192"/>
+        <location filename="../../src/page/common/tableview.cpp" line="194"/>
         <source>Please select a item first!</source>
         <translation>Najpierw wybierz element!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="202"/>
-        <location filename="../../src/page/common/tableview.cpp" line="230"/>
+        <location filename="../../src/page/common/tableview.cpp" line="204"/>
+        <location filename="../../src/page/common/tableview.cpp" line="232"/>
         <source>Import data</source>
         <translation>Importuj dane</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="204"/>
-        <location filename="../../src/page/common/tableview.cpp" line="232"/>
+        <location filename="../../src/page/common/tableview.cpp" line="206"/>
+        <location filename="../../src/page/common/tableview.cpp" line="234"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Wszystko (*)</translation>
     </message>
@@ -5590,37 +5717,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>TransfersView</name>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="32"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="54"/>
         <source>Serial Port</source>
         <translation>Port szeregowy</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="41"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="63"/>
         <source>TCP Client</source>
         <translation>Klient TCP</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="49"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="71"/>
         <source>TCP Server</source>
         <translation>Serwer TCP</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="57"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="79"/>
         <source>UDP Client</source>
         <translation>Klient UDP</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="65"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="87"/>
         <source>UDP Server</source>
         <translation>Serwer UDP</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="74"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="96"/>
         <source>WebSocket Client</source>
         <translation>Klient WebSocket</translation>
     </message>
     <message>
-        <location filename="../../src/page/transfer/transfersview.cpp" line="82"/>
+        <location filename="../../src/page/transfer/transfersview.cpp" line="104"/>
         <source>WebSocket Server</source>
         <translation>Serwer WebSocket</translation>
     </message>
