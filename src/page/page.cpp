@@ -185,7 +185,7 @@ private:
 PagePrivate::PagePrivate(Page *q_ptr)
     : QObject(q_ptr)
     , q(q_ptr)
-{}
+{ }
 
 void PagePrivate::initUi()
 {
@@ -268,7 +268,7 @@ void PagePrivate::initUiOutput()
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
 
-void PagePrivate::initUiInput() {}
+void PagePrivate::initUiInput() { }
 
 void PagePrivate::onDeviceTypeChanged()
 {
@@ -459,7 +459,7 @@ void PagePrivate::onTerminalModeChanged()
     m_filterView->setWholeWordCheckBoxEnabled(terminalMode);
 }
 
-void PagePrivate::onExternalPanelButtonClicked(bool checked) {}
+void PagePrivate::onExternalPanelButtonClicked(bool checked) { }
 
 void PagePrivate::openDevice()
 {
@@ -928,6 +928,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
 Page::~Page()
 {
+    d->closeDevice();
     d->m_updateLabelInfoTimer->stop();
     d->saveControllerParameters();
     delete d->ui;
