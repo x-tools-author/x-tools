@@ -11,9 +11,16 @@
 #include "common/xtools.h"
 #include "page/common/tablemodel.h"
 
+#define PRESET_MODEL_COLUMN_SEND 0
+#define PRESET_MODEL_COLUMN_DESC 1
+#define PRESET_MODEL_COLUMN_DATA 2
+
+class PresetModelPrivate;
 class PresetModel : public TableModel
 {
     Q_OBJECT
+    PresetModelPrivate *d;
+
 public:
     explicit PresetModel(QObject *parent = nullptr);
 
@@ -34,14 +41,4 @@ public:
                   int count,
                   const QModelIndex &destinationParent,
                   int destinationChild) override;
-
-private:
-    struct Item
-    {
-        QString description{"Demo"};
-        TextItem textContext;
-    };
-
-private:
-    QList<Item> m_items;
 };

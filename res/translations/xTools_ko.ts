@@ -2685,17 +2685,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>문자열 매개변수</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
         <source>Default Lua Script</source>
         <translation>기본 Lua 스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="41"/>
         <source>Checksum Lua Script</source>
         <translation>체크섬 Lua 스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="42"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="43"/>
         <source>Lua Script(String)</source>
         <translation>Lua 스크립트(문자열)</translation>
     </message>
@@ -2741,85 +2741,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="349"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>New Window</source>
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="360"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="366"/>
-        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="625"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="383"/>
+        <location filename="../../src/mainwindow.cpp" line="381"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="387"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="444"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
-        <location filename="../../src/mainwindow.cpp" line="540"/>
+        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
         <source>Join in QQ Group</source>
         <translation>QQ그룹에 가입하세요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="425"/>
+        <location filename="../../src/mainwindow.cpp" line="423"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="496"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="560"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
@@ -2836,38 +2836,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="623"/>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="627"/>
+        <location filename="../../src/mainwindow.cpp" line="640"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -3822,91 +3822,91 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="253"/>
+        <location filename="../../src/page/page.ui" line="111"/>
         <source>Cycle interval</source>
         <translation>사이클 간격</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="237"/>
-        <location filename="../../src/page/page.cpp" line="636"/>
+        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Open</source>
         <translation>열기</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="61"/>
-        <location filename="../../src/page/page.ui" line="219"/>
-        <location filename="../../src/page/page.ui" line="244"/>
+        <location filename="../../src/page/page.ui" line="95"/>
+        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="241"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="226"/>
+        <location filename="../../src/page/page.ui" line="102"/>
         <source>Clear</source>
         <translation>분명한</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="117"/>
+        <location filename="../../src/page/page.ui" line="49"/>
         <source>Rx</source>
         <translation>수신</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="124"/>
+        <location filename="../../src/page/page.ui" line="56"/>
         <source>Tx</source>
         <translation>송신</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="131"/>
+        <location filename="../../src/page/page.ui" line="63"/>
         <source>Date</source>
         <translation>날짜</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="138"/>
+        <location filename="../../src/page/page.ui" line="70"/>
         <source>Flag</source>
         <translation>깃발</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.ui" line="77"/>
         <source>Time</source>
         <translation>시간</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="84"/>
         <source>Ms</source>
         <translation>양</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="192"/>
+        <location filename="../../src/page/page.ui" line="220"/>
         <source>Output control</source>
         <translation>출력 제어</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="52"/>
+        <location filename="../../src/page/page.ui" line="232"/>
         <source>Input control</source>
         <translation>입력 제어</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="92"/>
+        <location filename="../../src/page/page.ui" line="182"/>
         <source>Wrap</source>
         <translation>포장하다</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="99"/>
+        <location filename="../../src/page/page.ui" line="189"/>
         <source>Terminal</source>
         <translation>단말기</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="210"/>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Communication control</source>
         <translation>통신제어</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="68"/>
+        <location filename="../../src/page/page.ui" line="248"/>
         <source>Send</source>
         <translation>보내다</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="83"/>
-        <location filename="../../src/page/page.ui" line="108"/>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Text format</source>
         <translation>텍스트 형식</translation>
     </message>
@@ -3915,38 +3915,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">IO</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="313"/>
+        <location filename="../../src/page/page.ui" line="294"/>
         <source>Output</source>
         <translation>산출</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="471"/>
+        <location filename="../../src/page/page.ui" line="452"/>
         <source>Input</source>
         <translation>입력</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="266"/>
         <source>Preset data list</source>
-        <translation>프리셋 데이터 목록</translation>
+        <translation type="vanished">프리셋 데이터 목록</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="269"/>
-        <location filename="../../src/page/page.cpp" line="112"/>
+        <location filename="../../src/page/page.cpp" line="831"/>
         <source>Presets</source>
         <translation>사전 설정</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="114"/>
+        <location filename="../../src/page/page.cpp" line="832"/>
         <source>Emitter</source>
         <translation>이미터</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="116"/>
+        <location filename="../../src/page/page.cpp" line="833"/>
         <source>Responder</source>
         <translation>응답자</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="118"/>
+        <location filename="../../src/page/page.cpp" line="834"/>
         <source>Transfers</source>
         <translation>환승</translation>
     </message>
@@ -3955,53 +3953,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">프로토콜 팩토리</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="120"/>
+        <location filename="../../src/page/page.cpp" line="845"/>
         <source>Scripts</source>
         <translation type="unfinished">스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="122"/>
+        <location filename="../../src/page/page.cpp" line="835"/>
         <source>Records</source>
         <translation type="unfinished">기록</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="124"/>
+        <location filename="../../src/page/page.cpp" line="836"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="127"/>
+        <location filename="../../src/page/page.cpp" line="841"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="129"/>
+        <location filename="../../src/page/page.cpp" line="842"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="345"/>
-        <location filename="../../src/page/page.cpp" line="818"/>
+        <location filename="../../src/page/page.cpp" line="544"/>
+        <location filename="../../src/page/page.cpp" line="1056"/>
         <source>Error: No device is opened.</source>
         <translation>오류: 열려 있는 장치가 없습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="470"/>
+        <location filename="../../src/page/page.cpp" line="252"/>
         <source>Disable</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="627"/>
+        <location filename="../../src/page/page.cpp" line="376"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="643"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Error Occurred</source>
         <translation>오류 발생</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="649"/>
+        <location filename="../../src/page/page.cpp" line="398"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -4014,7 +4012,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">스크립트 패널 표시</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="846"/>
+        <location filename="../../src/page/page.cpp" line="572"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4022,14 +4020,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PanelManager</name>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="25"/>
         <source>Panels</source>
-        <translation>패널</translation>
+        <translation type="vanished">패널</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="28"/>
         <source>Hide/Show Panels</source>
-        <translation>패널 숨기기/보이기</translation>
+        <translation type="vanished">패널 숨기기/보이기</translation>
     </message>
 </context>
 <context>
@@ -4155,17 +4151,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="94"/>
+        <source>Send</source>
+        <translation type="unfinished">보내다</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="144"/>
         <source>Demo</source>
         <translation>데모</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="175"/>
+        <source>Option</source>
+        <translation type="unfinished">옵션</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="178"/>
         <source>Description</source>
         <translation>설명</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
         <source>Data</source>
         <translation>데이터</translation>
     </message>
@@ -4173,14 +4179,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetView</name>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="45"/>
+        <location filename="../../src/page/preset/presetview.cpp" line="81"/>
         <source>Group Editor</source>
         <translation>그룹 편집기</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="115"/>
         <source>Edit Data</source>
-        <translation>데이터 편집</translation>
+        <translation type="vanished">데이터 편집</translation>
     </message>
 </context>
 <context>
@@ -5422,7 +5427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>모든 항목 비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Clear</source>
         <translation>지우기</translation>
     </message>
@@ -5462,29 +5467,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>새 항목 추가</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="176"/>
+        <location filename="../../src/page/common/tableview.cpp" line="177"/>
         <source>Are you sure to clear all items?</source>
         <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>No Item be Selected</source>
         <translation>선택된 항목이 없습니다</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>Please select a item first!</source>
         <translation>먼저 항목을 선택하십시오!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="201"/>
-        <location filename="../../src/page/common/tableview.cpp" line="229"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>Import data</source>
         <translation>데이터 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
-        <location filename="../../src/page/common/tableview.cpp" line="231"/>
+        <location filename="../../src/page/common/tableview.cpp" line="204"/>
+        <location filename="../../src/page/common/tableview.cpp" line="232"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;모두 (*)</translation>
     </message>

@@ -23,6 +23,4 @@ public:
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
-
-    PresetView *presetView() const;
 };

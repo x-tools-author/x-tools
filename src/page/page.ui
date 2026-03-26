@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1063</width>
-    <height>653</height>
+    <width>773</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,74 +41,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="12" column="0" colspan="2">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Input control</string>
-        </property>
-       </widget>
-      </item>
-      <item row="16" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButtonInputSettings">
-          <property name="text">
-           <string>Settings</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButtonInputWriteBytes">
-          <property name="text">
-           <string>Send</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="7" column="1">
-       <widget class="QComboBox" name="comboBoxOutputFormat"/>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QComboBox" name="comboBoxDeviceTypes"/>
-      </item>
-      <item row="14" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Text format</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QCheckBox" name="checkBoxWrap">
-          <property name="text">
-           <string>Wrap</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxTerminalMode">
-          <property name="text">
-           <string>Terminal</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Text format</string>
-        </property>
-       </widget>
-      </item>
       <item row="8" column="0" colspan="2">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
@@ -155,41 +87,28 @@
         </item>
        </layout>
       </item>
-      <item row="11" column="1">
-       <widget class="QLabel" name="label_9">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <item row="10" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="pushButtonOutputSettings">
+          <property name="text">
+           <string>Settings</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonOutputClear">
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string notr="true"/>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="1">
-       <widget class="QComboBox" name="comboBoxInputInterval">
-        <property name="toolTip">
-         <string notr="true">ms</string>
-        </property>
-       </widget>
-      </item>
-      <item row="14" column="1">
-       <widget class="QComboBox" name="comboBoxInputFormat"/>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <layout class="QVBoxLayout" name="verticalLayoutDeviceController"/>
-      </item>
-      <item row="6" column="0" colspan="2">
-       <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Output control</string>
+         <string>Cycle interval</string>
         </property>
        </widget>
       </item>
@@ -211,23 +130,12 @@
         </property>
        </widget>
       </item>
-      <item row="10" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QPushButton" name="pushButtonOutputSettings">
-          <property name="text">
-           <string>Settings</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButtonOutputClear">
-          <property name="text">
-           <string>Clear</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item row="14" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Text format</string>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0" colspan="2">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -247,31 +155,104 @@
         </item>
        </layout>
       </item>
-      <item row="13" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Cycle interval</string>
-        </property>
-       </widget>
+      <item row="2" column="0" colspan="2">
+       <layout class="QVBoxLayout" name="verticalLayoutDeviceController"/>
       </item>
-      <item row="15" column="0" colspan="2">
-       <widget class="QToolButton" name="toolButtonInputPreset">
+      <item row="7" column="1">
+       <widget class="QComboBox" name="comboBoxOutputFormat"/>
+      </item>
+      <item row="11" column="1">
+       <widget class="QLabel" name="label_9">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="toolTip">
-         <string>Preset data list</string>
-        </property>
         <property name="text">
-         <string>Presets</string>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
+         <string notr="true"/>
         </property>
        </widget>
+      </item>
+      <item row="9" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QCheckBox" name="checkBoxWrap">
+          <property name="text">
+           <string>Wrap</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxTerminalMode">
+          <property name="text">
+           <string>Terminal</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="13" column="1">
+       <widget class="QComboBox" name="comboBoxInputInterval">
+        <property name="toolTip">
+         <string notr="true">ms</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QComboBox" name="comboBoxDeviceTypes"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Text format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="2">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Output control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0" colspan="2">
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Input control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButtonInputSettings">
+          <property name="text">
+           <string>Settings</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonInputWriteBytes">
+          <property name="text">
+           <string>Send</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="14" column="1">
+       <widget class="QComboBox" name="comboBoxInputFormat"/>
       </item>
      </layout>
     </widget>

@@ -2705,17 +2705,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>字符串参数</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
         <source>Default Lua Script</source>
         <translation>默认Lua脚本</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="41"/>
         <source>Checksum Lua Script</source>
         <translation>和校验示例</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="42"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="43"/>
         <source>Lua Script(String)</source>
         <translation>Lua脚本（字符串参数）</translation>
     </message>
@@ -2770,44 +2770,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="349"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="360"/>
         <source>Save Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="366"/>
-        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="625"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="383"/>
+        <location filename="../../src/mainwindow.cpp" line="381"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="387"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>New</source>
         <translation>新建工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="425"/>
+        <location filename="../../src/mainwindow.cpp" line="423"/>
         <source>Using System Proxy</source>
         <translation>使用系统代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="496"/>
         <source>Online Documentation</source>
         <translation>在线文档</translation>
     </message>
@@ -2816,73 +2816,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">（请手动重启软件。）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Commit hash</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="444"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>第三方开源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
-        <location filename="../../src/mainwindow.cpp" line="540"/>
+        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
         <source>Join in QQ Group</source>
         <translation>加入QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="560"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -2895,8 +2895,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="623"/>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="627"/>
+        <location filename="../../src/mainwindow.cpp" line="640"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -3851,100 +3851,99 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="192"/>
+        <location filename="../../src/page/page.ui" line="220"/>
         <source>Output control</source>
         <translation>输出控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="83"/>
-        <location filename="../../src/page/page.ui" line="108"/>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Text format</source>
         <translation>文本格式</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="61"/>
-        <location filename="../../src/page/page.ui" line="219"/>
-        <location filename="../../src/page/page.ui" line="244"/>
+        <location filename="../../src/page/page.ui" line="95"/>
+        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="241"/>
         <source>Settings</source>
         <translation>更多设置</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="237"/>
-        <location filename="../../src/page/page.cpp" line="636"/>
+        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="253"/>
+        <location filename="../../src/page/page.ui" line="111"/>
         <source>Cycle interval</source>
         <translation>循环发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="52"/>
+        <location filename="../../src/page/page.ui" line="232"/>
         <source>Input control</source>
         <translation>输入控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="68"/>
+        <location filename="../../src/page/page.ui" line="248"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="210"/>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Communication control</source>
         <translation>设备控制</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="117"/>
+        <location filename="../../src/page/page.ui" line="49"/>
         <source>Rx</source>
         <translation>接收</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="124"/>
+        <location filename="../../src/page/page.ui" line="56"/>
         <source>Tx</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="131"/>
+        <location filename="../../src/page/page.ui" line="63"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="138"/>
+        <location filename="../../src/page/page.ui" line="70"/>
         <source>Flag</source>
         <translation>标志</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.ui" line="77"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="84"/>
         <source>Ms</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="266"/>
         <source>Preset data list</source>
-        <translation>预设数据列表</translation>
+        <translation type="vanished">预设数据列表</translation>
     </message>
     <message>
         <source>Protocol Factory</source>
         <translation type="vanished">协议工厂</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="226"/>
+        <location filename="../../src/page/page.ui" line="102"/>
         <source>Clear</source>
         <translation>清空输出</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="92"/>
+        <location filename="../../src/page/page.ui" line="182"/>
         <source>Wrap</source>
         <translation>自动换行</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="99"/>
+        <location filename="../../src/page/page.ui" line="189"/>
         <source>Terminal</source>
         <translation>终端模式</translation>
     </message>
@@ -3953,84 +3952,83 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">输入输出</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="313"/>
+        <location filename="../../src/page/page.ui" line="294"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="471"/>
+        <location filename="../../src/page/page.ui" line="452"/>
         <source>Input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="269"/>
-        <location filename="../../src/page/page.cpp" line="112"/>
+        <location filename="../../src/page/page.cpp" line="831"/>
         <source>Presets</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="114"/>
+        <location filename="../../src/page/page.cpp" line="832"/>
         <source>Emitter</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="116"/>
+        <location filename="../../src/page/page.cpp" line="833"/>
         <source>Responder</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="118"/>
+        <location filename="../../src/page/page.cpp" line="834"/>
         <source>Transfers</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="470"/>
+        <location filename="../../src/page/page.cpp" line="252"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="345"/>
-        <location filename="../../src/page/page.cpp" line="818"/>
+        <location filename="../../src/page/page.cpp" line="544"/>
+        <location filename="../../src/page/page.cpp" line="1056"/>
         <source>Error: No device is opened.</source>
         <translation>错误：没有打开的设备。</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="120"/>
+        <location filename="../../src/page/page.cpp" line="845"/>
         <source>Scripts</source>
         <translation>脚本程序</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="122"/>
+        <location filename="../../src/page/page.cpp" line="835"/>
         <source>Records</source>
         <translation>数据记录</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="124"/>
+        <location filename="../../src/page/page.cpp" line="836"/>
         <source>Search</source>
         <translation>输出过滤</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="127"/>
+        <location filename="../../src/page/page.cpp" line="841"/>
         <source>Bar Charts</source>
         <translation>条形图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="129"/>
+        <location filename="../../src/page/page.cpp" line="842"/>
         <source>Line Charts</source>
         <translation>曲线图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="627"/>
+        <location filename="../../src/page/page.cpp" line="376"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="643"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="649"/>
+        <location filename="../../src/page/page.cpp" line="398"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -4043,7 +4041,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">显示脚本面本</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="846"/>
+        <location filename="../../src/page/page.cpp" line="572"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>【%1】【%2】【%3】【%4】</translation>
     </message>
@@ -4051,14 +4049,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PanelManager</name>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="25"/>
         <source>Panels</source>
-        <translation>面板</translation>
+        <translation type="vanished">面板</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="28"/>
         <source>Hide/Show Panels</source>
-        <translation>隐藏/显示面板</translation>
+        <translation type="vanished">隐藏/显示面板</translation>
     </message>
 </context>
 <context>
@@ -4184,17 +4180,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="94"/>
+        <source>Send</source>
+        <translation>发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="144"/>
         <source>Demo</source>
         <translation>示例</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="175"/>
+        <source>Option</source>
+        <translation>操作</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="178"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
         <source>Data</source>
         <translation>数据</translation>
     </message>
@@ -4202,14 +4208,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetView</name>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="45"/>
+        <location filename="../../src/page/preset/presetview.cpp" line="81"/>
         <source>Group Editor</source>
         <translation>组编辑器</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="115"/>
         <source>Edit Data</source>
-        <translation>编辑数据</translation>
+        <translation type="vanished">编辑数据</translation>
     </message>
 </context>
 <context>
@@ -4257,7 +4262,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="146"/>
         <source>Disable the group</source>
-        <translation>禁用本控件</translation>
+        <translation>发送时忽略这个组</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.ui" line="169"/>
@@ -4274,7 +4279,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="172"/>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="181"/>
         <source>Warning</source>
-        <translation>警告警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="166"/>
@@ -4294,7 +4299,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="241"/>
         <source>Send Groups</source>
-        <translation>发送组</translation>
+        <translation>按顺序发送全部组</translation>
     </message>
 </context>
 <context>
@@ -5486,34 +5491,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>添加新项目</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="176"/>
+        <location filename="../../src/page/common/tableview.cpp" line="177"/>
         <source>Are you sure to clear all items?</source>
         <translation>确定删除全部数据吗？</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>No Item be Selected</source>
         <translation>没有被选中的数据</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>Please select a item first!</source>
         <translation>请先选择需要删除的数据！</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="201"/>
-        <location filename="../../src/page/common/tableview.cpp" line="229"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>Import data</source>
         <translation>导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
-        <location filename="../../src/page/common/tableview.cpp" line="231"/>
+        <location filename="../../src/page/common/tableview.cpp" line="204"/>
+        <location filename="../../src/page/common/tableview.cpp" line="232"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>json(*.json);;所有文件（*）</translation>
     </message>

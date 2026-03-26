@@ -30,6 +30,8 @@ TableView::TableView(QWidget *parent)
     QHeaderView *vHeaderView = ui->tableView->verticalHeader();
     vHeaderView->hide();
     ui->tableView->setAlternatingRowColors(true);
+    QHeaderView *hHeaderView = ui->tableView->horizontalHeader();
+    hHeaderView->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     ui->toolButtonUp->setIcon(xIcon(":/res/icons/arrow_upward.svg"));
     ui->toolButtonDown->setIcon(xIcon(":/res/icons/arrow_downward.svg"));
@@ -118,6 +120,7 @@ void TableView::setTableModel(TableModel *model)
     m_model = model;
     ui->tableView->setModel(model);
     connect(ui->tableView, &QTableView::doubleClicked, this, &TableView::onCellDoubleClicked);
+    connect(ui->tableView, &QTableView::clicked, this, &TableView::onCellClicked);
 }
 
 QTableView *TableView::tableView() const
@@ -254,27 +257,6 @@ void TableView::onPushButtonAddClicked()
     m_model->insertRows(m_model->rowCount(), 1);
 }
 
-void TableView::onCellDoubleClicked(const QModelIndex &index)
-{
-    int column = index.column();
-    auto universalColumns = textItemColumns();
-    if (!universalColumns.contains(column)) {
-        return;
-    }
-
-    if (!m_model) {
-        return;
-    }
-
-    auto parameters = m_model->data(index, Qt::EditRole);
-    m_editor->load(parameters.toJsonObject());
-    auto ret = m_editor->exec();
-    if (ret == QDialog::Accepted) {
-        auto parameters = m_editor->save();
-        m_model->setData(index, parameters, Qt::EditRole);
-    }
-}
-
 void TableView::onUpButtonClicked()
 {
     if (!m_model) {
@@ -303,6 +285,32 @@ void TableView::onDownButtonClicked()
         m_model->moveRows(parent, index.row(), 1, parent, index.row() + 1);
         ui->tableView->setCurrentIndex(m_model->index(index.row() + 1, index.column()));
     }
+}
+
+void TableView::onCellDoubleClicked(const QModelIndex &index)
+{
+    int column = index.column();
+    auto universalColumns = textItemColumns();
+    if (!universalColumns.contains(column)) {
+        return;
+    }
+
+    if (!m_model) {
+        return;
+    }
+
+    auto parameters = m_model->data(index, Qt::EditRole);
+    m_editor->load(parameters.toJsonObject());
+    auto ret = m_editor->exec();
+    if (ret == QDialog::Accepted) {
+        auto parameters = m_editor->save();
+        m_model->setData(index, parameters, Qt::EditRole);
+    }
+}
+
+void TableView::onCellClicked(const QModelIndex &index)
+{
+    // Nothing to do yet...
 }
 
 QList<int> TableView::textItemColumns() const

@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -48,10 +48,11 @@ protected:
     void onPushButtonImportClicked();
     void onPushButtonExportClicked();
     void onPushButtonAddClicked();
-    void onCellDoubleClicked(const QModelIndex &index);
     void onUpButtonClicked();
     void onDownButtonClicked();
 
+    virtual void onCellDoubleClicked(const QModelIndex &index);
+    virtual void onCellClicked(const QModelIndex &index);
     virtual QList<int> textItemColumns() const;
 
 private:

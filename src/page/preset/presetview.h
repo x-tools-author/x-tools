@@ -1,6 +1,6 @@
 /***************************************************************************************************
- * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
- *
+ * Copyright 2023-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * 
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
@@ -8,36 +8,28 @@
  **************************************************************************************************/
 #pragma once
 
-#include <QMenu>
+#include <QByteArray>
+#include <QVariantMap>
 
 #include "page/common/tableview.h"
 
-class PresetModel;
-class PresetViewGroupEditor;
+class PresetViewPrivate;
 class PresetView : public TableView
 {
     Q_OBJECT
+    PresetViewPrivate *d{nullptr};
+
 public:
     explicit PresetView(QWidget *parent = nullptr);
     ~PresetView();
-    QMenu *menu();
 
     QVariantMap save() const override;
     void load(const QVariantMap &parameters) override;
 
 signals:
-    void invokeComeHere();
+    void outputBytes(const QByteArray &bytes);
 
 protected:
     QList<int> textItemColumns() const override;
-
-private:
-    QMenu *m_menu{nullptr};
-    PresetModel *m_tableModel;
-    PresetViewGroupEditor *m_groupEditor{nullptr};
-
-private:
-    void onActionTriggered(int row);
-    void onDataChanged();
-    void onInvokeSend(int row);
+    void onCellDoubleClicked(const QModelIndex &index) override;
 };

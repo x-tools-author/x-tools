@@ -2685,17 +2685,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Parametri stringa</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
         <source>Default Lua Script</source>
         <translation>Script Lua predefinito</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="41"/>
         <source>Checksum Lua Script</source>
         <translation>Script Lua checksum</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="42"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="43"/>
         <source>Lua Script(String)</source>
         <translation>Script Lua(String)</translation>
     </message>
@@ -2741,85 +2741,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="349"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>New Window</source>
         <translation>Nuova finestra</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="360"/>
         <source>Save Parameters</source>
         <translation>Salva parametri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="366"/>
-        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="625"/>
         <source>Import Parameters</source>
         <translation>Importa parametri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Export Parameters</source>
         <translation>Esporta parametri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="383"/>
+        <location filename="../../src/mainwindow.cpp" line="381"/>
         <source>&amp;Tools</source>
         <translation>&amp;Strumenti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="387"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>New</source>
         <translation>Nuovo</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="444"/>
         <source>&amp;View</source>
         <translation>&amp;Visualizza</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
-        <location filename="../../src/mainwindow.cpp" line="540"/>
+        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>Storia delle versioni</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
         <source>Join in QQ Group</source>
         <translation>Unisciti al gruppo QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="425"/>
+        <location filename="../../src/mainwindow.cpp" line="423"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="496"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>Terze parti Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="560"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>Codice QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>Gruppo QQ utenti</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>Gruppo QQ Qt</translation>
     </message>
@@ -2836,38 +2836,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Si prega di riavviare manualmente l&apos;applicazione.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="623"/>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="627"/>
+        <location filename="../../src/mainwindow.cpp" line="640"/>
         <source>Json Files (*.json)</source>
         <translation>File Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Unknown</source>
         <translation> sconosciuto</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Commit hash</source>
         <translation>Hash di commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Commit time</source>
         <translation>Data di commit</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Build Date</source>
         <translation>Data di costruzione</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>All rights reserved.</source>
         <translation>Tutti i diritti riservati.</translation>
     </message>
@@ -3822,91 +3822,91 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="253"/>
+        <location filename="../../src/page/page.ui" line="111"/>
         <source>Cycle interval</source>
         <translation>Intervallo del ciclo</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="237"/>
-        <location filename="../../src/page/page.cpp" line="636"/>
+        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Open</source>
         <translation>Apri</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="61"/>
-        <location filename="../../src/page/page.ui" line="219"/>
-        <location filename="../../src/page/page.ui" line="244"/>
+        <location filename="../../src/page/page.ui" line="95"/>
+        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="241"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="226"/>
+        <location filename="../../src/page/page.ui" line="102"/>
         <source>Clear</source>
         <translation>Chiaro</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="117"/>
+        <location filename="../../src/page/page.ui" line="49"/>
         <source>Rx</source>
         <translation>Rx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="124"/>
+        <location filename="../../src/page/page.ui" line="56"/>
         <source>Tx</source>
         <translation>Tx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="131"/>
+        <location filename="../../src/page/page.ui" line="63"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="138"/>
+        <location filename="../../src/page/page.ui" line="70"/>
         <source>Flag</source>
         <translation>Bandiera</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.ui" line="77"/>
         <source>Time</source>
         <translation>Tempo</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="84"/>
         <source>Ms</source>
         <translation>SM</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="192"/>
+        <location filename="../../src/page/page.ui" line="220"/>
         <source>Output control</source>
         <translation>Controllo dell&apos;uscita</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="52"/>
+        <location filename="../../src/page/page.ui" line="232"/>
         <source>Input control</source>
         <translation>Controllo dell&apos;ingresso</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="92"/>
+        <location filename="../../src/page/page.ui" line="182"/>
         <source>Wrap</source>
         <translation>Avvolgere</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="99"/>
+        <location filename="../../src/page/page.ui" line="189"/>
         <source>Terminal</source>
         <translation>terminale</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="210"/>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Communication control</source>
         <translation>Controllo della comunicazione</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="68"/>
+        <location filename="../../src/page/page.ui" line="248"/>
         <source>Send</source>
         <translation>Inviare</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="83"/>
-        <location filename="../../src/page/page.ui" line="108"/>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Text format</source>
         <translation>Formato testo</translation>
     </message>
@@ -3915,38 +3915,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">IO</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="313"/>
+        <location filename="../../src/page/page.ui" line="294"/>
         <source>Output</source>
         <translation>Produzione</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="471"/>
+        <location filename="../../src/page/page.ui" line="452"/>
         <source>Input</source>
         <translation>Ingresso</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="266"/>
         <source>Preset data list</source>
-        <translation>Elenco dei dati preimpostati</translation>
+        <translation type="vanished">Elenco dei dati preimpostati</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="269"/>
-        <location filename="../../src/page/page.cpp" line="112"/>
+        <location filename="../../src/page/page.cpp" line="831"/>
         <source>Presets</source>
         <translation>Preimpostazioni</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="114"/>
+        <location filename="../../src/page/page.cpp" line="832"/>
         <source>Emitter</source>
         <translation>Emettitore</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="116"/>
+        <location filename="../../src/page/page.cpp" line="833"/>
         <source>Responder</source>
         <translation>Risponditore</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="118"/>
+        <location filename="../../src/page/page.cpp" line="834"/>
         <source>Transfers</source>
         <translation>Trasferimenti</translation>
     </message>
@@ -3955,53 +3953,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Fabbrica di protocolli</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="120"/>
+        <location filename="../../src/page/page.cpp" line="845"/>
         <source>Scripts</source>
         <translation type="unfinished">Script</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="122"/>
+        <location filename="../../src/page/page.cpp" line="835"/>
         <source>Records</source>
         <translation type="unfinished">Record</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="124"/>
+        <location filename="../../src/page/page.cpp" line="836"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="127"/>
+        <location filename="../../src/page/page.cpp" line="841"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="129"/>
+        <location filename="../../src/page/page.cpp" line="842"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="345"/>
-        <location filename="../../src/page/page.cpp" line="818"/>
+        <location filename="../../src/page/page.cpp" line="544"/>
+        <location filename="../../src/page/page.cpp" line="1056"/>
         <source>Error: No device is opened.</source>
         <translation>Errore: Nessun dispositivo è aperto.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="470"/>
+        <location filename="../../src/page/page.cpp" line="252"/>
         <source>Disable</source>
         <translation>Disabilita</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="627"/>
+        <location filename="../../src/page/page.cpp" line="376"/>
         <source>Close</source>
         <translation>Chiudi</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="643"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Error Occurred</source>
         <translation>Si è verificato un errore</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="649"/>
+        <location filename="../../src/page/page.cpp" line="398"/>
         <source>Warning</source>
         <translation>Avviso</translation>
     </message>
@@ -4014,7 +4012,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Mostra pannelli script</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="846"/>
+        <location filename="../../src/page/page.cpp" line="572"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4022,14 +4020,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PanelManager</name>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="25"/>
         <source>Panels</source>
-        <translation>Pannelli</translation>
+        <translation type="vanished">Pannelli</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="28"/>
         <source>Hide/Show Panels</source>
-        <translation>Nascondi/Mostra pannelli</translation>
+        <translation type="vanished">Nascondi/Mostra pannelli</translation>
     </message>
 </context>
 <context>
@@ -4155,17 +4151,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="94"/>
+        <source>Send</source>
+        <translation type="unfinished">Inviare</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="144"/>
         <source>Demo</source>
         <translation>Dimostrazione</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="175"/>
+        <source>Option</source>
+        <translation type="unfinished">Opzione</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="178"/>
         <source>Description</source>
         <translation>Descrizione</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
         <source>Data</source>
         <translation>Dati</translation>
     </message>
@@ -4173,14 +4179,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetView</name>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="45"/>
+        <location filename="../../src/page/preset/presetview.cpp" line="81"/>
         <source>Group Editor</source>
         <translation>Editor gruppo</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="115"/>
         <source>Edit Data</source>
-        <translation>Modifica dati</translation>
+        <translation type="vanished">Modifica dati</translation>
     </message>
 </context>
 <context>
@@ -5422,7 +5427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Disabilita tutti gli elementi</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Clear</source>
         <translation>Chiaro</translation>
     </message>
@@ -5462,29 +5467,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Aggiungi nuovo elemento</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="176"/>
+        <location filename="../../src/page/common/tableview.cpp" line="177"/>
         <source>Are you sure to clear all items?</source>
         <translation>Sei sicuro di voler cancellare tutti gli elementi?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>No Item be Selected</source>
         <translation>Nessun elemento selezionato</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>Please select a item first!</source>
         <translation>Seleziona prima un elemento!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="201"/>
-        <location filename="../../src/page/common/tableview.cpp" line="229"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>Import data</source>
         <translation>Importa dati</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
-        <location filename="../../src/page/common/tableview.cpp" line="231"/>
+        <location filename="../../src/page/common/tableview.cpp" line="204"/>
+        <location filename="../../src/page/common/tableview.cpp" line="232"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Tutti (*)</translation>
     </message>

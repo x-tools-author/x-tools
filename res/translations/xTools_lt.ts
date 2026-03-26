@@ -2685,17 +2685,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Styginių parametrai</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="39"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
         <source>Default Lua Script</source>
         <translation>Numatytasis Lua scenarijus</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="40"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="41"/>
         <source>Checksum Lua Script</source>
         <translation>Patikros suma Lua scenarijus</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luapanel.cpp" line="42"/>
+        <location filename="../../src/page/lua/luapanel.cpp" line="43"/>
         <source>Lua Script(String)</source>
         <translation>Lua scenarijus (eilutė)</translation>
     </message>
@@ -2741,85 +2741,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="349"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>New Window</source>
         <translation>Naujas langas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="362"/>
+        <location filename="../../src/mainwindow.cpp" line="360"/>
         <source>Save Parameters</source>
         <translation>Išsaugoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="366"/>
-        <location filename="../../src/mainwindow.cpp" line="621"/>
+        <location filename="../../src/mainwindow.cpp" line="364"/>
+        <location filename="../../src/mainwindow.cpp" line="625"/>
         <source>Import Parameters</source>
         <translation>Importuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="370"/>
-        <location filename="../../src/mainwindow.cpp" line="634"/>
+        <location filename="../../src/mainwindow.cpp" line="368"/>
+        <location filename="../../src/mainwindow.cpp" line="638"/>
         <source>Export Parameters</source>
         <translation>Eksportuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="383"/>
+        <location filename="../../src/mainwindow.cpp" line="381"/>
         <source>&amp;Tools</source>
         <translation>&amp;Įrankiai</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="387"/>
+        <location filename="../../src/mainwindow.cpp" line="385"/>
         <source>New</source>
         <translation>Naujas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="446"/>
+        <location filename="../../src/mainwindow.cpp" line="444"/>
         <source>&amp;View</source>
         <translation>&amp;Peržiūra</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
-        <location filename="../../src/mainwindow.cpp" line="540"/>
+        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="538"/>
         <source>Release History</source>
         <translation>Leidimų istorija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
         <source>Join in QQ Group</source>
         <translation>Prisijunkite prie QQ grupės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="425"/>
+        <location filename="../../src/mainwindow.cpp" line="423"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
+        <location filename="../../src/mainwindow.cpp" line="496"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="526"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>Third Party Open Source</source>
         <translation>Trečiųjų šalių atviras kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="560"/>
+        <location filename="../../src/mainwindow.cpp" line="558"/>
         <source>QR Code</source>
         <translation>QR kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="567"/>
         <source>User QQ Group</source>
         <translation>Vartotojų QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="570"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ grupė</translation>
     </message>
@@ -2836,38 +2836,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Prašome perkrauti programą rankiniu būdu.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="623"/>
-        <location filename="../../src/mainwindow.cpp" line="636"/>
+        <location filename="../../src/mainwindow.cpp" line="627"/>
+        <location filename="../../src/mainwindow.cpp" line="640"/>
         <source>Json Files (*.json)</source>
         <translation>Json failai (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="665"/>
+        <location filename="../../src/mainwindow.cpp" line="669"/>
         <source>Unknown</source>
         <translation>Nežinomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="671"/>
+        <location filename="../../src/mainwindow.cpp" line="675"/>
         <source>Commit hash</source>
         <translation>Commit hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="673"/>
+        <location filename="../../src/mainwindow.cpp" line="677"/>
         <source>Commit time</source>
         <translation>Commit laikas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Build Date</source>
         <translation>Kompiliavimo data</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Copyright</source>
         <translation>Autorių teisės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>All rights reserved.</source>
         <translation>Visos teisės saugomos.</translation>
     </message>
@@ -3822,91 +3822,91 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>Page</name>
     <message>
-        <location filename="../../src/page/page.ui" line="253"/>
+        <location filename="../../src/page/page.ui" line="111"/>
         <source>Cycle interval</source>
         <translation>Ciklo intervalas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="237"/>
-        <location filename="../../src/page/page.cpp" line="636"/>
+        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Open</source>
         <translation>Atidaryti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="61"/>
-        <location filename="../../src/page/page.ui" line="219"/>
-        <location filename="../../src/page/page.ui" line="244"/>
+        <location filename="../../src/page/page.ui" line="95"/>
+        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="241"/>
         <source>Settings</source>
         <translation>Nustatymai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="226"/>
+        <location filename="../../src/page/page.ui" line="102"/>
         <source>Clear</source>
         <translation>Aišku</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="117"/>
+        <location filename="../../src/page/page.ui" line="49"/>
         <source>Rx</source>
         <translation>Rx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="124"/>
+        <location filename="../../src/page/page.ui" line="56"/>
         <source>Tx</source>
         <translation>Tx</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="131"/>
+        <location filename="../../src/page/page.ui" line="63"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="138"/>
+        <location filename="../../src/page/page.ui" line="70"/>
         <source>Flag</source>
         <translation>Vėliava</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="145"/>
+        <location filename="../../src/page/page.ui" line="77"/>
         <source>Time</source>
         <translation>Laikas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="152"/>
+        <location filename="../../src/page/page.ui" line="84"/>
         <source>Ms</source>
         <translation>ponia</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="192"/>
+        <location filename="../../src/page/page.ui" line="220"/>
         <source>Output control</source>
         <translation>Išėjimo valdymas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="52"/>
+        <location filename="../../src/page/page.ui" line="232"/>
         <source>Input control</source>
         <translation>Įvesties valdymas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="92"/>
+        <location filename="../../src/page/page.ui" line="182"/>
         <source>Wrap</source>
         <translation>Apvyniokite</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="99"/>
+        <location filename="../../src/page/page.ui" line="189"/>
         <source>Terminal</source>
         <translation>Terminalas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="210"/>
+        <location filename="../../src/page/page.ui" line="129"/>
         <source>Communication control</source>
         <translation>Ryšio valdymas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="68"/>
+        <location filename="../../src/page/page.ui" line="248"/>
         <source>Send</source>
         <translation>Siųsti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="83"/>
-        <location filename="../../src/page/page.ui" line="108"/>
+        <location filename="../../src/page/page.ui" line="136"/>
+        <location filename="../../src/page/page.ui" line="208"/>
         <source>Text format</source>
         <translation>Teksto formatas</translation>
     </message>
@@ -3915,38 +3915,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">IO</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="313"/>
+        <location filename="../../src/page/page.ui" line="294"/>
         <source>Output</source>
         <translation>Išvestis</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="471"/>
+        <location filename="../../src/page/page.ui" line="452"/>
         <source>Input</source>
         <translation>Įvestis</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="266"/>
         <source>Preset data list</source>
-        <translation>Iš anksto nustatytas duomenų sąrašas</translation>
+        <translation type="vanished">Iš anksto nustatytas duomenų sąrašas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.ui" line="269"/>
-        <location filename="../../src/page/page.cpp" line="112"/>
+        <location filename="../../src/page/page.cpp" line="831"/>
         <source>Presets</source>
         <translation>Išankstiniai nustatymai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="114"/>
+        <location filename="../../src/page/page.cpp" line="832"/>
         <source>Emitter</source>
         <translation>Skleidėjas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="116"/>
+        <location filename="../../src/page/page.cpp" line="833"/>
         <source>Responder</source>
         <translation>Atsakovas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="118"/>
+        <location filename="../../src/page/page.cpp" line="834"/>
         <source>Transfers</source>
         <translation>Pervedimai</translation>
     </message>
@@ -3955,53 +3953,53 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Protokolo gamykla</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="120"/>
+        <location filename="../../src/page/page.cpp" line="845"/>
         <source>Scripts</source>
         <translation type="unfinished">Scenarijai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="122"/>
+        <location filename="../../src/page/page.cpp" line="835"/>
         <source>Records</source>
         <translation type="unfinished">Įrašai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="124"/>
+        <location filename="../../src/page/page.cpp" line="836"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="127"/>
+        <location filename="../../src/page/page.cpp" line="841"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="129"/>
+        <location filename="../../src/page/page.cpp" line="842"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="345"/>
-        <location filename="../../src/page/page.cpp" line="818"/>
+        <location filename="../../src/page/page.cpp" line="544"/>
+        <location filename="../../src/page/page.cpp" line="1056"/>
         <source>Error: No device is opened.</source>
         <translation>Klaida: Nėra atidarytas įrenginys.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="470"/>
+        <location filename="../../src/page/page.cpp" line="252"/>
         <source>Disable</source>
         <translation>Atjungti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="627"/>
+        <location filename="../../src/page/page.cpp" line="376"/>
         <source>Close</source>
         <translation>Uždaryti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="643"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Error Occurred</source>
         <translation>Įvyko klaida</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="649"/>
+        <location filename="../../src/page/page.cpp" line="398"/>
         <source>Warning</source>
         <translation>Įspėjimas</translation>
     </message>
@@ -4014,7 +4012,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Rodyti scenarijų paneles</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="846"/>
+        <location filename="../../src/page/page.cpp" line="572"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4022,14 +4020,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PanelManager</name>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="25"/>
         <source>Panels</source>
-        <translation>Panelės</translation>
+        <translation type="vanished">Panelės</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/panelmanager.cpp" line="28"/>
         <source>Hide/Show Panels</source>
-        <translation>Slėpti/Rodyti paneles</translation>
+        <translation type="vanished">Slėpti/Rodyti paneles</translation>
     </message>
 </context>
 <context>
@@ -4155,17 +4151,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetModel</name>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="118"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="94"/>
+        <source>Send</source>
+        <translation type="unfinished">Siųsti</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="144"/>
         <source>Demo</source>
         <translation>Demonstracija</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="149"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="175"/>
+        <source>Option</source>
+        <translation type="unfinished">Parinktis</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="178"/>
         <source>Description</source>
         <translation>Aprašymas</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetmodel.cpp" line="151"/>
+        <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
         <source>Data</source>
         <translation>Duomenys</translation>
     </message>
@@ -4173,14 +4179,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>PresetView</name>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="45"/>
+        <location filename="../../src/page/preset/presetview.cpp" line="81"/>
         <source>Group Editor</source>
         <translation>Grupės redaktorius</translation>
     </message>
     <message>
-        <location filename="../../src/page/preset/presetview.cpp" line="115"/>
         <source>Edit Data</source>
-        <translation>Redaguoti duomenis</translation>
+        <translation type="vanished">Redaguoti duomenis</translation>
     </message>
 </context>
 <context>
@@ -5422,7 +5427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Išjungti visus elementus</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="175"/>
+        <location filename="../../src/page/common/tableview.cpp" line="176"/>
         <source>Clear</source>
         <translation>Išvalyti</translation>
     </message>
@@ -5462,29 +5467,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Pridėti naują elementą</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="176"/>
+        <location filename="../../src/page/common/tableview.cpp" line="177"/>
         <source>Are you sure to clear all items?</source>
         <translation>Ar tikrai norite išvalyti visus elementus?</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>No Item be Selected</source>
         <translation>Nėra pasirinkto elemento</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="191"/>
+        <location filename="../../src/page/common/tableview.cpp" line="192"/>
         <source>Please select a item first!</source>
         <translation>Prašome pirmiausia pasirinkti elementą!</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="201"/>
-        <location filename="../../src/page/common/tableview.cpp" line="229"/>
+        <location filename="../../src/page/common/tableview.cpp" line="202"/>
+        <location filename="../../src/page/common/tableview.cpp" line="230"/>
         <source>Import data</source>
         <translation>Importuoti duomenis</translation>
     </message>
     <message>
-        <location filename="../../src/page/common/tableview.cpp" line="203"/>
-        <location filename="../../src/page/common/tableview.cpp" line="231"/>
+        <location filename="../../src/page/common/tableview.cpp" line="204"/>
+        <location filename="../../src/page/common/tableview.cpp" line="232"/>
         <source>JSON (*.json);;All (*)</source>
         <translation>JSON (*.json);;Visi (*)</translation>
     </message>

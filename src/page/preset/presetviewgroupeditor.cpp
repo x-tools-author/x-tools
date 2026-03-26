@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -61,74 +61,40 @@ QJsonObject encodePresetViewGroupEditorGroupItem(const PresetViewGroupEditorGrou
     return obj;
 }
 
-PresetViewGroupEditor::PresetViewGroupEditor(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::PresetViewGroupEditor)
+class PresetViewGroupEditorPrivate : public QObject
 {
-    ui->setupUi(this);
-    m_menu = new QMenu(tr("Group Sending"));
-    addGroupsAction();
+public:
+    PresetViewGroupEditorPrivate(PresetViewGroupEditor *q_ptr)
+        : QObject(q_ptr)
+        , q(q_ptr)
+    {}
+    ~PresetViewGroupEditorPrivate() { delete ui; }
 
-    m_timer = new QTimer(this);
-    m_eventLoop = new QEventLoop(this);
-    m_timer->setSingleShot(true);
-    connect(m_timer, &QTimer::timeout, m_eventLoop, &QEventLoop::quit);
+public:
+    void onAddButtonClicked();
+    void onRemoveButtonClicked();
+    void onUpButtonClicked();
+    void onDownButtonClicked();
+    void onItemDoubleClicked(QListWidgetItem *item);
 
-    // clang-format off
-    connect(ui->pushButtonAdd, &QPushButton::clicked, this, &PresetViewGroupEditor::onAddButtonClicked);
-    connect(ui->pushButtonDelete, &QPushButton::clicked, this, &PresetViewGroupEditor::onRemoveButtonClicked);
-    connect(ui->pushButtonUp, &QPushButton::clicked, this, &PresetViewGroupEditor::onUpButtonClicked);
-    connect(ui->pushButtonDown, &QPushButton::clicked, this, &PresetViewGroupEditor::onDownButtonClicked);
-    connect(ui->listWidget, &QListWidget::itemDoubleClicked, this, &PresetViewGroupEditor::onItemDoubleClicked);
-    // clang-format on
-}
+    void addGroupsAction();
+    void addItem(const PresetViewGroupEditorGroupItem *item);
+    void sendGroups();
+    void sendGroupItem(const QListWidgetItem *item);
+    void delayMs(int ms);
 
-PresetViewGroupEditor::~PresetViewGroupEditor()
-{
-    delete ui;
-}
+public:
+    Ui::PresetViewGroupEditor *ui;
+    QMenu *m_menu{nullptr};
+    QAction *m_groupsAction{nullptr};
+    QTimer *m_timer{nullptr};
+    QEventLoop *m_eventLoop{nullptr};
 
-QMenu *PresetViewGroupEditor::groupMenu() const
-{
-    return m_menu;
-}
+private:
+    PresetViewGroupEditor *q;
+};
 
-QJsonObject PresetViewGroupEditor::save()
-{
-    QJsonObject obj;
-    obj.insert("groupInterval", ui->spinBoxGroupInterval->value());
-
-    QJsonArray groupArray;
-    for (int i = 0; i < ui->listWidget->count(); ++i) {
-        auto item = ui->listWidget->item(i);
-        if (item) {
-            QJsonObject groupObj = item->data(Qt::UserRole).toJsonObject();
-            groupArray.append(groupObj);
-        }
-    }
-
-    obj.insert("groups", groupArray);
-    return obj;
-}
-
-void PresetViewGroupEditor::load(const QJsonObject &obj)
-{
-    int groupInterval = obj.value("groupInterval").toInt(100);
-    ui->spinBoxGroupInterval->setValue(groupInterval);
-
-    ui->listWidget->clear();
-    m_menu->clear();
-    addGroupsAction();
-
-    QJsonArray groupArray = obj.value("groups").toArray();
-    for (const QJsonValue &v : groupArray) {
-        QJsonObject groupObj = v.toObject();
-        PresetViewGroupEditorGroupItem item = decodePresetViewGroupEditorGroupItem(groupObj);
-        addItem(&item);
-    }
-}
-
-void PresetViewGroupEditor::onRemoveButtonClicked()
+void PresetViewGroupEditorPrivate::onRemoveButtonClicked()
 {
     auto item = ui->listWidget->currentItem();
     if (item) {
@@ -144,7 +110,7 @@ void PresetViewGroupEditor::onRemoveButtonClicked()
     }
 }
 
-void PresetViewGroupEditor::onAddButtonClicked()
+void PresetViewGroupEditorPrivate::onAddButtonClicked()
 {
     QStringList tmp = ui->lineEditColumns->text().split(' ', xSkipEmptyParts);
     QList<int> columns;
@@ -163,13 +129,13 @@ void PresetViewGroupEditor::onAddButtonClicked()
     item.disabled = ui->checkBoxDisableGroup->isChecked();
 
     if (item.name.isEmpty()) {
-        QMessageBox::warning(this, tr("Warning"), tr("The group name cannot be empty."));
+        QMessageBox::warning(q, tr("Warning"), tr("The group name cannot be empty."));
         ui->lineEditColumns->setFocus();
         return;
     }
 
     if (item.columns.isEmpty()) {
-        QMessageBox::warning(this, tr("Warning"), tr("The columns cannot be empty."));
+        QMessageBox::warning(q, tr("Warning"), tr("The columns cannot be empty."));
         ui->lineEditColumns->setFocus();
         return;
     }
@@ -177,7 +143,7 @@ void PresetViewGroupEditor::onAddButtonClicked()
     for (int i = 0; i < ui->listWidget->count(); ++i) {
         auto listItem = ui->listWidget->item(i);
         if (listItem->text() == item.name) {
-            auto ret = QMessageBox::warning(this,
+            auto ret = QMessageBox::warning(q,
                                             tr("Warning"),
                                             tr("The group name \"%1\" already exists. Replace it?")
                                                 .arg(item.name),
@@ -194,7 +160,7 @@ void PresetViewGroupEditor::onAddButtonClicked()
     addItem(&item);
 }
 
-void PresetViewGroupEditor::onUpButtonClicked()
+void PresetViewGroupEditorPrivate::onUpButtonClicked()
 {
     auto item = ui->listWidget->currentItem();
     if (item) {
@@ -207,7 +173,7 @@ void PresetViewGroupEditor::onUpButtonClicked()
     }
 }
 
-void PresetViewGroupEditor::onDownButtonClicked()
+void PresetViewGroupEditorPrivate::onDownButtonClicked()
 {
     auto item = ui->listWidget->currentItem();
     if (item) {
@@ -220,7 +186,7 @@ void PresetViewGroupEditor::onDownButtonClicked()
     }
 }
 
-void PresetViewGroupEditor::onItemDoubleClicked(QListWidgetItem *item)
+void PresetViewGroupEditorPrivate::onItemDoubleClicked(QListWidgetItem *item)
 {
     if (item) {
         QJsonObject obj = item->data(Qt::UserRole).toJsonObject();
@@ -236,13 +202,13 @@ void PresetViewGroupEditor::onItemDoubleClicked(QListWidgetItem *item)
     }
 }
 
-void PresetViewGroupEditor::addGroupsAction()
+void PresetViewGroupEditorPrivate::addGroupsAction()
 {
-    m_menu->addAction(tr("Send Groups"), this, &PresetViewGroupEditor::sendGroups);
+    m_menu->addAction(tr("Send Groups"), this, &PresetViewGroupEditorPrivate::sendGroups);
     m_menu->addSeparator();
 }
 
-void PresetViewGroupEditor::addItem(const PresetViewGroupEditorGroupItem *item)
+void PresetViewGroupEditorPrivate::addItem(const PresetViewGroupEditorGroupItem *item)
 {
     QJsonObject obj = encodePresetViewGroupEditorGroupItem(*item);
     QListWidgetItem *listItem = new QListWidgetItem(ui->listWidget);
@@ -258,10 +224,10 @@ void PresetViewGroupEditor::addItem(const PresetViewGroupEditorGroupItem *item)
     });
 }
 
-void PresetViewGroupEditor::sendGroups()
+void PresetViewGroupEditorPrivate::sendGroups()
 {
     for (int i = 0; i < ui->listWidget->count(); ++i) {
-        auto item = ui->listWidget->item(i);
+        QListWidgetItem *item = ui->listWidget->item(i);
         if (item) {
             sendGroupItem(item);
             delayMs(ui->spinBoxGroupInterval->value());
@@ -269,7 +235,7 @@ void PresetViewGroupEditor::sendGroups()
     }
 }
 
-void PresetViewGroupEditor::sendGroupItem(const QListWidgetItem *item)
+void PresetViewGroupEditorPrivate::sendGroupItem(const QListWidgetItem *item)
 {
     QJsonObject obj = item->data(Qt::UserRole).toJsonObject();
     PresetViewGroupEditorGroupItem groupItem = decodePresetViewGroupEditorGroupItem(obj);
@@ -277,22 +243,22 @@ void PresetViewGroupEditor::sendGroupItem(const QListWidgetItem *item)
         return;
     }
 
-    setEnabled(false);
+    q->setEnabled(false);
     QList<int> columns = groupItem.columns;
     if (columns.isEmpty()) {
-        setEnabled(true);
+        q->setEnabled(true);
         return;
     }
 
     for (int i = 0; i < columns.size(); ++i) {
-        emit invokeSend(columns.at(i) - 1);
+        emit q->invokeSend(columns.at(i) - 1);
         delayMs(groupItem.itemInterval);
     }
 
-    setEnabled(true);
+    q->setEnabled(true);
 }
 
-void PresetViewGroupEditor::delayMs(int ms)
+void PresetViewGroupEditorPrivate::delayMs(int ms)
 {
     if (m_timer->isActive()) {
         m_timer->stop();
@@ -300,4 +266,69 @@ void PresetViewGroupEditor::delayMs(int ms)
 
     m_timer->start(ms);
     m_eventLoop->exec();
+}
+
+PresetViewGroupEditor::PresetViewGroupEditor(QWidget *parent)
+    : QWidget(parent)
+{
+    d = new PresetViewGroupEditorPrivate(this);
+    d->ui = new Ui::PresetViewGroupEditor;
+    d->ui->setupUi(this);
+    d->m_menu = new QMenu(tr("Group Sending"));
+    d->addGroupsAction();
+
+    d->m_timer = new QTimer(this);
+    d->m_eventLoop = new QEventLoop(this);
+    d->m_timer->setSingleShot(true);
+    connect(d->m_timer, &QTimer::timeout, d->m_eventLoop, &QEventLoop::quit);
+
+    // clang-format off
+    connect(d->ui->pushButtonAdd, &QPushButton::clicked, d, &PresetViewGroupEditorPrivate::onAddButtonClicked);
+    connect(d->ui->pushButtonDelete, &QPushButton::clicked, d, &PresetViewGroupEditorPrivate::onRemoveButtonClicked);
+    connect(d->ui->pushButtonUp, &QPushButton::clicked, d, &PresetViewGroupEditorPrivate::onUpButtonClicked);
+    connect(d->ui->pushButtonDown, &QPushButton::clicked, d, &PresetViewGroupEditorPrivate::onDownButtonClicked);
+    connect(d->ui->listWidget, &QListWidget::itemDoubleClicked, d, &PresetViewGroupEditorPrivate::onItemDoubleClicked);
+    // clang-format on
+}
+
+PresetViewGroupEditor::~PresetViewGroupEditor() {}
+
+QMenu *PresetViewGroupEditor::groupMenu() const
+{
+    return d->m_menu;
+}
+
+QJsonObject PresetViewGroupEditor::save()
+{
+    QJsonObject obj;
+    obj.insert("groupInterval", d->ui->spinBoxGroupInterval->value());
+
+    QJsonArray groupArray;
+    for (int i = 0; i < d->ui->listWidget->count(); ++i) {
+        auto item = d->ui->listWidget->item(i);
+        if (item) {
+            QJsonObject groupObj = item->data(Qt::UserRole).toJsonObject();
+            groupArray.append(groupObj);
+        }
+    }
+
+    obj.insert("groups", groupArray);
+    return obj;
+}
+
+void PresetViewGroupEditor::load(const QJsonObject &obj)
+{
+    int groupInterval = obj.value("groupInterval").toInt(100);
+    d->ui->spinBoxGroupInterval->setValue(groupInterval);
+
+    d->ui->listWidget->clear();
+    d->m_menu->clear();
+    d->addGroupsAction();
+
+    QJsonArray groupArray = obj.value("groups").toArray();
+    for (const QJsonValue &v : groupArray) {
+        QJsonObject groupObj = v.toObject();
+        PresetViewGroupEditorGroupItem item = decodePresetViewGroupEditorGroupItem(groupObj);
+        d->addItem(&item);
+    }
 }

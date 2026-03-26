@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2023-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2023-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -14,28 +14,64 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
 #include <QTableView>
+#include <QToolButton>
 
 #include "common/xtools.h"
 #include "presetmodel.h"
 #include "presetviewgroupeditor.h"
 #include "utilities/keepopenedmenu.h"
 
+class PresetViewPrivate : public QObject
+{
+public:
+    PresetViewPrivate(PresetView *q_ptr)
+        : q(q_ptr)
+    {}
+    ~PresetViewPrivate() {}
+
+public:
+    void onActionTriggered(int row)
+    {
+        auto rows = m_tableModel->rowCount(QModelIndex());
+        if (row < 0 || row >= rows) {
+            return;
+        }
+
+        QModelIndex index = m_tableModel->index(row, PRESET_MODEL_COLUMN_DATA);
+        QJsonObject rawItem = m_tableModel->data(index, Qt::EditRole).toJsonObject();
+        TextItem textItem = xLoadTextItem(rawItem);
+        QByteArray bytes = xTextItem2array(textItem);
+        emit q->outputBytes(bytes);
+    }
+    void onInvokeSend(int row)
+    {
+        if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
+            return;
+        }
+
+        onActionTriggered(row);
+    }
+
+public:
+    PresetModel *m_tableModel;
+    PresetViewGroupEditor *m_groupEditor{nullptr};
+
+private:
+    PresetView *q;
+};
+
 PresetView::PresetView(QWidget *parent)
     : TableView(parent)
 {
-    m_menu = new xTools::KeepOpenedMenu();
+    d = new PresetViewPrivate(this);
 
     setIdDisableCheckBoxVisible(false);
 
-    m_tableModel = new PresetModel(this);
-    connect(m_tableModel, &QAbstractTableModel::dataChanged, this, &PresetView::onDataChanged);
-    connect(m_tableModel, &QAbstractTableModel::rowsRemoved, this, &PresetView::onDataChanged);
-    connect(m_tableModel, &QAbstractTableModel::rowsInserted, this, &PresetView::onDataChanged);
-    setTableModel(m_tableModel);
+    d->m_tableModel = new PresetModel(this);
+    setTableModel(d->m_tableModel);
 
     auto *tv = tableView();
     auto hHeader = tv->horizontalHeader();
@@ -43,40 +79,38 @@ PresetView::PresetView(QWidget *parent)
     hHeader->setStretchLastSection(true);
 
     const QString title = tr("Group Editor");
-    m_groupEditor = new PresetViewGroupEditor();
-    m_groupEditor->hide();
-    m_groupEditor->setWindowTitle(title);
-    connect(m_groupEditor, &PresetViewGroupEditor::invokeSend, this, &PresetView::onInvokeSend);
+    d->m_groupEditor = new PresetViewGroupEditor();
+    d->m_groupEditor->hide();
+    d->m_groupEditor->setWindowTitle(title);
+    connect(d->m_groupEditor,
+            &PresetViewGroupEditor::invokeSend,
+            d,
+            &PresetViewPrivate::onInvokeSend);
 
-    QPushButton *btn = new QPushButton(this);
+    QToolButton *btn = new QToolButton(this);
     btn->setText(title);
     addControlWidgets(btn);
     setVerticalHeaderVisible(true);
     setMoveRowEnabled(true);
+    btn->setMenu(d->m_groupEditor->groupMenu());
+    btn->setPopupMode(QToolButton::MenuButtonPopup);
 
-    connect(btn, &QPushButton::clicked, this, [this]() {
-        m_groupEditor->show();
-        m_groupEditor->raise();
-        m_groupEditor->activateWindow();
+    connect(btn, &QToolButton::clicked, this, [this]() {
+        d->m_groupEditor->show();
+        d->m_groupEditor->raise();
+        d->m_groupEditor->activateWindow();
     });
-    onDataChanged();
 }
 
 PresetView::~PresetView()
 {
-    m_menu->deleteLater();
-    m_groupEditor->deleteLater();
-}
-
-QMenu *PresetView::menu()
-{
-    return m_menu;
+    d->m_groupEditor->deleteLater();
 }
 
 QVariantMap PresetView::save() const
 {
     QVariantMap map = TableView::save();
-    map["groups"] = m_groupEditor->save().toVariantMap();
+    map["groups"] = d->m_groupEditor->save().toVariantMap();
     return map;
 }
 
@@ -86,54 +120,21 @@ void PresetView::load(const QVariantMap &parameters)
     if (parameters.contains("groups")) {
         QVariantMap map = parameters.value("groups").toMap();
         QJsonObject obj = QJsonObject::fromVariantMap(map);
-        m_groupEditor->load(obj);
+        d->m_groupEditor->load(obj);
     }
 }
 
 QList<int> PresetView::textItemColumns() const
 {
-    return QList<int>{1};
+    return QList<int>{PRESET_MODEL_COLUMN_DATA};
 }
 
-void PresetView::onActionTriggered(int row)
+void PresetView::onCellDoubleClicked(const QModelIndex &index)
 {
-    auto rows = m_tableModel->rowCount(QModelIndex());
-    if (row < 0 || row >= rows) {
-        return;
+    int column = index.column();
+    if (column == PRESET_MODEL_COLUMN_SEND) {
+        d->onActionTriggered(index.row());
+    } else {
+        TableView::onCellDoubleClicked(index);
     }
-
-    QModelIndex index = m_tableModel->index(row, 1);
-    QJsonObject rawItem = m_tableModel->data(index, Qt::EditRole).toJsonObject();
-    TextItem textItem = xLoadTextItem(rawItem);
-    QByteArray bytes = xTextItem2array(textItem);
-    emit outputBytes(bytes);
-}
-
-void PresetView::onDataChanged()
-{
-    m_menu->clear();
-    QAction *a = m_menu->addAction(tr("Edit Data"), this, [this]() {
-        emit invokeComeHere();
-        m_menu->hide();
-    });
-    a->setVisible(false);
-
-    m_menu->addMenu(m_groupEditor->groupMenu());
-    m_menu->addSeparator();
-    int rows = m_tableModel->rowCount(QModelIndex());
-
-    for (int i = 0; i < rows; ++i) {
-        auto index = m_tableModel->index(i, 0);
-        auto text = m_tableModel->data(index, Qt::DisplayRole).toString();
-        m_menu->addAction(text, this, [=]() { onActionTriggered(i); });
-    }
-}
-
-void PresetView::onInvokeSend(int row)
-{
-    if (row < 0 || row >= m_tableModel->rowCount(QModelIndex())) {
-        return;
-    }
-
-    onActionTriggered(row);
 }

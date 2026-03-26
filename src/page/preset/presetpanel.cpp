@@ -37,6 +37,8 @@ PresetPanel::PresetPanel(QWidget *parent)
     auto *view = new PresetView(this);
     layout->addWidget(view);
     d->m_view = view;
+
+    connect(view, &PresetView::outputBytes, this, &PresetPanel::outputBytes);
 }
 
 PresetPanel::~PresetPanel() {}
@@ -49,9 +51,4 @@ QVariantMap PresetPanel::save() const
 void PresetPanel::load(const QVariantMap &parameters)
 {
     d->m_view->load(parameters);
-}
-
-PresetView *PresetPanel::presetView() const
-{
-    return d->m_view;
 }

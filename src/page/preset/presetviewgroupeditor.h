@@ -1,5 +1,5 @@
 /***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -19,10 +19,13 @@ namespace Ui {
 class PresetViewGroupEditor;
 }
 
+class PresetViewGroupEditorPrivate;
 struct PresetViewGroupEditorGroupItem;
 class PresetViewGroupEditor : public QWidget
 {
     Q_OBJECT
+    PresetViewGroupEditorPrivate *d{nullptr};
+
 public:
     explicit PresetViewGroupEditor(QWidget *parent = nullptr);
     ~PresetViewGroupEditor();
@@ -33,24 +36,4 @@ public:
 
 signals:
     void invokeSend(int row);
-
-private:
-    void onAddButtonClicked();
-    void onRemoveButtonClicked();
-    void onUpButtonClicked();
-    void onDownButtonClicked();
-    void onItemDoubleClicked(QListWidgetItem *item);
-
-    void addGroupsAction();
-    void addItem(const PresetViewGroupEditorGroupItem *item);
-    void sendGroups();
-    void sendGroupItem(const QListWidgetItem *item);
-    void delayMs(int ms);
-
-private:
-    Ui::PresetViewGroupEditor *ui;
-    QMenu *m_menu{nullptr};
-    QAction *m_groupsAction{nullptr};
-    QTimer *m_timer{nullptr};
-    QEventLoop *m_eventLoop{nullptr};
 };
