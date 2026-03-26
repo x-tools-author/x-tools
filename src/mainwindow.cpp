@@ -348,6 +348,7 @@ void MainWindow::initFileMenu()
     m_fileMenu->addMenu(newMenu);
     newMenu->addAction(QString("xTools"), this, []() {
         auto* w = new Page(Page::Left, xAPP->settings());
+        w->setAttribute(Qt::WA_DeleteOnClose, true);
         w->setWindowTitle("xTools");
         w->show();
     });
