@@ -10,18 +10,17 @@
 
 #include "page/common/panel.h"
 
-namespace Ui {
-class LuaPanel;
-}
-
 namespace xTools {
 class SyntaxHighlighterLua;
 }
 
 class LuaRunner;
+class LuaPanelPrivate;
 class LuaPanel : public Panel
 {
     Q_OBJECT
+    LuaPanelPrivate *d{nullptr};
+
 public:
     explicit LuaPanel(QWidget *parent = nullptr);
     ~LuaPanel() override;
@@ -31,22 +30,4 @@ public:
 
     QByteArray handleData(const QByteArray &data) const;
     bool isBypassed() const;
-
-private:
-    Ui::LuaPanel *ui;
-    QMenu *m_menu;
-    LuaRunner *m_luaRunner;
-    const QByteArray m_testData{"Hello, Lua!"};
-    QByteArray m_resultData;
-    xTools::SyntaxHighlighterLua *m_syntaxHighlighterTable;
-    xTools::SyntaxHighlighterLua *m_syntaxHighlighterString;
-
-private:
-    void onDefaultLuaScriptTriggered();
-    void onCheckSumLuaScriptTriggered();
-    void onDefaultLuaScriptStringTriggered();
-    void onTestFormatChanged();
-    void onResultFormatChanged();
-
-    void onTestButtonClicked();
 };

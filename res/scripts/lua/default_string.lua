@@ -1,5 +1,6 @@
 ﻿function data_handler(data_string)
-    -- 将输入字符串反转
+    -- reverse the input string and concatenate it with the original string
+    -- such as "hello" becomes "hello-olleh"
     local reversed_string = data_string:reverse()
     return data_string .. "-" .. reversed_string
 end

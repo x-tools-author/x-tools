@@ -32,3 +32,18 @@ LuaPanel *LuaView::inputPanel() const
 {
     return ui->widgetInputLua;
 }
+
+QVariantMap LuaView::save() const
+{
+    QVariantMap map = Panel::save();
+    map["outputPanel"] = ui->widgetOutputLua->save();
+    map["inputPanel"] = ui->widgetInputLua->save();
+    return map;
+}
+
+void LuaView::load(const QVariantMap &parameters)
+{
+    Panel::load(parameters);
+    ui->widgetOutputLua->load(parameters.value("outputPanel").toMap());
+    ui->widgetInputLua->load(parameters.value("inputPanel").toMap());
+}

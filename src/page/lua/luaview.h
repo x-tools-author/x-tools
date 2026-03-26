@@ -25,6 +25,9 @@ public:
     LuaPanel *outputPanel() const;
     LuaPanel *inputPanel() const;
 
+    QVariantMap save() const override;
+    void load(const QVariantMap &parameters) override;
+
 private:
     Ui::LuaView *ui;
 };
