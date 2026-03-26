@@ -749,6 +749,15 @@ void PagePrivate::addTab(const QString &name, QWidget *widget)
         menu->addAction(action);
         button->setMenu(menu);
         button->setPopupMode(QToolButton::MenuButtonPopup);
+        connect(menu, &QMenu::aboutToShow, this, [this, button, panel]() {
+            for (auto &btn : m_tabToolButtons) {
+                if (btn != button) {
+                    btn->setChecked(false);
+                }
+            }
+            button->setChecked(true);
+            this->setTab(panel);
+        });
     }
 }
 
