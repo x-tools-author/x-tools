@@ -37,9 +37,6 @@ public:
 
     void aboutToClose();
 
-signals:
-    void invokeWrite(const QByteArray &data);
-
 private:
     Ui::ScriptsManager *ui = nullptr;
     QList<ScriptBase *> m_scripts;

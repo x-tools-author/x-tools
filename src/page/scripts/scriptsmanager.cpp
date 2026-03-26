@@ -28,7 +28,7 @@ ScriptsManager::ScriptsManager(QWidget *parent)
 
     for (ScriptBase *script : const_cast<QList<ScriptBase *> &>(m_scripts)) {
         script->loadScripts();
-        connect(script, &ScriptBase::invokeWrite, this, &ScriptsManager::invokeWrite);
+        connect(script, &ScriptBase::invokeWrite, this, &ScriptsManager::outputBytes);
     }
 }
 
