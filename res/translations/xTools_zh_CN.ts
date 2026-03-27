@@ -5940,7 +5940,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
         <source>Input format</source>
-        <translation>输入格式</translation>
+        <translation>格式化</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
@@ -5980,7 +5980,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
         <source>Timed sending</source>
-        <translation>定时发送</translation>
+        <translation>周期发</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="185"/>
