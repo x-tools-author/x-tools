@@ -9,6 +9,7 @@
 #pragma once
 
 #include <QApplication>
+#include <QPixmap>
 #include <QSettings>
 #include <QSplashScreen>
 #include <QVariant>
@@ -36,6 +37,9 @@ public:
     static void setupHdpi();
     static QSettings *settings();
     static QString settingsPath();
+
+    QPixmap &customSplashScreen();
+    void setCustomSplashScreen(const QPixmap &pixmap);
 
     void setupAppStyle();
     void setupLanguage();

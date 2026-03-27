@@ -208,6 +208,18 @@ QString xApp::settingsPath()
     return path.left(path.lastIndexOf('/'));
 }
 
+QPixmap &xApp::customSplashScreen()
+{
+    static QPixmap splashPixmap;
+    return splashPixmap;
+}
+
+void xApp::setCustomSplashScreen(const QPixmap &pixmap)
+{
+    QPixmap &splashPixmap = xApp::customSplashScreen();
+    splashPixmap = pixmap;
+}
+
 void xApp::setupAppStyle()
 {
     xStyleMgr.setupSettings(settings());
@@ -275,6 +287,10 @@ QSplashScreen *xApp::splashScreen()
 
         splashScreen = new QSplashScreen(pixMap);
         splashScreen->setDisabled(true);
+    }
+
+    if (!customSplashScreen().isNull()) {
+        splashScreen->setPixmap(customSplashScreen());
     }
 
     return splashScreen;

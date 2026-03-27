@@ -93,6 +93,7 @@
     <file>res/icons/wrap_text.svg</file>
     <file>res/icons/xy.svg</file>
     <file>res/images/qt_qq.jpg</file>
+    <file>res/images/splash_screen.png</file>
     <file>res/images/x_tools_qq.jpg</file>
     <file>res/scripts/lua/check_sum.lua</file>
     <file>res/scripts/lua/default_string.lua</file>

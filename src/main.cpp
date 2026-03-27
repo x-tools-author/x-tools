@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
     Application::setApplicationName("xTools");
     Application::setupHdpi();
     Application app(argc, argv);
+    app.setCustomSplashScreen(QPixmap(":/res/images/splash_screen.png"));
 
 #if X_ENABLE_SINGLE_APPLICATION
     SingleApplication sApp(argc, argv);

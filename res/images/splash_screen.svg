@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="36" y1="24" x2="636" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F"/>
+      <stop offset="0.55" stop-color="#0B2440"/>
+      <stop offset="1" stop-color="#12385C"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="48" y1="54" x2="252" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35E0C7"/>
+      <stop offset="1" stop-color="#2F8CFF"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="330" y1="86" x2="512" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D1BF"/>
+      <stop offset="1" stop-color="#78A6FF"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="680" height="300" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#020812" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <rect width="680" height="300" rx="24" fill="url(#bg)"/>
+  <g opacity="0.17">
+    <circle cx="108" cy="56" r="94" stroke="#7EC7FF" stroke-width="1.5"/>
+    <circle cx="122" cy="122" r="132" stroke="#35E0C7" stroke-width="1.2"/>
+    <path d="M34 178C78 134 112 120 160 122C208 124 230 148 276 144" stroke="#7EC7FF" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M40 196C88 172 132 174 170 188C208 202 246 212 294 196" stroke="#35E0C7" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="26" y="24" width="628" height="216" rx="20" fill="#0A1A2D" fill-opacity="0.42"/>
+  </g>
+
+  <g>
+    <rect x="44" y="46" width="72" height="72" rx="18" fill="#0E2036" stroke="#2E96FF" stroke-opacity="0.55"/>
+    <circle cx="80" cy="82" r="20" fill="url(#accent)"/>
+    <path d="M80 63V101" stroke="#E7FBFF" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M61 82H99" stroke="#E7FBFF" stroke-width="2.8" stroke-linecap="round"/>
+    <circle cx="80" cy="82" r="6" fill="#08111E"/>
+    <circle cx="80" cy="82" r="3" fill="#E7FBFF"/>
+  </g>
+
+  <text x="132" y="88" fill="#F5FBFF" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="38" font-weight="700" letter-spacing="1.2">xTools</text>
+  <text x="132" y="118" fill="#89BDE6" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="600" letter-spacing="1.1">Debug, Charts and Automation</text>
+  <text x="44" y="144" fill="#D9EEFF" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16" font-weight="600">
+    <tspan x="44" dy="0">Inspect packets and visualize live data.</tspan>
+    <tspan x="44" dy="22">Automate workflows across device links.</tspan>
+  </text>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.05">
+    <rect x="44" y="180" width="68" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="78" y="194" fill="#BFE8FF" text-anchor="middle">SERIAL</text>
+    <rect x="120" y="180" width="84" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="162" y="194" fill="#BFE8FF" text-anchor="middle">TCP / UDP</text>
+    <rect x="212" y="180" width="48" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="236" y="194" fill="#BFE8FF" text-anchor="middle">BLE</text>
+    <rect x="268" y="180" width="64" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="300" y="194" fill="#BFE8FF" text-anchor="middle">CHARTS</text>
+
+    <rect x="44" y="206" width="96" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="92" y="220" fill="#BFE8FF" text-anchor="middle">WEBSOCKET</text>
+    <rect x="148" y="206" width="76" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="186" y="220" fill="#BFE8FF" text-anchor="middle">MODBUS</text>
+    <rect x="232" y="206" width="76" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="270" y="220" fill="#BFE8FF" text-anchor="middle">CANBUS</text>
+    <rect x="316" y="206" width="56" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="344" y="220" fill="#BFE8FF" text-anchor="middle">COAP</text>
+
+    <rect x="44" y="232" width="56" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="72" y="246" fill="#BFE8FF" text-anchor="middle">HTTP</text>
+    <rect x="108" y="232" width="58" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="137" y="246" fill="#BFE8FF" text-anchor="middle">MQTT</text>
+    <rect x="174" y="232" width="64" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="206" y="246" fill="#BFE8FF" text-anchor="middle">OPCUA</text>
+    <rect x="246" y="232" width="98" height="20" rx="10" fill="#0F2D45" stroke="#245B80"/>
+    <text x="295" y="246" fill="#BFE8FF" text-anchor="middle">JAVASCRIPT</text>
+  </g>
+
+  <g>
+    <rect x="412" y="38" width="224" height="194" rx="18" fill="#0B1626" stroke="#1E4466"/>
+    <rect x="428" y="56" width="84" height="58" rx="12" fill="#101F32" stroke="#274B6D"/>
+    <path d="M442 95H462L472 75L482 101L492 67L500 87" stroke="#4DE0C9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="492" cy="67" r="3" fill="#4DE0C9"/>
+    <rect x="524" y="56" width="92" height="58" rx="12" fill="#101F32" stroke="#274B6D"/>
+    <path d="M538 95C550 79 559 91 568 83C576 76 586 92 598 73" stroke="url(#chart)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M538 87C548 93 558 69 568 77C580 87 588 75 598 81" stroke="#2D8FFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+    <rect x="428" y="136" width="84" height="58" rx="12" fill="#101F32" stroke="#274B6D"/>
+    <circle cx="444" cy="160" r="5" fill="#4DE0C9"/>
+    <circle cx="470" cy="152" r="5" fill="#73B5FF"/>
+    <circle cx="496" cy="170" r="5" fill="#F5FBFF"/>
+    <path d="M448 157L466 154" stroke="#4DE0C9" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M474 155L492 167" stroke="#73B5FF" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="524" y="136" width="92" height="58" rx="12" fill="#101F32" stroke="#274B6D"/>
+    <path d="M539 152H563" stroke="#9DC7E9" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M539 164H585" stroke="#9DC7E9" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M539 176H573" stroke="#9DC7E9" stroke-width="2.6" stroke-linecap="round"/>
+    <text x="594" y="171" fill="#4DE0C9" font-family="Consolas, Segoe UI, monospace" font-size="19" font-weight="700">{ }</text>
+  </g>
+
+  <g opacity="0.9">
+    <rect x="0" y="256" width="680" height="44" fill="#07121F" fill-opacity="0.78"/>
+    <text x="28" y="282" fill="#85A8C6" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13" font-weight="600">Workspace panels  |  Device links  |  Real-time analysis  |  Script automation</text>
+  </g>
+</svg>
