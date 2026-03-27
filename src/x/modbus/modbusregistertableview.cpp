@@ -52,9 +52,16 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     ui->tableView->horizontalHeader()->setMinimumSectionSize(80);
     ui->toolButtonColumns->setIcon(xIcon(":/res/icons/list.svg"));
     ui->toolButtonColumns->setToolTip(ui->toolButtonColumns->text());
-#if 1
-    ui->toolButtonColumns->setToolButtonStyle(Qt::ToolButtonIconOnly);
-#endif
+    ui->toolButtonNew->setText(ui->toolButtonNew->toolTip());
+    ui->toolButtonDelete->setText(ui->toolButtonDelete->toolTip());
+    ui->toolButtonClear->setText(ui->toolButtonClear->toolTip());
+    ui->toolButtonOpen->setText(ui->toolButtonOpen->toolTip());
+    ui->toolButtonSave->setText(ui->toolButtonSave->toolTip());
+    ui->toolButtonNew->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonDelete->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonClear->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonOpen->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonSave->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
     ui->toolButtonNew->setIcon(xIcon(":/res/icons/add.svg"));
     ui->toolButtonDelete->setIcon(xIcon(":/res/icons/delete.svg"));
@@ -65,6 +72,13 @@ ModbusRegisterTableView::ModbusRegisterTableView(QWidget *parent)
     m_columnMenu = new xTools::KeepOpenedMenu(ui->toolButtonColumns);
     ui->toolButtonColumns->setMenu(m_columnMenu);
     ui->toolButtonColumns->setPopupMode(QToolButton::InstantPopup);
+#if QT_VERSION == QT_VERSION_CHECK(6, 11, 0)
+    // BUG: In Qt 6.11.0, the width of the tool button is error.
+    // https://qt-project.atlassian.net/issues?filter=-2&selectedIssue=QTCREATORBUG-32998
+    ui->toolButtonColumns->setStyleSheet("QToolButton::menu-indicator { image: none; }");
+    int h = ui->toolButtonColumns->sizeHint().height();
+    ui->toolButtonColumns->setFixedWidth(ui->toolButtonColumns->sizeHint().width() - h);
+#endif
     resetColumnMenu();
 
     // clang-format off

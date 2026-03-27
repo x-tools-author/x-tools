@@ -1062,12 +1062,12 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>
         <source>Token length</source>
-        <translation>令牌长度</translation>
+        <translation>令牌的长度</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="100"/>
         <source>Server name</source>
-        <translation>服务名称</translation>
+        <translation>服务器名称</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="109"/>
@@ -1673,12 +1673,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="37"/>
         <source>Clear all data</source>
-        <translation>清除所有数据</translation>
+        <translation>清空数据</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="47"/>
         <source>Auto scrolling to bottom</source>
-        <translation>自动滚动到底部</translation>
+        <translation>滚到底部</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.ui" line="79"/>
@@ -2973,7 +2973,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="499"/>
         <source>Join in QQ Group</source>
-        <translation>加入QQ群</translation>
+        <translation>加入群聊</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="558"/>
@@ -3549,7 +3549,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="57"/>
         <source>Clear all log items</source>
-        <translation>清除所有日志项</translation>
+        <translation>清空日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="60"/>
@@ -3561,12 +3561,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="70"/>
         <source>Open a log file</source>
-        <translation>打开日志文件</translation>
+        <translation>导入日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="83"/>
         <source>Save log as...</source>
-        <translation>将日志另存为...</translation>
+        <translation>导出日志</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.ui" line="96"/>
@@ -3655,7 +3655,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="34"/>
         <source>Columns visible</source>
-        <translation>列可见</translation>
+        <translation>列可见性</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
@@ -3683,17 +3683,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
         <source>Clear register table</source>
-        <translation>清除寄存器表</translation>
+        <translation>清除列表</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>Save register table</source>
-        <translation>导出寄存器表</translation>
+        <translation>导出列表</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
         <source>Import register table</source>
-        <translation>导入寄存器表</translation>
+        <translation>导入列表</translation>
     </message>
 </context>
 <context>
@@ -4760,12 +4760,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="26"/>
         <source>Request</source>
-        <translation>要求</translation>
+        <translation>请求</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="28"/>
         <source>Response</source>
-        <translation>回复</translation>
+        <translation>应答</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuslogview.cpp" line="62"/>
@@ -7480,12 +7480,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="199"/>
         <source>Get Source from Gitee</source>
-        <translation>从 Gitee 获取源码</translation>
+        <translation>获取源码(Gitee)</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="200"/>
         <source>Get Source from Github</source>
-        <translation>从 Github 获取源代码</translation>
+        <translation>获取源码(Github)</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="201"/>

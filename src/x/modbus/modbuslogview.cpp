@@ -70,6 +70,13 @@ ModbusLogView::ModbusLogView(QWidget *parent)
     ui->toolButtonOpen->setIcon(xIcon(":/res/icons/file_open.svg"));
     ui->toolButtonSave->setIcon(xIcon(":/res/icons/save.svg"));
 
+    ui->toolButtonClear->setText(ui->toolButtonClear->toolTip());
+    ui->toolButtonOpen->setText(ui->toolButtonOpen->toolTip());
+    ui->toolButtonSave->setText(ui->toolButtonSave->toolTip());
+    ui->toolButtonClear->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonOpen->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonSave->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
     connect(ui->comboBoxLogType, xComboBoxActivated, this, &ModbusLogView::onLogTypeChanged);
     connect(ui->lineEditFilter, &QLineEdit::textChanged, this, &ModbusLogView::onFilterTextChanged);
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &ModbusLogView::onClearLogClicked);
@@ -131,7 +138,7 @@ void ModbusLogView::onFilterTextChanged(const QString &text)
 
 void ModbusLogView::onClearLogClicked()
 {
-    int ret = QMessageBox::question(nullptr,
+    int ret = QMessageBox::question(this,
                                     tr("Clear Log"),
                                     tr("Are you sure you want to clear the log?"),
                                     QMessageBox::Yes | QMessageBox::No);
