@@ -730,7 +730,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="71"/>
         <source>Frame ID</source>
-        <translation>帧ID</translation>
+        <translation>帧标识</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="91"/>
@@ -5970,7 +5970,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="71"/>
         <source>Frame ID</source>
-        <translation>帧ID</translation>
+        <translation>帧标识</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
@@ -6071,7 +6071,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/datamodel.cpp" line="125"/>
         <source>Payload</source>
-        <translation>载荷</translation>
+        <translation>负载</translation>
     </message>
 </context>
 <context>

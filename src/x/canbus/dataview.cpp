@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -29,12 +29,20 @@ DataView::DataView(QWidget *parent)
     , ui(new Ui::DataView)
 {
     ui->setupUi(this);
+#if 0
     ui->toolButtonClear->setIcon(xIcon(":res/icons/mop.svg"));
     ui->toolButtonScrolling->setIcon(xIcon(":res/icons/wrap_text.svg"));
+#endif
     ui->toolButtonClear->setText(ui->toolButtonClear->toolTip());
     ui->toolButtonScrolling->setText(ui->toolButtonScrolling->toolTip());
-    ui->toolButtonClear->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    ui->toolButtonScrolling->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->toolButtonClear->setToolButtonStyle(Qt::ToolButtonTextOnly);
+    ui->toolButtonScrolling->setToolButtonStyle(Qt::ToolButtonTextOnly);
+#if 0
+    ui->toolButtonClear->hide();
+    ui->toolButtonScrolling->hide();
+    QLayoutItem *item = layout()->takeAt(0);
+    Q_UNUSED(item);
+#endif
 
     m_model = new DataModel(this);
     m_filter = new DataFilter(this);
@@ -44,12 +52,9 @@ DataView::DataView(QWidget *parent)
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->horizontalHeader()->setMinimumSectionSize(60);
-    xSetNoneBorder(ui->tableView);
 
     connect(ui->toolButtonClear, &QToolButton::clicked, this, &DataView::onClearBtnClicked);
     connect(m_model, &DataModel::rowsInserted, this, &DataView::onRowInserted);
-    ui->toolButtonPanel->setVisible(false);
-    ui->stackedWidget->setVisible(false);
 }
 
 DataView::~DataView()
@@ -76,31 +81,9 @@ DataModel *DataView::model()
     return m_model;
 }
 
-void DataView::addPanel(const QString &name, const QIcon &icon, QWidget *widget)
-{
-    if (widget == nullptr) {
-        return;
-    }
-
-    ui->stackedWidget->addWidget(widget);
-    QToolButton *btn = new QToolButton(this);
-    btn->setCheckable(true);
-    ui->horizontalLayoutTab->addWidget(btn);
-    btn->setText(name);
-    btn->setIcon(icon);
-    btn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    connect(btn, &QToolButton::clicked, [this, btn, widget] {
-        if (btn->isChecked()) {
-            ui->stackedWidget->setCurrentWidget(widget);
-        } else {
-            ui->stackedWidget->setCurrentWidget(nullptr);
-        }
-    });
-}
-
 void DataView::onClearBtnClicked()
 {
-    int ret = QMessageBox::question(this, tr("Question"), tr("Are you sure to clear all data?"));
+    int ret = QMessageBox::question(this, tr("Clear Data"), tr("Are you sure to clear all data?"));
     if (ret != QMessageBox::Yes) {
         return;
     }

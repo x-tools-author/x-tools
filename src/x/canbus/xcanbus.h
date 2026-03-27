@@ -12,10 +12,12 @@
 #include <QComboBox>
 #include <QJsonObject>
 #include <QTimer>
+#include <QToolButton>
 #include <QWidget>
 
 #include "utilities/keepopenedmenu.h"
 #include "utilities/serializable.h"
+#include "x/canbus/canbuspanel.h"
 
 namespace Ui {
 class xCanBus;
@@ -39,10 +41,21 @@ protected:
 
 private:
     Ui::xCanBus* ui;
-    int m_leftWidth{168};
+    int m_rightWidth{400};
     CanBusDevice* m_device{nullptr};
     xTools::KeepOpenedMenu* m_menu{nullptr};
     QTimer* m_timedSender{nullptr};
+
+private:
+    struct PanelItem
+    {
+        QString key;
+        CanBusPanel* panel{nullptr};
+        QToolButton* btn{nullptr};
+    };
+    QList<PanelItem> m_panels;
+
+    void addPanel(const QString& key, const QString& title, CanBusPanel* panel);
 
 private:
     void onDisconnectBtnClicked();

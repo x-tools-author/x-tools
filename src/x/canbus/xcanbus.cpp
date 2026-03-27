@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -21,12 +21,14 @@
 
 #include "canbusdevice.h"
 #include "datamodel.h"
+#include "framelistview.h"
 
 namespace xCanBus {
 
 struct xCanBusParameterKeys
 {
-    const QString leftWidth{"leftWidth"};
+    const QString rightWidth{"rightWidth"};
+    const QString tabIndex{"tabIndex"};
 
     const QString plugin{"plugin"};
     const QString interface{"interface"};
@@ -54,13 +56,17 @@ xCanBus::xCanBus(QWidget* parent)
 {
     ui->setupUi(this);
     ui->splitter->setChildrenCollapsible(false);
-    ui->splitter->setSizes({m_leftWidth, width() - m_leftWidth});
+    ui->splitter->setSizes({width() - m_rightWidth, m_rightWidth});
     ui->comboBoxPlugins->addItems(QCanBus::instance()->plugins());
     ui->comboBoxBitrate->setEditable(true);
     ui->comboBoxDataBitrate->setEditable(true);
     ui->pushButtonDisconnect->setEnabled(false);
     ui->toolButtonSend->setIcon(xIcon(":res/icons/send.svg"));
-    ui->tabWidget->tabBar()->hide();
+    ui->toolButtonSend->setText(ui->toolButtonSend->toolTip());
+    ui->toolButtonSend->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    ui->stackedWidget->hide();
+    ui->comboBoxIdentifier->addItem(tr("Standard"), 11);
+    ui->comboBoxIdentifier->addItem(tr("Extended"), 29);
     connect(ui->pushButtonConnect, &QPushButton::clicked, this, &xCanBus::onConnectBtnClicked);
     connect(ui->pushButtonDisconnect, &QPushButton::clicked, this, &xCanBus::onDisconnectBtnClicked);
     connect(ui->comboBoxPlugins, &QComboBox::currentTextChanged, this, &xCanBus::onPluginChanged);
@@ -69,7 +75,7 @@ xCanBus::xCanBus(QWidget* parent)
     connect(ui->comboBoxTimedSending, xComboBoxActivated, this, &xCanBus::onTimedSendingChanged);
     connect(ui->lineEditPayload, &QLineEdit::returnPressed, this, &xCanBus::onSendBtnClicked);
     connect(ui->splitter, &QSplitter::splitterMoved, this, [=](int pos, int index) {
-        this->m_leftWidth = ui->splitter->sizes().first();
+        this->m_rightWidth = ui->splitter->sizes().first();
     });
 
     struct FrameErrorItem
@@ -112,7 +118,6 @@ xCanBus::xCanBus(QWidget* parent)
     setupFrameTypes(ui->comboBoxFrameType);
     setupTimedSending(ui->comboBoxTimedSending);
     xSetupTextFormat(ui->comboBoxInputFormat);
-    xSetupTextFormatValidator(ui->lineEditFrameId, static_cast<int>(TextFormat::HexWithoutSpace), 8);
 
     m_device = new CanBusDevice(this);
     connect(m_device, &CanBusDevice::opened, this, &xCanBus::onDeviceOpened);
@@ -123,6 +128,11 @@ xCanBus::xCanBus(QWidget* parent)
     m_timedSender = new QTimer(this);
     connect(m_timedSender, &QTimer::timeout, this, &xCanBus::onTimedSenderTimeout);
     onTimedSendingChanged();
+#if 0
+    // Add panels
+    FrameListView* frameListPanel = new FrameListView(this);
+    addPanel("frameList", tr("Frame List"), frameListPanel);
+#endif
 }
 
 xCanBus::~xCanBus()
@@ -134,7 +144,16 @@ QJsonObject xCanBus::save()
 {
     QJsonObject obj;
     xCanBusParameterKeys keys;
-    obj.insert(keys.leftWidth, ui->splitter->sizes().first());
+    obj.insert(keys.rightWidth, ui->stackedWidget->width());
+    int index = -1;
+    for (int i = 0; i < m_panels.count(); i++) {
+        const auto& item = m_panels.at(i);
+        if (ui->stackedWidget->currentWidget() == item.panel) {
+            index = i;
+            break;
+        }
+    }
+    obj.insert(keys.tabIndex, index);
 
     obj.insert(keys.plugin, ui->comboBoxPlugins->currentText());
     obj.insert(keys.interface, ui->comboBoxName->currentText());
@@ -155,13 +174,18 @@ QJsonObject xCanBus::save()
 
     obj.insert(keys.inputFormat, ui->comboBoxInputFormat->currentData().toInt());
     obj.insert(keys.frameType, ui->comboBoxFrameType->currentData().toInt());
-    obj.insert(keys.frameId, ui->lineEditFrameId->text().trimmed());
+    obj.insert(keys.frameId, ui->comboBoxIdentifier->currentData().toInt());
     obj.insert(keys.extenedFrame, ui->checkBoxExtendedFormat->isChecked());
     obj.insert(keys.bitrateSwitch, ui->checkBoxBitrateSwitch->isChecked());
     obj.insert(keys.flexibleDataRate, ui->checkBoxFlexibleDataRate->isChecked());
     obj.insert(keys.payload, ui->lineEditPayload->text().trimmed());
 
-    obj.insert(keys.dataView, ui->tabWidgetData->save());
+    obj.insert(keys.dataView, ui->widgetDataView->save());
+
+    for (const auto& item : m_panels) {
+        QJsonObject panelObj = item.panel->save();
+        obj.insert(item.key, panelObj);
+    }
 
     return obj;
 }
@@ -169,8 +193,14 @@ QJsonObject xCanBus::save()
 void xCanBus::load(const QJsonObject& obj)
 {
     xCanBusParameterKeys keys;
-    int leftWidth = obj.value(keys.leftWidth).toInt(168);
-    ui->splitter->setSizes({leftWidth, width() - leftWidth});
+    int rightWidth = obj.value(keys.rightWidth).toInt(400);
+    ui->splitter->setSizes({width() - rightWidth, rightWidth});
+    int tabIndex = obj.value(keys.tabIndex).toInt(-1);
+    if (tabIndex >= 0 && tabIndex < m_panels.count()) {
+        ui->stackedWidget->setCurrentWidget(m_panels.at(tabIndex).panel);
+        ui->stackedWidget->show();
+        m_panels.at(tabIndex).btn->setChecked(true);
+    }
 
     ui->comboBoxPlugins->setCurrentText(obj.value(keys.plugin).toString());
     ui->comboBoxName->setCurrentText(obj.value(keys.interface).toString());
@@ -197,23 +227,53 @@ void xCanBus::load(const QJsonObject& obj)
     int frameType = obj.value(keys.frameType).toInt();
     index = ui->comboBoxFrameType->findData(frameType);
     ui->comboBoxFrameType->setCurrentIndex(index < 0 ? 0 : index);
-    ui->lineEditFrameId->setText(obj.value(keys.frameId).toString());
+    int frameIdentifier = obj.value(keys.frameId).toInt();
+    index = ui->comboBoxIdentifier->findData(frameIdentifier);
+    ui->comboBoxIdentifier->setCurrentIndex(index < 0 ? 0 : index);
     ui->checkBoxExtendedFormat->setChecked(obj.value(keys.extenedFrame).toBool());
     ui->checkBoxFlexibleDataRate->setChecked(obj.value(keys.flexibleDataRate).toBool());
     ui->checkBoxBitrateSwitch->setChecked(obj.value(keys.bitrateSwitch).toBool());
     updateInputValidator();
     ui->lineEditPayload->setText(obj.value(keys.payload).toString());
 
-    ui->tabWidgetData->load(obj.value(keys.dataView).toObject());
+    ui->widgetDataView->load(obj.value(keys.dataView).toObject());
+
+    for (const auto& item : m_panels) {
+        QJsonObject panelObj = obj.value(item.key).toObject();
+        item.panel->load(panelObj);
+    }
 }
 
 bool xCanBus::event(QEvent* event)
 {
     if (event->type() == QEvent::Resize) {
-        ui->splitter->setSizes({m_leftWidth, width() - m_leftWidth});
+        ui->splitter->setSizes({m_rightWidth, width() - m_rightWidth});
     }
 
     return QWidget::event(event);
+}
+
+void xCanBus::addPanel(const QString& key, const QString& title, CanBusPanel* panel)
+{
+    QToolButton* btn = new QToolButton(this);
+    btn->setText(title);
+    btn->setCheckable(true);
+    ui->stackedWidget->addWidget(panel);
+    ui->horizontalLayoutTab->addWidget(btn);
+
+    connect(btn, &QToolButton::clicked, this, [this, key](bool checked) {
+        for (const auto& item : m_panels) {
+            if (item.key == key) {
+                ui->stackedWidget->setCurrentWidget(item.panel);
+            } else {
+                item.btn->setChecked(false);
+            }
+        }
+
+        this->ui->stackedWidget->setVisible(checked);
+    });
+
+    m_panels.append({key, panel, btn});
 }
 
 void xCanBus::onDisconnectBtnClicked()
@@ -289,16 +349,6 @@ void xCanBus::onSendBtnClicked()
         return;
     }
 
-    bool ok = false;
-    QString idStr = ui->lineEditFrameId->text().trimmed();
-    uint id = idStr.toUInt(&ok, 16);
-    Q_UNUSED(id);
-    if (!ok) {
-        QMessageBox::warning(this, tr("Warning"), tr("Invalid frame ID."));
-        ui->lineEditFrameId->setFocus();
-        return;
-    }
-
     QString payloadStr = ui->lineEditPayload->text().trimmed();
     if (payloadStr.isEmpty()) {
         QMessageBox::warning(this, tr("Warning"), tr("Payload is empty."));
@@ -325,18 +375,6 @@ void xCanBus::onTimedSendingChanged()
 
 void xCanBus::onTimedSenderTimeout()
 {
-    QString idStr = ui->lineEditFrameId->text().trimmed();
-    if (idStr.isEmpty()) {
-        return;
-    }
-
-    bool ok = false;
-    uint id = idStr.toUInt(&ok, 16);
-    Q_UNUSED(id);
-    if (!ok) {
-        return;
-    }
-
     QString payloadStr = ui->lineEditPayload->text().trimmed();
     if (payloadStr.isEmpty()) {
         return;
@@ -347,13 +385,13 @@ void xCanBus::onTimedSenderTimeout()
 
 void xCanBus::onFrameRx(const QCanBusFrame& frame)
 {
-    DataModel* model = ui->tabWidgetData->model();
+    DataModel* model = ui->widgetDataView->model();
     model->addFrame(frame, true);
 }
 
 void xCanBus::onFrameTx(const QCanBusFrame& frame)
 {
-    DataModel* model = ui->tabWidgetData->model();
+    DataModel* model = ui->widgetDataView->model();
     model->addFrame(frame, false);
 }
 
@@ -479,7 +517,7 @@ void xCanBus::sendFrame()
 
     const QString txt = ui->lineEditPayload->text();
     const QByteArray payload = xString2bytes(txt, ui->comboBoxInputFormat->currentData().toInt());
-    const uint frameId = static_cast<uint>(ui->lineEditFrameId->text().toUInt(nullptr, 16));
+    const uint frameId = ui->comboBoxIdentifier->currentData().toUInt();
     QCanBusFrame frame = QCanBusFrame(frameId, payload);
     frame.setExtendedFrameFormat(ui->checkBoxExtendedFormat->isChecked());
     frame.setFlexibleDataRateFormat(ui->checkBoxFlexibleDataRate->isChecked());
