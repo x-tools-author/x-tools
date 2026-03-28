@@ -19,6 +19,7 @@
 #include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
 
+#include "canbuscommon.h"
 #include "canbusdevice.h"
 #include "datamodel.h"
 #include "framelistview.h"
@@ -61,16 +62,11 @@ xCanBus::xCanBus(QWidget* parent)
     ui->comboBoxBitrate->setEditable(true);
     ui->comboBoxDataBitrate->setEditable(true);
     ui->pushButtonDisconnect->setEnabled(false);
-    ui->toolButtonSend->setIcon(xIcon(":res/icons/send.svg"));
-    ui->toolButtonSend->setText(ui->toolButtonSend->toolTip());
-    ui->toolButtonSend->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     ui->stackedWidget->hide();
-    ui->comboBoxIdentifier->addItem(tr("Standard"), 11);
-    ui->comboBoxIdentifier->addItem(tr("Extended"), 29);
     connect(ui->pushButtonConnect, &QPushButton::clicked, this, &xCanBus::onConnectBtnClicked);
     connect(ui->pushButtonDisconnect, &QPushButton::clicked, this, &xCanBus::onDisconnectBtnClicked);
     connect(ui->comboBoxPlugins, &QComboBox::currentTextChanged, this, &xCanBus::onPluginChanged);
-    connect(ui->toolButtonSend, &QToolButton::clicked, this, &xCanBus::onSendBtnClicked);
+    connect(ui->pushButtonSend, &QPushButton::clicked, this, &xCanBus::onSendBtnClicked);
     connect(ui->comboBoxInputFormat, xComboBoxActivated, this, &xCanBus::updateInputValidator);
     connect(ui->comboBoxTimedSending, xComboBoxActivated, this, &xCanBus::onTimedSendingChanged);
     connect(ui->lineEditPayload, &QLineEdit::returnPressed, this, &xCanBus::onSendBtnClicked);
@@ -115,8 +111,8 @@ xCanBus::xCanBus(QWidget* parent)
     setupOptions(ui->comboBoxReceiveOwn, true);
     setupOptions(ui->comboBoxLoopback, true);
     setupOptions(ui->comboBoxCanFd, false);
-    setupFrameTypes(ui->comboBoxFrameType);
     setupTimedSending(ui->comboBoxTimedSending);
+    xSetupFrameTypes(ui->comboBoxFrameType);
     xSetupTextFormat(ui->comboBoxInputFormat);
 
     m_device = new CanBusDevice(this);
@@ -128,7 +124,7 @@ xCanBus::xCanBus(QWidget* parent)
     m_timedSender = new QTimer(this);
     connect(m_timedSender, &QTimer::timeout, this, &xCanBus::onTimedSenderTimeout);
     onTimedSendingChanged();
-#if 0
+#if 1
     // Add panels
     FrameListView* frameListPanel = new FrameListView(this);
     addPanel("frameList", tr("Frame List"), frameListPanel);
@@ -174,7 +170,7 @@ QJsonObject xCanBus::save()
 
     obj.insert(keys.inputFormat, ui->comboBoxInputFormat->currentData().toInt());
     obj.insert(keys.frameType, ui->comboBoxFrameType->currentData().toInt());
-    obj.insert(keys.frameId, ui->comboBoxIdentifier->currentData().toInt());
+    obj.insert(keys.frameId, ui->spinBoxFrameId->value());
     obj.insert(keys.extenedFrame, ui->checkBoxExtendedFormat->isChecked());
     obj.insert(keys.bitrateSwitch, ui->checkBoxBitrateSwitch->isChecked());
     obj.insert(keys.flexibleDataRate, ui->checkBoxFlexibleDataRate->isChecked());
@@ -228,8 +224,7 @@ void xCanBus::load(const QJsonObject& obj)
     index = ui->comboBoxFrameType->findData(frameType);
     ui->comboBoxFrameType->setCurrentIndex(index < 0 ? 0 : index);
     int frameIdentifier = obj.value(keys.frameId).toInt();
-    index = ui->comboBoxIdentifier->findData(frameIdentifier);
-    ui->comboBoxIdentifier->setCurrentIndex(index < 0 ? 0 : index);
+    ui->spinBoxFrameId->setValue(frameIdentifier);
     ui->checkBoxExtendedFormat->setChecked(obj.value(keys.extenedFrame).toBool());
     ui->checkBoxFlexibleDataRate->setChecked(obj.value(keys.flexibleDataRate).toBool());
     ui->checkBoxBitrateSwitch->setChecked(obj.value(keys.bitrateSwitch).toBool());
@@ -271,6 +266,12 @@ void xCanBus::addPanel(const QString& key, const QString& title, CanBusPanel* pa
         }
 
         this->ui->stackedWidget->setVisible(checked);
+    });
+
+    connect(panel, &CanBusPanel::outputFrame, this, [this](const QCanBusFrame& frame) {
+        if (m_device && m_device->isRunning()) {
+            m_device->writeFrame(frame);
+        }
     });
 
     m_panels.append({key, panel, btn});
@@ -428,18 +429,6 @@ void xCanBus::setupBitRates(QComboBox* cb, bool isFlexibleDataRateEnable)
     }
 }
 
-void xCanBus::setupFrameTypes(QComboBox* cb)
-{
-    if (!cb) {
-        return;
-    }
-
-    cb->clear();
-    cb->addItem(tr("Data Frame"), QVariant(QCanBusFrame::DataFrame));
-    cb->addItem(tr("Remote Request Frame"), QVariant(QCanBusFrame::RemoteRequestFrame));
-    cb->addItem(tr("Error Frame"), QVariant(QCanBusFrame::ErrorFrame));
-}
-
 void xCanBus::setupTimedSending(QComboBox* cb)
 {
     if (!cb) {
@@ -517,7 +506,7 @@ void xCanBus::sendFrame()
 
     const QString txt = ui->lineEditPayload->text();
     const QByteArray payload = xString2bytes(txt, ui->comboBoxInputFormat->currentData().toInt());
-    const uint frameId = ui->comboBoxIdentifier->currentData().toUInt();
+    const uint frameId = ui->spinBoxFrameId->value();
     QCanBusFrame frame = QCanBusFrame(frameId, payload);
     frame.setExtendedFrameFormat(ui->checkBoxExtendedFormat->isChecked());
     frame.setFlexibleDataRateFormat(ui->checkBoxFlexibleDataRate->isChecked());

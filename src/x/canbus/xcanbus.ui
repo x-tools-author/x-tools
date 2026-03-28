@@ -151,7 +151,7 @@
       <item row="27" column="0" colspan="3">
        <widget class="QCheckBox" name="checkBoxBitrateSwitch">
         <property name="text">
-         <string>Bitrate switch</string>
+         <string>Bit rate switch</string>
         </property>
        </widget>
       </item>
@@ -176,16 +176,6 @@
       </item>
       <item row="5" column="0" colspan="3">
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="3" column="1">
-         <widget class="QComboBox" name="comboBoxLoopback"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButtonErrorFilter">
-          <property name="text">
-           <string notr="true"/>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_3">
           <property name="sizePolicy">
@@ -199,47 +189,15 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButtonErrorFilter">
           <property name="text">
-           <string>Receive own</string>
+           <string notr="true"/>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QComboBox" name="comboBoxBitrate"/>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Loopback</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Nominal bitrate</string>
-          </property>
-         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_7">
@@ -254,11 +212,21 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
-         <widget class="QComboBox" name="comboBoxReceiveOwn"/>
+        <item row="5" column="1">
+         <widget class="QComboBox" name="comboBoxCanFd"/>
         </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="comboBoxDataBitrate"/>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Nominal bitrate</string>
+          </property>
+         </widget>
         </item>
         <item row="5" column="0">
          <widget class="QLabel" name="label_8">
@@ -273,8 +241,40 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="1">
-         <widget class="QComboBox" name="comboBoxCanFd"/>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Loopback</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="comboBoxReceiveOwn"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="comboBoxLoopback"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Receive own</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="comboBoxDataBitrate"/>
         </item>
        </layout>
       </item>
@@ -312,18 +312,16 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QToolButton" name="toolButtonSend">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string>Send data</string>
-          </property>
+         <widget class="QPushButton" name="pushButtonSettings">
           <property name="text">
-           <string notr="true"/>
+           <string>Settings</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonSend">
+          <property name="text">
+           <string>Send</string>
           </property>
          </widget>
         </item>
@@ -349,7 +347,11 @@
        </widget>
       </item>
       <item row="24" column="2">
-       <widget class="QComboBox" name="comboBoxIdentifier"/>
+       <widget class="QSpinBox" name="spinBoxFrameId">
+        <property name="maximum">
+         <number>536870911</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

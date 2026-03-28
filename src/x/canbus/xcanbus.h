@@ -71,7 +71,6 @@ private:
 
     void setupOptions(QComboBox* cb, bool usingUnspecified);
     void setupBitRates(QComboBox* cb, bool isFlexibleDataRateEnable);
-    void setupFrameTypes(QComboBox* cb);
     void setupTimedSending(QComboBox* cb);
 
     QCanBusFrame::FrameErrors errorFilter() const;

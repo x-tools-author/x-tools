@@ -19,18 +19,9 @@ public:
     FrameListModelPrivate(FrameListModel *parent)
         : QObject(parent)
         , q(parent)
-    {}
+    { }
 
 public:
-    struct FrameItem
-    {
-        QString name;
-        bool cycle{false};
-        int cycleInterval{1000};
-        bool response{false};
-        int responseId{0};
-        QCanBusFrame frame;
-    };
     QList<FrameItem> m_items;
 
 private:
@@ -43,15 +34,59 @@ FrameListModel::FrameListModel(QObject *parent)
     d = new FrameListModelPrivate(this);
 }
 
-FrameListModel::~FrameListModel() {}
+FrameListModel::~FrameListModel() { }
 
-void FrameListModel::addFrame(const QCanBusFrame &frame, bool isRx) {}
+void FrameListModel::addFrameItem(const FrameItem &frame)
+{
+    if (!hasFrameId(frame.frame.frameId())) {
+        beginInsertRows(QModelIndex(), d->m_items.count(), d->m_items.count());
+        d->m_items.append(frame);
+        endInsertRows();
+        return;
+    }
+
+    // If frame with the same ID already exists, update it.
+    for (int i = 0; i < d->m_items.count(); ++i) {
+        if (d->m_items[i].frame.frameId() == frame.frame.frameId()) {
+            d->m_items[i] = frame;
+            QModelIndex idx = index(i, 0);
+            emit dataChanged(idx, index(i, columnCount(QModelIndex()) - 1));
+            break;
+        }
+    }
+}
+
+QList<FrameItem> FrameListModel::frameItems() const
+{
+    return d->m_items;
+}
 
 void FrameListModel::clear()
 {
     beginResetModel();
     d->m_items.clear();
     endResetModel();
+}
+
+bool FrameListModel::hasFrameId(QCanBusFrame::FrameId frameId) const
+{
+    for (const FrameItem &item : d->m_items) {
+        if (item.frame.frameId() == frameId) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void FrameListModel::removeFrameItemRow(int row)
+{
+    if (row < 0 || row >= d->m_items.count()) {
+        return;
+    }
+
+    beginRemoveRows(QModelIndex(), row, row);
+    d->m_items.removeAt(row);
+    endRemoveRows();
 }
 
 int FrameListModel::rowCount(const QModelIndex &parent) const
@@ -63,7 +98,7 @@ int FrameListModel::rowCount(const QModelIndex &parent) const
 int FrameListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 7;
+    return 8;
 }
 
 static QString frameFlags(const QCanBusFrame &frame)
@@ -95,6 +130,40 @@ QVariant FrameListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
+    int row = index.row();
+    int column = index.column();
+    if (row < 0 || row >= d->m_items.count() || column < 0 || column >= 8) {
+        return QVariant();
+    }
+
+    if (role == Qt::TextAlignmentRole) {
+        if (column == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
+            return int(Qt::AlignVCenter | Qt::AlignLeft);
+        }
+        return Qt::AlignCenter;
+    }
+
+    const FrameItem &item = d->m_items.at(row);
+    if (role == Qt::DisplayRole) {
+        if (column == FRAME_LIST_MODEL_COLUMN_SEND) {
+            return tr("Send");
+        } else if (column == FRAME_LIST_MODEL_COLUMN_NAME) {
+            return item.name;
+        } else if (column == FRAME_LIST_MODEL_COLUMN_CYCLE) {
+            return item.response ? tr("Yes") : tr("No");
+        } else if (column == FRAME_LIST_MODEL_COLUMN_INTERVAL) {
+            return QString::number(item.cycleInterval);
+        } else if (column == FRAME_LIST_MODEL_COLUMN_RESPONSE) {
+            return item.response ? tr("Yes") : tr("No");
+        } else if (column == FRAME_LIST_MODEL_COLUMN_RESPONSE_ID) {
+            return QString::number(item.responseId, 16).toUpper();
+        } else if (column == FRAME_LIST_MODEL_COLUMN_FRAME_ID) {
+            return QString::number(item.frame.frameId(), 16).toUpper();
+        } else if (column == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
+            return QString::fromLatin1(item.frame.payload().toHex(' ').toUpper());
+        }
+    }
+
     return QVariant();
 }
 
@@ -114,8 +183,11 @@ QVariant FrameListModel::headerData(int section, Qt::Orientation orientation, in
                 return tr("Response");
             } else if (section == FRAME_LIST_MODEL_COLUMN_RESPONSE_ID) {
                 return tr("Response ID");
-            } else if (section == FRAME_LIST_MODEL_COLUMN_FRAME) {
-                return tr("Frame");
+            } else if (section == FRAME_LIST_MODEL_COLUMN_FRAME_ID) {
+                return tr("Frame ID");
+
+            } else if (section == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
+                return tr("Payload");
             }
         } else {
             return QString::number(section + 1);
@@ -124,7 +196,7 @@ QVariant FrameListModel::headerData(int section, Qt::Orientation orientation, in
 
     if (role == Qt::TextAlignmentRole) {
         if (orientation == Qt::Horizontal) {
-            if (section == FRAME_LIST_MODEL_COLUMN_FRAME) {
+            if (section == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
                 return int(Qt::AlignVCenter | Qt::AlignLeft);
             }
         }

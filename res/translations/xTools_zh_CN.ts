@@ -5975,7 +5975,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Nominal bitrate</source>
-        <translation>仲裁波特率</translation>
+        <translation>仲裁速率</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
@@ -6000,12 +6000,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
         <source>Data bitrate</source>
-        <translation>负载波特率</translation>
+        <translation>负载速率</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
         <source>Flexible data rate</source>
-        <translation>可变波特率</translation>
+        <translation>可变速率</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
