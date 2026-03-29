@@ -81,6 +81,12 @@
     static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error)
 #endif
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+#define xSpinBoxValueChanged &QSpinBox::valueChanged
+#else
+#define xSpinBoxValueChanged qOverload<int>(&QSpinBox::valueChanged)
+#endif
+
 #if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
 #define xBytes2Hex(ba, c) ba.toHex(c)
 #else

@@ -110,7 +110,7 @@ FrameListItemEditor::FrameListItemEditor(QWidget *parent)
     // clang-format off
     connect(d->ui->buttonBox, &QDialogButtonBox::accepted, this, &FrameListItemEditor::accepted);
     connect(d->ui->buttonBox, &QDialogButtonBox::rejected, this, &FrameListItemEditor::rejected);
-    connect(d->ui->spinBoxPayloadLength, &QSpinBox::valueChanged, d, &FrameListItemEditorPrivate::onPayloadLengthChanged);
+    connect(d->ui->spinBoxPayloadLength, xSpinBoxValueChanged, d, &FrameListItemEditorPrivate::onPayloadLengthChanged);
     // clang-format on
 
     d->onPayloadLengthChanged(d->ui->spinBoxPayloadLength->value());

@@ -12,6 +12,7 @@
 #include <QAction>
 #include <QDesktopServices>
 #include <QFileDialog>
+#include <QJsonDocument>
 #include <QMenu>
 #include <QMessageBox>
 #include <QToolButton>
@@ -72,7 +73,7 @@ public:
             onServerCtrlToolButtonClicked();
         });
     }
-    ~xCoAPPrivate() {}
+    ~xCoAPPrivate() { }
 
 public:
     Ui::xCoAP* ui{nullptr};
@@ -168,7 +169,7 @@ xCoAP::xCoAP(QWidget* parent)
     });
 }
 
-xCoAP::~xCoAP() {}
+xCoAP::~xCoAP() { }
 
 void xCoAP::setupSettings(QSettings* settings)
 {
