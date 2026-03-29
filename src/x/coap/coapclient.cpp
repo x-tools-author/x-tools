@@ -31,8 +31,8 @@ public:
     explicit CoAPClientPrivate(CoAPClient *q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {}
-    ~CoAPClientPrivate() override { qCDebug(xCoAPClientLog) << Q_FUNC_INFO; }
+    { }
+    ~CoAPClientPrivate() override { }
 
 public:
     QJsonObject m_parameters;
@@ -213,7 +213,6 @@ CoAPClient::CoAPClient(QObject *parent)
 
 CoAPClient::~CoAPClient()
 {
-    qCDebug(xCoAPClientLog) << Q_FUNC_INFO;
     stopClient();
 }
 
