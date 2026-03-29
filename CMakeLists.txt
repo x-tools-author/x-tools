@@ -247,6 +247,12 @@ if(QT_VERSION_MAJOR EQUAL 5 AND MSVC)
 endif()
 
 # --------------------------------------------------------------------------------------------------
+# Include Private modules
+if(EXISTS ${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+  include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+endif()
+
+# --------------------------------------------------------------------------------------------------
 # xTools application
 set(bin ${X_BINS_DIR}/xTools)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${bin})
