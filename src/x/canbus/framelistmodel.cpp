@@ -68,7 +68,7 @@ void FrameListModel::clear()
     endResetModel();
 }
 
-bool FrameListModel::hasFrameId(QCanBusFrame::FrameId frameId) const
+bool FrameListModel::hasFrameId(int frameId) const
 {
     for (const FrameItem &item : d->m_items) {
         if (item.frame.frameId() == frameId) {

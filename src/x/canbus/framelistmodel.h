@@ -37,7 +37,7 @@ public:
     void addFrameItem(const FrameItem &frame);
     QList<FrameItem> frameItems() const;
     void clear();
-    bool hasFrameId(QCanBusFrame::FrameId frameId) const;
+    bool hasFrameId(int frameId) const;
     void removeFrameItemRow(int row);
     int elapsedTime(int row) const;
     void setElapsedTime(int row, int elapsed);

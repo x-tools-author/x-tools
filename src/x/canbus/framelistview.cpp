@@ -78,7 +78,7 @@ public:
 
         FrameItem frameItem = m_frameEditor->frameItem();
         if (m_model->hasFrameId(frameItem.frame.frameId())) {
-            QCanBusFrame::FrameId frameId = frameItem.frame.frameId();
+            int frameId = frameItem.frame.frameId();
             QString message = tr("A frame with the same ID (%1) already exists.").arg(frameId);
             QString question = tr("Do you want to replace the existing frame with the new one?");
             int ret = QMessageBox::question(q, tr("Duplicate Frame ID"), message + "\n" + question);
@@ -299,7 +299,7 @@ void FrameListView::load(const QJsonObject &obj)
 
 void FrameListView::onFrameRx(const QCanBusFrame &frame)
 {
-    QCanBusFrame::FrameId frameId = frame.frameId();
+    int frameId = frame.frameId();
     QList<FrameItem> items = d->m_model->frameItems();
     for (const FrameItem &item : items) {
         if (item.response && item.frame.frameId() == frameId) {

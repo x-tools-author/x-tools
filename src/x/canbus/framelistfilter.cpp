@@ -73,7 +73,7 @@ bool FrameListFilter::filterAcceptsRow(int source_row, const QModelIndex &source
     }
 
     // Frame ID column (check both hex and decimal representations)
-    QCanBusFrame::FrameId frameId = item.frame.frameId();
+    int frameId = item.frame.frameId();
     QString idStr = QString::number(frameId, 16);
     if (idStr.contains(filterString, Qt::CaseInsensitive)) {
         return true;
