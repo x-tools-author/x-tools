@@ -412,12 +412,12 @@
 <context>
     <name>BarSettings</name>
     <message>
-        <location filename="../../src/page/charts/bar/barsettings.ui" line="26"/>
+        <location filename="../../src/page/charts/bar/barsettings.ui" line="30"/>
         <source>Data format</source>
         <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/bar/barsettings.ui" line="46"/>
+        <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
@@ -1671,19 +1671,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>数据视图</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
+        <location filename="../../src/x/canbus/dataview.ui" line="34"/>
         <source>Clear all data</source>
         <translation>清空数据</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <location filename="../../src/x/canbus/dataview.ui" line="44"/>
         <source>Auto scrolling to bottom</source>
         <translation>滚到底部</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="79"/>
         <source>Panel</source>
-        <translation>面板</translation>
+        <translation type="vanished">面板</translation>
     </message>
 </context>
 <context>
@@ -2151,6 +2150,112 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>FrameListItemEditor</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="14"/>
+        <source>Frmae Editor</source>
+        <translation>帧编辑器</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="38"/>
+        <source>Frame ID</source>
+        <translation>帧ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="45"/>
+        <source>Extended format</source>
+        <translation>扩展格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="52"/>
+        <source>Flexible data rate</source>
+        <translation>固定数据速率</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="78"/>
+        <source>Frame type</source>
+        <translation>帧类型</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="85"/>
+        <source>Timed sending</source>
+        <translation>周期发</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="92"/>
+        <source>Bit rate switch</source>
+        <translation>码率切换</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="99"/>
+        <source>Time sending interval</source>
+        <translation>周期发送间隔</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="112"/>
+        <source>Untitled</source>
+        <translation>未命名</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="146"/>
+        <source>Payload length</source>
+        <translation>负载长度</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="153"/>
+        <source>Audo response</source>
+        <translation>自动应答</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="190"/>
+        <source>Frame name</source>
+        <translation>帧名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="203"/>
+        <source>Payload Editor</source>
+        <translation>负载编辑器</translation>
+    </message>
+</context>
+<context>
+    <name>FrameListView</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="34"/>
+        <source>Clear all data</source>
+        <translation>清空数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="37"/>
+        <source>Clear Items</source>
+        <translation>清空数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="44"/>
+        <source>Add Item</source>
+        <translation>添加数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="54"/>
+        <source>Delete Items</source>
+        <translation>删除数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="64"/>
+        <source>Export Items</source>
+        <translation>导出数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="74"/>
+        <source>Import Items</source>
+        <translation>导入数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="101"/>
+        <source>Payload filter</source>
+        <translation>负载过滤</translation>
+    </message>
+</context>
+<context>
     <name>GpsTestUi</name>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
@@ -2496,37 +2601,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LineSettings</name>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="58"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="41"/>
         <source>Data type</source>
         <translation>数据类型</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="68"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="113"/>
         <source>Legend</source>
         <translation>显示图例</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="75"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="48"/>
         <source>Cache points</source>
         <translation>缓存点数</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="108"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="120"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="135"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="104"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="142"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="97"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="149"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="90"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
@@ -2851,22 +2956,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LuaView</name>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="74"/>
+        <location filename="../../src/page/lua/luaview.ui" line="161"/>
         <source>(The handler of the rx data)</source>
         <translation>接收数据处理脚本</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="145"/>
+        <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Input data processing Lua script</source>
         <translation>输入数据处理脚本(Lua)</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="161"/>
+        <location filename="../../src/page/lua/luaview.ui" line="74"/>
         <source>(The handler of the tx data)</source>
         <translation>发送数据处理脚本</translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="58"/>
+        <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Output data processing Lua script</source>
         <translation>输出数据处理脚本(Lua)</translation>
     </message>
@@ -2879,39 +2984,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="360"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
         <source>Save Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="364"/>
-        <location filename="../../src/mainwindow.cpp" line="625"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="626"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
-        <location filename="../../src/mainwindow.cpp" line="638"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="381"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>New</source>
         <translation>新建工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="423"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Using System Proxy</source>
         <translation>使用系统代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="496"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>Online Documentation</source>
         <translation>在线文档</translation>
     </message>
@@ -2920,73 +3025,73 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">（请手动重启软件。）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="669"/>
+        <location filename="../../src/mainwindow.cpp" line="670"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="676"/>
         <source>Commit hash</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="679"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="444"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="524"/>
+        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Third Party Open Source</source>
         <translation>第三方开源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
-        <location filename="../../src/mainwindow.cpp" line="538"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="539"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>Join in QQ Group</source>
         <translation>加入群聊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="558"/>
+        <location filename="../../src/mainwindow.cpp" line="559"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="567"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="569"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -2999,8 +3104,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="627"/>
-        <location filename="../../src/mainwindow.cpp" line="640"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="641"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -3658,40 +3763,40 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>列可见性</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="121"/>
         <source>Search...</source>
         <translation>搜索...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="44"/>
         <source>Add register item</source>
         <translation>添加一行</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="76"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="47"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="57"/>
         <source>Remove current register item</source>
         <translation>删除选中</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="70"/>
         <source>Clear register table</source>
         <translation>清除列表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="83"/>
         <source>Save register table</source>
         <translation>导出列表</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="96"/>
         <source>Import register table</source>
         <translation>导入列表</translation>
     </message>
@@ -4066,22 +4171,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="839"/>
+        <location filename="../../src/page/page.cpp" line="848"/>
         <source>Presets</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="840"/>
+        <location filename="../../src/page/page.cpp" line="849"/>
         <source>Emitter</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="841"/>
+        <location filename="../../src/page/page.cpp" line="850"/>
         <source>Responder</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="842"/>
+        <location filename="../../src/page/page.cpp" line="851"/>
         <source>Transfers</source>
         <translation>数据转发</translation>
     </message>
@@ -4092,32 +4197,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="542"/>
-        <location filename="../../src/page/page.cpp" line="1074"/>
+        <location filename="../../src/page/page.cpp" line="1084"/>
         <source>Error: No device is opened.</source>
         <translation>错误：没有打开的设备。</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="862"/>
         <source>Scripts</source>
         <translation>脚本程序</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="843"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Records</source>
         <translation>数据记录</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="844"/>
+        <location filename="../../src/page/page.cpp" line="853"/>
         <source>Search</source>
         <translation>输出过滤</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="849"/>
+        <location filename="../../src/page/page.cpp" line="858"/>
         <source>Bar Charts</source>
         <translation>条形图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="850"/>
+        <location filename="../../src/page/page.cpp" line="859"/>
         <source>Line Charts</source>
         <translation>曲线图表</translation>
     </message>
@@ -4542,6 +4647,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>TCP服务器</translation>
     </message>
     <message>
+        <location filename="../../src/x/canbus/framelistcommon.cpp" line="47"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="197"/>
         <source>Untitled</source>
         <translation>无题</translation>
@@ -4742,7 +4848,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="57"/>
+        <location filename="../../src/main.cpp" line="58"/>
         <source>Application is booting...</source>
         <translation>软件正在启动...</translation>
     </message>
@@ -4896,6 +5002,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Server View</source>
         <translation>隐藏/显示服务器面板</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="22"/>
+        <source>Data Frame</source>
+        <translation>数据帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="23"/>
+        <source>Remote Request Frame</source>
+        <translation>远程请求帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="24"/>
+        <source>Error Frame</source>
+        <translation>错误帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="34"/>
+        <source>Standard</source>
+        <translation>标准帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="35"/>
+        <source>Extended</source>
+        <translation>扩展帧</translation>
     </message>
 </context>
 <context>
@@ -5918,107 +6049,129 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="114"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="64"/>
         <source>Interfce Name</source>
         <translation>接口名称</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="127"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="77"/>
         <source>CAN Plugin</source>
         <translation>CAN插件</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
-        <translation>码率切换</translation>
+        <translation type="vanished">码率切换</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="217"/>
         <source>Send data</source>
-        <translation>发送数据</translation>
+        <translation type="vanished">发送数据</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="137"/>
         <source>Input format</source>
         <translation>格式化</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="130"/>
         <source>Device selecting</source>
         <translation>设备选择</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="98"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="317"/>
+        <source>Settings</source>
+        <translation>更多设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="324"/>
+        <source>Send</source>
+        <translation>发送数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="338"/>
         <source>Specify configuration</source>
         <translation>指定配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="173"/>
         <source>Sending settings</source>
         <translation>发送设置</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="169"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="35"/>
+        <source>Output</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <source>Bit rate switch</source>
+        <translation>码率切换</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Disconnect</source>
         <translation>断开</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="176"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="303"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="71"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="387"/>
+        <source>Input</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Frame ID</source>
         <translation>帧标识</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="227"/>
         <source>Nominal bitrate</source>
         <translation>仲裁速率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="161"/>
         <source>Timed sending</source>
         <translation>周期发</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="185"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="144"/>
         <source>Frame type</source>
         <translation>帧类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="64"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="115"/>
         <source>Extended format</source>
         <translation>扩展格式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="368"/>
         <source>Data View</source>
-        <translation>数据视图</translation>
+        <translation type="vanished">数据视图</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
         <source>Data bitrate</source>
         <translation>负载速率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>Flexible data rate</source>
         <translation>可变速率</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="188"/>
         <source>Error filter</source>
         <translation>错误过滤</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="253"/>
         <source>Loopback</source>
         <translation>环回模式</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="267"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="272"/>
         <source>Receive own</source>
         <translation>接收自己</translation>
     </message>
@@ -6077,127 +6230,276 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Question</source>
-        <translation>问题</translation>
+        <translation type="vanished">问题</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
         <source>Are you sure to clear all data?</source>
         <translation>您确定清除所有数据吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
+        <source>Clear Data</source>
+        <translation>清空数据</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::FrameListModel</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="165"/>
+        <source>Send</source>
+        <translation>发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
+        <source>No</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="189"/>
+        <source>Options</source>
+        <translation>选项</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="191"/>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="193"/>
+        <source>Cycle</source>
+        <translation>循环发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="195"/>
+        <source>Interval(ms)</source>
+        <translation>发送间隔</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="197"/>
+        <source>Response</source>
+        <translation>自动应答</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="199"/>
+        <source>Frame ID</source>
+        <translation>帧ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="201"/>
+        <source>Payload</source>
+        <translation>负载</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::FrameListViewPrivate</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="67"/>
+        <source>Clear Frames</source>
+        <translation>清空数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="68"/>
+        <source>Are you sure you want to clear all frames?</source>
+        <translation>您确定要清空所有数据吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="82"/>
+        <source>A frame with the same ID (%1) already exists.</source>
+        <translation>帧ID(%1)已存在。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="83"/>
+        <source>Do you want to replace the existing frame with the new one?</source>
+        <translation>你要覆盖现有的数据项吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="84"/>
+        <source>Duplicate Frame ID</source>
+        <translation>重复的帧ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="106"/>
+        <source>Delete Frame</source>
+        <translation>删除帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
+        <source>Please select a frame to delete.</source>
+        <translation>请选择要删除的数据。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
+        <source>Invalid frame selected.</source>
+        <translation>未选择数据。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="107"/>
+        <source>Are you sure you want to delete the selected frame?</source>
+        <translation>您确定要删除你先择的数据吗？</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="121"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
+        <source>Export Frames</source>
+        <translation>导出数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="123"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="142"/>
+        <source>JSON Files (*.json)</source>
+        <translation>JSON 文件 (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
+        <source>Failed to open file for writing.</source>
+        <translation>打开文件失败。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="140"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="160"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="167"/>
+        <source>Import Frames</source>
+        <translation>导入数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
+        <source>Failed to open file for reading.</source>
+        <translation>打开文件失败。</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="161"/>
+        <source>Failed to parse JSON: %1</source>
+        <translation>分析文件失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="168"/>
+        <source>Invalid JSON format: expected an array of frames.</source>
+        <translation>非法的JSON文件格式：期待一个数组。</translation>
     </message>
 </context>
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>No error has occurred</source>
         <translation>没有发生错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>The transmission has timed out</source>
         <translation>传输超时</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
         <translation>由于总线仲裁失败，无法发送帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>The controller encountered an error</source>
         <translation>控制器遇到错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>A protocol violation has occurred</source>
         <translation>发生了协议违规</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>A transceiver error occurred</source>
         <translation>发生收发器错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>The transmission received no acknowledgment</source>
         <translation>传输未收到确认</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>The CAN bus is offline</source>
         <translation>CAN总线离线</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>A CAN bus error occurred</source>
         <translation>发生 CAN 总线错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
         <source>The controller restarted</source>
         <translation>控制器重新启动</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="94"/>
         <source>An unknown error has occurred</source>
         <translation>发生未知错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="95"/>
         <source>Matches every other error type</source>
         <translation>匹配所有其他错误类型</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="130"/>
+        <source>Frame List</source>
+        <translation>帧列表</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
         <source>The CAN bus device is not connected.</source>
         <translation>CAN 总线设备未连接。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
         <source>Invalid frame ID.</source>
-        <translation>帧 ID 无效。</translation>
+        <translation type="vanished">帧 ID 无效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
         <source>Payload is empty.</source>
         <translation>有效负载为空。</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="365"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="416"/>
         <source>unspecified</source>
         <translation>未指定</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Data Frame</source>
-        <translation>数据帧</translation>
+        <translation type="vanished">数据帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Remote Request Frame</source>
-        <translation>远程请求帧</translation>
+        <translation type="vanished">远程请求帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="402"/>
         <source>Error Frame</source>
-        <translation>错误帧</translation>
+        <translation type="vanished">错误帧</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="412"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="451"/>
         <source>Disabled</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="448"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="487"/>
         <source>Unspecified</source>
         <translation>未指定</translation>
     </message>
@@ -7188,52 +7490,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="142"/>
         <source>Clear Log</source>
         <translation>清除日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="136"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="143"/>
         <source>Are you sure you want to clear the log?</source>
         <translation>您确定要清除日志吗？</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="148"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="165"/>
         <source>Save Log</source>
         <translation>保存日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="150"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="157"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="191"/>
         <source>Log Files (*.json)</source>
         <translation>日志文件 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="159"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="166"/>
         <source>Failed to open file for writing: %1</source>
         <translation>无法打开文件进行写入：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="182"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="199"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="220"/>
         <source>Open Log</source>
         <translation>打开日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="193"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="200"/>
         <source>Failed to open file for reading: %1</source>
         <translation>无法打开文件进行读取：%1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="212"/>
         <source>Failed to parse log file: %1 at offset %2</source>
         <translation>无法解析日志文件：%1（偏移量 %2）</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="214"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="221"/>
         <source>Invalid log file format: root element is not an array.</source>
         <translation>日志文件格式无效：根元素不是数组。</translation>
     </message>
@@ -7294,50 +7596,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="198"/>
         <source>Save Registers</source>
         <translation>保存寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="200"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="224"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="232"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="241"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Failed to open file for saving.</source>
         <translation>无法打开文件进行保存。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Load Registers</source>
         <translation>加载寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="232"/>
         <source>Failed to open file for loading.</source>
         <translation>无法打开文件进行加载。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="241"/>
         <source>Invalid JSON format in the file.</source>
         <translation>文件中的 JSON 格式无效。</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="249"/>
         <source>Import Registers</source>
         <translation>导入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="250"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>寄存器表不为空。您想要合并数据吗？</translation>
     </message>

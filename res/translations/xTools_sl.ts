@@ -408,12 +408,12 @@
 <context>
     <name>BarSettings</name>
     <message>
-        <location filename="../../src/page/charts/bar/barsettings.ui" line="26"/>
+        <location filename="../../src/page/charts/bar/barsettings.ui" line="30"/>
         <source>Data format</source>
         <translation>Format podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/bar/barsettings.ui" line="46"/>
+        <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1660,19 +1660,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Pogled podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="37"/>
+        <location filename="../../src/x/canbus/dataview.ui" line="34"/>
         <source>Clear all data</source>
         <translation>Počisti vse podatke</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="47"/>
+        <location filename="../../src/x/canbus/dataview.ui" line="44"/>
         <source>Auto scrolling to bottom</source>
         <translation>Samodejno premikanje na dno</translation>
-    </message>
-    <message>
-        <location filename="../../src/x/canbus/dataview.ui" line="79"/>
-        <source>Panel</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2140,6 +2135,112 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>FrameListItemEditor</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="14"/>
+        <source>Frmae Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="38"/>
+        <source>Frame ID</source>
+        <translation type="unfinished">ID okvirja</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="45"/>
+        <source>Extended format</source>
+        <translation type="unfinished">Razširjena oblika</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="52"/>
+        <source>Flexible data rate</source>
+        <translation type="unfinished">Prilagodljiva hitrost prenosa podatkov</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="78"/>
+        <source>Frame type</source>
+        <translation type="unfinished">Vrsta okvirja</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="85"/>
+        <source>Timed sending</source>
+        <translation type="unfinished">Časovno oddano pošiljanje</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="92"/>
+        <source>Bit rate switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="99"/>
+        <source>Time sending interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="112"/>
+        <source>Untitled</source>
+        <translation type="unfinished">Brez naslova</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="146"/>
+        <source>Payload length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="153"/>
+        <source>Audo response</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="190"/>
+        <source>Frame name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistitemeditor.ui" line="203"/>
+        <source>Payload Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FrameListView</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="34"/>
+        <source>Clear all data</source>
+        <translation type="unfinished">Počisti vse podatke</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="37"/>
+        <source>Clear Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="44"/>
+        <source>Add Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="54"/>
+        <source>Delete Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="64"/>
+        <source>Export Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="74"/>
+        <source>Import Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.ui" line="101"/>
+        <source>Payload filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GpsTestUi</name>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
@@ -2476,37 +2577,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LineSettings</name>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="58"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="41"/>
         <source>Data type</source>
         <translation>Vrsta podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="68"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="113"/>
         <source>Legend</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="75"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="48"/>
         <source>Cache points</source>
         <translation>Predpomnilnik točk</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="108"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="120"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="135"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="104"/>
         <source>Clear</source>
         <translation>jasno</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="142"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="97"/>
         <source>Export</source>
         <translation>Izvozi</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linesettings.ui" line="149"/>
+        <location filename="../../src/page/charts/line/linesettings.ui" line="90"/>
         <source>Import</source>
         <translation>Uvozi</translation>
     </message>
@@ -2822,22 +2923,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LuaView</name>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="74"/>
+        <location filename="../../src/page/lua/luaview.ui" line="161"/>
         <source>(The handler of the rx data)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="145"/>
+        <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Input data processing Lua script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="161"/>
+        <location filename="../../src/page/lua/luaview.ui" line="74"/>
         <source>(The handler of the tx data)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/lua/luaview.ui" line="58"/>
+        <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Output data processing Lua script</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2850,80 +2951,80 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nova okna</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="360"/>
+        <location filename="../../src/mainwindow.cpp" line="361"/>
         <source>Save Parameters</source>
         <translation>Shrani nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="364"/>
-        <location filename="../../src/mainwindow.cpp" line="625"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="626"/>
         <source>Import Parameters</source>
         <translation>Uvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="368"/>
-        <location filename="../../src/mainwindow.cpp" line="638"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="639"/>
         <source>Export Parameters</source>
         <translation>Izvozi nastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="381"/>
+        <location filename="../../src/mainwindow.cpp" line="382"/>
         <source>&amp;Tools</source>
         <translation>&amp;Orodja</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="385"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>New</source>
         <translation>Nov</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="444"/>
+        <location filename="../../src/mainwindow.cpp" line="445"/>
         <source>&amp;View</source>
         <translation>&amp;Pogled</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>About</source>
         <translation>O aplikaciji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="498"/>
-        <location filename="../../src/mainwindow.cpp" line="538"/>
+        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="539"/>
         <source>Release History</source>
         <translation>Zgodovina različic</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
+        <location filename="../../src/mainwindow.cpp" line="500"/>
         <source>Join in QQ Group</source>
         <translation>Pridružite se skupini QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="423"/>
+        <location filename="../../src/mainwindow.cpp" line="424"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="496"/>
+        <location filename="../../src/mainwindow.cpp" line="497"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="524"/>
+        <location filename="../../src/mainwindow.cpp" line="525"/>
         <source>Third Party Open Source</source>
         <translation>Tretje osebe odprtokodni viri</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="558"/>
+        <location filename="../../src/mainwindow.cpp" line="559"/>
         <source>QR Code</source>
         <translation>QR koda</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="567"/>
+        <location filename="../../src/mainwindow.cpp" line="568"/>
         <source>User QQ Group</source>
         <translation>Uporabniška QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="569"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
@@ -2940,38 +3041,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Prosimo, da ročno znova zaženete aplikacijo.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="627"/>
-        <location filename="../../src/mainwindow.cpp" line="640"/>
+        <location filename="../../src/mainwindow.cpp" line="628"/>
+        <location filename="../../src/mainwindow.cpp" line="641"/>
         <source>Json Files (*.json)</source>
         <translation>Json datoteke (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="669"/>
+        <location filename="../../src/mainwindow.cpp" line="670"/>
         <source>Unknown</source>
         <translation>Neznano</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="675"/>
+        <location filename="../../src/mainwindow.cpp" line="676"/>
         <source>Commit hash</source>
         <translation>Hash spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="677"/>
+        <location filename="../../src/mainwindow.cpp" line="678"/>
         <source>Commit time</source>
         <translation>Čas spremembe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="679"/>
         <source>Build Date</source>
         <translation>Datum gradnje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="679"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Copyright</source>
         <translation>Avtorske pravice</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="681"/>
         <source>All rights reserved.</source>
         <translation>Vse pravice pridržane.</translation>
     </message>
@@ -3629,40 +3730,40 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Vidni stolpci</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="50"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="121"/>
         <source>Search...</source>
         <translation>Iskanje ...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="44"/>
         <source>Add register item</source>
         <translation>Dodaj element registra</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="63"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="76"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="102"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="115"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="47"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="60"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="73"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="57"/>
         <source>Remove current register item</source>
         <translation>Odstrani trenutni element registra</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="86"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="70"/>
         <source>Clear register table</source>
         <translation>Počisti tabelo registra</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="99"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="83"/>
         <source>Save register table</source>
         <translation>Shrani registrsko tabelo</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="112"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.ui" line="96"/>
         <source>Import register table</source>
         <translation>Tabela uvoznega registra</translation>
     </message>
@@ -4033,22 +4134,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Prednastavljen seznam podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="839"/>
+        <location filename="../../src/page/page.cpp" line="848"/>
         <source>Presets</source>
         <translation>Prednastavitve</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="840"/>
+        <location filename="../../src/page/page.cpp" line="849"/>
         <source>Emitter</source>
         <translation>Oddajnik</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="841"/>
+        <location filename="../../src/page/page.cpp" line="850"/>
         <source>Responder</source>
         <translation>Odzivnik</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="842"/>
+        <location filename="../../src/page/page.cpp" line="851"/>
         <source>Transfers</source>
         <translation>Prestopi</translation>
     </message>
@@ -4057,33 +4158,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Tovarna protokolov</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="862"/>
         <source>Scripts</source>
         <translation type="unfinished">Skripte</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="843"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Records</source>
         <translation type="unfinished">Zapisi</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="844"/>
+        <location filename="../../src/page/page.cpp" line="853"/>
         <source>Search</source>
         <translation type="unfinished">Iskanje</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="849"/>
+        <location filename="../../src/page/page.cpp" line="858"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="850"/>
+        <location filename="../../src/page/page.cpp" line="859"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="542"/>
-        <location filename="../../src/page/page.cpp" line="1074"/>
+        <location filename="../../src/page/page.cpp" line="1084"/>
         <source>Error: No device is opened.</source>
         <translation>Napaka: Nobena naprava ni odprta.</translation>
     </message>
@@ -4560,7 +4661,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Samoosmerno</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="57"/>
+        <location filename="../../src/main.cpp" line="58"/>
         <source>Application is booting...</source>
         <translation>Aplikacija se zažene...</translation>
     </message>
@@ -4713,6 +4814,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>TCP strežnik</translation>
     </message>
     <message>
+        <location filename="../../src/x/canbus/framelistcommon.cpp" line="47"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="197"/>
         <source>Untitled</source>
         <translation>Brez naslova</translation>
@@ -4866,6 +4968,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Server View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="22"/>
+        <source>Data Frame</source>
+        <translation type="unfinished">Podatkovni okvir</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="23"/>
+        <source>Remote Request Frame</source>
+        <translation type="unfinished">Oddaljeni okvir zahteve</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="24"/>
+        <source>Error Frame</source>
+        <translation type="unfinished">Okvir napake</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="34"/>
+        <source>Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/canbuscommon.cpp" line="35"/>
+        <source>Extended</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5889,107 +6016,125 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="114"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="64"/>
         <source>Interfce Name</source>
         <translation>Ime vmesnika</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="127"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="77"/>
         <source>CAN Plugin</source>
         <translation>Vtičnik CAN</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="195"/>
         <source>Bitrate switch</source>
-        <translation>Stikalo bitne hitrosti</translation>
+        <translation type="vanished">Stikalo bitne hitrosti</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="217"/>
-        <source>Send data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="229"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="137"/>
         <source>Input format</source>
         <translation>Vnosni format</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="157"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="130"/>
         <source>Device selecting</source>
         <translation>Izbira naprave</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="98"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="317"/>
+        <source>Settings</source>
+        <translation type="unfinished">nastavitve</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="324"/>
+        <source>Send</source>
+        <translation type="unfinished">Pošlji</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="338"/>
         <source>Specify configuration</source>
         <translation>Določite konfiguracijo</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="173"/>
         <source>Sending settings</source>
         <translation>Nastavitve pošiljanja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="169"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="35"/>
+        <source>Output</source>
+        <translation type="unfinished">Izhod</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
+        <source>Bit rate switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
         <source>Disconnect</source>
         <translation>Prekini povezavo</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="176"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="303"/>
         <source>Connect</source>
         <translation>Povežite se</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="71"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="387"/>
+        <source>Input</source>
+        <translation type="unfinished">Vnos</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
         <source>Frame ID</source>
         <translation>ID okvirja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="227"/>
         <source>Nominal bitrate</source>
         <translation>Nominalna bitna hitrost</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="340"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="161"/>
         <source>Timed sending</source>
         <translation>Časovno oddano pošiljanje</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="185"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="144"/>
         <source>Frame type</source>
         <translation>Vrsta okvirja</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="64"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="115"/>
         <source>Extended format</source>
         <translation>Razširjena oblika</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="368"/>
         <source>Data View</source>
-        <translation>Pogled podatkov</translation>
+        <translation type="vanished">Pogled podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="309"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
         <source>Data bitrate</source>
         <translation>Bitna hitrost podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="57"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="345"/>
         <source>Flexible data rate</source>
         <translation>Prilagodljiva hitrost prenosa podatkov</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="254"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="188"/>
         <source>Error filter</source>
         <translation>Filter napak</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="283"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="253"/>
         <source>Loopback</source>
         <translation>Povratna zanka</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.ui" line="267"/>
+        <location filename="../../src/x/canbus/xcanbus.ui" line="272"/>
         <source>Receive own</source>
         <translation>Prejmi lastno</translation>
     </message>
@@ -6048,127 +6193,276 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCanBus::DataView</name>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
         <source>Question</source>
-        <translation>vprašanje</translation>
+        <translation type="vanished">vprašanje</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/dataview.cpp" line="103"/>
+        <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
         <source>Are you sure to clear all data?</source>
         <translation>Ali ste prepričani, da želite izbrisati vse podatke?</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
+        <source>Clear Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::FrameListModel</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="165"/>
+        <source>Send</source>
+        <translation type="unfinished">Pošlji</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="189"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="191"/>
+        <source>Name</source>
+        <translation type="unfinished">Ime</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="193"/>
+        <source>Cycle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="195"/>
+        <source>Interval(ms)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="197"/>
+        <source>Response</source>
+        <translation type="unfinished">Odziv</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="199"/>
+        <source>Frame ID</source>
+        <translation type="unfinished">ID okvirja</translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistmodel.cpp" line="201"/>
+        <source>Payload</source>
+        <translation type="unfinished">Tovor</translation>
+    </message>
+</context>
+<context>
+    <name>xCanBus::FrameListViewPrivate</name>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="67"/>
+        <source>Clear Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="68"/>
+        <source>Are you sure you want to clear all frames?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="82"/>
+        <source>A frame with the same ID (%1) already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="83"/>
+        <source>Do you want to replace the existing frame with the new one?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="84"/>
+        <source>Duplicate Frame ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="106"/>
+        <source>Delete Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
+        <source>Please select a frame to delete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
+        <source>Invalid frame selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="107"/>
+        <source>Are you sure you want to delete the selected frame?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="121"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
+        <source>Export Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="123"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="142"/>
+        <source>JSON Files (*.json)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
+        <source>Failed to open file for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="140"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="160"/>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="167"/>
+        <source>Import Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
+        <source>Failed to open file for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="161"/>
+        <source>Failed to parse JSON: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/framelistview.cpp" line="168"/>
+        <source>Invalid JSON format: expected an array of frames.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>xCanBus::xCanBus</name>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="82"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
         <source>No error has occurred</source>
         <translation>Ni prišlo do napake</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="83"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
         <source>The transmission has timed out</source>
         <translation>Prenos je potekel</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="84"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
         <source>The frame could not be sent due to lost arbitration on the bus</source>
         <translation>Okvirja ni bilo mogoče poslati zaradi izgubljene arbitraže na avtobusu</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="85"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
         <source>The controller encountered an error</source>
         <translation>Krmilnik je naletel na napako</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="86"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
         <source>A protocol violation has occurred</source>
         <translation>Prišlo je do kršitve protokola</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="87"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
         <source>A transceiver error occurred</source>
         <translation>Prišlo je do napake sprejemnika</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="88"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
         <source>The transmission received no acknowledgment</source>
         <translation>Prenos ni prejel nobene potrditve</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="89"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
         <source>The CAN bus is offline</source>
         <translation>Vodilo CAN je brez povezave</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="90"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
         <source>A CAN bus error occurred</source>
         <translation>Prišlo je do napake vodila CAN</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="91"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
         <source>The controller restarted</source>
         <translation>Krmilnik se je znova zagnal</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="92"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="94"/>
         <source>An unknown error has occurred</source>
         <translation>Prišlo je do neznane napake</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="93"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="95"/>
         <source>Matches every other error type</source>
         <translation>Ujema se z vsako drugo vrsto napake</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="130"/>
+        <source>Frame List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
         <source>Warning</source>
         <translation>Opozorilo</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="288"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
         <source>The CAN bus device is not connected.</source>
         <translation>Naprava vodila CAN ni priključena.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="297"/>
         <source>Invalid frame ID.</source>
-        <translation>Neveljaven ID okvirja.</translation>
+        <translation type="vanished">Neveljaven ID okvirja.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="304"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
         <source>Payload is empty.</source>
         <translation>Tovor je prazen.</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="365"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="416"/>
         <source>unspecified</source>
         <translation>nedoločeno</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="400"/>
         <source>Data Frame</source>
-        <translation>Podatkovni okvir</translation>
+        <translation type="vanished">Podatkovni okvir</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="401"/>
         <source>Remote Request Frame</source>
-        <translation>Oddaljeni okvir zahteve</translation>
+        <translation type="vanished">Oddaljeni okvir zahteve</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="402"/>
         <source>Error Frame</source>
-        <translation>Okvir napake</translation>
+        <translation type="vanished">Okvir napake</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="412"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="451"/>
         <source>Disabled</source>
         <translation>Onemogočen</translation>
     </message>
     <message>
-        <location filename="../../src/x/canbus/xcanbus.cpp" line="448"/>
+        <location filename="../../src/x/canbus/xcanbus.cpp" line="487"/>
         <source>Unspecified</source>
         <translation>Neopredeljeno</translation>
     </message>
@@ -7085,52 +7379,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusLogView</name>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="135"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="142"/>
         <source>Clear Log</source>
         <translation>Počisti dnevnik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="136"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="143"/>
         <source>Are you sure you want to clear the log?</source>
         <translation>Ali ste prepričani, da želite počistiti dnevnik?</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="148"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="158"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="155"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="165"/>
         <source>Save Log</source>
         <translation>Shrani dnevnik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="150"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="157"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="191"/>
         <source>Log Files (*.json)</source>
         <translation>Dnevniške datoteke (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="159"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="166"/>
         <source>Failed to open file for writing: %1</source>
         <translation>Datoteke za pisanje ni bilo mogoče odpreti: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="182"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="192"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="204"/>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="213"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="189"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="199"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="211"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="220"/>
         <source>Open Log</source>
         <translation>Odpri dnevnik</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="193"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="200"/>
         <source>Failed to open file for reading: %1</source>
         <translation>Datoteke za branje ni bilo mogoče odpreti: %1</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="205"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="212"/>
         <source>Failed to parse log file: %1 at offset %2</source>
         <translation>Dnevniške datoteke ni bilo mogoče razčleniti: %1 pri odmiku %2</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbuslogview.cpp" line="214"/>
+        <location filename="../../src/x/modbus/modbuslogview.cpp" line="221"/>
         <source>Invalid log file format: root element is not an array.</source>
         <translation>Neveljavna oblika datoteke dnevnika: korenski element ni polje.</translation>
     </message>
@@ -7191,50 +7485,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xModbus::ModbusRegisterTableView</name>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="184"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="198"/>
         <source>Save Registers</source>
         <translation>Shrani registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="186"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="210"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="200"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="224"/>
         <source>json (*.json)</source>
         <translation>json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="232"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="241"/>
         <source>Error</source>
         <translation>Napaka</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="194"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
         <source>Failed to open file for saving.</source>
         <translation>Datoteke za shranjevanje ni bilo mogoče odpreti.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="208"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="222"/>
         <source>Load Registers</source>
         <translation>Naloži registre</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="218"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="232"/>
         <source>Failed to open file for loading.</source>
         <translation>Datoteke za nalaganje ni bilo mogoče odpreti.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="227"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="241"/>
         <source>Invalid JSON format in the file.</source>
         <translation>Neveljavna oblika JSON v datoteki.</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="235"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="249"/>
         <source>Import Registers</source>
         <translation>Uvozni registri</translation>
     </message>
     <message>
-        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="236"/>
+        <location filename="../../src/x/modbus/modbusregistertableview.cpp" line="250"/>
         <source>The register table is not empty. Do you want to merge existing registers?</source>
         <translation>Registrska tabela ni prazna. </translation>
     </message>

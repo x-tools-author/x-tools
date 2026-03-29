@@ -34,7 +34,7 @@
         <string>Clear all data</string>
        </property>
        <property name="text">
-        <string notr="true">Clear Items</string>
+        <string>Clear Items</string>
        </property>
       </widget>
      </item>

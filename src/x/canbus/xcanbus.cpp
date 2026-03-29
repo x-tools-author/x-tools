@@ -394,12 +394,18 @@ void xCanBus::onFrameRx(const QCanBusFrame& frame)
 {
     DataModel* model = ui->widgetDataView->model();
     model->addFrame(frame, true);
+    for (const auto& item : m_panels) {
+        item.panel->onFrameRx(frame);
+    }
 }
 
 void xCanBus::onFrameTx(const QCanBusFrame& frame)
 {
     DataModel* model = ui->widgetDataView->model();
     model->addFrame(frame, false);
+    for (const auto& item : m_panels) {
+        item.panel->onFrameTx(frame);
+    }
 }
 
 void xCanBus::setupOptions(QComboBox* cb, bool usingUnspecified)
