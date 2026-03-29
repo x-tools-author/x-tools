@@ -128,6 +128,8 @@ void BarPanel::load(const QVariantMap &parameters)
     }
 
     m_axisX->setCategories(categories);
+    int dataType = m_settings->dataType();
+    m_chartDataHandler->setDataFormat(dataType);
 }
 
 QWidget *BarPanel::menuWidget()

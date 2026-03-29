@@ -163,6 +163,9 @@ void LinePanel::load(const QVariantMap &parameters)
             }
         }
     }
+
+    int dataType = m_settings->dataType();
+    m_chartDataHandler->setDataFormat(dataType);
 }
 
 QWidget *LinePanel::menuWidget()
