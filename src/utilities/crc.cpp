@@ -639,6 +639,9 @@ QByteArray CRC::calculate(const QByteArray &data, int algorithm)
     } else if (bw == 64) {
         auto ret = crcCalculate<uint64_t>(ptr, data.length(), cookedAlgorithm);
         retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
+    } else {
+        auto ret = crcCalculate<uint8_t>(ptr, data.length(), cookedAlgorithm);
+        retBytes = QByteArray(reinterpret_cast<char *>(&ret), sizeof(ret));
     }
 
     return retBytes;
