@@ -22,8 +22,8 @@ public:
     CoAPMsgFilterPrivate(CoAPMsgFilter* q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {}
-    ~CoAPMsgFilterPrivate() {}
+    { }
+    ~CoAPMsgFilterPrivate() { }
 
 public:
     QString m_filterText;
@@ -38,11 +38,11 @@ CoAPMsgFilter::CoAPMsgFilter(QObject* parent)
     d = new CoAPMsgFilterPrivate(this);
 }
 
-CoAPMsgFilter::~CoAPMsgFilter() {}
+CoAPMsgFilter::~CoAPMsgFilter() { }
 
 void CoAPMsgFilter::setFilterText(const QString& text)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
     beginFilterChange();
     d->m_filterText = text;
     endFilterChange();

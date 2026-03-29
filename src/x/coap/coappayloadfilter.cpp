@@ -23,8 +23,8 @@ public:
     CoAPPayloadFilterPrivate(CoAPPayloadFilter* q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {}
-    ~CoAPPayloadFilterPrivate() override {}
+    { }
+    ~CoAPPayloadFilterPrivate() override { }
 
 public:
     struct CoAPMsgItem
@@ -49,14 +49,14 @@ CoAPPayloadFilter::CoAPPayloadFilter(QObject* parent)
     d = new CoAPPayloadFilterPrivate(this);
 }
 
-CoAPPayloadFilter::~CoAPPayloadFilter() {}
+CoAPPayloadFilter::~CoAPPayloadFilter() { }
 
 void CoAPPayloadFilter::setFormat(int format)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
     beginFilterChange();
     d->m_format = format;
-    endFilterChange();
+    int();
 #else
     d->m_format = format;
     invalidateFilter();
@@ -65,10 +65,10 @@ void CoAPPayloadFilter::setFormat(int format)
 
 void CoAPPayloadFilter::setFilterText(const QString& text)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
     beginFilterChange();
     d->m_filterText = text;
-    endFilterChange();
+    int();
 #else
     d->m_filterText = text;
     invalidateFilter();

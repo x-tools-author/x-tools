@@ -19,8 +19,8 @@ public:
     CoAPResourceFilterPrivate(CoAPResourceFilter* q_ptr)
         : QObject(q_ptr)
         , q(q_ptr)
-    {}
-    ~CoAPResourceFilterPrivate() override {}
+    { }
+    ~CoAPResourceFilterPrivate() override { }
 
 public:
     int m_format{CO_AP_INVALID_CONTEXT_FORMAT};
@@ -36,11 +36,11 @@ CoAPResourceFilter::CoAPResourceFilter(QObject* parent)
     d = new CoAPResourceFilterPrivate(this);
 }
 
-CoAPResourceFilter::~CoAPResourceFilter() {}
+CoAPResourceFilter::~CoAPResourceFilter() { }
 
 void CoAPResourceFilter::setFormat(int format)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
     beginFilterChange();
     d->m_format = format;
     endFilterChange();
@@ -52,7 +52,7 @@ void CoAPResourceFilter::setFormat(int format)
 
 void CoAPResourceFilter::setFilterText(const QString& text)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
     beginFilterChange();
     d->m_filterText = text;
     endFilterChange();
