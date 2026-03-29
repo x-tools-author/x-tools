@@ -27,6 +27,9 @@ public:
     virtual void onFrameRx(const QCanBusFrame& frame);
     virtual void onFrameTx(const QCanBusFrame& frame);
 
+    virtual void onConnected();
+    virtual void onDisconnected();
+
 signals:
     void outputFrame(const QCanBusFrame& frame);
 };

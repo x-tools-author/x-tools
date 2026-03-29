@@ -112,6 +112,8 @@ FrameListItemEditor::FrameListItemEditor(QWidget *parent)
     connect(d->ui->buttonBox, &QDialogButtonBox::rejected, this, &FrameListItemEditor::rejected);
     connect(d->ui->spinBoxPayloadLength, &QSpinBox::valueChanged, d, &FrameListItemEditorPrivate::onPayloadLengthChanged);
     // clang-format on
+
+    d->onPayloadLengthChanged(d->ui->spinBoxPayloadLength->value());
 }
 
 FrameListItemEditor::~FrameListItemEditor()
@@ -126,7 +128,6 @@ FrameItem FrameListItemEditor::frameItem() const
     item.cycle = d->ui->checkBoxTimedSending->isChecked();
     item.cycleInterval = d->ui->spinBoxTimedSendingInterval->value();
     item.response = d->ui->checkBoxResponseEnable->isChecked();
-    item.responseId = d->ui->spinBoxResponseFrameId->value();
 
     item.frame.setFrameId(d->ui->spinBoxFrameId->value());
     item.frame.setExtendedFrameFormat(d->ui->checkBoxExtendedFormat->isChecked());
@@ -146,7 +147,6 @@ void FrameListItemEditor::setFrameItem(const FrameItem &frameItem)
     d->ui->checkBoxTimedSending->setChecked(frameItem.cycle);
     d->ui->spinBoxTimedSendingInterval->setValue(frameItem.cycleInterval);
     d->ui->checkBoxResponseEnable->setChecked(frameItem.response);
-    d->ui->spinBoxResponseFrameId->setValue(frameItem.responseId);
 
     int payloadLength = frameItem.frame.payload().size();
     d->ui->spinBoxPayloadLength->setValue(payloadLength);
@@ -156,6 +156,8 @@ void FrameListItemEditor::setFrameItem(const FrameItem &frameItem)
     d->ui->checkBoxExtendedFormat->setChecked(frameItem.frame.hasExtendedFrameFormat());
     d->ui->checkBoxFlexibleDataRate->setChecked(frameItem.frame.hasFlexibleDataRateFormat());
     d->ui->checkBoxBitRateSwitch->setChecked(frameItem.frame.hasBitrateSwitch());
+
+    d->onPayloadLengthChanged(payloadLength);
 }
 
 } // namespace xCanBus

@@ -12,12 +12,17 @@
 
 namespace xCanBus {
 
+class FrameListFilterPrivate;
 class FrameListFilter : public QSortFilterProxyModel
 {
     Q_OBJECT
+    FrameListFilterPrivate *d{nullptr};
+
 public:
     explicit FrameListFilter(QObject *parent = nullptr);
     ~FrameListFilter() override;
+
+    void setFilterString(const QString &filter);
 
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;

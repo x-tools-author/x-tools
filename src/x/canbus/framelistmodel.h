@@ -14,14 +14,13 @@
 
 #include "framelistcommon.h"
 
-#define FRAME_LIST_MODEL_COLUMN_SEND 0        // clicked to send the frame
-#define FRAME_LIST_MODEL_COLUMN_NAME 1        // frame name
-#define FRAME_LIST_MODEL_COLUMN_CYCLE 2       // cycle sending the frame
-#define FRAME_LIST_MODEL_COLUMN_INTERVAL 3    // cycle sending interval
-#define FRAME_LIST_MODEL_COLUMN_RESPONSE 4    // response frame
-#define FRAME_LIST_MODEL_COLUMN_RESPONSE_ID 5 // response frame id
-#define FRAME_LIST_MODEL_COLUMN_FRAME_ID 6    // frame id
-#define FRAME_LIST_MODEL_COLUMN_PAYLOAD 7     // frame payload
+#define FRAME_LIST_MODEL_COLUMN_SEND 0     // clicked to send the frame
+#define FRAME_LIST_MODEL_COLUMN_NAME 1     // frame name
+#define FRAME_LIST_MODEL_COLUMN_CYCLE 2    // cycle sending the frame
+#define FRAME_LIST_MODEL_COLUMN_INTERVAL 3 // cycle sending interval
+#define FRAME_LIST_MODEL_COLUMN_RESPONSE 4 // response frame
+#define FRAME_LIST_MODEL_COLUMN_FRAME_ID 5 // frame id
+#define FRAME_LIST_MODEL_COLUMN_PAYLOAD 6  // frame payload
 
 namespace xCanBus {
 
@@ -40,6 +39,8 @@ public:
     void clear();
     bool hasFrameId(QCanBusFrame::FrameId frameId) const;
     void removeFrameItemRow(int row);
+    int elapsedTime(int row) const;
+    void setElapsedTime(int row, int elapsed);
 
 public:
     int rowCount(const QModelIndex &parent) const override;

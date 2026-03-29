@@ -325,6 +325,9 @@ void xCanBus::onDeviceOpened()
     ui->pushButtonConnect->setEnabled(false);
     ui->pushButtonDisconnect->setEnabled(true);
     updateUiState(true);
+    for (const auto& item : m_panels) {
+        item.panel->onConnected();
+    }
 }
 
 void xCanBus::onDeviceClosed()
@@ -332,6 +335,9 @@ void xCanBus::onDeviceClosed()
     ui->pushButtonConnect->setEnabled(true);
     ui->pushButtonDisconnect->setEnabled(false);
     updateUiState(false);
+    for (const auto& item : m_panels) {
+        item.panel->onDisconnected();
+    }
 }
 
 void xCanBus::onPluginChanged(const QString& pluginName)

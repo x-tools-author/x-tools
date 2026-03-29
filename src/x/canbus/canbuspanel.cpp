@@ -12,9 +12,9 @@ namespace xCanBus {
 
 CanBusPanel::CanBusPanel(QWidget* parent)
     : QWidget(parent)
-{}
+{ }
 
-CanBusPanel::~CanBusPanel() {}
+CanBusPanel::~CanBusPanel() { }
 
 QJsonObject CanBusPanel::save() const
 {
@@ -35,5 +35,9 @@ void CanBusPanel::onFrameTx(const QCanBusFrame& frame)
 {
     Q_UNUSED(frame);
 }
+
+void CanBusPanel::onConnected() { }
+
+void CanBusPanel::onDisconnected() { }
 
 } // namespace xCanBus

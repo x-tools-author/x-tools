@@ -20,8 +20,9 @@ struct FrameItem
     bool cycle;
     int cycleInterval;
     bool response;
-    int responseId;
     QCanBusFrame frame;
+
+    int elapsed{0}; // used for cycle sending, not saved in json
 };
 
 QJsonObject frameItemToJson(const FrameItem &item);

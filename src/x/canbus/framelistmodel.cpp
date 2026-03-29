@@ -89,6 +89,22 @@ void FrameListModel::removeFrameItemRow(int row)
     endRemoveRows();
 }
 
+int FrameListModel::elapsedTime(int row) const
+{
+    if (row < 0 || row >= d->m_items.count()) {
+        return 0;
+    }
+    return d->m_items.at(row).elapsed;
+}
+
+void FrameListModel::setElapsedTime(int row, int elapsed)
+{
+    if (row < 0 || row >= d->m_items.count()) {
+        return;
+    }
+    d->m_items[row].elapsed = elapsed;
+}
+
 int FrameListModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
@@ -98,7 +114,7 @@ int FrameListModel::rowCount(const QModelIndex &parent) const
 int FrameListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 8;
+    return 7;
 }
 
 static QString frameFlags(const QCanBusFrame &frame)
@@ -155,10 +171,8 @@ QVariant FrameListModel::data(const QModelIndex &index, int role) const
             return QString::number(item.cycleInterval);
         } else if (column == FRAME_LIST_MODEL_COLUMN_RESPONSE) {
             return item.response ? tr("Yes") : tr("No");
-        } else if (column == FRAME_LIST_MODEL_COLUMN_RESPONSE_ID) {
-            return QString::number(item.responseId, 16).toUpper();
         } else if (column == FRAME_LIST_MODEL_COLUMN_FRAME_ID) {
-            return QString::number(item.frame.frameId(), 16).toUpper();
+            return QString::number(item.frame.frameId(), 10).toUpper();
         } else if (column == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
             return QString::fromLatin1(item.frame.payload().toHex(' ').toUpper());
         }
@@ -181,11 +195,8 @@ QVariant FrameListModel::headerData(int section, Qt::Orientation orientation, in
                 return tr("Interval(ms)");
             } else if (section == FRAME_LIST_MODEL_COLUMN_RESPONSE) {
                 return tr("Response");
-            } else if (section == FRAME_LIST_MODEL_COLUMN_RESPONSE_ID) {
-                return tr("Response ID");
             } else if (section == FRAME_LIST_MODEL_COLUMN_FRAME_ID) {
                 return tr("Frame ID");
-
             } else if (section == FRAME_LIST_MODEL_COLUMN_PAYLOAD) {
                 return tr("Payload");
             }

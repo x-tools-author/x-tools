@@ -31,7 +31,6 @@ QJsonObject frameItemToJson(const FrameItem &item)
     obj[keys.cycle] = item.cycle;
     obj[keys.cycleInterval] = item.cycleInterval;
     obj[keys.response] = item.response;
-    obj[keys.responseId] = item.responseId;
 
     QByteArray frameData;
     QDataStream stream(&frameData, QIODevice::WriteOnly);
@@ -49,7 +48,6 @@ FrameItem frameItemFromJson(const QJsonObject &obj)
     item.cycle = obj[keys.cycle].toBool(false);
     item.cycleInterval = obj[keys.cycleInterval].toInt(1000);
     item.response = obj[keys.response].toBool(false);
-    item.responseId = obj[keys.responseId].toInt(0);
 
     QByteArray frameData = QByteArray::fromHex(obj[keys.frame].toString().toUtf8());
     QDataStream stream(&frameData, QIODevice::ReadOnly);

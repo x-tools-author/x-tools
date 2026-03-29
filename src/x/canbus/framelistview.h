@@ -26,6 +26,9 @@ public:
 
     QJsonObject save() const override;
     void load(const QJsonObject &obj) override;
+    void onFrameRx(const QCanBusFrame &frame) override;
+    void onConnected() override;
+    void onDisconnected() override;
 };
 
 } // namespace xCanBus

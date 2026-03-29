@@ -10,8 +10,13 @@
 #include "ui_framelistview.h"
 
 #include <QDialog>
+#include <QFile>
+#include <QFileDialog>
 #include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMessageBox>
+#include <QTimer>
 
 #include "common/xtools.h"
 #include "utilities/iconengine.h"
@@ -104,9 +109,79 @@ public:
             m_model->removeFrameItemRow(row);
         }
     }
-    void onExportBtnClicked() { }
-    void onImportBtnClicked() { }
-    void onFilterText(const QString &text) { Q_UNUSED(text); }
+    void onExportBtnClicked()
+    {
+        QJsonArray items;
+        QList<FrameItem> frameItems = m_model->frameItems();
+        for (const FrameItem &item : frameItems) {
+            items.append(frameItemToJson(item));
+        }
+        QString jsonString = QJsonDocument(items).toJson(QJsonDocument::Indented);
+        QString filePath = QFileDialog::getSaveFileName(q,
+                                                        tr("Export Frames"),
+                                                        QString(),
+                                                        tr("JSON Files (*.json)"));
+        if (filePath.isEmpty()) {
+            return;
+        }
+
+        QFile file(filePath);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(q, tr("Export Frames"), tr("Failed to open file for writing."));
+            return;
+        }
+
+        file.write(jsonString.toUtf8());
+        file.close();
+    }
+    void onImportBtnClicked()
+    {
+        QString filePath = QFileDialog::getOpenFileName(q,
+                                                        tr("Import Frames"),
+                                                        QString(),
+                                                        tr("JSON Files (*.json)"));
+        if (filePath.isEmpty()) {
+            return;
+        }
+
+        QFile file(filePath);
+        if (!file.open(QIODevice::ReadOnly)) {
+            QMessageBox::critical(q, tr("Import Frames"), tr("Failed to open file for reading."));
+            return;
+        }
+
+        QByteArray data = file.readAll();
+        file.close();
+
+        QJsonParseError parseError;
+        QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
+        if (parseError.error != QJsonParseError::NoError) {
+            QMessageBox::critical(q,
+                                  tr("Import Frames"),
+                                  tr("Failed to parse JSON: %1").arg(parseError.errorString()));
+            return;
+        }
+
+        if (!doc.isArray()) {
+            QMessageBox::critical(q,
+                                  tr("Import Frames"),
+                                  tr("Invalid JSON format: expected an array of frames."));
+            return;
+        }
+
+        QJsonArray items = doc.array();
+        for (const QJsonValue &value : std::as_const(items)) {
+            if (value.isObject()) {
+                FrameItem item = frameItemFromJson(value.toObject());
+                m_model->addFrameItem(item);
+            }
+        }
+    }
+    void onFilterText(const QString &text)
+    {
+        m_filter->setFilterString(text);
+        //m_filter->setFilterFixedString(text);
+    }
     void onViewDoubleClicked(const QModelIndex &index)
     {
         QList<FrameItem> items = m_model->frameItems();
@@ -131,11 +206,28 @@ public:
         FrameItem updatedItem = m_frameEditor->frameItem();
         m_model->addFrameItem(updatedItem);
     }
+    void onCycleTimerTimeout()
+    {
+        QList<FrameItem> items = m_model->frameItems();
+        for (int i = 0; i < items.count(); ++i) {
+            FrameItem item = items.at(i);
+            if (item.cycle) {
+                int elapsed = m_model->elapsedTime(i);
+                elapsed += m_cycleTimer->interval();
+                if (elapsed >= item.cycleInterval) {
+                    emit q->outputFrame(item.frame);
+                    elapsed = 0;
+                }
+                m_model->setElapsedTime(i, elapsed);
+            }
+        }
+    }
 
 public:
     Ui::FrameListView *ui{nullptr};
     FrameListModel *m_model{nullptr};
     FrameListFilter *m_filter{nullptr};
+    QTimer *m_cycleTimer{nullptr};
 
 private:
     FrameListView *q;
@@ -150,6 +242,9 @@ FrameListView::FrameListView(QWidget *parent)
     d->ui = new Ui::FrameListView;
     d->ui->setupUi(this);
     d->ui->tableView->setAlternatingRowColors(true);
+    d->m_cycleTimer = new QTimer(this);
+    d->m_cycleTimer->setInterval(50);
+    connect(d->m_cycleTimer, &QTimer::timeout, d, &FrameListViewPrivate::onCycleTimerTimeout);
 
     // clang-format off
     connect(d->ui->toolButtonClear, &QToolButton::clicked, d, &FrameListViewPrivate::onClearBtnClicked);
@@ -200,6 +295,28 @@ void FrameListView::load(const QJsonObject &obj)
             d->m_model->addFrameItem(item);
         }
     }
+}
+
+void FrameListView::onFrameRx(const QCanBusFrame &frame)
+{
+    QCanBusFrame::FrameId frameId = frame.frameId();
+    QList<FrameItem> items = d->m_model->frameItems();
+    for (const FrameItem &item : items) {
+        if (item.response && item.frame.frameId() == frameId) {
+            emit outputFrame(item.frame);
+            break;
+        }
+    }
+}
+
+void FrameListView::onConnected()
+{
+    d->m_cycleTimer->start();
+}
+
+void FrameListView::onDisconnected()
+{
+    d->m_cycleTimer->stop();
 }
 
 } // namespace xCanBus
