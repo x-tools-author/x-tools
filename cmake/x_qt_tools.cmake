@@ -37,12 +37,12 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Add to project
 set(lib_dir ${X_LIBS_DIR}/${package_file_name})
-include_directories(${X_3RD_DIR}/${package_file_name}/src/shared/qtpropertybrowser)
+include_directories(${X_3RD_DIR}/${package_file_name}/src/shared)
 if(EXISTS ${lib_dir}/QtPropertyBrowser.lib
    OR EXISTS ${lib_dir}/libQtPropertyBrowser.a
    OR EXISTS ${lib_dir}/QtPropertyBrowser.a)
   link_directories(${lib_dir})
-  list(APPEND XLIBS QtPropertyBrowser)
+  list(APPEND X_LIBS QtPropertyBrowser)
 else()
   file(GLOB_RECURSE QtPropertyBrowser_SRC
        ${X_3RD_DIR}/${package_file_name}/src/shared/qtpropertybrowser/*.cpp
@@ -55,5 +55,5 @@ else()
                LIBRARY_OUTPUT_DIRECTORY "${X_LIBS_DIR}/${package_file_name}"
                RUNTIME_OUTPUT_DIRECTORY "${X_LIBS_DIR}/${package_file_name}")
   set_target_properties(QtPropertyBrowser PROPERTIES FOLDER "3rd")
-  list(APPEND XLIBS QtPropertyBrowser)
+  list(APPEND X_LIBS QtPropertyBrowser)
 endif()

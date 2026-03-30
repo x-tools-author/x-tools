@@ -179,7 +179,12 @@ public:
     QTimer *m_updateLabelInfoTimer{nullptr};
     QSettings *m_settings{nullptr};
 
-    QList<Panel *> m_panels;
+    struct PanelItem
+    {
+        QString name;
+        Panel *panel{nullptr};
+    };
+    QList<PanelItem> m_panels;
 
 private:
     Page *q;
@@ -418,8 +423,8 @@ void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(cookedBytes, cookedFrom, true);
 
     // Notify panels
-    for (Panel *panel : m_panels) {
-        panel->onBytesRead(cookedBytes, cookedFrom);
+    for (PanelItem panel : m_panels) {
+        panel.panel->onBytesRead(cookedBytes, cookedFrom);
     }
 
     emit q->bytesRead(cookedBytes, cookedFrom);
@@ -428,8 +433,8 @@ void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
 void PagePrivate::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     // Notify panels
-    for (Panel *panel : m_panels) {
-        panel->onBytesWritten(bytes, to);
+    for (PanelItem panel : m_panels) {
+        panel.panel->onBytesWritten(bytes, to);
     }
 
     m_ioSettings->saveData(bytes, true);
@@ -841,53 +846,59 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     d->m_rxStatistician = new Statistician(d->ui->labelRxInfo, this);
     d->m_txStatistician = new Statistician(d->ui->labelTxInfo, this);
-    d->m_presetPanel = new PresetPanel(this);
-    d->m_emitterPanel = new EmitterPanel(this);
-    d->m_responderPanel = new ResponderPanel(this);
-    d->m_transfersPanel = new TransfersPanel(this);
-    d->m_dataRecordsView = new DataRecordsView(this);
-    d->m_filterView = new SearchPanel(this);
 
+    d->m_presetPanel = new PresetPanel(this);
     d->addTab(tr("Presets"), d->m_presetPanel);
+    d->m_panels.append({QString("tabPreset"), d->m_presetPanel});
+
+    d->m_emitterPanel = new EmitterPanel(this);
     d->addTab(tr("Emitter"), d->m_emitterPanel);
+    d->m_panels.append({QString("tabEmitter"), d->m_emitterPanel});
+
+    d->m_responderPanel = new ResponderPanel(this);
     d->addTab(tr("Responder"), d->m_responderPanel);
+    d->m_panels.append({QString("tabResponder"), d->m_responderPanel});
+
+    d->m_transfersPanel = new TransfersPanel(this);
     d->addTab(tr("Transfers"), d->m_transfersPanel);
+    d->m_panels.append({QString("tabTransfers"), d->m_transfersPanel});
+
+    d->m_dataRecordsView = new DataRecordsView(this);
     d->addTab(tr("Records"), d->m_dataRecordsView);
+    d->m_panels.append({QString("tabRecords"), d->m_dataRecordsView});
+
+    d->m_filterView = new SearchPanel(this);
     d->addTab(tr("Search"), d->m_filterView);
+    d->m_panels.append({QString("tabSearch"), d->m_filterView});
 
 #ifdef X_ENABLE_CHARTS
     d->m_barPanel = new BarPanel(this);
-    d->m_linePanel = new LinePanel(this);
     d->addTab(tr("Bar Charts"), d->m_barPanel);
+    d->m_panels.append({QString("tabBar"), d->m_barPanel});
+
+    d->m_linePanel = new LinePanel(this);
     d->addTab(tr("Line Charts"), d->m_linePanel);
+    d->m_panels.append({QString("tabLine"), d->m_linePanel});
 #endif
+
     d->m_scriptsPanel = new ScriptsManager(this);
     d->addTab(tr("Scripts"), d->m_scriptsPanel);
-#if X_ENABLE_PRIVATE
-    ProtocolPanel *protocolPanel = new ProtocolPanel(this);
-    d->addTab(tr("Protocol"), protocolPanel);
-    d->m_panels.append(protocolPanel);
-#endif
+    d->m_panels.append({QString("tabScripts"), d->m_scriptsPanel});
+
 #ifdef X_ENABLE_LUA
     d->m_luaView = new LuaView(this);
     d->addTab(QString("Lua"), d->m_luaView);
+    d->m_panels.append({QString("tabLua"), d->m_luaView});
 #endif
 
-    d->m_panels.append(d->m_presetPanel);
-    d->m_panels.append(d->m_emitterPanel);
-    d->m_panels.append(d->m_responderPanel);
-    d->m_panels.append(d->m_transfersPanel);
-    d->m_panels.append(d->m_dataRecordsView);
-#ifdef X_ENABLE_CHARTS
-    d->m_panels.append(d->m_barPanel);
-    d->m_panels.append(d->m_linePanel);
+#if X_ENABLE_PRIVATE
+    ProtocolPanel *protocolPanel = new ProtocolPanel(this);
+    d->addTab(tr("Protocol"), protocolPanel);
+    d->m_panels.append({QString("tabProtocol"), protocolPanel});
 #endif
-    d->m_panels.append(d->m_scriptsPanel);
-#ifdef X_ENABLE_LUA
-    d->m_panels.append(d->m_luaView);
-#endif
-    for (Panel *panel : d->m_panels) {
-        connect(panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
+
+    for (PagePrivate::PanelItem panel : d->m_panels) {
+        connect(panel.panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
     }
 
     // Add data from transfers panel to data records view.
@@ -980,21 +991,9 @@ QVariantMap Page::save() const
         }
     }
     map.insert(keys.panelIndex, index);
-    map.insert(keys.panelWidth, d->ui->stackedWidget->width());
-    map.insert(keys.panelPreset, d->m_presetPanel->save());
-    map.insert(keys.panelEmitter, d->m_emitterPanel->save());
-    map.insert(keys.panelResponder, d->m_responderPanel->save());
-    map.insert(keys.panelTransfers, d->m_transfersPanel->save());
-    map.insert(keys.panelDataRecords, d->m_dataRecordsView->save());
-    map.insert(keys.panelSearch, d->m_filterView->save());
-    map.insert(keys.panelScripts, d->m_scriptsPanel->save());
-#ifdef X_ENABLE_CHARTS
-    map.insert(keys.panelBar, d->m_barPanel->save());
-    map.insert(keys.panelLine, d->m_linePanel->save());
-#endif
-#ifdef X_ENABLE_LUA
-    map.insert(keys.panelLua, d->m_luaView->save());
-#endif
+    for (PagePrivate::PanelItem panel : d->m_panels) {
+        map.insert(panel.name, panel.panel->save());
+    }
 
     return map;
 }
@@ -1062,21 +1061,9 @@ void Page::load(const QVariantMap &parameters)
     }
     int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
     d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
-
-    d->m_presetPanel->load(parameters.value(keys.panelPreset).toMap());
-    d->m_emitterPanel->load(parameters.value(keys.panelEmitter).toMap());
-    d->m_responderPanel->load(parameters.value(keys.panelResponder).toMap());
-    d->m_transfersPanel->load(parameters.value(keys.panelTransfers).toMap());
-    d->m_dataRecordsView->load(parameters.value(keys.panelDataRecords).toMap());
-    d->m_filterView->load(parameters.value(keys.panelSearch).toMap());
-#ifdef X_ENABLE_CHARTS
-    d->m_barPanel->load(parameters.value(keys.panelBar).toMap());
-    d->m_linePanel->load(parameters.value(keys.panelLine).toMap());
-#endif
-    d->m_scriptsPanel->load(parameters.value(keys.panelScripts).toMap());
-#ifdef X_ENABLE_LUA
-    d->m_luaView->load(parameters.value(keys.panelLua).toMap());
-#endif
+    for (PagePrivate::PanelItem panel : d->m_panels) {
+        panel.panel->load(parameters.value(panel.name).toMap());
+    }
 
     d->onDeviceTypeChanged();
     d->onInputFormatChanged();
