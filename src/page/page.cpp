@@ -42,6 +42,9 @@
 #include "page/lua/luapanel.h"
 #include "page/lua/luaview.h"
 #endif
+#if X_ENABLE_PRIVATE
+#include "private/protocol/protocolpanel.h"
+#endif
 
 #include "common/xtools.h"
 #include "devicesettings.h"
@@ -185,7 +188,7 @@ private:
 PagePrivate::PagePrivate(Page *q_ptr)
     : QObject(q_ptr)
     , q(q_ptr)
-{ }
+{}
 
 void PagePrivate::initUi()
 {
@@ -268,7 +271,7 @@ void PagePrivate::initUiOutput()
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
 
-void PagePrivate::initUiInput() { }
+void PagePrivate::initUiInput() {}
 
 void PagePrivate::onDeviceTypeChanged()
 {
@@ -459,7 +462,7 @@ void PagePrivate::onTerminalModeChanged()
     m_filterView->setWholeWordCheckBoxEnabled(terminalMode);
 }
 
-void PagePrivate::onExternalPanelButtonClicked(bool checked) { }
+void PagePrivate::onExternalPanelButtonClicked(bool checked) {}
 
 void PagePrivate::openDevice()
 {
@@ -860,6 +863,11 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #endif
     d->m_scriptsPanel = new ScriptsManager(this);
     d->addTab(tr("Scripts"), d->m_scriptsPanel);
+#if X_ENABLE_PRIVATE
+    ProtocolPanel *protocolPanel = new ProtocolPanel(this);
+    d->addTab(tr("Protocol"), protocolPanel);
+    d->m_panels.append(protocolPanel);
+#endif
 #ifdef X_ENABLE_LUA
     d->m_luaView = new LuaView(this);
     d->addTab(QString("Lua"), d->m_luaView);

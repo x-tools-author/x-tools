@@ -2588,12 +2588,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LinePanel</name>
     <message>
-        <location filename="../../src/page/charts/line/linepanel.cpp" line="207"/>
+        <location filename="../../src/page/charts/line/linepanel.cpp" line="210"/>
         <source>Import Data from Excel</source>
         <translation>从Excel表格导入</translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linepanel.cpp" line="238"/>
+        <location filename="../../src/page/charts/line/linepanel.cpp" line="241"/>
         <source>Export Data to Excel</source>
         <translation>导出至Excel表格</translation>
     </message>
@@ -4079,7 +4079,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="386"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -4171,73 +4171,78 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="848"/>
+        <location filename="../../src/page/page.cpp" line="851"/>
         <source>Presets</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="849"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Emitter</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="850"/>
+        <location filename="../../src/page/page.cpp" line="853"/>
         <source>Responder</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="851"/>
+        <location filename="../../src/page/page.cpp" line="854"/>
         <source>Transfers</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="250"/>
+        <location filename="../../src/page/page.cpp" line="868"/>
+        <source>Protocol</source>
+        <translation>协议解析</translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="253"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="542"/>
-        <location filename="../../src/page/page.cpp" line="1084"/>
+        <location filename="../../src/page/page.cpp" line="545"/>
+        <location filename="../../src/page/page.cpp" line="1092"/>
         <source>Error: No device is opened.</source>
         <translation>错误：没有打开的设备。</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="862"/>
+        <location filename="../../src/page/page.cpp" line="865"/>
         <source>Scripts</source>
         <translation>脚本程序</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="852"/>
+        <location filename="../../src/page/page.cpp" line="855"/>
         <source>Records</source>
         <translation>数据记录</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="856"/>
         <source>Search</source>
         <translation>输出过滤</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="858"/>
+        <location filename="../../src/page/page.cpp" line="861"/>
         <source>Bar Charts</source>
         <translation>条形图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="859"/>
+        <location filename="../../src/page/page.cpp" line="862"/>
         <source>Line Charts</source>
         <translation>曲线图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="374"/>
+        <location filename="../../src/page/page.cpp" line="377"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="390"/>
+        <location filename="../../src/page/page.cpp" line="393"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="396"/>
+        <location filename="../../src/page/page.cpp" line="399"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -4250,7 +4255,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">显示脚本面本</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="570"/>
+        <location filename="../../src/page/page.cpp" line="573"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>【%1】【%2】【%3】【%4】</translation>
     </message>
@@ -4537,9 +4542,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>ProtocolFactory</name>
     <message>
-        <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="vanished">...</translation>
     </message>
 </context>
 <context>
@@ -4974,32 +4978,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>选择 CoAP 服务器缓存目录</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="43"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
         <source>Export CoAP Configuration</source>
         <translation>导出 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="46"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
         <source>Import CoAP Configuration</source>
         <translation>导入 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="49"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
         <source>Global Settings</source>
         <translation>全局设置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="54"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
         <source>Open Server Cache Path</source>
         <translation>打开服务器缓存目录</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="62"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Client View</source>
         <translation>隐藏/显示客户端面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Show/Hide Server View</source>
         <translation>隐藏/显示服务器面板</translation>
     </message>
@@ -6695,74 +6699,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="160"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
         <source>Client</source>
         <comment>xCoAP</comment>
         <translation>客户端</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
         <translation>负载</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
         <source>Server</source>
         <comment>xCoAP</comment>
         <translation>服务器</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
         <translation>资源</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="205"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
         <translation>导出 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="207"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="235"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation>JSON 文件 (*.json);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="219"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
         <translation>导出 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
         <translation>无法打开文件 %1 进行写入。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="233"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
         <translation>导入 CoAP 配置</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="246"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="257"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="264"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
         <translation>导入 CoAP 配置失败</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
         <translation>无法打开文件 %1 进行读取。</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation>无法解析 JSON 文件 %1：%2</translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation>文件 %1 的内容不是有效的 JSON 对象。</translation>
     </message>

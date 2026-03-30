@@ -2549,12 +2549,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LinePanel</name>
     <message>
-        <location filename="../../src/page/charts/line/linepanel.cpp" line="207"/>
+        <location filename="../../src/page/charts/line/linepanel.cpp" line="210"/>
         <source>Import Data from Excel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/charts/line/linepanel.cpp" line="238"/>
+        <location filename="../../src/page/charts/line/linepanel.cpp" line="241"/>
         <source>Export Data to Excel</source>
         <translation></translation>
     </message>
@@ -3959,7 +3959,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="386"/>
         <source>Open</source>
         <translation></translation>
     </message>
@@ -4052,80 +4052,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="848"/>
+        <location filename="../../src/page/page.cpp" line="851"/>
         <source>Presets</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="849"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Emitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="850"/>
+        <location filename="../../src/page/page.cpp" line="853"/>
         <source>Responder</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="851"/>
+        <location filename="../../src/page/page.cpp" line="854"/>
         <source>Transfers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="862"/>
+        <location filename="../../src/page/page.cpp" line="865"/>
         <source>Scripts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="852"/>
+        <location filename="../../src/page/page.cpp" line="855"/>
         <source>Records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="856"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="858"/>
+        <location filename="../../src/page/page.cpp" line="861"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="859"/>
+        <location filename="../../src/page/page.cpp" line="862"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="542"/>
-        <location filename="../../src/page/page.cpp" line="1084"/>
+        <location filename="../../src/page/page.cpp" line="545"/>
+        <location filename="../../src/page/page.cpp" line="1092"/>
         <source>Error: No device is opened.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="250"/>
+        <location filename="../../src/page/page.cpp" line="253"/>
         <source>Disable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="374"/>
+        <location filename="../../src/page/page.cpp" line="377"/>
         <source>Close</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="390"/>
+        <location filename="../../src/page/page.cpp" line="393"/>
         <source>Error Occurred</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="396"/>
+        <location filename="../../src/page/page.cpp" line="399"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="570"/>
+        <location filename="../../src/page/page.cpp" line="573"/>
         <source>[%1][%2][%3][%4]</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/page/page.cpp" line="868"/>
+        <source>Protocol</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4370,14 +4375,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="207"/>
         <source>Send Groups</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ProtocolFactory</name>
-    <message>
-        <location filename="../../src/page/protocol/protocolfactory.ui" line="57"/>
-        <source>...</source>
-        <translation></translation>
     </message>
 </context>
 <context>
@@ -4812,32 +4809,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="43"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="46"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="49"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
         <source>Global Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="54"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
         <source>Open Server Cache Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="62"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Client View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Show/Hide Server View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6494,74 +6491,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xCoAP::xCoAP</name>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="160"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
         <source>Client</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="161"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
         <source>Payloads</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="162"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
         <source>Server</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="163"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="164"/>
         <source>Resources</source>
         <comment>xCoAP</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="205"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="207"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="235"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="219"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="233"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="246"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="257"/>
-        <location filename="../../src/x/coap/xcoap.cpp" line="264"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
+        <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
         <translation type="unfinished"></translation>
     </message>

@@ -248,8 +248,29 @@ endif()
 
 # --------------------------------------------------------------------------------------------------
 # Include Private modules
-if(EXISTS ${CMAKE_SOURCE_DIR}/src/private/private.cmake)
-  include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+if(QT_VERSION VERSION_GREATER_EQUAL 6.5.0)
+  option(X_ENABLE_PRIVATE "Enable private features" ON)
+else()
+  option(X_ENABLE_PRIVATE "Enable private features" OFF)
+endif()
+
+macro(x_remove_private_files)
+  file(GLOB_RECURSE private_files "${CMAKE_CURRENT_SOURCE_DIR}/src/private/*.*")
+  foreach(file ${private_files})
+    list(REMOVE_ITEM X_SOURCES ${file})
+  endforeach()
+  add_definitions(-DX_ENABLE_PRIVATE=0)
+endmacro()
+
+if(X_ENABLE_PRIVATE)
+  if(EXISTS ${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+    include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
+    add_definitions(-DX_ENABLE_PRIVATE=1)
+  else()
+    x_remove_private_files()
+  endif()
+else()
+  x_remove_private_files()
 endif()
 
 # --------------------------------------------------------------------------------------------------
