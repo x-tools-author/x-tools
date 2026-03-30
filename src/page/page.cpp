@@ -53,7 +53,6 @@
 
 #include "utilities/compatibility.h"
 #include "utilities/crc.h"
-#include "utilities/iconengine.h"
 #include "utilities/statistician.h"
 #include "utilities/syntaxhighlighter.h"
 
@@ -423,7 +422,7 @@ void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
     outputText(cookedBytes, cookedFrom, true);
 
     // Notify panels
-    for (PanelItem panel : m_panels) {
+    for (const PanelItem &panel : const_cast<const QList<PanelItem> &>(m_panels)) {
         panel.panel->onBytesRead(cookedBytes, cookedFrom);
     }
 
@@ -433,7 +432,7 @@ void PagePrivate::onBytesRead(const QByteArray &bytes, const QString &from)
 void PagePrivate::onBytesWritten(const QByteArray &bytes, const QString &to)
 {
     // Notify panels
-    for (PanelItem panel : m_panels) {
+    for (const PanelItem &panel : const_cast<const QList<PanelItem> &>(m_panels)) {
         panel.panel->onBytesWritten(bytes, to);
     }
 
@@ -897,7 +896,8 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->m_panels.append({QString("tabProtocol"), protocolPanel});
 #endif
 
-    for (PagePrivate::PanelItem panel : d->m_panels) {
+    for (const PagePrivate::PanelItem &panel :
+         const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
         connect(panel.panel, &Panel::outputBytes, d, &PagePrivate::writeSpecifiedBytes);
     }
 
@@ -984,14 +984,15 @@ QVariantMap Page::save() const
 
     // Tabs
     int index = -1;
-    for (QToolButton *btn : d->m_tabToolButtons) {
+    for (const QToolButton *btn : const_cast<const QList<QToolButton *> &>(d->m_tabToolButtons)) {
         if (btn->isChecked()) {
             index = d->m_tabToolButtons.indexOf(btn);
             break;
         }
     }
     map.insert(keys.panelIndex, index);
-    for (PagePrivate::PanelItem panel : d->m_panels) {
+    for (const PagePrivate::PanelItem &panel :
+         const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
         map.insert(panel.name, panel.panel->save());
     }
 
@@ -1061,7 +1062,8 @@ void Page::load(const QVariantMap &parameters)
     }
     int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
     d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
-    for (PagePrivate::PanelItem panel : d->m_panels) {
+    for (const PagePrivate::PanelItem &panel :
+         const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
         panel.panel->load(parameters.value(panel.name).toMap());
     }
 
