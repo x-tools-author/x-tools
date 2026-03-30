@@ -55,7 +55,7 @@ Log::~Log() {}
 
 Log& Log::singleton()
 {
-    static Log instance(qApp);
+    static Log instance;
     return instance;
 }
 
