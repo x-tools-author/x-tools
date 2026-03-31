@@ -1,5 +1,5 @@
 ﻿# https://github.com/zint/zint
-set(package_version "2.15.0")
+set(package_version "2.16.0")
 set(file_name "zint-${package_version}")
 set(file_url "https://codeload.github.com/zint/zint/zip/refs/tags/${package_version}")
 # cmake-format: off
