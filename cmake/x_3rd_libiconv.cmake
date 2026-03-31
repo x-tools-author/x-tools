@@ -1,5 +1,5 @@
 ﻿# * https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.18.tar.gz
-# * https://github.com/kiyolee/libiconv-win-build/archive/refs/tags/v1.17-p1.zip
+# * https://codeload.github.com/kiyolee/libiconv-win-build/zip/refs/tags/v1.18-p1
 # * devenv libiconv.sln /Build "Release|x64"
 
 # --------------------------------------------------------------------------------------------------
@@ -17,10 +17,10 @@ endif()
 # --------------------------------------------------------------------------------------------------
 if(WIN32)
   set(iconv_version "1.18-p1")
-  set(file_name "v${iconv_version}")
+  set(file_name "libiconv-win-build-${iconv_version}")
   set(file_suffix "zip")
-  set(file_url "https://github.com/kiyolee/libiconv-win-build/archive/refs/tags")
-  set(file_url "${file_url}/${file_name}.${file_suffix}")
+  set(file_url "https://codeload.github.com/kiyolee/libiconv-win-build/zip/refs/tags")
+  set(file_url "${file_url}/v${iconv_version}")
 else()
   set(file_name "libiconv-1.18")
   set(file_suffix "tar.gz")
