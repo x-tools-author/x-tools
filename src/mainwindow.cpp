@@ -93,7 +93,11 @@ MainWindow::MainWindow(QWidget* parent)
             QApplication::closeAllWindows();
             QApplication::quit();
         });
-        connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, &MainWindow::show);
+        connect(systemTrayIcon, &SystemTrayIcon::invokeShowMainWindow, this, [=]() {
+            showNormal();
+            activateWindow();
+            raise();
+        });
         systemTrayIcon->show();
     }
 #endif
@@ -151,7 +155,7 @@ MainWindow::MainWindow(QWidget* parent)
     });
 }
 
-MainWindow::~MainWindow() { }
+MainWindow::~MainWindow() {}
 
 void MainWindow::load(const QString& fileName)
 {
