@@ -15,21 +15,23 @@
 #include <QToolButton>
 #include <QWidget>
 
+#include "x/common/xpage.h"
+
 namespace Ui {
 class xModbus;
 }
 
 namespace xModbus {
 class ModbusRegisterTableView;
-class xModbus : public QWidget
+class xModbus : public xPage
 {
     Q_OBJECT
 public:
     explicit xModbus(QWidget* parent = nullptr);
-    ~xModbus();
+    ~xModbus() override;
 
-    QJsonObject save();
-    void load(const QJsonObject& obj);
+    QJsonObject save() const override;
+    void load(const QJsonObject& obj) override;
 
 private:
     Ui::xModbus* ui;

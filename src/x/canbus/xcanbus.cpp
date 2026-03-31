@@ -52,7 +52,7 @@ struct xCanBusParameterKeys
 };
 
 xCanBus::xCanBus(QWidget* parent)
-    : QWidget(parent)
+    : xPage(parent)
     , ui(new Ui::xCanBus)
 {
     ui->setupUi(this);
@@ -136,7 +136,7 @@ xCanBus::~xCanBus()
     delete ui;
 }
 
-QJsonObject xCanBus::save()
+QJsonObject xCanBus::save() const
 {
     QJsonObject obj;
     xCanBusParameterKeys keys;

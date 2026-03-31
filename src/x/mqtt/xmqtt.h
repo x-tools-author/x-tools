@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xModbus project.
  *
@@ -11,21 +11,23 @@
 #include <QJsonObject>
 #include <QWidget>
 
+#include "x/common/xpage.h"
+
 namespace Ui {
 class xMqtt;
 }
 
 namespace xMqtt {
 
-class xMqtt : public QWidget
+class xMqtt : public xPage
 {
     Q_OBJECT
 public:
     explicit xMqtt(QWidget* parent = nullptr);
-    ~xMqtt();
+    ~xMqtt() override;
 
-    QJsonObject save();
-    void load(const QJsonObject& obj);
+    QJsonObject save() const override;
+    void load(const QJsonObject& obj) override;
 
 private:
     Ui::xMqtt* ui;

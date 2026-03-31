@@ -13,14 +13,14 @@
 namespace xBle {
 
 xBle::xBle(QWidget* parent)
-    : QWidget(parent)
+    : xPage(parent)
 {
     xBleDevMgr.startScan();
 }
 
 xBle::~xBle() {}
 
-QJsonObject xBle::save()
+QJsonObject xBle::save() const
 {
     QJsonObject obj;
     return obj;

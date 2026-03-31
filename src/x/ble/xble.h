@@ -11,11 +11,11 @@
 #include <QJsonObject>
 #include <QWidget>
 
-#include "utilities/serializable.h"
+#include "x/common/xpage.h"
 
 namespace xBle {
 
-class xBle : public QWidget, public xTools::Serializable
+class xBle : public xPage
 {
     Q_OBJECT
 public:
@@ -23,7 +23,7 @@ public:
     ~xBle() override;
 
 public:
-    QJsonObject save() override;
+    QJsonObject save() const override;
     void load(const QJsonObject& obj) override;
 };
 

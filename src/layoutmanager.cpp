@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -12,8 +12,8 @@
 #include <QDebug>
 
 #include "common/xapp.h"
-#include "layoutpage.h"
 #include "log/log.h"
+#include "x/common/xpage.h"
 
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"
@@ -108,8 +108,8 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
     m_controllerLayout->removeWidget(m_rightLabel);
     m_controllerLayout->addWidget(m_rightLabel);
 
-    if (dynamic_cast<LayoutPage*>(page)) {
-        LayoutPage* layoutPage = dynamic_cast<LayoutPage*>(page);
+    if (dynamic_cast<xPage*>(page)) {
+        xPage* layoutPage = dynamic_cast<xPage*>(page);
         QMenu* menu = layoutPage->toolButtonMenu();
         if (menu) {
             button->setMenu(menu);

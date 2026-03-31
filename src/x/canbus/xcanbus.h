@@ -16,8 +16,8 @@
 #include <QWidget>
 
 #include "utilities/keepopenedmenu.h"
-#include "utilities/serializable.h"
 #include "x/canbus/canbuspanel.h"
+#include "x/common/xpage.h"
 
 namespace Ui {
 class xCanBus;
@@ -26,14 +26,14 @@ class xCanBus;
 namespace xCanBus {
 
 class CanBusDevice;
-class xCanBus : public QWidget, public xTools::Serializable
+class xCanBus : public xPage
 {
     Q_OBJECT
 public:
     explicit xCanBus(QWidget* parent = nullptr);
-    ~xCanBus();
+    ~xCanBus() override;
 
-    QJsonObject save() override;
+    QJsonObject save() const override;
     void load(const QJsonObject& obj) override;
 
 protected:

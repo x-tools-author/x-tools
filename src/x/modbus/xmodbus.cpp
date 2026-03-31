@@ -23,7 +23,7 @@ struct xModbusKeys
 };
 
 xModbus::xModbus(QWidget* parent)
-    : QWidget(parent)
+    : xPage(parent)
     , ui(new Ui::xModbus)
 {
     ui->setupUi(this);
@@ -57,7 +57,7 @@ xModbus::~xModbus()
     delete ui;
 }
 
-QJsonObject xModbus::save()
+QJsonObject xModbus::save() const
 {
     QJsonObject obj;
     xModbusKeys keys;

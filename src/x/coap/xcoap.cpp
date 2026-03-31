@@ -73,7 +73,7 @@ public:
             onServerCtrlToolButtonClicked();
         });
     }
-    ~xCoAPPrivate() { }
+    ~xCoAPPrivate() {}
 
 public:
     Ui::xCoAP* ui{nullptr};
@@ -152,7 +152,7 @@ struct xCoAPSettingKeys
 };
 
 xCoAP::xCoAP(QWidget* parent)
-    : QWidget(parent)
+    : xPage(parent)
 {
     d = new xCoAPPrivate(this);
     // Client and Server tabs
@@ -169,7 +169,7 @@ xCoAP::xCoAP(QWidget* parent)
     });
 }
 
-xCoAP::~xCoAP() { }
+xCoAP::~xCoAP() {}
 
 void xCoAP::setupSettings(QSettings* settings)
 {
@@ -271,7 +271,7 @@ void xCoAP::importSettings(const QString& filePath)
     load(doc.object());
 }
 
-QJsonObject xCoAP::save()
+QJsonObject xCoAP::save() const
 {
     xCoAPParameterKeys keys;
     QJsonObject obj;

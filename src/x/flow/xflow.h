@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -14,6 +14,8 @@
 #include <QToolBar>
 #include <QWidget>
 
+#include "x/common/xpage.h"
+
 namespace Ui {
 class xFlow;
 }
@@ -25,7 +27,7 @@ class LogDockWidgetContent;
 class NodesDockWidgetContent;
 class OutputDockWidgetContext;
 class NavigatorDockWidgetContent;
-class xFlow : public QWidget
+class xFlow : public xPage
 {
     Q_OBJECT
 public:

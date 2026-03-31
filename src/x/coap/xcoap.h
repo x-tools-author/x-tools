@@ -12,13 +12,13 @@
 #include <QSettings>
 #include <QWidget>
 
-#include "layoutpage.h"
 #include "utilities/serializable.h"
+#include "x/common/xpage.h"
 
 namespace xCoAP {
 
 class xCoAPPrivate;
-class xCoAP : public QWidget, public xTools::Serializable, public LayoutPage
+class xCoAP : public xPage
 {
     Q_OBJECT
     xCoAPPrivate* d{nullptr};
@@ -31,7 +31,7 @@ public:
     void exportSettings(const QString& filePath);
     void importSettings(const QString& filePath);
 
-    QJsonObject save() override;
+    QJsonObject save() const override;
     void load(const QJsonObject& obj) override;
     QMenu* toolButtonMenu() override;
 };
