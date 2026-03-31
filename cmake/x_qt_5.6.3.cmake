@@ -34,7 +34,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}")
   message(FATAL_ERROR "[xTools.WinXP] Qt 5.6.3 setup failed.")
 endif()
 
-# Apply Qt 5.6.3 patcher
+# Apply Qt 5.6.3 patcher(Maybe you should run it manually).
 message(STATUS "[xTools.WinXP] Applying Qt 5.6.3 patcher...")
 execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/QQtPatcher.exe
                 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/")
