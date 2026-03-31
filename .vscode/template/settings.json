@@ -2,7 +2,6 @@
     "cmake.configureArgs": [
         "-DCMAKE_PREFIX_PATH:PATH=${workspaceFolder}/tools/Qt5.6.3/5.6.3/mingw49_32",
         "-DX_USING_VS_CODE:BOOL=ON",
-        "-DX_MAGIC:BOOL=ON",
         "-DX_ENABLE_LOG:BOOL=OFF",
         "-DX_ENABLE_X_OPCUA:OFF=OFF",
         "-DX_ENABLE_X_BLE:BOOL=OFF",
