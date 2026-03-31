@@ -36,4 +36,5 @@ endif()
 
 # Apply Qt 5.6.3 patcher
 message(STATUS "[xTools.WinXP] Applying Qt 5.6.3 patcher...")
-execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/QQtPatcher.exe)
+execute_process(COMMAND ${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/QQtPatcher.exe
+                WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/tools/${qt_5_6_3}/5.6.3/mingw49_32/")

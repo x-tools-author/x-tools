@@ -1,6 +1,6 @@
 macro(x_remove_all_files_of_charts)
   # If Qt Charts is not found, we need to remove the files that depend on it
-  file(GLOB_RECURSE CHARTS_FILES "${CMAKE_SOURCE_DIR}/src/page/panels/outputpanels/charts/*.*")
+  file(GLOB_RECURSE CHARTS_FILES "${CMAKE_SOURCE_DIR}/src/page/charts/*.*")
   message(STATUS "[Charts]Remove Qt Charts files from X_SOURCES")
   foreach(file ${CHARTS_FILES})
     message(STATUS "[Charts]Remove file: ${file}")

@@ -169,8 +169,10 @@ public:
     ScriptsManager *m_scriptsPanel{nullptr};
     DataRecordsView *m_dataRecordsView{nullptr};
     SearchPanel *m_filterView{nullptr};
+#if X_ENABLE_CHARTS
     BarPanel *m_barPanel{nullptr};
     LinePanel *m_linePanel{nullptr};
+#endif
     LuaView *m_luaView{nullptr};
 
     QList<QToolButton *> m_tabToolButtons;
@@ -848,52 +850,75 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 
     d->m_presetPanel = new PresetPanel(this);
     d->addTab(tr("Presets"), d->m_presetPanel);
-    d->m_panels.append({QString("tabPreset"), d->m_presetPanel});
+    PagePrivate::PanelItem item;
+    item.name = QString("tabPreset");
+    item.panel = d->m_presetPanel;
+    d->m_panels.append(item);
 
     d->m_emitterPanel = new EmitterPanel(this);
     d->addTab(tr("Emitter"), d->m_emitterPanel);
-    d->m_panels.append({QString("tabEmitter"), d->m_emitterPanel});
+    item.name = QString("tabEmitter");
+    item.panel = d->m_emitterPanel;
+    d->m_panels.append(item);
 
     d->m_responderPanel = new ResponderPanel(this);
     d->addTab(tr("Responder"), d->m_responderPanel);
-    d->m_panels.append({QString("tabResponder"), d->m_responderPanel});
+    item.name = QString("tabResponder");
+    item.panel = d->m_responderPanel;
+    d->m_panels.append(item);
 
     d->m_transfersPanel = new TransfersPanel(this);
     d->addTab(tr("Transfers"), d->m_transfersPanel);
-    d->m_panels.append({QString("tabTransfers"), d->m_transfersPanel});
+    item.name = QString("tabTransfers");
+    item.panel = d->m_transfersPanel;
+    d->m_panels.append(item);
 
     d->m_dataRecordsView = new DataRecordsView(this);
     d->addTab(tr("Records"), d->m_dataRecordsView);
-    d->m_panels.append({QString("tabRecords"), d->m_dataRecordsView});
+    item.name = QString("tabRecords");
+    item.panel = d->m_dataRecordsView;
+    d->m_panels.append(item);
 
     d->m_filterView = new SearchPanel(this);
     d->addTab(tr("Search"), d->m_filterView);
-    d->m_panels.append({QString("tabSearch"), d->m_filterView});
+    item.name = QString("tabSearch");
+    item.panel = d->m_filterView;
+    d->m_panels.append(item);
 
 #ifdef X_ENABLE_CHARTS
     d->m_barPanel = new BarPanel(this);
     d->addTab(tr("Bar Charts"), d->m_barPanel);
-    d->m_panels.append({QString("tabBar"), d->m_barPanel});
+    item.name = QString("tabBar");
+    item.panel = d->m_barPanel;
+    d->m_panels.append(item);
 
     d->m_linePanel = new LinePanel(this);
     d->addTab(tr("Line Charts"), d->m_linePanel);
-    d->m_panels.append({QString("tabLine"), d->m_linePanel});
+    item.name = QString("tabLine");
+    item.panel = d->m_linePanel;
+    d->m_panels.append(item);
 #endif
 
     d->m_scriptsPanel = new ScriptsManager(this);
     d->addTab(tr("Scripts"), d->m_scriptsPanel);
-    d->m_panels.append({QString("tabScripts"), d->m_scriptsPanel});
+    item.name = QString("tabScripts");
+    item.panel = d->m_scriptsPanel;
+    d->m_panels.append(item);
 
 #ifdef X_ENABLE_LUA
     d->m_luaView = new LuaView(this);
     d->addTab(QString("Lua"), d->m_luaView);
-    d->m_panels.append({QString("tabLua"), d->m_luaView});
+    item.name = QString("tabLua");
+    item.panel = d->m_luaView;
+    d->m_panels.append(item);
 #endif
 
 #if X_ENABLE_PRIVATE
     ProtocolPanel *protocolPanel = new ProtocolPanel(this);
     d->addTab(tr("Protocol"), protocolPanel);
-    d->m_panels.append({QString("tabProtocol"), protocolPanel});
+    item.name = QString("tabProtocol");
+    item.panel = protocolPanel;
+    d->m_panels.append(item);
 #endif
 
     for (const PagePrivate::PanelItem &panel :
@@ -984,9 +1009,10 @@ QVariantMap Page::save() const
 
     // Tabs
     int index = -1;
-    for (const QToolButton *btn : const_cast<const QList<QToolButton *> &>(d->m_tabToolButtons)) {
+    for (int i = 0; i < d->m_tabToolButtons.size(); i++) {
+        QToolButton *btn = d->m_tabToolButtons[i];
         if (btn->isChecked()) {
-            index = d->m_tabToolButtons.indexOf(btn);
+            index = i;
             break;
         }
     }
