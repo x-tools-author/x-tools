@@ -9,7 +9,7 @@
 #include "settingsmenu.h"
 #include "ui_settingsmenu.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 SettingsMenu::SettingsMenu(QWidget *parent)
     : QWidget{parent}

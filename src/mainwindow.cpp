@@ -41,7 +41,7 @@
 #include <QWidgetAction>
 
 #include "application.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"

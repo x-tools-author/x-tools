@@ -46,7 +46,7 @@
 #include "private/protocol/protocolpanel.h"
 #endif
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "devicesettings.h"
 #include "inputsettings.h"
 #include "outputsettings.h"

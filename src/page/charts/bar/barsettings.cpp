@@ -23,7 +23,7 @@
 #include <QTimer>
 
 #include "barpanel.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
 

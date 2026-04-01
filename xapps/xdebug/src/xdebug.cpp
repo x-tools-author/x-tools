@@ -10,7 +10,7 @@
 
 #include <QQuickTextDocument>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 #if defined(_MSC_VER)
 #include <dwmapi.h>

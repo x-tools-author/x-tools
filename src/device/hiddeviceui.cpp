@@ -9,7 +9,7 @@
 #include "hiddeviceui.h"
 #include "ui_hiddeviceui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/hiddevice.h"
 #include "utilities/hidscanner.h"
 

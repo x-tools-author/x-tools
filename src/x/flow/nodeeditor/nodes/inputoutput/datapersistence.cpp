@@ -19,7 +19,7 @@
 #include <QVariantMap>
 #include <QtGlobal>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 //#include "../common/common.h"
 

@@ -9,7 +9,7 @@
 #include "inputsettings.h"
 #include "ui_inputsettings.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/crc.h"
 
 struct InputSettingParameterKeys

@@ -10,7 +10,7 @@
 
 #include <QMutex>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "page/common/tablemodel.h"
 
 #define EMITTER_MODEL_COLUMN_ENABLE 0

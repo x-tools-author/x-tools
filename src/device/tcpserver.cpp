@@ -10,7 +10,7 @@
 
 #include <QTcpSocket>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 TcpServer::TcpServer(QObject *parent)

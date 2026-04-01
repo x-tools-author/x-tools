@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "socket.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 Socket::Socket(QObject *parent)

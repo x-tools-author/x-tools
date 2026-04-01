@@ -10,7 +10,7 @@
 
 #include <QHostAddress>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 TcpClient::TcpClient(QObject *parent)

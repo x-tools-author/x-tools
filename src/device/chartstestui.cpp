@@ -10,7 +10,7 @@
 #include "ui_chartstestui.h"
 
 #include "chartstest.h"
-#include "common/xtools.h"
+#include "common/x.h"
 
 ChartsTestUi::ChartsTestUi(QWidget *parent)
     : DeviceUi(parent)

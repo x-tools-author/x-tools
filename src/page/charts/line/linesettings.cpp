@@ -22,7 +22,7 @@
 #include <QPointF>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "linepanel.h"
 #include "utilities/compatibility.h"
 #include "utilities/iconengine.h"

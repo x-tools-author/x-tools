@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "sockettransfermodel.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/socket.h"
 
 SocketTransferModel::SocketTransferModel(QObject *parent)

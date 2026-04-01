@@ -9,7 +9,7 @@
 #include "socketui.h"
 #include "ui_socketui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/socket.h"
 #include "utilities/compatibility.h"
 

@@ -12,7 +12,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 #include "canbuscommon.h"
@@ -29,7 +29,7 @@ public:
     FrameListItemEditorPrivate(FrameListItemEditor *parent)
         : QObject(parent)
         , q(parent)
-    { }
+    {}
 
 public:
     Ui::FrameListItemEditor *ui{nullptr};

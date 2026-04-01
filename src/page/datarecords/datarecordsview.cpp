@@ -11,7 +11,7 @@
 
 #include <QMessageBox>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "datarecordsmodel.h"
 #include "datarecordsmodelfilter.h"
 #include "utilities/compatibility.h"

@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #pragma once
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "page/common/tablemodel.h"
 
 #define RESPONSE_MODEL_COLUMN_ENABLE 0

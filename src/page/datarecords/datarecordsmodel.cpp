@@ -10,7 +10,7 @@
 
 #include <QDateTime>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 DataRecordsModel::DataRecordsModel(QObject *parent)
     : QAbstractTableModel{parent}

@@ -15,7 +15,7 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/hidscanner.h"
 
 HidDevice::HidDevice(QObject *parent)

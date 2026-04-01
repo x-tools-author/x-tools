@@ -11,7 +11,7 @@
 
 #include <QCheckBox>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 OutputSettings::OutputSettings(QWidget *parent)

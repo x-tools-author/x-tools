@@ -20,7 +20,7 @@
 #include <QTableView>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "respondermodel.h"
 
 class ResponderViewPrivate : public QObject

@@ -19,7 +19,7 @@
 #include <QTableView>
 #include <QToolButton>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "presetmodel.h"
 #include "presetviewgroupeditor.h"
 #include "utilities/keepopenedmenu.h"

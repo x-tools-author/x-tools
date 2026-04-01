@@ -18,7 +18,7 @@
 #include <QMessageBox>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/iconengine.h"
 
 #include "framelistfilter.h"

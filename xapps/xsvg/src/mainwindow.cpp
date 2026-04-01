@@ -25,7 +25,7 @@
 #include <QVBoxLayout>
 #include <QWidgetAction>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "settingsmenu.h"
 #include "svgfiledatamodel.h"
 #include "svgitemdelegate.h"

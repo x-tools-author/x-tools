@@ -9,7 +9,7 @@
 #include "crccalculator.h"
 #include "crccalculatorui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/crc.h"
 
 CrcCalculator::CrcCalculator(QObject *parent)

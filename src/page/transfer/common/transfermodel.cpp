@@ -11,7 +11,7 @@
 #include <QEventLoop>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/device.h"
 
 TransferModel::TransferModel(QObject *parent)

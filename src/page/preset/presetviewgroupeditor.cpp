@@ -13,7 +13,7 @@
 #include <QJsonValue>
 #include <QMessageBox>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 struct PresetViewGroupEditorGroupItem

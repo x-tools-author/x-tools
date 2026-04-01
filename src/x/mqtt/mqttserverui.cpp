@@ -11,7 +11,7 @@
 
 #include <QApplication>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "mqttcommon.h"
 #include "mqttdatamodel.h"
 #include "mqttserver.h"

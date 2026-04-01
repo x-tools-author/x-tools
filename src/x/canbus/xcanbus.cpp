@@ -15,7 +15,7 @@
 #include <QMessageBox>
 #include <QMetaEnum>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
 

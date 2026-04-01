@@ -9,7 +9,7 @@
 #include "filterui.h"
 #include "ui_filterui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "filter.h"
 #include "utilities/compatibility.h"
 

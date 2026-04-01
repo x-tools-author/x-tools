@@ -12,7 +12,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "serialport.h"
 #include "utilities/compatibility.h"
 #include "utilities/serialportscanner.h"

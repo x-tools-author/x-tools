@@ -13,7 +13,7 @@
 #include <QMessageBox>
 
 #include "blecentral.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/blescanner.h"
 #include "utilities/compatibility.h"
 

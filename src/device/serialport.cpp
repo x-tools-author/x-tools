@@ -14,7 +14,7 @@
 #include <QtGlobal>
 #include <QtMath>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 SerialPort::SerialPort(QObject *parent)

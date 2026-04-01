@@ -11,7 +11,7 @@
 
 #include <QTextDocument>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/iconengine.h"
 
 namespace xMQTT {

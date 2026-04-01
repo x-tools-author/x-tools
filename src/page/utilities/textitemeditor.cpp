@@ -9,7 +9,7 @@
 #include "textitemeditor.h"
 #include "ui_textitemeditor.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 #include "utilities/crc.h"
 

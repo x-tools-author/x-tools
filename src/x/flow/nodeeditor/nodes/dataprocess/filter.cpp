@@ -9,7 +9,7 @@
 #include "filter.h"
 #include "filterui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 Filter::Filter(QObject *parent)
     : BaseNode(parent)

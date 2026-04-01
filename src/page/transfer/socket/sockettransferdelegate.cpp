@@ -14,7 +14,7 @@
 #include <QLineEdit>
 #include <QSpinBox>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "sockettransfermodel.h"
 
 SocketTransferDelegate::SocketTransferDelegate(QObject *parent)

@@ -9,7 +9,7 @@
 #include "localserverui.h"
 #include "ui_localserverui.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "localserver.h"
 #include "utilities/compatibility.h"
 

@@ -16,7 +16,7 @@
 #include <QRegularExpression>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 SaveThread::SaveThread(QObject *parent)
     : QThread(parent)

@@ -12,7 +12,7 @@
 #include <QKeyEvent>
 #include <QTimer>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "nodeeditor/nodes/common/basenode.h"
 #include "nodeeditor/nodes/common/basenodedata.h"
 #include "userinput.h"

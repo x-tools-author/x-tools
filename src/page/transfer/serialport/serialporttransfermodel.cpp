@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "serialporttransfermodel.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/serialport.h"
 
 SerialPortTransferModel::SerialPortTransferModel(QObject *parent)

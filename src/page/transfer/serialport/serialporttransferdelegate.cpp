@@ -12,7 +12,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 SerialPortTransferDelegate::SerialPortTransferDelegate(QObject *parent)
     : QStyledItemDelegate(parent)

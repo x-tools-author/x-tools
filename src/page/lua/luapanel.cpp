@@ -17,8 +17,8 @@
 #include <QMenu>
 #include <QTimer>
 
+#include "common/x.h"
 #include "common/xapp.h"
-#include "common/xtools.h"
 #include "luarunner.h"
 #include "utilities/compatibility.h"
 #include "utilities/highlighter/syntaxhighlighterlua.h"

@@ -12,7 +12,7 @@
 #include <QNetworkAddressEntry>
 #include <QNetworkInterface>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 UdpBroadcastParameters variantMap2UdpBroadcastParameters(const QVariantMap &obj)

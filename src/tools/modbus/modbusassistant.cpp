@@ -41,7 +41,7 @@
 #endif
 
 #include "application.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "modbusfactory.h"
 #include "utilities/compatibility.h"
 

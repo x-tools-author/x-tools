@@ -13,7 +13,7 @@
 #include <QTimer>
 #include <QtMath>
 
-#include "common/xtools.h"
+#include "common/x.h"
 
 ChartsTest::ChartsTest(QObject *parent)
     : Device(parent)

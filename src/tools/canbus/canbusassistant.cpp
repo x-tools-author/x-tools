@@ -18,7 +18,7 @@
 #include <QVector>
 
 #include "application.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 CanBusAssistant::CanBusAssistant(QWidget* parent)

@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "websocketclient.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 WebSocketClient::WebSocketClient(QObject *parent)

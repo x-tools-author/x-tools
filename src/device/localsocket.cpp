@@ -8,7 +8,7 @@
  **************************************************************************************************/
 #include "localsocket.h"
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 LocalSocket::LocalSocket(QObject *parent)

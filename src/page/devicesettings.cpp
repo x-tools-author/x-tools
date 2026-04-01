@@ -14,7 +14,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "page/utilities/savethread.h"
 
 const struct

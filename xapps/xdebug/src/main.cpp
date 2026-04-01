@@ -24,7 +24,7 @@
 #include "device/websocketserver.h"
 
 #include "common/crc.h"
-#include "common/xtools.h"
+#include "common/x.h"
 #include "device/utilities/ipscanner.h"
 #include "device/utilities/serialportscanner.h"
 

@@ -13,7 +13,7 @@
 #include <QHeaderView>
 #include <QStandardItemModel>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "dataview.h"
 #include "utilities/compatibility.h"
 #include "utilities/crc.h"

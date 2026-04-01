@@ -11,7 +11,7 @@
 #include <QSslConfiguration>
 #include <QWebSocket>
 
-#include "common/xtools.h"
+#include "common/x.h"
 #include "utilities/compatibility.h"
 
 WebSocketServer::WebSocketServer(QObject *parent)

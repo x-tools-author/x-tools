@@ -14,7 +14,7 @@
 #include <QNetworkInterface>
 
 #include "broadcastthread.h"
-#include "common/xtools.h"
+#include "common/x.h"
 
 BroadcastAssistant::BroadcastAssistant(QWidget* parent)
     : QWidget(parent)

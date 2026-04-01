@@ -27,8 +27,8 @@
 #include "utilities/stylemanager.h"
 #include "utilities/thememanager.h"
 
+#include "x.h"
 #include "xapp.h"
-#include "xtools.h"
 
 xUi::xUi(QWidget *parent)
     : QMainWindow(parent)
