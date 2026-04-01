@@ -12,15 +12,24 @@
 
 namespace xTools {
 
+class xToolsPrivate;
 class xTools : public xPage
 {
     Q_OBJECT
+    xToolsPrivate *d{nullptr};
+
+public:
+    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
+
 public:
     xTools(QWidget *parent = nullptr);
     ~xTools();
 
     QJsonObject save() const override;
-    void load(const QJsonObject &json) override;
+    void load(const QJsonObject &obj) override;
+
+    int windowGrid() const;
+    void setWindowGrid(int grid);
 };
 
-};
+}; // namespace xTools
