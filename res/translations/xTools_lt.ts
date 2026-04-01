@@ -2946,85 +2946,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="351"/>
         <source>New Window</source>
         <translation>Naujas langas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Save Parameters</source>
         <translation>Išsaugoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
-        <location filename="../../src/mainwindow.cpp" line="626"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Import Parameters</source>
         <translation>Importuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="373"/>
+        <location filename="../../src/mainwindow.cpp" line="643"/>
         <source>Export Parameters</source>
         <translation>Eksportuoti parametrus</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="382"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Tools</source>
         <translation>&amp;Įrankiai</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="390"/>
         <source>New</source>
         <translation>Naujas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
         <translation>&amp;Peržiūra</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="686"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
-        <location filename="../../src/mainwindow.cpp" line="539"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../src/mainwindow.cpp" line="543"/>
         <source>Release History</source>
         <translation>Leidimų istorija</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>Join in QQ Group</source>
         <translation>Prisijunkite prie QQ grupės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
+        <location filename="../../src/mainwindow.cpp" line="428"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
+        <location filename="../../src/mainwindow.cpp" line="501"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
+        <location filename="../../src/mainwindow.cpp" line="529"/>
         <source>Third Party Open Source</source>
         <translation>Trečiųjų šalių atviras kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>QR Code</source>
         <translation>QR kodas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="572"/>
         <source>User QQ Group</source>
         <translation>Vartotojų QQ grupė</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="573"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ grupė</translation>
     </message>
@@ -3041,38 +3041,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Prašome perkrauti programą rankiniu būdu.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Json Files (*.json)</source>
         <translation>Json failai (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="670"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Unknown</source>
         <translation>Nežinomas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Commit hash</source>
         <translation>Commit hash</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>Commit time</source>
         <translation>Commit laikas</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="679"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>Build Date</source>
         <translation>Kompiliavimo data</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Copyright</source>
         <translation>Autorių teisės</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="685"/>
         <source>All rights reserved.</source>
         <translation>Visos teisės saugomos.</translation>
     </message>
@@ -4033,7 +4033,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="386"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Open</source>
         <translation>Atidaryti</translation>
     </message>
@@ -4134,22 +4134,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Iš anksto nustatytas duomenų sąrašas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="851"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Presets</source>
         <translation>Išankstiniai nustatymai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="852"/>
+        <location filename="../../src/page/page.cpp" line="859"/>
         <source>Emitter</source>
         <translation>Skleidėjas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="865"/>
         <source>Responder</source>
         <translation>Atsakovas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="854"/>
+        <location filename="../../src/page/page.cpp" line="871"/>
         <source>Transfers</source>
         <translation>Pervedimai</translation>
     </message>
@@ -4158,58 +4158,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Protokolo gamykla</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="865"/>
+        <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
         <translation type="unfinished">Scenarijai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="855"/>
+        <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
         <translation type="unfinished">Įrašai</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="856"/>
+        <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="861"/>
+        <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="862"/>
+        <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="545"/>
-        <location filename="../../src/page/page.cpp" line="1092"/>
+        <location filename="../../src/page/page.cpp" line="551"/>
+        <location filename="../../src/page/page.cpp" line="1107"/>
         <source>Error: No device is opened.</source>
         <translation>Klaida: Nėra atidarytas įrenginys.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="253"/>
+        <location filename="../../src/page/page.cpp" line="259"/>
         <source>Disable</source>
         <translation>Atjungti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="377"/>
+        <location filename="../../src/page/page.cpp" line="383"/>
         <source>Close</source>
         <translation>Uždaryti</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="393"/>
+        <location filename="../../src/page/page.cpp" line="399"/>
         <source>Error Occurred</source>
         <translation>Įvyko klaida</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="399"/>
+        <location filename="../../src/page/page.cpp" line="405"/>
         <source>Warning</source>
         <translation>Įspėjimas</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="868"/>
+        <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4222,7 +4222,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Rodyti scenarijų paneles</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="573"/>
+        <location filename="../../src/page/page.cpp" line="579"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4523,144 +4523,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nežinomas</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="93"/>
+        <location filename="../../src/common/x.cpp" line="93"/>
         <source>Bin</source>
         <translation>Dvejetainis</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="95"/>
+        <location filename="../../src/common/x.cpp" line="95"/>
         <source>Oct</source>
         <translation>Aštuonetainis</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="97"/>
+        <location filename="../../src/common/x.cpp" line="97"/>
         <source>Dec</source>
         <translation>Dešimtainis</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="99"/>
+        <location filename="../../src/common/x.cpp" line="99"/>
         <source>Hex</source>
         <translation>Šešioliktainis</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="101"/>
+        <location filename="../../src/common/x.cpp" line="101"/>
         <source>Hex(No Space)</source>
         <translation>Šešioliktainis (be tarpų)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="103"/>
+        <location filename="../../src/common/x.cpp" line="103"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="105"/>
+        <location filename="../../src/common/x.cpp" line="105"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="394"/>
-        <location filename="../../src/common/xtools.cpp" line="456"/>
-        <location filename="../../src/common/xtools.cpp" line="781"/>
-        <location filename="../../src/common/xtools.cpp" line="799"/>
+        <location filename="../../src/common/x.cpp" line="394"/>
+        <location filename="../../src/common/x.cpp" line="456"/>
+        <location filename="../../src/common/x.cpp" line="781"/>
+        <location filename="../../src/common/x.cpp" line="799"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Jokio</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="497"/>
-        <location filename="../../src/common/xtools.cpp" line="950"/>
-        <location filename="../../src/common/xtools.cpp" line="952"/>
+        <location filename="../../src/common/x.cpp" line="497"/>
+        <location filename="../../src/common/x.cpp" line="950"/>
+        <location filename="../../src/common/x.cpp" line="952"/>
         <source>Text</source>
         <translation>Tekstas</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="499"/>
-        <location filename="../../src/common/xtools.cpp" line="946"/>
-        <location filename="../../src/common/xtools.cpp" line="948"/>
+        <location filename="../../src/common/x.cpp" line="499"/>
+        <location filename="../../src/common/x.cpp" line="946"/>
+        <location filename="../../src/common/x.cpp" line="948"/>
         <source>Binary</source>
         <translation>Dvejetainis</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="534"/>
+        <location filename="../../src/common/x.cpp" line="534"/>
         <source>Echo</source>
         <translation>Aidas</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="535"/>
+        <location filename="../../src/common/x.cpp" line="535"/>
         <source>Always</source>
         <translation>Visada</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="536"/>
+        <location filename="../../src/common/x.cpp" line="536"/>
         <source>Input Equal Reference</source>
         <translation>Įvestis lygiava</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="537"/>
+        <location filename="../../src/common/x.cpp" line="537"/>
         <source>Input Contain Reference</source>
         <translation>Įvestis turi nuorodą</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="539"/>
+        <location filename="../../src/common/x.cpp" line="539"/>
         <source>Input Does not Contain Reference</source>
         <translation>Įvestis neturi nuorodos</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="782"/>
+        <location filename="../../src/common/x.cpp" line="782"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Lygi</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="783"/>
+        <location filename="../../src/common/x.cpp" line="783"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Nelygi</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="784"/>
+        <location filename="../../src/common/x.cpp" line="784"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Tarpas</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="785"/>
+        <location filename="../../src/common/x.cpp" line="785"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Žymė</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="801"/>
+        <location filename="../../src/common/x.cpp" line="801"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="802"/>
+        <location filename="../../src/common/x.cpp" line="802"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="804"/>
+        <location filename="../../src/common/x.cpp" line="804"/>
         <source>Hardware</source>
         <translation>Įranga</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="805"/>
+        <location filename="../../src/common/x.cpp" line="805"/>
         <source>Software</source>
         <translation>Programinė įranga</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../src/common/x.cpp" line="911"/>
         <source>Disabled</source>
         <translation>Neaktyvuota</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="913"/>
+        <location filename="../../src/common/x.cpp" line="913"/>
         <source>Bidirectional</source>
         <translation>Dviejų krypčių</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="915"/>
+        <location filename="../../src/common/x.cpp" line="915"/>
         <source>Unidirectional</source>
         <translation>Vienos krypties</translation>
     </message>

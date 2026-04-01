@@ -2946,85 +2946,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="351"/>
         <source>New Window</source>
         <translation>새 창</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Save Parameters</source>
         <translation>매개변수 저장</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
-        <location filename="../../src/mainwindow.cpp" line="626"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Import Parameters</source>
         <translation>매개변수 가져오기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="373"/>
+        <location filename="../../src/mainwindow.cpp" line="643"/>
         <source>Export Parameters</source>
         <translation>매개변수 내보내기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="382"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Tools</source>
         <translation>도구(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="390"/>
         <source>New</source>
         <translation>새로 만들기</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="686"/>
         <source>About</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
-        <location filename="../../src/mainwindow.cpp" line="539"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../src/mainwindow.cpp" line="543"/>
         <source>Release History</source>
         <translation>릴리즈 히스토리</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>Join in QQ Group</source>
         <translation>QQ그룹에 가입하세요</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
+        <location filename="../../src/mainwindow.cpp" line="428"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
+        <location filename="../../src/mainwindow.cpp" line="501"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
+        <location filename="../../src/mainwindow.cpp" line="529"/>
         <source>Third Party Open Source</source>
         <translation>서드파티 오픈 소스</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>QR Code</source>
         <translation>QR 코드</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="572"/>
         <source>User QQ Group</source>
         <translation>사용자 QQ 그룹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="573"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ 그룹</translation>
     </message>
@@ -3041,38 +3041,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(애플리케이션을 수동으로 재시작해 주세요.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Json Files (*.json)</source>
         <translation>Json 파일 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="670"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Unknown</source>
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Commit hash</source>
         <translation>커밋 해시</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>Commit time</source>
         <translation>커밋 시간</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="679"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>Build Date</source>
         <translation>빌드 날짜</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Copyright</source>
         <translation>저작권</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="685"/>
         <source>All rights reserved.</source>
         <translation>모든 권리 보유.</translation>
     </message>
@@ -4033,7 +4033,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="386"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Open</source>
         <translation>열기</translation>
     </message>
@@ -4134,22 +4134,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">프리셋 데이터 목록</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="851"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Presets</source>
         <translation>사전 설정</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="852"/>
+        <location filename="../../src/page/page.cpp" line="859"/>
         <source>Emitter</source>
         <translation>이미터</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="865"/>
         <source>Responder</source>
         <translation>응답자</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="854"/>
+        <location filename="../../src/page/page.cpp" line="871"/>
         <source>Transfers</source>
         <translation>환승</translation>
     </message>
@@ -4158,58 +4158,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">프로토콜 팩토리</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="865"/>
+        <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
         <translation type="unfinished">스크립트</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="855"/>
+        <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
         <translation type="unfinished">기록</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="856"/>
+        <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="861"/>
+        <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="862"/>
+        <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="545"/>
-        <location filename="../../src/page/page.cpp" line="1092"/>
+        <location filename="../../src/page/page.cpp" line="551"/>
+        <location filename="../../src/page/page.cpp" line="1107"/>
         <source>Error: No device is opened.</source>
         <translation>오류: 열려 있는 장치가 없습니다.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="253"/>
+        <location filename="../../src/page/page.cpp" line="259"/>
         <source>Disable</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="377"/>
+        <location filename="../../src/page/page.cpp" line="383"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="393"/>
+        <location filename="../../src/page/page.cpp" line="399"/>
         <source>Error Occurred</source>
         <translation>오류 발생</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="399"/>
+        <location filename="../../src/page/page.cpp" line="405"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="868"/>
+        <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4222,7 +4222,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">스크립트 패널 표시</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="573"/>
+        <location filename="../../src/page/page.cpp" line="579"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4523,144 +4523,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>알 수 없음</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="93"/>
+        <location filename="../../src/common/x.cpp" line="93"/>
         <source>Bin</source>
         <translation>이진수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="95"/>
+        <location filename="../../src/common/x.cpp" line="95"/>
         <source>Oct</source>
         <translation>8진수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="97"/>
+        <location filename="../../src/common/x.cpp" line="97"/>
         <source>Dec</source>
         <translation>10진수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="99"/>
+        <location filename="../../src/common/x.cpp" line="99"/>
         <source>Hex</source>
         <translation>16진수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="101"/>
+        <location filename="../../src/common/x.cpp" line="101"/>
         <source>Hex(No Space)</source>
         <translation>16진수(공백 없음)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="103"/>
+        <location filename="../../src/common/x.cpp" line="103"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="105"/>
+        <location filename="../../src/common/x.cpp" line="105"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="394"/>
-        <location filename="../../src/common/xtools.cpp" line="456"/>
-        <location filename="../../src/common/xtools.cpp" line="781"/>
-        <location filename="../../src/common/xtools.cpp" line="799"/>
+        <location filename="../../src/common/x.cpp" line="394"/>
+        <location filename="../../src/common/x.cpp" line="456"/>
+        <location filename="../../src/common/x.cpp" line="781"/>
+        <location filename="../../src/common/x.cpp" line="799"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>없음</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="497"/>
-        <location filename="../../src/common/xtools.cpp" line="950"/>
-        <location filename="../../src/common/xtools.cpp" line="952"/>
+        <location filename="../../src/common/x.cpp" line="497"/>
+        <location filename="../../src/common/x.cpp" line="950"/>
+        <location filename="../../src/common/x.cpp" line="952"/>
         <source>Text</source>
         <translation>텍스트</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="499"/>
-        <location filename="../../src/common/xtools.cpp" line="946"/>
-        <location filename="../../src/common/xtools.cpp" line="948"/>
+        <location filename="../../src/common/x.cpp" line="499"/>
+        <location filename="../../src/common/x.cpp" line="946"/>
+        <location filename="../../src/common/x.cpp" line="948"/>
         <source>Binary</source>
         <translation>이진수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="534"/>
+        <location filename="../../src/common/x.cpp" line="534"/>
         <source>Echo</source>
         <translation>에코</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="535"/>
+        <location filename="../../src/common/x.cpp" line="535"/>
         <source>Always</source>
         <translation>항상</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="536"/>
+        <location filename="../../src/common/x.cpp" line="536"/>
         <source>Input Equal Reference</source>
         <translation>입력이 기준과 같음</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="537"/>
+        <location filename="../../src/common/x.cpp" line="537"/>
         <source>Input Contain Reference</source>
         <translation>입력이 기준 포함</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="539"/>
+        <location filename="../../src/common/x.cpp" line="539"/>
         <source>Input Does not Contain Reference</source>
         <translation>입력이 기준 불포함</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="782"/>
+        <location filename="../../src/common/x.cpp" line="782"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>짝수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="783"/>
+        <location filename="../../src/common/x.cpp" line="783"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>홀수</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="784"/>
+        <location filename="../../src/common/x.cpp" line="784"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>스페이스</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="785"/>
+        <location filename="../../src/common/x.cpp" line="785"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>마크</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="801"/>
+        <location filename="../../src/common/x.cpp" line="801"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="802"/>
+        <location filename="../../src/common/x.cpp" line="802"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="804"/>
+        <location filename="../../src/common/x.cpp" line="804"/>
         <source>Hardware</source>
         <translation>하드웨어</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="805"/>
+        <location filename="../../src/common/x.cpp" line="805"/>
         <source>Software</source>
         <translation>소프트웨어</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../src/common/x.cpp" line="911"/>
         <source>Disabled</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="913"/>
+        <location filename="../../src/common/x.cpp" line="913"/>
         <source>Bidirectional</source>
         <translation>양방향</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="915"/>
+        <location filename="../../src/common/x.cpp" line="915"/>
         <source>Unidirectional</source>
         <translation>단방향</translation>
     </message>

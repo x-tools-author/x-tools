@@ -2953,85 +2953,85 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="351"/>
         <source>New Window</source>
         <translation>Nowe okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="361"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Save Parameters</source>
         <translation>Zapisz parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
-        <location filename="../../src/mainwindow.cpp" line="626"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="630"/>
         <source>Import Parameters</source>
         <translation>Importuj parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="639"/>
+        <location filename="../../src/mainwindow.cpp" line="373"/>
+        <location filename="../../src/mainwindow.cpp" line="643"/>
         <source>Export Parameters</source>
         <translation>Eksportuj parametry</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="382"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>&amp;Tools</source>
         <translation>&amp;Narzędzia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="390"/>
         <source>New</source>
         <translation>Nowy</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="445"/>
+        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
         <translation>&amp;Widok</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="686"/>
         <source>About</source>
         <translation>O programie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="499"/>
-        <location filename="../../src/mainwindow.cpp" line="539"/>
+        <location filename="../../src/mainwindow.cpp" line="503"/>
+        <location filename="../../src/mainwindow.cpp" line="543"/>
         <source>Release History</source>
         <translation>Historia wydań</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="500"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>Join in QQ Group</source>
         <translation>Dołącz do grupy QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="424"/>
+        <location filename="../../src/mainwindow.cpp" line="428"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="497"/>
+        <location filename="../../src/mainwindow.cpp" line="501"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="525"/>
+        <location filename="../../src/mainwindow.cpp" line="529"/>
         <source>Third Party Open Source</source>
         <translation>Otwarte oprogramowanie innych firm</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="559"/>
+        <location filename="../../src/mainwindow.cpp" line="563"/>
         <source>QR Code</source>
         <translation>Kod QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="568"/>
+        <location filename="../../src/mainwindow.cpp" line="572"/>
         <source>User QQ Group</source>
         <translation>Grupa użytkowników QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="569"/>
+        <location filename="../../src/mainwindow.cpp" line="573"/>
         <source>Qt QQ Group</source>
         <translation>Grupa Qt QQ</translation>
     </message>
@@ -3048,38 +3048,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Proszę ręcznie ponownie uruchomić aplikację.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="628"/>
-        <location filename="../../src/mainwindow.cpp" line="641"/>
+        <location filename="../../src/mainwindow.cpp" line="632"/>
+        <location filename="../../src/mainwindow.cpp" line="645"/>
         <source>Json Files (*.json)</source>
         <translation>Pliki Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="670"/>
+        <location filename="../../src/mainwindow.cpp" line="674"/>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="676"/>
+        <location filename="../../src/mainwindow.cpp" line="680"/>
         <source>Commit hash</source>
         <translation>Hash zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="678"/>
+        <location filename="../../src/mainwindow.cpp" line="682"/>
         <source>Commit time</source>
         <translation>Czas zatwierdzenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="679"/>
+        <location filename="../../src/mainwindow.cpp" line="683"/>
         <source>Build Date</source>
         <translation>Data kompilacji</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="684"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="681"/>
+        <location filename="../../src/mainwindow.cpp" line="685"/>
         <source>All rights reserved.</source>
         <translation>Wszelkie prawa zastrzeżone.</translation>
     </message>
@@ -4040,7 +4040,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="386"/>
+        <location filename="../../src/page/page.cpp" line="392"/>
         <source>Open</source>
         <translation>Otwórz</translation>
     </message>
@@ -4141,22 +4141,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Wstępnie ustawiona lista danych</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="851"/>
+        <location filename="../../src/page/page.cpp" line="852"/>
         <source>Presets</source>
         <translation>Ustawienia wstępne</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="852"/>
+        <location filename="../../src/page/page.cpp" line="859"/>
         <source>Emitter</source>
         <translation>Emiter</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="853"/>
+        <location filename="../../src/page/page.cpp" line="865"/>
         <source>Responder</source>
         <translation>Odpowiadający</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="854"/>
+        <location filename="../../src/page/page.cpp" line="871"/>
         <source>Transfers</source>
         <translation>Transfery</translation>
     </message>
@@ -4165,58 +4165,58 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Fabryka Protokołu</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="865"/>
+        <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
         <translation type="unfinished">Skrypty</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="855"/>
+        <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
         <translation type="unfinished">Dokumentacja</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="856"/>
+        <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
         <translation type="unfinished">Szukaj</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="861"/>
+        <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="862"/>
+        <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="545"/>
-        <location filename="../../src/page/page.cpp" line="1092"/>
+        <location filename="../../src/page/page.cpp" line="551"/>
+        <location filename="../../src/page/page.cpp" line="1107"/>
         <source>Error: No device is opened.</source>
         <translation>Błąd: Żadne urządzenie nie jest otwarte.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="253"/>
+        <location filename="../../src/page/page.cpp" line="259"/>
         <source>Disable</source>
         <translation>Wyłącz</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="377"/>
+        <location filename="../../src/page/page.cpp" line="383"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="393"/>
+        <location filename="../../src/page/page.cpp" line="399"/>
         <source>Error Occurred</source>
         <translation>Wystąpił błąd</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="399"/>
+        <location filename="../../src/page/page.cpp" line="405"/>
         <source>Warning</source>
         <translation>Ostrzeżenie</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="868"/>
+        <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4229,7 +4229,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">Pokaż panele skryptów</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="573"/>
+        <location filename="../../src/page/page.cpp" line="579"/>
         <source>[%1][%2][%3][%4]</source>
         <translation>[%1][%2][%3][%4]</translation>
     </message>
@@ -4530,144 +4530,144 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="93"/>
+        <location filename="../../src/common/x.cpp" line="93"/>
         <source>Bin</source>
         <translation>Bin</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="95"/>
+        <location filename="../../src/common/x.cpp" line="95"/>
         <source>Oct</source>
         <translation>Okt</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="97"/>
+        <location filename="../../src/common/x.cpp" line="97"/>
         <source>Dec</source>
         <translation>Dz</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="99"/>
+        <location filename="../../src/common/x.cpp" line="99"/>
         <source>Hex</source>
         <translation>Hex</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="101"/>
+        <location filename="../../src/common/x.cpp" line="101"/>
         <source>Hex(No Space)</source>
         <translation>Hex (Bez spacji)</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="103"/>
+        <location filename="../../src/common/x.cpp" line="103"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="105"/>
+        <location filename="../../src/common/x.cpp" line="105"/>
         <source>UTF-8</source>
         <translation>UTF-8</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="394"/>
-        <location filename="../../src/common/xtools.cpp" line="456"/>
-        <location filename="../../src/common/xtools.cpp" line="781"/>
-        <location filename="../../src/common/xtools.cpp" line="799"/>
+        <location filename="../../src/common/x.cpp" line="394"/>
+        <location filename="../../src/common/x.cpp" line="456"/>
+        <location filename="../../src/common/x.cpp" line="781"/>
+        <location filename="../../src/common/x.cpp" line="799"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="120"/>
         <source>None</source>
         <translation>Brak</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="497"/>
-        <location filename="../../src/common/xtools.cpp" line="950"/>
-        <location filename="../../src/common/xtools.cpp" line="952"/>
+        <location filename="../../src/common/x.cpp" line="497"/>
+        <location filename="../../src/common/x.cpp" line="950"/>
+        <location filename="../../src/common/x.cpp" line="952"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="499"/>
-        <location filename="../../src/common/xtools.cpp" line="946"/>
-        <location filename="../../src/common/xtools.cpp" line="948"/>
+        <location filename="../../src/common/x.cpp" line="499"/>
+        <location filename="../../src/common/x.cpp" line="946"/>
+        <location filename="../../src/common/x.cpp" line="948"/>
         <source>Binary</source>
         <translation>Binarny</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="534"/>
+        <location filename="../../src/common/x.cpp" line="534"/>
         <source>Echo</source>
         <translation>Echo</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="535"/>
+        <location filename="../../src/common/x.cpp" line="535"/>
         <source>Always</source>
         <translation>Zawsze</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="536"/>
+        <location filename="../../src/common/x.cpp" line="536"/>
         <source>Input Equal Reference</source>
         <translation>Wejście równe odniesieniu</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="537"/>
+        <location filename="../../src/common/x.cpp" line="537"/>
         <source>Input Contain Reference</source>
         <translation>Wejście zawiera odniesienie</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="539"/>
+        <location filename="../../src/common/x.cpp" line="539"/>
         <source>Input Does not Contain Reference</source>
         <translation>Wejście nie zawiera odniesienia</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="782"/>
+        <location filename="../../src/common/x.cpp" line="782"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="121"/>
         <source>Even</source>
         <translation>Parzysty</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="783"/>
+        <location filename="../../src/common/x.cpp" line="783"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="122"/>
         <source>Odd</source>
         <translation>Nieparzysty</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="784"/>
+        <location filename="../../src/common/x.cpp" line="784"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="123"/>
         <source>Space</source>
         <translation>Spacja</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="785"/>
+        <location filename="../../src/common/x.cpp" line="785"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="124"/>
         <source>Mark</source>
         <translation>Znak</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="801"/>
+        <location filename="../../src/common/x.cpp" line="801"/>
         <source>RTS/CTS</source>
         <translation>RTS/CTS</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="802"/>
+        <location filename="../../src/common/x.cpp" line="802"/>
         <source>X-ON/X-OFF</source>
         <translation>X-ON/X-OFF</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="804"/>
+        <location filename="../../src/common/x.cpp" line="804"/>
         <source>Hardware</source>
         <translation>Sprzętowe</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="805"/>
+        <location filename="../../src/common/x.cpp" line="805"/>
         <source>Software</source>
         <translation>Programowe</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="911"/>
+        <location filename="../../src/common/x.cpp" line="911"/>
         <source>Disabled</source>
         <translation>Wyłączone</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="913"/>
+        <location filename="../../src/common/x.cpp" line="913"/>
         <source>Bidirectional</source>
         <translation>Dwukierunkowy</translation>
     </message>
     <message>
-        <location filename="../../src/common/xtools.cpp" line="915"/>
+        <location filename="../../src/common/x.cpp" line="915"/>
         <source>Unidirectional</source>
         <translation>Jednokierunkowy</translation>
     </message>
