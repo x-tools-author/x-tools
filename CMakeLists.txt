@@ -249,7 +249,7 @@ endif()
 # --------------------------------------------------------------------------------------------------
 # Include Private modules
 if(QT_VERSION VERSION_GREATER_EQUAL 6.5.0)
-  option(X_ENABLE_PRIVATE "Enable private features" ON)
+  option(X_ENABLE_PRIVATE "Enable private features" OFF)
 else()
   option(X_ENABLE_PRIVATE "Enable private features" OFF)
 endif()
