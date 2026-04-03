@@ -23,15 +23,15 @@ namespace xTools {
 class xTools;
 }
 
-class xManagerPrivate;
-class xManager : public QObject
+class xPageManagerPrivate;
+class xPageManager : public QObject
 {
     Q_OBJECT
-    xManagerPrivate* d{nullptr};
+    xPageManagerPrivate* d{nullptr};
 
 public:
-    explicit xManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent = nullptr);
-    ~xManager() override;
+    explicit xPageManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent = nullptr);
+    ~xPageManager() override;
 
     QJsonObject save();
     void load(const QJsonObject& obj);

@@ -15,7 +15,7 @@
 
 #include "common/xui.h"
 
-class xManager;
+class xPageManager;
 class MainWindow : public xUi
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ protected:
     virtual QUrl storeUrl() const;
 
 protected:
-    xManager* m_xMgr{nullptr};
+    xPageManager* m_xPageMgr{nullptr};
 
 private:
     void initMenuBar();

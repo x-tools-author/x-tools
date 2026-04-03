@@ -38,7 +38,7 @@ xAssistant::xAssistant(QWidget* parent)
         }
     }
 
-    xTools::xTools* tools = m_xMgr->xTools();
+    xTools::xTools* tools = m_xPageMgr->xTools();
     Page* page00 = tools->page00();
     Page* page01 = tools->page01();
     page00->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);

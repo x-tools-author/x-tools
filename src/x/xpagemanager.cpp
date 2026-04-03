@@ -6,7 +6,7 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#include "xmanager.h"
+#include "xpagemanager.h"
 
 #include <QAction>
 #include <QDebug>
@@ -59,10 +59,10 @@ struct LayoutManagerKeys
     const QString xLog{"xLog"};
 };
 
-class xManagerPrivate : public QObject
+class xPageManagerPrivate : public QObject
 {
 public:
-    explicit xManagerPrivate(xManager* parent = nullptr)
+    explicit xPageManagerPrivate(xPageManager* parent = nullptr)
         : QObject(parent)
         , q(parent)
     {}
@@ -118,7 +118,7 @@ public:
     QToolButton* addLayoutPage(const QString& name, QWidget* page)
     {
         if (!m_layout) {
-            qWarning("xManager: m_layout is null");
+            qWarning("xPageManager: m_layout is null");
             return nullptr;
         }
 
@@ -147,23 +147,23 @@ public:
     }
 
 private:
-    xManager* q{nullptr};
+    xPageManager* q{nullptr};
 };
 
-xManager::xManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
+xPageManager::xPageManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     : QObject(parent)
 {
-    d = new xManagerPrivate(this);
+    d = new xPageManagerPrivate(this);
     d->m_layout = layout;
     d->m_mainMenuBar = menuBar;
 
     if (!d->m_layout) {
-        qWarning("xManager: m_layout is null");
+        qWarning("xPageManager: m_layout is null");
         return;
     }
 
     if (!d->m_mainMenuBar) {
-        qWarning("xManager: menuBar is null");
+        qWarning("xPageManager: menuBar is null");
         return;
     }
 
@@ -232,15 +232,16 @@ xManager::xManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
     d->m_pages.append({QString("xLog"), d->m_log});
 }
 
-xManager::~xManager() {}
+xPageManager::~xPageManager() {}
 
-QJsonObject xManager::save()
+QJsonObject xPageManager::save()
 {
     LayoutManagerKeys keys;
     QJsonObject obj;
     obj.insert(keys.xIndex, currentIndex());
 
-    for (const auto& pageInfo : const_cast<const QList<xManagerPrivate::PageInfo>&>(d->m_pages)) {
+    for (const auto& pageInfo :
+         const_cast<const QList<xPageManagerPrivate::PageInfo>&>(d->m_pages)) {
         if (!pageInfo.page) {
             continue;
         }
@@ -252,13 +253,14 @@ QJsonObject xManager::save()
     return obj;
 }
 
-void xManager::load(const QJsonObject& obj)
+void xPageManager::load(const QJsonObject& obj)
 {
     LayoutManagerKeys keys;
     int index = obj.value(keys.xIndex).toInt(0);
     setCurrentIndex(index);
 
-    for (const auto& pageInfo : const_cast<const QList<xManagerPrivate::PageInfo>&>(d->m_pages)) {
+    for (const auto& pageInfo :
+         const_cast<const QList<xPageManagerPrivate::PageInfo>&>(d->m_pages)) {
         if (!pageInfo.page) {
             continue;
         }
@@ -269,7 +271,7 @@ void xManager::load(const QJsonObject& obj)
 }
 
 template<typename T>
-QAction* createNewWindowAction(xManager* manager, const QString& name)
+QAction* createNewWindowAction(xPageManager* manager, const QString& name)
 {
     QAction* action = new QAction(name, manager);
     QObject::connect(action, &QAction::triggered, manager, [=]() {
@@ -281,20 +283,20 @@ QAction* createNewWindowAction(xManager* manager, const QString& name)
     return action;
 }
 
-int xManager::currentIndex() const
+int xPageManager::currentIndex() const
 {
     if (!d->m_layout) {
-        qWarning("xManager: m_layout is null");
+        qWarning("xPageManager: m_layout is null");
         return 0;
     }
 
     return d->m_layout->currentIndex();
 }
 
-void xManager::setCurrentIndex(int index)
+void xPageManager::setCurrentIndex(int index)
 {
     if (!d->m_layout) {
-        qWarning("xManager: m_layout is null");
+        qWarning("xPageManager: m_layout is null");
         return;
     }
 
@@ -310,7 +312,7 @@ void xManager::setCurrentIndex(int index)
     }
 }
 
-QList<QAction*> xManager::newWindowActions()
+QList<QAction*> xPageManager::newWindowActions()
 {
     if (d->m_newWindowActions.isEmpty()) {
         QAction* a = nullptr;
@@ -349,12 +351,12 @@ QList<QAction*> xManager::newWindowActions()
     return d->m_newWindowActions;
 }
 
-xTools::xTools* xManager::xTools()
+xTools::xTools* xPageManager::xTools()
 {
     return d->m_tools;
 }
 
-void xManager::showLiteMode()
+void xPageManager::showLiteMode()
 {
     setCurrentIndex(0);
     d->m_tools->showLiteMode();

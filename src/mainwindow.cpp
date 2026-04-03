@@ -47,7 +47,7 @@
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
-#include "x/xmanager.h"
+#include "x/xpagemanager.h"
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
@@ -122,7 +122,7 @@ MainWindow::MainWindow(QWidget* parent)
     setObjectName("MainWindow");
 
     // Initialize layout manager
-    m_xMgr = new xManager(sl, menuBar(), this);
+    m_xPageMgr = new xPageManager(sl, menuBar(), this);
     initMenuBar();
 #if X_ENABLE_HID
     hid_init();
@@ -144,7 +144,7 @@ void MainWindow::load(const QString& fileName)
 
     if (!QFile::exists(filePath)) {
         qInfo() << "The file does not exist:" << filePath;
-        m_xMgr->load(QJsonObject());
+        m_xPageMgr->load(QJsonObject());
         return;
     }
 
@@ -165,7 +165,7 @@ void MainWindow::load(const QString& fileName)
     }
 
     QJsonObject obj = doc.object();
-    m_xMgr->load(obj.value(keys.layoutManager).toObject());
+    m_xPageMgr->load(obj.value(keys.layoutManager).toObject());
 
     bool showMax = obj.value(keys.showMax).toBool(false);
     if (showMax) {
@@ -173,14 +173,14 @@ void MainWindow::load(const QString& fileName)
         move(QPoint(0, 0));
     }
 
-    int index = m_xMgr->currentIndex();
+    int index = m_xPageMgr->currentIndex();
 }
 
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
     MainWindowParameterKeys keys;
-    obj.insert(keys.layoutManager, m_xMgr->save());
+    obj.insert(keys.layoutManager, m_xPageMgr->save());
     obj.insert(keys.showMax, isMaximized());
 
     QJsonDocument doc;
@@ -221,7 +221,7 @@ void MainWindow::showLiteMode()
         cornerWidget->hide();
     }
 
-    m_xMgr->showLiteMode();
+    m_xPageMgr->showLiteMode();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -271,7 +271,7 @@ void MainWindow::initFileMenu()
 #if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MAC)
     QMenu* newMenu = m_fileMenu->addMenu(tr("New Window"));
     m_fileMenu->addMenu(newMenu);
-    const QList<QAction*> actions = m_xMgr->newWindowActions();
+    const QList<QAction*> actions = m_xPageMgr->newWindowActions();
     for (int i = 0; i < actions.count(); i++) {
         newMenu->addAction(actions.at(i));
     }
