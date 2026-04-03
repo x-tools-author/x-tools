@@ -9,10 +9,6 @@
 #include "application.h"
 #include "xassistant.h"
 
-#if X_ENABLE_HID
-#include <hidapi.h>
-#endif
-
 int main(int argc, char *argv[])
 {
     Application::setOrganizationName("xAssistant");
@@ -25,10 +21,6 @@ int main(int argc, char *argv[])
     app.showSplashScreenMessage(QObject::tr("Application is booting..."));
     app.setupAppStyle();
     app.setupColorScheme();
-
-#if X_ENABLE_HID
-    hid_init();
-#endif
 
     xAssistant window;
     QSplashScreen *splash = app.splashScreen();
@@ -47,10 +39,5 @@ int main(int argc, char *argv[])
     window.show();
     window.moveToCenter();
 
-    int ret = app.exec();
-#if X_ENABLE_HID
-    hid_exit();
-#endif
-    Application::uninstallLog();
-    return ret;
+    return app.exec();
 }

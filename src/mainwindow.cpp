@@ -53,6 +53,15 @@
 #include "systemtrayicon.h"
 #endif
 
+#if X_ENABLE_HID
+#include <hidapi.h>
+#endif
+
+#if X_ENABLE_X_COAP
+#include <coap3/coap.h>
+#endif
+
+// Include last to avoid conflicts with Windows headers
 #if defined(_MSC_VER)
 #include <dwmapi.h>
 
@@ -114,9 +123,14 @@ MainWindow::MainWindow(QWidget* parent)
 
     // Initialize layout manager
     m_xMgr = new xManager(sl, menuBar(), this);
-
-    // ---------------------------------------------------------------------------------------------
     initMenuBar();
+#if X_ENABLE_HID
+    hid_init();
+#endif
+#if X_ENABLE_X_COAP
+    coap_startup();
+    coap_set_log_level(COAP_LOG_OSCORE);
+#endif
 }
 
 MainWindow::~MainWindow() {}
@@ -222,6 +236,14 @@ void MainWindow::closeEvent(QCloseEvent* event)
         event->accept();
         return;
     }
+#endif
+
+#if X_ENABLE_HID
+    hid_exit();
+#endif
+
+#if X_ENABLE_X_COAP
+    coap_cleanup();
 #endif
 
     QMainWindow::closeEvent(event);

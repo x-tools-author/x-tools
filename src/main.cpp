@@ -9,14 +9,6 @@
 #include <QDebug>
 #include <QScreen>
 
-#if X_ENABLE_HID
-#include <hidapi.h>
-#endif
-
-#if X_ENABLE_X_COAP
-#include <coap3/coap.h>
-#endif
-
 #if X_ENABLE_SINGLE_APPLICATION
 #include <singleapplication.h>
 #endif
@@ -32,13 +24,6 @@ int main(int argc, char *argv[])
 {
 #if X_ENABLE_LOG
     qInstallMessageHandler(xLog::Log::messageHandler);
-#endif
-#if X_ENABLE_HID
-    hid_init();
-#endif
-#if X_ENABLE_X_COAP
-    coap_startup();
-    coap_set_log_level(COAP_LOG_OSCORE);
 #endif
 
     Application::setOrganizationName("xTools");
@@ -63,24 +48,10 @@ int main(int argc, char *argv[])
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
     window.resize(1366, 768);
-
-    QScreen *screen = QGuiApplication::primaryScreen();
-    bool isSmallScreen = false;
-    if (screen) {
-        QRect screenGeometry = screen->availableGeometry();
-        if (screenGeometry.width() < window.width() || screenGeometry.height() < window.height()) {
-            isSmallScreen = true;
-        }
-    }
-
-    if (isSmallScreen) {
-        window.showMaximized();
-    } else {
-        window.show();
-        window.moveToCenter();
-    }
-
     window.load();
+    window.show();
+    window.moveToCenter();
+
 #if X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
         window.show();
@@ -90,13 +61,5 @@ int main(int argc, char *argv[])
     });
 #endif
 
-    const int ret = Application::exec();
-#if X_ENABLE_HID
-    hid_exit();
-#endif
-#if X_ENABLE_X_COAP
-    coap_cleanup();
-#endif
-    qInfo() << "Application exited with code:" << ret;
-    return ret;
+    return Application::exec();
 }
