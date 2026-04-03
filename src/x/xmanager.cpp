@@ -314,6 +314,8 @@ QList<QAction*> xManager::newWindowActions()
 {
     if (d->m_newWindowActions.isEmpty()) {
         QAction* a = nullptr;
+        a = createNewWindowAction<xTools::xTools>(this, QString("xTools"));
+        d->m_newWindowActions.append(a);
 #if X_ENABLE_X_MODBUS
         a = createNewWindowAction<xModbus::xModbus>(this, QString("xModbus"));
         d->m_newWindowActions.append(a);
