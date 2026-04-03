@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2024-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2024-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of eTools project.
  *
@@ -75,7 +75,7 @@ void Pipe::onLeftPageBytesRead(const QByteArray &bytes, const QString &from)
 {
     Q_UNUSED(from);
     if (m_leftButton->isChecked()) {
-        m_rightPage->inputBytes(bytes);
+        m_rightPage->writeBytes(bytes);
     }
 }
 
@@ -83,6 +83,6 @@ void Pipe::onRightPageBytesRead(const QByteArray &bytes, const QString &from)
 {
     Q_UNUSED(from);
     if (m_rightButton->isChecked()) {
-        m_leftPage->inputBytes(bytes);
+        m_leftPage->writeBytes(bytes);
     }
 }

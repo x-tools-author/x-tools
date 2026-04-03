@@ -162,4 +162,21 @@ void xTools::setWindowGrid(int grid)
     }
 }
 
+Page *xTools::page00() const
+{
+    return d->m_ioPage00;
+}
+
+Page *xTools::page01() const
+{
+    return d->m_ioPage01;
+}
+
+void xTools::showLiteMode()
+{
+    setWindowGrid(int(WindowGrid::Grid1x2));
+    d->m_ioPage00->showLiteMode();
+    d->m_ioPage01->showLiteMode();
+}
+
 } // namespace xTools

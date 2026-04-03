@@ -206,7 +206,8 @@ void MainWindow::showLiteMode()
     if (cornerWidget) {
         cornerWidget->hide();
     }
-    m_xMgr->setCurrentIndex(0);
+
+    m_xMgr->showLiteMode();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)

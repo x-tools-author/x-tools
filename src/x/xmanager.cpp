@@ -348,3 +348,14 @@ QList<QAction*> xManager::newWindowActions()
 
     return d->m_newWindowActions;
 }
+
+xTools::xTools* xManager::xTools()
+{
+    return d->m_tools;
+}
+
+void xManager::showLiteMode()
+{
+    setCurrentIndex(0);
+    d->m_tools->showLiteMode();
+}

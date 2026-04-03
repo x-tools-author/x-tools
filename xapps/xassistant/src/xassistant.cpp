@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -13,6 +13,8 @@
 
 #include "page/page.h"
 #include "pipe.h"
+#include "x/tools/xtools.h"
+#include "x/xmanager.h"
 
 xAssistant::xAssistant(QWidget* parent)
     : MainWindow(parent)
@@ -36,9 +38,12 @@ xAssistant::xAssistant(QWidget* parent)
         }
     }
 
-    hideHistoryAction();
-
-    m_pipe = new Pipe(m_ioPage00, m_ioPage01, this);
+    xTools::xTools* tools = m_xMgr->xTools();
+    Page* page00 = tools->page00();
+    Page* page01 = tools->page01();
+    page00->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    page01->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    m_pipe = new Pipe(page00, page01, this);
     Q_UNUSED(m_pipe);
 }
 

@@ -10,6 +10,8 @@
 
 #include "x/xpage.h"
 
+class Page;
+
 namespace xTools {
 
 class xToolsPrivate;
@@ -31,6 +33,10 @@ public:
 
     int windowGrid() const;
     void setWindowGrid(int grid);
+
+    Page *page00() const;
+    Page *page01() const;
+    void showLiteMode();
 };
 
 }; // namespace xTools

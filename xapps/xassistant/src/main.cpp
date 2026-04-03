@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2025 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of xTools project.
  *
@@ -33,11 +33,18 @@ int main(int argc, char *argv[])
     xAssistant window;
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
-    window.show();
     window.load();
-    window.updateGrid(MainWindow::WindowGrid::Grid1x2);
     window.showLiteMode();
+#if 0
     window.resize(1366, 768);
+#else
+    window.setFixedSize(1366, 768);
+    window.setMinimumHeight(0);
+    window.setMinimumWidth(0);
+    window.setMaximumHeight(QWIDGETSIZE_MAX);
+    window.setMaximumWidth(QWIDGETSIZE_MAX);
+#endif
+    window.show();
     window.moveToCenter();
 
     int ret = app.exec();

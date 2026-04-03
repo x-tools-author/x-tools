@@ -19,6 +19,10 @@
 #include <QToolButton>
 #include <QWidget>
 
+namespace xTools {
+class xTools;
+}
+
 class xManagerPrivate;
 class xManager : public QObject
 {
@@ -34,5 +38,8 @@ public:
 
     int currentIndex() const;
     void setCurrentIndex(int index);
+
     QList<QAction*> newWindowActions();
+    xTools::xTools* xTools();
+    void showLiteMode();
 };
