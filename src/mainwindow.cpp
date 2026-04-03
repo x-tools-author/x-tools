@@ -42,12 +42,12 @@
 
 #include "application.h"
 #include "common/x.h"
-#include "layoutmanager.h"
 #include "page/page.h"
 #include "tools/assistantfactory.h"
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
+#include "x/layoutmanager.h"
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
@@ -74,10 +74,6 @@ struct MainWindowParameterKeys
 
 MainWindow::MainWindow(QWidget* parent)
     : xUi(parent)
-    , m_ioPage00(Q_NULLPTR)
-    , m_ioPage01(Q_NULLPTR)
-    , m_ioPage10(Q_NULLPTR)
-    , m_ioPage11(Q_NULLPTR)
 {
 #if defined(X_MAGIC)
     setWindowOpacity(0.4);
@@ -104,25 +100,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     winId();
     QSettings* settings = Application::settings();
-    xAPP->showSplashScreenMessage(QString("Create page 1..."));
-    m_ioPage00 = new Page(Page::Left, settings, this);
-    xAPP->showSplashScreenMessage(QString("Create page 2..."));
-    m_ioPage01 = new Page(Page::Right, settings, this);
-    xAPP->showSplashScreenMessage(QString("Create page 3..."));
-    m_ioPage10 = new Page(Page::Left, settings, this);
-    xAPP->showSplashScreenMessage(QString("Create page 4..."));
-    m_ioPage11 = new Page(Page::Right, settings, this);
-
     xAPP->showSplashScreenMessage(QString("Create main window..."));
-    QWidget* ioLayoutWidget = new QWidget();
-    auto* layout = new QGridLayout(ioLayoutWidget);
-    layout->setSpacing(0);
-    layout->setContentsMargins(0, 0, 0, 0);
-    layout->addWidget(m_ioPage00, 0, 0);
-    layout->addWidget(m_ioPage01, 0, 1);
-    layout->addWidget(m_ioPage10, 1, 0);
-    layout->addWidget(m_ioPage11, 1, 1);
-    ioLayoutWidget->setLayout(layout);
 
     auto* centralWidget = new QWidget();
     QStackedLayout* sl = new QStackedLayout(centralWidget);
@@ -144,9 +122,7 @@ MainWindow::MainWindow(QWidget* parent)
 
     // Initialize layout manager
     m_layoutManager = new LayoutManager(sl, menuBar(), this);
-    QToolButton* button = m_layoutManager->addLayoutPage(QString("xTools"), ioLayoutWidget);
     m_layoutManager->setupPages();
-    button->setChecked(true);
 
     // ---------------------------------------------------------------------------------------------
     initMenuBar();
@@ -187,10 +163,6 @@ void MainWindow::load(const QString& fileName)
     }
 
     QJsonObject obj = doc.object();
-    m_ioPage00->load(obj.value(keys.page00).toObject().toVariantMap());
-    m_ioPage01->load(obj.value(keys.page01).toObject().toVariantMap());
-    m_ioPage10->load(obj.value(keys.page10).toObject().toVariantMap());
-    m_ioPage11->load(obj.value(keys.page11).toObject().toVariantMap());
     m_layoutManager->load(obj.value(keys.layoutManager).toObject());
 
     bool showMax = obj.value(keys.showMax).toBool(false);
@@ -207,10 +179,6 @@ void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
     MainWindowParameterKeys keys;
-    obj.insert(keys.page00, QJsonObject::fromVariantMap(m_ioPage00->save()));
-    obj.insert(keys.page01, QJsonObject::fromVariantMap(m_ioPage01->save()));
-    obj.insert(keys.page10, QJsonObject::fromVariantMap(m_ioPage10->save()));
-    obj.insert(keys.page11, QJsonObject::fromVariantMap(m_ioPage11->save()));
     obj.insert(keys.layoutManager, m_layoutManager->save());
     obj.insert(keys.showMax, isMaximized());
 
@@ -234,29 +202,8 @@ void MainWindow::save(const QString& fileName) const
 
 void MainWindow::updateGrid(WindowGrid grid)
 {
-    if (grid == WindowGrid::Grid1x2) {
-        m_ioPage00->show();
-        m_ioPage01->show();
-        m_ioPage10->hide();
-        m_ioPage11->hide();
-    } else if (grid == WindowGrid::Grid2x1) {
-        m_ioPage00->show();
-        m_ioPage01->hide();
-        m_ioPage10->show();
-        m_ioPage11->hide();
-    } else if (grid == WindowGrid::Grid2x2) {
-        m_ioPage00->show();
-        m_ioPage01->show();
-        m_ioPage10->show();
-        m_ioPage11->show();
-    } else {
-        m_ioPage00->show();
-        m_ioPage01->hide();
-        m_ioPage10->hide();
-        m_ioPage11->hide();
-    }
-
     m_windowGrid = grid;
+    //m_layoutManager->setWindowGrid(grid);
     xAPP->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
 }
 
@@ -282,11 +229,6 @@ void MainWindow::hideHistoryAction()
 
 void MainWindow::showLiteMode()
 {
-    m_ioPage00->showLiteMode();
-    m_ioPage01->showLiteMode();
-    m_ioPage10->showLiteMode();
-    m_ioPage11->showLiteMode();
-
     QWidget* cornerWidget = menuBar()->cornerWidget(Qt::TopRightCorner);
     if (cornerWidget) {
         cornerWidget->hide();
@@ -306,11 +248,6 @@ void MainWindow::clearOutput(int channel)
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    m_ioPage00->aboutToClose();
-    m_ioPage01->aboutToClose();
-    m_ioPage10->aboutToClose();
-    m_ioPage11->aboutToClose();
-
     save();
 
     QSettings* settings = xAPP->settings();

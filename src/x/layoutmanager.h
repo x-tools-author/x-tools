@@ -19,6 +19,10 @@
 #include <QToolButton>
 #include <QWidget>
 
+namespace xTools {
+class xTools;
+}
+
 #if X_ENABLE_X_BLE
 namespace xBle {
 class xBle;
@@ -92,6 +96,7 @@ private:
     QList<QAction*> m_newWindowActions;
 
 private:
+    xTools::xTools* m_tools{nullptr};
 #if X_ENABLE_X_BLE
     xBle::xBle* m_ble{nullptr};
 #endif

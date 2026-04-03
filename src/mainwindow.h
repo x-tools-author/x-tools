@@ -43,10 +43,6 @@ protected:
     virtual QUrl storeUrl() const;
 
 protected:
-    Page* m_ioPage00;
-    Page* m_ioPage01;
-    Page* m_ioPage10;
-    Page* m_ioPage11;
     QAction* m_historyAction{nullptr};
     LayoutManager* m_layoutManager{nullptr};
     QMenu* m_viewMenu{nullptr};

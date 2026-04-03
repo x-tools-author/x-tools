@@ -60,6 +60,7 @@ xTools::xTools(QWidget *parent)
     layout->addWidget(d->m_ioPage10, 1, 0);
     layout->addWidget(d->m_ioPage11, 1, 1);
     setLayout(layout);
+    setWindowGrid(d->m_windowGrid);
 }
 
 xTools::~xTools() {}

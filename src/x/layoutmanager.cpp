@@ -14,6 +14,7 @@
 #include "common/xapp.h"
 #include "log/log.h"
 #include "x/common/xpage.h"
+#include "x/tools/xtools.h"
 
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"
@@ -44,6 +45,7 @@ struct LayoutManagerKeys
 {
     const QString xIndex{"xIndex"};
 
+    const QString xTools{"xTools"};
     const QString xBle{"xBle"};
     const QString xModbus{"xModbus"};
     const QString xCanbus{"xCanbus"};
@@ -122,6 +124,8 @@ QToolButton* LayoutManager::addLayoutPage(const QString& name, QWidget* page)
 
 void LayoutManager::setupPages()
 {
+    m_tools = new xTools::xTools(m_layout->parentWidget());
+    addLayoutPage(QString("xTools"), m_tools);
 #if X_ENABLE_X_BLE
     m_ble = new xBle::xBle(m_layout->parentWidget());
     addLayoutPage(QString("xBLE"), m_ble);
