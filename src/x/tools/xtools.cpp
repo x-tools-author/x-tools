@@ -8,6 +8,7 @@
  **************************************************************************************************/
 #include "xtools.h"
 
+#include <QActionGroup>
 #include <QGridLayout>
 
 #include "common/xapp.h"
@@ -37,6 +38,8 @@ public:
     Page *m_ioPage01{nullptr};
     Page *m_ioPage10{nullptr};
     Page *m_ioPage11{nullptr};
+    QMenu *m_toolButtonMenu{nullptr};
+    QActionGroup *m_windowGridActionGroup{nullptr};
     int m_windowGrid{int(xTools::WindowGrid::Grid1x1)};
 
 private:
@@ -89,6 +92,43 @@ void xTools::load(const QJsonObject &obj)
     d->m_ioPage01->load(obj.value(keys.page01).toObject().toVariantMap());
     d->m_ioPage10->load(obj.value(keys.page10).toObject().toVariantMap());
     d->m_ioPage11->load(obj.value(keys.page11).toObject().toVariantMap());
+}
+
+QMenu *xTools::toolButtonMenu()
+{
+    if (d->m_toolButtonMenu) {
+        return d->m_toolButtonMenu;
+    }
+
+    QMenu *menu = new QMenu(this);
+    QAction *a00 = menu->addAction(tr("1x1"), [this]() { setWindowGrid(int(WindowGrid::Grid1x1)); });
+    QAction *a01 = menu->addAction(tr("1x2"), [this]() { setWindowGrid(int(WindowGrid::Grid1x2)); });
+    QAction *a10 = menu->addAction(tr("2x1"), [this]() { setWindowGrid(int(WindowGrid::Grid2x1)); });
+    QAction *a11 = menu->addAction(tr("2x2"), [this]() { setWindowGrid(int(WindowGrid::Grid2x2)); });
+    d->m_toolButtonMenu = menu;
+
+    a00->setCheckable(true);
+    a01->setCheckable(true);
+    a10->setCheckable(true);
+    a11->setCheckable(true);
+
+    d->m_windowGridActionGroup = new QActionGroup(this);
+    d->m_windowGridActionGroup->addAction(a00);
+    d->m_windowGridActionGroup->addAction(a01);
+    d->m_windowGridActionGroup->addAction(a10);
+    d->m_windowGridActionGroup->addAction(a11);
+
+    if (d->m_windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
+        a01->setChecked(true);
+    } else if (d->m_windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
+        a10->setChecked(true);
+    } else if (d->m_windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
+        a11->setChecked(true);
+    } else {
+        a00->setChecked(true);
+    }
+
+    return d->m_toolButtonMenu;
 }
 
 int xTools::windowGrid() const

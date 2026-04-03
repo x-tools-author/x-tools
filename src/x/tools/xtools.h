@@ -27,6 +27,7 @@ public:
 
     QJsonObject save() const override;
     void load(const QJsonObject &obj) override;
+    QMenu *toolButtonMenu() override;
 
     int windowGrid() const;
     void setWindowGrid(int grid);

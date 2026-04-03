@@ -47,7 +47,7 @@
 #include "utilities/hdpimanager.h"
 #include "utilities/i18n.h"
 #include "utilities/stylemanager.h"
-#include "x/layoutmanager.h"
+#include "x/xmanager.h"
 
 #ifdef Q_OS_WIN
 #include "systemtrayicon.h"
@@ -108,27 +108,16 @@ MainWindow::MainWindow(QWidget* parent)
     centralWidget->setLayout(sl);
     setCentralWidget(centralWidget);
 
-    const int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    const QString key = m_settingsKey.windowGrid;
-    int rawGrid = settings->value(key, defaultGrid).toInt();
-    m_windowGrid = static_cast<WindowGrid>(rawGrid);
-    updateGrid(m_windowGrid);
-    qInfo() << "The value of window grid is:" << static_cast<int>(m_windowGrid);
-
     xAPP->showSplashScreenMessage(QString("Create menu bar of main window..."));
     setWindowIcon(QIcon(":/res/icons/logo.svg"));
     setWindowTitle(qApp->applicationName() + " v" + qApp->applicationVersion());
     setObjectName("MainWindow");
 
     // Initialize layout manager
-    m_layoutManager = new LayoutManager(sl, menuBar(), this);
-    m_layoutManager->setupPages();
+    m_xMgr = new xManager(sl, menuBar(), this);
 
     // ---------------------------------------------------------------------------------------------
     initMenuBar();
-    connect(sl, &QStackedLayout::currentChanged, this, [=](int index) {
-        this->m_viewMenu->menuAction()->setEnabled(index == 0);
-    });
 }
 
 MainWindow::~MainWindow() {}
@@ -142,7 +131,7 @@ void MainWindow::load(const QString& fileName)
 
     if (!QFile::exists(filePath)) {
         qInfo() << "The file does not exist:" << filePath;
-        m_layoutManager->load(QJsonObject());
+        m_xMgr->load(QJsonObject());
         return;
     }
 
@@ -163,7 +152,7 @@ void MainWindow::load(const QString& fileName)
     }
 
     QJsonObject obj = doc.object();
-    m_layoutManager->load(obj.value(keys.layoutManager).toObject());
+    m_xMgr->load(obj.value(keys.layoutManager).toObject());
 
     bool showMax = obj.value(keys.showMax).toBool(false);
     if (showMax) {
@@ -171,15 +160,14 @@ void MainWindow::load(const QString& fileName)
         move(QPoint(0, 0));
     }
 
-    int index = m_layoutManager->currentIndex();
-    m_viewMenu->menuAction()->setEnabled(index == 0);
+    int index = m_xMgr->currentIndex();
 }
 
 void MainWindow::save(const QString& fileName) const
 {
     QJsonObject obj;
     MainWindowParameterKeys keys;
-    obj.insert(keys.layoutManager, m_layoutManager->save());
+    obj.insert(keys.layoutManager, m_xMgr->save());
     obj.insert(keys.showMax, isMaximized());
 
     QJsonDocument doc;
@@ -200,13 +188,6 @@ void MainWindow::save(const QString& fileName) const
     file.close();
 }
 
-void MainWindow::updateGrid(WindowGrid grid)
-{
-    m_windowGrid = grid;
-    //m_layoutManager->setWindowGrid(grid);
-    xAPP->settings()->setValue(m_settingsKey.windowGrid, static_cast<int>(grid));
-}
-
 void MainWindow::moveToCenter()
 {
     QRect screenRect = QApplication::primaryScreen()->geometry();
@@ -220,30 +201,13 @@ void MainWindow::moveToCenter()
     }
 }
 
-void MainWindow::hideHistoryAction()
-{
-    if (m_historyAction) {
-        m_historyAction->setVisible(false);
-    }
-}
-
 void MainWindow::showLiteMode()
 {
     QWidget* cornerWidget = menuBar()->cornerWidget(Qt::TopRightCorner);
     if (cornerWidget) {
         cornerWidget->hide();
     }
-    m_layoutManager->setCurrentIndex(0);
-}
-
-void MainWindow::outputBytes(const QString& txt, int channel)
-{
-    m_layoutManager->outputBytes(txt, channel);
-}
-
-void MainWindow::clearOutput(int channel)
-{
-    m_layoutManager->clearOutput(channel);
+    m_xMgr->setCurrentIndex(0);
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -251,8 +215,6 @@ void MainWindow::closeEvent(QCloseEvent* event)
     save();
 
     QSettings* settings = xAPP->settings();
-    settings->setValue(m_settingsKey.windowGrid, static_cast<int>(m_windowGrid));
-
 #ifdef Q_OS_WIN
     if (settings->value(m_settingsKey.exitToSystemTray).toBool()) {
         hide();
@@ -277,7 +239,6 @@ void MainWindow::initMenuBar()
     initToolMenu();
 #endif
     initOptionMenu();
-    initViewMenu();
     initHelpMenu();
 }
 
@@ -293,7 +254,7 @@ void MainWindow::initFileMenu()
         w->setWindowTitle("xTools");
         w->show();
     });
-    const QList<QAction*> actions = m_layoutManager->newWindowActions();
+    const QList<QAction*> actions = m_xMgr->newWindowActions();
     for (int i = 0; i < actions.count(); i++) {
         newMenu->addAction(actions.at(i));
     }
@@ -379,58 +340,6 @@ void MainWindow::initOptionMenu()
     action->setChecked(useSystemProxy);
     QNetworkProxyFactory::setUseSystemConfiguration(useSystemProxy);
 #endif
-}
-
-void MainWindow::initViewMenu()
-{
-    m_viewMenu = new QMenu(tr("&View"), this);
-    menuBar()->insertMenu(m_languageMenu->menuAction(), m_viewMenu);
-    m_viewMenu->setObjectName("ViewMenu");
-    initViewMenuGrid(m_viewMenu);
-    QAction* action = m_viewMenu->addSeparator();
-    action->setObjectName("PageViewAction");
-}
-
-void MainWindow::initViewMenuGrid(QMenu* viewMenu)
-{
-    static QActionGroup* group = new QActionGroup(this);
-    if (!group->actions().isEmpty()) {
-        return;
-    }
-
-    auto a1x1 = viewMenu->addAction("1x1", this, [=]() { updateGrid(WindowGrid::Grid1x1); });
-    auto a1x2 = viewMenu->addAction("1x2", this, [=]() { updateGrid(WindowGrid::Grid1x2); });
-    auto a2x1 = viewMenu->addAction("2x1", this, [=]() { updateGrid(WindowGrid::Grid2x1); });
-    auto a2x2 = viewMenu->addAction("2x2", this, [=]() { updateGrid(WindowGrid::Grid2x2); });
-
-    a1x1->setObjectName("PageViewAction");
-    a1x2->setObjectName("PageViewAction");
-    a2x1->setObjectName("PageViewAction");
-    a2x2->setObjectName("PageViewAction");
-
-    a1x1->setCheckable(true);
-    a1x2->setCheckable(true);
-    a2x1->setCheckable(true);
-    a2x2->setCheckable(true);
-
-    group->addAction(a1x1);
-    group->addAction(a1x2);
-    group->addAction(a2x1);
-    group->addAction(a2x2);
-
-    int defaultGrid = static_cast<int>(WindowGrid::Grid1x1);
-    int windowGrid = xAPP->settings()->value(m_settingsKey.windowGrid, defaultGrid).toInt();
-    m_windowGrid = static_cast<WindowGrid>(windowGrid);
-    updateGrid(m_windowGrid);
-    if (windowGrid == static_cast<int>(WindowGrid::Grid1x2)) {
-        a1x2->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x1)) {
-        a2x1->setChecked(true);
-    } else if (windowGrid == static_cast<int>(WindowGrid::Grid2x2)) {
-        a2x2->setChecked(true);
-    } else {
-        a1x1->setChecked(true);
-    }
 }
 
 void MainWindow::initHelpMenu()

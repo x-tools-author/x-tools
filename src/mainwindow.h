@@ -16,7 +16,7 @@
 #include "common/xui.h"
 
 class Page;
-class LayoutManager;
+class xManager;
 class MainWindow : public xUi
 {
     Q_OBJECT
@@ -29,43 +29,29 @@ public:
 
     void load(const QString& fileName = QString());
     void save(const QString& fileName = QString()) const;
-    void updateGrid(WindowGrid grid);
     void moveToCenter();
-    void hideHistoryAction();
     void showLiteMode();
-
-    // Just for xFlow
-    Q_INVOKABLE void outputBytes(const QString& txt, int channel);
-    Q_INVOKABLE void clearOutput(int channel);
 
 protected:
     void closeEvent(QCloseEvent* event) override;
     virtual QUrl storeUrl() const;
 
 protected:
-    QAction* m_historyAction{nullptr};
-    LayoutManager* m_layoutManager{nullptr};
-    QMenu* m_viewMenu{nullptr};
+    xManager* m_xMgr{nullptr};
 
 private:
     struct SettingsKeys
     {
-        const QString windowGrid{"MainWindow/windowGrid"};
-        const QString pageIndex{"MainWindow/pageIndex"};
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
         const QString useSystemProxy{"MainWindow/useSystemProxy"};
         const QString staysOnTop{"MainWindow/staysOnTop"};
     } m_settingsKey;
-
-    WindowGrid m_windowGrid{WindowGrid::Grid1x1};
 
 private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
-    void initViewMenu();
-    void initViewMenuGrid(QMenu* viewMenu);
     void initHelpMenu();
 
     void showHistory();
