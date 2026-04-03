@@ -2708,42 +2708,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
-        <location filename="../../src/log/logview.ui" line="14"/>
+        <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="35"/>
+        <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
         <translation type="unfinished">ログレベル</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="58"/>
+        <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
         <translation type="unfinished">フィルター</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="71"/>
+        <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
         <translation type="unfinished">ログをクリアする</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="81"/>
+        <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="88"/>
+        <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="98"/>
+        <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="111"/>
+        <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2946,85 +2946,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="351"/>
+        <location filename="../../src/mainwindow.cpp" line="249"/>
         <source>New Window</source>
         <translation>新しいウィンドウ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="257"/>
         <source>Save Parameters</source>
         <translation>パラメータを保存</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="261"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Import Parameters</source>
         <translation>パラメータをインポート</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="373"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="265"/>
+        <location filename="../../src/mainwindow.cpp" line="481"/>
         <source>Export Parameters</source>
         <translation>パラメータをエクスポート</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="278"/>
         <source>&amp;Tools</source>
         <translation>&amp;ツール</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../src/mainwindow.cpp" line="282"/>
         <source>New</source>
         <translation>新規</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
-        <translation>&amp;表示</translation>
+        <translation type="vanished">&amp;表示</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>About</source>
         <translation>アプリについて</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="503"/>
-        <location filename="../../src/mainwindow.cpp" line="543"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>Release History</source>
         <translation>リリース履歴</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>Join in QQ Group</source>
         <translation>QQグループに参加する</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="428"/>
+        <location filename="../../src/mainwindow.cpp" line="320"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="372"/>
         <source>Third Party Open Source</source>
         <translation>サードパーティオープンソース</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>QR Code</source>
         <translation>QRコード</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="572"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>User QQ Group</source>
         <translation>ユーザーQQグループ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="416"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQグループ</translation>
     </message>
@@ -3041,38 +3040,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(アプリケーションを手動で再起動してください。)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>Json Files (*.json)</source>
         <translation>JSONファイル（*.json）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>Unknown</source>
         <translation>不明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="518"/>
         <source>Commit hash</source>
         <translation>コミットハッシュ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="520"/>
         <source>Commit time</source>
         <translation>コミット時間</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="521"/>
         <source>Build Date</source>
         <translation>ビルド日</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="522"/>
         <source>Copyright</source>
         <translation>著作権</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>All rights reserved.</source>
         <translation>全著作権所有。</translation>
     </message>
@@ -4716,17 +4715,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>四捨五入しない</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="40"/>
+        <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
         <translation type="unfinished">デバッグ</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="41"/>
+        <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="42"/>
+        <location filename="../../src/x/log/logview.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
@@ -4734,22 +4733,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="43"/>
+        <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
         <translation type="unfinished">致命的</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="47"/>
+        <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="100"/>
+        <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="101"/>
+        <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6928,151 +6927,151 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="64"/>
         <source>Navigator Window</source>
         <translation>ナビゲータウィンドウ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="67"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="68"/>
         <source>Nodes List</source>
         <translation>ノードリスト</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
         <source>Output</source>
         <translation>出力</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="84"/>
         <source>Log</source>
         <translation>ログ</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Toggle Left Panel</source>
         <translation>左パネルの切り替え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
         <source>Toggle Bottom Panel</source>
         <translation>底部パネルの切り替え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
         <source>Show Ruler</source>
         <translation>定規を表示</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>New Project</source>
         <translation>新しいプロジェクト</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="259"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="260"/>
         <source>Open Project</source>
         <translation>プロジェクトを開く</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Save Project</source>
         <translation>プロジェクトの保存</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="283"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="284"/>
         <source>Save Project As...</source>
         <translation>プロジェクトに名前を付けて保存...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Fit Screen</source>
         <translation>画面に合わせる</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Zoom In</source>
         <translation>ズームイン</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Zoom Out</source>
         <translation>ズームアウト</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="233"/>
         <source>Reset Zoom</source>
         <translation>ズームをリセット</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="234"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
         <source>Align Left</source>
         <translation>左揃え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
         <source>Align Right</source>
         <translation>右揃え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
         <source>Align Top</source>
         <translation>上揃え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
         <source>Align Bottom</source>
         <translation>下揃え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Align Vertical Center</source>
         <translation>垂直方向の中心を揃える</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="240"/>
         <source>Align Horizontal Center</source>
         <translation>水平方向の中央揃え</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
         <source>Select All</source>
         <translation>すべて選択</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
         <source>Delete Selected</source>
         <translation>選択したものを削除</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="365"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="244"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
         <source>Clear All Nodes</source>
         <translation>すべてのノードをクリア</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
         <source>Undo</source>
         <translation>元に戻す</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
         <source>Redo</source>
         <translation>やり直し</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="261"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="285"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="262"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="286"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow プロジェクト ファイル (*.xflow);;すべてのファイル (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="367"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>すべてのノードをクリアしてもよろしいですか?</translation>
     </message>
@@ -7080,52 +7079,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="83"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
         <translation type="unfinished">デバッグ</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="87"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="89"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
         <translation type="unfinished">致命的</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="91"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
         <translation type="unfinished">致命的</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="93"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
         <translation type="unfinished">不明</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="147"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
         <translation type="unfinished">レベル</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="151"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
         <translation type="unfinished">メッセージ</translation>
     </message>
@@ -7591,6 +7590,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>System</source>
         <translation type="obsolete">システム</translation>
+    </message>
+</context>
+<context>
+    <name>xTools::xTools</name>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="104"/>
+        <source>1x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="105"/>
+        <source>1x2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="106"/>
+        <source>2x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="107"/>
+        <source>2x2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

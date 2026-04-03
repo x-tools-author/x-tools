@@ -2708,42 +2708,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
-        <location filename="../../src/log/logview.ui" line="14"/>
+        <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="35"/>
+        <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
         <translation type="unfinished">Úroveň denníka</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="58"/>
+        <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
         <translation type="unfinished">Filter</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="71"/>
+        <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
         <translation type="unfinished">Vymazať denník</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="81"/>
+        <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="88"/>
+        <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="98"/>
+        <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="111"/>
+        <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2946,85 +2946,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="351"/>
+        <location filename="../../src/mainwindow.cpp" line="249"/>
         <source>New Window</source>
         <translation>Nové okno</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="257"/>
         <source>Save Parameters</source>
         <translation>Uložiť parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="261"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Import Parameters</source>
         <translation>Importovať parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="373"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="265"/>
+        <location filename="../../src/mainwindow.cpp" line="481"/>
         <source>Export Parameters</source>
         <translation>Exportovať parametre</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="278"/>
         <source>&amp;Tools</source>
         <translation>&amp;Nástroje</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../src/mainwindow.cpp" line="282"/>
         <source>New</source>
         <translation>Nový</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
-        <translation>&amp;Zobrazenie</translation>
+        <translation type="vanished">&amp;Zobrazenie</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>About</source>
         <translation>O programe</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="503"/>
-        <location filename="../../src/mainwindow.cpp" line="543"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>Release History</source>
         <translation>História verzií</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>Join in QQ Group</source>
         <translation>Pridajte sa do skupiny QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="428"/>
+        <location filename="../../src/mainwindow.cpp" line="320"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="372"/>
         <source>Third Party Open Source</source>
         <translation>Tretie strany Open Source</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>QR Code</source>
         <translation>QR kód</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="572"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>User QQ Group</source>
         <translation>Užívateľská QQ skupina</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="416"/>
         <source>Qt QQ Group</source>
         <translation>Qt QQ skupina</translation>
     </message>
@@ -3041,38 +3040,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Prosím, reštartujte svoju aplikáciu ručne.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>Json Files (*.json)</source>
         <translation>Json súbory (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>Unknown</source>
         <translation>Neznáme</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="518"/>
         <source>Commit hash</source>
         <translation>Hash potvrdenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="520"/>
         <source>Commit time</source>
         <translation>Čas potvrdenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="521"/>
         <source>Build Date</source>
         <translation>Dátum zostavenia</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="522"/>
         <source>Copyright</source>
         <translation>Autorské práva</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>All rights reserved.</source>
         <translation>Všetky práva vyhradené.</translation>
     </message>
@@ -4716,17 +4715,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Nezaokrúhľovať</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="40"/>
+        <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
         <translation type="unfinished">Debug</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="41"/>
+        <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="42"/>
+        <location filename="../../src/x/log/logview.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
@@ -4734,22 +4733,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>POZOR</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="43"/>
+        <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
         <translation type="unfinished">Kritické</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="47"/>
+        <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="100"/>
+        <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="101"/>
+        <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6928,151 +6927,151 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="64"/>
         <source>Navigator Window</source>
         <translation>Okno navigátora</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="67"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="68"/>
         <source>Nodes List</source>
         <translation>Zoznam uzlov</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
         <source>Output</source>
         <translation>Výstup</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="84"/>
         <source>Log</source>
         <translation>Log</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Toggle Left Panel</source>
         <translation>Prepnúť ľavý panel</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
         <source>Toggle Bottom Panel</source>
         <translation>Prepnúť spodný panel</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
         <source>Show Ruler</source>
         <translation>Zobraziť pravítko</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>New Project</source>
         <translation>Nový projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="259"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="260"/>
         <source>Open Project</source>
         <translation>Otvorte projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Save Project</source>
         <translation>Uložiť projekt</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="283"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="284"/>
         <source>Save Project As...</source>
         <translation>Uložiť projekt ako...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Fit Screen</source>
         <translation>Prispôsobiť obrazovku</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Zoom In</source>
         <translation>Priblížiť</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Zoom Out</source>
         <translation>Oddialiť</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="233"/>
         <source>Reset Zoom</source>
         <translation>Obnoviť priblíženie</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="234"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
         <source>Align Left</source>
         <translation>Zarovnať doľava</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
         <source>Align Right</source>
         <translation>Zarovnať doprava</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
         <source>Align Top</source>
         <translation>Zarovnať hore</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
         <source>Align Bottom</source>
         <translation>Zarovnať spodok</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Align Vertical Center</source>
         <translation>Zarovnať zvisle na stred</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="240"/>
         <source>Align Horizontal Center</source>
         <translation>Zarovnajte vodorovný stred</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
         <source>Select All</source>
         <translation>Vyberte možnosť Všetky</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
         <source>Delete Selected</source>
         <translation>Odstrániť vybraté</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="365"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="244"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
         <source>Clear All Nodes</source>
         <translation>Vymazať všetky uzly</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
         <source>Undo</source>
         <translation>Vrátiť späť</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
         <source>Redo</source>
         <translation>Znovu</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="261"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="285"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="262"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="286"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow Project Files (*.xflow);;All Files (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="367"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>Naozaj chcete vymazať všetky uzly?</translation>
     </message>
@@ -7080,52 +7079,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="83"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
         <translation type="unfinished">Debug</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="87"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="89"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
         <translation type="unfinished">Kritické</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="91"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
         <translation type="unfinished">Osudný</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="93"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
         <translation type="unfinished">Neznáme</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="147"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
         <translation type="unfinished">úroveň</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="151"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
         <translation type="unfinished">Správa</translation>
     </message>
@@ -7583,6 +7582,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>System</source>
         <translation type="obsolete">Systém</translation>
+    </message>
+</context>
+<context>
+    <name>xTools::xTools</name>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="104"/>
+        <source>1x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="105"/>
+        <source>1x2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="106"/>
+        <source>2x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="107"/>
+        <source>2x2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

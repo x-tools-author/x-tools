@@ -2732,42 +2732,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
-        <location filename="../../src/log/logview.ui" line="14"/>
+        <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
         <translation>日志视图</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="35"/>
+        <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
         <translation>日志级别</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="58"/>
+        <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
         <translation>过滤器</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="71"/>
+        <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
         <translation>清空日志</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="81"/>
+        <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
         <translation>日志类型</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="88"/>
+        <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
         <translation>滚到底部</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="98"/>
+        <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
         <translation>日志过滤</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="111"/>
+        <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
         <translation>禁止日志</translation>
     </message>
@@ -2979,44 +2979,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="351"/>
+        <location filename="../../src/mainwindow.cpp" line="249"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="257"/>
         <source>Save Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="261"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="373"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="265"/>
+        <location filename="../../src/mainwindow.cpp" line="481"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="278"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../src/mainwindow.cpp" line="282"/>
         <source>New</source>
         <translation>新建工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="428"/>
+        <location filename="../../src/mainwindow.cpp" line="320"/>
         <source>Using System Proxy</source>
         <translation>使用系统代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Online Documentation</source>
         <translation>在线文档</translation>
     </message>
@@ -3025,73 +3025,72 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">（请手动重启软件。）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="518"/>
         <source>Commit hash</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="520"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="521"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="522"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
-        <translation>视图(&amp;V)</translation>
+        <translation type="vanished">视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="372"/>
         <source>Third Party Open Source</source>
-        <translation>第三方开源</translation>
+        <translation>第三方源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="503"/>
-        <location filename="../../src/mainwindow.cpp" line="543"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>Join in QQ Group</source>
         <translation>加入群聊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="572"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="416"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -3104,8 +3103,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -4549,17 +4548,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/log/logview.cpp" line="40"/>
+        <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
         <translation>调试</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="41"/>
+        <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="42"/>
+        <location filename="../../src/x/log/logview.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
@@ -4567,22 +4566,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="43"/>
+        <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
         <translation>严重</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="47"/>
+        <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
         <translation>全部</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="100"/>
+        <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
         <translation>清除日志消息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="101"/>
+        <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
         <translation>您确定要清除所有日志消息吗？</translation>
     </message>
@@ -7006,151 +7005,151 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="64"/>
         <source>Navigator Window</source>
         <translation>导航窗口</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="67"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="68"/>
         <source>Nodes List</source>
         <translation>节点列表</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="84"/>
         <source>Log</source>
         <translation>日志</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Toggle Left Panel</source>
         <translation>切换左侧面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
         <source>Toggle Bottom Panel</source>
         <translation>切换底部面板</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
         <source>Show Ruler</source>
         <translation>显示标尺</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
         <translation>显示网格</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>New Project</source>
         <translation>新项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="259"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="260"/>
         <source>Open Project</source>
         <translation>开放项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Save Project</source>
         <translation>保存项目</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="283"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="284"/>
         <source>Save Project As...</source>
         <translation>将项目另存为...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Fit Screen</source>
         <translation>适合屏幕</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Zoom In</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Zoom Out</source>
         <translation>缩小</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="233"/>
         <source>Reset Zoom</source>
         <translation>重置缩放</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="234"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
         <source>Align Left</source>
         <translation>左对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
         <source>Align Right</source>
         <translation>右对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
         <source>Align Top</source>
         <translation>顶部对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
         <source>Align Bottom</source>
         <translation>底部对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Align Vertical Center</source>
         <translation>垂直居中对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="240"/>
         <source>Align Horizontal Center</source>
         <translation>水平居中对齐</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
         <source>Select All</source>
         <translation>选择全部</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
         <source>Delete Selected</source>
         <translation>删除所选内容</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="365"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="244"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
         <source>Clear All Nodes</source>
         <translation>清除所有节点</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
         <source>Undo</source>
         <translation>撤消</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
         <source>Redo</source>
         <translation>重做</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="261"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="285"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="262"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="286"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>xFlow 项目文件 (*.xflow);;所有文件 (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="367"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>您确定清除所有节点吗？</translation>
     </message>
@@ -7158,52 +7157,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="83"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
         <translation>调试</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="87"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="89"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
         <translation>严重</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="91"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
         <translation>致命</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="93"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="147"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
         <translation>等级</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
         <translation>模块</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="151"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
         <translation>信息</translation>
     </message>
@@ -7696,6 +7695,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
 </context>
 <context>
+    <name>xTools::xTools</name>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="104"/>
+        <source>1x1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="105"/>
+        <source>1x2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="106"/>
+        <source>2x1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="107"/>
+        <source>2x2</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>xUi</name>
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
@@ -7796,12 +7818,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="201"/>
         <source>Visit Author Home Page</source>
-        <translation>访问作者主页</translation>
+        <translation>作者主页</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="202"/>
         <source>Visit App Store</source>
-        <translation>访问应用商店</translation>
+        <translation>应用商店</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="212"/>

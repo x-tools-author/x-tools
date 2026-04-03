@@ -2708,42 +2708,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>LogView</name>
     <message>
-        <location filename="../../src/log/logview.ui" line="14"/>
+        <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="35"/>
+        <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
         <translation type="unfinished">Уровень журнала</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="58"/>
+        <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
         <translation type="unfinished">Фильтр</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="71"/>
+        <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
         <translation type="unfinished">Очистить журнал</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="81"/>
+        <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="88"/>
+        <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="98"/>
+        <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.ui" line="111"/>
+        <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2946,85 +2946,84 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="351"/>
+        <location filename="../../src/mainwindow.cpp" line="249"/>
         <source>New Window</source>
         <translation>Новое окно</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="365"/>
+        <location filename="../../src/mainwindow.cpp" line="257"/>
         <source>Save Parameters</source>
         <translation>Сохранить параметры</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="369"/>
-        <location filename="../../src/mainwindow.cpp" line="630"/>
+        <location filename="../../src/mainwindow.cpp" line="261"/>
+        <location filename="../../src/mainwindow.cpp" line="468"/>
         <source>Import Parameters</source>
         <translation>Импорт параметров</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="373"/>
-        <location filename="../../src/mainwindow.cpp" line="643"/>
+        <location filename="../../src/mainwindow.cpp" line="265"/>
+        <location filename="../../src/mainwindow.cpp" line="481"/>
         <source>Export Parameters</source>
         <translation>Экспорт параметров</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="278"/>
         <source>&amp;Tools</source>
         <translation>&amp;Инструменты</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="390"/>
+        <location filename="../../src/mainwindow.cpp" line="282"/>
         <source>New</source>
         <translation>Новый</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="449"/>
         <source>&amp;View</source>
-        <translation>&amp;Вид</translation>
+        <translation type="vanished">&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="686"/>
+        <location filename="../../src/mainwindow.cpp" line="524"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="503"/>
-        <location filename="../../src/mainwindow.cpp" line="543"/>
+        <location filename="../../src/mainwindow.cpp" line="346"/>
+        <location filename="../../src/mainwindow.cpp" line="386"/>
         <source>Release History</source>
         <translation>История релизов</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="504"/>
+        <location filename="../../src/mainwindow.cpp" line="347"/>
         <source>Join in QQ Group</source>
         <translation>Присоединяйтесь к группе QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="428"/>
+        <location filename="../../src/mainwindow.cpp" line="320"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="501"/>
+        <location filename="../../src/mainwindow.cpp" line="342"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="529"/>
+        <location filename="../../src/mainwindow.cpp" line="372"/>
         <source>Third Party Open Source</source>
         <translation>Сторонние открытые исходники</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="563"/>
+        <location filename="../../src/mainwindow.cpp" line="406"/>
         <source>QR Code</source>
         <translation>QR код</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="572"/>
+        <location filename="../../src/mainwindow.cpp" line="415"/>
         <source>User QQ Group</source>
         <translation>Пользовательская группа QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="573"/>
+        <location filename="../../src/mainwindow.cpp" line="416"/>
         <source>Qt QQ Group</source>
         <translation>Qt группа QQ</translation>
     </message>
@@ -3041,38 +3040,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(Пожалуйста, перезапустите приложение вручную.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="632"/>
-        <location filename="../../src/mainwindow.cpp" line="645"/>
+        <location filename="../../src/mainwindow.cpp" line="470"/>
+        <location filename="../../src/mainwindow.cpp" line="483"/>
         <source>Json Files (*.json)</source>
         <translation>Файлы Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="674"/>
+        <location filename="../../src/mainwindow.cpp" line="512"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="680"/>
+        <location filename="../../src/mainwindow.cpp" line="518"/>
         <source>Commit hash</source>
         <translation>Хеш коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="682"/>
+        <location filename="../../src/mainwindow.cpp" line="520"/>
         <source>Commit time</source>
         <translation>Время коммита</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="683"/>
+        <location filename="../../src/mainwindow.cpp" line="521"/>
         <source>Build Date</source>
         <translation>Дата сборки</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="684"/>
+        <location filename="../../src/mainwindow.cpp" line="522"/>
         <source>Copyright</source>
         <translation>Авторские права</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="685"/>
+        <location filename="../../src/mainwindow.cpp" line="523"/>
         <source>All rights reserved.</source>
         <translation>Все права защищены.</translation>
     </message>
@@ -4716,17 +4715,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Не округлять</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="40"/>
+        <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
         <translation type="unfinished">Отлаживать</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="41"/>
+        <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="42"/>
+        <location filename="../../src/x/log/logview.cpp" line="42"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="34"/>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="50"/>
         <location filename="../../src/x/modbus/modbuslogmodel.cpp" line="22"/>
@@ -4734,22 +4733,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="43"/>
+        <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
         <translation type="unfinished">Критический</translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="47"/>
+        <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="100"/>
+        <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logview.cpp" line="101"/>
+        <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6928,151 +6927,151 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xFlow::xFlow</name>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="63"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="64"/>
         <source>Navigator Window</source>
         <translation>Окно навигатора</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="67"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="68"/>
         <source>Nodes List</source>
         <translation>Список узлов</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="82"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
         <source>Output</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="83"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="84"/>
         <source>Log</source>
         <translation>Бревно</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="206"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
         <source>Toggle Left Panel</source>
         <translation>Переключить левую панель</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="207"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
         <source>Toggle Bottom Panel</source>
         <translation>Переключить нижнюю панель</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="208"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
         <source>Show Ruler</source>
         <translation>Показать линейку</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="209"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="219"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
         <source>New Project</source>
         <translation>Новый проект</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="220"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="259"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="260"/>
         <source>Open Project</source>
         <translation>Открытый проект</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="221"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
         <source>Save Project</source>
         <translation>Сохранить проект</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="222"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="283"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="223"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="284"/>
         <source>Save Project As...</source>
         <translation>Сохранить проект как...</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="224"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="225"/>
         <source>Fit Screen</source>
         <translation>Подогнать экран</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="226"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="227"/>
         <source>Zoom In</source>
         <translation>Увеличить масштаб</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="231"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
         <source>Zoom Out</source>
         <translation>Уменьшить масштаб</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="232"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="233"/>
         <source>Reset Zoom</source>
         <translation>Сбросить масштаб</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="234"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
         <source>Align Left</source>
         <translation>Выровнять по левому краю</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="235"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
         <source>Align Right</source>
         <translation>Выровнять по правому краю</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="236"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
         <source>Align Top</source>
         <translation>Выровнять по верху</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="237"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
         <source>Align Bottom</source>
         <translation>Выровнять по нижнему краю</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="238"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
         <source>Align Vertical Center</source>
         <translation>Выровнять по вертикальному центру</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="239"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="240"/>
         <source>Align Horizontal Center</source>
         <translation>Выровнять по горизонтальному центру</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="241"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
         <source>Select All</source>
         <translation>Выбрать все</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="242"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
         <source>Delete Selected</source>
         <translation>Удалить выбранное</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="243"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="365"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="244"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
         <source>Clear All Nodes</source>
         <translation>Очистить все узлы</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="245"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
         <source>Undo</source>
         <translation>Отменить</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="246"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="247"/>
         <source>Redo</source>
         <translation>Повторить</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="261"/>
-        <location filename="../../src/x/flow/xflow.cpp" line="285"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="262"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="286"/>
         <source>xFlow Project Files (*.xflow);;All Files (*)</source>
         <translation>Файлы проекта xFlow (*.xflow);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../../src/x/flow/xflow.cpp" line="366"/>
+        <location filename="../../src/x/flow/xflow.cpp" line="367"/>
         <source>Are you sure to clear all nodes?</source>
         <translation>Вы уверены, что очистите все узлы?</translation>
     </message>
@@ -7080,52 +7079,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>xLog::LogModel</name>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="83"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
         <translation type="unfinished">Отлаживать</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="85"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="87"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
         <translation type="unfinished">Предупреждение</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="89"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
         <translation type="unfinished">Критический</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="91"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
         <translation type="unfinished">Фатальный</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="93"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
         <translation type="unfinished">Неизвестно</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="145"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="147"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
         <translation type="unfinished">Уровень</translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="149"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/log/logmodel.cpp" line="151"/>
+        <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
         <translation type="unfinished">Сообщение</translation>
     </message>
@@ -7591,6 +7590,29 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>System</source>
         <translation type="obsolete">Система</translation>
+    </message>
+</context>
+<context>
+    <name>xTools::xTools</name>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="104"/>
+        <source>1x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="105"/>
+        <source>1x2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="106"/>
+        <source>2x1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/x/tools/xtools.cpp" line="107"/>
+        <source>2x2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
