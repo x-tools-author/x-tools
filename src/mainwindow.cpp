@@ -64,12 +64,11 @@
 struct MainWindowParameterKeys
 {
     const QString showMax{"showMax"};
-
-    const QString page00{"page00"};
-    const QString page01{"page01"};
-    const QString page10{"page10"};
-    const QString page11{"page11"};
     const QString layoutManager{"layoutManager"};
+
+    const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
+    const QString useSystemProxy{"MainWindow/useSystemProxy"};
+    const QString staysOnTop{"MainWindow/staysOnTop"};
 };
 
 MainWindow::MainWindow(QWidget* parent)
@@ -216,7 +215,8 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
     QSettings* settings = xAPP->settings();
 #ifdef Q_OS_WIN
-    if (settings->value(m_settingsKey.exitToSystemTray).toBool()) {
+    MainWindowParameterKeys keys;
+    if (settings->value(keys.exitToSystemTray).toBool()) {
         hide();
         event->accept();
         return;
@@ -248,12 +248,6 @@ void MainWindow::initFileMenu()
 #if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MAC)
     QMenu* newMenu = m_fileMenu->addMenu(tr("New Window"));
     m_fileMenu->addMenu(newMenu);
-    newMenu->addAction(QString("xTools"), this, []() {
-        auto* w = new Page(Page::Left, xAPP->settings());
-        w->setAttribute(Qt::WA_DeleteOnClose, true);
-        w->setWindowTitle("xTools");
-        w->show();
-    });
     const QList<QAction*> actions = m_xMgr->newWindowActions();
     for (int i = 0; i < actions.count(); i++) {
         newMenu->addAction(actions.at(i));
@@ -325,8 +319,9 @@ void MainWindow::initOptionMenu()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
     QAction* action = m_optionMenu->addAction(tr("Using System Proxy"));
     action->setCheckable(true);
+    MainWindowParameterKeys keys;
     connect(action, &QAction::toggled, this, [=](bool checked) {
-        xAPP->settings()->setValue(m_settingsKey.useSystemProxy, checked);
+        xAPP->settings()->setValue(keys.useSystemProxy, checked);
         action->setChecked(checked);
         if (checked) {
             QNetworkProxyFactory::setUseSystemConfiguration(true);
@@ -334,7 +329,7 @@ void MainWindow::initOptionMenu()
             QNetworkProxyFactory::setUseSystemConfiguration(false);
         }
     });
-    const QString key = m_settingsKey.useSystemProxy;
+    const QString key = keys.useSystemProxy;
     bool defaultValue = QNetworkProxyFactory::usesSystemConfiguration();
     bool useSystemProxy = xAPP->settings()->value(key, defaultValue).toBool();
     action->setChecked(useSystemProxy);
@@ -344,7 +339,9 @@ void MainWindow::initOptionMenu()
 
 void MainWindow::initHelpMenu()
 {
-    m_helpMenu->addAction(tr("Online Documentation"), this, &MainWindow::visitOnlineDocumentation);
+    m_helpMenu->addAction(tr("Online Documentation"), this, []() {
+        QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools/"));
+    });
     m_helpMenu->addSeparator();
     m_helpMenu->addAction(tr("Release History"), this, &MainWindow::showHistory);
     m_helpMenu->addAction(tr("Join in QQ Group"), this, &MainWindow::showQrCode);
@@ -435,9 +432,10 @@ void MainWindow::showQrCode()
     dialog.exec();
 }
 
-void MainWindow::visitOnlineDocumentation()
+QString MainWindow::defalutDataJsonFile() const
 {
-    QDesktopServices::openUrl(QUrl("https://x-tools-author.github.io/x-tools/"));
+    const QString path = xAPP->settingsPath();
+    return path + "/data_v7_7.json";
 }
 
 QString MainWindow::qtConfFileName()
@@ -457,12 +455,6 @@ void MainWindow::createQtConf()
         auto info = QString("Open file(%1) failed: %2").arg(fileName, file.errorString());
         qWarning() << qPrintable(info);
     }
-}
-
-QString MainWindow::defalutDataJsonFile() const
-{
-    const QString path = xAPP->settingsPath();
-    return path + "/data_v7_7.json";
 }
 
 void MainWindow::onSaveActionTriggered() const

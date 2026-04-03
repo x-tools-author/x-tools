@@ -14,6 +14,8 @@
 #include <QToolBar>
 #include <QWidget>
 
+#include <QtNodes/Definitions>
+
 #include "x/xpage.h"
 
 namespace Ui {
@@ -123,7 +125,7 @@ private:
 
 private:
     void onThemeChanged();
-    void onNodeCreated();
+    void onNodeCreated(QtNodes::NodeId const &nodeId);
     void onNodeDeleted();
     void onNodeUpdated();
     void onNodePositionUpdated();

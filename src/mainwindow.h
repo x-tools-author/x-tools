@@ -15,14 +15,10 @@
 
 #include "common/xui.h"
 
-class Page;
 class xManager;
 class MainWindow : public xUi
 {
     Q_OBJECT
-public:
-    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
-
 public:
     explicit MainWindow(QWidget* parent = Q_NULLPTR);
     ~MainWindow() override;
@@ -34,18 +30,12 @@ public:
 
 protected:
     void closeEvent(QCloseEvent* event) override;
+
+protected:
     virtual QUrl storeUrl() const;
 
 protected:
     xManager* m_xMgr{nullptr};
-
-private:
-    struct SettingsKeys
-    {
-        const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
-        const QString useSystemProxy{"MainWindow/useSystemProxy"};
-        const QString staysOnTop{"MainWindow/staysOnTop"};
-    } m_settingsKey;
 
 private:
     void initMenuBar();
@@ -56,12 +46,11 @@ private:
 
     void showHistory();
     void showQrCode();
-    void visitOnlineDocumentation();
+    QString defalutDataJsonFile() const;
 
     // HDPI Policy for Windows
     QString qtConfFileName();
     void createQtConf();
-    QString defalutDataJsonFile() const;
 
     void onSaveActionTriggered() const;
     void onImportActionTriggered();

@@ -69,82 +69,78 @@ void DebugOutputUi::load(const QJsonObject &parameters)
     ui->lineEditFlag->setText(flag);
 }
 
+void DebugOutputUi::setupFlow(QWidget *widget)
+{
+    m_flowWidget = widget;
+}
+
 void DebugOutputUi::onDataUpdated(QtNodes::PortIndex const portIndex)
 {
-    QList<QWidget *> widgets = qApp->topLevelWidgets();
-    for (QWidget *&widget : widgets) {
-        if (widget->objectName() != QString("MainWindow")) {
-            continue;
-        }
+    if (!m_flowWidget) {
+        return;
+    }
 
-        auto data = m_node->outData(portIndex);
-        if (!data) {
-            return;
-        }
+    auto data = m_node->outData(portIndex);
+    if (!data) {
+        return;
+    }
 
-        auto cookedData = std::dynamic_pointer_cast<BaseNodeData>(data);
-        if (!cookedData) {
-            return;
-        }
+    auto cookedData = std::dynamic_pointer_cast<BaseNodeData>(data);
+    if (!cookedData) {
+        return;
+    }
 
-        QByteArray bytes = cookedData->bytes();
-        if (bytes.isEmpty()) {
-            return;
-        }
+    QByteArray bytes = cookedData->bytes();
+    if (bytes.isEmpty()) {
+        return;
+    }
 
-        int format = ui->comboBoxFormat->currentData().toInt();
-        int channel = ui->comboBoxChannel->currentData().toInt();
-        QString flag = ui->lineEditFlag->text().trimmed();
-        QString dateTime = QString("");
-        if (ui->checkBoxShowTime->isChecked()) {
-            dateTime = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
-        }
+    int format = ui->comboBoxFormat->currentData().toInt();
+    int channel = ui->comboBoxChannel->currentData().toInt();
+    QString flag = ui->lineEditFlag->text().trimmed();
+    QString dateTime = QString("");
+    if (ui->checkBoxShowTime->isChecked()) {
+        dateTime = QDateTime::currentDateTime().toString("hh:mm:ss.zzz");
+    }
 
-        QString header = QString("");
-        if (dateTime.isEmpty()) {
-            if (!flag.isEmpty()) {
-                header = QString("[%1] ").arg(flag);
-            }
+    QString header = QString("");
+    if (dateTime.isEmpty()) {
+        if (!flag.isEmpty()) {
+            header = QString("[%1] ").arg(flag);
+        }
+    } else {
+        if (flag.isEmpty()) {
+            header = QString("[%1] ").arg(dateTime);
         } else {
-            if (flag.isEmpty()) {
-                header = QString("[%1] ").arg(dateTime);
-            } else {
-                header = QString("[%1 %2] ").arg(dateTime, flag);
-            }
+            header = QString("[%1 %2] ").arg(dateTime, flag);
         }
+    }
 
-        QString txt = xBytes2string(bytes, format);
-        if (!header.isEmpty()) {
-            txt = QString("%1%2").arg(header, txt);
-        }
+    QString txt = xBytes2string(bytes, format);
+    if (!header.isEmpty()) {
+        txt = QString("%1%2").arg(header, txt);
+    }
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-        widget->metaObject()->invokeMethod(widget, "outputBytes", txt, channel);
+    m_flowWidget->metaObject()->invokeMethod(m_flowWidget, "outputBytes", txt, channel);
 #else
-        widget->metaObject()->invokeMethod(widget,
-                                           "outputBytes",
-                                           Qt::QueuedConnection,
-                                           Q_ARG(QString, txt),
-                                           Q_ARG(int, channel));
+    m_flowWidget->metaObject()->invokeMethod(m_flowWidget,
+                                             "outputBytes",
+                                             Qt::QueuedConnection,
+                                             Q_ARG(QString, txt),
+                                             Q_ARG(int, channel));
 #endif
-        break;
-    }
 }
 
 void DebugOutputUi::onClearButtonClicked()
 {
-    QList<QWidget *> widgets = qApp->topLevelWidgets();
-    for (QWidget *&widget : widgets) {
-        if (widget->objectName() == QString("MainWindow")) {
-            int channel = ui->comboBoxChannel->currentData().toInt();
+    int channel = ui->comboBoxChannel->currentData().toInt();
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-            widget->metaObject()->invokeMethod(widget, "clearOutput", channel);
+    m_flowWidget->metaObject()->invokeMethod(m_flowWidget, "clearOutput", channel);
 #else
-            widget->metaObject()->invokeMethod(widget,
-                                               "clearOutput",
-                                               Qt::QueuedConnection,
-                                               Q_ARG(int, channel));
+    m_flowWidget->metaObject()->invokeMethod(m_flowWidget,
+                                             "clearOutput",
+                                             Qt::QueuedConnection,
+                                             Q_ARG(int, channel));
 #endif
-        }
-    }
 }

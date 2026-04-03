@@ -22,6 +22,7 @@
 #include "nodeeditor/nodeeditor.h"
 #include "nodeeditor/nodeeditorscene.h"
 #include "nodeeditor/nodeeditorview.h"
+#include "nodeeditor/nodes/inputoutput/debugoutputui.h"
 #include "utilities/iconengine.h"
 #include "utilities/thememanager.h"
 
@@ -445,9 +446,19 @@ void xFlow::onThemeChanged()
     view->setStylesheet(style);
 }
 
-void xFlow::onNodeCreated()
+void xFlow::onNodeCreated(QtNodes::NodeId const &nodeId)
 {
     m_navigator->update();
+
+    // If the created node is a DebugOutput node, set up its output widget.
+    // TODO: Maybe we can do better...
+    NodeEditorView *view = ui->widgetNodeEditor->view();
+    QtNodes::DataFlowGraphModel *model = view->model();
+    QWidget *widget = model->nodeData(nodeId, QtNodes::NodeRole::Widget).value<QWidget *>();
+    DebugOutputUi *debugOutputUi = qobject_cast<DebugOutputUi *>(widget);
+    if (debugOutputUi) {
+        debugOutputUi->setupFlow(this);
+    }
 }
 
 void xFlow::onNodeDeleted()

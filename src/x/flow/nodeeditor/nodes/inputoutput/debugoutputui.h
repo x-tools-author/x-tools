@@ -26,10 +26,13 @@ public:
     QJsonObject save() const override;
     void load(const QJsonObject &parameters) override;
 
+    void setupFlow(QWidget *widget);
+
 private:
     Ui::DebugOutputUi *ui;
     int m_channel;
     int m_format;
+    QWidget *m_flowWidget{nullptr};
 
 private:
     void onDataUpdated(QtNodes::PortIndex const portIndex);
