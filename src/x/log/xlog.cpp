@@ -6,31 +6,34 @@
  * xTools is licensed according to the terms in the file LICENCE(GPL V3) in the root of the source
  * code directory.
  **************************************************************************************************/
-#pragma once
+#include "xlog.h"
 
-#include "x/xpage.h"
+#include <QHBoxLayout>
 
-namespace xTools {
+#include "log.h"
 
-class xToolsPrivate;
-class xTools : public xPage
+namespace xLog {
+
+xLog::xLog(QWidget* parent)
+    : xPage(parent)
 {
-    Q_OBJECT
-    xToolsPrivate *d{nullptr};
+    QHBoxLayout* layout = new QHBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
 
-public:
-    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
+    Log& log = Log::singleton();
+    layout->addWidget(log.logView());
+}
 
-public:
-    xTools(QWidget *parent = nullptr);
-    ~xTools();
+xLog::~xLog() {}
 
-    QJsonObject save() const override;
-    void load(const QJsonObject &obj) override;
-    QMenu *toolButtonMenu() override;
+QJsonObject xLog::save() const
+{
+    return Log::singleton().save();
+}
 
-    int windowGrid() const;
-    void setWindowGrid(int grid);
-};
+void xLog::load(const QJsonObject& obj)
+{
+    Log::singleton().load(obj);
+}
 
-}; // namespace xTools
+}; // namespace xLog

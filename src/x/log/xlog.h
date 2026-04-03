@@ -10,27 +10,17 @@
 
 #include "x/xpage.h"
 
-namespace xTools {
+namespace xLog {
 
-class xToolsPrivate;
-class xTools : public xPage
+class xLog : public xPage
 {
     Q_OBJECT
-    xToolsPrivate *d{nullptr};
-
 public:
-    enum class WindowGrid { Grid1x1, Grid1x2, Grid2x1, Grid2x2 };
-
-public:
-    xTools(QWidget *parent = nullptr);
-    ~xTools();
+    explicit xLog(QWidget* parent = nullptr);
+    ~xLog() override;
 
     QJsonObject save() const override;
-    void load(const QJsonObject &obj) override;
-    QMenu *toolButtonMenu() override;
-
-    int windowGrid() const;
-    void setWindowGrid(int grid);
+    void load(const QJsonObject& obj) override;
 };
 
-}; // namespace xTools
+} // namespace xLog

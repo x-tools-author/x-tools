@@ -13,8 +13,9 @@
 
 #include "common/xapp.h"
 #include "log/log.h"
-#include "x/common/xpage.h"
+#include "x/log/xlog.h"
 #include "x/tools/xtools.h"
+#include "x/xpage.h"
 
 #if X_ENABLE_X_BLE
 #include "x/ble/xble.h"
@@ -78,6 +79,14 @@ public:
     QList<QAction*> m_newWindowActions;
 
 public:
+    struct PageInfo
+    {
+        QString name;
+        xPage* page{nullptr};
+    };
+    QList<PageInfo> m_pages;
+
+public:
     xTools::xTools* m_tools{nullptr};
 #if X_ENABLE_X_BLE
     xBle::xBle* m_ble{nullptr};
@@ -103,6 +112,7 @@ public:
 #if X_ENABLE_X_FLOW
     xFlow::xFlow* m_flow{nullptr};
 #endif
+    xLog::xLog* m_log{nullptr};
 
 public:
     QToolButton* addLayoutPage(const QString& name, QWidget* page)
@@ -175,43 +185,51 @@ xManager::xManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* parent)
 
     d->m_tools = new xTools::xTools(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xTools"), d->m_tools);
+    d->m_pages.append({QString("xTools"), d->m_tools});
 #if X_ENABLE_X_BLE
     d->m_ble = new xBle::xBle(d->m_layout->parentWidget());
     addLayoutPage(QString("xBLE"), d->m_ble);
+    d->m_pages.append({QString("xBLE"), d->m_ble});
 #endif
 #if X_ENABLE_X_MODBUS
     d->m_modbus = new xModbus::xModbus(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xModbus"), d->m_modbus);
+    d->m_pages.append({QString("xModbus"), d->m_modbus});
 #endif
 #if X_ENABLE_X_CANBUS
     d->m_canbus = new xCanBus::xCanBus(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xCANBus"), d->m_canbus);
+    d->m_pages.append({QString("xCANBus"), d->m_canbus});
 #endif
 #if X_ENABLE_X_MQTT
     d->m_mqtt = new xMqtt::xMqtt(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xMQTT"), d->m_mqtt);
+    d->m_pages.append({QString("xMQTT"), d->m_mqtt});
 #endif
 #if X_ENABLE_X_COAP
     d->m_coap = new xCoAP::xCoAP(d->m_layout->parentWidget());
     d->m_coap->setupSettings(xAPP->settings());
     d->addLayoutPage(QString("xCoAP"), d->m_coap);
+    d->m_pages.append({QString("xCoAP"), d->m_coap});
 #endif
 #if X_ENABLE_X_OPCUA
     d->m_opcua = new xOpcUa::xOpcUa(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xOpcUa"), d->m_opcua);
+    d->m_pages.append({QString("xOpcUa"), d->m_opcua});
 #endif
 #if X_ENABLE_X_HTTP
     d->m_http = new xHttp::xHttp(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xHTTP"), d->m_http);
+    d->m_pages.append({QString("xHTTP"), d->m_http});
 #endif
 #if X_ENABLE_X_FLOW
     d->m_flow = new xFlow::xFlow(d->m_layout->parentWidget());
     d->addLayoutPage(QString("xFlow"), d->m_flow);
+    d->m_pages.append({QString("xFlow"), d->m_flow});
 #endif
-    d->addLayoutPage(QString("xLog"), xLogMgr.logView());
-    if (d->m_layout->count() == 1) {
-        d->m_controller->hide();
-    }
+    d->m_log = new xLog::xLog(d->m_layout->parentWidget());
+    d->addLayoutPage(QString("xLog"), d->m_log);
+    d->m_pages.append({QString("xLog"), d->m_log});
 }
 
 xManager::~xManager() {}
@@ -220,31 +238,17 @@ QJsonObject xManager::save()
 {
     LayoutManagerKeys keys;
     QJsonObject obj;
+    obj.insert(keys.xIndex, currentIndex());
 
-    obj[keys.xIndex] = currentIndex();
-    obj[keys.xTools] = d->m_tools ? d->m_tools->save() : QJsonObject();
-#if X_ENABLE_X_MODBUS
-    obj[keys.xModbus] = d->m_modbus ? d->m_modbus->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_CANBUS
-    obj[keys.xCanbus] = d->m_canbus ? d->m_canbus->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_MQTT
-    obj[keys.xMqtt] = d->m_mqtt ? d->m_mqtt->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_COAP
-    obj[keys.xCoap] = d->m_coap ? d->m_coap->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_OPCUA
-    obj[keys.xOpcUa] = d->m_opcua ? d->m_opcua->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_HTTP
-    obj[keys.xHttp] = d->m_http ? d->m_http->save() : QJsonObject();
-#endif
-#if X_ENABLE_X_FLOW
-    obj[keys.xFlow] = d->m_flow ? d->m_flow->save() : QJsonObject();
-#endif
-    obj[keys.xLog] = xLogMgr.save();
+    for (const auto& pageInfo : const_cast<const QList<xManagerPrivate::PageInfo>&>(d->m_pages)) {
+        if (!pageInfo.page) {
+            continue;
+        }
+
+        QJsonObject pageObj = pageInfo.page->save();
+        obj.insert(pageInfo.name, pageObj);
+    }
+
     return obj;
 }
 
@@ -253,56 +257,15 @@ void xManager::load(const QJsonObject& obj)
     LayoutManagerKeys keys;
     int index = obj.value(keys.xIndex).toInt(0);
     setCurrentIndex(index);
-    qInfo() << "The current xApps layout index is:" << index;
 
-    QJsonObject toolsObj = obj.value(keys.xTools).toObject(QJsonObject());
-    if (d->m_tools) {
-        d->m_tools->load(toolsObj);
+    for (const auto& pageInfo : const_cast<const QList<xManagerPrivate::PageInfo>&>(d->m_pages)) {
+        if (!pageInfo.page) {
+            continue;
+        }
+
+        QJsonObject pageObj = obj.value(pageInfo.name).toObject();
+        pageInfo.page->load(pageObj);
     }
-#if X_ENABLE_X_MODBUS
-    if (d->m_modbus) {
-        QJsonObject modbusObj = obj.value(keys.xModbus).toObject(QJsonObject());
-        d->m_modbus->load(modbusObj);
-    }
-#endif
-#if X_ENABLE_X_CANBUS
-    if (d->m_canbus) {
-        QJsonObject canbusObj = obj.value(keys.xCanbus).toObject(QJsonObject());
-        d->m_canbus->load(canbusObj);
-    }
-#endif
-#if X_ENABLE_X_MQTT
-    if (d->m_mqtt) {
-        QJsonObject mqttObj = obj.value(keys.xMqtt).toObject(QJsonObject());
-        d->m_mqtt->load(mqttObj);
-    }
-#endif
-#if X_ENABLE_X_COAP
-    if (d->m_coap) {
-        QJsonObject coapObj = obj.value(keys.xCoap).toObject(QJsonObject());
-        d->m_coap->load(coapObj);
-    }
-#endif
-#if X_ENABLE_X_OPCUA
-    if (d->m_opcua) {
-        QJsonObject opcuaObj = obj.value(keys.xOpcUa).toObject(QJsonObject());
-        d->m_opcua->load(opcuaObj);
-    }
-#endif
-#if X_ENABLE_X_HTTP
-    if (d->m_http) {
-        QJsonObject httpObj = obj.value(keys.xHttp).toObject(QJsonObject());
-        d->m_http->load(httpObj);
-    }
-#endif
-#if X_ENABLE_X_FLOW
-    if (d->m_flow) {
-        QJsonObject flowObj = obj.value(keys.xFlow).toObject(QJsonObject());
-        d->m_flow->load(flowObj);
-    }
-#endif
-    QJsonObject logObj = obj.value(keys.xLog).toObject(QJsonObject());
-    xLogMgr.load(logObj);
 }
 
 template<typename T>

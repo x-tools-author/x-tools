@@ -11,7 +11,7 @@
 #include <QJsonObject>
 #include <QWidget>
 
-#include "x/common/xpage.h"
+#include "x/xpage.h"
 
 namespace xBle {
 

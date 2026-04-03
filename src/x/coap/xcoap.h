@@ -13,7 +13,7 @@
 #include <QWidget>
 
 #include "utilities/serializable.h"
-#include "x/common/xpage.h"
+#include "x/xpage.h"
 
 namespace xCoAP {
 

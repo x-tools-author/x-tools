@@ -17,7 +17,7 @@
 
 #include "utilities/keepopenedmenu.h"
 #include "x/canbus/canbuspanel.h"
-#include "x/common/xpage.h"
+#include "x/xpage.h"
 
 namespace Ui {
 class xCanBus;
