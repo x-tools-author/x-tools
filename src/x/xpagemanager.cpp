@@ -188,7 +188,7 @@ xPageManager::xPageManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* p
     d->m_pages.append({QString("xTools"), d->m_tools});
 #if X_ENABLE_X_BLE
     d->m_ble = new xBle::xBle(d->m_layout->parentWidget());
-    addLayoutPage(QString("xBLE"), d->m_ble);
+    d->addLayoutPage(QString("xBLE"), d->m_ble);
     d->m_pages.append({QString("xBLE"), d->m_ble});
 #endif
 #if X_ENABLE_X_MODBUS
