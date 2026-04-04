@@ -14,7 +14,7 @@
 #endif
 
 #if X_ENABLE_LOG
-#include "log/log.h"
+#include "x/log/log.h"
 #endif
 
 #include "application.h"
