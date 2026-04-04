@@ -131,7 +131,6 @@ public:
     void onBytesWritten(const QByteArray &bytes, const QString &to);
     void onWrapModeChanged();
     void onTerminalModeChanged();
-    void onExternalPanelButtonClicked(bool checked);
 
     void openDevice();
     void closeDevice();
@@ -194,7 +193,7 @@ private:
 PagePrivate::PagePrivate(Page *q_ptr)
     : QObject(q_ptr)
     , q(q_ptr)
-{}
+{ }
 
 void PagePrivate::initUi()
 {
@@ -277,7 +276,10 @@ void PagePrivate::initUiOutput()
     m_filterView->setOriginalTextBrowser(ui->textBrowserOutput);
 }
 
-void PagePrivate::initUiInput() {}
+void PagePrivate::initUiInput()
+{
+    // Nothing to do yet...
+}
 
 void PagePrivate::onDeviceTypeChanged()
 {
@@ -467,8 +469,6 @@ void PagePrivate::onTerminalModeChanged()
 
     m_filterView->setWholeWordCheckBoxEnabled(terminalMode);
 }
-
-void PagePrivate::onExternalPanelButtonClicked(bool checked) {}
 
 void PagePrivate::openDevice()
 {
@@ -964,7 +964,6 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
     d->onDeviceTypeChanged();
     d->onTerminalModeChanged();
     d->onInputFormatChanged();
-    d->onExternalPanelButtonClicked(false);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     d->ui->widgetController->setMaximumWidth(256);
 #endif
@@ -1021,6 +1020,8 @@ QVariantMap Page::save() const
          const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
         map.insert(panel.name, panel.panel->save());
     }
+    int panelWidth = d->ui->stackedWidget->width();
+    map.insert(keys.panelWidth, panelWidth < 200 ? 200 : panelWidth);
 
     return map;
 }
@@ -1086,12 +1087,13 @@ void Page::load(const QVariantMap &parameters)
         d->ui->stackedWidget->setCurrentIndex(panelIndex);
         d->ui->stackedWidget->show();
     }
-    int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
-    d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
     for (const PagePrivate::PanelItem &panel :
          const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
         panel.panel->load(parameters.value(panel.name).toMap());
     }
+    int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
+    d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
+    qInfo() << "Loaded panel width:" << panelWidth;
 
     d->onDeviceTypeChanged();
     d->onInputFormatChanged();

@@ -48,9 +48,9 @@ int main(int argc, char *argv[])
     QSplashScreen *splash = app.splashScreen();
     splash->finish(&window);
     window.resize(1366, 768);
-    window.load();
     window.show();
     window.moveToCenter();
+    window.load();
 
 #if X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
