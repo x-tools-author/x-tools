@@ -12,14 +12,20 @@ namespace xMQTT {
 
 MqttDataFilter::MqttDataFilter(QObject *parent)
     : QSortFilterProxyModel(parent)
-{}
+{ }
 
-MqttDataFilter::~MqttDataFilter() {}
+MqttDataFilter::~MqttDataFilter() { }
 
 void MqttDataFilter::setPingPongMessagesVisible(bool visible)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    m_pingPongMessagesVisible = visible;
+    endFilterChange();
+#else
     m_pingPongMessagesVisible = visible;
     invalidateFilter();
+#endif
 }
 
 } // namespace xMQTT

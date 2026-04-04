@@ -1021,7 +1021,7 @@ QVariantMap Page::save() const
         map.insert(panel.name, panel.panel->save());
     }
     int panelWidth = d->ui->stackedWidget->width();
-    map.insert(keys.panelWidth, panelWidth < 200 ? 200 : panelWidth);
+    map.insert(keys.panelWidth, panelWidth < 485 ? 485 : panelWidth);
 
     return map;
 }
@@ -1093,7 +1093,6 @@ void Page::load(const QVariantMap &parameters)
     }
     int panelWidth = parameters.value(keys.panelWidth, 400).toInt();
     d->ui->splitter->setSizes({d->ui->splitter->width() - panelWidth, panelWidth});
-    qInfo() << "Loaded panel width:" << panelWidth;
 
     d->onDeviceTypeChanged();
     d->onInputFormatChanged();

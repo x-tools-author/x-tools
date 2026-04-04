@@ -14,18 +14,20 @@ namespace xModbus {
 
 ModbusLogModelFilter::ModbusLogModelFilter(QObject *parent)
     : QSortFilterProxyModel(parent)
-{}
+{ }
 
-ModbusLogModelFilter::~ModbusLogModelFilter() {}
+ModbusLogModelFilter::~ModbusLogModelFilter() { }
 
 void ModbusLogModelFilter::setLogType(int type)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    m_logType = type;
+    endFilterChange();
 #else
-#endif
-
     m_logType = type;
     invalidateFilter();
+#endif
 }
 
 bool ModbusLogModelFilter::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
