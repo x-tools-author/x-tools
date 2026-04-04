@@ -12,26 +12,44 @@
 
 DataRecordsModelFilter::DataRecordsModelFilter(QObject *parent)
     : QSortFilterProxyModel{parent}
-{}
+{ }
 
-DataRecordsModelFilter::~DataRecordsModelFilter() {}
+DataRecordsModelFilter::~DataRecordsModelFilter() { }
 
 void DataRecordsModelFilter::setType(int type)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    m_type = type;
+    endFilterChange();
+#else
     m_type = type;
     invalidateFilter();
+#endif
 }
 
 void DataRecordsModelFilter::setFlag(const QString &flag)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    m_flag = flag;
+    endFilterChange();
+#else
     m_flag = flag;
     invalidateFilter();
+#endif
 }
 
 void DataRecordsModelFilter::setSearchText(const QString &text)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
+    beginFilterChange();
+    m_searchText = text;
+    endFilterChange();
+#else
     m_searchText = text;
     invalidateFilter();
+#endif
 }
 
 bool DataRecordsModelFilter::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
