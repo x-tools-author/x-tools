@@ -14,7 +14,7 @@
 #include "page/page.h"
 #include "pipe.h"
 #include "x/tools/xtools.h"
-#include "x/xmanager.h"
+#include "x/xpagemanager.h"
 
 xAssistant::xAssistant(QWidget* parent)
     : MainWindow(parent)
