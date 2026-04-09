@@ -1,4 +1,9 @@
-﻿if(QT_VERSION VERSION_LESS "5.9.0")
+﻿add_compile_definitions(X_ENABLE_GOOGLE_LOG=0)
+set(msg "[GLog] Google log module is archived, the module will be removed in future versions")
+message(STATUS ${msg})
+return()
+
+if(QT_VERSION VERSION_LESS "5.9.0")
   add_compile_definitions(X_ENABLE_GOOGLE_LOG=0)
   return()
 endif()
