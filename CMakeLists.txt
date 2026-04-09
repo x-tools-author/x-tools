@@ -291,7 +291,7 @@ message(STATUS "[xTools] xTools runtime output directory: ${XTOOLS_RUNTIME_OUTPU
 # --------------------------------------------------------------------------------------------------
 # Windows
 if(WIN32)
-  if(QT_VERSION VERSION_LESS "5.8.0")
+  if(QT_VERSION VERSION_LESS "5.9.0")
     add_compile_definitions(X_BUILD_FOR_WIN_XP=1)
   else()
     add_compile_definitions(X_BUILD_FOR_WIN_XP=0)
