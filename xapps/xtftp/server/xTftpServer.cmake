@@ -1,0 +1,28 @@
+file(GLOB PRO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/tftp/server/*.*")
+list(APPEND PRO_FILES ${CMAKE_CURRENT_LIST_DIR}/xTftpServer.rc)
+list(APPEND PRO_FILES ${CMAKE_CURRENT_LIST_DIR}/xTftpServer.qrc)
+list(APPEND PRO_FILES ${X_TFTP_COMMON_FILES})
+list(APPEND PRO_FILES ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp)
+
+# --------------------------------------------------------------------------------------------------
+include_directories(${CMAKE_SOURCE_DIR}/xapps)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${X_BINS_DIR}/xTftpServer)
+set(x_tftp_server_version "1.0.0")
+add_compile_definitions(X_TFTP_SERVER_VERSION="${x_tftp_server_version}")
+qt_add_executable(xTftpServer ${PRO_FILES})
+x_deploy_qt(xTftpServer)
+x_using_x_tools_translations(xTftpServer)
+target_link_libraries(xTftpServer PRIVATE Qt::Core Qt::Gui Qt::Svg Qt::Widgets Qt::Network)
+if(X_USING_VS_CODE)
+  set_target_properties(xTftpServer PROPERTIES MACOSX_BUNDLE TRUE)
+else()
+  set_target_properties(xTftpServer PROPERTIES MACOSX_BUNDLE TRUE WIN32_EXECUTABLE TRUE)
+endif()
+
+# --------------------------------------------------------------------------------------------------
+if(WIN32)
+  target_link_libraries(xTftpServer PRIVATE Dwmapi)
+  x_generate_msix(xTftpServer "xTftpServer" "xTftpServer" "${x_tftp_server_version}" FALSE)
+elseif(LINUX)
+  target_link_libraries(xTftpServer PRIVATE dl)
+endif()

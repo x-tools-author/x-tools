@@ -9,6 +9,7 @@ include_directories(${CMAKE_SOURCE_DIR}/xapps)
 
 set(X_APPS "xTools")
 list(APPEND X_APPS "xSvg")
+list(APPEND X_APPS "xTftp")
 list(APPEND X_APPS "xCode")
 list(APPEND X_APPS "xDemo")
 list(APPEND X_APPS "xFlow")

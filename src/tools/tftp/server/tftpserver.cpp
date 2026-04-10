@@ -33,6 +33,9 @@ TftpServer::TftpServer(QWidget* parent)
     connect(m_service, &TftpServerService::sessionCreated, this, &TftpServer::onSessionCreated);
     connect(m_service, &TftpServerService::sessionUpdated, this, &TftpServer::onSessionUpdated);
     connect(m_service, &TftpServerService::sessionFinished, this, &TftpServer::onSessionFinished);
+
+    xSetNoneBorder(ui->textBrowserLog);
+    xSetNoneBorder(ui->tableWidgetSession);
 }
 
 TftpServer::~TftpServer()

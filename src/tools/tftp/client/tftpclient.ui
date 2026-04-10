@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
-    <height>191</height>
+    <width>483</width>
+    <height>205</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,23 +27,6 @@
       <string>Save file</string>
      </property>
     </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QProgressBar" name="progressBarUpload">
-     <property name="value">
-      <number>24</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="pushButtonUpload">
-     <property name="text">
-      <string>Upload</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="lineEditDownloadFile"/>
    </item>
    <item row="5" column="2">
     <widget class="QPushButton" name="pushButtonDownload">
@@ -86,20 +69,10 @@
    <item row="1" column="1">
     <widget class="QLineEdit" name="lineEditUploadFile"/>
    </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboBoxServerAddress">
-     <property name="minimumSize">
-      <size>
-       <width>256</width>
-       <height>0</height>
-      </size>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="0" colspan="3">
     <widget class="Line" name="line">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -110,8 +83,35 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditDownloadFile"/>
+   </item>
+   <item row="6" column="1" colspan="2">
     <widget class="QProgressBar" name="progressBarDownload">
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBoxServerAddress">
+     <property name="minimumSize">
+      <size>
+       <width>256</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QPushButton" name="pushButtonUpload">
+     <property name="text">
+      <string>Upload</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QProgressBar" name="progressBarUpload">
      <property name="value">
       <number>24</number>
      </property>
