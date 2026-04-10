@@ -1,5 +1,6 @@
 file(GLOB X_TFTP_COMMON_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/tftp/common/*.*")
 list(APPEND X_TFTP_COMMON_FILES ${X_COMMON_FILES})
+list(APPEND X_TFTP_COMMON_FILES ${CMAKE_CURRENT_SOURCE_DIR}/xTools.qrc)
 
 include(cmake/x_qt_deploy.cmake)
 include(cmake/x_qt_linguist.cmake)
