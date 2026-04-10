@@ -7,13 +7,44 @@
     <x>0</x>
     <y>0</y>
     <width>483</width>
-    <height>205</height>
+    <height>214</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TFTP Client</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Upload file</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEditUploadFile"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Download file</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="pushButtonBrowse">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Upload progress</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -21,79 +52,52 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
+   <item row="5" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditDownloadFile"/>
+   </item>
+   <item row="6" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Save file</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
-    <widget class="QPushButton" name="pushButtonDownload">
-     <property name="text">
-      <string>Download</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Download file</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Upload progress</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Upload file</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="pushButtonBrowse">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="lineEditDownloadSaveFile"/>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="lineEditUploadFile"/>
-   </item>
-   <item row="3" column="0" colspan="3">
+   <item row="4" column="0" colspan="3">
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="7" column="0">
     <widget class="QLabel" name="label_6">
      <property name="text">
       <string>Download progress</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEditDownloadFile"/>
+   <item row="1" column="0" colspan="3">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
    </item>
-   <item row="6" column="1" colspan="2">
-    <widget class="QProgressBar" name="progressBarDownload">
+   <item row="3" column="1">
+    <widget class="QProgressBar" name="progressBarUpload">
      <property name="value">
       <number>24</number>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="3" column="2">
+    <widget class="QPushButton" name="pushButtonUpload">
+     <property name="text">
+      <string>Upload</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
     <widget class="QComboBox" name="comboBoxServerAddress">
      <property name="minimumSize">
       <size>
@@ -103,19 +107,22 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QPushButton" name="pushButtonUpload">
-     <property name="text">
-      <string>Upload</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QProgressBar" name="progressBarUpload">
+   <item row="7" column="1">
+    <widget class="QProgressBar" name="progressBarDownload">
      <property name="value">
       <number>24</number>
      </property>
     </widget>
+   </item>
+   <item row="7" column="2">
+    <widget class="QPushButton" name="pushButtonDownload">
+     <property name="text">
+      <string>Download</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditDownloadSaveFile"/>
    </item>
   </layout>
  </widget>
