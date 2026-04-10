@@ -276,67 +276,77 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>CRC Assistant</source>
         <translation>CRC助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>mDNS Assistant</source>
         <translation>mDNS助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>Ping Assistant</source>
         <translation>Ping助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>ASCII Assistant</source>
         <translation>ASCII助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
         <source>Base64 Assistant</source>
         <translation>Base64助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>Number Assistant</source>
         <translation>数值助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
         <source>String Assistant</source>
         <translation>字符串助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
         <source>Broadcast Assistant</source>
         <translation>广播助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>File Check Assistant</source>
         <translation>文件校验助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
         <source>File Merge Assistant</source>
         <translation>文件合并助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
+        <source>TFTP Client</source>
+        <translation>TFTP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
+        <source>TFTP Server</source>
+        <translation>TFTP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
         <source>QR Code Assistant</source>
         <translation>二维码助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="68"/>
         <source>Barcode Assistant</source>
         <translation>条形码助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
         <translation>16进制编辑器</translation>
     </message>
@@ -345,12 +355,12 @@
         <translation type="vanished">TFTP助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="67"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
         <source>CAN Bus Assistant</source>
         <translation>CAN BUS助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="68"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="72"/>
         <source>Modbus Assistant</source>
         <translation>Modbus助手</translation>
     </message>
@@ -2979,44 +2989,44 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="249"/>
+        <location filename="../../src/mainwindow.cpp" line="272"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="257"/>
+        <location filename="../../src/mainwindow.cpp" line="280"/>
         <source>Save Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="261"/>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/mainwindow.cpp" line="284"/>
+        <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>Import Parameters</source>
         <translation>导入参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="265"/>
-        <location filename="../../src/mainwindow.cpp" line="481"/>
+        <location filename="../../src/mainwindow.cpp" line="288"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>Export Parameters</source>
         <translation>导出参数</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="278"/>
+        <location filename="../../src/mainwindow.cpp" line="301"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="282"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>New</source>
         <translation>新建工具</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="320"/>
+        <location filename="../../src/mainwindow.cpp" line="343"/>
         <source>Using System Proxy</source>
         <translation>使用系统代理</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Online Documentation</source>
         <translation>在线文档</translation>
     </message>
@@ -3025,32 +3035,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">（请手动重启软件。）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="535"/>
         <source>Unknown</source>
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="518"/>
+        <location filename="../../src/mainwindow.cpp" line="541"/>
         <source>Commit hash</source>
         <translation>提交指纹</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="520"/>
+        <location filename="../../src/mainwindow.cpp" line="543"/>
         <source>Commit time</source>
         <translation>提交时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="521"/>
+        <location filename="../../src/mainwindow.cpp" line="544"/>
         <source>Build Date</source>
         <translation>构建日期</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="522"/>
+        <location filename="../../src/mainwindow.cpp" line="545"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>All rights reserved.</source>
         <translation>保留所有版权。</translation>
     </message>
@@ -3059,38 +3069,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="524"/>
+        <location filename="../../src/mainwindow.cpp" line="547"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="372"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Third Party Open Source</source>
         <translation>第三方源</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="409"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
         <source>Join in QQ Group</source>
         <translation>加入群聊</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="406"/>
+        <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
+        <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>User QQ Group</source>
         <translation>用户交流QQ群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="416"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Qt QQ Group</source>
         <translation>Qt技术交流QQ群</translation>
     </message>
@@ -3103,8 +3113,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">该操作需要重启软件生效，立即重启软件吗？</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="493"/>
+        <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Json Files (*.json)</source>
         <translation>Json文件(*.json)</translation>
     </message>
@@ -4078,7 +4088,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="392"/>
+        <location filename="../../src/page/page.cpp" line="394"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -4195,13 +4205,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>协议解析</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="259"/>
+        <location filename="../../src/page/page.cpp" line="258"/>
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="551"/>
-        <location filename="../../src/page/page.cpp" line="1107"/>
+        <location filename="../../src/page/page.cpp" line="1108"/>
         <source>Error: No device is opened.</source>
         <translation>错误：没有打开的设备。</translation>
     </message>
@@ -4231,17 +4241,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>曲线图表</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="399"/>
+        <location filename="../../src/page/page.cpp" line="401"/>
         <source>Error Occurred</source>
         <translation>出现错误</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="405"/>
+        <location filename="../../src/page/page.cpp" line="407"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -4851,7 +4861,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>（未知）</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="58"/>
+        <location filename="../../src/main.cpp" line="43"/>
         <source>Application is booting...</source>
         <translation>软件正在启动...</translation>
     </message>
@@ -5860,6 +5870,499 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
         <translation>数据格式</translation>
+    </message>
+</context>
+<context>
+    <name>TftpClient</name>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="14"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="109"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="164"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="243"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="371"/>
+        <source>TFTP Client</source>
+        <translation>TFTP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="20"/>
+        <source>Server address</source>
+        <translation>服务地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="27"/>
+        <source>Save file</source>
+        <translation>保存文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="34"/>
+        <source>Download</source>
+        <translation>下载</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="41"/>
+        <source>Download file</source>
+        <translation>下载文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="48"/>
+        <source>Upload progress</source>
+        <translation>上传进度</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="55"/>
+        <source>Upload file</source>
+        <translation>上传文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="62"/>
+        <source>Browse</source>
+        <translation>浏览</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="82"/>
+        <source>Download progress</source>
+        <translation>下载进度</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="109"/>
+        <source>Upload</source>
+        <translation>上传</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="63"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="64"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="296"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="312"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="324"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="327"/>
+        <source>Idle</source>
+        <translation>空闲</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="71"/>
+        <source>Select upload file</source>
+        <translation>选择文件上传</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="110"/>
+        <source>Failed to bind UDP socket: %1</source>
+        <translation>绑定UDP端口失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
+        <source>A transfer is already in progress.</source>
+        <translation>传输正在进行。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
+        <source>Invalid server address.</source>
+        <translation>非法的服务器地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
+        <source>Please select a file to upload.</source>
+        <translation>请选择一个文件上传。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="165"/>
+        <source>Failed to open file: %1</source>
+        <translation>打开文件失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="198"/>
+        <source>Select download destination</source>
+        <translation>选择下载目标</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
+        <source>Failed to create destination directory.</source>
+        <translation>创建下载目标失败。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
+        <source>Please provide the remote file path.</source>
+        <translation>请提供远程文件路径</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="244"/>
+        <source>Failed to open destination file: %1</source>
+        <translation>打开下载目标失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="279"/>
+        <source>Uploading %1/%2 bytes</source>
+        <translation>上传中%1/%2字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="293"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="307"/>
+        <source>%1/%2 bytes (%3%)</source>
+        <translation>%1/%2 字节 (%3%)</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="309"/>
+        <source>%1 bytes</source>
+        <translation>%1字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="414"/>
+        <source>Unexpected transfer id</source>
+        <translation>非法传输ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="422"/>
+        <source>Received an invalid TFTP packet.</source>
+        <translation>接收到一个非法的TFTP包。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="434"/>
+        <source>Remote server reported an error.</source>
+        <translation>远程服务报告错误。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="450"/>
+        <source>Unexpected response while uploading.</source>
+        <translation>上传时收到非法应答。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="463"/>
+        <source>Upload completed</source>
+        <translation>上传完成</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="475"/>
+        <source>Unexpected ACK block received.</source>
+        <translation>收到非法确认消息。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="492"/>
+        <source>Unexpected response while downloading.</source>
+        <translation>下载时收到非法应答。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="498"/>
+        <source>Failed to write downloaded data to file.</source>
+        <translation>无法将下载数据保存到文件。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="507"/>
+        <source>Download completed</source>
+        <translation>下载完成</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="517"/>
+        <source>Unexpected DATA block received.</source>
+        <translation>收到非法数据。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="528"/>
+        <source>Transfer timed out.</source>
+        <translation>传输超时。</translation>
+    </message>
+</context>
+<context>
+    <name>TftpServer</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="14"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="129"/>
+        <source>TFTP Server</source>
+        <translation>TFTP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="23"/>
+        <source>Browse</source>
+        <translation>浏览</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="30"/>
+        <source>Server address</source>
+        <translation>服务地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="47"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="97"/>
+        <source>Start</source>
+        <translation>开始</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="54"/>
+        <source>Server directory</source>
+        <translation>服务目录</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="71"/>
+        <source>Log</source>
+        <translation>日志输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
+        <source>Sessions</source>
+        <translation>会话闲情</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Peer</source>
+        <translation>远端</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Direction</source>
+        <translation>方向</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Bytes</source>
+        <translation>字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
+        <source>Progress</source>
+        <translation>进度</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
+        <source>Status</source>
+        <translation>状态</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="86"/>
+        <source>Select server directory</source>
+        <translation>选择服务目录</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="98"/>
+        <source>Server stopped</source>
+        <translation>服务停止</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
+        <source>Please select a server directory.</source>
+        <translation>请选择一个服务目录。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
+        <source>Failed to create server directory.</source>
+        <translation>创建服务目录失败。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
+        <source>Invalid server address.</source>
+        <translation>非法服务地址。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="133"/>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="134"/>
+        <source>Server started at %1, directory: %2</source>
+        <translation>服务开始于 %1，目录：%2</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
+        <source>0/%1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="199"/>
+        <source>%1/%2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="233"/>
+        <source>completed</source>
+        <translation>完成</translation>
+    </message>
+</context>
+<context>
+    <name>TftpServerService</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="39"/>
+        <source>Failed to bind TFTP server socket: %1</source>
+        <translation>绑定TFTP服务失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="50"/>
+        <source>Listening on %1:%2</source>
+        <translation>正在监听 %1：%2</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="98"/>
+        <source>%1 -&gt; error: %2</source>
+        <translation>%1 -&gt; 错误: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="115"/>
+        <source>Invalid TFTP packet</source>
+        <translation>非法TFTP包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="124"/>
+        <source>Only RRQ and WRQ are accepted on the listener socket</source>
+        <translation>仅在监听套接字上接受 RRQ 和 WRQ。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="132"/>
+        <source>Only octet mode is supported</source>
+        <translation>仅支持八位模式。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="142"/>
+        <source>Invalid file path</source>
+        <translation>无效的文件路径</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="153"/>
+        <source>Requested file does not exist</source>
+        <translation>所请求的文件不存在</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="194"/>
+        <source>Failed to start session</source>
+        <translation>无法启动会话</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="205"/>
+        <source>Running</source>
+        <translation>运行中</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="226"/>
+        <source>Completed</source>
+        <translation>完成</translation>
+    </message>
+</context>
+<context>
+    <name>TftpServerSession</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="56"/>
+        <source>Failed to open file: %1</source>
+        <translation>打开文件失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="68"/>
+        <source>Failed to bind session socket: %1</source>
+        <translation>绑定会话套接字失败：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="78"/>
+        <source>%1 %2 %3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
+        <source>Send</source>
+        <translation>发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
+        <source>Receive</source>
+        <translation>接收</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="127"/>
+        <source>Negotiating</source>
+        <translation>握手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="235"/>
+        <source>Sending</source>
+        <translation>发送中</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="150"/>
+        <source>Receiving</source>
+        <translation>接收中</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="166"/>
+        <source>%1 failed: %2</source>
+        <translation>%1 失败: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="177"/>
+        <source>%1 completed: %2</source>
+        <translation>%1 完成: %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="198"/>
+        <source>Unexpected transfer id</source>
+        <translation>非法传输ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="207"/>
+        <source>Invalid session packet</source>
+        <translation>非法TFTP包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="216"/>
+        <source>Remote peer reported an error</source>
+        <translation>远程服务报告错误。</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="229"/>
+        <source>Expected ACK packet</source>
+        <translation>非法TFTP包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="237"/>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="277"/>
+        <source>Transfer completed</source>
+        <translation>传输完成</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="250"/>
+        <source>Unexpected ACK block</source>
+        <translation>非法ACK包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="256"/>
+        <source>Unexpected OACK packet</source>
+        <translation>非法OACK包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="262"/>
+        <source>Expected DATA packet</source>
+        <translation>期待数据包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="269"/>
+        <source>Failed to write file data</source>
+        <translation>写文件数据失败</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="287"/>
+        <source>Unexpected DATA block</source>
+        <translation>非法数据包</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="296"/>
+        <source>Session timed out</source>
+        <translation>会话超时</translation>
     </message>
 </context>
 <context>

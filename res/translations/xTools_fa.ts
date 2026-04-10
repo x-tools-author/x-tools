@@ -276,77 +276,87 @@
 <context>
     <name>AssistantFactory</name>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="48"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
         <source>CRC Assistant</source>
         <translation>دستیار CRC</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="50"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
         <source>mDNS Assistant</source>
         <translation>دستیار mDNS</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="52"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
         <source>Ping Assistant</source>
         <translation>دستیار Ping</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="53"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
         <source>ASCII Assistant</source>
         <translation>دستیار ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="54"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
         <source>Base64 Assistant</source>
         <translation>دستیار Base64</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="55"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
         <source>Number Assistant</source>
         <translation>دستیار اعداد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="56"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
         <source>String Assistant</source>
         <translation>دستیار رشته</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="57"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
         <source>Broadcast Assistant</source>
         <translation>دستیار پخش</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="58"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="60"/>
         <source>File Check Assistant</source>
         <translation>دستیار بررسی فایل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="59"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
         <source>File Merge Assistant</source>
         <translation>دستیار ادغام فایل</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="61"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
+        <source>TFTP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
+        <source>TFTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
         <source>QR Code Assistant</source>
         <translation>دستیار کد QR</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="64"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="68"/>
         <source>Barcode Assistant</source>
         <translation>دستیار بارکد</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="67"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
         <source>CAN Bus Assistant</source>
         <translation>دستیار گذرگاه CAN</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="68"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="72"/>
         <source>Modbus Assistant</source>
         <translation>دستیار Modbus</translation>
     </message>
     <message>
-        <location filename="../../src/tools/assistantfactory.cpp" line="71"/>
+        <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2946,34 +2956,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="249"/>
+        <location filename="../../src/mainwindow.cpp" line="272"/>
         <source>New Window</source>
         <translation>پنجره جدید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="257"/>
+        <location filename="../../src/mainwindow.cpp" line="280"/>
         <source>Save Parameters</source>
         <translation>ذخیره پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="261"/>
-        <location filename="../../src/mainwindow.cpp" line="468"/>
+        <location filename="../../src/mainwindow.cpp" line="284"/>
+        <location filename="../../src/mainwindow.cpp" line="491"/>
         <source>Import Parameters</source>
         <translation>وارد کردن پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="265"/>
-        <location filename="../../src/mainwindow.cpp" line="481"/>
+        <location filename="../../src/mainwindow.cpp" line="288"/>
+        <location filename="../../src/mainwindow.cpp" line="504"/>
         <source>Export Parameters</source>
         <translation>خروجی پارامترها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="278"/>
+        <location filename="../../src/mainwindow.cpp" line="301"/>
         <source>&amp;Tools</source>
         <translation>&amp;ابزارها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="282"/>
+        <location filename="../../src/mainwindow.cpp" line="305"/>
         <source>New</source>
         <translation>جدید</translation>
     </message>
@@ -2982,48 +2992,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">&amp;نمایش</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="524"/>
+        <location filename="../../src/mainwindow.cpp" line="547"/>
         <source>About</source>
         <translation>درباره</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="346"/>
-        <location filename="../../src/mainwindow.cpp" line="386"/>
+        <location filename="../../src/mainwindow.cpp" line="369"/>
+        <location filename="../../src/mainwindow.cpp" line="409"/>
         <source>Release History</source>
         <translation>تاریخچه نسخه‌ها</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="347"/>
+        <location filename="../../src/mainwindow.cpp" line="370"/>
         <source>Join in QQ Group</source>
         <translation>به گروه QQ بپیوندید</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="320"/>
+        <location filename="../../src/mainwindow.cpp" line="343"/>
         <source>Using System Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="342"/>
+        <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Online Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="372"/>
+        <location filename="../../src/mainwindow.cpp" line="395"/>
         <source>Third Party Open Source</source>
         <translation>منبع باز شخص ثالث</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="406"/>
+        <location filename="../../src/mainwindow.cpp" line="429"/>
         <source>QR Code</source>
         <translation>کد QR</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="415"/>
+        <location filename="../../src/mainwindow.cpp" line="438"/>
         <source>User QQ Group</source>
         <translation>گروه QQ کاربر</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="416"/>
+        <location filename="../../src/mainwindow.cpp" line="439"/>
         <source>Qt QQ Group</source>
         <translation>گروه QQ Qt</translation>
     </message>
@@ -3040,38 +3050,38 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation type="vanished">(لطفاً برنامه خود را به صورت دستی راه‌اندازی مجدد کنید.)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="470"/>
-        <location filename="../../src/mainwindow.cpp" line="483"/>
+        <location filename="../../src/mainwindow.cpp" line="493"/>
+        <location filename="../../src/mainwindow.cpp" line="506"/>
         <source>Json Files (*.json)</source>
         <translation>فایل‌های Json (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="512"/>
+        <location filename="../../src/mainwindow.cpp" line="535"/>
         <source>Unknown</source>
         <translation>نامشخص</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="518"/>
+        <location filename="../../src/mainwindow.cpp" line="541"/>
         <source>Commit hash</source>
         <translation>هش کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="520"/>
+        <location filename="../../src/mainwindow.cpp" line="543"/>
         <source>Commit time</source>
         <translation>زمان کامیت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="521"/>
+        <location filename="../../src/mainwindow.cpp" line="544"/>
         <source>Build Date</source>
         <translation>تاریخ ساخت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="522"/>
+        <location filename="../../src/mainwindow.cpp" line="545"/>
         <source>Copyright</source>
         <translation>حق کپی‌رایت</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.cpp" line="523"/>
+        <location filename="../../src/mainwindow.cpp" line="546"/>
         <source>All rights reserved.</source>
         <translation>تمامی حقوق محفوظ است.</translation>
     </message>
@@ -4032,7 +4042,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="145"/>
-        <location filename="../../src/page/page.cpp" line="392"/>
+        <location filename="../../src/page/page.cpp" line="394"/>
         <source>Open</source>
         <translation>باز کردن</translation>
     </message>
@@ -4183,27 +4193,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="551"/>
-        <location filename="../../src/page/page.cpp" line="1107"/>
+        <location filename="../../src/page/page.cpp" line="1108"/>
         <source>Error: No device is opened.</source>
         <translation>خطا: هیچ دستگاهی باز نیست.</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="259"/>
+        <location filename="../../src/page/page.cpp" line="258"/>
         <source>Disable</source>
         <translation>غیرفعال‌سازی</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="383"/>
+        <location filename="../../src/page/page.cpp" line="385"/>
         <source>Close</source>
         <translation>بستن</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="399"/>
+        <location filename="../../src/page/page.cpp" line="401"/>
         <source>Error Occurred</source>
         <translation>خطایی رخ داده است</translation>
     </message>
     <message>
-        <location filename="../../src/page/page.cpp" line="405"/>
+        <location filename="../../src/page/page.cpp" line="407"/>
         <source>Warning</source>
         <translation>هشدار</translation>
     </message>
@@ -4664,7 +4674,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>یک‌طرفه</translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="58"/>
+        <location filename="../../src/main.cpp" line="43"/>
         <source>Application is booting...</source>
         <translation>برنامه در حال راه‌اندازی است...</translation>
     </message>
@@ -5827,6 +5837,499 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/utilities/textitemeditor.ui" line="171"/>
         <source>Format</source>
         <translation>قالب</translation>
+    </message>
+</context>
+<context>
+    <name>TftpClient</name>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="14"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="109"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="164"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="243"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="371"/>
+        <source>TFTP Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="20"/>
+        <source>Server address</source>
+        <translation type="unfinished">آدرس سرور</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="27"/>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="34"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="41"/>
+        <source>Download file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="48"/>
+        <source>Upload progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="55"/>
+        <source>Upload file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="62"/>
+        <source>Browse</source>
+        <translation type="unfinished">مرور کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="82"/>
+        <source>Download progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.ui" line="109"/>
+        <source>Upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="63"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="64"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="296"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="312"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="324"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="327"/>
+        <source>Idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="71"/>
+        <source>Select upload file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="110"/>
+        <source>Failed to bind UDP socket: %1</source>
+        <translation type="unfinished">نمی‌توان سوکت UDP را متصل کرد: %1</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
+        <source>A transfer is already in progress.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
+        <source>Invalid server address.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
+        <source>Please select a file to upload.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="165"/>
+        <source>Failed to open file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="198"/>
+        <source>Select download destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
+        <source>Failed to create destination directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
+        <source>Please provide the remote file path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="244"/>
+        <source>Failed to open destination file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="279"/>
+        <source>Uploading %1/%2 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="293"/>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="307"/>
+        <source>%1/%2 bytes (%3%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="309"/>
+        <source>%1 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="414"/>
+        <source>Unexpected transfer id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="422"/>
+        <source>Received an invalid TFTP packet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="434"/>
+        <source>Remote server reported an error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="450"/>
+        <source>Unexpected response while uploading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="463"/>
+        <source>Upload completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="475"/>
+        <source>Unexpected ACK block received.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="492"/>
+        <source>Unexpected response while downloading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="498"/>
+        <source>Failed to write downloaded data to file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="507"/>
+        <source>Download completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="517"/>
+        <source>Unexpected DATA block received.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="528"/>
+        <source>Transfer timed out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpServer</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="14"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="129"/>
+        <source>TFTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="23"/>
+        <source>Browse</source>
+        <translation type="unfinished">مرور کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="30"/>
+        <source>Server address</source>
+        <translation type="unfinished">آدرس سرور</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="47"/>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="97"/>
+        <source>Start</source>
+        <translation type="unfinished">شروع</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="54"/>
+        <source>Server directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="71"/>
+        <source>Log</source>
+        <translation type="unfinished">ورود به سیستم</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
+        <source>Sessions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Peer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
+        <source>Bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
+        <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="86"/>
+        <source>Select server directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="98"/>
+        <source>Server stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
+        <source>Please select a server directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
+        <source>Failed to create server directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
+        <source>Invalid server address.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="133"/>
+        <source>Stop</source>
+        <translation type="unfinished">متوقف کردن</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="134"/>
+        <source>Server started at %1, directory: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
+        <source>0/%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="199"/>
+        <source>%1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="233"/>
+        <source>completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpServerService</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="39"/>
+        <source>Failed to bind TFTP server socket: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="50"/>
+        <source>Listening on %1:%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="98"/>
+        <source>%1 -&gt; error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="115"/>
+        <source>Invalid TFTP packet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="124"/>
+        <source>Only RRQ and WRQ are accepted on the listener socket</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="132"/>
+        <source>Only octet mode is supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="142"/>
+        <source>Invalid file path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="153"/>
+        <source>Requested file does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="194"/>
+        <source>Failed to start session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="205"/>
+        <source>Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="226"/>
+        <source>Completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TftpServerSession</name>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="56"/>
+        <source>Failed to open file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="68"/>
+        <source>Failed to bind session socket: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="78"/>
+        <source>%1 %2 %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
+        <source>Send</source>
+        <translation type="unfinished">ارسال کنید</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
+        <source>Receive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="127"/>
+        <source>Negotiating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="144"/>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="235"/>
+        <source>Sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="150"/>
+        <source>Receiving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="166"/>
+        <source>%1 failed: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="177"/>
+        <source>%1 completed: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="198"/>
+        <source>Unexpected transfer id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="207"/>
+        <source>Invalid session packet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="216"/>
+        <source>Remote peer reported an error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="229"/>
+        <source>Expected ACK packet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="237"/>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="277"/>
+        <source>Transfer completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="250"/>
+        <source>Unexpected ACK block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="256"/>
+        <source>Unexpected OACK packet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="262"/>
+        <source>Expected DATA packet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="269"/>
+        <source>Failed to write file data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="287"/>
+        <source>Unexpected DATA block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="296"/>
+        <source>Session timed out</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
