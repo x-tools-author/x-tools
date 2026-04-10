@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************************
- * Copyright 2025-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
+ * Copyright 2026-2026 x-tools-author(x-tools@outlook.com). All rights reserved.
  *
  * The file is encoded in "utf8 with bom", it is a part of xTools project.
  *
