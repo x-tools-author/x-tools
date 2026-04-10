@@ -146,6 +146,21 @@ public:
         return button;
     }
 
+    void appendPage(const QString& name, xPage* page)
+    {
+        if (!page) {
+            qWarning("xPageManager: page is null");
+            return;
+        }
+
+        addLayoutPage(name, page);
+
+        PageInfo pageInfo;
+        pageInfo.name = name;
+        pageInfo.page = page;
+        m_pages.append(pageInfo);
+    }
+
 private:
     xPageManager* q{nullptr};
 };
@@ -184,52 +199,42 @@ xPageManager::xPageManager(QStackedLayout* layout, QMenuBar* menuBar, QObject* p
     // ---------------------------------------------------------------------------------------------
 
     d->m_tools = new xTools::xTools(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xTools"), d->m_tools);
-    d->m_pages.append({QString("xTools"), d->m_tools});
+    d->appendPage(QString("xTools"), d->m_tools);
 #if X_ENABLE_X_BLE
     d->m_ble = new xBle::xBle(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xBLE"), d->m_ble);
-    d->m_pages.append({QString("xBLE"), d->m_ble});
+    d->appendPage(QString("xBLE"), d->m_ble);
 #endif
 #if X_ENABLE_X_MODBUS
     d->m_modbus = new xModbus::xModbus(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xModbus"), d->m_modbus);
-    d->m_pages.append({QString("xModbus"), d->m_modbus});
+    d->appendPage(QString("xModbus"), d->m_modbus);
 #endif
 #if X_ENABLE_X_CANBUS
     d->m_canbus = new xCanBus::xCanBus(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xCANBus"), d->m_canbus);
-    d->m_pages.append({QString("xCANBus"), d->m_canbus});
+    d->appendPage(QString("xCANBus"), d->m_canbus);
 #endif
 #if X_ENABLE_X_MQTT
     d->m_mqtt = new xMqtt::xMqtt(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xMQTT"), d->m_mqtt);
-    d->m_pages.append({QString("xMQTT"), d->m_mqtt});
+    d->appendPage(QString("xMQTT"), d->m_mqtt);
 #endif
 #if X_ENABLE_X_COAP
     d->m_coap = new xCoAP::xCoAP(d->m_layout->parentWidget());
     d->m_coap->setupSettings(xAPP->settings());
-    d->addLayoutPage(QString("xCoAP"), d->m_coap);
-    d->m_pages.append({QString("xCoAP"), d->m_coap});
+    d->appendPage(QString("xCoAP"), d->m_coap);
 #endif
 #if X_ENABLE_X_OPCUA
     d->m_opcua = new xOpcUa::xOpcUa(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xOpcUa"), d->m_opcua);
-    d->m_pages.append({QString("xOpcUa"), d->m_opcua});
+    d->appendPage(QString("xOpcUa"), d->m_opcua);
 #endif
 #if X_ENABLE_X_HTTP
     d->m_http = new xHttp::xHttp(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xHTTP"), d->m_http);
-    d->m_pages.append({QString("xHTTP"), d->m_http});
+    d->appendPage(QString("xHTTP"), d->m_http);
 #endif
 #if X_ENABLE_X_FLOW
     d->m_flow = new xFlow::xFlow(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xFlow"), d->m_flow);
-    d->m_pages.append({QString("xFlow"), d->m_flow});
+    d->appendPage(QString("xFlow"), d->m_flow);
 #endif
     d->m_log = new xLog::xLog(d->m_layout->parentWidget());
-    d->addLayoutPage(QString("xLog"), d->m_log);
-    d->m_pages.append({QString("xLog"), d->m_log});
+    d->appendPage(QString("xLog"), d->m_log);
 }
 
 xPageManager::~xPageManager() {}
