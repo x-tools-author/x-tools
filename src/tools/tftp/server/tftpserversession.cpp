@@ -63,6 +63,7 @@ bool TftpServerSession::start(QString* errorMessage)
                                          ? QHostAddress::AnyIPv4
                                          : m_localAddress;
     if (!m_socket->bind(bindAddress, 0, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
+        m_file.close();
         if (errorMessage) {
             *errorMessage = tr("Failed to bind session socket: %1").arg(m_socket->errorString());
         }
@@ -152,9 +153,16 @@ void TftpServerSession::sendAck(quint16 block)
 void TftpServerSession::fail(quint16 errorCode, const QString& message)
 {
     m_timeoutTimer.stop();
+    const QString failedFilePath = m_file.fileName();
+    if (m_file.isOpen()) {
+        m_file.close();
+    }
     m_socket->writeDatagram(Tftp::makeError(static_cast<Tftp::ErrorCode>(errorCode), message),
                             m_peerAddress,
                             m_peerPort);
+    if (m_direction == Direction::Receive && !failedFilePath.isEmpty()) {
+        QFile::remove(failedFilePath);
+    }
     emit logMessage(tr("%1 failed: %2").arg(peer(), message));
     emit progress(m_sessionId, m_transferredBytes, m_totalBytes, message);
     emit finished(m_sessionId, false, message);

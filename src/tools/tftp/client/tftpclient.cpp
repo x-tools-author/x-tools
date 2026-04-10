@@ -362,7 +362,12 @@ void TftpClient::finishTransfer(bool success, const QString& message)
 
 void TftpClient::abortTransfer(const QString& message)
 {
+    const TransferMode failedMode = m_transferMode;
+    const QString failedFilePath = m_file.fileName();
     finishTransfer(false, message);
+    if (failedMode == TransferMode::Download && !failedFilePath.isEmpty()) {
+        QFile::remove(failedFilePath);
+    }
     QMessageBox::warning(this, tr("TFTP Client"), message);
 }
 
@@ -433,7 +438,11 @@ void TftpClient::handleIncomingDatagram(const QByteArray& datagram,
 
     if (m_transferMode == TransferMode::Upload) {
         if (packet.opcode == Tftp::Opcode::OptionAck) {
-            sendUploadBlock();
+            if (m_currentBlock == 0) {
+                sendUploadBlock();
+            } else {
+                sendPacket(m_lastPacket, m_serverTid);
+            }
             return;
         }
 
