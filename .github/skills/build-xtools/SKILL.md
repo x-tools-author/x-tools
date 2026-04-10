@@ -1,7 +1,7 @@
 ---
 name: build-xtools
 description: Build xTools or a selected X_APP variant for this repository with the project's CMake-based workflow. Use this when asked to compile, rebuild, package, or verify buildability on Windows or Linux.
-argument-hint: [target-or-xapp] [platform] [qt-path]
+argument-hint: "[target-or-xapp] [platform] [qt-path]"
 disable-model-invocation: true
 ---
 
