@@ -31,7 +31,8 @@ private:
         AssistantTypeFileMerge,
         AssistantTypeQRCode,
         AssistantTypeBarcode,
-        AssistantTypeTFTP,
+        AssistantTypeTFTPClient,
+        AssistantTypeTFTPServer,
         AssistantTypeCANBus = 100,
         AssistantTypeModbus,
 

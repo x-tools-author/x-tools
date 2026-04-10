@@ -20,6 +20,8 @@
 #include "number/numberassistant.h"
 #include "ping/pingassistant.h"
 #include "string/stringassistant.h"
+#include "tftp/client/tftpclient.h"
+#include "tftp/server/tftpserver.h"
 
 #if X_ENABLE_ZINT
 #include "barcode/barcodeassistant.h"
@@ -57,6 +59,8 @@ AssistantFactory::AssistantFactory(QObject* parent)
     addAssistant<BroadcastAssistant>(AssistantTypeBroadcast, tr("Broadcast Assistant"));
     addAssistant<FileCheckAssistant>(AssistantTypeFileCheck, tr("File Check Assistant"));
     addAssistant<FileMergeAssistant>(AssistantTypeFileMerge, tr("File Merge Assistant"));
+    addAssistant<TftpClient>(AssistantTypeTFTPClient, tr("TFTP Client"));
+    addAssistant<TftpServer>(AssistantTypeTFTPServer, tr("TFTP Server"));
 #if !defined(X_DISABLE_QR_CODE)
     addAssistant<QRCodeAssistant>(AssistantTypeQRCode, tr("QR Code Assistant"));
 #endif
