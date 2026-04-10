@@ -6109,7 +6109,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
         <source>Sessions</source>
-        <translation>会话闲情</translation>
+        <translation>会话详情</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
