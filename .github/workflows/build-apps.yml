@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Build with Qt6
-    runs-on: windows-2022
+    runs-on: windows-2025
     strategy:
       fail-fast: false
       matrix:
