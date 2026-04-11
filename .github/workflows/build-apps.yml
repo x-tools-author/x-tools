@@ -19,9 +19,9 @@ jobs:
         app: [xCode, xOscilloscope, xPing, xHash, xFlow, xMerge, xAssistant, xTftp]
     steps:
       - name: Pull code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           dir: ${{ github.workspace }}
