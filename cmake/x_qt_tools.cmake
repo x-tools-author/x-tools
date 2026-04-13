@@ -42,6 +42,7 @@ if(EXISTS ${lib_dir}/QtPropertyBrowser.lib
    OR EXISTS ${lib_dir}/libQtPropertyBrowser.a
    OR EXISTS ${lib_dir}/QtPropertyBrowser.a)
   link_directories(${lib_dir})
+  message(STATUS "[QtTools] Using prebuilt ${package_file_name} library from ${lib_dir}")
   list(APPEND X_LIBS QtPropertyBrowser)
 else()
   file(GLOB_RECURSE QtPropertyBrowser_SRC
