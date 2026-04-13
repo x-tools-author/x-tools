@@ -10,18 +10,18 @@ on:
 jobs:
   build:
     name: Build with Qt6
-    runs-on: windows-2022
+    runs-on: windows-2025
     strategy:
       fail-fast: false
       matrix:
         version: [6.8.3]
         arch: [win64_msvc2022_64]
-        app: [xCode, xOscilloscope, xPing, xHash, xFlow, xMerge, xAssistant]
+        app: [xCode, xOscilloscope, xPing, xHash, xFlow, xMerge, xAssistant, xTftp]
     steps:
       - name: Pull code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: '==3.1.*'
           dir: ${{ github.workspace }}
