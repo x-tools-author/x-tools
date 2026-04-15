@@ -4,19 +4,23 @@ endif()
 
 # * https://github.com/QtExcel/QXlsx
 # * https://codeload.github.com/QtExcel/QXlsx/zip/refs/tags/v1.4.10
-set(qxlsx_version "1.4.10")
-set(qxlsx_package_name "QXlsx-${qxlsx_version}")
-
-if(NOT QT_VERSION VERSION_GREATER_EQUAL "5.11.0")
+if(QT_VERSION VERSION_LESS "5.12.0")
   set(qxlsx_version "1.4.7")
-  set(qxlsx_package_name "QXlsx-${qxlsx_version}")
+elseif(QT_VERSION VERSION_LESS "6.10.0")
+  set(qxlsx_version "1.4.10")
+else()
+  set(qxlsx_version "1.5.0")
 endif()
+set(qxlsx_package_name "QXlsx-${qxlsx_version}")
 
 # --------------------------------------------------------------------------------------------------
 # Download QXlsx zip...
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qxlsx_package_name}.zip)
-  file(DOWNLOAD "https://codeload.github.com/QtExcel/QXlsx/zip/refs/tags/v${qxlsx_version}"
-       ${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qxlsx_package_name}.zip STATUS download_status)
+  file(
+    DOWNLOAD "https://codeload.github.com/QtExcel/QXlsx/zip/refs/tags/v${qxlsx_version}"
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rd/${qxlsx_package_name}.zip
+    SHOW_PROGRESS
+    STATUS download_status)
   if(NOT download_status EQUAL 0)
     set(qxlsx_version "1.4.7")
     set(qxlsx_package_name "QXlsx-${qxlsx_version}")
