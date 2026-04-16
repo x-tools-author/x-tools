@@ -1,6 +1,6 @@
 ---
 title: 条形图
-parent: 数据可视化
+parent: 数据图表
 nav_order: 2
 ---
 

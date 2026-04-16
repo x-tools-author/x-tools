@@ -1,6 +1,6 @@
 ---
 title: JavaScript脚本
-parent: 扩展脚本
+parent: 脚本程序
 nav_order: 2
 ---
 
