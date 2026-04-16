@@ -1,7 +1,6 @@
 ---
 title: 第三方开源
-nav_order: 80
-parent: xTools
+nav_order: 92
 ---
 
 ## 第三方开源
