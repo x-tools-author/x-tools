@@ -1,7 +1,7 @@
 ---
 title: 安装
-nav_order: 1
 parent: xTools
+nav_order: 1
 ---
 
 ## 安装
