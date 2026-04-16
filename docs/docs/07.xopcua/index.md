@@ -1,4 +1,4 @@
-﻿---
+---
 title: xOPCUA
 nav_order: 7
 ---

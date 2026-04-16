@@ -1,4 +1,4 @@
-﻿---
+---
 title: xMQTT
 nav_order: 5
 ---

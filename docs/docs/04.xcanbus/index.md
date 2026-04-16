@@ -1,4 +1,4 @@
-﻿---
+---
 title: xCANBus
 nav_order: 4
 ---

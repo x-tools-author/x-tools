@@ -1,4 +1,4 @@
-﻿---
+---
 title: FAQ
 nav_order: 91
 ---

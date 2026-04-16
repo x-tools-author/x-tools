@@ -1,4 +1,4 @@
-﻿---
+---
 title: xCoAP
 nav_order: 6
 ---

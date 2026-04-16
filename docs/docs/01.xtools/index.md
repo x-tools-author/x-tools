@@ -1,4 +1,4 @@
-﻿---
+---
 title: xTools
 nav_order: 1
 ---

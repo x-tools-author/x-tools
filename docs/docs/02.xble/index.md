@@ -1,4 +1,4 @@
-﻿---
+---
 title: xBLE
 nav_order: 2
 ---
