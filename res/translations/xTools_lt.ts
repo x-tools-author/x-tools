@@ -328,12 +328,12 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTP klientas</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTP serveris</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex redaktorius</translation>
     </message>
 </context>
 <context>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagalba</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/bar/barsettings.cpp" line="51"/>
@@ -955,27 +955,27 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="51"/>
         <source>Server IP</source>
-        <translation type="unfinished">Serverio IP</translation>
+        <translation>Serverio IP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="77"/>
         <source>Server Port</source>
-        <translation type="unfinished">Serverio prievadas</translation>
+        <translation>Serverio prievadas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>protokolas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
         <source>Payload</source>
-        <translation type="unfinished">Naudinga apkrova</translation>
+        <translation>Naudinga apkrova</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="122"/>
         <source>Preset payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>Iš anksto nustatytas naudingų krovinių sąrašas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="125"/>
@@ -985,57 +985,57 @@
         <location filename="../../src/x/coap/coapclientui.ui" line="221"/>
         <location filename="../../src/x/coap/coapclientui.ui" line="349"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="132"/>
         <source>Save current payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugokite esamą naudingą apkrovą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="142"/>
         <source>Edit payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>Redaguoti naudingų krovinių sąrašą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="157"/>
         <source>Please input CoAP resource</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite CoAP išteklius</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="171"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Parinktys</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="192"/>
         <source>Please input CoAP option</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite CoAP parinktį</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="207"/>
         <source>URI path</source>
-        <translation type="unfinished"></translation>
+        <translation>URI kelias</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="236"/>
         <source>Please input CoAP payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite CoAP naudingą apkrovą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="297"/>
         <source>Presets</source>
-        <translation type="unfinished">Išankstiniai nustatymai</translation>
+        <translation>Išankstiniai nustatymai</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="321"/>
         <source>Open Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Atidaryti Klientą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="328"/>
         <source>Close Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Uždaryti klientą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="342"/>
@@ -1048,47 +1048,47 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="14"/>
         <source>CoAP Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP pasauliniai nustatymai</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="59"/>
         <source>Client name</source>
-        <translation type="unfinished"></translation>
+        <translation>Kliento vardas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="74"/>
         <source>CoAP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP klientas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="86"/>
         <source>CoAP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP serveris</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>
         <source>Token length</source>
-        <translation type="unfinished"></translation>
+        <translation>Žetono ilgis</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="100"/>
         <source>Server name</source>
-        <translation type="unfinished">Serverio pavadinimas</translation>
+        <translation>Serverio pavadinimas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="109"/>
         <source>Cache path</source>
-        <translation type="unfinished"></translation>
+        <translation>Talpyklos kelias</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="129"/>
         <source>Browse</source>
-        <translation type="unfinished">Naršyti</translation>
+        <translation>Naršyti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="141"/>
         <source>Cache resource from post message</source>
-        <translation type="unfinished"></translation>
+        <translation>Talpyklos šaltinis iš pranešimo</translation>
     </message>
 </context>
 <context>
@@ -1099,17 +1099,17 @@
         <location filename="../../src/x/coap/coapmsgview.ui" line="51"/>
         <location filename="../../src/x/coap/coapmsgview.ui" line="91"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="65"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingos apkrovos filtras</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="88"/>
         <source>Max records count</source>
-        <translation type="unfinished"></translation>
+        <translation>Maksimalus įrašų skaičius</translation>
     </message>
 </context>
 <context>
@@ -1117,17 +1117,17 @@
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="14"/>
         <source>Payload editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingos apkrovos redaktorius</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="51"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingojo krovinio aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="58"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontekstinis formatas</translation>
     </message>
 </context>
 <context>
@@ -1135,37 +1135,37 @@
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="40"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="47"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="57"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Redaguoti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="67"/>
         <source>Remove</source>
-        <translation type="unfinished">Pašalinti</translation>
+        <translation>Pašalinti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="77"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Aišku</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="87"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtruoti</translation>
+        <translation>Filtruoti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="97"/>
         <source>Filter text</source>
-        <translation type="unfinished">Filtruoti tekstą</translation>
+        <translation>Filtruoti tekstą</translation>
     </message>
 </context>
 <context>
@@ -1173,22 +1173,22 @@
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="14"/>
         <source>Resource Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Išteklių redaktorius</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="48"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontekstinis formatas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="60"/>
         <source>Description</source>
-        <translation type="unfinished">Aprašymas</translation>
+        <translation>Aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="74"/>
         <source>Uri Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Urio kelias</translation>
     </message>
 </context>
 <context>
@@ -1196,27 +1196,27 @@
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="43"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="53"/>
         <source>Delete</source>
-        <translation type="unfinished">Ištrinti</translation>
+        <translation>Ištrinti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="63"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Aišku</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="73"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtruoti</translation>
+        <translation>Filtruoti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="83"/>
         <source>Filter text</source>
-        <translation type="unfinished">Filtruoti tekstą</translation>
+        <translation>Filtruoti tekstą</translation>
     </message>
 </context>
 <context>
@@ -1224,37 +1224,37 @@
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="124"/>
         <source>Server Port</source>
-        <translation type="unfinished">Serverio prievadas</translation>
+        <translation>Serverio prievadas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="41"/>
         <source>Server IP</source>
-        <translation type="unfinished">Serverio IP</translation>
+        <translation>Serverio IP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="81"/>
         <source>Close Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Uždaryti serverį</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="54"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>protokolas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="64"/>
         <source>Open Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Atidarykite serverį</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="99"/>
         <source>Client List</source>
-        <translation type="unfinished"></translation>
+        <translation>Klientų sąrašas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="111"/>
         <source>Server Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Serverio nustatymai</translation>
     </message>
 </context>
 <context>
@@ -1814,12 +1814,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="131"/>
         <source>SCTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>SCTP klientas</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="133"/>
         <source>SCTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>SCTP serveris</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="135"/>
@@ -1829,7 +1829,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="137"/>
         <source>GPS Test</source>
-        <translation type="unfinished"></translation>
+        <translation>GPS testas</translation>
     </message>
 </context>
 <context>
@@ -2149,67 +2149,67 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="14"/>
         <source>Frmae Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Frmae redaktorius</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="38"/>
         <source>Frame ID</source>
-        <translation type="unfinished">Rėmo ID</translation>
+        <translation>Rėmo ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="45"/>
         <source>Extended format</source>
-        <translation type="unfinished">Išplėstinis formatas</translation>
+        <translation>Išplėstinis formatas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="52"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished">Lankstus duomenų perdavimo greitis</translation>
+        <translation>Lankstus duomenų perdavimo greitis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="78"/>
         <source>Frame type</source>
-        <translation type="unfinished">Rėmo tipas</translation>
+        <translation>Rėmo tipas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="85"/>
         <source>Timed sending</source>
-        <translation type="unfinished">Siuntimas su laiku</translation>
+        <translation>Siuntimas su laiku</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="92"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitų spartos jungiklis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="99"/>
         <source>Time sending interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Laiko siuntimo intervalas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="112"/>
         <source>Untitled</source>
-        <translation type="unfinished">Be pavadinimo</translation>
+        <translation>Be pavadinimo</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="146"/>
         <source>Payload length</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingos apkrovos ilgis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="153"/>
         <source>Audo response</source>
-        <translation type="unfinished"></translation>
+        <translation>Drąsus atsakymas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="190"/>
         <source>Frame name</source>
-        <translation type="unfinished"></translation>
+        <translation>Rėmo pavadinimas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="203"/>
         <source>Payload Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingosios apkrovos redaktorius</translation>
     </message>
 </context>
 <context>
@@ -2217,37 +2217,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="34"/>
         <source>Clear all data</source>
-        <translation type="unfinished">Išvalyti visus duomenis</translation>
+        <translation>Išvalyti visus duomenis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="37"/>
         <source>Clear Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti elementus</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="44"/>
         <source>Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridėti elementą</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="54"/>
         <source>Delete Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti elementus</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="64"/>
         <source>Export Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti prekes</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="74"/>
         <source>Import Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti elementus</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="101"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingos apkrovos filtras</translation>
     </message>
 </context>
 <context>
@@ -2255,37 +2255,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
         <source>Local format</source>
-        <translation type="unfinished"></translation>
+        <translation>Vietinis formatas</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="52"/>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilguma</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="69"/>
         <source>ddmm.mmmm</source>
-        <translation type="unfinished"></translation>
+        <translation>ddmm.mmmm</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="76"/>
         <source>Altitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Aukštis virš jūros lygio</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="89"/>
         <source>GNSS</source>
-        <translation type="unfinished"></translation>
+        <translation>GNSS</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="96"/>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Platuma</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="113"/>
         <source>Altitude unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Aukščio vienetas</translation>
     </message>
 </context>
 <context>
@@ -2301,48 +2301,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="14"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hex redaktorius</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="27"/>
         <source>New</source>
-        <translation type="unfinished">Naujas</translation>
+        <translation>Nauja</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="37"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti kaip</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="47"/>
         <source>Open</source>
-        <translation type="unfinished">Atidaryti</translation>
+        <translation>Atidaryti</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="70"/>
         <source>Save</source>
-        <translation type="unfinished">Išsaugoti</translation>
+        <translation>Išsaugoti</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="89"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Baitai</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="45"/>
         <source>Open File</source>
-        <translation type="unfinished">Atidarykite failą</translation>
+        <translation>Atidarykite failą</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="47"/>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="67"/>
         <source>All Files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Visi failai (*.*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="65"/>
         <source>Save File As</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti failą kaip</translation>
     </message>
 </context>
 <context>
@@ -2438,15 +2438,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputPanelsManager</name>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Lua scenarijus</translation>
+        <translation>Paimkite scenarijų</translation>
     </message>
     <message>
         <source>Frame Serial Number</source>
-        <translation type="vanished">Rėmelio serijinis numeris</translation>
+        <translation>Rėmo serijos numeris</translation>
     </message>
     <message>
         <source>XYModem Sender</source>
-        <translation type="vanished">XYModem siuntėjas</translation>
+        <translation>XYModem siųstuvas</translation>
     </message>
 </context>
 <context>
@@ -2475,12 +2475,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="48"/>
         <location filename="../../src/page/inputsettings.ui" line="126"/>
         <source>Hex format, such as: 0D 0A</source>
-        <translation type="unfinished"></translation>
+        <translation>Šešioliktainis formatas, pvz.: 0D 0A</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="58"/>
         <source>Custom prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinktinis priešdėlis</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="99"/>
@@ -2490,7 +2490,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="116"/>
         <source>Custom suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinktinė priesaga</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="142"/>
@@ -2604,7 +2604,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="120"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagalba</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="104"/>
@@ -2720,42 +2720,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
-        <translation type="unfinished"></translation>
+        <translation>Žurnalo vaizdas</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="unfinished">Žurnalo lygis</translation>
+        <translation>Žurnalo lygis</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtruoti</translation>
+        <translation>Filtruoti</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="unfinished">Išvalyti žurnalą</translation>
+        <translation>Išvalyti žurnalą</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
-        <translation type="unfinished"></translation>
+        <translation>Rąstų kategorija</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Slinkite į apačią</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Rąsto filtras</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungti žurnalą</translation>
     </message>
 </context>
 <context>
@@ -2773,32 +2773,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="78"/>
         <source>Save</source>
-        <translation type="unfinished">Išsaugoti</translation>
+        <translation>Išsaugoti</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="85"/>
         <source>New</source>
-        <translation type="unfinished">Naujas</translation>
+        <translation>Nauja</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="92"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti kaip</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="99"/>
         <source>Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalogas</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="106"/>
         <source>Scripts</source>
-        <translation type="unfinished">Scenarijai</translation>
+        <translation>Scenarijai</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="129"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="141"/>
@@ -2808,12 +2808,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="150"/>
         <source>String parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Stygos parametrai</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="160"/>
         <source>Array parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Masyvo parametrai</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="66"/>
@@ -2827,23 +2827,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Lentelės parametrai</translation>
+        <translation>Lentelės parametrai</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Styginių parametrai</translation>
+        <translation>Styginių parametrai</translation>
     </message>
     <message>
         <source>Default Lua Script</source>
-        <translation type="vanished">Numatytasis Lua scenarijus</translation>
+        <translation>Numatytasis Lua scenarijus</translation>
     </message>
     <message>
         <source>Checksum Lua Script</source>
-        <translation type="vanished">Patikros suma Lua scenarijus</translation>
+        <translation>Kontrolinės sumos Lua scenarijus</translation>
     </message>
     <message>
         <source>Lua Script(String)</source>
-        <translation type="vanished">Lua scenarijus (eilutė)</translation>
+        <translation>Lua scenarijus (eilutė)</translation>
     </message>
 </context>
 <context>
@@ -2852,57 +2852,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/lua/luapanel.cpp" line="99"/>
         <location filename="../../src/page/lua/luapanel.cpp" line="164"/>
         <source>No script selected to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepasirinktas joks scenarijus, kurį būtų galima išsaugoti.</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="106"/>
         <source>Cannot open file for writing: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo rašymui: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="118"/>
         <source>Save file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti failą: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>New Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Naujas Lua scenarijus</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>Enter script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite scenarijaus pavadinimą:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="137"/>
         <source>A script with the name &apos;%1&apos; already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scenarijus su pavadinimu</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="144"/>
         <source>Cannot create file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko sukurti failo: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="170"/>
         <source>Save Lua Script As</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti Lua scenarijų kaip</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="171"/>
         <source>Enter new script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite naują scenarijaus pavadinimą:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="184"/>
         <source>Cannot save file as: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko išsaugoti failo kaip: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="213"/>
         <source>Failed to open the script: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti scenarijaus: %1</translation>
     </message>
 </context>
 <context>
@@ -2935,22 +2935,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="161"/>
         <source>(The handler of the rx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(rx duomenų tvarkytojas)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Input data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvesties duomenų apdorojimas Lua scenarijus</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="74"/>
         <source>(The handler of the tx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Tx duomenų tvarkytojas)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Output data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvesties duomenų apdorojimas Lua scenarijus</translation>
     </message>
 </context>
 <context>
@@ -3010,12 +3010,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="343"/>
         <source>Using System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistemos tarpinio serverio naudojimas</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Online Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Internetinė dokumentacija</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="395"/>
@@ -3039,15 +3039,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Need to Reboot</source>
-        <translation type="vanished">Reikia perkrauti</translation>
+        <translation>Reikia perkrauti</translation>
     </message>
     <message>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">Operacijai įsigalioti reikia perkrovimo, perkrauti programą dabar?</translation>
+        <translation>Operaciją reikia paleisti iš naujo, kad būtų atlikta, iš naujo paleisti programą dabar?</translation>
     </message>
     <message>
         <source>(Please reboot your application manually.)</source>
-        <translation type="vanished">(Prašome perkrauti programą rankiniu būdu.)</translation>
+        <translation>(Prašome iš naujo paleisti programą rankiniu būdu.)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
@@ -3977,27 +3977,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputPanelsManager</name>
     <message>
         <source>Data Records</source>
-        <translation type="vanished">Duomenų įrašai</translation>
+        <translation>Duomenų įrašai</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Paieška</translation>
+        <translation>Ieškoti</translation>
     </message>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Lua scenarijus</translation>
+        <translation>Paimkite scenarijų</translation>
     </message>
     <message>
         <source>Line Chart</source>
-        <translation type="vanished">Linijinė diagrama</translation>
+        <translation>Linijinė diagrama</translation>
     </message>
     <message>
         <source>Bar Chart</source>
-        <translation type="vanished">Juostinė diagrama</translation>
+        <translation>Juostinė diagrama</translation>
     </message>
     <message>
         <source>XY-Modem Receiver</source>
-        <translation type="vanished">XY-Modem imtuvas</translation>
+        <translation>XY modemo imtuvas</translation>
     </message>
 </context>
 <context>
@@ -4020,7 +4020,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="74"/>
         <source>Show \r and \n</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti \r ir \n</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="27"/>
@@ -4126,7 +4126,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="294"/>
@@ -4140,7 +4140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Iš anksto nustatytas duomenų sąrašas</translation>
+        <translation>Iš anksto nustatytas duomenų sąrašas</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="852"/>
@@ -4164,32 +4164,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Protocol Factory</source>
-        <translation type="vanished">Protokolo gamykla</translation>
+        <translation>Protokolo gamykla</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
-        <translation type="unfinished">Scenarijai</translation>
+        <translation>Scenarijai</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
-        <translation type="unfinished">Įrašai</translation>
+        <translation>Įrašai</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Ieškoti</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>Juostinės diagramos</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>Linijinės diagramos</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="551"/>
@@ -4220,15 +4220,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>protokolas</translation>
     </message>
     <message>
         <source>Hide Scripts Panels</source>
-        <translation type="vanished">Slėpti scenarijų paneles</translation>
+        <translation>Slėpti scenarijų skydelius</translation>
     </message>
     <message>
         <source>Show Scripts Panels</source>
-        <translation type="vanished">Rodyti scenarijų paneles</translation>
+        <translation>Rodyti scenarijų skydelius</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="579"/>
@@ -4240,11 +4240,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PanelManager</name>
     <message>
         <source>Panels</source>
-        <translation type="vanished">Panelės</translation>
+        <translation>Plokštės</translation>
     </message>
     <message>
         <source>Hide/Show Panels</source>
-        <translation type="vanished">Slėpti/Rodyti paneles</translation>
+        <translation>Slėpti / Rodyti skydelius</translation>
     </message>
 </context>
 <context>
@@ -4372,7 +4372,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="96"/>
         <source>Send</source>
-        <translation type="unfinished">Siųsti</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="146"/>
@@ -4382,7 +4382,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="177"/>
         <source>Option</source>
-        <translation type="unfinished">Parinktis</translation>
+        <translation>Parinktis</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
@@ -4404,7 +4404,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Edit Data</source>
-        <translation type="vanished">Redaguoti duomenis</translation>
+        <translation>Redaguoti duomenis</translation>
     </message>
 </context>
 <context>
@@ -4466,23 +4466,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <source>The group name cannot be empty.</source>
-        <translation type="vanished">Grupės pavadinimas negali būti tuščias.</translation>
+        <translation>Grupės pavadinimo laukas negali būti tuščias.</translation>
     </message>
     <message>
         <source>The columns cannot be empty.</source>
-        <translation type="vanished">Stulpeliai negali būti tušti.</translation>
+        <translation>Stulpeliai negali būti tušti.</translation>
     </message>
     <message>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="vanished">Grupės pavadinimas &quot;%1&quot; jau egzistuoja. Ar norite jį pakeisti?</translation>
+        <translation>Grupės pavadinimas</translation>
     </message>
     <message>
         <source>Send Groups</source>
-        <translation type="vanished">Siųsti grupes</translation>
+        <translation>Siųsti grupes</translation>
     </message>
 </context>
 <context>
@@ -4492,34 +4492,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="147"/>
         <source>Warning</source>
-        <translation type="unfinished">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="132"/>
         <source>The group name cannot be empty.</source>
-        <translation type="unfinished">Grupės pavadinimas negali būti tuščias.</translation>
+        <translation>Grupės pavadinimo laukas negali būti tuščias.</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <source>The columns cannot be empty.</source>
-        <translation type="unfinished">Stulpeliai negali būti tušti.</translation>
+        <translation>Stulpeliai negali būti tušti.</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="148"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="unfinished">Grupės pavadinimas &quot;%1&quot; jau egzistuoja. Ar norite jį pakeisti?</translation>
+        <translation>Grupės pavadinimas</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="207"/>
         <source>Send Groups</source>
-        <translation type="unfinished">Siųsti grupes</translation>
+        <translation>Siųsti grupes</translation>
     </message>
 </context>
 <context>
     <name>ProtocolFactory</name>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -4727,12 +4727,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
-        <translation type="unfinished">Derinimas</translation>
+        <translation>Derinimas</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacija</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="42"/>
@@ -4745,22 +4745,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
-        <translation type="unfinished">Kritinis</translation>
+        <translation>Kritinis</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Visos kategorijos</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti žurnalo pranešimus</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai išvalysite visus žurnalo pranešimus?</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
@@ -4921,92 +4921,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="345"/>
         <source>Clear All Items</source>
-        <translation type="unfinished">Išvalyti visus elementus</translation>
+        <translation>Išvalyti visus elementus</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="346"/>
         <source>Are you sure to clear all items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai išvalysite visus elementus? </translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="356"/>
         <source>Delete Selected Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti pasirinktus elementus</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="357"/>
         <source>Are you sure to delete selected items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai ištrinsite pasirinktus elementus? </translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="141"/>
         <source>Clear all payloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti visus naudingus krovinius</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="142"/>
         <source>Are you sure to clear all payloads?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai išvalysite visus naudingus krovinius?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
         <source>Select CoAP Server Cache Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite CoAP serverio talpyklos katalogą</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti CoAP konfigūraciją</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti CoAP konfigūraciją</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
         <source>Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Visuotiniai nustatymai</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
         <source>Open Server Cache Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Atidarykite serverio talpyklos kelią</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Client View</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti / slėpti kliento rodinį</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Show/Hide Server View</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti / slėpti serverio vaizdą</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="22"/>
         <source>Data Frame</source>
-        <translation type="unfinished">Duomenų rėmelis</translation>
+        <translation>Duomenų rėmelis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="23"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished">Nuotolinio užklausų rėmelis</translation>
+        <translation>Nuotolinio užklausų rėmelis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="24"/>
         <source>Error Frame</source>
-        <translation type="unfinished">Klaidos rėmelis</translation>
+        <translation>Klaidos rėmelis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="34"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standartinis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="35"/>
         <source>Extended</source>
-        <translation type="unfinished"></translation>
+        <translation>Prailgintas</translation>
     </message>
 </context>
 <context>
@@ -5269,12 +5269,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="103"/>
         <source>Reversal filter logic</source>
-        <translation type="unfinished"></translation>
+        <translation>Atvirkštinio filtro logika</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="110"/>
         <source>Audo scrolling</source>
-        <translation type="unfinished">Drįstu tau slinkti</translation>
+        <translation>Drįstu tau slinkti</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="163"/>
@@ -5295,12 +5295,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro filtrą nepraėjo jokių linijų.</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasta %1 rezultatų.</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="244"/>
@@ -5855,52 +5855,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="243"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="371"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTP klientas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="20"/>
         <source>Server address</source>
-        <translation type="unfinished">Serverio adresas</translation>
+        <translation>Serverio adresas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="27"/>
         <source>Save file</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti failą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="34"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsisiųsti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="41"/>
         <source>Download file</source>
-        <translation type="unfinished"></translation>
+        <translation>Parsisiųsti failą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="48"/>
         <source>Upload progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkėlimo eiga</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="55"/>
         <source>Upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkelti failą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="62"/>
         <source>Browse</source>
-        <translation type="unfinished">Naršyti</translation>
+        <translation>Naršyti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="82"/>
         <source>Download progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsisiuntimo eiga</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="109"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkelti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="63"/>
@@ -5910,130 +5910,130 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="324"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="327"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuščia eiga</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="71"/>
         <source>Select upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite įkėlimo failą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="110"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished">Nepavyko prijungti UDP lizdo: %1</translation>
+        <translation>Nepavyko susieti UDP lizdo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
         <source>A transfer is already in progress.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perdavimas jau vyksta.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteisingas serverio adresas.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
         <source>Please select a file to upload.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite failą, kurį norite įkelti.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="165"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="198"/>
         <source>Select download destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite atsisiuntimo vietą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
         <source>Failed to create destination directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko sukurti paskirties katalogo.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
         <source>Please provide the remote file path.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nurodykite nuotolinio failo kelią.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="244"/>
         <source>Failed to open destination file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti paskirties failo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="279"/>
         <source>Uploading %1/%2 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkeliama %1/%2 baitų</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="293"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="307"/>
         <source>%1/%2 bytes (%3%)</source>
-        <translation type="unfinished"></translation>
+        <translation>% 1/% 2 baitai (% 3%)</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="309"/>
         <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 baitų</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="414"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas perdavimo ID</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="422"/>
         <source>Received an invalid TFTP packet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gautas netinkamas TFTP paketas.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="434"/>
         <source>Remote server reported an error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuotolinis serveris pranešė apie klaidą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="450"/>
         <source>Unexpected response while uploading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas atsakymas įkeliant.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="463"/>
         <source>Upload completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkėlimas baigtas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="475"/>
         <source>Unexpected ACK block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gautas netikėtas ACK blokas.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="492"/>
         <source>Unexpected response while downloading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas atsakymas atsisiunčiant.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="498"/>
         <source>Failed to write downloaded data to file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko įrašyti atsisiųstų duomenų į failą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="507"/>
         <source>Download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Atsisiuntimas baigtas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="517"/>
         <source>Unexpected DATA block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gautas netikėtas DATA blokas.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="528"/>
         <source>Transfer timed out.</source>
-        <translation type="unfinished"></translation>
+        <translation>Baigėsi perdavimo laikas.</translation>
     </message>
 </context>
 <context>
@@ -6045,123 +6045,123 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="129"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTP serveris</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="23"/>
         <source>Browse</source>
-        <translation type="unfinished">Naršyti</translation>
+        <translation>Naršyti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="30"/>
         <source>Server address</source>
-        <translation type="unfinished">Serverio adresas</translation>
+        <translation>Serverio adresas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="47"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="97"/>
         <source>Start</source>
-        <translation type="unfinished">Pradėti</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="54"/>
         <source>Server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Serverio katalogas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="71"/>
         <source>Log</source>
-        <translation type="unfinished">Žurnalas</translation>
+        <translation>Žurnalas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesijos</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Peer</source>
-        <translation type="unfinished"></translation>
+        <translation>Peer</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Kryptis</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Failas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Baitai</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Pažanga</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Būsena</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="86"/>
         <source>Select server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite serverio katalogą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="98"/>
         <source>Server stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveris sustojo</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
         <source>Please select a server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite serverio katalogą.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
         <source>Failed to create server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko sukurti serverio katalogo.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteisingas serverio adresas.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="133"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Sustok</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="134"/>
         <source>Server started at %1, directory: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveris paleistas nuo %1, katalogas: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0/%1</source>
-        <translation type="unfinished"></translation>
+        <translation>0/%1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="199"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="233"/>
         <source>completed</source>
-        <translation type="unfinished"></translation>
+        <translation>baigtas</translation>
     </message>
 </context>
 <context>
@@ -6169,57 +6169,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="39"/>
         <source>Failed to bind TFTP server socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko susieti TFTP serverio lizdo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="50"/>
         <source>Listening on %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Klausoma %1:%2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="98"/>
         <source>%1 -&gt; error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>% 1 -</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="115"/>
         <source>Invalid TFTP packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Netinkamas TFTP paketas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="124"/>
         <source>Only RRQ and WRQ are accepted on the listener socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Klausytojo lizde priimami tik RRQ ir WRQ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="132"/>
         <source>Only octet mode is supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Palaikomas tik okteto režimas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="142"/>
         <source>Invalid file path</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteisingas failo kelias</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="153"/>
         <source>Requested file does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Prašomas failas neegzistuoja</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="194"/>
         <source>Failed to start session</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko pradėti seanso</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="205"/>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>Bėgimas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="226"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Užbaigta</translation>
     </message>
 </context>
 <context>
@@ -6227,109 +6227,109 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="56"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="68"/>
         <source>Failed to bind session socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko susieti seanso lizdo: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="78"/>
         <source>%1 %2 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 %3</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Send</source>
-        <translation type="unfinished">Siųsti</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Receive</source>
-        <translation type="unfinished"></translation>
+        <translation>Gauti</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="127"/>
         <source>Negotiating</source>
-        <translation type="unfinished"></translation>
+        <translation>Derantis</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="144"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="235"/>
         <source>Sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Siuntimas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="150"/>
         <source>Receiving</source>
-        <translation type="unfinished"></translation>
+        <translation>Priėmimas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="166"/>
         <source>%1 failed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nepavyko: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="177"/>
         <source>%1 completed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 baigtas: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="198"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas perdavimo ID</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="207"/>
         <source>Invalid session packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neteisingas seanso paketas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="216"/>
         <source>Remote peer reported an error</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuotolinis partneris pranešė apie klaidą</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="229"/>
         <source>Expected ACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Laukiamas ACK paketas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="237"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="277"/>
         <source>Transfer completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Perdavimas baigtas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="250"/>
         <source>Unexpected ACK block</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas ACK blokas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="256"/>
         <source>Unexpected OACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas OACK paketas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="262"/>
         <source>Expected DATA packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Laukiamas DATA paketas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="269"/>
         <source>Failed to write file data</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko įrašyti failo duomenų</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="287"/>
         <source>Unexpected DATA block</source>
-        <translation type="unfinished"></translation>
+        <translation>Netikėtas DATA blokas</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="296"/>
         <source>Session timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>Baigėsi sesijos laikas</translation>
     </message>
 </context>
 <context>
@@ -6455,17 +6455,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="115"/>
         <source>Inserting %1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Įterpiamas %1 baitas</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="137"/>
         <source>Delete %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti %1 simbolius</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="162"/>
         <source>Overwrite %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Perrašyti %1 simbolius</translation>
     </message>
 </context>
 <context>
@@ -6533,7 +6533,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Bitų spartos jungiklis</translation>
+        <translation>Bitų spartos jungiklis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="137"/>
@@ -6548,12 +6548,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="317"/>
         <source>Settings</source>
-        <translation type="unfinished">Nustatymai</translation>
+        <translation>Nustatymai</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="324"/>
         <source>Send</source>
-        <translation type="unfinished">Siųsti</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="338"/>
@@ -6568,12 +6568,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="35"/>
         <source>Output</source>
-        <translation type="unfinished">Išvestis</translation>
+        <translation>Išvestis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitų spartos jungiklis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
@@ -6588,7 +6588,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="387"/>
         <source>Input</source>
-        <translation type="unfinished">Įvestis</translation>
+        <translation>Įvestis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -6617,7 +6617,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Duomenų rodinys</translation>
+        <translation>Duomenų rodinys</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
@@ -6700,7 +6700,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xCanBus::DataView</name>
     <message>
         <source>Question</source>
-        <translation type="vanished">Klausimas</translation>
+        <translation>Klausimas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
@@ -6710,7 +6710,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
         <source>Clear Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti duomenis</translation>
     </message>
 </context>
 <context>
@@ -6718,54 +6718,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="165"/>
         <source>Send</source>
-        <translation type="unfinished">Siųsti</translation>
+        <translation>Siųsti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Taip</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="189"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Parinktys</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="191"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Vardas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="193"/>
         <source>Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciklas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="195"/>
         <source>Interval(ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>Intervalas (ms)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="197"/>
         <source>Response</source>
-        <translation type="unfinished">Atsakymas</translation>
+        <translation>Atsakymas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="199"/>
         <source>Frame ID</source>
-        <translation type="unfinished">Rėmo ID</translation>
+        <translation>Rėmo ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="201"/>
         <source>Payload</source>
-        <translation type="unfinished">Naudinga apkrova</translation>
+        <translation>Naudinga apkrova</translation>
     </message>
 </context>
 <context>
@@ -6773,66 +6773,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="67"/>
         <source>Clear Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti rėmeliai</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="68"/>
         <source>Are you sure you want to clear all frames?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai norite išvalyti visus kadrus?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="82"/>
         <source>A frame with the same ID (%1) already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kadras su tuo pačiu ID (%1) jau yra.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="83"/>
         <source>Do you want to replace the existing frame with the new one?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar norite pakeisti esamą rėmą nauju?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="84"/>
         <source>Duplicate Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasikartojančio rėmelio ID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="106"/>
         <source>Delete Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Ištrinti rėmelį</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <source>Please select a frame to delete.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinkite kadrą, kurį norite ištrinti.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <source>Invalid frame selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasirinktas netinkamas kadras.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="107"/>
         <source>Are you sure you want to delete the selected frame?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai norite ištrinti pasirinktą kadrą?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="121"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Export Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti rėmelius</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="123"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="142"/>
         <source>JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON failai (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Failed to open file for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo rašyti.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="140"/>
@@ -6840,22 +6840,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/framelistview.cpp" line="160"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="167"/>
         <source>Import Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti rėmelius</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
         <source>Failed to open file for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo skaitymui.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="161"/>
         <source>Failed to parse JSON: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko išanalizuoti JSON: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="168"/>
         <source>Invalid JSON format: expected an array of frames.</source>
-        <translation type="unfinished"></translation>
+        <translation>Netinkamas JSON formatas: tikimasi kadrų masyvo.</translation>
     </message>
 </context>
 <context>
@@ -6923,7 +6923,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="130"/>
         <source>Frame List</source>
-        <translation type="unfinished"></translation>
+        <translation>Rėmelių sąrašas</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
@@ -6938,7 +6938,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Invalid frame ID.</source>
-        <translation type="vanished">Neteisingas rėmelio ID.</translation>
+        <translation>Neteisingas rėmelio ID.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
@@ -6952,15 +6952,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data Frame</source>
-        <translation type="vanished">Duomenų rėmelis</translation>
+        <translation>Duomenų rėmelis</translation>
     </message>
     <message>
         <source>Remote Request Frame</source>
-        <translation type="vanished">Nuotolinio užklausų rėmelis</translation>
+        <translation>Nuotolinio užklausų rėmelis</translation>
     </message>
     <message>
         <source>Error Frame</source>
-        <translation type="vanished">Klaidos rėmelis</translation>
+        <translation>Klaidos rėmelis</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="451"/>
@@ -6978,37 +6978,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Payload Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingojo krovinio aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="203"/>
         <source>Please enter the payload description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Įveskite naudingo krovinio aprašymą:</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="205"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudingojo krovinio aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Save Payload Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko išsaugoti naudingos apkrovos</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="216"/>
         <source>Failed to save payload: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko išsaugoti naudingos apkrovos: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>Unknown Content Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Nežinomas turinio formatas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="225"/>
         <source>The content format %1 is unknown.</source>
-        <translation type="unfinished"></translation>
+        <translation>Turinio formatas %1 nežinomas.</translation>
     </message>
 </context>
 <context>
@@ -7021,57 +7021,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Tx</source>
-        <translation type="unfinished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="114"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Nėra naudingos apkrovos)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="162"/>
         <source>Flag</source>
-        <translation type="unfinished">Vėliava</translation>
+        <translation>Vėliava</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="164"/>
         <source>Message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Pranešimo ID</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="166"/>
         <source>Client</source>
-        <translation type="unfinished">Klientas</translation>
+        <translation>Klientas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="168"/>
         <source>Server</source>
-        <translation type="unfinished">Serveris</translation>
+        <translation>Serveris</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="170"/>
         <source>Version</source>
-        <translation type="unfinished">Versija</translation>
+        <translation>Versija</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="172"/>
         <source>Type</source>
-        <translation type="unfinished">Tipas</translation>
+        <translation>Tipas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="174"/>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="176"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Žetonas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="178"/>
         <source>Payload</source>
-        <translation type="unfinished">Naudinga apkrova</translation>
+        <translation>Naudinga apkrova</translation>
     </message>
 </context>
 <context>
@@ -7079,17 +7079,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="104"/>
         <source>Warning</source>
-        <translation type="unfinished">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="105"/>
         <source>Are you sure to clear all messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ar tikrai išvalysite visus pranešimus?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="140"/>
         <source>No Limit</source>
-        <translation type="unfinished">Be apribojimų</translation>
+        <translation>Nr Limit</translation>
     </message>
 </context>
 <context>
@@ -7097,17 +7097,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="163"/>
         <source>Description</source>
-        <translation type="unfinished">Aprašymas</translation>
+        <translation>Aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="165"/>
         <source>Format</source>
-        <translation type="unfinished">Formatas</translation>
+        <translation>Formatas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="167"/>
         <source>Data</source>
-        <translation type="unfinished">Duomenys</translation>
+        <translation>Duomenys</translation>
     </message>
 </context>
 <context>
@@ -7115,7 +7115,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="72"/>
         <source>All formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Visi formatai</translation>
     </message>
 </context>
 <context>
@@ -7123,27 +7123,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="207"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Nėra naudingos apkrovos)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="258"/>
         <source>Description</source>
-        <translation type="unfinished">Aprašymas</translation>
+        <translation>Aprašymas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="260"/>
         <source>URI Path</source>
-        <translation type="unfinished"></translation>
+        <translation>URI kelias</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="262"/>
         <source>Context Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontekstinis formatas</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="264"/>
         <source>Payload (Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudinga apkrova (šešiadienis)</translation>
     </message>
 </context>
 <context>
@@ -7151,7 +7151,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourceview.cpp" line="60"/>
         <source>All</source>
-        <translation type="unfinished">Visi</translation>
+        <translation>Visi</translation>
     </message>
 </context>
 <context>
@@ -7183,50 +7183,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuoti CoAP konfigūraciją</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON failai (*.json);;Visi failai (*)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko eksportuoti CoAP konfigūracijos</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo % 1 rašymui.</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuoti CoAP konfigūraciją</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko importuoti CoAP konfigūracijos</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko atidaryti failo % 1 skaitymui.</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepavyko išanalizuoti JSON failo %1: %2</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
-        <translation type="unfinished"></translation>
+        <translation>Failo %1 turinys nėra tinkamas JSON objektas.</translation>
     </message>
 </context>
 <context>
@@ -7243,11 +7243,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Client</source>
-        <translation type="obsolete">Klientas</translation>
+        <translation>Klientas</translation>
     </message>
     <message>
         <source>Server</source>
-        <translation type="obsolete">Serveris</translation>
+        <translation>Serveris</translation>
     </message>
 </context>
 <context>
@@ -7467,7 +7467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti tinklelį</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="220"/>
@@ -7584,82 +7584,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="unfinished">Derinimas</translation>
+        <translation>Derinimas</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacija</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="unfinished">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="unfinished">Kritinis</translation>
+        <translation>Kritinis</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="unfinished">Mirtinas</translation>
+        <translation>Mirtinas</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="unfinished">Nežinomas</translation>
+        <translation>Nežinoma</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Laiko žyma</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="unfinished">Lygis</translation>
+        <translation>Lygis</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulis</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="unfinished">Pranešimas</translation>
+        <translation>Pranešimas</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogView</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">Derinimas</translation>
+        <translation>Derinimas</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="obsolete">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">Kritinis</translation>
+        <translation>Kritinis</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">Derinimas</translation>
+        <translation>Derinimas</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="obsolete">Įspėjimas</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">Kritinis</translation>
+        <translation>Kritinis</translation>
     </message>
 </context>
 <context>
@@ -8065,34 +8065,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::ThemeManager</name>
     <message>
         <source>System</source>
-        <translation type="obsolete">Sistema</translation>
+        <translation>Sistema</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">Šviesa</translation>
+        <translation>Šviesa</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">Tamsus</translation>
+        <translation>Tamsus</translation>
     </message>
 </context>
 <context>
     <name>xTools::ThemeManagerPrivate</name>
     <message>
         <source>Color Scheme</source>
-        <translation type="obsolete">Spalvų schema</translation>
+        <translation>Spalvų schema</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">Tamsus</translation>
+        <translation>Tamsus</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">Šviesa</translation>
+        <translation>Šviesa</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="obsolete">Sistema</translation>
+        <translation>Sistema</translation>
     </message>
 </context>
 <context>
@@ -8100,22 +8100,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="104"/>
         <source>1x1</source>
-        <translation type="unfinished"></translation>
+        <translation>1x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="105"/>
         <source>1x2</source>
-        <translation type="unfinished"></translation>
+        <translation>1x2</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="106"/>
         <source>2x1</source>
-        <translation type="unfinished"></translation>
+        <translation>2x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="107"/>
         <source>2x2</source>
-        <translation type="unfinished"></translation>
+        <translation>2x2</translation>
     </message>
 </context>
 <context>
@@ -8123,17 +8123,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished">Reikia perkrauti</translation>
+        <translation>Reikia perkrauti</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="63"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished">Operacijai įsigalioti reikia perkrovimo, perkrauti programą dabar?</translation>
+        <translation>Operaciją reikia paleisti iš naujo, kad būtų atlikta, iš naujo paleisti programą dabar?</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>(Please reboot your application manually.)</source>
-        <translation type="unfinished">(Prašome perkrauti programą rankiniu būdu.)</translation>
+        <translation>(Prašome iš naujo paleisti programą rankiniu būdu.)</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="89"/>
@@ -8178,7 +8178,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="150"/>
         <source>Open Application Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Atidarykite programų katalogą</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="159"/>

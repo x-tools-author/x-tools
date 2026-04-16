@@ -328,12 +328,12 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexový editor</translation>
     </message>
 </context>
 <context>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomoc</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/bar/barsettings.cpp" line="51"/>
@@ -955,27 +955,27 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="51"/>
         <source>Server IP</source>
-        <translation type="unfinished">IP servera</translation>
+        <translation>IP servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="77"/>
         <source>Server Port</source>
-        <translation type="unfinished">Port servera</translation>
+        <translation>Port servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
         <source>Payload</source>
-        <translation type="unfinished">Užitočné zaťaženie</translation>
+        <translation>Užitočné zaťaženie</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="122"/>
         <source>Preset payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>Prednastavený zoznam užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="125"/>
@@ -985,62 +985,62 @@
         <location filename="../../src/x/coap/coapclientui.ui" line="221"/>
         <location filename="../../src/x/coap/coapclientui.ui" line="349"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="132"/>
         <source>Save current payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť aktuálne užitočné zaťaženie</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="142"/>
         <source>Edit payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť zoznam užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="157"/>
         <source>Please input CoAP resource</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte zdroj CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="171"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="192"/>
         <source>Please input CoAP option</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte možnosť CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="207"/>
         <source>URI path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta URI</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="236"/>
         <source>Please input CoAP payload</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte užitočné zaťaženie CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="297"/>
         <source>Presets</source>
-        <translation type="unfinished">Predvoľby</translation>
+        <translation>Predvoľby</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="321"/>
         <source>Open Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvorte klienta</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="328"/>
         <source>Close Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatvorte klienta</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="342"/>
         <source>Client Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenia klienta</translation>
     </message>
 </context>
 <context>
@@ -1048,47 +1048,47 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="14"/>
         <source>CoAP Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Globálne nastavenia CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="59"/>
         <source>Client name</source>
-        <translation type="unfinished"></translation>
+        <translation>Meno klienta</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="74"/>
         <source>CoAP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="86"/>
         <source>CoAP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>
         <source>Token length</source>
-        <translation type="unfinished"></translation>
+        <translation>Dĺžka tokenu</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="100"/>
         <source>Server name</source>
-        <translation type="unfinished">Názov servera</translation>
+        <translation>Názov servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="109"/>
         <source>Cache path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta cache</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="129"/>
         <source>Browse</source>
-        <translation type="unfinished">Prehľadávať</translation>
+        <translation>Prehľadávať</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="141"/>
         <source>Cache resource from post message</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť zdroj z poštovej správy</translation>
     </message>
 </context>
 <context>
@@ -1099,17 +1099,17 @@
         <location filename="../../src/x/coap/coapmsgview.ui" line="51"/>
         <location filename="../../src/x/coap/coapmsgview.ui" line="91"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="65"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="88"/>
         <source>Max records count</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximálny počet záznamov</translation>
     </message>
 </context>
 <context>
@@ -1117,17 +1117,17 @@
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="14"/>
         <source>Payload editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="51"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="58"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextový formát</translation>
     </message>
 </context>
 <context>
@@ -1135,37 +1135,37 @@
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="40"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="47"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="57"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="67"/>
         <source>Remove</source>
-        <translation type="unfinished">Odstrániť</translation>
+        <translation>Odstrániť</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="77"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Jasné</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="87"/>
         <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="97"/>
         <source>Filter text</source>
-        <translation type="unfinished">Filtrovať text</translation>
+        <translation>Filtrovať text</translation>
     </message>
 </context>
 <context>
@@ -1173,22 +1173,22 @@
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="14"/>
         <source>Resource Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor zdrojov</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="48"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextový formát</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="60"/>
         <source>Description</source>
-        <translation type="unfinished">Popis</translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="74"/>
         <source>Uri Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta Uri</translation>
     </message>
 </context>
 <context>
@@ -1196,27 +1196,27 @@
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="43"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="53"/>
         <source>Delete</source>
-        <translation type="unfinished">Odstrániť</translation>
+        <translation>Odstrániť</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="63"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Jasné</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="73"/>
         <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="83"/>
         <source>Filter text</source>
-        <translation type="unfinished">Filtrovať text</translation>
+        <translation>Filtrovať text</translation>
     </message>
 </context>
 <context>
@@ -1224,37 +1224,37 @@
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="124"/>
         <source>Server Port</source>
-        <translation type="unfinished">Port servera</translation>
+        <translation>Port servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="41"/>
         <source>Server IP</source>
-        <translation type="unfinished">IP servera</translation>
+        <translation>IP servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="81"/>
         <source>Close Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatvorte server</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="54"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="64"/>
         <source>Open Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvorte Server</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="99"/>
         <source>Client List</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoznam klientov</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="111"/>
         <source>Server Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenia servera</translation>
     </message>
 </context>
 <context>
@@ -1814,12 +1814,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="131"/>
         <source>SCTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient SCTP</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="133"/>
         <source>SCTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server SCTP</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="135"/>
@@ -1829,7 +1829,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="137"/>
         <source>GPS Test</source>
-        <translation type="unfinished"></translation>
+        <translation>Test GPS</translation>
     </message>
 </context>
 <context>
@@ -2149,67 +2149,67 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="14"/>
         <source>Frmae Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor Frmae</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="38"/>
         <source>Frame ID</source>
-        <translation type="unfinished">ID rámu</translation>
+        <translation>ID rámu</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="45"/>
         <source>Extended format</source>
-        <translation type="unfinished">Rozšírený formát</translation>
+        <translation>Rozšírený formát</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="52"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished">Flexibilná rýchlosť prenosu dát</translation>
+        <translation>Flexibilná rýchlosť prenosu dát</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="78"/>
         <source>Frame type</source>
-        <translation type="unfinished">Typ rámu</translation>
+        <translation>Typ rámu</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="85"/>
         <source>Timed sending</source>
-        <translation type="unfinished">Časované odosielanie</translation>
+        <translation>Časované odosielanie</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="92"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Prepínač bitovej rýchlosti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="99"/>
         <source>Time sending interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový interval odosielania</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="112"/>
         <source>Untitled</source>
-        <translation type="unfinished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="146"/>
         <source>Payload length</source>
-        <translation type="unfinished"></translation>
+        <translation>Dĺžka užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="153"/>
         <source>Audo response</source>
-        <translation type="unfinished"></translation>
+        <translation>Odvážna odpoveď</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="190"/>
         <source>Frame name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov rámu</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="203"/>
         <source>Payload Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor užitočného zaťaženia</translation>
     </message>
 </context>
 <context>
@@ -2217,37 +2217,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="34"/>
         <source>Clear all data</source>
-        <translation type="unfinished">Vymazať všetky údaje</translation>
+        <translation>Vymazať všetky údaje</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="37"/>
         <source>Clear Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať položky</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="44"/>
         <source>Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať položku</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="54"/>
         <source>Delete Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť položky</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="64"/>
         <source>Export Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať položky</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="74"/>
         <source>Import Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať položky</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="101"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter užitočného zaťaženia</translation>
     </message>
 </context>
 <context>
@@ -2255,37 +2255,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
         <source>Local format</source>
-        <translation type="unfinished"></translation>
+        <translation>Miestny formát</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="52"/>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Zemepisná dĺžka</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="69"/>
         <source>ddmm.mmmm</source>
-        <translation type="unfinished"></translation>
+        <translation>ddmm.mmmm</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="76"/>
         <source>Altitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadmorská výška</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="89"/>
         <source>GNSS</source>
-        <translation type="unfinished"></translation>
+        <translation>GNSS</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="96"/>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Zemepisná šírka</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="113"/>
         <source>Altitude unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka nadmorskej výšky</translation>
     </message>
 </context>
 <context>
@@ -2301,48 +2301,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="14"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexový editor</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="27"/>
         <source>New</source>
-        <translation type="unfinished">Nový</translation>
+        <translation>Nové</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="37"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť ako</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="47"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>OTVORENÉ</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="70"/>
         <source>Save</source>
-        <translation type="unfinished">Uložiť</translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="89"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>bajtov</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="45"/>
         <source>Open File</source>
-        <translation type="unfinished">Otvorte súbor</translation>
+        <translation>Otvorte súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="47"/>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="67"/>
         <source>All Files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetky súbory (*.*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="65"/>
         <source>Save File As</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť súbor ako</translation>
     </message>
 </context>
 <context>
@@ -2438,15 +2438,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputPanelsManager</name>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Lua skript</translation>
+        <translation>Vezmite skript</translation>
     </message>
     <message>
         <source>Frame Serial Number</source>
-        <translation type="vanished">Sériové číslo rámca</translation>
+        <translation>Sériové číslo rámu</translation>
     </message>
     <message>
         <source>XYModem Sender</source>
-        <translation type="vanished">XYModem odosielateľ</translation>
+        <translation>Vysielač XYModem</translation>
     </message>
 </context>
 <context>
@@ -2475,12 +2475,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="48"/>
         <location filename="../../src/page/inputsettings.ui" line="126"/>
         <source>Hex format, such as: 0D 0A</source>
-        <translation type="unfinished"></translation>
+        <translation>Hexadecimálny formát, napríklad: 0D 0A</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="58"/>
         <source>Custom prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastná predpona</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="99"/>
@@ -2490,7 +2490,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="116"/>
         <source>Custom suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastná prípona</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="142"/>
@@ -2604,7 +2604,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="120"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomoc</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="104"/>
@@ -2720,42 +2720,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazenie denníka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="unfinished">Úroveň denníka</translation>
+        <translation>Úroveň denníka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="unfinished">Vymazať denník</translation>
+        <translation>Vymazať denník</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategória denníka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Prejdite nadol</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter denníka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázať denník</translation>
     </message>
 </context>
 <context>
@@ -2773,32 +2773,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="78"/>
         <source>Save</source>
-        <translation type="unfinished">Uložiť</translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="85"/>
         <source>New</source>
-        <translation type="unfinished">Nový</translation>
+        <translation>Nové</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="92"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť ako</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="99"/>
         <source>Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresár</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="106"/>
         <source>Scripts</source>
-        <translation type="unfinished">Skriptá</translation>
+        <translation>Skriptá</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="129"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="141"/>
@@ -2808,12 +2808,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="150"/>
         <source>String parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametre reťazca</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="160"/>
         <source>Array parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametre poľa</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="66"/>
@@ -2827,23 +2827,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">Parametre tabuľky</translation>
+        <translation>Parametre tabuľky</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">Parametre reťazca</translation>
+        <translation>Parametre reťazca</translation>
     </message>
     <message>
         <source>Default Lua Script</source>
-        <translation type="vanished">Predvolený Lua skript</translation>
+        <translation>Predvolený skript Lua</translation>
     </message>
     <message>
         <source>Checksum Lua Script</source>
-        <translation type="vanished">Kontrolný súčet Lua skript</translation>
+        <translation>Kontrolný súčet Lua Script</translation>
     </message>
     <message>
         <source>Lua Script(String)</source>
-        <translation type="vanished">Lua skript (reťazec)</translation>
+        <translation>Lua Script (reťazec)</translation>
     </message>
 </context>
 <context>
@@ -2852,57 +2852,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/lua/luapanel.cpp" line="99"/>
         <location filename="../../src/page/lua/luapanel.cpp" line="164"/>
         <source>No script selected to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je vybratý žiadny skript na uloženie.</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="106"/>
         <source>Cannot open file for writing: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je možné otvoriť súbor na zápis: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="118"/>
         <source>Save file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť súbor: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>New Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový Lua Script</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>Enter script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte názov skriptu:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="137"/>
         <source>A script with the name &apos;%1&apos; already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skript s názvom</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="144"/>
         <source>Cannot create file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je možné vytvoriť súbor: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="170"/>
         <source>Save Lua Script As</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť Lua Script ako</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="171"/>
         <source>Enter new script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte nový názov skriptu:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="184"/>
         <source>Cannot save file as: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie je možné uložiť súbor ako: %1. </translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="213"/>
         <source>Failed to open the script: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť skript: %1</translation>
     </message>
 </context>
 <context>
@@ -2935,22 +2935,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="161"/>
         <source>(The handler of the rx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Správca údajov rx)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Input data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>Spracovanie vstupných dát Lua skript</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="74"/>
         <source>(The handler of the tx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Správca údajov TX)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Output data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstupné spracovanie dát Lua skript</translation>
     </message>
 </context>
 <context>
@@ -3010,12 +3010,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="343"/>
         <source>Using System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Používanie servera proxy systému</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Online Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Online dokumentácia</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="395"/>
@@ -3039,15 +3039,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Need to Reboot</source>
-        <translation type="vanished">Je potrebné reštartovať</translation>
+        <translation>Je potrebné reštartovať</translation>
     </message>
     <message>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">Operácia si vyžaduje reštartovanie, chcete reštartovať aplikáciu teraz?</translation>
+        <translation>Operácia sa musí reštartovať, aby bola vykonaná, reštartovať aplikáciu teraz?</translation>
     </message>
     <message>
         <source>(Please reboot your application manually.)</source>
-        <translation type="vanished">(Prosím, reštartujte svoju aplikáciu ručne.)</translation>
+        <translation>(Reštartujte aplikáciu manuálne.)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
@@ -3977,27 +3977,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputPanelsManager</name>
     <message>
         <source>Data Records</source>
-        <translation type="vanished">Dátové záznamy</translation>
+        <translation>Záznamy údajov</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">Hľadať</translation>
+        <translation>Hľadať</translation>
     </message>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Lua skript</translation>
+        <translation>Vezmite skript</translation>
     </message>
     <message>
         <source>Line Chart</source>
-        <translation type="vanished">Čiarový graf</translation>
+        <translation>Čiarový graf</translation>
     </message>
     <message>
         <source>Bar Chart</source>
-        <translation type="vanished">Stĺpcový graf</translation>
+        <translation>Stĺpcový graf</translation>
     </message>
     <message>
         <source>XY-Modem Receiver</source>
-        <translation type="vanished">XY-Modem prijímač</translation>
+        <translation>XY-Modemový prijímač</translation>
     </message>
 </context>
 <context>
@@ -4020,7 +4020,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="74"/>
         <source>Show \r and \n</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť \r a \n</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="27"/>
@@ -4126,7 +4126,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="294"/>
@@ -4140,7 +4140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">Prednastavený zoznam údajov</translation>
+        <translation>Prednastavený zoznam údajov</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="852"/>
@@ -4164,32 +4164,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Protocol Factory</source>
-        <translation type="vanished">Továreň na protokoly</translation>
+        <translation>Továreň na protokoly</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
-        <translation type="unfinished">Skriptá</translation>
+        <translation>Skriptá</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
-        <translation type="unfinished">Záznamy</translation>
+        <translation>Záznamy</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
-        <translation type="unfinished">Hľadať</translation>
+        <translation>Hľadať</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>Stĺpcové grafy</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>Čiarové grafy</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="551"/>
@@ -4220,15 +4220,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol</translation>
     </message>
     <message>
         <source>Hide Scripts Panels</source>
-        <translation type="vanished">Skryť panely skriptov</translation>
+        <translation>Skryť panely skriptov</translation>
     </message>
     <message>
         <source>Show Scripts Panels</source>
-        <translation type="vanished">Zobraziť panely skriptov</translation>
+        <translation>Zobraziť panely skriptov</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="579"/>
@@ -4240,11 +4240,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PanelManager</name>
     <message>
         <source>Panels</source>
-        <translation type="vanished">Panely</translation>
+        <translation>Panely</translation>
     </message>
     <message>
         <source>Hide/Show Panels</source>
-        <translation type="vanished">Skryť/Zobraziť panely</translation>
+        <translation>Skryť/Zobraziť panely</translation>
     </message>
 </context>
 <context>
@@ -4372,7 +4372,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="96"/>
         <source>Send</source>
-        <translation type="unfinished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="146"/>
@@ -4382,7 +4382,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="177"/>
         <source>Option</source>
-        <translation type="unfinished">Možnosť</translation>
+        <translation>Možnosť</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
@@ -4404,7 +4404,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Edit Data</source>
-        <translation type="vanished">Upraviť dáta</translation>
+        <translation>Upraviť údaje</translation>
     </message>
 </context>
 <context>
@@ -4466,23 +4466,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">Upozornenie</translation>
+        <translation>POZOR</translation>
     </message>
     <message>
         <source>The group name cannot be empty.</source>
-        <translation type="vanished">Názov skupiny nemôže byť prázdny.</translation>
+        <translation>Názov skupiny nemôže byť prázdny.</translation>
     </message>
     <message>
         <source>The columns cannot be empty.</source>
-        <translation type="vanished">Stĺpce nemôžu byť prázdne.</translation>
+        <translation>Stĺpce nemôžu byť prázdne.</translation>
     </message>
     <message>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="vanished">Skupinový názov &quot;%1&quot; už existuje. Nahradiť ho?</translation>
+        <translation>Názov skupiny</translation>
     </message>
     <message>
         <source>Send Groups</source>
-        <translation type="vanished">Odoslať skupiny</translation>
+        <translation>Odoslať skupiny</translation>
     </message>
 </context>
 <context>
@@ -4492,34 +4492,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="147"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>POZOR</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="132"/>
         <source>The group name cannot be empty.</source>
-        <translation type="unfinished">Názov skupiny nemôže byť prázdny.</translation>
+        <translation>Názov skupiny nemôže byť prázdny.</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <source>The columns cannot be empty.</source>
-        <translation type="unfinished">Stĺpce nemôžu byť prázdne.</translation>
+        <translation>Stĺpce nemôžu byť prázdne.</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="148"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="unfinished">Skupinový názov &quot;%1&quot; už existuje. Nahradiť ho?</translation>
+        <translation>Názov skupiny</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="207"/>
         <source>Send Groups</source>
-        <translation type="unfinished">Odoslať skupiny</translation>
+        <translation>Odoslať skupiny</translation>
     </message>
 </context>
 <context>
     <name>ProtocolFactory</name>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -4727,12 +4727,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
-        <translation type="unfinished">Debug</translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="42"/>
@@ -4745,22 +4745,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
-        <translation type="unfinished">Kritické</translation>
+        <translation>Kritické</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetky kategórie</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať správy denníka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete vymazať všetky správy denníka?</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
@@ -4921,92 +4921,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="345"/>
         <source>Clear All Items</source>
-        <translation type="unfinished">Vymazať všetky položky</translation>
+        <translation>Vymazať všetky položky</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="346"/>
         <source>Are you sure to clear all items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete vymazať všetky položky? </translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="356"/>
         <source>Delete Selected Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť vybraté položky</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="357"/>
         <source>Are you sure to delete selected items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete odstrániť vybraté položky? </translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="141"/>
         <source>Clear all payloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať všetky užitočné zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="142"/>
         <source>Are you sure to clear all payloads?</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete vymazať všetky užitočné zaťaženia?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
         <source>Select CoAP Server Cache Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte CoAP Server Cache Directory</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať konfiguráciu CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať konfiguráciu CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
         <source>Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Globálne nastavenia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
         <source>Open Server Cache Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvorte cestu vyrovnávacej pamäte servera</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Client View</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť/skryť zobrazenie klienta</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Show/Hide Server View</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť/skryť zobrazenie servera</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="22"/>
         <source>Data Frame</source>
-        <translation type="unfinished">Dátový rámec</translation>
+        <translation>Dátový rámec</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="23"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished">Vzdialený rámec požiadavky</translation>
+        <translation>Vzdialený rámec požiadavky</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="24"/>
         <source>Error Frame</source>
-        <translation type="unfinished">Error Frame</translation>
+        <translation>Error Frame</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="34"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Štandardné</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="35"/>
         <source>Extended</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozšírené</translation>
     </message>
 </context>
 <context>
@@ -5269,12 +5269,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="103"/>
         <source>Reversal filter logic</source>
-        <translation type="unfinished"></translation>
+        <translation>Logika reverzného filtra</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="110"/>
         <source>Audo scrolling</source>
-        <translation type="unfinished">Dovolím si rolovať</translation>
+        <translation>Dovolím si rolovať</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="163"/>
@@ -5295,12 +5295,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrom neprešli žiadne riadky.</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nájdených %1 výsledkov.</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="244"/>
@@ -5855,52 +5855,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="243"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="371"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Klient TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="20"/>
         <source>Server address</source>
-        <translation type="unfinished">Adresa servera</translation>
+        <translation>Adresa servera</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="27"/>
         <source>Save file</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="34"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Stiahnuť</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="41"/>
         <source>Download file</source>
-        <translation type="unfinished"></translation>
+        <translation>Stiahnite si súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="48"/>
         <source>Upload progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Priebeh nahrávania</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="55"/>
         <source>Upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrajte súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="62"/>
         <source>Browse</source>
-        <translation type="unfinished">Prehľadávať</translation>
+        <translation>Prehľadávať</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="82"/>
         <source>Download progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Priebeh sťahovania</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="109"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrať</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="63"/>
@@ -5910,130 +5910,130 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="324"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="327"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Nečinný</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="71"/>
         <source>Select upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte odovzdaný súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="110"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished">Nemôžem priradiť UDP socket: %1</translation>
+        <translation>Nepodarilo sa spojiť soket UDP: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
         <source>A transfer is already in progress.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prenos už prebieha.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatná adresa servera.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
         <source>Please select a file to upload.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte súbor na odovzdanie.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="165"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="198"/>
         <source>Select download destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte cieľ sťahovania</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
         <source>Failed to create destination directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa vytvoriť cieľový adresár.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
         <source>Please provide the remote file path.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte cestu k vzdialenému súboru.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="244"/>
         <source>Failed to open destination file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť cieľový súbor: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="279"/>
         <source>Uploading %1/%2 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Odovzdáva sa %1/%2 bajtov</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="293"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="307"/>
         <source>%1/%2 bytes (%3%)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2 bajtov (%3%)</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="309"/>
         <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bajtov</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="414"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávané ID prevodu</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="422"/>
         <source>Received an invalid TFTP packet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prijatý neplatný paket TFTP.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="434"/>
         <source>Remote server reported an error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdialený server ohlásil chybu.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="450"/>
         <source>Unexpected response while uploading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaná odpoveď počas nahrávania.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="463"/>
         <source>Upload completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahrávanie dokončené</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="475"/>
         <source>Unexpected ACK block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bol prijatý neočakávaný blok ACK.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="492"/>
         <source>Unexpected response while downloading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaná odpoveď počas sťahovania.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="498"/>
         <source>Failed to write downloaded data to file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zápis stiahnutých údajov do súboru zlyhal.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="507"/>
         <source>Download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Sťahovanie dokončené</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="517"/>
         <source>Unexpected DATA block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bol prijatý neočakávaný DATA blok.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="528"/>
         <source>Transfer timed out.</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit prenosu vypršal.</translation>
     </message>
 </context>
 <context>
@@ -6045,123 +6045,123 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="129"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Server TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="23"/>
         <source>Browse</source>
-        <translation type="unfinished">Prehľadávať</translation>
+        <translation>Prehľadávať</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="30"/>
         <source>Server address</source>
-        <translation type="unfinished">Adresa servera</translation>
+        <translation>Adresa servera</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="47"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="97"/>
         <source>Start</source>
-        <translation type="unfinished">Štart</translation>
+        <translation>Štart</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="54"/>
         <source>Server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresár servera</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="71"/>
         <source>Log</source>
-        <translation type="unfinished">Log</translation>
+        <translation>Log</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>Relácie</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Peer</source>
-        <translation type="unfinished"></translation>
+        <translation>Peer</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Smer</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbor</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>bajtov</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokrok</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="86"/>
         <source>Select server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte adresár servera</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="98"/>
         <source>Server stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Server zastavený</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
         <source>Please select a server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte adresár servera.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
         <source>Failed to create server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa vytvoriť adresár servera.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatná adresa servera.</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="133"/>
         <source>Stop</source>
-        <translation type="unfinished">Zastaviť</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="134"/>
         <source>Server started at %1, directory: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Server spustený na %1, adresár: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0/%1</source>
-        <translation type="unfinished"></translation>
+        <translation>0/%1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="199"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="233"/>
         <source>completed</source>
-        <translation type="unfinished"></translation>
+        <translation>dokončené</translation>
     </message>
 </context>
 <context>
@@ -6169,57 +6169,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="39"/>
         <source>Failed to bind TFTP server socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa naviazať soket servera TFTP: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="50"/>
         <source>Listening on %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Počúvanie na %1:%2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="98"/>
         <source>%1 -&gt; error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 -</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="115"/>
         <source>Invalid TFTP packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatný paket TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="124"/>
         <source>Only RRQ and WRQ are accepted on the listener socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Na zásuvke poslucháča sú akceptované iba RRQ a WRQ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="132"/>
         <source>Only octet mode is supported</source>
-        <translation type="unfinished"></translation>
+        <translation>Podporovaný je iba oktetový režim</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="142"/>
         <source>Invalid file path</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatná cesta k súboru</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="153"/>
         <source>Requested file does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Požadovaný súbor neexistuje</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="194"/>
         <source>Failed to start session</source>
-        <translation type="unfinished"></translation>
+        <translation>Reláciu sa nepodarilo spustiť</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="205"/>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>Beh</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="226"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokončené</translation>
     </message>
 </context>
 <context>
@@ -6227,109 +6227,109 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="56"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="68"/>
         <source>Failed to bind session socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa naviazať soket relácie: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="78"/>
         <source>%1 %2 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 %3</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Send</source>
-        <translation type="unfinished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Receive</source>
-        <translation type="unfinished"></translation>
+        <translation>Prijať</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="127"/>
         <source>Negotiating</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyjednávanie</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="144"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="235"/>
         <source>Sending</source>
-        <translation type="unfinished"></translation>
+        <translation>Odosielanie</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="150"/>
         <source>Receiving</source>
-        <translation type="unfinished"></translation>
+        <translation>Prijímanie</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="166"/>
         <source>%1 failed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 zlyhalo: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="177"/>
         <source>%1 completed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 dokončené: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="198"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávané ID prevodu</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="207"/>
         <source>Invalid session packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatný paket relácie</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="216"/>
         <source>Remote peer reported an error</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdialený partner nahlásil chybu</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="229"/>
         <source>Expected ACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Očakávaný paket ACK</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="237"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="277"/>
         <source>Transfer completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Prenos dokončený</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="250"/>
         <source>Unexpected ACK block</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaný blok ACK</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="256"/>
         <source>Unexpected OACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaný paket OACK</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="262"/>
         <source>Expected DATA packet</source>
-        <translation type="unfinished"></translation>
+        <translation>Očakávaný DATA paket</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="269"/>
         <source>Failed to write file data</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa zapísať údaje súboru</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="287"/>
         <source>Unexpected DATA block</source>
-        <translation type="unfinished"></translation>
+        <translation>Neočakávaný DATA blok</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="296"/>
         <source>Session timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit relácie vypršal</translation>
     </message>
 </context>
 <context>
@@ -6455,17 +6455,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="115"/>
         <source>Inserting %1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vkladá sa %1 bajtov</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="137"/>
         <source>Delete %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť %1 znakov</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="162"/>
         <source>Overwrite %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Prepísať %1 znakov</translation>
     </message>
 </context>
 <context>
@@ -6533,7 +6533,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">Prepínač bitovej rýchlosti</translation>
+        <translation>Prepínač bitovej rýchlosti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="137"/>
@@ -6548,12 +6548,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="317"/>
         <source>Settings</source>
-        <translation type="unfinished">Nastavenia</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="324"/>
         <source>Send</source>
-        <translation type="unfinished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="338"/>
@@ -6568,12 +6568,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="35"/>
         <source>Output</source>
-        <translation type="unfinished">Výstup</translation>
+        <translation>Výstup</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Prepínač bitovej rýchlosti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
@@ -6588,7 +6588,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="387"/>
         <source>Input</source>
-        <translation type="unfinished">Vstup</translation>
+        <translation>Vstup</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -6617,7 +6617,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">Zobrazenie údajov</translation>
+        <translation>Zobrazenie údajov</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
@@ -6700,7 +6700,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xCanBus::DataView</name>
     <message>
         <source>Question</source>
-        <translation type="vanished">Otázka</translation>
+        <translation>Otázka</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
@@ -6710,7 +6710,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
         <source>Clear Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať údaje</translation>
     </message>
 </context>
 <context>
@@ -6718,54 +6718,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="165"/>
         <source>Send</source>
-        <translation type="unfinished">Odoslať</translation>
+        <translation>Odoslať</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>áno</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="189"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="191"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Meno</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="193"/>
         <source>Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyklus</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="195"/>
         <source>Interval(ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval (ms)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="197"/>
         <source>Response</source>
-        <translation type="unfinished">odpoveď</translation>
+        <translation>odpoveď</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="199"/>
         <source>Frame ID</source>
-        <translation type="unfinished">ID rámu</translation>
+        <translation>ID rámu</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="201"/>
         <source>Payload</source>
-        <translation type="unfinished">Užitočné zaťaženie</translation>
+        <translation>Užitočné zaťaženie</translation>
     </message>
 </context>
 <context>
@@ -6773,66 +6773,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="67"/>
         <source>Clear Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať rámy</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="68"/>
         <source>Are you sure you want to clear all frames?</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete vymazať všetky snímky?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="82"/>
         <source>A frame with the same ID (%1) already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rám s rovnakým ID (%1) už existuje.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="83"/>
         <source>Do you want to replace the existing frame with the new one?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete vymeniť existujúci rám za nový?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="84"/>
         <source>Duplicate Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplicitné ID rámca</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="106"/>
         <source>Delete Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť rám</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <source>Please select a frame to delete.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte rám, ktorý chcete odstrániť.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <source>Invalid frame selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bol vybratý neplatný rámec.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="107"/>
         <source>Are you sure you want to delete the selected frame?</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete odstrániť vybratú snímku?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="121"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Export Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať rámy</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="123"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="142"/>
         <source>JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbory JSON (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Failed to open file for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor na zápis.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="140"/>
@@ -6840,22 +6840,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/framelistview.cpp" line="160"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="167"/>
         <source>Import Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať rámy</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
         <source>Failed to open file for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor na čítanie.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="161"/>
         <source>Failed to parse JSON: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa analyzovať JSON: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="168"/>
         <source>Invalid JSON format: expected an array of frames.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neplatný formát JSON: očakáva sa pole snímok.</translation>
     </message>
 </context>
 <context>
@@ -6923,7 +6923,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="130"/>
         <source>Frame List</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoznam rámov</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
@@ -6938,7 +6938,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Invalid frame ID.</source>
-        <translation type="vanished">Neplatné ID rámca.</translation>
+        <translation>Neplatné ID rámca.</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
@@ -6952,15 +6952,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data Frame</source>
-        <translation type="vanished">Dátový rámec</translation>
+        <translation>Dátový rámec</translation>
     </message>
     <message>
         <source>Remote Request Frame</source>
-        <translation type="vanished">Vzdialený rámec požiadavky</translation>
+        <translation>Vzdialený rámec požiadavky</translation>
     </message>
     <message>
         <source>Error Frame</source>
-        <translation type="vanished">Error Frame</translation>
+        <translation>Error Frame</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="451"/>
@@ -6978,37 +6978,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Payload Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="203"/>
         <source>Please enter the payload description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadajte popis užitočného zaťaženia:</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="205"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis užitočného zaťaženia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Save Payload Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Uloženie užitočného zaťaženia zlyhalo</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="216"/>
         <source>Failed to save payload: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa uložiť užitočné zaťaženie: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>Unknown Content Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámy formát obsahu</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="225"/>
         <source>The content format %1 is unknown.</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát obsahu %1 je neznámy.</translation>
     </message>
 </context>
 <context>
@@ -7016,62 +7016,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Rx</source>
-        <translation type="unfinished">Rx</translation>
+        <translation>Rx</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Tx</source>
-        <translation type="unfinished">Tx</translation>
+        <translation>Tx</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="114"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(žiadne užitočné zaťaženie)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="162"/>
         <source>Flag</source>
-        <translation type="unfinished">Vlajka</translation>
+        <translation>Vlajka</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="164"/>
         <source>Message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID správy</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="166"/>
         <source>Client</source>
-        <translation type="unfinished">Klient</translation>
+        <translation>Klient</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="168"/>
         <source>Server</source>
-        <translation type="unfinished">Server</translation>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="170"/>
         <source>Version</source>
-        <translation type="unfinished">Verzia</translation>
+        <translation>Verzia</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="172"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="174"/>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>kód</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="176"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Token</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="178"/>
         <source>Payload</source>
-        <translation type="unfinished">Užitočné zaťaženie</translation>
+        <translation>Užitočné zaťaženie</translation>
     </message>
 </context>
 <context>
@@ -7079,17 +7079,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="104"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>POZOR</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="105"/>
         <source>Are you sure to clear all messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>Naozaj chcete vymazať všetky správy?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="140"/>
         <source>No Limit</source>
-        <translation type="unfinished">Bez obmedzenia</translation>
+        <translation>Bez obmedzenia</translation>
     </message>
 </context>
 <context>
@@ -7097,17 +7097,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="163"/>
         <source>Description</source>
-        <translation type="unfinished">Popis</translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="165"/>
         <source>Format</source>
-        <translation type="unfinished">Formátovať</translation>
+        <translation>Formátovať</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="167"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Údaje</translation>
     </message>
 </context>
 <context>
@@ -7115,7 +7115,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="72"/>
         <source>All formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetky formáty</translation>
     </message>
 </context>
 <context>
@@ -7123,27 +7123,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="207"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(žiadne užitočné zaťaženie)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="258"/>
         <source>Description</source>
-        <translation type="unfinished">Popis</translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="260"/>
         <source>URI Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta URI</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="262"/>
         <source>Context Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextový formát</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="264"/>
         <source>Payload (Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>Užitočné zaťaženie (hex)</translation>
     </message>
 </context>
 <context>
@@ -7151,7 +7151,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourceview.cpp" line="60"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Všetky</translation>
     </message>
 </context>
 <context>
@@ -7183,50 +7183,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať konfiguráciu CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Súbory JSON (*.json);;Všetky súbory (*)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Export konfigurácie CoAP zlyhal</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor %1 na zápis.</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať konfiguráciu CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Import konfigurácie CoAP zlyhal</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa otvoriť súbor %1 na čítanie.</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepodarilo sa analyzovať súbor JSON %1: %2</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah súboru %1 nie je platným objektom JSON.</translation>
     </message>
 </context>
 <context>
@@ -7243,11 +7243,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Client</source>
-        <translation type="obsolete">Klient</translation>
+        <translation>Klient</translation>
     </message>
     <message>
         <source>Server</source>
-        <translation type="obsolete">Server</translation>
+        <translation>Server</translation>
     </message>
 </context>
 <context>
@@ -7467,7 +7467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť mriežku</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="220"/>
@@ -7584,74 +7584,74 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="unfinished">Debug</translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>POZOR</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="unfinished">Kritické</translation>
+        <translation>Kritické</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="unfinished">Osudný</translation>
+        <translation>Osudný</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="unfinished">Neznáme</translation>
+        <translation>Neznámy</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Časová pečiatka</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="unfinished">úroveň</translation>
+        <translation>úroveň</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>modul</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="unfinished">Správa</translation>
+        <translation>Správa</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogView</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">Debug</translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">Kritické</translation>
+        <translation>Kritické</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">Debug</translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">Kritické</translation>
+        <translation>Kritické</translation>
     </message>
 </context>
 <context>
@@ -8057,34 +8057,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::ThemeManager</name>
     <message>
         <source>System</source>
-        <translation type="obsolete">Systém</translation>
+        <translation>Systém</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">Svetlo</translation>
+        <translation>Svetlo</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">Tmavý</translation>
+        <translation>Tmavý</translation>
     </message>
 </context>
 <context>
     <name>xTools::ThemeManagerPrivate</name>
     <message>
         <source>Color Scheme</source>
-        <translation type="obsolete">Farebná schéma</translation>
+        <translation>Farebná schéma</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">Tmavý</translation>
+        <translation>Tmavý</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">Svetlo</translation>
+        <translation>Svetlo</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="obsolete">Systém</translation>
+        <translation>Systém</translation>
     </message>
 </context>
 <context>
@@ -8092,22 +8092,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="104"/>
         <source>1x1</source>
-        <translation type="unfinished"></translation>
+        <translation>1x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="105"/>
         <source>1x2</source>
-        <translation type="unfinished"></translation>
+        <translation>1x2</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="106"/>
         <source>2x1</source>
-        <translation type="unfinished"></translation>
+        <translation>2x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="107"/>
         <source>2x2</source>
-        <translation type="unfinished"></translation>
+        <translation>2x2</translation>
     </message>
 </context>
 <context>
@@ -8115,17 +8115,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished">Je potrebné reštartovať</translation>
+        <translation>Je potrebné reštartovať</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="63"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished">Operácia si vyžaduje reštartovanie, chcete reštartovať aplikáciu teraz?</translation>
+        <translation>Operácia sa musí reštartovať, aby bola vykonaná, reštartovať aplikáciu teraz?</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>(Please reboot your application manually.)</source>
-        <translation type="unfinished">(Prosím, reštartujte svoju aplikáciu ručne.)</translation>
+        <translation>(Reštartujte aplikáciu manuálne.)</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="89"/>
@@ -8170,7 +8170,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="150"/>
         <source>Open Application Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Otvorte adresár aplikácie</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="159"/>

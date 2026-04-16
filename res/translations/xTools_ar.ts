@@ -19,7 +19,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="43"/>
         <source>IV</source>
-        <translation>رابعا</translation>
+        <translation>متجه التهيئة</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="50"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.ui" line="77"/>
         <source>Way</source>
-        <translation>طريق</translation>
+        <translation>الاتجاه</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/dataprocess/aescipherui.cpp" line="24"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.ui" line="49"/>
         <source>Preserve case</source>
-        <translation>الحفاظ على القضية</translation>
+        <translation>الحفاظ على حالة الأحرف</translation>
     </message>
     <message>
         <location filename="../../src/tools/ascii/asciiassistant.cpp" line="27"/>
@@ -328,12 +328,12 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>عميل TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>خادم TFTP</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>محرر سداسي عشري</translation>
     </message>
 </context>
 <context>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>مساعدة</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/bar/barsettings.cpp" line="51"/>
@@ -511,7 +511,7 @@
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="36"/>
         <source>Output the data immediately...</source>
-        <translation>اخراج البيانات فورا...</translation>
+        <translation>إخراج البيانات فورًا...</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/nodeeditor/nodes/common/basenodeui.cpp" line="37"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../../src/device/blecentralui.ui" line="77"/>
         <source>BLE Devices</source>
-        <translation>أجهزة بليه</translation>
+        <translation>أجهزة BLE</translation>
     </message>
     <message>
         <location filename="../../src/device/blecentralui.ui" line="87"/>
@@ -642,7 +642,7 @@
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="42"/>
         <source>Clear</source>
-        <translation>واضح</translation>
+        <translation>مسح</translation>
     </message>
     <message>
         <location filename="../../src/tools/broadcast/broadcastassistant.ui" line="52"/>
@@ -716,12 +716,12 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="14"/>
         <source>CANBus Studio</source>
-        <translation>استوديو كانبوس</translation>
+        <translation>استوديو CANBus</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="38"/>
         <source>CAN Frame</source>
-        <translation>يمكن الإطار</translation>
+        <translation>إطار CAN</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="57"/>
@@ -766,7 +766,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="178"/>
         <source>Connect</source>
-        <translation>يتصل</translation>
+        <translation>اتصال</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="192"/>
@@ -801,7 +801,7 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="346"/>
         <source>CAN FD</source>
-        <translation>يمكن فد</translation>
+        <translation>CAN FD</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="373"/>
@@ -821,12 +821,12 @@
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="422"/>
         <source>Receive own</source>
-        <translation>تلقي الخاصة</translation>
+        <translation>استقبال الإطارات المرسلة ذاتيًا</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="451"/>
         <source>CAN Frame Payload</source>
-        <translation>يمكن أن إطار الحمولة</translation>
+        <translation>حمولة إطار CAN</translation>
     </message>
     <message>
         <location filename="../../src/tools/canbus/canbusassistant.ui" line="489"/>
@@ -955,27 +955,27 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="51"/>
         <source>Server IP</source>
-        <translation type="unfinished">عنوان IP الخاص بالخادم</translation>
+        <translation>عنوان IP للخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="77"/>
         <source>Server Port</source>
-        <translation type="unfinished">منفذ الخادم</translation>
+        <translation>منفذ الخادم</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>البروتوكول</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
         <source>Payload</source>
-        <translation type="unfinished">الحمولة</translation>
+        <translation>الحمولة</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="122"/>
         <source>Preset payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>قائمة الحمولات المحفوظة مسبقًا</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="125"/>
@@ -990,57 +990,57 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="132"/>
         <source>Save current payload</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ الحمولة الحالية</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="142"/>
         <source>Edit payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير قائمة الحمولات</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="157"/>
         <source>Please input CoAP resource</source>
-        <translation type="unfinished"></translation>
+        <translation>يرجى إدخال مورد CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="171"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>الخيارات</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="192"/>
         <source>Please input CoAP option</source>
-        <translation type="unfinished"></translation>
+        <translation>يرجى إدخال خيار CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="207"/>
         <source>URI path</source>
-        <translation type="unfinished"></translation>
+        <translation>مسار URI</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="236"/>
         <source>Please input CoAP payload</source>
-        <translation type="unfinished"></translation>
+        <translation>يرجى إدخال حمولة CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="297"/>
         <source>Presets</source>
-        <translation type="unfinished">الإعدادات المسبقة</translation>
+        <translation>الإعدادات المسبقة</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="321"/>
         <source>Open Client</source>
-        <translation type="unfinished"></translation>
+        <translation>فتح العميل</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="328"/>
         <source>Close Client</source>
-        <translation type="unfinished"></translation>
+        <translation>إغلاق العميل</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="342"/>
         <source>Client Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>إعدادات العميل</translation>
     </message>
 </context>
 <context>
@@ -1048,22 +1048,22 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="14"/>
         <source>CoAP Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>إعدادات CoAP العامة</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="59"/>
         <source>Client name</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم العميل</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="74"/>
         <source>CoAP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>عميل CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="86"/>
         <source>CoAP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>خادم CoAP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>

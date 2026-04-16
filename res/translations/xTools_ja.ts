@@ -328,12 +328,12 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="62"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTPクライアント</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="63"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTPサーバー</translation>
     </message>
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="65"/>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../../src/tools/assistantfactory.cpp" line="75"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>16進エディタ</translation>
     </message>
 </context>
 <context>
@@ -425,7 +425,7 @@
     <message>
         <location filename="../../src/page/charts/bar/barsettings.ui" line="40"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/bar/barsettings.cpp" line="51"/>
@@ -955,27 +955,27 @@
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="51"/>
         <source>Server IP</source>
-        <translation type="unfinished">サーバーIP</translation>
+        <translation>サーバーIP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="77"/>
         <source>Server Port</source>
-        <translation type="unfinished">サーバーポート</translation>
+        <translation>サーバーポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="90"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>プロトコル</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="115"/>
         <source>Payload</source>
-        <translation type="unfinished">ペイロード</translation>
+        <translation>ペイロード</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="122"/>
         <source>Preset payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>プリセットペイロードリスト</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="125"/>
@@ -985,62 +985,62 @@
         <location filename="../../src/x/coap/coapclientui.ui" line="221"/>
         <location filename="../../src/x/coap/coapclientui.ui" line="349"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="132"/>
         <source>Save current payload</source>
-        <translation type="unfinished"></translation>
+        <translation>現在のペイロードを保存する</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="142"/>
         <source>Edit payload list</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードリストの編集</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="157"/>
         <source>Please input CoAP resource</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP リソースを入力してください</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="171"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>オプション</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="192"/>
         <source>Please input CoAP option</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP オプションを入力してください</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="207"/>
         <source>URI path</source>
-        <translation type="unfinished"></translation>
+        <translation>URIパス</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="236"/>
         <source>Please input CoAP payload</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP ペイロードを入力してください</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="297"/>
         <source>Presets</source>
-        <translation type="unfinished">プリセット</translation>
+        <translation>プリセット</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="321"/>
         <source>Open Client</source>
-        <translation type="unfinished"></translation>
+        <translation>オープンクライアント</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="328"/>
         <source>Close Client</source>
-        <translation type="unfinished"></translation>
+        <translation>クライアントを閉じる</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.ui" line="342"/>
         <source>Client Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>クライアント設定</translation>
     </message>
 </context>
 <context>
@@ -1048,47 +1048,47 @@
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="14"/>
         <source>CoAP Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP グローバル設定</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="59"/>
         <source>Client name</source>
-        <translation type="unfinished"></translation>
+        <translation>クライアント名</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="74"/>
         <source>CoAP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP クライアント</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="86"/>
         <source>CoAP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAPサーバー</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="93"/>
         <source>Token length</source>
-        <translation type="unfinished"></translation>
+        <translation>トークンの長さ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="100"/>
         <source>Server name</source>
-        <translation type="unfinished">サーバー名</translation>
+        <translation>サーバー名</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="109"/>
         <source>Cache path</source>
-        <translation type="unfinished"></translation>
+        <translation>キャッシュパス</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="129"/>
         <source>Browse</source>
-        <translation type="unfinished">ブラウズ</translation>
+        <translation>ブラウズ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.ui" line="141"/>
         <source>Cache resource from post message</source>
-        <translation type="unfinished"></translation>
+        <translation>投稿メッセージからリソースをキャッシュする</translation>
     </message>
 </context>
 <context>
@@ -1099,17 +1099,17 @@
         <location filename="../../src/x/coap/coapmsgview.ui" line="51"/>
         <location filename="../../src/x/coap/coapmsgview.ui" line="91"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="65"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードフィルター</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.ui" line="88"/>
         <source>Max records count</source>
-        <translation type="unfinished"></translation>
+        <translation>最大レコード数</translation>
     </message>
 </context>
 <context>
@@ -1117,17 +1117,17 @@
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="14"/>
         <source>Payload editor</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードエディタ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="51"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadeditor.ui" line="58"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>コンテキスト形式</translation>
     </message>
 </context>
 <context>
@@ -1135,37 +1135,37 @@
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="40"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="47"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="57"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>編集</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="67"/>
         <source>Remove</source>
-        <translation type="unfinished">取り除く</translation>
+        <translation>取り除く</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="77"/>
         <source>Clear</source>
-        <translation type="unfinished">クリア</translation>
+        <translation>クリア</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="87"/>
         <source>Filter</source>
-        <translation type="unfinished">フィルター</translation>
+        <translation>フィルター</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.ui" line="97"/>
         <source>Filter text</source>
-        <translation type="unfinished">テキストをフィルタリングする</translation>
+        <translation>テキストをフィルタリングする</translation>
     </message>
 </context>
 <context>
@@ -1173,22 +1173,22 @@
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="14"/>
         <source>Resource Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>リソースエディター</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="48"/>
         <source>Context format</source>
-        <translation type="unfinished"></translation>
+        <translation>コンテキスト形式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="60"/>
         <source>Description</source>
-        <translation type="unfinished">説明</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceeditor.ui" line="74"/>
         <source>Uri Path</source>
-        <translation type="unfinished"></translation>
+        <translation>ウリパス</translation>
     </message>
 </context>
 <context>
@@ -1196,27 +1196,27 @@
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="43"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="53"/>
         <source>Delete</source>
-        <translation type="unfinished">消去</translation>
+        <translation>消去</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="63"/>
         <source>Clear</source>
-        <translation type="unfinished">クリア</translation>
+        <translation>クリア</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="73"/>
         <source>Filter</source>
-        <translation type="unfinished">フィルター</translation>
+        <translation>フィルター</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourceview.ui" line="83"/>
         <source>Filter text</source>
-        <translation type="unfinished">テキストをフィルタリングする</translation>
+        <translation>テキストをフィルタリングする</translation>
     </message>
 </context>
 <context>
@@ -1224,37 +1224,37 @@
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="124"/>
         <source>Server Port</source>
-        <translation type="unfinished">サーバーポート</translation>
+        <translation>サーバーポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="41"/>
         <source>Server IP</source>
-        <translation type="unfinished">サーバーIP</translation>
+        <translation>サーバーIP</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="81"/>
         <source>Close Server</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーを閉じる</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="54"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>プロトコル</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="64"/>
         <source>Open Server</source>
-        <translation type="unfinished"></translation>
+        <translation>オープンサーバー</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="99"/>
         <source>Client List</source>
-        <translation type="unfinished"></translation>
+        <translation>クライアントリスト</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapserverui.ui" line="111"/>
         <source>Server Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバー設定</translation>
     </message>
 </context>
 <context>
@@ -1814,12 +1814,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="131"/>
         <source>SCTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>SCTPクライアント</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="133"/>
         <source>SCTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>SCTPサーバー</translation>
     </message>
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="135"/>
@@ -1829,7 +1829,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/devicemanager.cpp" line="137"/>
         <source>GPS Test</source>
-        <translation type="unfinished"></translation>
+        <translation>GPSテスト</translation>
     </message>
 </context>
 <context>
@@ -2149,67 +2149,67 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="14"/>
         <source>Frmae Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>ファーマエ編集者</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="38"/>
         <source>Frame ID</source>
-        <translation type="unfinished">フレームID</translation>
+        <translation>フレームID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="45"/>
         <source>Extended format</source>
-        <translation type="unfinished">拡張フォーマット</translation>
+        <translation>拡張フォーマット</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="52"/>
         <source>Flexible data rate</source>
-        <translation type="unfinished">柔軟なデータレート</translation>
+        <translation>柔軟なデータレート</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="78"/>
         <source>Frame type</source>
-        <translation type="unfinished">フレームタイプ</translation>
+        <translation>フレームタイプ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="85"/>
         <source>Timed sending</source>
-        <translation type="unfinished">時間指定送信</translation>
+        <translation>時間指定送信</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="92"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>ビットレートスイッチ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="99"/>
         <source>Time sending interval</source>
-        <translation type="unfinished"></translation>
+        <translation>時刻送信間隔</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="112"/>
         <source>Untitled</source>
-        <translation type="unfinished">無題</translation>
+        <translation>無題</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="146"/>
         <source>Payload length</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの長さ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="153"/>
         <source>Audo response</source>
-        <translation type="unfinished"></translation>
+        <translation>大胆な対応</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="190"/>
         <source>Frame name</source>
-        <translation type="unfinished"></translation>
+        <translation>フレーム名</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistitemeditor.ui" line="203"/>
         <source>Payload Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードエディター</translation>
     </message>
 </context>
 <context>
@@ -2217,37 +2217,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="34"/>
         <source>Clear all data</source>
-        <translation type="unfinished">すべてのデータをクリア</translation>
+        <translation>すべてのデータをクリア</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="37"/>
         <source>Clear Items</source>
-        <translation type="unfinished"></translation>
+        <translation>アイテムをクリアする</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="44"/>
         <source>Add Item</source>
-        <translation type="unfinished"></translation>
+        <translation>アイテムの追加</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="54"/>
         <source>Delete Items</source>
-        <translation type="unfinished"></translation>
+        <translation>アイテムの削除</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="64"/>
         <source>Export Items</source>
-        <translation type="unfinished"></translation>
+        <translation>アイテムのエクスポート</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="74"/>
         <source>Import Items</source>
-        <translation type="unfinished"></translation>
+        <translation>アイテムのインポート</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.ui" line="101"/>
         <source>Payload filter</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードフィルター</translation>
     </message>
 </context>
 <context>
@@ -2255,37 +2255,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/device/gpstestui.ui" line="32"/>
         <source>Local format</source>
-        <translation type="unfinished"></translation>
+        <translation>ローカルフォーマット</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="52"/>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>経度</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="69"/>
         <source>ddmm.mmmm</source>
-        <translation type="unfinished"></translation>
+        <translation>うーん、うーん</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="76"/>
         <source>Altitude</source>
-        <translation type="unfinished"></translation>
+        <translation>高度</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="89"/>
         <source>GNSS</source>
-        <translation type="unfinished"></translation>
+        <translation>GNSS</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="96"/>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>緯度</translation>
     </message>
     <message>
         <location filename="../../src/device/gpstestui.ui" line="113"/>
         <source>Altitude unit</source>
-        <translation type="unfinished"></translation>
+        <translation>高度の単位</translation>
     </message>
 </context>
 <context>
@@ -2301,48 +2301,48 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="14"/>
         <source>Hex Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>16進エディタ</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="27"/>
         <source>New</source>
-        <translation type="unfinished">新規</translation>
+        <translation>新しい</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="37"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="47"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>開ける</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="70"/>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.ui" line="89"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>バイト</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="45"/>
         <source>Open File</source>
-        <translation type="unfinished">ファイルを開く</translation>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="47"/>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="67"/>
         <source>All Files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのファイル (*.*)</translation>
     </message>
     <message>
         <location filename="../../src/tools/hexeditor/hexeditor.cpp" line="65"/>
         <source>Save File As</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルに名前を付けて保存</translation>
     </message>
 </context>
 <context>
@@ -2438,15 +2438,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>InputPanelsManager</name>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Luaスクリプト</translation>
+        <translation>スクリプトを取る</translation>
     </message>
     <message>
         <source>Frame Serial Number</source>
-        <translation type="vanished">フレームシリアル番号</translation>
+        <translation>フレームのシリアル番号</translation>
     </message>
     <message>
         <source>XYModem Sender</source>
-        <translation type="vanished">XYModem送信機</translation>
+        <translation>XYモデム送信機</translation>
     </message>
 </context>
 <context>
@@ -2475,12 +2475,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/inputsettings.ui" line="48"/>
         <location filename="../../src/page/inputsettings.ui" line="126"/>
         <source>Hex format, such as: 0D 0A</source>
-        <translation type="unfinished"></translation>
+        <translation>16 進数形式 (例: 0D 0A)</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="58"/>
         <source>Custom prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムプレフィックス</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="99"/>
@@ -2490,7 +2490,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/inputsettings.ui" line="116"/>
         <source>Custom suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムサフィックス</translation>
     </message>
     <message>
         <location filename="../../src/page/inputsettings.ui" line="142"/>
@@ -2604,7 +2604,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="120"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ</translation>
     </message>
     <message>
         <location filename="../../src/page/charts/line/linesettings.ui" line="104"/>
@@ -2720,42 +2720,42 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.ui" line="14"/>
         <source>Log view</source>
-        <translation type="unfinished"></translation>
+        <translation>ログビュー</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="35"/>
         <source>Log level</source>
-        <translation type="unfinished">ログレベル</translation>
+        <translation>ログレベル</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="58"/>
         <source>Filter</source>
-        <translation type="unfinished">フィルター</translation>
+        <translation>フィルター</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="71"/>
         <source>Clear log</source>
-        <translation type="unfinished">ログをクリアする</translation>
+        <translation>ログをクリアする</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="81"/>
         <source>Log category</source>
-        <translation type="unfinished"></translation>
+        <translation>ログカテゴリ</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="88"/>
         <source>Scroll to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>一番下までスクロール</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="98"/>
         <source>Log filter</source>
-        <translation type="unfinished"></translation>
+        <translation>ログフィルター</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.ui" line="111"/>
         <source>Disable log</source>
-        <translation type="unfinished"></translation>
+        <translation>ログを無効にする</translation>
     </message>
 </context>
 <context>
@@ -2773,32 +2773,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="78"/>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="85"/>
         <source>New</source>
-        <translation type="unfinished">新規</translation>
+        <translation>新しい</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="92"/>
         <source>Save as</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="99"/>
         <source>Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>ディレクトリ</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="106"/>
         <source>Scripts</source>
-        <translation type="unfinished">スクリプト</translation>
+        <translation>スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="129"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="141"/>
@@ -2808,12 +2808,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="150"/>
         <source>String parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>文字列パラメータ</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="160"/>
         <source>Array parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>配列パラメータ</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.ui" line="66"/>
@@ -2827,23 +2827,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Table Parameters</source>
-        <translation type="vanished">テーブルパラメータ</translation>
+        <translation>テーブルパラメータ</translation>
     </message>
     <message>
         <source>String Parameters</source>
-        <translation type="vanished">文字列パラメータ</translation>
+        <translation>文字列パラメータ</translation>
     </message>
     <message>
         <source>Default Lua Script</source>
-        <translation type="vanished">デフォルトLuaスクリプト</translation>
+        <translation>デフォルトの Lua スクリプト</translation>
     </message>
     <message>
         <source>Checksum Lua Script</source>
-        <translation type="vanished">チェックサムLuaスクリプト</translation>
+        <translation>チェックサム Lua スクリプト</translation>
     </message>
     <message>
         <source>Lua Script(String)</source>
-        <translation type="vanished">Luaスクリプト（文字列）</translation>
+        <translation>Lua スクリプト(文字列)</translation>
     </message>
 </context>
 <context>
@@ -2852,57 +2852,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/lua/luapanel.cpp" line="99"/>
         <location filename="../../src/page/lua/luapanel.cpp" line="164"/>
         <source>No script selected to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>保存するスクリプトが選択されていません。</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="106"/>
         <source>Cannot open file for writing: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを開けて書き込みできません: %1。</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="118"/>
         <source>Save file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを保存: %1。</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>New Lua Script</source>
-        <translation type="unfinished"></translation>
+        <translation>新しい Lua スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="125"/>
         <source>Enter script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリプト名を入力してください:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="137"/>
         <source>A script with the name &apos;%1&apos; already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>という名前のスクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="144"/>
         <source>Cannot create file: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを作成できません: %1。</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="170"/>
         <source>Save Lua Script As</source>
-        <translation type="unfinished"></translation>
+        <translation>Lua スクリプトに名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="171"/>
         <source>Enter new script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいスクリプト名を入力してください:</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="184"/>
         <source>Cannot save file as: %1. Error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを %1 として保存できません。</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luapanel.cpp" line="213"/>
         <source>Failed to open the script: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリプトを開けませんでした: %1</translation>
     </message>
 </context>
 <context>
@@ -2935,22 +2935,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="161"/>
         <source>(The handler of the rx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(rxデータのハンドラー)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="58"/>
         <source>Input data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>入力データ処理 Lua スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="74"/>
         <source>(The handler of the tx data)</source>
-        <translation type="unfinished"></translation>
+        <translation>(送信データのハンドラー)</translation>
     </message>
     <message>
         <location filename="../../src/page/lua/luaview.ui" line="145"/>
         <source>Output data processing Lua script</source>
-        <translation type="unfinished"></translation>
+        <translation>出力データ処理 Lua スクリプト</translation>
     </message>
 </context>
 <context>
@@ -3010,12 +3010,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/mainwindow.cpp" line="343"/>
         <source>Using System Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>システムプロキシの使用</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="365"/>
         <source>Online Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>オンラインドキュメント</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="395"/>
@@ -3039,15 +3039,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Need to Reboot</source>
-        <translation type="vanished">再起動が必要</translation>
+        <translation>再起動が必要です</translation>
     </message>
     <message>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="vanished">この操作は再起動が必要です。今すぐアプリケーションを再起動しますか？</translation>
+        <translation>操作を有効にするには再起動する必要があります。今すぐアプリケーションを再起動しますか?</translation>
     </message>
     <message>
         <source>(Please reboot your application manually.)</source>
-        <translation type="vanished">(アプリケーションを手動で再起動してください。)</translation>
+        <translation>(アプリケーションを手動で再起動してください。)</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow.cpp" line="493"/>
@@ -3977,27 +3977,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>OutputPanelsManager</name>
     <message>
         <source>Data Records</source>
-        <translation type="vanished">データレコード</translation>
+        <translation>データレコード</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="vanished">検索</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <source>Lua Script</source>
-        <translation type="vanished">Luaスクリプト</translation>
+        <translation>スクリプトを取る</translation>
     </message>
     <message>
         <source>Line Chart</source>
-        <translation type="vanished">折れ線グラフ</translation>
+        <translation>折れ線グラフ</translation>
     </message>
     <message>
         <source>Bar Chart</source>
-        <translation type="vanished">棒グラフ</translation>
+        <translation>棒グラフ</translation>
     </message>
     <message>
         <source>XY-Modem Receiver</source>
-        <translation type="vanished">XY-Modem受信機</translation>
+        <translation>XYモデム受信機</translation>
     </message>
 </context>
 <context>
@@ -4020,7 +4020,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/outputsettings.ui" line="74"/>
         <source>Show \r and \n</source>
-        <translation type="unfinished"></translation>
+        <translation>\r と \n を表示</translation>
     </message>
     <message>
         <location filename="../../src/page/outputsettings.ui" line="27"/>
@@ -4126,7 +4126,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>IO</source>
-        <translation type="vanished">IO</translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../../src/page/page.ui" line="294"/>
@@ -4140,7 +4140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Preset data list</source>
-        <translation type="vanished">プリセットデータ一覧</translation>
+        <translation>プリセットデータ一覧</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="852"/>
@@ -4164,32 +4164,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Protocol Factory</source>
-        <translation type="vanished">プロトコルファクトリー</translation>
+        <translation>プロトコルファクトリー</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="903"/>
         <source>Scripts</source>
-        <translation type="unfinished">スクリプト</translation>
+        <translation>スクリプト</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="877"/>
         <source>Records</source>
-        <translation type="unfinished">記録</translation>
+        <translation>記録</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="883"/>
         <source>Search</source>
-        <translation type="unfinished">検索</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="890"/>
         <source>Bar Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>棒グラフ</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="896"/>
         <source>Line Charts</source>
-        <translation type="unfinished"></translation>
+        <translation>折れ線グラフ</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="551"/>
@@ -4220,15 +4220,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/page.cpp" line="918"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>プロトコル</translation>
     </message>
     <message>
         <source>Hide Scripts Panels</source>
-        <translation type="vanished">スクリプトパネルを非表示</translation>
+        <translation>スクリプトパネルを非表示にする</translation>
     </message>
     <message>
         <source>Show Scripts Panels</source>
-        <translation type="vanished">スクリプトパネルを表示</translation>
+        <translation>スクリプトパネルを表示</translation>
     </message>
     <message>
         <location filename="../../src/page/page.cpp" line="579"/>
@@ -4240,11 +4240,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>PanelManager</name>
     <message>
         <source>Panels</source>
-        <translation type="vanished">パネル</translation>
+        <translation>パネル</translation>
     </message>
     <message>
         <source>Hide/Show Panels</source>
-        <translation type="vanished">パネルの非表示/表示</translation>
+        <translation>パネルの表示/非表示</translation>
     </message>
 </context>
 <context>
@@ -4372,7 +4372,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="96"/>
         <source>Send</source>
-        <translation type="unfinished">送信</translation>
+        <translation>送信</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="146"/>
@@ -4382,7 +4382,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="177"/>
         <source>Option</source>
-        <translation type="unfinished">オプション</translation>
+        <translation>オプション</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetmodel.cpp" line="180"/>
@@ -4404,7 +4404,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Edit Data</source>
-        <translation type="vanished">データを編集</translation>
+        <translation>データの編集</translation>
     </message>
 </context>
 <context>
@@ -4466,23 +4466,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>The group name cannot be empty.</source>
-        <translation type="vanished">グループ名は空にできません。</translation>
+        <translation>グループ名を空にすることはできません。</translation>
     </message>
     <message>
         <source>The columns cannot be empty.</source>
-        <translation type="vanished">列は空にできません。</translation>
+        <translation>列を空にすることはできません。</translation>
     </message>
     <message>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="vanished">グループ名 &quot;%1&quot; はすでに存在します。置き換えますか？</translation>
+        <translation>グループ名</translation>
     </message>
     <message>
         <source>Send Groups</source>
-        <translation type="vanished">グループを送信</translation>
+        <translation>グループを送信する</translation>
     </message>
 </context>
 <context>
@@ -4492,34 +4492,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="147"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="132"/>
         <source>The group name cannot be empty.</source>
-        <translation type="unfinished">グループ名は空にできません。</translation>
+        <translation>グループ名を空にすることはできません。</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="138"/>
         <source>The columns cannot be empty.</source>
-        <translation type="unfinished">列は空にできません。</translation>
+        <translation>列を空にすることはできません。</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="148"/>
         <source>The group name &quot;%1&quot; already exists. Replace it?</source>
-        <translation type="unfinished">グループ名 &quot;%1&quot; はすでに存在します。置き換えますか？</translation>
+        <translation>グループ名</translation>
     </message>
     <message>
         <location filename="../../src/page/preset/presetviewgroupeditor.cpp" line="207"/>
         <source>Send Groups</source>
-        <translation type="unfinished">グループを送信</translation>
+        <translation>グループを送信する</translation>
     </message>
 </context>
 <context>
     <name>ProtocolFactory</name>
     <message>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
 </context>
 <context>
@@ -4727,12 +4727,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="40"/>
         <source>Debug</source>
-        <translation type="unfinished">デバッグ</translation>
+        <translation>デバッグ</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="41"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>情報</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="42"/>
@@ -4745,22 +4745,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logview.cpp" line="43"/>
         <source>Critical</source>
-        <translation type="unfinished">致命的</translation>
+        <translation>致命的</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="47"/>
         <source>All categories</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのカテゴリー</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="100"/>
         <source>Clear log messages</source>
-        <translation type="unfinished"></translation>
+        <translation>ログメッセージをクリアする</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logview.cpp" line="101"/>
         <source>Are you sure to clear all log messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのログ メッセージをクリアしてもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/modbus/modbuscommon.cpp" line="35"/>
@@ -4921,92 +4921,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="345"/>
         <source>Clear All Items</source>
-        <translation type="unfinished">すべての項目をクリア</translation>
+        <translation>すべての項目をクリア</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="346"/>
         <source>Are you sure to clear all items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての項目をクリアしてもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="356"/>
         <source>Delete Selected Items</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したアイテムを削除</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapcommon.cpp" line="357"/>
         <source>Are you sure to delete selected items? This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した項目を削除してもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="141"/>
         <source>Clear all payloads</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのペイロードをクリアする</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="142"/>
         <source>Are you sure to clear all payloads?</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのペイロードをクリアしてもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapglobal.cpp" line="72"/>
         <source>Select CoAP Server Cache Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP サーバー キャッシュ ディレクトリの選択</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="44"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のエクスポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="47"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のインポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="50"/>
         <source>Global Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>グローバル設定</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="55"/>
         <source>Open Server Cache Path</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーキャッシュパスを開く</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="63"/>
         <source>Show/Hide Client View</source>
-        <translation type="unfinished"></translation>
+        <translation>クライアントビューの表示/非表示</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="64"/>
         <source>Show/Hide Server View</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバービューの表示/非表示</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="22"/>
         <source>Data Frame</source>
-        <translation type="unfinished">データフレーム</translation>
+        <translation>データフレーム</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="23"/>
         <source>Remote Request Frame</source>
-        <translation type="unfinished">リモートリクエストフレーム</translation>
+        <translation>リモートリクエストフレーム</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="24"/>
         <source>Error Frame</source>
-        <translation type="unfinished">エラーフレーム</translation>
+        <translation>エラーフレーム</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="34"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>標準</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/canbuscommon.cpp" line="35"/>
         <source>Extended</source>
-        <translation type="unfinished"></translation>
+        <translation>拡張された</translation>
     </message>
 </context>
 <context>
@@ -5269,12 +5269,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="103"/>
         <source>Reversal filter logic</source>
-        <translation type="unfinished"></translation>
+        <translation>反転フィルターロジック</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.ui" line="110"/>
         <source>Audo scrolling</source>
-        <translation type="unfinished">スクロールしてみてください</translation>
+        <translation>スクロールしてみてください</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="163"/>
@@ -5295,12 +5295,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="136"/>
         <source>No lines passed the filter.</source>
-        <translation type="unfinished"></translation>
+        <translation>フィルターを通過した行はありませんでした。</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="141"/>
         <source>Found %1 results.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件の結果が見つかりました。</translation>
     </message>
     <message>
         <location filename="../../src/page/search/searchpanel.cpp" line="244"/>
@@ -5855,52 +5855,52 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="243"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="371"/>
         <source>TFTP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTPクライアント</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="20"/>
         <source>Server address</source>
-        <translation type="unfinished">サーバーアドレス</translation>
+        <translation>サーバーアドレス</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="27"/>
         <source>Save file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの保存</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="34"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="41"/>
         <source>Download file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルをダウンロードする</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="48"/>
         <source>Upload progress</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロードの進行状況</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="55"/>
         <source>Upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルをアップロードする</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="62"/>
         <source>Browse</source>
-        <translation type="unfinished">ブラウズ</translation>
+        <translation>ブラウズ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="82"/>
         <source>Download progress</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロードの進行状況</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.ui" line="109"/>
         <source>Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロード</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="63"/>
@@ -5910,130 +5910,130 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="324"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="327"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>アイドル状態</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="71"/>
         <source>Select upload file</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロードファイルを選択</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="110"/>
         <source>Failed to bind UDP socket: %1</source>
-        <translation type="unfinished">UDPソケットのバインドに失敗しました: %1</translation>
+        <translation>UDP ソケットのバインドに失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="144"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="219"/>
         <source>A transfer is already in progress.</source>
-        <translation type="unfinished"></translation>
+        <translation>転送はすでに進行中です。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="151"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="226"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーアドレスが無効です。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="157"/>
         <source>Please select a file to upload.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロードするファイルを選択してください。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="165"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを開けませんでした: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="198"/>
         <source>Select download destination</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード先を選択</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="209"/>
         <source>Failed to create destination directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>宛先ディレクトリの作成に失敗しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="232"/>
         <source>Please provide the remote file path.</source>
-        <translation type="unfinished"></translation>
+        <translation>リモート ファイル パスを指定してください。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="244"/>
         <source>Failed to open destination file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>宛先ファイルを開けませんでした: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="279"/>
         <source>Uploading %1/%2 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2 バイトをアップロードしています</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="293"/>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="307"/>
         <source>%1/%2 bytes (%3%)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2 バイト (%3%)</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="309"/>
         <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1バイト</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="414"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない転送 ID</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="422"/>
         <source>Received an invalid TFTP packet.</source>
-        <translation type="unfinished"></translation>
+        <translation>無効な TFTP パケットを受信しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="434"/>
         <source>Remote server reported an error.</source>
-        <translation type="unfinished"></translation>
+        <translation>リモートサーバーがエラーを報告しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="450"/>
         <source>Unexpected response while uploading.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロード中に予期しない応答が発生しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="463"/>
         <source>Upload completed</source>
-        <translation type="unfinished"></translation>
+        <translation>アップロード完了</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="475"/>
         <source>Unexpected ACK block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない ACK ブロックを受信しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="492"/>
         <source>Unexpected response while downloading.</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中に予期しない応答が発生しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="498"/>
         <source>Failed to write downloaded data to file.</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロードしたデータのファイルへの書き込みに失敗しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="507"/>
         <source>Download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード完了</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="517"/>
         <source>Unexpected DATA block received.</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない DATA ブロックを受信しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/client/tftpclient.cpp" line="528"/>
         <source>Transfer timed out.</source>
-        <translation type="unfinished"></translation>
+        <translation>転送がタイムアウトしました。</translation>
     </message>
 </context>
 <context>
@@ -6045,123 +6045,123 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="129"/>
         <source>TFTP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTPサーバー</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="23"/>
         <source>Browse</source>
-        <translation type="unfinished">ブラウズ</translation>
+        <translation>ブラウズ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="30"/>
         <source>Server address</source>
-        <translation type="unfinished">サーバーアドレス</translation>
+        <translation>サーバーアドレス</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="47"/>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="97"/>
         <source>Start</source>
-        <translation type="unfinished">開始</translation>
+        <translation>始める</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="54"/>
         <source>Server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーディレクトリ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="71"/>
         <source>Log</source>
-        <translation type="unfinished">ログ</translation>
+        <translation>ログ</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.ui" line="93"/>
         <source>Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>セッション</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Peer</source>
-        <translation type="unfinished"></translation>
+        <translation>ピア</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>方向</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="58"/>
         <source>Bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>バイト</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進捗</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="59"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>状態</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="86"/>
         <source>Select server directory</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーディレクトリの選択</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="98"/>
         <source>Server stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーが停止しました</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="104"/>
         <source>Please select a server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバー ディレクトリを選択してください。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="110"/>
         <source>Failed to create server directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーディレクトリの作成に失敗しました。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="123"/>
         <source>Invalid server address.</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーアドレスが無効です。</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="133"/>
         <source>Stop</source>
-        <translation type="unfinished">停止</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="134"/>
         <source>Server started at %1, directory: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーは %1 で起動しました、ディレクトリ: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0/%1</source>
-        <translation type="unfinished"></translation>
+        <translation>0/%1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="156"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="199"/>
         <source>%1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserver.cpp" line="233"/>
         <source>completed</source>
-        <translation type="unfinished"></translation>
+        <translation>完了しました</translation>
     </message>
 </context>
 <context>
@@ -6169,57 +6169,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="39"/>
         <source>Failed to bind TFTP server socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>TFTP サーバーソケットのバインドに失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="50"/>
         <source>Listening on %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1:%2 でリッスンしています</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="98"/>
         <source>%1 -&gt; error: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 -</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="115"/>
         <source>Invalid TFTP packet</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なTFTPパケットです</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="124"/>
         <source>Only RRQ and WRQ are accepted on the listener socket</source>
-        <translation type="unfinished"></translation>
+        <translation>RRQ と WRQ のみがリスナーソケットで受け入れられます</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="132"/>
         <source>Only octet mode is supported</source>
-        <translation type="unfinished"></translation>
+        <translation>オクテットモードのみがサポートされています</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="142"/>
         <source>Invalid file path</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なファイルパス</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="153"/>
         <source>Requested file does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>要求されたファイルは存在しません</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="194"/>
         <source>Failed to start session</source>
-        <translation type="unfinished"></translation>
+        <translation>セッションの開始に失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="205"/>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>ランニング</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserverservice.cpp" line="226"/>
         <source>Completed</source>
-        <translation type="unfinished"></translation>
+        <translation>完了</translation>
     </message>
 </context>
 <context>
@@ -6227,109 +6227,109 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="56"/>
         <source>Failed to open file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを開けませんでした: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="68"/>
         <source>Failed to bind session socket: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>セッションソケットのバインドに失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="78"/>
         <source>%1 %2 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 %3</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Send</source>
-        <translation type="unfinished">送信</translation>
+        <translation>送信</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="97"/>
         <source>Receive</source>
-        <translation type="unfinished"></translation>
+        <translation>受け取る</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="127"/>
         <source>Negotiating</source>
-        <translation type="unfinished"></translation>
+        <translation>交渉</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="144"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="235"/>
         <source>Sending</source>
-        <translation type="unfinished"></translation>
+        <translation>送信中</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="150"/>
         <source>Receiving</source>
-        <translation type="unfinished"></translation>
+        <translation>受信中</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="166"/>
         <source>%1 failed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 が失敗しました: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="177"/>
         <source>%1 completed: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 が完了しました: %2</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="198"/>
         <source>Unexpected transfer id</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない転送 ID</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="207"/>
         <source>Invalid session packet</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なセッションパケット</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="216"/>
         <source>Remote peer reported an error</source>
-        <translation type="unfinished"></translation>
+        <translation>リモートピアがエラーを報告しました</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="229"/>
         <source>Expected ACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>予期されるACKパケット</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="237"/>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="277"/>
         <source>Transfer completed</source>
-        <translation type="unfinished"></translation>
+        <translation>転送完了</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="250"/>
         <source>Unexpected ACK block</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない ACK ブロック</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="256"/>
         <source>Unexpected OACK packet</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しない OACK パケット</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="262"/>
         <source>Expected DATA packet</source>
-        <translation type="unfinished"></translation>
+        <translation>予期されるDATAパケット</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="269"/>
         <source>Failed to write file data</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルデータの書き込みに失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="287"/>
         <source>Unexpected DATA block</source>
-        <translation type="unfinished"></translation>
+        <translation>予期しないDATAブロック</translation>
     </message>
     <message>
         <location filename="../../src/tools/tftp/server/tftpserversession.cpp" line="296"/>
         <source>Session timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>セッションがタイムアウトしました</translation>
     </message>
 </context>
 <context>
@@ -6455,17 +6455,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="115"/>
         <source>Inserting %1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1バイトを挿入しています</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="137"/>
         <source>Delete %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 文字を削除</translation>
     </message>
     <message>
         <location filename="../../3rd/qhexedit2-0.9.0/src/commands.cpp" line="162"/>
         <source>Overwrite %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 文字を上書きします</translation>
     </message>
 </context>
 <context>
@@ -6533,7 +6533,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Bitrate switch</source>
-        <translation type="vanished">ビットレートスイッチ</translation>
+        <translation>ビットレートスイッチ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="137"/>
@@ -6548,12 +6548,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="317"/>
         <source>Settings</source>
-        <translation type="unfinished">設定</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="324"/>
         <source>Send</source>
-        <translation type="unfinished">送信</translation>
+        <translation>送信</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="338"/>
@@ -6568,12 +6568,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="35"/>
         <source>Output</source>
-        <translation type="unfinished">出力</translation>
+        <translation>出力</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="154"/>
         <source>Bit rate switch</source>
-        <translation type="unfinished"></translation>
+        <translation>ビットレートスイッチ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="296"/>
@@ -6588,7 +6588,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="387"/>
         <source>Input</source>
-        <translation type="unfinished">入力</translation>
+        <translation>入力</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="284"/>
@@ -6617,7 +6617,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data View</source>
-        <translation type="vanished">データビュー</translation>
+        <translation>データビュー</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.ui" line="211"/>
@@ -6700,7 +6700,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xCanBus::DataView</name>
     <message>
         <source>Question</source>
-        <translation type="vanished">質問</translation>
+        <translation>質問</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
@@ -6710,7 +6710,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/dataview.cpp" line="86"/>
         <source>Clear Data</source>
-        <translation type="unfinished"></translation>
+        <translation>データのクリア</translation>
     </message>
 </context>
 <context>
@@ -6718,54 +6718,54 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="165"/>
         <source>Send</source>
-        <translation type="unfinished">送信</translation>
+        <translation>送信</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>はい</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="169"/>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="173"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>いいえ</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="189"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>オプション</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="191"/>
         <source>Name</source>
-        <translation type="unfinished">名前</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="193"/>
         <source>Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>サイクル</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="195"/>
         <source>Interval(ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>間隔(ミリ秒)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="197"/>
         <source>Response</source>
-        <translation type="unfinished">応答</translation>
+        <translation>応答</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="199"/>
         <source>Frame ID</source>
-        <translation type="unfinished">フレームID</translation>
+        <translation>フレームID</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistmodel.cpp" line="201"/>
         <source>Payload</source>
-        <translation type="unfinished">ペイロード</translation>
+        <translation>ペイロード</translation>
     </message>
 </context>
 <context>
@@ -6773,66 +6773,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="67"/>
         <source>Clear Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>クリアフレーム</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="68"/>
         <source>Are you sure you want to clear all frames?</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのフレームをクリアしてもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="82"/>
         <source>A frame with the same ID (%1) already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>同じ ID (%1) のフレームがすでに存在します。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="83"/>
         <source>Do you want to replace the existing frame with the new one?</source>
-        <translation type="unfinished"></translation>
+        <translation>既存のフレームを新しいフレームに交換しますか?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="84"/>
         <source>Duplicate Frame ID</source>
-        <translation type="unfinished"></translation>
+        <translation>フレームIDが重複しています</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="106"/>
         <source>Delete Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>フレームの削除</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="96"/>
         <source>Please select a frame to delete.</source>
-        <translation type="unfinished"></translation>
+        <translation>削除するフレームを選択してください。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="102"/>
         <source>Invalid frame selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なフレームが選択されました。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="107"/>
         <source>Are you sure you want to delete the selected frame?</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したフレームを削除してもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="121"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Export Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>フレームのエクスポート</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="123"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="142"/>
         <source>JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON ファイル (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="130"/>
         <source>Failed to open file for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>書き込み用にファイルを開けませんでした。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="140"/>
@@ -6840,22 +6840,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <location filename="../../src/x/canbus/framelistview.cpp" line="160"/>
         <location filename="../../src/x/canbus/framelistview.cpp" line="167"/>
         <source>Import Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>フレームをインポートする</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="149"/>
         <source>Failed to open file for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>読み取り用にファイルを開けませんでした。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="161"/>
         <source>Failed to parse JSON: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON の解析に失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/framelistview.cpp" line="168"/>
         <source>Invalid JSON format: expected an array of frames.</source>
-        <translation type="unfinished"></translation>
+        <translation>無効な JSON 形式: フレームの配列が必要です。</translation>
     </message>
 </context>
 <context>
@@ -6923,7 +6923,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="130"/>
         <source>Frame List</source>
-        <translation type="unfinished"></translation>
+        <translation>フレーム一覧</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="355"/>
@@ -6938,7 +6938,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Invalid frame ID.</source>
-        <translation type="vanished">フレームIDが無効です。</translation>
+        <translation>フレームIDが無効です。</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="361"/>
@@ -6952,15 +6952,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Data Frame</source>
-        <translation type="vanished">データフレーム</translation>
+        <translation>データフレーム</translation>
     </message>
     <message>
         <source>Remote Request Frame</source>
-        <translation type="vanished">リモートリクエストフレーム</translation>
+        <translation>リモートリクエストフレーム</translation>
     </message>
     <message>
         <source>Error Frame</source>
-        <translation type="vanished">エラーフレーム</translation>
+        <translation>エラーフレーム</translation>
     </message>
     <message>
         <location filename="../../src/x/canbus/xcanbus.cpp" line="451"/>
@@ -6978,37 +6978,37 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="202"/>
         <source>Payload Description</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="203"/>
         <source>Please enter the payload description:</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの説明を入力してください:</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="205"/>
         <source>Payload description</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="215"/>
         <source>Save Payload Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの保存に失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="216"/>
         <source>Failed to save payload: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロードの保存に失敗しました: %1</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="224"/>
         <source>Unknown Content Format</source>
-        <translation type="unfinished"></translation>
+        <translation>不明なコンテンツ形式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapclientui.cpp" line="225"/>
         <source>The content format %1 is unknown.</source>
-        <translation type="unfinished"></translation>
+        <translation>コンテンツ形式 %1 は不明です。</translation>
     </message>
 </context>
 <context>
@@ -7016,62 +7016,62 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Rx</source>
-        <translation type="unfinished">受信</translation>
+        <translation>受信</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="96"/>
         <source>Tx</source>
-        <translation type="unfinished">送信</translation>
+        <translation>送信</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="114"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ペイロードなし)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="162"/>
         <source>Flag</source>
-        <translation type="unfinished">フラグ</translation>
+        <translation>フラグ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="164"/>
         <source>Message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>メッセージID</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="166"/>
         <source>Client</source>
-        <translation type="unfinished">クライアント</translation>
+        <translation>クライアント</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="168"/>
         <source>Server</source>
-        <translation type="unfinished">サーバ</translation>
+        <translation>サーバ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="170"/>
         <source>Version</source>
-        <translation type="unfinished">バージョン</translation>
+        <translation>バージョン</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="172"/>
         <source>Type</source>
-        <translation type="unfinished">タイプ</translation>
+        <translation>タイプ</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="174"/>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>コード</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="176"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>トークン</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgmodel.cpp" line="178"/>
         <source>Payload</source>
-        <translation type="unfinished">ペイロード</translation>
+        <translation>ペイロード</translation>
     </message>
 </context>
 <context>
@@ -7079,17 +7079,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="104"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="105"/>
         <source>Are you sure to clear all messages?</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのメッセージを消去してもよろしいですか?</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapmsgview.cpp" line="140"/>
         <source>No Limit</source>
-        <translation type="unfinished">制限なし</translation>
+        <translation>制限なし</translation>
     </message>
 </context>
 <context>
@@ -7097,17 +7097,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="163"/>
         <source>Description</source>
-        <translation type="unfinished">説明</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="165"/>
         <source>Format</source>
-        <translation type="unfinished">形式</translation>
+        <translation>形式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coappayloadmodel.cpp" line="167"/>
         <source>Data</source>
-        <translation type="unfinished">データ</translation>
+        <translation>データ</translation>
     </message>
 </context>
 <context>
@@ -7115,7 +7115,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coappayloadview.cpp" line="72"/>
         <source>All formats</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのフォーマット</translation>
     </message>
 </context>
 <context>
@@ -7123,27 +7123,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="207"/>
         <source>(No Payload)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ペイロードなし)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="258"/>
         <source>Description</source>
-        <translation type="unfinished">説明</translation>
+        <translation>説明</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="260"/>
         <source>URI Path</source>
-        <translation type="unfinished"></translation>
+        <translation>URIパス</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="262"/>
         <source>Context Format</source>
-        <translation type="unfinished"></translation>
+        <translation>コンテキスト形式</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/coapresourcemodel.cpp" line="264"/>
         <source>Payload (Hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>ペイロード (16 進数)</translation>
     </message>
 </context>
 <context>
@@ -7151,7 +7151,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/coapresourceview.cpp" line="60"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>全て</translation>
     </message>
 </context>
 <context>
@@ -7183,50 +7183,50 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="206"/>
         <source>Export CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のエクスポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="208"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="236"/>
         <source>JSON Files (*.json);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON ファイル (*.json);;すべてのファイル (*)</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="220"/>
         <source>Export CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のエクスポートに失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="221"/>
         <source>Failed to open file %1 for writing.</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 を書き込みのために開くことができませんでした。</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="234"/>
         <source>Import CoAP Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のインポート</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="247"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="258"/>
         <location filename="../../src/x/coap/xcoap.cpp" line="265"/>
         <source>Import CoAP Configuration Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>CoAP 構成のインポートに失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="248"/>
         <source>Failed to open file %1 for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 を読み取りのために開くことができませんでした。</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="259"/>
         <source>Failed to parse JSON file %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>JSON ファイル %1 の解析に失敗しました: %2</translation>
     </message>
     <message>
         <location filename="../../src/x/coap/xcoap.cpp" line="266"/>
         <source>The content of file %1 is not a valid JSON object.</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 の内容は有効な JSON オブジェクトではありません。</translation>
     </message>
 </context>
 <context>
@@ -7243,11 +7243,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <source>Client</source>
-        <translation type="obsolete">クライアント</translation>
+        <translation>クライアント</translation>
     </message>
     <message>
         <source>Server</source>
-        <translation type="obsolete">サーバ</translation>
+        <translation>サーバ</translation>
     </message>
 </context>
 <context>
@@ -7467,7 +7467,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="210"/>
         <source>Show Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>グリッドを表示</translation>
     </message>
     <message>
         <location filename="../../src/x/flow/xflow.cpp" line="220"/>
@@ -7584,82 +7584,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="83"/>
         <source>Debug</source>
-        <translation type="unfinished">デバッグ</translation>
+        <translation>デバッグ</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="85"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>情報</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="87"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="89"/>
         <source>Critical</source>
-        <translation type="unfinished">致命的</translation>
+        <translation>致命的</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="91"/>
         <source>Fatal</source>
-        <translation type="unfinished">致命的</translation>
+        <translation>致命的</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="93"/>
         <source>Unknown</source>
-        <translation type="unfinished">不明</translation>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="145"/>
         <source>Timestamp</source>
-        <translation type="unfinished"></translation>
+        <translation>タイムスタンプ</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="147"/>
         <source>Level</source>
-        <translation type="unfinished">レベル</translation>
+        <translation>レベル</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="149"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>モジュール</translation>
     </message>
     <message>
         <location filename="../../src/x/log/logmodel.cpp" line="151"/>
         <source>Message</source>
-        <translation type="unfinished">メッセージ</translation>
+        <translation>メッセージ</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogView</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">デバッグ</translation>
+        <translation>デバッグ</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="obsolete">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">致命的</translation>
+        <translation>致命的</translation>
     </message>
 </context>
 <context>
     <name>xLog::LogViewPrivate</name>
     <message>
         <source>Debug</source>
-        <translation type="obsolete">デバッグ</translation>
+        <translation>デバッグ</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="obsolete">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>Critical</source>
-        <translation type="obsolete">致命的</translation>
+        <translation>致命的</translation>
     </message>
 </context>
 <context>
@@ -8065,34 +8065,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <name>xTools::ThemeManager</name>
     <message>
         <source>System</source>
-        <translation type="obsolete">システム</translation>
+        <translation>システム</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">ライト</translation>
+        <translation>ライト</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">暗い</translation>
+        <translation>暗い</translation>
     </message>
 </context>
 <context>
     <name>xTools::ThemeManagerPrivate</name>
     <message>
         <source>Color Scheme</source>
-        <translation type="obsolete">配色</translation>
+        <translation>配色</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="obsolete">暗い</translation>
+        <translation>暗い</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="obsolete">ライト</translation>
+        <translation>ライト</translation>
     </message>
     <message>
         <source>System</source>
-        <translation type="obsolete">システム</translation>
+        <translation>システム</translation>
     </message>
 </context>
 <context>
@@ -8100,22 +8100,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="104"/>
         <source>1x1</source>
-        <translation type="unfinished"></translation>
+        <translation>1x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="105"/>
         <source>1x2</source>
-        <translation type="unfinished"></translation>
+        <translation>1x2</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="106"/>
         <source>2x1</source>
-        <translation type="unfinished"></translation>
+        <translation>2x1</translation>
     </message>
     <message>
         <location filename="../../src/x/tools/xtools.cpp" line="107"/>
         <source>2x2</source>
-        <translation type="unfinished"></translation>
+        <translation>2x2</translation>
     </message>
 </context>
 <context>
@@ -8123,17 +8123,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="62"/>
         <source>Need to Reboot</source>
-        <translation type="unfinished">再起動が必要</translation>
+        <translation>再起動が必要です</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="63"/>
         <source>The operation need to reboot to effected, reboot the application now?</source>
-        <translation type="unfinished">この操作は再起動が必要です。今すぐアプリケーションを再起動しますか？</translation>
+        <translation>操作を有効にするには再起動する必要があります。今すぐアプリケーションを再起動しますか?</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="65"/>
         <source>(Please reboot your application manually.)</source>
-        <translation type="unfinished">(アプリケーションを手動で再起動してください。)</translation>
+        <translation>(アプリケーションを手動で再起動してください。)</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="89"/>
@@ -8178,7 +8178,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../../src/common/xui.cpp" line="150"/>
         <source>Open Application Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>アプリケーションディレクトリを開く</translation>
     </message>
     <message>
         <location filename="../../src/common/xui.cpp" line="159"/>
