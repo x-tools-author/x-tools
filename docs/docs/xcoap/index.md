@@ -1,6 +1,6 @@
 ﻿---
 title: xCoAP
-nav_order: 5
+nav_order: 6
 ---
 
 # CoAP Option 详解
