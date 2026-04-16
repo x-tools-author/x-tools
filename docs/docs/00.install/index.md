@@ -1,7 +1,6 @@
 ---
-title: 安装
-parent: xTools
-nav_order: 1
+title: 软件安装
+nav_order: 0
 ---
 
 ## 安装
