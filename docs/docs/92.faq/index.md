@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: 快速问答
 nav_order: 92
 ---
 
