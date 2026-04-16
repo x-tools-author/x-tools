@@ -1,6 +1,6 @@
 ---
 title: 软件安装
-nav_order: 0
+nav_order: 0.1
 ---
 
 ## 安装
