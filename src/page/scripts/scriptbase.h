@@ -47,9 +47,11 @@ protected:
     virtual QString scriptDir() const = 0;
 
     virtual QStringList ignoredFiles() const;
-    void loadScriptsApp();
     QString applicationScriptDir();
-    virtual void loadScriptsUser();
+    QString userScriptDir();
+    void loadScriptsApp();
+    void loadScriptsUser();
+    void loadScriptsFromDir(const QString &dir);
 
 private:
     void onScriptComboBoxCurrentIndexChanged();

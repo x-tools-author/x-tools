@@ -14,6 +14,8 @@
 #include <QInputDialog>
 #include <QMessageBox>
 
+#include "common/xapp.h"
+
 #include "scriptrunner.h"
 #include "utilities/compatibility.h"
 #include "utilities/iconengine.h"
@@ -97,9 +99,40 @@ QStringList ScriptBase::ignoredFiles() const
     return QStringList();
 }
 
+QString ScriptBase::applicationScriptDir()
+{
+    QString appDir = QApplication::applicationDirPath();
+#if defined(Q_OS_MAC)
+    appDir += QString("/../Resources");
+#endif
+    QString dir = appDir + QString("/scripts/") + scriptDir();
+    return dir;
+}
+
+QString ScriptBase::userScriptDir()
+{
+    QString dri = xAPP->settingsPath() + QString("/scripts/") + scriptDir();
+    QDir d(dri);
+    if (!d.exists()) {
+        d.mkpath(dri);
+    }
+    return dri;
+}
+
+void ScriptBase::loadScriptsUser()
+{
+    QString dir = userScriptDir();
+    loadScriptsFromDir(dir);
+}
+
 void ScriptBase::loadScriptsApp()
 {
     QString dir = applicationScriptDir();
+    loadScriptsFromDir(dir);
+}
+
+void ScriptBase::loadScriptsFromDir(const QString &dir)
+{
     QDir d(dir);
     if (!d.exists()) {
         return;
@@ -118,18 +151,6 @@ void ScriptBase::loadScriptsApp()
         ui->comboBoxFile->addItem(fileName, f.absoluteFilePath());
     }
 }
-
-QString ScriptBase::applicationScriptDir()
-{
-    QString appDir = QApplication::applicationDirPath();
-#if defined(Q_OS_MAC)
-    appDir += QString("/../Resources");
-#endif
-    QString dir = appDir + QString("/scripts/") + scriptDir();
-    return dir;
-}
-
-void ScriptBase::loadScriptsUser() {}
 
 void ScriptBase::onScriptComboBoxCurrentIndexChanged()
 {
@@ -176,7 +197,7 @@ void ScriptBase::onNewButtonClicked()
         txt += '.' + scriptSuffix();
     }
 
-    QString filePath = applicationScriptDir();
+    QString filePath = userScriptDir();
     filePath += "/";
 #if 0
     filePath += scriptDir();
@@ -202,11 +223,7 @@ void ScriptBase::onNewButtonClicked()
 
 void ScriptBase::onOpenButtonClicked()
 {
-    QString filePath = QApplication::applicationDirPath();
-    filePath += QString("/scripts/");
-    filePath += scriptDir();
-
-    QDesktopServices::openUrl(QUrl(filePath));
+    QDesktopServices::openUrl(QUrl(userScriptDir()));
 }
 
 void ScriptBase::onRefreshButtonClicked()
