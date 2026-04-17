@@ -12,6 +12,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QInputDialog>
+#include <QMessageBox>
 
 #include "scriptrunner.h"
 #include "utilities/compatibility.h"
@@ -177,16 +178,22 @@ void ScriptBase::onNewButtonClicked()
 
     QString filePath = applicationScriptDir();
     filePath += "/";
+#if 0
     filePath += scriptDir();
     filePath += "/";
+#endif
     filePath += txt;
     QFile file(filePath);
     if (file.exists()) {
+        QMessageBox::warning(this,
+                             tr("File Exists"),
+                             tr("The file \"%1\" already exists.").arg(txt));
         return;
     }
 
     QString fileName = file.fileName();
-    ui->comboBoxFile->addItem(txt, fileName);
+    QFileInfo fi(fileName);
+    ui->comboBoxFile->addItem(fi.baseName(), fileName);
     ui->comboBoxFile->setCurrentIndex(ui->comboBoxFile->count() - 1);
     if (file.open(QFlag(QIODevice::OpenModeFlag::WriteOnly))) {
         file.close();
