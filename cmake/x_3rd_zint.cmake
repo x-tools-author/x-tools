@@ -74,7 +74,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rd/${file_name}/CMakeLists.txt")
 endif()
 
 # --------------------------------------------------------------------------------------------------
-if(EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
+if(WIN32 AND EXISTS "${X_LIBS_DIR}/${file_name}/include/zint.h")
   include_directories(${X_LIBS_DIR}/${file_name}/include)
   link_directories(${X_LIBS_DIR}/${file_name}/lib)
   link_directories(${X_LIBS_DIR}/${file_name}/lib64)
