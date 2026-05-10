@@ -47,7 +47,7 @@ runs:
     - name: Build for Windows 7(32bits)
       shell: cmd
       run: |
-        scripts\ci-build-win7.bat ${{ inputs.tag }}
+        scripts\ci-build-windows-win7 ${{ inputs.tag }}
     - name: Check for Artifacts(32bits)
       shell: cmd
       run: |
