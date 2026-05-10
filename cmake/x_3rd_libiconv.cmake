@@ -106,8 +106,13 @@ if(WIN32)
       execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|ARM64"
                       WORKING_DIRECTORY ${working_dir})
     else()
-      execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
-                      WORKING_DIRECTORY ${working_dir})
+      if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|x64"
+                        WORKING_DIRECTORY ${working_dir})
+      else()
+        execute_process(COMMAND ${devenv} libiconv.sln /Build "Release|Win32"
+                        WORKING_DIRECTORY ${working_dir})
+      endif()
     endif()
   endif()
 
