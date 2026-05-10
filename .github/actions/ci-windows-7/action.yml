@@ -50,6 +50,8 @@ runs:
         git fetch --tags
         cmake -E rm -rf build
         cmake -E rm -rf bin\5.15.2
+        cmake -E rm -rf libs\5.15.2
+        mkdir libs
         mkdir build
         cd build
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
