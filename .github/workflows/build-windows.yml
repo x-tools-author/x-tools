@@ -12,7 +12,7 @@ on:
   #     - master
 jobs:
   build:
-    name: Build with Qt6
+    name: Qt6
     runs-on: windows-2022
     strategy:
       fail-fast: false

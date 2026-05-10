@@ -1,7 +1,7 @@
 ﻿name: build-qt5
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: # Enables manually
   pull_request:
     branches:
@@ -12,7 +12,7 @@ on:
   #     - master
 jobs:
   build-windows:
-    name: Build with Qt5(windows)
+    name: Qt5(windows)
     runs-on: windows-2025
     strategy:
       fail-fast: false
@@ -39,12 +39,12 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: desktop
           arch: ${{ matrix.arch }}
-          modules: 'qtcharts'
+          modules: "qtcharts"
       - name: build-msvc
         shell: cmd
         run: |
@@ -54,7 +54,7 @@ jobs:
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
           cmake --build . --target all --config Release
   build-linux:
-    name: Build with Qt5(linux)
+    name: Qt5(linux)
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -66,12 +66,12 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
           target: desktop
-          arch: 'gcc_64'
-          modules: 'qtcharts'
+          arch: "gcc_64"
+          modules: "qtcharts"
       - name: install-dependencies
         run: |
           sudo apt-get install -y libxcb-xinerama0 libxcb-cursor-dev  libudev-dev libusb-dev libusb-1.0-0-dev ninja-build
@@ -85,7 +85,7 @@ jobs:
           cmake --build . --target xTools
           cmake --build . --target xTools_linux
   build-macos:
-    name: Build with Qt5(macos)
+    name: Qt5(macos)
     runs-on: macos-15
     strategy:
       fail-fast: false
@@ -97,13 +97,13 @@ jobs:
       - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: 'clang_64'
-          host: 'mac'
-          modules: 'qtcharts'
+          target: "desktop"
+          arch: "clang_64"
+          host: "mac"
+          modules: "qtcharts"
       - name: build-clang
         run: |
           # brew uninstall --force node
