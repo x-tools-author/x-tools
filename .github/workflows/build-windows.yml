@@ -28,16 +28,10 @@ jobs:
             arch: win64_mingw
           - version: 6.8.3
             arch: win64_msvc2022_64
-          - version: 6.8.3
-            arch: win64_mingw
           - version: 6.9.3
             arch: win64_msvc2022_64
-          - version: 6.9.3
-            arch: win64_mingw
           - version: 6.10.3
             arch: win64_msvc2022_64
-          - version: 6.10.3
-            arch: win64_mingw
     steps:
       - name: Pull code
         uses: actions/checkout@v4
@@ -52,7 +46,7 @@ jobs:
           modules: "qtcharts qtserialbus qtserialport qtwebsockets"
       - name: build-msvc
         shell: cmd
-        if: matrix.arch == 'win64_msvc2019_64' || matrix.arch == 'win64_msvc2022_64'
+        if: matrix.arch != 'win64_mingw'
         run: |
           mkdir build
           cd build
