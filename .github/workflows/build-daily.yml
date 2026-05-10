@@ -1,7 +1,7 @@
 name: build-daily
 on:
   schedule:
-    - cron: "0 4 * * 6"
+    - cron: "0 5 * * 6"
   workflow_dispatch: # Enables manually
   # push:
   #   branches:
