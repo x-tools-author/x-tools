@@ -12,7 +12,7 @@
 |xtools-linux-aarch64.AppImage  | for Linux aarch64 (64bits Ubuntu 22.04 or later)                           |
 |xtools-linux-aarch64.deb       | for Linux aarch64 (64bits Ubuntu 22.04 or later)                           |
 |xtools-windows-i686-winxp.zip  | for Windows x86 (Windows XP or later)                                      |
-|xtools-windows-x86-win7.zip    | for Windows x86 (32bits Windows 7 or later)                                |
+|xtools-windows-i686-win7.zip   | for Windows x86 (32bits Windows 7 or later)                                |
 |xtools-windows-x64-win7.zip    | for Windows x64 (64bits Windows 7 or later)                                |
 |xtools-windows-x64.zip         | for Windows x64 (64bits Windows 10 or later)                               |
 |xtools-windows-arm64.zip       | for Windows arm64 (64bits Windows 11 or later)                             |
