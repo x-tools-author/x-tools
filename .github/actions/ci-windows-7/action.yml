@@ -36,14 +36,6 @@ runs:
       shell: cmd
       run: |
         for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
-    - name: Install Qt(32bits)
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: "5.15.2"
-        target: "desktop"
-        arch: "win32_msvc2019"
-        dir: "${{ github.workspace }}"
-        modules: "qtcharts"
     - name: Build for Windows 7(32bits)
       shell: cmd
       run: |
