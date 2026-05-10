@@ -107,7 +107,7 @@
   </g>
 
   <g opacity="0.9">
-    <path d="M0 256H680V276C680 289.255 669.255 300 656 300H24C10.745 300 0 289.255 0 276V256Z" fill="#07121F"
+    <path d="M0 256H680V292C680 296.418 676.418 300 672 300H8C3.582 300 0 296.418 0 292V256Z" fill="#07121F"
       fill-opacity="0.78" />
     <text x="28" y="282" fill="#85A8C6" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13"
       font-weight="600">Workspace panels | Device links | Real-time analysis | Script automation</text>
