@@ -39,13 +39,13 @@ runs:
     - name: Build for Windows 7(32bits)
       shell: cmd
       run: |
-        scripts\ci-build-windows-win7 ${{ inputs.tag }}
+        scripts\ci-build-windows-win7.bat ${{ inputs.tag }}
     - name: Check for Artifacts(32bits)
       shell: cmd
       run: |
-        for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do echo "%%f"
+        for %%f in (bin\5.15.14\Windows\Release\xTools-zip\*.zip) do echo "%%f"
     - name: Upload Release Asset for Windows(32bits)
       if: ${{ inputs.tag != '' }}
       shell: cmd
       run: |
-        for %%f in (bin\5.15.2\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
+        for %%f in (bin\5.15.14\Windows\Release\xTools-zip\*.zip) do gh release upload ${{ inputs.tag }} "%%f" --clobber
