@@ -18,24 +18,17 @@ jobs:
       fail-fast: false
       matrix:
         version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.3]
-        arch: [win64_msvc2019_64, win64_msvc2022_64, win64_mingw]
-        exclude:
+        include:
           - version: 6.2.4
-            arch: win64_msvc2022_64
+            arch: [win64_msvc2019_64, win64_mingw]
           - version: 6.5.3
-            arch: win64_msvc2022_64
+            arch: [win64_msvc2019_64, win64_mingw]
           - version: 6.8.3
-            arch: win64_msvc2019_64
-          - version: 6.8.3
-            arch: win64_mingw
+            arch: [win64_msvc2022_64, win64_mingw, win64_llvm_mingw]
           - version: 6.9.3
-            arch: win64_msvc2019_64
-          - version: 6.9.3
-            arch: win64_mingw
+            arch: [win64_msvc2022_64, win64_mingw, win64_llvm_mingw]
           - version: 6.10.3
-            arch: win64_msvc2019_64
-          - version: 6.10.3
-            arch: win64_mingw
+            arch: [win64_msvc2022_64, win64_mingw, win64_llvm_mingw]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
