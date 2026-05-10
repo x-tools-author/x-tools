@@ -1,58 +1,66 @@
-name: build-macos
+name: build-daily
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 4 * * 6"
   workflow_dispatch: # Enables manually
-  pull_request:
-    branches:
-      - master
-    types: [opened, synchronize, reopened]
   # push:
   #   branches:
   #     - master
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
+  QT_VERSION: "6.8.3"
+  QT_MODULES: "qtcharts qtserialbus qtserialport qtwebsockets"
+  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
+  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
+  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
+
 jobs:
-  build:
-    name: Build
-    runs-on: ${{ matrix.os }}
+  update-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update continuous tag
+        run: |
+          git config --global user.email "x-tools@outlook.com"
+          git config --global user.name "x-tools-author"
+          git tag -d continuous || true
+          git push origin --delete continuous || true
+          git tag continuous
+          git push origin continuous -f
+  update-release:
+    runs-on: ubuntu-latest
+    needs: update-tag
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Delete Release
+        run: |
+          gh release delete continuous -y || true
+      - name: Create Release
+        run: |
+          gh release create continuous --title "Continuous Build" --notes-file res/files/release.md --prerelease
+  release-for-windows:
+    needs: update-release
+    runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, macos-15]
-        version: [6.9.3]
-        arch: [clang_64]
-        include:
-          - version: 6.9.3
-            os: macos-26
+        ci_action: ["Windows", "Win7", "WinXP"]
     steps:
-      - name: checkout
+      - name: Pull code
         uses: actions/checkout@v4
-      - name: install qt
-        uses: jurplel/install-qt-action@v3
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v2
         with:
-          aqtversion: '==3.1.*'
-          dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
-          target: 'desktop'
-          arch: ${{ matrix.arch }}
-          host: 'mac'
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: build all
-        run: |
-          # brew uninstall --force node
-          # brew unlink unixodbc
-          # brew install libiodbc
-          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release ../
-          cmake --build . --target all
-      - name: make dmg
-        run: |
-          ls bin/${{ matrix.version }}/Darwin/Release/xTools
-          cd build
-          cmake --build . --target xTools_dmg
-          ls ../bin/${{ matrix.version }}/Darwin/Release/xTools
-          # rename all dmg with lower case
-          find ../bin/${{ matrix.version }}/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
-
+          cmake-version: "4.1.x"
+      - name: Use cmake
+        run: cmake --version
+      - name: Build for Windows 7
+        if: ${{ matrix.ci_action == 'Win7' }}
+        uses: ./.github/actions/ci-windows-7
+        with:
+          tag: continuous

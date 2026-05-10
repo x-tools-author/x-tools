@@ -1,7 +1,7 @@
 name: build-daily
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 4 * * 6"
   workflow_dispatch: # Enables manually
   # push:
   #   branches:
@@ -10,8 +10,8 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
-  QT_VERSION: '6.8.3'
-  QT_MODULES: 'qtcharts qtserialbus qtserialport qtwebsockets'
+  QT_VERSION: "6.8.3"
+  QT_MODULES: "qtcharts qtserialbus qtserialport qtwebsockets"
   QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
   QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
   QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
@@ -21,46 +21,42 @@ jobs:
   update-tag:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Update continuous tag
-      run: |
-        git config --global user.email "x-tools@outlook.com"
-        git config --global user.name "x-tools-author"
-        git tag -d continuous || true
-        git push origin --delete continuous || true
-        git tag continuous
-        git push origin continuous -f
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update continuous tag
+        run: |
+          git config --global user.email "x-tools@outlook.com"
+          git config --global user.name "x-tools-author"
+          git tag -d continuous || true
+          git push origin --delete continuous || true
+          git tag continuous
+          git push origin continuous -f
   update-release:
     runs-on: ubuntu-latest
     needs: update-tag
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Delete Release
-      run: |
-        gh release delete continuous -y || true
-    - name: Create Release
-      run: |
-        gh release create continuous --title "Continuous Build" --notes-file res/files/release.md --prerelease
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Delete Release
+        run: |
+          gh release delete continuous -y || true
+      - name: Create Release
+        run: |
+          gh release create continuous --title "Continuous Build" --notes-file res/files/release.md --prerelease
   release-for-windows:
     needs: update-release
     runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
-        ci_action: [
-          'Windows',
-          'Win7',
-          'WinXP'
-        ]
+        ci_action: ["Windows", "Win7", "WinXP"]
     steps:
       - name: Pull code
         uses: actions/checkout@v4
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
-          cmake-version: '4.1.x'
+          cmake-version: "4.1.x"
       - name: Use cmake
         run: cmake --version
       - name: Build for Windows
@@ -87,116 +83,113 @@ jobs:
       - name: Build for Windows ARM64
         uses: ./.github/actions/ci-windows-arm64
         with:
-          tag: 'continuous'
+          tag: "continuous"
   release-for-linux-arm:
     runs-on: ubuntu-24.04-arm
     needs: update-release
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Install Dependencies
-      run: |
-        wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
-        chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
-      shell: bash
-    - name: Build for Linux ARM
-      run: |
-        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
-      shell: bash
-    - name: Upload Release Asset for Linux ARM
-      run: |
-        dir bin/6.7.3/Linux/Release
-        find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
-      shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: |
+          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-aarch64.AppImage -O ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+          chmod +x ${{ github.workspace }}/cmake/linux/tools/linuxdeployqt-aarch64
+        shell: bash
+      - name: Build for Linux ARM
+        run: |
+          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ghcr.io/x-tools-author/x-tools-ubuntu-22.04-arm64:arm64 /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-22.04-arm64.sh && ./scripts/ci-build-ubuntu-22.04-arm64.sh"
+        shell: bash
+      - name: Upload Release Asset for Linux ARM
+        run: |
+          dir bin/6.7.3/Linux/Release
+          find bin/6.7.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+          find bin/6.7.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+        shell: bash
   release-for-linux:
     runs-on: ubuntu-22.04
     needs: update-release
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Build for Linux
-      run: |
-        docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
-    - name: Upload Release Asset for Linux
-      run: |
-        dir bin/6.8.3/Linux/Release
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
-        find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build for Linux
+        run: |
+          docker run --rm --privileged -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-ubuntu-20.04.sh && ./scripts/ci-build-ubuntu-20.04.sh"
+      - name: Upload Release Asset for Linux
+        run: |
+          dir bin/6.8.3/Linux/Release
+          find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
+          find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
     runs-on: macos-14
     needs: update-release
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v2
-      with:
-        cmake-version: '4.1.x'
-    - name: Install Qt for macOS
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: '${{ env.QT_VERSION }}'
-        target: 'desktop'
-        arch: 'clang_64'
-        dir: ${{ github.workspace }}
-        modules: '${{ env.QT_MODULES }}'
-    - name: Build for macOS
-      # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
-      # brew unlink unixodbc
-      # brew install libiodbc
-      # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
-      # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-      run: |
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: "4.1.x"
+      - name: Install Qt for macOS
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "${{ env.QT_VERSION }}"
+          target: "desktop"
+          arch: "clang_64"
+          dir: ${{ github.workspace }}
+          modules: "${{ env.QT_MODULES }}"
+      - name: Build for macOS
+        # 278ERROR: no file at "/usr/local/opt/libiodbc/lib/libiodbc.2.dylib"
         # brew unlink unixodbc
         # brew install libiodbc
-        mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
-        ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
-        mkdir build
-        cd build
-        cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
-        cmake --build . --target all
-        cmake --build . --target xTools_dmg
-    - name: Upload Release Asset for macOS
-      run: |
-        ls bin/${{ env.QT_VERSION }}/Darwin/Release/xTools
-        find bin/${{ env.QT_VERSION }}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
+        # ERROR: no file at "/Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib"
+        # ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
+        run: |
+          # brew unlink unixodbc
+          # brew install libiodbc
+          mkdir -p /Applications/Postgres.app/Contents/Versions/14/lib
+          ln -s /usr/local/Cellar/postgresql@14/14.10/lib/postgresql@14/libpq.5.14.dylib /Applications/Postgres.app/Contents/Versions/14/lib/libpq.5.dylib
+          mkdir build
+          cd build
+          cmake ../ -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/6.8.3/clang_64/lib/cmake/Qt6' -DCMAKE_BUILD_TYPE:STRING=Release
+          cmake --build . --target all
+          cmake --build . --target xTools_dmg
+      - name: Upload Release Asset for macOS
+        run: |
+          ls bin/${{ env.QT_VERSION }}/Darwin/Release/xTools
+          find bin/${{ env.QT_VERSION }}/Darwin/Release/xTools -name "*.dmg" -exec gh release upload continuous {} \;
   release-for-android:
     runs-on: ubuntu-24.04
     needs: update-release
     strategy:
       fail-fast: false
       matrix:
-        ci_action: [
-          'armv7',
-          'armv8a'
-        ]
+        ci_action: ["armv7", "armv8a"]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Build for Android(armv7)
-      if: ${{ matrix.ci_action == 'armv7' }}
-      run: |
-        docker pull ${{ env.DOCKER_IMAGE }}
-        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
-        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
-    - name: Upload Release Asset for Android(armv7)
-      if: ${{ matrix.ci_action == 'armv7' }}
-      run: |
-        cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
-        ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk
-    - name: Build for Android(armv8a)
-      if: ${{ matrix.ci_action == 'armv8a' }}
-      run: |
-        docker pull ${{ env.DOCKER_IMAGE }}
-        docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
-        cd /workspace && chmod +x ./scripts/ci-build-android-armv8a.sh && ./scripts/ci-build-android-armv8a.sh \
-        ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
-    - name: Upload Release Asset for Android(armv8a)
-      if: ${{ matrix.ci_action == 'armv8a' }}
-      run: |
-        cmake -E copy build/arm64_v8a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-arm64_v8a.apk
-        ls && tree build/arm64_v8a && gh release upload continuous xtools-android-arm64_v8a.apk
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build for Android(armv7)
+        if: ${{ matrix.ci_action == 'armv7' }}
+        run: |
+          docker pull ${{ env.DOCKER_IMAGE }}
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-android-armv7.sh && ./scripts/ci-build-android-armv7.sh \
+          ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
+      - name: Upload Release Asset for Android(armv7)
+        if: ${{ matrix.ci_action == 'armv7' }}
+        run: |
+          cmake -E copy build/armeabi_v7a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-armeabi_v7a.apk
+          ls && tree build/armeabi_v7a && gh release upload continuous xtools-android-armeabi_v7a.apk
+      - name: Build for Android(armv8a)
+        if: ${{ matrix.ci_action == 'armv8a' }}
+        run: |
+          docker pull ${{ env.DOCKER_IMAGE }}
+          docker run --rm -v ${{ github.workspace }}:/workspace ${{ env.DOCKER_IMAGE }} /bin/bash -c "\
+          cd /workspace && chmod +x ./scripts/ci-build-android-armv8a.sh && ./scripts/ci-build-android-armv8a.sh \
+          ${{env.QT_ANDROID_KEYSTORE_PATH}} ${{env.QT_ANDROID_KEYSTORE_ALIAS}} ${{env.QT_ANDROID_KEYSTORE_STORE_PASS}} ${{env.QT_ANDROID_KEYSTORE_KEY_PASS}}"
+      - name: Upload Release Asset for Android(armv8a)
+        if: ${{ matrix.ci_action == 'armv8a' }}
+        run: |
+          cmake -E copy build/arm64_v8a/android-build/build/outputs/apk/release/android-build-release-signed.apk xtools-android-arm64_v8a.apk
+          ls && tree build/arm64_v8a && gh release upload continuous xtools-android-arm64_v8a.apk
