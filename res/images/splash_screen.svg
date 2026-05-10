@@ -19,7 +19,7 @@
     </filter>
   </defs>
 
-  <rect width="680" height="300" rx="24" fill="url(#bg)" />
+  <rect width="680" height="300" rx="8" fill="url(#bg)" />
   <g opacity="0.17">
     <circle cx="108" cy="56" r="94" stroke="#7EC7FF" stroke-width="1.5" />
     <circle cx="122" cy="122" r="132" stroke="#35E0C7" stroke-width="1.2" />

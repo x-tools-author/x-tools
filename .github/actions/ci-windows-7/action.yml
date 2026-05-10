@@ -47,17 +47,7 @@ runs:
     - name: Build for Windows 7(32bits)
       shell: cmd
       run: |
-        git fetch --tags
-        cmake -E rm -rf build
-        cmake -E rm -rf bin\5.15.2
-        cmake -E rm -rf libs\5.15.2
-        mkdir libs
-        mkdir build
-        cd build
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86
-        cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/5.15.2/win32_msvc2019' -DCMAKE_BUILD_TYPE=Release -DX_VERSION_OVERRIDE:STRING=${{ inputs.tag }} -G "Ninja" ../
-        cmake --build . --target all
-        cmake --build . --target xTools_zip
+        scripts\ci-build-win7.bat ${{ inputs.tag }}
     - name: Check for Artifacts(32bits)
       shell: cmd
       run: |
