@@ -13,10 +13,10 @@ if not exist "%ROOT_DIR%\build" (
 )
 cd /d "%ROOT_DIR%\build"
 
-if not exist "win7" (
-    mkdir "win7"
+if not exist "win_7" (
+    mkdir "win_7"
 )
-cd /d "win7"
+cd /d "win_7"
 
 set "PATH=%ROOT_DIR%\tools\MinGW810_32\bin;%PATH%"
 
