@@ -172,8 +172,6 @@ void MainWindow::load(const QString& fileName)
         showMaximized();
         move(QPoint(0, 0));
     }
-
-    int index = m_xPageMgr->currentIndex();
 }
 
 void MainWindow::save(const QString& fileName) const
