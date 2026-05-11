@@ -31,4 +31,6 @@ cmake -S "%ROOT_DIR%" ^
 cmake --build . --target all
 cmake --build . --target xTools_zip
 
+pause()
+
 endlocal
