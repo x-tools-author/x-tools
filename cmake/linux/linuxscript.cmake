@@ -51,8 +51,9 @@ if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
   execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${control_file})
 endif()
 
-set(desktop_file_name_tmp ${AppImageRootDir}/usr/share/applications/app.desktop)
-set(desktop_file_name ${AppImageRootDir}/usr/share/applications/${argPacketName}.desktop)
+set(desktop_file_name_tmp ${AppImageRootDir}/opt/apps/appid/entries/applications/app.desktop)
+set(desktop_file_name
+    ${AppImageRootDir}/opt/apps/appid/entries/applications/${argPacketName}.desktop)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${desktop_file_name_tmp} ${desktop_file_name})
 
 set(old_text argFriendlyName)
@@ -66,8 +67,8 @@ set(new_text ${argTarget})
 execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
 
 # Rename the icon
-set(old_text ${AppImageRootDir}/usr/share/icons/icon.png)
-set(new_text ${AppImageRootDir}/usr/share/icons/${argPacketName}.png)
+set(old_text ${AppImageRootDir}/opt/apps/appid/entries/icons/icon.png)
+set(new_text ${AppImageRootDir}/opt/apps/appid/entries/icons/${argPacketName}.png)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${old_text} ${new_text})
 
 set(old_text icon.png)
@@ -135,7 +136,8 @@ else()
     WORKING_DIRECTORY ${argWorkingDir}/deb)
   execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory usr/share/doc
                   WORKING_DIRECTORY ${argWorkingDir}/deb)
-  set(desktop_file_name ${argWorkingDir}/deb/usr/share/applications/${argPacketName}.desktop)
+  set(desktop_file_name
+      ${argWorkingDir}/deb/opt/apps/appid/entries/applications/${argPacketName}.desktop)
   set(old_text "Exec=${argPacketName}")
   set(new_text "Exec=/opt/${argFriendlyName}/bin/${argPacketName}")
   execute_process(COMMAND ${CMAKE_COMMAND} -E echo
