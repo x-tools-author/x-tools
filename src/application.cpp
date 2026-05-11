@@ -11,13 +11,3 @@
 Application::Application(int &argc, char **argv)
     : xApp(argc, argv)
 {}
-
-QString Application::left2rightTips() const
-{
-    return tr("Transfer rx bytes with right page");
-}
-
-QString Application::right2leftTips() const
-{
-    return tr("Transfer rx bytes with left page");
-}

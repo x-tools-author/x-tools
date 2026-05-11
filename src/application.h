@@ -18,7 +18,4 @@ class Application : public xApp
     Q_OBJECT
 public:
     explicit Application(int &argc, char **argv);
-
-    QString left2rightTips() const;
-    QString right2leftTips() const;
 };

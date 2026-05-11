@@ -24,8 +24,8 @@ Pipe::Pipe(Page *leftPage, Page *rightPage, QObject *parent)
     m_rightButton->setCheckable(true);
 
     Application *application = qobject_cast<Application *>(qApp);
-    m_leftButton->setToolTip(application->left2rightTips());
-    m_rightButton->setToolTip(application->right2leftTips());
+    m_leftButton->setToolTip(tr("Transfer rx bytes with right page"));
+    m_rightButton->setToolTip(tr("Transfer rx bytes with left page"));
     leftPage->appendOutputControl(m_leftButton);
     rightPage->prependOutputControl(m_rightButton);
 
