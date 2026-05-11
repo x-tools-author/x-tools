@@ -32,6 +32,9 @@ Maybe you should install something:
 
 ```bash
 sudo dnf install systemd-devel systemd-libs libusbx-devel
+sudo dnf install libX11-devel
+sudo dnf install libxkbcommon-devel
+sudo dnf install libxkbcommon-x11-devel
 ```
 
 ## xTools Screenshot
