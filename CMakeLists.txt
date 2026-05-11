@@ -329,6 +329,8 @@ if(LINUX AND NOT APPLE)
   target_link_libraries(xTools PRIVATE dl)
   include(cmake/linux/linux.cmake)
   x_build_deb(xTools "x-tools" "xTools" ${X_LATEST_GIT_TAG} ${CMAKE_SOURCE_DIR}/xTools.png)
+  x_build_deb_for_deepin(xTools "com.xtools.xtools" "xTools" ${X_LATEST_GIT_TAG}
+                         ${CMAKE_SOURCE_DIR}/xTools.svg)
 endif()
 
 # --------------------------------------------------------------------------------------------------

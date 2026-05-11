@@ -1,0 +1,7 @@
+﻿{
+    "appid": "argAppID",
+    "name": "argName",
+    "version": "argVersion",
+    "arch": "[amd64]",
+    "bluetooth": false
+}

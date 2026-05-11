@@ -1,6 +1,8 @@
 # sudo apt install devscripts
 function(x_build_deb_for_deepin target appID appName appVersion appIcon)
-  file(GLOB_RECURSE RES_FILES ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/*)
+  if(NOT LINUX)
+    return()
+  endif()
 
   # target to lower case
   string(TOLOWER ${target} lower_target)
@@ -11,7 +13,7 @@ function(x_build_deb_for_deepin target appID appName appVersion appIcon)
   list(APPEND args "-DargappID=${appID}")
   list(APPEND args "-DargappName=${appName}")
   list(APPEND args "-DargappVersion=${appVersion}")
-  list(APPEND args "-DargWorkingDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../${target}-linux")
+  list(APPEND args "-DargWorkingDir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../${target}-deepin")
   list(APPEND args "-DargIcon=${appIcon}")
   list(APPEND args "-DargLowerTargetName=${lower_target}")
   if(X_USING_PROJECT_DEPLOY_TOOL)
@@ -33,9 +35,10 @@ function(x_build_deb_for_deepin target appID appName appVersion appIcon)
     message(STATUS "[deb]arg: ${arg}")
   endforeach()
 
+  file(GLOB_RECURSE RES_FILES ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/*)
   # cmake-format: off
   add_custom_target(${target}_linux
-    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/linuxscript.cmake
+    COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/deepinscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
 endfunction()
