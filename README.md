@@ -26,6 +26,14 @@ Arch Linux can install x-tools via the [AUR](https://aur.archlinux.org/packages/
 yay -Syu x-tools
 ```
 
+Maybe you should install something:
+
+### AlmaLinux
+
+```bash
+sudo dnf install systemd-devel systemd-libs libusbx-devel
+```
+
 ## xTools Screenshot
 
 ![xTools Gif](res/xTools.gif)
