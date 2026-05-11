@@ -38,7 +38,7 @@ The repository's reference flow is:
 Reference command shape:
 
     call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-    cmake -S . -B build\my-build -G Ninja -DCMAKE_PREFIX_PATH=D:/Qt/6.11.0/msvc2022_64 -DCMAKE_BUILD_TYPE=Release
+    cmake -S . -B build\my-build -G Ninja -DCMAKE_PREFIX_PATH=D:/Qt/Qt/6.10.3/msvc2022_64 -DCMAKE_BUILD_TYPE=Release
     cmake --build build\my-build --target xTools
     cmake --build build\my-build --target xTools_zip
 
@@ -46,14 +46,14 @@ If the user asks to build a specific xApp, add `-DX_APP=<name>` during configura
 
 Example:
 
-    cmake -S . -B build\xoscilloscope -G Ninja -DCMAKE_PREFIX_PATH=D:/Qt/6.11.0/msvc2022_64 -DCMAKE_BUILD_TYPE=Release -DX_APP=xOscilloscope
+    cmake -S . -B build\xoscilloscope -G Ninja -DCMAKE_PREFIX_PATH=D:/Qt/Qt/6.10.3/msvc2022_64 -DCMAKE_BUILD_TYPE=Release -DX_APP=xOscilloscope
     cmake --build build\xoscilloscope --target xOscilloscope
 
 ## Linux procedure
 
 Reference command shape:
 
-    cmake -S . -B build/linux -G Ninja -DCMAKE_PREFIX_PATH=/path/to/Qt/6.11.0/gcc_64 -DCMAKE_BUILD_TYPE=Release
+    cmake -S . -B build/linux -G Ninja -DCMAKE_PREFIX_PATH=/path/to/Qt/6.10.3/gcc_64 -DCMAKE_BUILD_TYPE=Release
     cmake --build build/linux --target xTools
 
 For packaging on Linux, the repository documentation indicates targets such as `xTools_deb` and `xTools_appimage` when the environment supports them.
