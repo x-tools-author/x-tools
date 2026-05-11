@@ -16,4 +16,5 @@ include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_nodeeditor.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qcustomplot.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_qmdnsengine.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_libqrencode.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_singleapplication.cmake)
+
+# include(${CMAKE_SOURCE_DIR}/cmake/x_3rd_singleapplication.cmake)

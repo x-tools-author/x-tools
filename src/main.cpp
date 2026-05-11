@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QScreen>
 
-#if X_ENABLE_SINGLE_APPLICATION
+#if 0 // X_ENABLE_SINGLE_APPLICATION
 #include <singleapplication.h>
 #endif
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     Application app(argc, argv);
     app.setCustomSplashScreen(QPixmap(":/res/images/splash_screen.svg"));
 
-#if X_ENABLE_SINGLE_APPLICATION
+#if 0 // X_ENABLE_SINGLE_APPLICATION
     SingleApplication sApp(argc, argv);
     if (sApp.isSecondary()) {
         return 0;
@@ -46,13 +46,17 @@ int main(int argc, char *argv[])
 
     MainWindow window;
     QSplashScreen *splash = app.splashScreen();
-    splash->finish(&window);
-    window.resize(1366, 768);
+    if (splash) {
+        splash->finish(&window);
+    }
+
+    const QSize size(1366, 768);
+    window.resize(size);
     window.show();
     window.moveToCenter();
     window.load();
 
-#if X_ENABLE_SINGLE_APPLICATION
+#if 0 // X_ENABLE_SINGLE_APPLICATION
     QObject::connect(&sApp, &SingleApplication::instanceStarted, &window, [&window]() {
         window.show();
         window.raise();
