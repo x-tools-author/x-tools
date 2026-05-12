@@ -33,7 +33,7 @@ function(x_build_deb target packetName friendlyName version icon)
   endforeach()
 
   # cmake-format: off
-  add_custom_target(${target}_deepin
+  add_custom_target(${target}_linux
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/linuxscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
