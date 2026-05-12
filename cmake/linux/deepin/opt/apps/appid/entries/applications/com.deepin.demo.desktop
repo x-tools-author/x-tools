@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=argFriendlyName
 Comment=argFriendlyName
-Exec=argExecName
+Exec=argPacketName
 Icon=icon.svg
 Terminal=false
 Type=Application

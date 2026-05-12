@@ -33,8 +33,13 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory ${argWorkingDir} -r
                         ${CMAKE_COMMAND} -E true)
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
                         ${argSrcDir}/cmake/linux/deepin ${AppImageRootDir})
+
+message(STATUS "[xTools.Deepin] Rename apps to ${argAppID}")
+execute_process(COMMAND ${CMAKE_COMMAND} -E rename appid ${argAppID}
+                WORKING_DIRECTORY ${AppImageRootDir}/opt/apps)
+
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${argTargetFile}
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/bin/${argPacketName})
+                        ${AppImageRootDir}/opt/apps/${argAppID}/files/${argPacketName})
 
 # Update control file
 set(control_file ${AppImageRootDir}/DEBIAN/control)
@@ -51,10 +56,11 @@ if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
   execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${control_file})
 endif()
 
+# Update desktop file
 set(desktop_file_name_tmp
     ${AppImageRootDir}/opt/apps/${argAppID}/entries/applications/com.deepin.demo.desktop)
 set(desktop_file_name
-    ${AppImageRootDir}/opt/apps/${argAppID}/entries/applications/${argPacketName}.desktop)
+    ${AppImageRootDir}/opt/apps/${argAppID}/entries/applications/${argAppID}.desktop)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${desktop_file_name_tmp} ${desktop_file_name})
 
 set(old_text argFriendlyName)
@@ -66,12 +72,14 @@ execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
 set(old_text argTarget)
 set(new_text ${argTarget})
 execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
+set(old_text Icon=icon.svg)
+set(new_text Icon=${argAppID}.svg)
+execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
 
 # Rename the icon
-set(old_icon_path
-    ${AppImageRootDir}/opt/apps/${argAppID}/entries/icons/hicolor/scalable/apps/com.deepin.demo.svg)
-set(new_icon_path
-    ${AppImageRootDir}/opt/apps/${argAppID}/entries/icons/hicolor/scalable/apps/${argAppID}.svg)
+set(icon_path ${AppImageRootDir}/opt/apps/${argAppID}/entries/icons/hicolor/scalable/apps)
+set(old_icon_path ${icon_path}/com.deepin.demo.svg)
+set(new_icon_path ${icon_path}/${argAppID}.svg)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${old_icon_path} ${new_icon_path})
 
 set(old_text com.deepin.demo)
@@ -83,9 +91,9 @@ get_filename_component(target_dir ${argTargetFile} DIRECTORY)
 
 # Copy files to deepin package
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/translations"
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/bin/translations)
+                        ${AppImageRootDir}/opt/apps/${argAppID}/files/translations)
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts"
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/bin/scripts)
+                        ${AppImageRootDir}/opt/apps/${argAppID}/files/scripts)
 
 # Make deb directory from appimage
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
@@ -98,7 +106,7 @@ message(STATUS "Create deb package ${argAssetName}.deb")
 set(desktop_file_name
     ${argWorkingDir}/deb/opt/apps/${argAppID}/entries/applications/${argPacketName}.desktop)
 set(old_text "Exec=${argPacketName}")
-set(new_text "Exec=/opt/apps/${argAppID}/files/bin/${argPacketName}")
+set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
 execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
 
 # Build the deb package
