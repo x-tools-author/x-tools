@@ -112,6 +112,6 @@ execute_process(
   COMMAND
     ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
     opt/apps/${argAppID}/entries/applications/${argAppID}.desktop -always-overwrite
-    -bundle-non-qt-libs -qmake=${argQmakePath} -appimage
+    -bundle-non-qt-libs -qmake=${argQmakePath}
   WORKING_DIRECTORY ${AppImageRootDir})
 execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${argWorkingDir}/deb)
