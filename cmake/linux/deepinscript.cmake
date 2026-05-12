@@ -28,21 +28,20 @@ if(NOT EXISTS ${argTool})
 endif()
 
 # Remove old working dir then create a new one
-set(AppImageRootDir ${argWorkingDir}/appimage)
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory ${argWorkingDir} -rf ||
-                        ${CMAKE_COMMAND} -E true)
+set(DebRootDir ${argWorkingDir}/deb)
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory ${argWorkingDir})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
-                        ${argSrcDir}/cmake/linux/deepin ${AppImageRootDir})
+                        ${argSrcDir}/cmake/linux/deepin ${DebRootDir})
 
 message(STATUS "[xTools.Deepin] Rename apps to ${argAppID}")
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename appid ${argAppID}
-                WORKING_DIRECTORY ${AppImageRootDir}/opt/apps)
+                WORKING_DIRECTORY ${DebRootDir}/opt/apps)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${argTargetFile}
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/${argPacketName})
+                        ${DebRootDir}/opt/apps/${argAppID}/files/${argPacketName})
 
 # Update control file
-set(control_file ${AppImageRootDir}/DEBIAN/control)
+set(control_file ${DebRootDir}/DEBIAN/control)
 set(old_text argPacketName)
 set(new_text ${argPacketName})
 execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${control_file})
@@ -58,9 +57,8 @@ endif()
 
 # Update desktop file
 set(desktop_file_name_tmp
-    ${AppImageRootDir}/opt/apps/${argAppID}/entries/applications/com.deepin.demo.desktop)
-set(desktop_file_name
-    ${AppImageRootDir}/opt/apps/${argAppID}/entries/applications/${argAppID}.desktop)
+    ${DebRootDir}/opt/apps/${argAppID}/entries/applications/com.deepin.demo.desktop)
+set(desktop_file_name ${DebRootDir}/opt/apps/${argAppID}/entries/applications/${argAppID}.desktop)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${desktop_file_name_tmp} ${desktop_file_name})
 
 set(old_text argFriendlyName)
@@ -77,7 +75,7 @@ set(new_text Icon=${argAppID}.svg)
 execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${desktop_file_name})
 
 # Rename the icon
-set(icon_path ${AppImageRootDir}/opt/apps/${argAppID}/entries/icons/hicolor/scalable/apps)
+set(icon_path ${DebRootDir}/opt/apps/${argAppID}/entries/icons/hicolor/scalable/apps)
 set(old_icon_path ${icon_path}/com.deepin.demo.svg)
 set(new_icon_path ${icon_path}/${argAppID}.svg)
 execute_process(COMMAND ${CMAKE_COMMAND} -E rename ${old_icon_path} ${new_icon_path})
@@ -91,18 +89,16 @@ get_filename_component(target_dir ${argTargetFile} DIRECTORY)
 
 # Copy files to deepin package
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/translations"
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/translations)
+                        ${DebRootDir}/opt/apps/${argAppID}/files/translations)
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts"
-                        ${AppImageRootDir}/opt/apps/${argAppID}/files/scripts)
+                        ${DebRootDir}/opt/apps/${argAppID}/files/scripts)
 
-# Make deb directory from appimage Update deb desktop file path
+# Update deb desktop file path
 set(old_text "Exec=${argPacketName}")
 set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
 execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
-execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
-                WORKING_DIRECTORY ${argWorkingDir})
 
-# For Deepin package, we skip AppImage and directly create the deb
+# For Deepin package, all operations are performed directly in deb working directory
 message(STATUS "Create deb package ${argAssetName}.deb")
 
 # Build the deb package
@@ -111,5 +107,5 @@ execute_process(
     ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
     opt/apps/${argAppID}/entries/applications/${argAppID}.desktop -always-overwrite
     -bundle-non-qt-libs -qmake=${argQmakePath}
-  WORKING_DIRECTORY ${AppImageRootDir})
-execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${argWorkingDir}/deb)
+  WORKING_DIRECTORY ${DebRootDir})
+execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${DebRootDir})
