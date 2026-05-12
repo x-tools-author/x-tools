@@ -104,9 +104,8 @@ message(STATUS "Create deb package ${argAssetName}.deb")
 # Build the deb package
 execute_process(
   COMMAND
-    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
-    opt/apps/${argAppID}/entries/applications/${argAppID}.desktop -always-overwrite
-    -bundle-non-qt-libs -qmake=${argQmakePath}
+    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool} opt/apps/${argAppID}/files/bin/xtools
+    -always-overwrite -bundle-non-qt-libs -qmake=${argQmakePath}
   WORKING_DIRECTORY ${DebRootDir})
 
 # Restore runtime Exec path expected by Deepin package
