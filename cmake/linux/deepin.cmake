@@ -38,7 +38,7 @@ function(x_build_deb_for_deepin target appID appName appVersion appIcon)
 
   file(GLOB_RECURSE RES_FILES ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/*)
   # cmake-format: off
-  add_custom_target(${target}_linux
+  add_custom_target(${target}_deepin
     COMMAND ${CMAKE_COMMAND} ${args} -P ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/deepinscript.cmake
     SOURCES ${RES_FILES})
   # cmake-format: on
