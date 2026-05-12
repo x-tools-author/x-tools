@@ -103,11 +103,15 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
 message(STATUS "Create deb package ${argAssetName}.deb")
 
 # Update deb desktop file path
-set(desktop_file_name
-    ${argWorkingDir}/deb/opt/apps/${argAppID}/entries/applications/${argPacketName}.desktop)
 set(old_text "Exec=${argPacketName}")
 set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
 execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
 
 # Build the deb package
+execute_process(
+  COMMAND
+    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool}
+    opt/apps/${argAppID}/entries/applications/${argAppID}.desktop -always-overwrite
+    -bundle-non-qt-libs -qmake=${argQmakePath} -appimage
+  WORKING_DIRECTORY ${AppImageRootDir})
 execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${argWorkingDir}/deb)
