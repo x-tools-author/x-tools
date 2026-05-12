@@ -4,7 +4,7 @@ Architecture: amd64
 Section: utils
 Priority: optional
 Maintainer: x-tools-author <x-tools@outlook.com>
-Depends: libc6 (>= 2.31), libstdc++6 (>= 10), libgcc-s1
+Depends: libc6 (>= 2.28)
 Homepage: <https://github.com/x-tools-author/x-tools>
 Description: xTools utility suite
  A cross-platform toolbox application.
