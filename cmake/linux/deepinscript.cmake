@@ -95,17 +95,15 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/transl
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts"
                         ${AppImageRootDir}/opt/apps/${argAppID}/files/scripts)
 
-# Make deb directory from appimage
+# Make deb directory from appimage Update deb desktop file path
+set(old_text "Exec=${argPacketName}")
+set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
+execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory appimage deb
                 WORKING_DIRECTORY ${argWorkingDir})
 
 # For Deepin package, we skip AppImage and directly create the deb
 message(STATUS "Create deb package ${argAssetName}.deb")
-
-# Update deb desktop file path
-set(old_text "Exec=${argPacketName}")
-set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
-execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
 
 # Build the deb package
 execute_process(
