@@ -55,6 +55,20 @@ if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
   execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${control_file})
 endif()
 
+# Update info file
+set(info_file ${DebRootDir}/opt/apps/${argAppID}/info)
+set(old_text argAppID)
+set(new_text ${argAppID})
+execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${info_file})
+
+set(old_text argName)
+set(new_text ${argFriendlyName})
+execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${info_file})
+
+set(old_text argVersion)
+set(new_text ${argVersion})
+execute_process(COMMAND sed -i s/${old_text}/${new_text}/g ${info_file})
+
 # Update desktop file
 set(desktop_file_name_tmp
     ${DebRootDir}/opt/apps/${argAppID}/entries/applications/com.deepin.demo.desktop)
