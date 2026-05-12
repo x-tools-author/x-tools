@@ -104,7 +104,7 @@ message(STATUS "Create deb package ${argAssetName}.deb")
 # Build the deb package
 execute_process(
   COMMAND
-    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool} opt/apps/${argAppID}/files/bin/xtools
+    ${CMAKE_COMMAND} -E env VERSION=v${argVersion} ${argTool} opt/apps/${argAppID}/files/xtools
     -always-overwrite -bundle-non-qt-libs -qmake=${argQmakePath}
   WORKING_DIRECTORY ${DebRootDir})
 
