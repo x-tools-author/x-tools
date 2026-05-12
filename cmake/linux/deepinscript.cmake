@@ -93,9 +93,9 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/transl
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${target_dir}/scripts"
                         ${DebRootDir}/opt/apps/${argAppID}/files/scripts)
 
-# Update deb desktop file path
+# Update desktop Exec for linuxdeployqt discovery (must be resolvable in build workspace)
 set(old_text "Exec=${argPacketName}")
-set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
+set(new_text "Exec=opt/apps/${argAppID}/files/${argPacketName}")
 execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
 
 # For Deepin package, all operations are performed directly in deb working directory
@@ -108,4 +108,10 @@ execute_process(
     opt/apps/${argAppID}/entries/applications/${argAppID}.desktop -always-overwrite
     -bundle-non-qt-libs -qmake=${argQmakePath}
   WORKING_DIRECTORY ${DebRootDir})
+
+# Restore runtime Exec path expected by Deepin package
+set(old_text "Exec=opt/apps/${argAppID}/files/${argPacketName}")
+set(new_text "Exec=/opt/apps/${argAppID}/files/${argPacketName}")
+execute_process(COMMAND sed -i s|${old_text}|${new_text}|g ${desktop_file_name})
+
 execute_process(COMMAND dpkg -b ./ ${argAssetName}.deb WORKING_DIRECTORY ${DebRootDir})
