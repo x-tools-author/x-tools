@@ -1,48 +1,44 @@
 ﻿name: build-apps
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: # Enables manually
 # on:
 #  push:
 #    branches:
 #      - master
+
+env:
+  QT_VERSION: 6.8.3
+  QT_ARCH: win64_msvc2022_64
+  QT_MODULES: "qtcharts qtserialbus qtserialport qtwebsockets"
+
 jobs:
   build:
     name: Build with Qt6
-    runs-on: windows-2025
+    runs-on: windows-2025-vs2026
     strategy:
       fail-fast: false
       matrix:
-        version: [6.8.3]
-        arch: [win64_msvc2022_64]
-        app: [xCode, xOscilloscope, xPing, xHash, xFlow, xMerge, xAssistant, xTftp]
+        app:
+          [xCode, xOscilloscope, xPing, xHash, xFlow, xMerge, xAssistant, xTftp]
     steps:
       - name: Pull code
         uses: actions/checkout@v5
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
-          version: ${{ matrix.version }}
+          version: ${{ env.QT_VERSION }}
           target: desktop
-          arch: ${{ matrix.arch }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
-      - name: build-msvc
+          arch: ${{ env.QT_ARCH }}
+          modules: ${{ env.QT_MODULES }}
+      - name: building ${{ matrix.app }}
         shell: cmd
-        if: matrix.arch == 'win64_msvc2022_64'
         run: |
           mkdir build
           cd build
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "Ninja" ../
-          cmake --build . --target all --config Release
-      - name: build-mingw
-        shell: cmd
-        if: matrix.arch == 'win64_mingw'
-        run: |
-          mkdir build
-          cd build
-          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "MinGW Makefiles" ../
+          call "C:\Program Files\Microsoft Visual Studio\2026\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/${{ env.QT_ARCH }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "Ninja" ../
           cmake --build . --target all --config Release
