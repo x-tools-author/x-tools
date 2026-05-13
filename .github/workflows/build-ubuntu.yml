@@ -14,28 +14,22 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         include:
-          - os: ubuntu-22.04
+          - version: 6.2.4
             arch: gcc_64
-            version: 6.2.4
-          - os: ubuntu-22.04
+          - version: 6.5.3
             arch: gcc_64
-            version: 6.5.3
-          - os: ubuntu-22.04
+          - version: 6.8.3
             arch: linux_gcc_64
-            version: 6.8.3
-          - os: ubuntu-22.04
+          - version: 6.9.3
             arch: linux_gcc_64
-            version: 6.9.3
-          - os: ubuntu-22.04
+          - version: 6.10.3
             arch: linux_gcc_64
-            version: 6.10.3
-          - os: ubuntu-22.04
+          - version: 6.11.0
             arch: linux_gcc_64
-            version: 6.11.0
 
     steps:
       - name: checkout
