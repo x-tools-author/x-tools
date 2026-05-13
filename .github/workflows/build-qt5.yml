@@ -17,7 +17,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [5.9.9, 5.10.1, 5.11.3, 5.12.12, 5.13.2, 5.14.2, 5.15.2]
         include:
           - version: 5.9.9
             arch: win64_msvc2017_64
