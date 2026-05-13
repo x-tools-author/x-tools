@@ -39,6 +39,6 @@ jobs:
         run: |
           mkdir build
           cd build
-          call "C:\Program Files\Microsoft Visual Studio\2026\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          call "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
           cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ env.QT_VERSION }}/${{ env.QT_ARCH }}' -DCMAKE_BUILD_TYPE=Release -DX_APP:STRING=${{ matrix.app }} -G "Ninja" ../
           cmake --build . --target all --config Release
