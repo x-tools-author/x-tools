@@ -1,7 +1,7 @@
 ﻿name: build-ubuntu
 on:
   schedule:
-    - cron: "0 0 * * 0"
+    - cron: "0 5 * * 6"
   workflow_dispatch: # Enables manually
   pull_request:
     branches:
@@ -10,33 +10,38 @@ on:
   # push:
   #   branches:
   #     - master
+
 jobs:
   build:
     name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-22.04]
-        arch: [gcc_64, linux_gcc_64]
         include:
-          - arch: gcc_64
+          - os: ubuntu-22.04
+            arch: gcc_64
             version: 6.2.4
-          - arch: gcc_64
+          - os: ubuntu-22.04
+            arch: gcc_64
             version: 6.5.3
-          - arch: linux_gcc_64
+          - os: ubuntu-22.04
+            arch: linux_gcc_64
             version: 6.8.3
-          - arch: linux_gcc_64
+          - os: ubuntu-22.04
+            arch: linux_gcc_64
             version: 6.9.3
-          - arch: linux_gcc_64
+          - os: ubuntu-22.04
+            arch: linux_gcc_64
             version: 6.10.3
-          - arch: linux_gcc_64
-            version: 6.11.1
+          - os: ubuntu-22.04
+            arch: linux_gcc_64
+            version: 6.11.0
 
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: install qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           aqtversion: "==3.1.*"
           version: ${{ matrix.version }}
