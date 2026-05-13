@@ -1,7 +1,7 @@
 ﻿name: build-ubuntu
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: # Enables manually
   pull_request:
     branches:
@@ -17,21 +17,20 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.3, 6.11.0]
         arch: [gcc_64, linux_gcc_64]
-        exclude:
-          - version: 6.2.4
-            arch: linux_gcc_64
-          - version: 6.5.3
-            arch: linux_gcc_64
-          - version: 6.8.3
-            arch: gcc_64
-          - version: 6.9.3
-            arch: gcc_64
-          - version: 6.10.3
-            arch: gcc_64
-          - version: 6.11.0
-            arch: gcc_64
+        include:
+          - arch: gcc_64
+            version: 6.2.4
+          - arch: gcc_64
+            version: 6.5.3
+          - arch: linux_gcc_64
+            version: 6.8.3
+          - arch: linux_gcc_64
+            version: 6.9.3
+          - arch: linux_gcc_64
+            version: 6.10.3
+          - arch: linux_gcc_64
+            version: 6.11.1
 
     steps:
       - name: checkout
@@ -39,12 +38,12 @@ jobs:
       - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           version: ${{ matrix.version }}
-          target: 'desktop'
+          target: "desktop"
           arch: ${{ matrix.arch }}
           dir: ${{ github.workspace }}
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          modules: "qtcharts qtserialbus qtserialport qtwebsockets"
       - name: install-dependencies
         shell: bash
         run: |
