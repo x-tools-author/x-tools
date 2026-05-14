@@ -914,6 +914,7 @@ Page::Page(ControllerDirection direction, QSettings *settings, QWidget *parent)
 #endif
 
 #if X_ENABLE_PRIVATE
+    // Just for xTools Pro edition, not available in xTools Community edition.
     ProtocolPanel *protocolPanel = new ProtocolPanel(this);
     d->addTab(tr("Protocol"), protocolPanel);
     item.name = QString("tabProtocol");
@@ -1018,6 +1019,9 @@ QVariantMap Page::save() const
     map.insert(keys.panelIndex, index);
     for (const PagePrivate::PanelItem &panel :
          const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
+        if (!panel.panel) {
+            continue;
+        }
         map.insert(panel.name, panel.panel->save());
     }
     int panelWidth = d->ui->stackedWidget->width();
@@ -1089,6 +1093,9 @@ void Page::load(const QVariantMap &parameters)
     }
     for (const PagePrivate::PanelItem &panel :
          const_cast<const QList<PagePrivate::PanelItem> &>(d->m_panels)) {
+        if (!panel.panel) {
+            continue;
+        }
         panel.panel->load(parameters.value(panel.name).toMap());
     }
     int panelWidth = parameters.value(keys.panelWidth, 400).toInt();

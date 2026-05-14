@@ -15,6 +15,8 @@ if(X_USING_VCPKG)
       CACHE STRING "Please specify your own vcpkg.cmake file")
 endif()
 
+# --------------------------------------------------------------------------------------------------
+# Do something make old Windows happy...
 if(WIN32)
   option(X_SETUP_BUILDING_FOR_WIN_XP_ENV "Build for Windows XP" OFF)
   if(X_SETUP_BUILDING_FOR_WIN_XP_ENV)
@@ -25,6 +27,16 @@ if(WIN32)
     if(X_SETUP_BUILDING_FOR_WIN_7_ENV)
       # Setup environment for building with Qt 5.15.14(mingw 8.1.0 32bits)
       include(${CMAKE_SOURCE_DIR}/cmake/x_qt_5.15.14.cmake)
+    else()
+      option(X_SETUP_BUILDING_FOR_WIN_10_ENV "Build for Windows 10" OFF)
+      if(X_SETUP_BUILDING_FOR_WIN_10_ENV)
+        # * TODO:
+        # * Do something make Windows 10 happy,
+        # * Qt6.12 is the last version that supports Windows 10,
+        # * so we have to wait for it
+        # * Setup Setup environment for building with Qt 6.12.3(mingw12.2.0 64bits)
+        # * include(${CMAKE_SOURCE_DIR}/cmake/x_qt_6.12.3.cmake)
+      endif()
     endif()
   endif()
 endif()
@@ -160,11 +172,17 @@ if(DEFINED X_UBUNTU_VERSION AND NOT "${X_UBUNTU_VERSION}" STREQUAL "")
 else()
   set(X_ASSET_NAME "xTools-${CMAKE_SYSTEM_NAME}-v${X_LATEST_GIT_TAG}")
 endif()
-if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID AND NOT "${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}"
-                                                  STREQUAL "")
-  # https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ARCHITECTURE_ID.html
-  set(X_ASSET_NAME "${X_ASSET_NAME}-${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
-else()
+
+set(X_DO_NOT_AUTO_ARCH TRUE)
+if(DEFINED CMAKE_CXX_COMPILER_ARCHITECTURE_ID)
+  if(NOT "${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}" STREQUAL "")
+    # https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ARCHITECTURE_ID.html
+    set(X_ASSET_NAME "${X_ASSET_NAME}-${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
+    set(X_DO_NOT_AUTO_ARCH OFF)
+  endif()
+endif()
+
+if(X_DO_NOT_AUTO_ARCH)
   if(CMAKE_HOST_SYSTEM_PROCESSOR STREQUAL "aarch64")
     set(X_ASSET_NAME "${X_ASSET_NAME}-aarch64")
   else()
@@ -183,6 +201,7 @@ if(WIN32)
     set(X_ASSET_NAME "${X_ASSET_NAME}-win7")
   endif()
 endif()
+
 string(TOLOWER ${X_ASSET_NAME} X_ASSET_NAME)
 message(STATUS "[xTools] X_ASSET_NAME: ${X_ASSET_NAME}")
 
