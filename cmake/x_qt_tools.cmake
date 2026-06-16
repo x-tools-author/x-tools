@@ -4,8 +4,21 @@ set(package_file_name qttools-${package_version})
 set(package_url https://codeload.github.com/qt/qttools/zip/refs/tags/v${package_version})
 
 if(QT_VERSION VERSION_LESS "6.5.0")
+  option(X_QT_TOOLS "Whether to include Qt Tools module" OFF)
+else()
+  option(X_QT_TOOLS "Whether to include Qt Tools module" ON)
+endif()
+
+if(NOT X_QT_TOOLS)
+  message(STATUS "Qt Tools module is disabled, skipping...")
   return()
 endif()
+
+macro(x_disable_qt_tools)
+  set(X_QT_TOOLS
+      OFF
+      CACHE BOOL "Whether to include Qt Tools module" FORCE)
+endmacro()
 
 # --------------------------------------------------------------------------------------------------
 # Download source code
@@ -17,7 +30,9 @@ if(NOT EXISTS ${X_3RD_DIR}/qttools-${package_version}.zip)
   list(GET download_status 0 download_result)
   if(NOT download_result EQUAL 0)
     file(REMOVE ${X_3RD_DIR}/qttools-${package_version}.zip)
-    message(FATAL_ERROR "Failed to download ${package_file_name}.zip: ${download_status}")
+    message(WARNING "Failed to download ${package_file_name}.zip: ${download_status}")
+    x_disable_qt_tools()
+    return()
   endif()
 endif()
 
@@ -30,7 +45,9 @@ if(NOT EXISTS ${X_3RD_DIR}/${package_file_name})
     RESULT_VARIABLE extract_result)
   if(NOT extract_result EQUAL 0)
     file(REMOVE ${X_3RD_DIR}/qttools-${package_version})
-    message(FATAL_ERROR "Failed to extract ${package_file_name}.zip")
+    message(WARNING "Failed to extract ${package_file_name}.zip")
+    x_disable_qt_tools()
+    return()
   endif()
 endif()
 

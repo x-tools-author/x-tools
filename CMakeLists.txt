@@ -287,7 +287,7 @@ macro(x_remove_private_files)
   add_definitions(-DX_ENABLE_PRIVATE=0)
 endmacro()
 
-if(X_ENABLE_PRIVATE)
+if(X_ENABLE_PRIVATE AND X_QT_TOOLS)
   if(EXISTS ${CMAKE_SOURCE_DIR}/src/private/private.cmake)
     include(${CMAKE_SOURCE_DIR}/src/private/private.cmake)
     add_definitions(-DX_ENABLE_PRIVATE=1)
