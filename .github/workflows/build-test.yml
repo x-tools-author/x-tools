@@ -1,66 +1,42 @@
-name: build-test
+name: build-qt5
 on:
   schedule:
     - cron: "0 4 * * 6"
   workflow_dispatch: # Enables manually
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened]
   # push:
   #   branches:
   #     - master
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  DOCKER_IMAGE: ghcr.io/x-tools-author/x-tools-ubuntu-20.04:x86_64
-  QT_VERSION: "6.8.3"
-  QT_MODULES: "qtcharts qtserialbus qtserialport qtwebsockets"
-  QT_ANDROID_KEYSTORE_PATH: res/android/android_release.keystore
-  QT_ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-  QT_ANDROID_KEYSTORE_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_STORE_PASS }}
-  QT_ANDROID_KEYSTORE_KEY_PASS: ${{ secrets.ANDROID_KEYSTORE_KEY_PASS }}
-
 jobs:
-  update-tag:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Update continuous tag
-        run: |
-          git config --global user.email "x-tools@outlook.com"
-          git config --global user.name "x-tools-author"
-          git tag -d continuous || true
-          git push origin --delete continuous || true
-          git tag continuous
-          git push origin continuous -f
-  update-release:
-    runs-on: ubuntu-latest
-    needs: update-tag
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Delete Release
-        run: |
-          gh release delete continuous -y || true
-      - name: Create Release
-        run: |
-          gh release create continuous --title "Continuous Build" --notes-file res/files/release.md --prerelease
-  release-for-windows:
-    needs: update-release
-    runs-on: windows-2022
+  build-windows:
+    name: Qt5(windows)
+    runs-on: windows-2025
     strategy:
       fail-fast: false
       matrix:
-        ci_action: ["Windows", "Win7", "WinXP"]
+        include:
+          - version: 5.15.2
+            arch: win64_msvc2019_64
     steps:
       - name: Pull code
         uses: actions/checkout@v4
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v2
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
         with:
-          cmake-version: "4.1.x"
-      - name: Use cmake
-        run: cmake --version
-      - name: Build for Windows 7
-        if: ${{ matrix.ci_action == 'Win7' }}
-        uses: ./.github/actions/ci-windows-7
-        with:
-          tag: continuous
+          aqtversion: "==3.1.*"
+          dir: ${{ github.workspace }}
+          version: ${{ matrix.version }}
+          target: desktop
+          arch: ${{ matrix.arch }}
+          modules: "qtcharts"
+      - name: build-msvc
+        shell: cmd
+        run: |
+          mkdir build
+          cd build
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          cmake -DCMAKE_PREFIX_PATH='${{ github.workspace }}/Qt/${{ matrix.version }}/${{ matrix.arch }}' -DCMAKE_BUILD_TYPE=Release -G "Ninja" ../
+          cmake --build . --target all --config Release
