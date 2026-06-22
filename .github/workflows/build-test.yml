@@ -1,4 +1,4 @@
-name: build-qt5
+name: build-test
 on:
   schedule:
     - cron: "0 4 * * 6"
