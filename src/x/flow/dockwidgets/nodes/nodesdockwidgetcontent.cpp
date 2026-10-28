@@ -17,6 +17,8 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include <QStyledItemDelegate>
+#include <QTreeWidgetItem>
 
 #include "utilities/iconengine.h"
 
@@ -25,6 +27,21 @@
 #include "../../nodeeditor/nodeeditorview.h"
 
 namespace xFlow {
+
+class NodesDockWidgetItemDelegate : public QStyledItemDelegate
+{
+public:
+    NodesDockWidgetItemDelegate(QObject *parent = nullptr)
+        : QStyledItemDelegate(parent)
+    { }
+    ~NodesDockWidgetItemDelegate() override { }
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override
+    {
+        QSize size = QStyledItemDelegate::sizeHint(option, index);
+        size.setHeight(26);
+        return size;
+    }
+};
 
 NodesDockWidgetContent::NodesDockWidgetContent(NodeEditorView *view, QWidget *parent)
     : QWidget(parent)
@@ -65,6 +82,8 @@ NodesDockWidgetContent::NodesDockWidgetContent(NodeEditorView *view, QWidget *pa
         }
     }
 
+    ui->treeWidget->setItemDelegate(new NodesDockWidgetItemDelegate(this));
+    ui->treeWidget->setIndentation(16);
     ui->treeWidget->setDragEnabled(true);
     ui->treeWidget->expandAll();
 
