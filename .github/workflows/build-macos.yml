@@ -1,7 +1,7 @@
 ﻿name: build-macos
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: # Enables manually
   pull_request:
     branches:
@@ -17,15 +17,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, macos-15]
-        version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.3, 6.11.0]
+        os: [macos-15]
+        version: [6.2.4, 6.5.3, 6.8.3, 6.9.3, 6.10.3, 6.11.3]
         arch: [clang_64]
         include:
           - version: 6.9.3
             os: macos-26
           - version: 6.10.3
             os: macos-26
-          - version: 6.11.0
+          - version: 6.11.3
             os: macos-26
 
     steps:
@@ -34,13 +34,13 @@ jobs:
       - name: install qt
         uses: jurplel/install-qt-action@v3
         with:
-          aqtversion: '==3.1.*'
+          aqtversion: "==3.1.*"
           dir: ${{ github.workspace }}
           version: ${{ matrix.version }}
-          target: 'desktop'
+          target: "desktop"
           arch: ${{ matrix.arch }}
-          host: 'mac'
-          modules: 'qtcharts qtserialbus qtserialport qtwebsockets'
+          host: "mac"
+          modules: "qtcharts qtserialbus qtserialport qtwebsockets"
       - name: build all
         run: |
           # brew uninstall --force node
@@ -60,4 +60,3 @@ jobs:
           ls ../bin/${{ matrix.version }}/Darwin/Release/xTools
           # rename all dmg with lower case
           find ../bin/${{ matrix.version }}/Darwin/Release/xTools -name "*.dmg" -exec echo "dmg file is: {}" \;
-
