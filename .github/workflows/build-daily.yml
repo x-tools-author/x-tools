@@ -122,7 +122,7 @@ jobs:
           find bin/6.8.3/Linux/Release/xTools-linux -name "*.deb" -exec gh release upload continuous {} \;
           find bin/6.8.3/Linux/Release/xTools-linux -name "*.AppImage" -exec gh release upload continuous {} \;
   release-for-macos:
-    runs-on: macos-14
+    runs-on: macos-15
     needs: update-release
     steps:
       - name: Checkout
